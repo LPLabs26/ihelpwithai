@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ihelpwithai.com — Find the right AI tool faster</title>
+  <meta name="description" content="A curated shortlist of AI tools explained in plain English. Start with the job to be done, compare the best fits, and skip the hype.">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="./index.html" class="brand">
+        <div class="logo"><span>IHAI</span></div>
+        <div>
+          <div>ihelpwithai.com</div>
+          <div class="brand-sub">AI tools that actually help</div>
+        </div>
+      </a>
+      <nav class="navlinks">
+        <a href="#featured">Start here</a>
+        <a href="#directory-filters">Directory</a>
+        <a href="#prompt-lab">Prompt Lab</a>
+        <a href="#guides">Guides</a>
+        <a href="#compare">Compare</a>
+        <a href="#help">Get help</a>
+        <a href="./affiliate-disclosure.html">Disclosure</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="kicker">Curated shortlist. Plain English. Better fit.</div>
+          <h1>Find the right AI tool for the job, not the loudest tool on the internet.</h1>
+          <p class="hero-copy">We do not try to cover everything in AI. We help you narrow the shortlist fast, understand the tradeoffs, and choose the tool that actually matches your work.</p>
+
+          <div class="search-panel" id="directory">
+            <div class="search-grid">
+              <input id="search" type="search" placeholder="Describe the job to be done — e.g. meeting notes, research with sources, sales outreach, podcast editing">
+              <a class="button primary" href="#directory-filters">See the shortlist</a>
+            </div>
+            <div class="helper">Start with the task, not the brand. Try searches like “client follow-up”, “visual deck”, “voiceover”, or “research with citations”.</div>
+            <div class="quick-links" id="hero-goal-links"></div>
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric">
+              <strong id="metric-tools">0</strong>
+              <span>curated tools</span>
+            </div>
+            <div class="metric">
+              <strong id="metric-companies">0</strong>
+              <span>good first picks</span>
+            </div>
+            <div class="metric">
+              <strong id="metric-goals">0</strong>
+              <span>jobs covered well</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="eyebrow">What makes this different</div>
+          <h2>Curated, not exhaustive.</h2>
+          <ul class="mini-list">
+            <li><strong>We start with the job:</strong> what are you actually trying to get done every week?</li>
+            <li><strong>We explain the fit:</strong> who a tool is for, who should skip it, and why.</li>
+            <li><strong>We keep tradeoffs visible:</strong> every tool has watch-outs, not just a sales pitch.</li>
+            <li><strong>We make the next step obvious:</strong> shortlist, compare, or ask for help.</li>
+          </ul>
+          <p class="notice">If a recommendation ever uses a partner link, ihelpwithai.com may earn a commission at no extra cost to the reader. <a href="./affiliate-disclosure.html">Read the disclosure.</a></p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Start with the work</div>
+            <h2>Popular starting points</h2>
+            <p>These are the fastest routes for people who know the problem they want solved, but not the tool yet.</p>
+          </div>
+        </div>
+        <div class="goal-grid" id="goal-grid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="matcher">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Quick shortlist</div>
+            <h2>Answer 3 questions and get better first picks</h2>
+            <p>Pick the main job first. Then use budget and audience to get closer to the tools that actually fit how you work.</p>
+          </div>
+          <a class="button secondary" href="#directory-filters">Prefer the full directory?</a>
+        </div>
+
+        <div class="match-shell">
+          <article class="match-panel">
+            <div class="match-intro">
+              <h3>Start with the job to be done</h3>
+              <p>The goal matters more than the brand. Choose the work you want help with, then tighten the shortlist with a few practical filters.</p>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-label">Main job</div>
+              <div class="pills" id="match-goal-pills"></div>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-label">Who is this for?</div>
+              <div class="pills" id="match-audience-pills"></div>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-label">Budget</div>
+              <div class="pills" id="match-price-pills"></div>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-label">Setup tolerance</div>
+              <div class="pills" id="match-difficulty-pills"></div>
+            </div>
+          </article>
+
+          <article class="match-results">
+            <div class="match-status" id="match-status">Pick the main job and the site will turn the big list into a tighter starting shortlist.</div>
+            <div class="match-grid" id="match-grid"></div>
+            <div class="match-actions">
+              <button class="button primary" id="match-open-directory" type="button">Open these picks in the directory</button>
+              <button class="clear-button" id="match-reset" type="button">Reset chooser</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="featured">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Best first picks</div>
+            <h2>Where most people should start</h2>
+            <p>If you want the shortest path to a good choice, start here before exploring the full directory.</p>
+          </div>
+        </div>
+        <div class="featured-grid" id="featured-grid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="prompt-lab">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Prompt Lab</div>
+            <h2>Turn a good tool into a better result</h2>
+            <p>Starter prompts are useful, but they get much better when you add your real context, the exact output you want, and any constraints that matter.</p>
+          </div>
+        </div>
+
+        <div class="lead-grid prompt-lab-grid">
+          <article class="form-card prompt-lab-card">
+            <div class="eyebrow">Build a prompt</div>
+            <h2>Start with the tool, then add your specifics.</h2>
+            <p class="form-note">Pick a tool, describe the job, and the site will turn the starter prompt into something more practical and ready to paste.</p>
+
+            <div class="quick-links" id="prompt-tool-pills"></div>
+
+            <div class="form-stack">
+              <label class="field">
+                <span>Tool</span>
+                <select id="prompt-tool-select"></select>
+              </label>
+
+              <label class="field">
+                <span>What are you trying to do?</span>
+                <textarea id="prompt-task" rows="4" placeholder="Example: Turn a rough webinar transcript into a client-ready follow-up email and a short LinkedIn post."></textarea>
+              </label>
+
+              <label class="field">
+                <span>Context or source material</span>
+                <textarea id="prompt-context" rows="4" placeholder="Add background, goals, pasted notes, audience details, or anything the AI should know first."></textarea>
+              </label>
+
+              <div class="field-grid">
+                <label class="field">
+                  <span>Tone or style</span>
+                  <input id="prompt-tone" type="text" placeholder="Clear, concise, practical, warm">
+                </label>
+                <label class="field">
+                  <span>What output do you want back?</span>
+                  <input id="prompt-output-format" type="text" placeholder="Checklist, email draft, summary, script, table">
+                </label>
+              </div>
+
+              <label class="field">
+                <span>Constraints or must-include details</span>
+                <textarea id="prompt-constraints" rows="3" placeholder="Example: Keep it under 200 words, include 3 bullet takeaways, mention pricing, keep citations."></textarea>
+              </label>
+
+              <div class="prompt-actions">
+                <button class="button primary" id="prompt-build" type="button">Build prompt</button>
+                <button class="clear-button" id="prompt-copy" type="button">Copy prompt</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="form-card prompt-preview-card">
+            <div class="eyebrow">Generated prompt</div>
+            <h2>Use this as your working draft.</h2>
+            <p class="form-note">The site uses the tool's built-in starter prompt as a base, then turns your situation into a clearer, more useful prompt.</p>
+            <div class="prompt-meta" id="prompt-meta"></div>
+            <pre class="prompt-box prompt-output" id="prompt-result"></pre>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">How to choose faster</div>
+            <h2>Narrow the list with 3 simple questions</h2>
+            <p>You usually do not need more tools. You need a better way to choose between them.</p>
+          </div>
+        </div>
+        <div class="trust-grid">
+          <article class="trust-card">
+            <h3>What is the job?</h3>
+            <p>Pick the tool based on the recurring job: research, writing, meetings, design, video, automation, or voice.</p>
+          </article>
+          <article class="trust-card">
+            <h3>How much setup is acceptable?</h3>
+            <p>Some tools pay off fast. Others only work if you are willing to build a system around them.</p>
+          </article>
+          <article class="trust-card">
+            <h3>Do you need speed, polish, or depth?</h3>
+            <p>The right answer changes when the priority is quality, convenience, brand control, or time savings.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tight" id="directory-filters">
+      <div class="container filter-shell">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Curated directory</div>
+            <h2>Find your fit faster</h2>
+            <p>Use the filters below to narrow the shortlist by job, category, audience, price, and company.</p>
+          </div>
+          <div class="toolbar">
+            <div class="count" id="count"></div>
+            <button class="clear-button" id="clear-filters" type="button">Clear filters</button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">Goal</div>
+          <div class="pills" id="goal-pills"></div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">Category</div>
+          <div class="pills" id="category-pills"></div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">Price</div>
+          <div class="pills" id="price-pills"></div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">Audience</div>
+          <div class="pills" id="audience-pills"></div>
+        </div>
+
+        <div class="active-filters" id="active-filters"></div>
+      </div>
+    </section>
+
+    <section class="section" id="cards">
+      <div class="container">
+        <div class="directory-topbar">
+          <div class="directory-topnote">Start with the highlighted recommendation, then compare a couple of alternates if you still are not sure.</div>
+          <label class="sort-control" for="sort-select">
+            <span>Sort by</span>
+            <select id="sort-select">
+              <option value="best">Best starting points</option>
+              <option value="easy">Easiest to start</option>
+              <option value="free">Free to try first</option>
+              <option value="alphabetical">Alphabetical</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="directory-summary" id="directory-summary"></div>
+        <div class="card-grid" id="card-grid"></div>
+        <div class="directory-actions" id="directory-actions"></div>
+
+        <div class="cta">
+          <div>
+            <div class="eyebrow">Need a tighter shortlist?</div>
+            <h2>Tell us what you are trying to do and get pointed in the right direction.</h2>
+            <p>If the directory still feels too broad, use the request form below and turn the browsing into a faster recommendation flow.</p>
+          </div>
+          <a class="button primary" href="#help">Get help choosing</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="guides">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Need-specific guides</div>
+            <h2>Best AI tools for specific jobs</h2>
+            <p>Use these if you want a practical shortlist built around one clear need instead of a giant directory view.</p>
+          </div>
+        </div>
+        <div class="guide-grid" id="guide-grid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="compare">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Still deciding?</div>
+            <h2>Compare the obvious options</h2>
+            <p>These pages are for the moment when you already have a shortlist and just need help choosing the better fit.</p>
+          </div>
+        </div>
+        <div class="comparison-grid" id="comparison-grid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="companies">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">If you already trust a brand</div>
+            <h2>Browse by company</h2>
+            <p>This is here for people who already know the brand they trust. Everyone else should start with the job-to-be-done filters above.</p>
+          </div>
+          <a class="button secondary" href="#directory-filters">Back to shortlist</a>
+        </div>
+        <div class="company-grid" id="company-grid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="help">
+      <div class="container lead-grid">
+        <article class="form-card">
+          <div class="eyebrow">Get a shortlist</div>
+          <h2>Tell us what you need help with.</h2>
+          <p class="form-note">Share the job, budget, and role, and this can turn from generic browsing into a much tighter recommendation.</p>
+          <form name="tool-match-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html" class="form-stack">
+            <input type="hidden" name="form-name" value="tool-match-request">
+            <p class="sr-only">
+              <label>Do not fill this out if you're human: <input name="bot-field"></label>
+            </p>
+            <div class="field-grid">
+              <label class="field">
+                <span>Name</span>
+                <input type="text" name="name" required>
+              </label>
+              <label class="field">
+                <span>Email</span>
+                <input type="email" name="email" required>
+              </label>
+            </div>
+            <label class="field">
+              <span>What are you trying to do?</span>
+              <textarea name="goal" rows="5" required placeholder="Example: I need help with outbound sales, meeting follow-up, and content marketing for a small team."></textarea>
+            </label>
+            <div class="field-grid">
+              <label class="field">
+                <span>Budget</span>
+                <select name="budget">
+                  <option value="Free first">Free first</option>
+                  <option value="Under $50/mo">Under $50/mo</option>
+                  <option value="$50-$200/mo">$50-$200/mo</option>
+                  <option value="Business budget">Business budget</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Who are you?</span>
+                <input type="text" name="persona" placeholder="Founder, marketer, student, creator">
+              </label>
+            </div>
+            <button class="button primary" type="submit">Send my request</button>
+          </form>
+        </article>
+
+        <article class="form-card">
+          <div class="eyebrow">Suggest a tool</div>
+          <h2>Know a tool that belongs here?</h2>
+          <p class="form-note">If a tool solves a real recurring job well, suggest it and we can review whether it earns a place in the shortlist.</p>
+          <form name="tool-suggestion" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html" class="form-stack">
+            <input type="hidden" name="form-name" value="tool-suggestion">
+            <p class="sr-only">
+              <label>Do not fill this out if you're human: <input name="bot-field"></label>
+            </p>
+            <div class="field-grid">
+              <label class="field">
+                <span>Tool name</span>
+                <input type="text" name="tool_name" required>
+              </label>
+              <label class="field">
+                <span>Official URL</span>
+                <input type="url" name="official_url" placeholder="https://">
+              </label>
+            </div>
+            <label class="field">
+              <span>Why is it worth adding?</span>
+              <textarea name="why_add" rows="5" required placeholder="Tell us what job it solves and who should care."></textarea>
+            </label>
+            <label class="field">
+              <span>Your email</span>
+              <input type="email" name="contact_email" placeholder="Optional">
+            </label>
+            <button class="button primary" type="submit">Suggest this tool</button>
+          </form>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>ihelpwithai.com</strong>
+        <div>A curated guide for choosing the right AI tool.</div>
+      </div>
+      <div>Built to help people choose faster, not to catalog everything in AI.</div>
+    </div>
+  </footer>
+
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

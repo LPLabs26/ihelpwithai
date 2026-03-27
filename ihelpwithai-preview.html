@@ -1,0 +1,906 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ihelpwithai.com — AI tool directory</title>
+  <meta name="description" content="AI tools explained in plain English. A practical starter directory for real people.">
+  <style>
+
+:root{
+  --bg:#0f172a;
+  --bg-soft:#111827;
+  --panel:#0b1220;
+  --card:#111827;
+  --card-2:#0f1b2e;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+  --accent:#38bdf8;
+  --accent-2:#22c55e;
+  --line:rgba(148,163,184,.18);
+  --shadow:0 20px 60px rgba(2,6,23,.45);
+  --radius:20px;
+  --radius-sm:14px;
+  --max:1200px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(56,189,248,.15), transparent 28%),
+    radial-gradient(circle at 80% 5%, rgba(34,197,94,.14), transparent 22%),
+    linear-gradient(180deg, #0b1220, #09111e 18%, #07101d 100%);
+  color:var(--text);
+  line-height:1.55;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.container{width:min(var(--max), calc(100% - 32px)); margin:0 auto}
+.topbar{
+  position:sticky; top:0; z-index:40;
+  backdrop-filter:blur(14px);
+  background:rgba(7,16,29,.72);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:14px 0;
+}
+.brand{
+  display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.01em;
+}
+.logo{
+  width:40px; height:40px; border-radius:14px;
+  display:grid; place-items:center;
+  background:linear-gradient(135deg, rgba(56,189,248,.18), rgba(34,197,94,.18));
+  border:1px solid rgba(255,255,255,.1);
+  box-shadow:var(--shadow);
+}
+.logo span{font-size:14px; font-weight:800}
+.navlinks{
+  display:flex; gap:18px; color:var(--muted); font-size:14px; flex-wrap:wrap;
+}
+.button{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:12px 16px; border-radius:999px; border:1px solid var(--line);
+  background:rgba(255,255,255,.02); color:var(--text); font-weight:600;
+}
+.button.primary{
+  background:linear-gradient(135deg, rgba(56,189,248,.18), rgba(34,197,94,.16));
+  border-color:rgba(255,255,255,.12);
+}
+.button:hover{transform:translateY(-1px)}
+.hero{
+  padding:72px 0 40px;
+}
+.kicker{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:8px 12px; border-radius:999px;
+  background:rgba(56,189,248,.08); border:1px solid rgba(56,189,248,.2);
+  color:#bfe9ff; font-size:13px; font-weight:600;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns: minmax(0,1.35fr) minmax(0,.95fr);
+  gap:28px; align-items:center;
+}
+.hero h1{
+  margin:16px 0 12px; font-size:clamp(2.4rem, 4vw, 4.8rem); line-height:1.02;
+  letter-spacing:-.03em;
+}
+.hero p{
+  margin:0; max-width:760px; color:var(--muted); font-size:1.08rem;
+}
+.hero-card{
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border:1px solid var(--line); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow);
+}
+.hero-metrics{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:24px;
+}
+.metric{
+  background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:18px; padding:16px;
+}
+.metric strong{display:block; font-size:1.55rem}
+.metric span{color:var(--muted); font-size:14px}
+.search-panel{
+  margin-top:32px;
+  padding:18px;
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--line);
+  border-radius:22px;
+  box-shadow:var(--shadow);
+}
+.search-grid{
+  display:grid; grid-template-columns:minmax(0,1fr) auto; gap:12px;
+}
+.search-grid input{
+  width:100%; padding:16px 18px; border-radius:16px; border:1px solid var(--line);
+  background:rgba(2,6,23,.55); color:var(--text); font-size:16px;
+}
+.mini-list{
+  display:grid; gap:10px; margin:0; padding:0; list-style:none;
+}
+.mini-list li{
+  padding:12px 0; border-bottom:1px solid var(--line);
+}
+.mini-list li:last-child{border-bottom:none}
+.section{
+  padding:32px 0;
+}
+.section-head{
+  display:flex; justify-content:space-between; align-items:end; gap:18px; margin-bottom:18px;
+}
+.section-head h2{
+  margin:0; font-size:clamp(1.45rem,2vw,2.2rem); letter-spacing:-.02em;
+}
+.section-head p{margin:6px 0 0; color:var(--muted)}
+.pills, .subpills{
+  display:flex; flex-wrap:wrap; gap:10px;
+}
+.pill{
+  cursor:pointer;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  color:var(--text);
+  border-radius:999px;
+  padding:10px 14px;
+  font-weight:600;
+  font-size:14px;
+}
+.pill.active, .pill:hover{
+  background:linear-gradient(135deg, rgba(56,189,248,.16), rgba(34,197,94,.12));
+}
+.featured-grid{
+  display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px;
+}
+.feature-card{
+  background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+  border:1px solid var(--line);
+  border-radius:22px; padding:22px;
+  box-shadow:var(--shadow);
+}
+.tagrow{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px}
+.tag{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:12px; font-weight:700; letter-spacing:.02em; text-transform:uppercase;
+  color:#d7f4ff;
+  background:rgba(56,189,248,.1);
+  border:1px solid rgba(56,189,248,.18);
+  border-radius:999px; padding:6px 10px;
+}
+.feature-card h3{margin:0 0 8px; font-size:1.3rem}
+.feature-card p{margin:0 0 18px; color:var(--muted)}
+.card-grid{
+  display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px;
+}
+.card{
+  position:relative;
+  background:linear-gradient(180deg, rgba(17,24,39,.9), rgba(10,18,32,.95));
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:20px;
+  display:flex; flex-direction:column; gap:14px;
+  min-height:330px;
+  box-shadow:var(--shadow);
+}
+.card-top{
+  display:flex; gap:14px; align-items:flex-start;
+}
+.avatar{
+  width:48px; height:48px; border-radius:16px;
+  display:grid; place-items:center; font-weight:800;
+  background:linear-gradient(135deg, rgba(56,189,248,.18), rgba(34,197,94,.18));
+  border:1px solid rgba(255,255,255,.1);
+  flex:0 0 auto;
+}
+.card h3{margin:0; font-size:1.2rem}
+.card p{margin:0; color:var(--muted)}
+.meta{display:flex; flex-wrap:wrap; gap:8px}
+.chip{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:7px 10px; border-radius:999px;
+  border:1px solid var(--line); color:#cbd5e1; font-size:12px; font-weight:700;
+  background:rgba(255,255,255,.03);
+}
+.card strong{font-size:14px}
+.card-links{
+  display:flex; gap:10px; margin-top:auto; flex-wrap:wrap;
+}
+.small-link{
+  padding:10px 12px; border-radius:12px;
+  background:rgba(255,255,255,.03); border:1px solid var(--line);
+  font-weight:700; font-size:14px;
+}
+.small-link.primary{
+  background:linear-gradient(135deg, rgba(56,189,248,.16), rgba(34,197,94,.12));
+}
+.empty{
+  border:1px dashed var(--line);
+  padding:30px; border-radius:22px; color:var(--muted); text-align:center;
+  background:rgba(255,255,255,.02);
+}
+.cta{
+  margin:42px 0 0;
+  background:linear-gradient(135deg, rgba(56,189,248,.12), rgba(34,197,94,.10));
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:28px; padding:30px;
+  display:grid; grid-template-columns:minmax(0,1fr) auto; gap:18px; align-items:center;
+}
+.cta p{margin:10px 0 0; color:var(--muted)}
+.footer{
+  padding:34px 0 50px; color:var(--muted);
+}
+.footer-grid{
+  display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  border-top:1px solid var(--line); padding-top:24px;
+}
+.count{
+  color:var(--muted); font-size:14px;
+}
+.helper{
+  color:var(--muted); font-size:13px; margin-top:10px;
+}
+.notice{
+  border-left:3px solid rgba(56,189,248,.5);
+  padding-left:14px; color:var(--muted);
+}
+.breadcrumb{
+  padding:28px 0 8px; color:var(--muted); font-size:14px;
+}
+.detail-hero{
+  padding:18px 0 24px;
+}
+.detail-grid{
+  display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr); gap:22px;
+}
+.detail-main, .detail-side{
+  background:linear-gradient(180deg, rgba(17,24,39,.9), rgba(10,18,32,.95));
+  border:1px solid var(--line); border-radius:24px; padding:24px; box-shadow:var(--shadow);
+}
+.detail-main h1{margin:8px 0 8px; font-size:clamp(2.2rem,3vw,3.4rem); letter-spacing:-.03em}
+.detail-main .summary{font-size:1.08rem; color:#d4dbe8; margin-bottom:16px}
+.detail-section{
+  padding:14px 0;
+  border-top:1px solid var(--line);
+}
+.detail-section:first-of-type{border-top:none}
+.detail-section h2{margin:0 0 8px; font-size:1.1rem}
+.related-list{
+  display:grid; gap:12px;
+}
+.related-item{
+  border:1px solid var(--line); border-radius:16px; padding:14px; background:rgba(255,255,255,.02);
+}
+.backlink{
+  display:inline-flex; align-items:center; gap:8px;
+  color:#c8d7eb; font-weight:600;
+}
+@media (max-width: 1024px){
+  .hero-grid, .detail-grid, .cta{grid-template-columns:1fr}
+  .featured-grid, .card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width: 720px){
+  .nav{align-items:flex-start; flex-direction:column}
+  .featured-grid, .card-grid, .hero-metrics{grid-template-columns:1fr}
+  .search-grid{grid-template-columns:1fr}
+  .cta{padding:24px}
+  .card{min-height:auto}
+}
+
+</style>
+</head>
+<body>
+
+  <div style="background:#fff7ed;border-bottom:1px solid #fdba74;padding:10px 16px;font:14px/1.4 system-ui,sans-serif">
+    Standalone visual preview of the homepage. For the full site with CSS, JS, setup files, and tool detail pages, use the ZIP bundle.
+  </div>
+
+  <header class="topbar">
+    <div class="container nav">
+      <a href="./index.html" class="brand">
+        <div class="logo"><span>IHAI</span></div>
+        <div>
+          <div>ihelpwithai.com</div>
+          <div style="font-size:12px;color:var(--muted);font-weight:600">AI tools that actually help</div>
+        </div>
+      </a>
+      <nav class="navlinks">
+        <a href="#featured">Start here</a>
+        <a href="#directory">Directory</a>
+        <a href="#how-to-use">How to use it</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="kicker">Search less. Choose faster.</div>
+          <h1>AI tools explained in plain English</h1>
+          <p>A starter directory for real people: what each tool is for, who should use it, and one real use case.</p>
+
+          <div class="search-panel" id="directory">
+            <div class="search-grid">
+              <input id="search" type="search" placeholder="Search by task, tool, or keyword — e.g. email, research, voice, video">
+              <a class="button primary" href="#cards">Browse tools</a>
+            </div>
+            <div class="helper">Start with a task, not a tool. Example searches: “research with sources”, “social graphics”, “automate leads”, “edit podcasts”.</div>
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric"><strong>12</strong><span>starter tools</span></div>
+            <div class="metric"><strong>9</strong><span>practical categories</span></div>
+            <div class="metric"><strong>1</strong><span>plain-English rule: what it’s for</span></div>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <h2 style="margin-top:0">How this directory is different</h2>
+          <ul class="mini-list">
+            <li><strong>Plain English:</strong> no jargon-heavy tool descriptions.</li>
+            <li><strong>One real use case:</strong> every tool gets an example that makes sense immediately.</li>
+            <li><strong>Who it is for:</strong> so regular people can self-sort fast.</li>
+            <li><strong>Built for action:</strong> every profile includes a first prompt or next step.</li>
+          </ul>
+          <p class="notice">Monetization-ready: swap official links for affiliate links, add sponsored placements, and connect the tool database to Airtable or Notion later.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="featured">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Start with the safest bets</h2>
+            <p>If someone lands on day one and wants a quick answer, these are the easiest recommendations to explain.</p>
+          </div>
+        </div>
+        <div class="featured-grid">
+          
+    <article class="feature-card">
+      <div class="tagrow">
+        <span class="tag">Assistant</span>
+        <span class="chip">Fast start</span>
+      </div>
+      <h3>ChatGPT</h3>
+      <p>A flexible all-purpose AI assistant for thinking, writing, organizing ideas, and working with files.</p>
+      <div><strong>Best use:</strong> Upload a spreadsheet of leads and ask for cleanup, segmentation, and a short outreach plan.</div>
+      <div class="card-links" style="margin-top:18px">
+        <a class="small-link primary" href="./tools/chatgpt.html">See why it fits</a>
+        <a class="small-link" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Official site</a>
+      </div>
+    </article>
+    
+    <article class="feature-card">
+      <div class="tagrow">
+        <span class="tag">Assistant</span>
+        <span class="chip">Fast start</span>
+      </div>
+      <h3>Claude</h3>
+      <p>Especially good for careful writing, long documents, code review, and slower, more deliberate thinking.</p>
+      <div><strong>Best use:</strong> Paste a long proposal and ask for weak points, missing risks, and a better executive summary.</div>
+      <div class="card-links" style="margin-top:18px">
+        <a class="small-link primary" href="./tools/claude.html">See why it fits</a>
+        <a class="small-link" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">Official site</a>
+      </div>
+    </article>
+    
+    <article class="feature-card">
+      <div class="tagrow">
+        <span class="tag">Research</span>
+        <span class="chip">Fast start</span>
+      </div>
+      <h3>Perplexity</h3>
+      <p>One of the easiest tools for fast research because it answers questions with cited web sources.</p>
+      <div><strong>Best use:</strong> Research competitors in a niche and collect source-backed notes before writing a strategy memo.</div>
+      <div class="card-links" style="margin-top:18px">
+        <a class="small-link primary" href="./tools/perplexity.html">See why it fits</a>
+        <a class="small-link" href="https://www.perplexity.ai/" target="_blank" rel="noopener noreferrer">Official site</a>
+      </div>
+    </article>
+    
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Filter by category</h2>
+            <p>Let people browse the way they think: by job to be done, not by model name.</p>
+          </div>
+          <div class="count" id="count"></div>
+        </div>
+        <div class="pills">
+          <button class="pill active" data-category="All">All</button><button class="pill " data-category="Assistant">Assistant</button><button class="pill " data-category="Automation">Automation</button><button class="pill " data-category="Design">Design</button><button class="pill " data-category="Image">Image</button><button class="pill " data-category="Research">Research</button><button class="pill " data-category="Video">Video</button><button class="pill " data-category="Voice">Voice</button><button class="pill " data-category="Workspace">Workspace</button><button class="pill " data-category="Writing">Writing</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how-to-use" style="padding-top:0">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Quick-start by persona</h2>
+            <p>This makes the directory feel helpful instantly and can later become landing pages for SEO.</p>
+          </div>
+        </div>
+        <div class="subpills">
+          <button class="pill active" data-audience="All">All</button><button class="pill " data-audience="Agency">Agency</button><button class="pill " data-audience="Analyst">Analyst</button><button class="pill " data-audience="Creator">Creator</button><button class="pill " data-audience="Designer">Designer</button><button class="pill " data-audience="Developer">Developer</button><button class="pill " data-audience="Founder">Founder</button><button class="pill " data-audience="Marketer">Marketer</button><button class="pill " data-audience="Operator">Operator</button><button class="pill " data-audience="Podcaster">Podcaster</button><button class="pill " data-audience="Solo business">Solo business</button><button class="pill " data-audience="Student">Student</button><button class="pill " data-audience="Support team">Support team</button><button class="pill " data-audience="Team">Team</button><button class="pill " data-audience="Writer">Writer</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cards" style="padding-top:12px">
+      <div class="container">
+        <div class="card-grid" id="card-grid"></div>
+
+        <div class="cta">
+          <div>
+            <h2 style="margin:0">Next obvious upgrade</h2>
+            <p>Connect the tool list to Airtable or Notion, then auto-publish cards and tool pages from one database.</p>
+          </div>
+          <a class="button primary" href="javascript:void(0)" onclick="alert('Open the ZIP bundle for the full site files and setup notes.')">Open setup notes</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>Built as a starter prototype for ihelpwithai.com</div>
+      <div>Replace official URLs with affiliate or tracking links when you are ready.</div>
+    </div>
+  </footer>
+
+  <script>
+
+const TOOLS = [
+  {
+    "name": "ChatGPT",
+    "slug": "chatgpt",
+    "category": "Assistant",
+    "audience": [
+      "Solo business",
+      "Student",
+      "Team",
+      "Creator"
+    ],
+    "difficulty": "Easy",
+    "featured": true,
+    "officialUrl": "https://chatgpt.com/",
+    "summary": "A flexible all-purpose AI assistant for thinking, writing, organizing ideas, and working with files.",
+    "whatFor": "Use ChatGPT when you want one tool that can help with everyday work: outlines, summaries, brainstorming, planning, and structured-file analysis.",
+    "who": "Best for people who want one place to start before buying niche tools.",
+    "useCase": "Upload a spreadsheet of leads and ask for cleanup, segmentation, and a short outreach plan.",
+    "why": "It is a strong generalist, so it works as the 'default' recommendation for many users who are new to AI.",
+    "watchOuts": "A specialist tool may beat it for heavily cited web research, cinema-grade video generation, or no-code workflow automation.",
+    "firstPrompt": "I uploaded a file. Tell me the 3 biggest things I should know, then suggest the best next step.",
+    "tags": [
+      "general",
+      "analysis",
+      "brainstorming",
+      "files",
+      "voice",
+      "writing"
+    ]
+  },
+  {
+    "name": "Claude",
+    "slug": "claude",
+    "category": "Assistant",
+    "audience": [
+      "Team",
+      "Developer",
+      "Writer",
+      "Solo business"
+    ],
+    "difficulty": "Easy",
+    "featured": true,
+    "officialUrl": "https://claude.ai/",
+    "summary": "Especially good for careful writing, long documents, code review, and slower, more deliberate thinking.",
+    "whatFor": "Use Claude when you need help understanding complex material, improving written drafts, or working through code and technical problems.",
+    "who": "Best for knowledge workers, writers, analysts, and developers who want thoughtful output.",
+    "useCase": "Paste a long proposal and ask for weak points, missing risks, and a better executive summary.",
+    "why": "It shines when the work benefits from clarity, nuance, and structured reasoning.",
+    "watchOuts": "If your main job is real-time web research or workflow automation, a different tool may fit better.",
+    "firstPrompt": "Review this draft like a sharp editor. Show what is unclear, what is repetitive, and how to tighten it.",
+    "tags": [
+      "writing",
+      "analysis",
+      "long docs",
+      "code",
+      "editing"
+    ]
+  },
+  {
+    "name": "Gemini",
+    "slug": "gemini",
+    "category": "Assistant",
+    "audience": [
+      "Student",
+      "Solo business",
+      "Team",
+      "Marketer"
+    ],
+    "difficulty": "Easy",
+    "featured": false,
+    "officialUrl": "https://gemini.google.com/",
+    "summary": "A practical assistant for writing, planning, brainstorming, and everyday Google-style productivity.",
+    "whatFor": "Use Gemini when you want quick help turning rough ideas into plans, lists, drafts, or study help.",
+    "who": "Best for people who want an everyday assistant for planning and idea generation.",
+    "useCase": "Turn a messy launch idea into a week-by-week checklist with owner, deadline, and risks.",
+    "why": "It is easy to use and strong for broad, everyday productivity prompts.",
+    "watchOuts": "If you need heavy automation or a more specialized creative workflow, pair it with another tool.",
+    "firstPrompt": "Help me turn this rough idea into a 7-step plan with timelines, blockers, and a simple checklist.",
+    "tags": [
+      "planning",
+      "brainstorming",
+      "writing",
+      "productivity"
+    ]
+  },
+  {
+    "name": "Perplexity",
+    "slug": "perplexity",
+    "category": "Research",
+    "audience": [
+      "Student",
+      "Analyst",
+      "Marketer",
+      "Solo business"
+    ],
+    "difficulty": "Easy",
+    "featured": true,
+    "officialUrl": "https://www.perplexity.ai/",
+    "summary": "One of the easiest tools for fast research because it answers questions with cited web sources.",
+    "whatFor": "Use Perplexity when you need current information, quick market scans, or a research starting point with links to sources.",
+    "who": "Best for people who regularly ask, 'Can you find me the latest on this?'",
+    "useCase": "Research competitors in a niche and collect source-backed notes before writing a strategy memo.",
+    "why": "It saves time by combining search, summarizing, and source links in one step.",
+    "watchOuts": "It is best as a research front end; you may still want another tool to turn findings into polished deliverables.",
+    "firstPrompt": "Research the top 5 competitors in this niche and give me a table with pricing, positioning, and sources.",
+    "tags": [
+      "research",
+      "citations",
+      "web",
+      "competitive analysis",
+      "current info"
+    ]
+  },
+  {
+    "name": "Grammarly",
+    "slug": "grammarly",
+    "category": "Writing",
+    "audience": [
+      "Writer",
+      "Student",
+      "Team",
+      "Solo business"
+    ],
+    "difficulty": "Easy",
+    "featured": false,
+    "officialUrl": "https://www.grammarly.com/",
+    "summary": "The easiest upgrade for people who write all day and want cleaner, faster messages everywhere they work.",
+    "whatFor": "Use Grammarly to rewrite, shorten, polish, and improve tone in emails, docs, proposals, and posts.",
+    "who": "Best for people who live in email, docs, and browser-based writing tools.",
+    "useCase": "Rewrite a too-long client email so it sounds clearer, warmer, and more decisive.",
+    "why": "It adds value inside existing workflows instead of forcing you into a separate AI app.",
+    "watchOuts": "It is a writing layer, not a full workflow builder or research engine.",
+    "firstPrompt": "Rewrite this message so it is concise, confident, and easier to act on.",
+    "tags": [
+      "editing",
+      "grammar",
+      "rewrite",
+      "tone",
+      "email"
+    ]
+  },
+  {
+    "name": "Notion AI",
+    "slug": "notion-ai",
+    "category": "Workspace",
+    "audience": [
+      "Team",
+      "Solo business",
+      "Student",
+      "Operator"
+    ],
+    "difficulty": "Medium",
+    "featured": false,
+    "officialUrl": "https://www.notion.com/product/ai",
+    "summary": "Best when your notes, docs, databases, and project info all need to live in one system.",
+    "whatFor": "Use Notion AI to generate docs, summarize knowledge, autofill databases, and keep work organized inside a workspace.",
+    "who": "Best for teams or solo operators who want an AI-ready home for docs and systems.",
+    "useCase": "Turn meeting notes into action items and push them into a task database.",
+    "why": "It is strongest when AI is embedded directly inside your operating system for work.",
+    "watchOuts": "You get the most value only if you are willing to build or maintain a structured workspace.",
+    "firstPrompt": "Summarize this page, pull out next actions, and turn them into a simple project tracker.",
+    "tags": [
+      "notes",
+      "docs",
+      "database",
+      "workspace",
+      "knowledge"
+    ]
+  },
+  {
+    "name": "Canva AI",
+    "slug": "canva-ai",
+    "category": "Design",
+    "audience": [
+      "Creator",
+      "Marketer",
+      "Solo business",
+      "Team"
+    ],
+    "difficulty": "Easy",
+    "featured": false,
+    "officialUrl": "https://www.canva.com/magic/",
+    "summary": "The easiest design tool for non-designers who need social posts, decks, visuals, and quick brand assets.",
+    "whatFor": "Use Canva AI to turn prompts into designs, images, presentations, website pieces, and marketing visuals.",
+    "who": "Best for business owners and marketers who need 'good enough fast' more than agency-level perfection.",
+    "useCase": "Generate a simple launch deck, social graphics, and landing page visuals from the same idea.",
+    "why": "It keeps AI design practical by embedding generation inside familiar layout tools.",
+    "watchOuts": "If you need highly specific cinematic imagery or advanced motion work, specialized tools may be better.",
+    "firstPrompt": "Create 3 visual directions for this brand: one clean, one playful, and one premium.",
+    "tags": [
+      "design",
+      "presentations",
+      "graphics",
+      "social media",
+      "templates"
+    ]
+  },
+  {
+    "name": "Midjourney",
+    "slug": "midjourney",
+    "category": "Image",
+    "audience": [
+      "Creator",
+      "Marketer",
+      "Designer",
+      "Founder"
+    ],
+    "difficulty": "Medium",
+    "featured": false,
+    "officialUrl": "https://www.midjourney.com/",
+    "summary": "A favorite for strong visual style, concept art, moodboards, and distinctive AI image generation.",
+    "whatFor": "Use Midjourney when visual style matters more than convenience and you want more striking image output.",
+    "who": "Best for creative work such as campaigns, concepts, worldbuilding, and brand inspiration.",
+    "useCase": "Create a moodboard for a new brand before hiring a designer or photographer.",
+    "why": "It is often the pick for people who care about aesthetics and image quality.",
+    "watchOuts": "It can take more prompt iteration than beginner-first tools.",
+    "firstPrompt": "Create 4 visual directions for this brand concept, each with a different mood, color palette, and art style.",
+    "tags": [
+      "images",
+      "art",
+      "concept",
+      "moodboard",
+      "branding"
+    ]
+  },
+  {
+    "name": "Runway",
+    "slug": "runway",
+    "category": "Video",
+    "audience": [
+      "Creator",
+      "Marketer",
+      "Agency",
+      "Founder"
+    ],
+    "difficulty": "Medium",
+    "featured": false,
+    "officialUrl": "https://runwayml.com/",
+    "summary": "A strong choice for AI video generation, concept scenes, and fast creative experiments.",
+    "whatFor": "Use Runway to generate short video clips, explore visual concepts, and build motion content faster.",
+    "who": "Best for creators and marketers producing ads, product teasers, music visuals, or storyboards.",
+    "useCase": "Turn a product concept into a short teaser before paying for a full production shoot.",
+    "why": "It is built for visual creation, so it fits teams that need motion output rather than text help.",
+    "watchOuts": "You still need creative direction and taste; AI video gets expensive and messy without a clear brief.",
+    "firstPrompt": "Create a 10-second teaser for this product with 3 camera directions and a premium cinematic feel.",
+    "tags": [
+      "video",
+      "generation",
+      "teasers",
+      "storyboard",
+      "creative"
+    ]
+  },
+  {
+    "name": "Descript",
+    "slug": "descript",
+    "category": "Video",
+    "audience": [
+      "Creator",
+      "Podcaster",
+      "Marketer",
+      "Team"
+    ],
+    "difficulty": "Easy",
+    "featured": false,
+    "officialUrl": "https://www.descript.com/",
+    "summary": "Best for editing spoken content because it lets you edit audio and video like a document.",
+    "whatFor": "Use Descript to record, transcribe, cut filler words, add captions, and publish polished content quickly.",
+    "who": "Best for podcasters, educators, teams, and founders who make talking-head or interview content.",
+    "useCase": "Drop in a webinar recording and turn it into cleaned-up clips with captions for social media.",
+    "why": "It reduces editing friction for people who hate traditional timeline tools.",
+    "watchOuts": "It is an editor first, not a full video-generation studio.",
+    "firstPrompt": "Transcribe this video, cut filler words, then find 5 clip-worthy moments with strong hooks.",
+    "tags": [
+      "editing",
+      "podcast",
+      "captions",
+      "transcription",
+      "social clips"
+    ]
+  },
+  {
+    "name": "Zapier",
+    "slug": "zapier",
+    "category": "Automation",
+    "audience": [
+      "Solo business",
+      "Operator",
+      "Team",
+      "Marketer"
+    ],
+    "difficulty": "Medium",
+    "featured": true,
+    "officialUrl": "https://zapier.com/",
+    "summary": "The easiest way to connect apps and let AI actually trigger work, not just answer questions.",
+    "whatFor": "Use Zapier to move data between apps, create AI-assisted workflows, and automate repetitive business steps.",
+    "who": "Best for operations, marketing, support, and founders who want less manual work.",
+    "useCase": "When a lead form is submitted, enrich it, summarize intent with AI, and route it to the right pipeline.",
+    "why": "It turns AI from a chat box into a working system across your tools.",
+    "watchOuts": "Automation gets messy if your process is unclear or your source data is inconsistent.",
+    "firstPrompt": "Map a workflow for new inbound leads: capture, qualify, summarize, assign, and follow up automatically.",
+    "tags": [
+      "automation",
+      "workflows",
+      "agents",
+      "apps",
+      "no-code"
+    ]
+  },
+  {
+    "name": "ElevenLabs",
+    "slug": "elevenlabs",
+    "category": "Voice",
+    "audience": [
+      "Creator",
+      "Agency",
+      "Support team",
+      "Developer"
+    ],
+    "difficulty": "Medium",
+    "featured": false,
+    "officialUrl": "https://elevenlabs.io/",
+    "summary": "One of the strongest voice tools for realistic narration, multilingual audio, and voice agents.",
+    "whatFor": "Use ElevenLabs for text-to-speech, voice cloning, speech-to-text, and voice experiences across channels.",
+    "who": "Best for creators, media teams, customer support, and builders adding spoken AI to products.",
+    "useCase": "Create voiceovers for the same product demo in multiple languages without booking a new recording session each time.",
+    "why": "It combines creative voice tools with more advanced agent and API options.",
+    "watchOuts": "Voice cloning and agent use need clear consent, review, and quality control.",
+    "firstPrompt": "Create a clear, friendly product voiceover in 3 tones: tutorial, premium brand, and upbeat social.",
+    "tags": [
+      "voice",
+      "text to speech",
+      "speech to text",
+      "multilingual",
+      "voice agents"
+    ]
+  }
+];
+
+const grid = document.getElementById('card-grid');
+const countEl = document.getElementById('count');
+const searchEl = document.getElementById('search');
+const categoryPills = document.querySelectorAll('[data-category]');
+const audiencePills = document.querySelectorAll('[data-audience]');
+
+let state = {
+  category: 'All',
+  audience: 'All',
+  search: ''
+};
+
+function initials(name) {
+  return name.split(/\s+/).map(part => part[0]).join('').slice(0,2).toUpperCase();
+}
+
+function matches(tool) {
+  const text = [
+    tool.name,
+    tool.category,
+    tool.summary,
+    tool.whatFor,
+    tool.who,
+    tool.useCase,
+    ...(tool.tags || []),
+    ...(tool.audience || [])
+  ].join(' ').toLowerCase();
+
+  const categoryOk = state.category === 'All' || tool.category === state.category;
+  const audienceOk = state.audience === 'All' || (tool.audience || []).includes(state.audience);
+  const searchOk = !state.search || text.includes(state.search.toLowerCase());
+  return categoryOk && audienceOk && searchOk;
+}
+
+function card(tool) {
+  const audience = (tool.audience || []).slice(0,3).join(' • ');
+  const tags = (tool.tags || []).slice(0,3).map(t => `<span class="chip">${t}</span>`).join('');
+  return `
+    <article class="card">
+      <div class="card-top">
+        <div class="avatar">${initials(tool.name)}</div>
+        <div>
+          <div class="meta">
+            <span class="chip">${tool.category}</span>
+            <span class="chip">${tool.difficulty}</span>
+          </div>
+          <h3>${tool.name}</h3>
+          <p>${tool.summary}</p>
+        </div>
+      </div>
+      <div><strong>Best for:</strong> ${audience}</div>
+      <div><strong>Real use case:</strong> ${tool.useCase}</div>
+      <div class="meta">${tags}</div>
+      <div class="card-links">
+        <a class="small-link primary" href="./tools/${tool.slug}.html">Learn more</a>
+        <a class="small-link" href="${tool.officialUrl}" target="_blank" rel="noopener noreferrer">Official site</a>
+      </div>
+    </article>
+  `;
+}
+
+function render() {
+  const results = TOOLS.filter(matches);
+  countEl.textContent = `${results.length} tool${results.length === 1 ? '' : 's'} shown`;
+  if (!results.length) {
+    grid.innerHTML = `<div class="empty">No tools match that filter yet. Try a broader search or clear the persona/category filter.</div>`;
+    return;
+  }
+  grid.innerHTML = results.map(card).join('');
+}
+
+function setActive(nodeList, activeValue, attrName) {
+  nodeList.forEach(el => {
+    el.classList.toggle('active', el.getAttribute(attrName) === activeValue);
+  });
+}
+
+categoryPills.forEach(pill => {
+  pill.addEventListener('click', () => {
+    state.category = pill.getAttribute('data-category');
+    setActive(categoryPills, state.category, 'data-category');
+    render();
+  });
+});
+
+audiencePills.forEach(pill => {
+  pill.addEventListener('click', () => {
+    state.audience = pill.getAttribute('data-audience');
+    setActive(audiencePills, state.audience, 'data-audience');
+    render();
+  });
+});
+
+if (searchEl) {
+  searchEl.addEventListener('input', e => {
+    state.search = e.target.value.trim();
+    render();
+  });
+}
+
+render();
+
+</script>
+</body>
+</html>
