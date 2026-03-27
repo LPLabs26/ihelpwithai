@@ -1,5 +1,6 @@
 const TOOLS = [...(window.IHWAI?.tools || [])];
 const COMPARISONS = [...(window.IHWAI?.comparisons || [])];
+const MAILTO_ADDRESS = 'jorge@ihelpwithai.com';
 
 const GOAL_COPY = {
   Automation: {
@@ -137,6 +138,10 @@ function escapeHtml(value = '') {
 
 function uniqueStrings(list) {
   return [...new Set(list.filter(Boolean))].sort((left, right) => left.localeCompare(right));
+}
+
+function formatFieldValue(value) {
+  return String(value || '').trim().replaceAll('\r\n', '\n');
 }
 
 function slugify(value = '') {
@@ -1181,6 +1186,51 @@ function scrollToChooser() {
   document.getElementById('matcher')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
+function formLabelForField(field) {
+  return field.closest('label')?.querySelector('span')?.textContent?.trim() || field.name || 'Field';
+}
+
+function buildMailtoUrl(form) {
+  const subject = form.dataset.mailtoSubject || 'Website message';
+  const formName = form.dataset.mailtoForm || 'website-request';
+  const fields = [...form.querySelectorAll('input[name], select[name], textarea[name]')];
+  const lines = [
+    `Form: ${formName}`,
+    'Source: ihelpwithai.com',
+    `Page: ${window.location.href}`
+  ];
+
+  for (const field of fields) {
+    const value = formatFieldValue(field.value);
+    if (!value) continue;
+    lines.push(`${formLabelForField(field)}: ${value}`);
+  }
+
+  const body = `${lines.join('\n\n')}\n`;
+  return `mailto:${MAILTO_ADDRESS}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+function setupMailtoForms() {
+  const forms = document.querySelectorAll('.mailto-form');
+
+  for (const form of forms) {
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+
+      if (!form.reportValidity()) {
+        return;
+      }
+
+      const status = form.querySelector('.mailto-status');
+      if (status) {
+        status.textContent = `Opening your email app. If nothing happens, email ${MAILTO_ADDRESS}.`;
+      }
+
+      window.location.href = buildMailtoUrl(form);
+    });
+  }
+}
+
 function render() {
   renderMetrics();
   renderHeroGoalLinks();
@@ -1260,4 +1310,5 @@ if (sortSelect) {
 
 applyUrlState();
 initPromptLab();
+setupMailtoForms();
 render();

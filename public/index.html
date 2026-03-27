@@ -361,11 +361,7 @@
           <div class="eyebrow">Get a shortlist</div>
           <h2>Tell us what you need help with.</h2>
           <p class="form-note">Share the job, budget, and role, and this can turn from generic browsing into a much tighter recommendation.</p>
-          <form name="tool-match-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html" class="form-stack">
-            <input type="hidden" name="form-name" value="tool-match-request">
-            <p class="sr-only">
-              <label>Do not fill this out if you're human: <input name="bot-field"></label>
-            </p>
+          <form class="form-stack mailto-form" data-mailto-form="tool-match-request" data-mailto-subject="AI tool shortlist request">
             <div class="field-grid">
               <label class="field">
                 <span>Name</span>
@@ -395,7 +391,12 @@
                 <input type="text" name="persona" placeholder="Founder, marketer, student, creator">
               </label>
             </div>
-            <button class="button primary" type="submit">Send my request</button>
+            <p class="form-helper">This opens your email app with the details filled in so your request still works on the free GitHub Pages version of the site.</p>
+            <div class="prompt-actions">
+              <button class="button primary" type="submit">Open email draft</button>
+              <a class="small-link" href="mailto:jorge@ihelpwithai.com?subject=AI%20tool%20shortlist%20request">Prefer plain email</a>
+            </div>
+            <div class="mailto-status" aria-live="polite"></div>
           </form>
         </article>
 
@@ -403,11 +404,7 @@
           <div class="eyebrow">Suggest a tool</div>
           <h2>Know a tool that belongs here?</h2>
           <p class="form-note">If a tool solves a real recurring job well, suggest it and we can review whether it earns a place in the shortlist.</p>
-          <form name="tool-suggestion" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html" class="form-stack">
-            <input type="hidden" name="form-name" value="tool-suggestion">
-            <p class="sr-only">
-              <label>Do not fill this out if you're human: <input name="bot-field"></label>
-            </p>
+          <form class="form-stack mailto-form" data-mailto-form="tool-suggestion" data-mailto-subject="AI tool suggestion">
             <div class="field-grid">
               <label class="field">
                 <span>Tool name</span>
@@ -426,7 +423,12 @@
               <span>Your email</span>
               <input type="email" name="contact_email" placeholder="Optional">
             </label>
-            <button class="button primary" type="submit">Suggest this tool</button>
+            <p class="form-helper">This opens an email draft with the tool details already filled in, which keeps suggestions working on GitHub Pages too.</p>
+            <div class="prompt-actions">
+              <button class="button primary" type="submit">Open suggestion email</button>
+              <a class="small-link" href="mailto:jorge@ihelpwithai.com?subject=AI%20tool%20suggestion">Prefer plain email</a>
+            </div>
+            <div class="mailto-status" aria-live="polite"></div>
           </form>
         </article>
       </div>
