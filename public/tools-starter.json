@@ -5,8 +5,17 @@
     "company": "OpenAI",
     "companySummary": "OpenAI is one of the most recognizable AI companies for general-purpose assistants, multimodal work, and business productivity.",
     "category": "Assistant",
-    "goals": ["Writing", "Research", "Productivity"],
-    "audience": ["Solo business", "Student", "Team", "Creator"],
+    "goals": [
+      "Writing",
+      "Research",
+      "Productivity"
+    ],
+    "audience": [
+      "Solo business",
+      "Student",
+      "Team",
+      "Creator"
+    ],
     "difficulty": "Easy",
     "pricing": "Free to try",
     "featured": true,
@@ -22,7 +31,16 @@
     "watchOuts": "A specialist tool can beat it for heavy web research, advanced automation, or highly polished media generation.",
     "firstPrompt": "I uploaded a file. Tell me the 3 biggest things I should know, then suggest the best next step.",
     "reviewedAt": "March 25, 2026",
-    "tags": ["general", "analysis", "brainstorming", "files", "writing", "voice"]
+    "tags": [
+      "general",
+      "analysis",
+      "brainstorming",
+      "files",
+      "writing",
+      "voice"
+    ],
+    "addedAt": "2026-03-26",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Claude",
@@ -30,8 +48,17 @@
     "company": "Anthropic",
     "companySummary": "Anthropic focuses on assistant-style AI for careful writing, long documents, and thoughtful reasoning.",
     "category": "Assistant",
-    "goals": ["Writing", "Research", "Productivity"],
-    "audience": ["Team", "Developer", "Writer", "Solo business"],
+    "goals": [
+      "Writing",
+      "Research",
+      "Productivity"
+    ],
+    "audience": [
+      "Team",
+      "Developer",
+      "Writer",
+      "Solo business"
+    ],
     "difficulty": "Easy",
     "pricing": "Free to try",
     "featured": true,
@@ -47,7 +74,15 @@
     "watchOuts": "If your biggest need is live web research or workflow automation, you may pair it with another tool.",
     "firstPrompt": "Review this draft like a sharp editor. Show what is unclear, what is repetitive, and how to tighten it.",
     "reviewedAt": "March 25, 2026",
-    "tags": ["writing", "analysis", "long docs", "editing", "code"]
+    "tags": [
+      "writing",
+      "analysis",
+      "long docs",
+      "editing",
+      "code"
+    ],
+    "addedAt": "2026-03-26",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Gemini",
@@ -55,8 +90,17 @@
     "company": "Google",
     "companySummary": "Google positions Gemini as an everyday AI assistant tied to productivity, planning, and research workflows.",
     "category": "Assistant",
-    "goals": ["Writing", "Productivity", "Research"],
-    "audience": ["Student", "Solo business", "Team", "Marketer"],
+    "goals": [
+      "Writing",
+      "Productivity",
+      "Research"
+    ],
+    "audience": [
+      "Student",
+      "Solo business",
+      "Team",
+      "Marketer"
+    ],
     "difficulty": "Easy",
     "pricing": "Free to try",
     "featured": false,
@@ -72,7 +116,14 @@
     "watchOuts": "You will still want a separate tool for deeper automation, specialized research, or standout creative media.",
     "firstPrompt": "Help me turn this rough idea into a 7-step plan with timelines, blockers, and a simple checklist.",
     "reviewedAt": "March 25, 2026",
-    "tags": ["planning", "brainstorming", "writing", "productivity"]
+    "tags": [
+      "planning",
+      "brainstorming",
+      "writing",
+      "productivity"
+    ],
+    "addedAt": "2026-03-26",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Perplexity",
@@ -80,8 +131,16 @@
     "company": "Perplexity",
     "companySummary": "Perplexity is known for research-first AI experiences that combine answers with current web sources.",
     "category": "Research",
-    "goals": ["Research", "Productivity"],
-    "audience": ["Student", "Analyst", "Marketer", "Solo business"],
+    "goals": [
+      "Research",
+      "Productivity"
+    ],
+    "audience": [
+      "Student",
+      "Analyst",
+      "Marketer",
+      "Solo business"
+    ],
     "difficulty": "Easy",
     "pricing": "Free to try",
     "featured": true,
@@ -97,7 +156,15 @@
     "watchOuts": "It is best as a research front end. You may still want another tool to turn the findings into polished deliverables.",
     "firstPrompt": "Research the top 5 competitors in this niche and give me a table with pricing, positioning, and source links.",
     "reviewedAt": "March 25, 2026",
-    "tags": ["research", "citations", "web", "competitive analysis", "current info"]
+    "tags": [
+      "research",
+      "citations",
+      "web",
+      "competitive analysis",
+      "current info"
+    ],
+    "addedAt": "2026-03-26",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Grammarly",
@@ -105,8 +172,16 @@
     "company": "Grammarly",
     "companySummary": "Grammarly is focused on writing help inside the places people already work, especially email and documents.",
     "category": "Writing",
-    "goals": ["Writing", "Productivity"],
-    "audience": ["Writer", "Student", "Team", "Solo business"],
+    "goals": [
+      "Writing",
+      "Productivity"
+    ],
+    "audience": [
+      "Writer",
+      "Student",
+      "Team",
+      "Solo business"
+    ],
     "difficulty": "Easy",
     "pricing": "Free to try",
     "featured": false,
@@ -122,7 +197,15 @@
     "watchOuts": "It is a writing layer, not a full workflow builder or research engine.",
     "firstPrompt": "Rewrite this message so it is concise, confident, and easier to act on.",
     "reviewedAt": "March 25, 2026",
-    "tags": ["editing", "grammar", "rewrite", "tone", "email"]
+    "tags": [
+      "editing",
+      "grammar",
+      "rewrite",
+      "tone",
+      "email"
+    ],
+    "addedAt": "2026-03-26",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Notion AI",
@@ -130,8 +213,17 @@
     "company": "Notion",
     "companySummary": "Notion blends documents, wikis, databases, and AI into one workspace for teams and operators.",
     "category": "Workspace",
-    "goals": ["Productivity", "Writing", "Meetings"],
-    "audience": ["Team", "Solo business", "Student", "Operator"],
+    "goals": [
+      "Productivity",
+      "Writing",
+      "Meetings"
+    ],
+    "audience": [
+      "Team",
+      "Solo business",
+      "Student",
+      "Operator"
+    ],
     "difficulty": "Medium",
     "pricing": "Free to try",
     "featured": false,
@@ -147,7 +239,15 @@
     "watchOuts": "You get the most value only if you are willing to build or maintain a structured workspace.",
     "firstPrompt": "Summarize this page, pull out next actions, and turn them into a simple project tracker.",
     "reviewedAt": "March 25, 2026",
-    "tags": ["notes", "docs", "database", "workspace", "knowledge"]
+    "tags": [
+      "notes",
+      "docs",
+      "database",
+      "workspace",
+      "knowledge"
+    ],
+    "addedAt": "2026-03-26",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Canva AI",
@@ -155,8 +255,17 @@
     "company": "Canva",
     "companySummary": "Canva makes design and brand asset creation accessible for non-designers, marketers, and small teams.",
     "category": "Design",
-    "goals": ["Design", "Presentations", "Productivity"],
-    "audience": ["Creator", "Marketer", "Solo business", "Team"],
+    "goals": [
+      "Design",
+      "Presentations",
+      "Productivity"
+    ],
+    "audience": [
+      "Creator",
+      "Marketer",
+      "Solo business",
+      "Team"
+    ],
     "difficulty": "Easy",
     "pricing": "Free to try",
     "featured": true,
@@ -172,7 +281,15 @@
     "watchOuts": "If you need highly specific cinematic imagery or advanced motion work, specialized tools may be better.",
     "firstPrompt": "Create 3 visual directions for this brand: one clean, one playful, and one premium.",
     "reviewedAt": "March 25, 2026",
-    "tags": ["design", "presentations", "graphics", "social media", "templates"]
+    "tags": [
+      "design",
+      "presentations",
+      "graphics",
+      "social media",
+      "templates"
+    ],
+    "addedAt": "2026-03-26",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Midjourney",
@@ -180,8 +297,16 @@
     "company": "Midjourney",
     "companySummary": "Midjourney is a style-first image generation company favored for visual mood, concept work, and aesthetics.",
     "category": "Image",
-    "goals": ["Design", "Video"],
-    "audience": ["Creator", "Marketer", "Designer", "Founder"],
+    "goals": [
+      "Design",
+      "Video"
+    ],
+    "audience": [
+      "Creator",
+      "Marketer",
+      "Designer",
+      "Founder"
+    ],
     "difficulty": "Medium",
     "pricing": "Paid",
     "featured": false,
@@ -197,7 +322,15 @@
     "watchOuts": "It can take more prompt iteration than beginner-first tools, and it is not the easiest first stop for total beginners.",
     "firstPrompt": "Create 4 visual directions for this brand concept, each with a different mood, color palette, and art style.",
     "reviewedAt": "March 25, 2026",
-    "tags": ["images", "art", "concept", "moodboard", "branding"]
+    "tags": [
+      "images",
+      "art",
+      "concept",
+      "moodboard",
+      "branding"
+    ],
+    "addedAt": "2026-03-26",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Runway",
@@ -205,8 +338,16 @@
     "company": "Runway",
     "companySummary": "Runway focuses on AI-powered creative tools for video, motion, and production workflows.",
     "category": "Video",
-    "goals": ["Video", "Design"],
-    "audience": ["Creator", "Marketer", "Agency", "Founder"],
+    "goals": [
+      "Video",
+      "Design"
+    ],
+    "audience": [
+      "Creator",
+      "Marketer",
+      "Agency",
+      "Founder"
+    ],
     "difficulty": "Medium",
     "pricing": "Free to try",
     "featured": false,
@@ -222,7 +363,15 @@
     "watchOuts": "AI video gets expensive and messy without a clear brief. You still need creative direction and taste.",
     "firstPrompt": "Create a 10-second teaser for this product with 3 camera directions and a premium cinematic feel.",
     "reviewedAt": "March 25, 2026",
-    "tags": ["video", "generation", "teasers", "storyboard", "creative"]
+    "tags": [
+      "video",
+      "generation",
+      "teasers",
+      "storyboard",
+      "creative"
+    ],
+    "addedAt": "2026-03-26",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Descript",
@@ -230,8 +379,17 @@
     "company": "Descript",
     "companySummary": "Descript blends editing, transcription, and AI cleanup tools for creators making spoken content.",
     "category": "Video",
-    "goals": ["Video", "Meetings", "Writing"],
-    "audience": ["Creator", "Podcaster", "Marketer", "Team"],
+    "goals": [
+      "Video",
+      "Meetings",
+      "Writing"
+    ],
+    "audience": [
+      "Creator",
+      "Podcaster",
+      "Marketer",
+      "Team"
+    ],
     "difficulty": "Easy",
     "pricing": "Free to try",
     "featured": true,
@@ -247,7 +405,15 @@
     "watchOuts": "It is an editor first, not a full video-generation studio.",
     "firstPrompt": "Transcribe this video, cut filler words, then find 5 clip-worthy moments with strong hooks.",
     "reviewedAt": "March 25, 2026",
-    "tags": ["editing", "podcast", "captions", "transcription", "social clips"]
+    "tags": [
+      "editing",
+      "podcast",
+      "captions",
+      "transcription",
+      "social clips"
+    ],
+    "addedAt": "2026-03-26",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Zapier",
@@ -255,8 +421,17 @@
     "company": "Zapier",
     "companySummary": "Zapier is a workflow automation company that helps teams connect apps and operational processes.",
     "category": "Automation",
-    "goals": ["Automation", "Sales", "Productivity"],
-    "audience": ["Solo business", "Operator", "Team", "Marketer"],
+    "goals": [
+      "Automation",
+      "Sales",
+      "Productivity"
+    ],
+    "audience": [
+      "Solo business",
+      "Operator",
+      "Team",
+      "Marketer"
+    ],
     "difficulty": "Medium",
     "pricing": "Free to try",
     "featured": true,
@@ -272,7 +447,15 @@
     "watchOuts": "Automation gets messy if your process is unclear or your source data is inconsistent.",
     "firstPrompt": "Map a workflow for new inbound leads: capture, qualify, summarize, assign, and follow up automatically.",
     "reviewedAt": "March 25, 2026",
-    "tags": ["automation", "workflows", "agents", "apps", "no-code"]
+    "tags": [
+      "automation",
+      "workflows",
+      "agents",
+      "apps",
+      "no-code"
+    ],
+    "addedAt": "2026-03-26",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "ElevenLabs",
@@ -280,8 +463,17 @@
     "company": "ElevenLabs",
     "companySummary": "ElevenLabs builds AI voice products for narration, dubbing, voice agents, and speech workflows.",
     "category": "Voice",
-    "goals": ["Voice", "Video", "Support"],
-    "audience": ["Creator", "Agency", "Support team", "Developer"],
+    "goals": [
+      "Voice",
+      "Video",
+      "Support"
+    ],
+    "audience": [
+      "Creator",
+      "Agency",
+      "Support team",
+      "Developer"
+    ],
     "difficulty": "Medium",
     "pricing": "Free to try",
     "featured": true,
@@ -297,7 +489,15 @@
     "watchOuts": "Voice cloning and agent use need clear consent, review, and quality control.",
     "firstPrompt": "Create a clear, friendly product voiceover in 3 tones: tutorial, premium brand, and upbeat social.",
     "reviewedAt": "March 25, 2026",
-    "tags": ["voice", "text to speech", "speech to text", "multilingual", "voice agents"]
+    "tags": [
+      "voice",
+      "text to speech",
+      "speech to text",
+      "multilingual",
+      "voice agents"
+    ],
+    "addedAt": "2026-03-26",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Fireflies",
@@ -305,8 +505,17 @@
     "company": "Fireflies.ai",
     "companySummary": "Fireflies focuses on meeting transcription, summaries, action items, and conversation intelligence.",
     "category": "Meetings",
-    "goals": ["Meetings", "Productivity", "Sales"],
-    "audience": ["Team", "Operator", "Support team", "Founder"],
+    "goals": [
+      "Meetings",
+      "Productivity",
+      "Sales"
+    ],
+    "audience": [
+      "Team",
+      "Operator",
+      "Support team",
+      "Founder"
+    ],
     "difficulty": "Easy",
     "pricing": "Free to try",
     "featured": true,
@@ -322,7 +531,15 @@
     "watchOuts": "It works best when your team is comfortable with meeting recording, permissions, and review workflows.",
     "firstPrompt": "Summarize this meeting into decisions, risks, action items, owners, and next steps I can send to the team.",
     "reviewedAt": "March 25, 2026",
-    "tags": ["meetings", "transcription", "notes", "sales", "follow-up"]
+    "tags": [
+      "meetings",
+      "transcription",
+      "notes",
+      "sales",
+      "follow-up"
+    ],
+    "addedAt": "2026-03-26",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Murf",
@@ -330,8 +547,17 @@
     "company": "Murf",
     "companySummary": "Murf is an AI voice company focused on business-friendly narration, demos, and presentation voiceovers.",
     "category": "Voice",
-    "goals": ["Voice", "Presentations", "Video"],
-    "audience": ["Marketer", "Educator", "Creator", "Support team"],
+    "goals": [
+      "Voice",
+      "Presentations",
+      "Video"
+    ],
+    "audience": [
+      "Marketer",
+      "Educator",
+      "Creator",
+      "Support team"
+    ],
     "difficulty": "Easy",
     "pricing": "Free to try",
     "featured": false,
@@ -347,7 +573,15 @@
     "watchOuts": "If you need more experimental voice agents or deep developer tooling, ElevenLabs may go further.",
     "firstPrompt": "Create a calm, professional voiceover for this 90-second product explainer with natural pauses.",
     "reviewedAt": "March 25, 2026",
-    "tags": ["voiceover", "training", "presentation", "narration", "audio"]
+    "tags": [
+      "voiceover",
+      "training",
+      "presentation",
+      "narration",
+      "audio"
+    ],
+    "addedAt": "2026-03-26",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Riverside",
@@ -355,8 +589,17 @@
     "company": "Riverside",
     "companySummary": "Riverside helps creators and teams record remote video and audio with AI help for cleanup and repurposing.",
     "category": "Video",
-    "goals": ["Video", "Meetings", "Voice"],
-    "audience": ["Creator", "Podcaster", "Agency", "Marketer"],
+    "goals": [
+      "Video",
+      "Meetings",
+      "Voice"
+    ],
+    "audience": [
+      "Creator",
+      "Podcaster",
+      "Agency",
+      "Marketer"
+    ],
     "difficulty": "Easy",
     "pricing": "Free to try",
     "featured": false,
@@ -372,7 +615,15 @@
     "watchOuts": "If your main job is generating video from scratch instead of recording real people, Runway or Synthesia may fit better.",
     "firstPrompt": "Find the 5 strongest clip moments in this interview and give each one a headline and caption idea.",
     "reviewedAt": "March 25, 2026",
-    "tags": ["podcast", "remote recording", "clips", "webinars", "captions"]
+    "tags": [
+      "podcast",
+      "remote recording",
+      "clips",
+      "webinars",
+      "captions"
+    ],
+    "addedAt": "2026-03-27",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Writesonic",
@@ -380,8 +631,17 @@
     "company": "Writesonic",
     "companySummary": "Writesonic now leans toward AI search visibility, SEO, and content workflows for marketers.",
     "category": "Marketing",
-    "goals": ["SEO", "Writing", "Research"],
-    "audience": ["Marketer", "Agency", "Solo business", "Founder"],
+    "goals": [
+      "SEO",
+      "Writing",
+      "Research"
+    ],
+    "audience": [
+      "Marketer",
+      "Agency",
+      "Solo business",
+      "Founder"
+    ],
     "difficulty": "Medium",
     "pricing": "Free to try",
     "featured": false,
@@ -397,7 +657,15 @@
     "watchOuts": "It is narrower than a general assistant and may be overkill if you only need occasional copy help.",
     "firstPrompt": "Give me a content plan for this keyword cluster, including gaps, refresh opportunities, and 3 article briefs.",
     "reviewedAt": "March 25, 2026",
-    "tags": ["seo", "content", "marketing", "visibility", "research"]
+    "tags": [
+      "seo",
+      "content",
+      "marketing",
+      "visibility",
+      "research"
+    ],
+    "addedAt": "2026-03-26",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Gamma",
@@ -405,8 +673,17 @@
     "company": "Gamma",
     "companySummary": "Gamma focuses on fast presentation and document creation for people who need polished output without design overhead.",
     "category": "Presentations",
-    "goals": ["Presentations", "Design", "Productivity"],
-    "audience": ["Founder", "Marketer", "Student", "Team"],
+    "goals": [
+      "Presentations",
+      "Design",
+      "Productivity"
+    ],
+    "audience": [
+      "Founder",
+      "Marketer",
+      "Student",
+      "Team"
+    ],
     "difficulty": "Easy",
     "pricing": "Free to try",
     "featured": false,
@@ -422,7 +699,15 @@
     "watchOuts": "If brand control matters heavily, you may still finish the work in Canva or a traditional deck tool.",
     "firstPrompt": "Turn these notes into a 10-slide sales deck with a problem, solution, proof, and close.",
     "reviewedAt": "March 25, 2026",
-    "tags": ["slides", "deck", "presentations", "documents", "visuals"]
+    "tags": [
+      "slides",
+      "deck",
+      "presentations",
+      "documents",
+      "visuals"
+    ],
+    "addedAt": "2026-03-26",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Otter",
@@ -430,8 +715,17 @@
     "company": "Otter.ai",
     "companySummary": "Otter.ai is known for meeting transcription, note-taking, and searchable conversation records.",
     "category": "Meetings",
-    "goals": ["Meetings", "Productivity", "Writing"],
-    "audience": ["Team", "Student", "Operator", "Founder"],
+    "goals": [
+      "Meetings",
+      "Productivity",
+      "Writing"
+    ],
+    "audience": [
+      "Team",
+      "Student",
+      "Operator",
+      "Founder"
+    ],
     "difficulty": "Easy",
     "pricing": "Free to try",
     "featured": false,
@@ -447,7 +741,15 @@
     "watchOuts": "If you want more advanced meeting intelligence or partner monetization paths, Fireflies may be stronger.",
     "firstPrompt": "Summarize this meeting into the top decisions, key questions, and follow-up tasks.",
     "reviewedAt": "March 25, 2026",
-    "tags": ["transcript", "meeting notes", "search", "summaries", "calls"]
+    "tags": [
+      "transcript",
+      "meeting notes",
+      "search",
+      "summaries",
+      "calls"
+    ],
+    "addedAt": "2026-03-26",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Copy.ai",
@@ -455,8 +757,17 @@
     "company": "Copy.ai",
     "companySummary": "Copy.ai focuses on AI-assisted go-to-market workflows, copy creation, and sales operations help.",
     "category": "Sales",
-    "goals": ["Sales", "Writing", "Automation"],
-    "audience": ["Marketer", "Sales team", "Founder", "Agency"],
+    "goals": [
+      "Sales",
+      "Writing",
+      "Automation"
+    ],
+    "audience": [
+      "Marketer",
+      "Sales team",
+      "Founder",
+      "Agency"
+    ],
     "difficulty": "Medium",
     "pricing": "Free to try",
     "featured": false,
@@ -472,7 +783,15 @@
     "watchOuts": "You still need someone to own positioning and message quality. It should not replace judgment.",
     "firstPrompt": "Write a 5-touch outbound sequence for this ICP with one value prop per message.",
     "reviewedAt": "March 25, 2026",
-    "tags": ["sales", "outbound", "copywriting", "campaigns", "gtm"]
+    "tags": [
+      "sales",
+      "outbound",
+      "copywriting",
+      "campaigns",
+      "gtm"
+    ],
+    "addedAt": "2026-03-28",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Synthesia",
@@ -480,8 +799,17 @@
     "company": "Synthesia",
     "companySummary": "Synthesia focuses on AI avatar video for training, onboarding, and business communication.",
     "category": "Video",
-    "goals": ["Video", "Training", "Presentations"],
-    "audience": ["Team", "Educator", "Support team", "Operator"],
+    "goals": [
+      "Video",
+      "Training",
+      "Presentations"
+    ],
+    "audience": [
+      "Team",
+      "Educator",
+      "Support team",
+      "Operator"
+    ],
     "difficulty": "Easy",
     "pricing": "Paid",
     "featured": false,
@@ -497,7 +825,15 @@
     "watchOuts": "If brand personality or realism matters more than speed, recorded video may still feel stronger.",
     "firstPrompt": "Turn this onboarding outline into a concise 2-minute training script for a new team member.",
     "reviewedAt": "March 25, 2026",
-    "tags": ["avatar video", "training", "onboarding", "internal comms", "multilingual"]
+    "tags": [
+      "avatar video",
+      "training",
+      "onboarding",
+      "internal comms",
+      "multilingual"
+    ],
+    "addedAt": "2026-03-26",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Jasper",
@@ -505,8 +841,17 @@
     "company": "Jasper",
     "companySummary": "Jasper is a marketing-focused AI company built around brand-aware content and team workflows.",
     "category": "Marketing",
-    "goals": ["Writing", "SEO", "Sales"],
-    "audience": ["Marketer", "Agency", "Team", "Founder"],
+    "goals": [
+      "Writing",
+      "SEO",
+      "Sales"
+    ],
+    "audience": [
+      "Marketer",
+      "Agency",
+      "Team",
+      "Founder"
+    ],
     "difficulty": "Medium",
     "pricing": "Paid",
     "featured": false,
@@ -522,7 +867,15 @@
     "watchOuts": "If you only need occasional writing help, a cheaper general assistant may be enough.",
     "firstPrompt": "Using this brand voice, draft a launch campaign with landing page copy, 3 email variants, and 5 ad hooks.",
     "reviewedAt": "March 25, 2026",
-    "tags": ["marketing", "brand voice", "campaigns", "copy", "teams"]
+    "tags": [
+      "marketing",
+      "brand voice",
+      "campaigns",
+      "copy",
+      "teams"
+    ],
+    "addedAt": "2026-03-26",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Fathom",
@@ -530,8 +883,17 @@
     "company": "Fathom",
     "companySummary": "Fathom focuses on AI meeting notes, follow-up, and lightweight call intelligence for teams that live in Zoom and sales conversations.",
     "category": "Meetings",
-    "goals": ["Meetings", "Productivity", "Sales"],
-    "audience": ["Team", "Founder", "Operator", "Marketer"],
+    "goals": [
+      "Meetings",
+      "Productivity",
+      "Sales"
+    ],
+    "audience": [
+      "Team",
+      "Founder",
+      "Operator",
+      "Marketer"
+    ],
     "difficulty": "Easy",
     "pricing": "Free to try",
     "featured": true,
@@ -547,7 +909,15 @@
     "watchOuts": "If you need deeper conversation intelligence, coaching, or a larger system around calls, a heavier platform may fit better.",
     "firstPrompt": "Summarize this call into the top decisions, risks, next actions, and one short follow-up email I can send today.",
     "reviewedAt": "March 26, 2026",
-    "tags": ["meeting notes", "follow-up", "zoom", "summaries", "calls"]
+    "tags": [
+      "meeting notes",
+      "follow-up",
+      "zoom",
+      "summaries",
+      "calls"
+    ],
+    "addedAt": "2026-03-26",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Krisp",
@@ -555,8 +925,17 @@
     "company": "Krisp",
     "companySummary": "Krisp is built around cleaner voice communication, meeting assistance, and AI tools that make spoken conversations easier to work with.",
     "category": "Meetings",
-    "goals": ["Meetings", "Support", "Productivity"],
-    "audience": ["Team", "Support team", "Operator", "Founder"],
+    "goals": [
+      "Meetings",
+      "Support",
+      "Productivity"
+    ],
+    "audience": [
+      "Team",
+      "Support team",
+      "Operator",
+      "Founder"
+    ],
     "difficulty": "Easy",
     "pricing": "Free to try",
     "featured": false,
@@ -572,7 +951,15 @@
     "watchOuts": "If you mainly want deep team search or sales workflow automation after meetings, a more specialized meeting platform may feel stronger.",
     "firstPrompt": "Pull out the important customer issues, promised next steps, and any moments where the speaker sounded uncertain or needed clarification.",
     "reviewedAt": "March 26, 2026",
-    "tags": ["noise cancellation", "meeting notes", "transcripts", "voice", "remote work"]
+    "tags": [
+      "noise cancellation",
+      "meeting notes",
+      "transcripts",
+      "voice",
+      "remote work"
+    ],
+    "addedAt": "2026-03-28",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Loom",
@@ -580,8 +967,17 @@
     "company": "Loom",
     "companySummary": "Loom helps teams explain work through video, then uses AI to summarize, title, document, and share those recordings faster.",
     "category": "Video",
-    "goals": ["Video", "Training", "Meetings"],
-    "audience": ["Team", "Founder", "Educator", "Creator"],
+    "goals": [
+      "Video",
+      "Training",
+      "Meetings"
+    ],
+    "audience": [
+      "Team",
+      "Founder",
+      "Educator",
+      "Creator"
+    ],
     "difficulty": "Easy",
     "pricing": "Free to try",
     "featured": true,
@@ -597,7 +993,15 @@
     "watchOuts": "If you need polished editing, avatars, or full production features, you will probably want a more video-first tool afterward.",
     "firstPrompt": "Turn this walkthrough into a short summary, a step-by-step SOP, and 5 FAQ answers for the team.",
     "reviewedAt": "March 26, 2026",
-    "tags": ["screen recording", "async video", "walkthroughs", "training", "sops"]
+    "tags": [
+      "screen recording",
+      "async video",
+      "walkthroughs",
+      "training",
+      "sops"
+    ],
+    "addedAt": "2026-03-27",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "VEED",
@@ -605,8 +1009,17 @@
     "company": "VEED",
     "companySummary": "VEED combines editing, captions, dubbing, avatars, and AI creation tools inside a browser-first video workflow.",
     "category": "Video",
-    "goals": ["Video", "Training", "Voice"],
-    "audience": ["Creator", "Marketer", "Educator", "Team"],
+    "goals": [
+      "Video",
+      "Training",
+      "Voice"
+    ],
+    "audience": [
+      "Creator",
+      "Marketer",
+      "Educator",
+      "Team"
+    ],
     "difficulty": "Easy",
     "pricing": "Free to try",
     "featured": true,
@@ -622,7 +1035,15 @@
     "watchOuts": "If you need highly stylized generation or a completely different presenter, avatar-first tools may be a better fit.",
     "firstPrompt": "Turn this raw video into a 60-second highlight with captions, 3 hook options, and a cleaner intro.",
     "reviewedAt": "March 26, 2026",
-    "tags": ["video editing", "captions", "dubbing", "browser editor", "repurposing"]
+    "tags": [
+      "video editing",
+      "captions",
+      "dubbing",
+      "browser editor",
+      "repurposing"
+    ],
+    "addedAt": "2026-03-27",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Adobe Firefly",
@@ -630,8 +1051,17 @@
     "company": "Adobe",
     "companySummary": "Adobe brings Firefly into its creative ecosystem for image, design, and generative workflows that need stronger brand and editing control.",
     "category": "Design",
-    "goals": ["Design", "Video", "Presentations"],
-    "audience": ["Designer", "Marketer", "Creator", "Team"],
+    "goals": [
+      "Design",
+      "Video",
+      "Presentations"
+    ],
+    "audience": [
+      "Designer",
+      "Marketer",
+      "Creator",
+      "Team"
+    ],
     "difficulty": "Medium",
     "pricing": "Free to try",
     "featured": true,
@@ -647,7 +1077,15 @@
     "watchOuts": "If you want the quickest possible one-off social graphic, a simpler tool may get you there faster.",
     "firstPrompt": "Create 3 visual directions for this campaign with different moods, then suggest which one fits a premium brand best.",
     "reviewedAt": "March 26, 2026",
-    "tags": ["design", "generative image", "creative workflow", "brand assets", "adobe"]
+    "tags": [
+      "design",
+      "generative image",
+      "creative workflow",
+      "brand assets",
+      "adobe"
+    ],
+    "addedAt": "2026-03-26",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Beautiful.ai",
@@ -655,8 +1093,17 @@
     "company": "Beautiful.ai",
     "companySummary": "Beautiful.ai is built around faster presentation creation with structured layouts, business storytelling, and less manual slide design.",
     "category": "Presentations",
-    "goals": ["Presentations", "Design", "Training"],
-    "audience": ["Founder", "Marketer", "Educator", "Team"],
+    "goals": [
+      "Presentations",
+      "Design",
+      "Training"
+    ],
+    "audience": [
+      "Founder",
+      "Marketer",
+      "Educator",
+      "Team"
+    ],
     "difficulty": "Easy",
     "pricing": "Free to try",
     "featured": false,
@@ -672,7 +1119,15 @@
     "watchOuts": "If you need broader design flexibility beyond slides, Canva or a more open-ended design tool may feel better.",
     "firstPrompt": "Turn these rough notes into a 10-slide presentation with a clear narrative, stronger headlines, and one takeaway per slide.",
     "reviewedAt": "March 26, 2026",
-    "tags": ["presentations", "slides", "pitch decks", "reports", "visual storytelling"]
+    "tags": [
+      "presentations",
+      "slides",
+      "pitch decks",
+      "reports",
+      "visual storytelling"
+    ],
+    "addedAt": "2026-03-28",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "ClickUp Brain",
@@ -680,8 +1135,17 @@
     "company": "ClickUp",
     "companySummary": "ClickUp layers AI into task management, docs, search, notes, and work coordination for teams that want one operating system.",
     "category": "Workspace",
-    "goals": ["Productivity", "Writing", "Meetings"],
-    "audience": ["Team", "Operator", "Founder", "Marketer"],
+    "goals": [
+      "Productivity",
+      "Writing",
+      "Meetings"
+    ],
+    "audience": [
+      "Team",
+      "Operator",
+      "Founder",
+      "Marketer"
+    ],
     "difficulty": "Medium",
     "pricing": "Free to try",
     "featured": true,
@@ -697,7 +1161,15 @@
     "watchOuts": "If you do not want to maintain a structured workspace, the value can feel heavier and slower to unlock.",
     "firstPrompt": "Summarize the current project status, list the blockers, then turn the next steps into assigned action items with owners and due dates.",
     "reviewedAt": "March 26, 2026",
-    "tags": ["workspace", "tasks", "project management", "docs", "team coordination"]
+    "tags": [
+      "workspace",
+      "tasks",
+      "project management",
+      "docs",
+      "team coordination"
+    ],
+    "addedAt": "2026-03-28",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Airtable AI",
@@ -705,8 +1177,17 @@
     "company": "Airtable",
     "companySummary": "Airtable combines structured data, workflows, and AI assistance for teams building custom operating systems around real work.",
     "category": "Workspace",
-    "goals": ["Automation", "Productivity", "Sales"],
-    "audience": ["Team", "Operator", "Agency", "Marketer"],
+    "goals": [
+      "Automation",
+      "Productivity",
+      "Sales"
+    ],
+    "audience": [
+      "Team",
+      "Operator",
+      "Agency",
+      "Marketer"
+    ],
     "difficulty": "Medium",
     "pricing": "Paid",
     "featured": false,
@@ -722,7 +1203,15 @@
     "watchOuts": "If your workflow is still loose and unstructured, a general assistant may be easier to start with.",
     "firstPrompt": "Review these records, flag the top-priority opportunities, summarize why they matter, and suggest the next action for each one.",
     "reviewedAt": "March 26, 2026",
-    "tags": ["database", "workflow", "operations", "automation", "records"]
+    "tags": [
+      "database",
+      "workflow",
+      "operations",
+      "automation",
+      "records"
+    ],
+    "addedAt": "2026-03-29",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "Surfer",
@@ -730,8 +1219,17 @@
     "company": "Surfer",
     "companySummary": "Surfer is built around SEO workflows, content optimization, and search visibility for teams that care about traffic and discoverability.",
     "category": "Marketing",
-    "goals": ["SEO", "Writing", "Research"],
-    "audience": ["Marketer", "Agency", "Founder", "Writer"],
+    "goals": [
+      "SEO",
+      "Writing",
+      "Research"
+    ],
+    "audience": [
+      "Marketer",
+      "Agency",
+      "Founder",
+      "Writer"
+    ],
     "difficulty": "Medium",
     "pricing": "Paid",
     "featured": false,
@@ -747,7 +1245,15 @@
     "watchOuts": "If you do not actually run an SEO workflow, it can feel heavier than the value it returns.",
     "firstPrompt": "Analyze this target keyword and build a content brief with angle, headings, missing topics, and internal link ideas.",
     "reviewedAt": "March 26, 2026",
-    "tags": ["seo", "content strategy", "content optimization", "search visibility", "briefs"]
+    "tags": [
+      "seo",
+      "content strategy",
+      "content optimization",
+      "search visibility",
+      "briefs"
+    ],
+    "addedAt": "2026-03-29",
+    "reviewMethod": "Manual editorial review"
   },
   {
     "name": "HeyGen",
@@ -755,8 +1261,17 @@
     "company": "HeyGen",
     "companySummary": "HeyGen focuses on AI avatar video, talking-head content, translation, and business-friendly video creation at scale.",
     "category": "Video",
-    "goals": ["Video", "Training", "Sales"],
-    "audience": ["Marketer", "Agency", "Educator", "Founder"],
+    "goals": [
+      "Video",
+      "Training",
+      "Sales"
+    ],
+    "audience": [
+      "Marketer",
+      "Agency",
+      "Educator",
+      "Founder"
+    ],
     "difficulty": "Easy",
     "pricing": "Free to try",
     "featured": true,
@@ -772,6 +1287,14 @@
     "watchOuts": "If you want authentic personality from a real recorded person, avatar video may still feel less natural.",
     "firstPrompt": "Turn this outline into a 90-second presenter-style script with a strong opening, clear benefit, and one call to action.",
     "reviewedAt": "March 26, 2026",
-    "tags": ["avatar video", "translation", "sales video", "training video", "talking head"]
+    "tags": [
+      "avatar video",
+      "translation",
+      "sales video",
+      "training video",
+      "talking head"
+    ],
+    "addedAt": "2026-03-29",
+    "reviewMethod": "Manual editorial review"
   }
 ]

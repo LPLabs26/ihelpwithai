@@ -77,6 +77,8 @@ const goalGrid = document.getElementById('goal-grid');
 const guideGrid = document.getElementById('guide-grid');
 const comparisonGrid = document.getElementById('comparison-grid');
 const featuredGrid = document.getElementById('featured-grid');
+const recentlyReviewedGrid = document.getElementById('recently-reviewed-grid');
+const recentlyAddedGrid = document.getElementById('recently-added-grid');
 const companyGrid = document.getElementById('company-grid');
 const directorySummary = document.getElementById('directory-summary');
 const directoryActions = document.getElementById('directory-actions');
@@ -302,6 +304,36 @@ function difficultyRank(difficulty) {
 function resetDirectoryView() {
   state.visibleCount = 9;
 }
+
+function reviewedDateValue(tool) {
+  const value = Date.parse(tool.reviewedAt || '');
+  return Number.isNaN(value) ? 0 : value;
+}
+
+function addedDateValue(tool) {
+  const value = Date.parse(tool.addedAt || '');
+  return Number.isNaN(value) ? 0 : value;
+}
+
+function freshnessCard(tool, label, value) {
+  return `
+    <article class="fresh-card">
+      <div class="tagrow">
+        <span class="tag">${tool.category}</span>
+        ${companyChip(tool.company, tool.officialUrl)}
+        <span class="chip">${tool.pricing}</span>
+      </div>
+      <div class="fresh-date">${label} ${value}</div>
+      <h3>${tool.name}</h3>
+      <p>${tool.summary}</p>
+      <div class="micro-note"><strong>Best use:</strong> ${tool.useCase}</div>
+      <div class="card-links">
+        <a class="small-link primary" href="./tools/${tool.slug}.html">Read review</a>
+      </div>
+    </article>
+  `;
+}
+
 
 function companyGroups() {
   const groups = new Map();
@@ -801,6 +833,29 @@ function renderComparisonGrid() {
   }).join('');
 }
 
+
+function renderFreshness() {
+  if (recentlyReviewedGrid) {
+    const reviewed = [...TOOLS]
+      .sort((left, right) => reviewedDateValue(right) - reviewedDateValue(left) || Number(right.featured) - Number(left.featured) || left.name.localeCompare(right.name))
+      .slice(0, 4);
+
+    recentlyReviewedGrid.innerHTML = reviewed
+      .map(tool => freshnessCard(tool, 'Reviewed', tool.reviewedAt))
+      .join('');
+  }
+
+  if (recentlyAddedGrid) {
+    const added = [...TOOLS]
+      .sort((left, right) => addedDateValue(right) - addedDateValue(left) || Number(right.featured) - Number(left.featured) || left.name.localeCompare(right.name))
+      .slice(0, 4);
+
+    recentlyAddedGrid.innerHTML = added
+      .map(tool => freshnessCard(tool, 'Added', tool.addedAt))
+      .join('');
+  }
+}
+
 function renderFeatured() {
   const featuredTools = TOOLS.filter(tool => tool.featured).slice(0, 6);
 
@@ -1238,6 +1293,7 @@ function render() {
   renderMatcher();
   renderGuideGrid();
   renderComparisonGrid();
+  renderFreshness();
   renderFeatured();
   renderCompanies();
   renderPills(goalPills, allGoals(), 'goal');

@@ -12,6 +12,8 @@ const guidesDir = path.join(rootDir, 'guides');
 const publicGuidesDir = path.join(publicDir, 'guides');
 const comparisonsDir = path.join(rootDir, 'comparisons');
 const publicComparisonsDir = path.join(publicDir, 'comparisons');
+const methodologyPagePath = path.join(rootDir, 'editorial-methodology.html');
+const freeToolsPagePath = path.join(rootDir, 'best-free-ai-tools.html');
 const toolsJsonPath = path.join(rootDir, 'tools-starter.json');
 const comparisonsJsonPath = path.join(rootDir, 'comparisons.json');
 
@@ -503,6 +505,231 @@ function renderGuidePage(goal, tools) {
 `;
 }
 
+
+function reviewDateValue(tool) {
+  const value = Date.parse(tool.reviewedAt || '');
+  return Number.isNaN(value) ? 0 : value;
+}
+
+function addedDateValue(tool) {
+  const value = Date.parse(tool.addedAt || '');
+  return Number.isNaN(value) ? 0 : value;
+}
+
+function renderMethodologyPage(tools) {
+  const recentlyReviewed = [...tools].sort((left, right) => reviewDateValue(right) - reviewDateValue(left)).slice(0, 5);
+  const recentlyAdded = [...tools].sort((left, right) => addedDateValue(right) - addedDateValue(left)).slice(0, 5);
+
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Editorial methodology — ihelpwithai.com</title>
+  <meta name="description" content="How ihelpwithai.com reviews AI tools, updates recommendations, and handles monetization disclosures.">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body class="detail-body">
+  <header class="topbar">
+    <div class="container nav">
+      <a href="./index.html" class="brand">
+        <div class="logo"><span>IHAI</span></div>
+        <div>
+          <div>ihelpwithai.com</div>
+          <div class="brand-sub">AI tools that actually help</div>
+        </div>
+      </a>
+      <nav class="navlinks">
+        <a href="./index.html#featured">Start here</a>
+        <a href="./best-free-ai-tools.html">Best free tools</a>
+        <a href="./index.html#directory-filters">Directory</a>
+        <a href="./affiliate-disclosure.html">Disclosure</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb"><a class="backlink" href="./index.html">← Back to directory</a></div>
+
+    <section class="detail-hero methodology-shell">
+      <div class="detail-grid">
+        <article class="detail-main">
+          <div class="eyebrow">Editorial trust</div>
+          <h1>How ihelpwithai.com reviews tools</h1>
+          <p class="summary">The goal is not to list everything. The goal is to help someone choose faster with enough context to avoid bad-fit tools.</p>
+
+          <div class="detail-section">
+            <h2>What makes a tool worth including</h2>
+            <ul class="mini-list methodology-list">
+              <li>It solves a recurring job in a way a real buyer can explain quickly.</li>
+              <li>It earns a clear recommendation for a specific audience, not everybody.</li>
+              <li>It has visible tradeoffs, setup limits, or watch-outs worth calling out.</li>
+              <li>It belongs in a shortlist someone could realistically compare this week.</li>
+            </ul>
+          </div>
+
+          <div class="detail-section">
+            <h2>What goes into each review</h2>
+            <div class="method-grid">
+              <article class="trust-card"><h3>Fit first</h3><p>Every page explains what the tool is for, who should use it, and one real use case. That keeps the recommendation anchored to work, not hype.</p></article>
+              <article class="trust-card"><h3>Tradeoffs stay visible</h3><p>Every tool includes watch-outs so the page does not read like a sales page. The right answer depends on setup tolerance, budget, and desired output quality.</p></article>
+              <article class="trust-card"><h3>Plain-English summaries</h3><p>Reviews are written to help non-experts decide quickly. If a tool needs too much explanation to justify itself, it is usually not a great first recommendation.</p></article>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <h2>How updates work</h2>
+            <p>The directory tracks both <strong>review recency</strong> and <strong>new additions</strong>. Homepage freshness sections surface those updates so repeat visitors can see momentum instead of wondering whether the site is stale.</p>
+            <p>Current coverage: <strong>${tools.length} tools</strong>, <strong>${uniqueStrings(tools.flatMap(tool => tool.goals || [])).length} guide paths</strong>, and <strong>${comparisons.length} comparison pages</strong>.</p>
+          </div>
+
+          <div class="detail-section">
+            <h2>How monetization is handled</h2>
+            <p>Some pages may use partner links. That never changes the basic rule: if a tool is a bad fit, the review should say so. Partner links are disclosed and are not meant to replace fit-based recommendations.</p>
+            <div class="card-links" style="margin-top:14px">
+              <a class="small-link" href="./affiliate-disclosure.html">Read the affiliate disclosure</a>
+            </div>
+          </div>
+        </article>
+
+        <aside class="detail-side">
+          <h2 style="margin-top:0">Fresh review signals</h2>
+          <div class="detail-section">
+            <h3>Recently reviewed</h3>
+            <div class="related-list">
+              ${recentlyReviewed.map(tool => `<a class="related-item" href="./tools/${escapeHtml(tool.slug)}.html"><strong>${escapeHtml(tool.name)}</strong><div class="related-copy">Reviewed ${escapeHtml(tool.reviewedAt)}</div></a>`).join('')}
+            </div>
+          </div>
+          <div class="detail-section">
+            <h3>Recently added</h3>
+            <div class="related-list">
+              ${recentlyAdded.map(tool => `<a class="related-item" href="./tools/${escapeHtml(tool.slug)}.html"><strong>${escapeHtml(tool.name)}</strong><div class="related-copy">Added ${escapeHtml(tool.addedAt)}</div></a>`).join('')}
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+</body>
+</html>`;
+}
+
+function renderBestFreeToolsPage(tools) {
+  const freeTools = [...tools]
+    .filter(tool => tool.pricing === 'Free to try')
+    .sort((left, right) => Number(right.featured) - Number(left.featured) || reviewDateValue(right) - reviewDateValue(left) || left.name.localeCompare(right.name));
+
+  const picks = freeTools.slice(0, 12);
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Best Free AI Tools',
+    url: `${SITE_URL}/best-free-ai-tools.html`,
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: picks.map((tool, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: tool.name,
+        url: `${SITE_URL}/tools/${tool.slug}.html`
+      }))
+    }
+  };
+
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Best Free AI Tools — ihelpwithai.com</title>
+  <meta name="description" content="A practical shortlist of free-to-try AI tools worth testing first across writing, research, design, meetings, video, and automation.">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="application/ld+json">${JSON.stringify(schema)}</script>
+</head>
+<body class="detail-body">
+  <header class="topbar">
+    <div class="container nav">
+      <a href="./index.html" class="brand">
+        <div class="logo"><span>IHAI</span></div>
+        <div>
+          <div>ihelpwithai.com</div>
+          <div class="brand-sub">AI tools that actually help</div>
+        </div>
+      </a>
+      <nav class="navlinks">
+        <a href="./index.html#featured">Start here</a>
+        <a href="./editorial-methodology.html">Methodology</a>
+        <a href="./index.html#directory-filters">Directory</a>
+        <a href="./affiliate-disclosure.html">Disclosure</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb"><a class="backlink" href="./index.html">← Back to directory</a></div>
+
+    <section class="detail-hero">
+      <div class="detail-grid">
+        <article class="detail-main">
+          <div class="eyebrow">Entry path</div>
+          <h1>Best free AI tools to try first</h1>
+          <p class="summary">If you want the smartest zero-to-low-risk starting point, begin with tools that offer real free access and strong enough utility to prove the value quickly.</p>
+
+          <div class="detail-section">
+            <h2>What “free” means here</h2>
+            <p>This page focuses on tools labeled <strong>Free to try</strong>. Some have generous free plans. Others are better thought of as strong trial paths. Either way, they are the best first stop if you want proof before budget commitment.</p>
+          </div>
+
+          <div class="detail-section">
+            <h2>Best free AI tools across common jobs</h2>
+            <div class="guide-stack">
+              ${picks.map(tool => `
+                <article class="guide-tool">
+                  <div class="tagrow">
+                    <span class="tag">${escapeHtml(tool.category)}</span>
+                    ${renderCompanyChip(tool.company, tool.officialUrl)}
+                    <span class="chip">${escapeHtml(tool.pricing)}</span>
+                    <span class="chip">Reviewed ${escapeHtml(tool.reviewedAt)}</span>
+                  </div>
+                  <h3>${escapeHtml(tool.name)}</h3>
+                  <p>${escapeHtml(tool.summary)}</p>
+                  <p><strong>Use it when:</strong> ${escapeHtml(tool.whatFor)}</p>
+                  <p><strong>Real use case:</strong> ${escapeHtml(tool.useCase)}</p>
+                  <p><strong>Watch-outs:</strong> ${escapeHtml(tool.watchOuts)}</p>
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./tools/${escapeHtml(tool.slug)}.html">Read the full review</a>
+                    <a class="small-link" href="${escapeHtml(getPrimaryUrl(tool))}" target="_blank" rel="${relFor(tool.affiliateUrl)}">${escapeHtml(getPrimaryLabel(tool))}</a>
+                  </div>
+                </article>
+              `).join('')}
+            </div>
+          </div>
+        </article>
+
+        <aside class="detail-side">
+          <h2 style="margin-top:0">Free-first shortcuts</h2>
+          <div class="detail-section">
+            <h3>Browse only free-to-try tools</h3>
+            <p>Jump into the homepage directory with the free filter already applied.</p>
+            <div class="card-links" style="margin-top:14px">
+              <a class="small-link primary" href="./index.html?price=Free%20to%20try#directory-filters">Open free-only directory</a>
+            </div>
+          </div>
+          <div class="detail-section">
+            <h3>Trust signal</h3>
+            <p>The site shows both recent reviews and recent additions so the shortlist feels maintained, not abandoned.</p>
+            <div class="card-links" style="margin-top:14px">
+              <a class="small-link" href="./editorial-methodology.html">Read the methodology</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+</body>
+</html>`;
+}
+
 function renderComparisonPage(comparison, tools) {
   const comparisonTools = comparison.tools
     .map(slug => tools.find(tool => tool.slug === slug))
@@ -621,6 +848,7 @@ function buildCsv(tools) {
   const headers = [
     'name',
     'slug',
+    'addedAt',
     'company',
     'companySummary',
     'category',
@@ -653,6 +881,8 @@ function buildSitemap(tools, comparisons) {
   const pages = [
     '',
     '/affiliate-disclosure.html',
+    '/editorial-methodology.html',
+    '/best-free-ai-tools.html',
     ...comparisons.map(comparison => `/comparisons/${comparison.slug}.html`),
     ...goals.map(goal => `/guides/${guideFilename(goal)}`),
     ...tools.map(tool => `/tools/${tool.slug}.html`)
@@ -774,6 +1004,8 @@ for (const filename of [
   'CNAME',
   '.nojekyll',
   'affiliate-disclosure.html',
+  'editorial-methodology.html',
+  'best-free-ai-tools.html',
   'thanks.html',
   'README.md',
   'robots.txt',
@@ -796,6 +1028,9 @@ for (const goal of uniqueStrings(tools.flatMap(tool => tool.goals || []))) {
 for (const comparison of comparisons) {
   await fs.copyFile(path.join(comparisonsDir, `${comparison.slug}.html`), path.join(publicComparisonsDir, `${comparison.slug}.html`));
 }
+
+await fs.writeFile(methodologyPagePath, renderMethodologyPage(tools));
+await fs.writeFile(freeToolsPagePath, renderBestFreeToolsPage(tools));
 
 await fs.mkdir(path.join(publicDir, 'affiliate-disclosure'), { recursive: true });
 await fs.writeFile(
