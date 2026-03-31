@@ -256,32 +256,32 @@ function renderToolPage(tool, tools) {
           </div>
 
           <div class="detail-section">
-            <h2>What it’s for</h2>
+            <h2>What this tool does</h2>
             <p>${escapeHtml(tool.whatFor)}</p>
           </div>
 
           <div class="detail-section">
-            <h2>Who should use it</h2>
+            <h2>Who this is a good fit for</h2>
             <p>${escapeHtml(tool.who)}</p>
           </div>
 
           <div class="detail-section">
-            <h2>One real use case</h2>
+            <h2>A good first use case</h2>
             <p>${escapeHtml(tool.useCase)}</p>
           </div>
 
           <div class="detail-section">
-            <h2>Why it made the directory</h2>
+            <h2>Why you might pick it</h2>
             <p>${escapeHtml(tool.why)}</p>
           </div>
 
           <div class="detail-section">
-            <h2>Watch-outs</h2>
+            <h2>Skip it if</h2>
             <p>${escapeHtml(tool.watchOuts)}</p>
           </div>
 
           <div class="detail-section">
-            <h2>Good first prompt</h2>
+            <h2>What to try first</h2>
             <p class="prompt-box">${escapeHtml(tool.firstPrompt)}</p>
             <div class="card-links" style="margin-top:14px">
               <button class="small-link" type="button" data-copy-starter-prompt="${escapeHtml(tool.firstPrompt)}">Copy starter prompt</button>
@@ -289,8 +289,8 @@ function renderToolPage(tool, tools) {
           </div>
 
           <div class="detail-section">
-            <h2>Prompt maker</h2>
-            <p>Start with the tool's best first prompt, then make it specific to your actual job, audience, and output.</p>
+            <h2>Make the prompt more specific</h2>
+            <p>Start with the tool's first prompt, then make it match your real job, audience, and desired output.</p>
             <div
               class="prompt-builder"
               data-prompt-builder
@@ -336,7 +336,7 @@ function renderToolPage(tool, tools) {
           </div>
 
           <div class="detail-section">
-            <h2>Company snapshot</h2>
+            <h2>About the company</h2>
             <p>${escapeHtml(tool.companySummary)}</p>
           </div>
 
@@ -348,7 +348,7 @@ function renderToolPage(tool, tools) {
         </article>
 
         <aside class="detail-side">
-          <h2 style="margin-top:0">Quick fit</h2>
+          <h2 style="margin-top:0">Quick view</h2>
           <div class="detail-section">
             <h3>Best for</h3>
             <div class="meta">${audiences}</div>

@@ -406,6 +406,8 @@ function renderHeroGoalLinks() {
   const container = document.getElementById('hero-goal-links');
   const goals = goalCounts().slice(0, 5).map(({ goal }) => goal);
 
+  if (!container) return;
+
   container.innerHTML = goals.map(goal => `
     <button class="inline-filter" type="button" data-hero-goal="${goal}">
       ${goal}
@@ -856,15 +858,24 @@ function renderFreshness() {
   }
 }
 
+function beginnerBadge(tool, index) {
+  if (tool.difficulty === 'Easy' && tool.pricing === 'Free to try') return 'Great first tool';
+  if (tool.difficulty === 'Easy') return 'Easy to start';
+  if (tool.pricing === 'Free to try') return 'Free to try';
+  if (index === 0) return 'Best overall starting point';
+  return 'Strong option';
+}
+
 function renderFeatured() {
   const featuredTools = TOOLS.filter(tool => tool.featured).slice(0, 6);
 
-  featuredGrid.innerHTML = featuredTools.map(tool => `
+  featuredGrid.innerHTML = featuredTools.map((tool, index) => `
     <article class="feature-card">
       <div class="tagrow">
         <span class="tag">${tool.category}</span>
         ${companyChip(tool.company, tool.officialUrl)}
         <span class="chip">${tool.pricing}</span>
+        <span class="chip chip-accent">${beginnerBadge(tool, index)}</span>
       </div>
       <h3>${tool.name}</h3>
       <p>${tool.summary}</p>
@@ -1000,10 +1011,10 @@ function directoryReasons(tool) {
 
 function directoryLeadCopy() {
   if (!state.search && state.goal === 'All' && state.audience === 'All' && state.price === 'All' && state.category === 'All' && state.company === 'All') {
-    return 'No filters are active, so this is a safe place to start if you just want one strong recommendation first.';
+    return 'No filters are active, so this is a safe place to start if you want one good recommendation first.';
   }
 
-  return 'This rose to the top because it lines up well with the filters you have active right now.';
+  return 'This is near the top because it matches what you said you need.';
 }
 
 function renderDirectorySummary(results) {
@@ -1099,6 +1110,9 @@ function card(tool) {
   const partnerNote = tool.affiliateUrl
     ? '<div class="micro-note">Partner link included.</div>'
     : '';
+  const startBadge = tool.difficulty === 'Easy'
+    ? '<span class="chip chip-accent">Easy to start</span>'
+    : '';
 
   return `
     <article class="card">
@@ -1109,15 +1123,16 @@ function card(tool) {
             <span class="chip">${tool.category}</span>
             ${companyChip(tool.company, tool.officialUrl)}
             <span class="chip">${tool.pricing}</span>
+            ${startBadge}
           </div>
           <h3>${tool.name}</h3>
           <p>${tool.summary}</p>
         </div>
       </div>
-      <div><strong>Best for:</strong> ${audience}</div>
-      <div><strong>Why choose it:</strong> ${tool.why}</div>
-      <div><strong>Real use case:</strong> ${tool.useCase}</div>
-      <div class="micro-note"><strong>Skip if:</strong> ${tool.watchOuts}</div>
+      <div><strong>Good for:</strong> ${audience}</div>
+      <div><strong>Why pick it:</strong> ${tool.why}</div>
+      <div><strong>Try it for:</strong> ${tool.useCase}</div>
+      <div class="micro-note"><strong>Skip it if:</strong> ${tool.watchOuts}</div>
       <div class="meta">${tags}</div>
       ${partnerNote}
       <div class="card-links">

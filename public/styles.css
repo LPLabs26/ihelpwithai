@@ -660,6 +660,17 @@ img {
   letter-spacing: 0.03em;
 }
 
+.detail-main .tagrow .tag {
+  background: linear-gradient(135deg, rgba(12, 123, 220, 0.08), rgba(20, 184, 108, 0.08));
+  border: 1px solid rgba(12, 123, 220, 0.12);
+  color: var(--muted-strong);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 10px;
+}
+
 .pill {
   cursor: pointer;
   font-size: 13px;
@@ -1035,7 +1046,7 @@ img {
 
 .detail-company-row {
   display: flex;
-  gap: 16px;
+  gap: 18px;
   margin-top: 18px;
   align-items: flex-start;
 }
