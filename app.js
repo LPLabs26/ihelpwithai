@@ -1,6 +1,6 @@
 const TOOLS = [...(window.IHWAI?.tools || [])];
 const COMPARISONS = [...(window.IHWAI?.comparisons || [])];
-const MAILTO_ADDRESS = 'jorge@ihelpwithai.com';
+const MAILTO_ADDRESS = 'info@ihelpwithai.com';
 
 const GOAL_COPY = {
   Automation: {
@@ -77,8 +77,6 @@ const goalGrid = document.getElementById('goal-grid');
 const guideGrid = document.getElementById('guide-grid');
 const comparisonGrid = document.getElementById('comparison-grid');
 const featuredGrid = document.getElementById('featured-grid');
-const recentlyReviewedGrid = document.getElementById('recently-reviewed-grid');
-const recentlyAddedGrid = document.getElementById('recently-added-grid');
 const companyGrid = document.getElementById('company-grid');
 const directorySummary = document.getElementById('directory-summary');
 const directoryActions = document.getElementById('directory-actions');
@@ -211,6 +209,27 @@ function companyChip(name, url) {
   return companyLink(name, url, 'chip company-chip');
 }
 
+function cleanPreviewText(value = '') {
+  const text = String(value || '').trim().replace(/\s+/g, ' ');
+  if (!text) return '';
+  return /[.!?]$/.test(text) ? text : `${text}.`;
+}
+
+function toolPreviewDescription(tool) {
+  return cleanPreviewText(tool.summary || tool.whatFor || tool.useCase);
+}
+
+function companyPreviewDescription(company) {
+  return cleanPreviewText(
+    company.summary
+      || `${company.name} is represented here for ${company.categories.slice(0, 2).join(' and ').toLowerCase()} tools.`
+  );
+}
+
+function comparisonPreviewDescription(comparison) {
+  return cleanPreviewText(comparison.summary || comparison.quickTake || comparison.question);
+}
+
 function guideHref(goal) {
   return `./guides/best-ai-tools-for-${slugify(goal)}.html`;
 }
@@ -305,36 +324,6 @@ function resetDirectoryView() {
   state.visibleCount = 9;
 }
 
-function reviewedDateValue(tool) {
-  const value = Date.parse(tool.reviewedAt || '');
-  return Number.isNaN(value) ? 0 : value;
-}
-
-function addedDateValue(tool) {
-  const value = Date.parse(tool.addedAt || '');
-  return Number.isNaN(value) ? 0 : value;
-}
-
-function freshnessCard(tool, label, value) {
-  return `
-    <article class="fresh-card">
-      <div class="tagrow">
-        <span class="tag">${tool.category}</span>
-        ${companyChip(tool.company, tool.officialUrl)}
-        <span class="chip">${tool.pricing}</span>
-      </div>
-      <div class="fresh-date">${label} ${value}</div>
-      <h3>${tool.name}</h3>
-      <p>${tool.summary}</p>
-      <div class="micro-note"><strong>Best use:</strong> ${tool.useCase}</div>
-      <div class="card-links">
-        <a class="small-link primary" href="./tools/${tool.slug}.html">Read review</a>
-      </div>
-    </article>
-  `;
-}
-
-
 function companyGroups() {
   const groups = new Map();
 
@@ -397,16 +386,21 @@ function matches(tool) {
 }
 
 function renderMetrics() {
-  document.getElementById('metric-tools').textContent = String(TOOLS.length);
-  document.getElementById('metric-companies').textContent = String(TOOLS.filter(tool => tool.featured).length);
-  document.getElementById('metric-goals').textContent = String(allGoals().length);
+  const metricTools = document.getElementById('metric-tools');
+  const metricCompanies = document.getElementById('metric-companies');
+  const metricGoals = document.getElementById('metric-goals');
+  if (!metricTools || !metricCompanies || !metricGoals) return;
+
+  metricTools.textContent = String(TOOLS.length);
+  metricCompanies.textContent = String(companyGroups().length);
+  metricGoals.textContent = String(allGoals().length);
 }
 
 function renderHeroGoalLinks() {
   const container = document.getElementById('hero-goal-links');
-  const goals = goalCounts().slice(0, 5).map(({ goal }) => goal);
-
   if (!container) return;
+
+  const goals = goalCounts().slice(0, 5).map(({ goal }) => goal);
 
   container.innerHTML = goals.map(goal => `
     <button class="inline-filter" type="button" data-hero-goal="${goal}">
@@ -426,6 +420,8 @@ function renderHeroGoalLinks() {
 }
 
 function renderGoalGrid() {
+  if (!goalGrid) return;
+
   const goals = goalCounts().slice(0, 8);
 
   goalGrid.innerHTML = goals.map(({ goal, count }) => {
@@ -674,7 +670,7 @@ function renderMatcher() {
           <span class="chip ${matcherIsExact(tool) ? 'chip-accent' : ''}">${fitLabel}</span>
         </div>
         <h3>${tool.name}</h3>
-        <p>${tool.summary}</p>
+        <p>${escapeHtml(toolPreviewDescription(tool))}</p>
         <div class="meta">${reasons.map(reason => `<span class="chip">${reason}</span>`).join('')}</div>
         <div><strong>Why choose it:</strong> ${tool.why}</div>
         <div class="micro-note"><strong>Skip if:</strong> ${tool.watchOuts}</div>
@@ -792,6 +788,8 @@ function initPromptLab() {
 }
 
 function renderGuideGrid() {
+  if (!guideGrid) return;
+
   const goals = goalCounts().slice(0, 6);
 
   guideGrid.innerHTML = goals.map(({ goal, count }) => {
@@ -817,6 +815,8 @@ function renderGuideGrid() {
 }
 
 function renderComparisonGrid() {
+  if (!comparisonGrid) return;
+
   comparisonGrid.innerHTML = COMPARISONS.map(comparison => {
     const shortlist = comparison.tools
       .map(slug => TOOLS.find(tool => tool.slug === slug))
@@ -828,69 +828,29 @@ function renderComparisonGrid() {
       <a class="comparison-card" href="${comparisonHref(comparison)}">
         <div class="eyebrow">Comparison</div>
         <h3>${comparison.title}</h3>
-        <p>${comparison.summary}</p>
+        <p>${escapeHtml(comparisonPreviewDescription(comparison))}</p>
         <div class="guide-meta">${shortlist}</div>
       </a>
     `;
   }).join('');
 }
 
-
-function renderFreshness() {
-  if (recentlyReviewedGrid) {
-    const reviewed = [...TOOLS]
-      .sort((left, right) => reviewedDateValue(right) - reviewedDateValue(left) || Number(right.featured) - Number(left.featured) || left.name.localeCompare(right.name))
-      .slice(0, 4);
-
-    recentlyReviewedGrid.innerHTML = reviewed
-      .map(tool => freshnessCard(tool, 'Reviewed', tool.reviewedAt))
-      .join('');
-  }
-
-  if (recentlyAddedGrid) {
-    const added = [...TOOLS]
-      .sort((left, right) => addedDateValue(right) - addedDateValue(left) || Number(right.featured) - Number(left.featured) || left.name.localeCompare(right.name))
-      .slice(0, 4);
-
-    recentlyAddedGrid.innerHTML = added
-      .map(tool => freshnessCard(tool, 'Added', tool.addedAt))
-      .join('');
-  }
-}
-
-function beginnerBadge(tool, index) {
-  if (tool.difficulty === 'Easy' && tool.pricing === 'Free to try') return 'Great first tool';
-  if (tool.difficulty === 'Easy') return 'Easy to start';
-  if (tool.pricing === 'Free to try') return 'Free to try';
-  if (index === 0) return 'Best overall starting point';
-  return 'Strong option';
-}
-
 function renderFeatured() {
-  const featuredTools = TOOLS.filter(tool => tool.featured).slice(0, 6);
+  if (!featuredGrid) return;
 
-  featuredGrid.innerHTML = featuredTools.map((tool, index) => `
-    <article class="feature-card">
-      <div class="tagrow">
-        <span class="tag">${tool.category}</span>
-        ${companyChip(tool.company, tool.officialUrl)}
-        <span class="chip">${tool.pricing}</span>
-        <span class="chip chip-accent">${beginnerBadge(tool, index)}</span>
-      </div>
-      <h3>${tool.name}</h3>
-      <p>${tool.summary}</p>
-      <div><strong>Best use:</strong> ${tool.useCase}</div>
-      <div><strong>Why start here:</strong> ${tool.why}</div>
-      <div class="micro-note"><strong>Skip if:</strong> ${tool.watchOuts}</div>
-      <div class="card-links" style="margin-top:18px">
-        <a class="small-link primary" href="./tools/${tool.slug}.html">See why it fits</a>
-        <a class="small-link" href="${primaryUrl(tool)}" target="_blank" rel="${linkRel(tool)}">${primaryLabel(tool)}</a>
-      </div>
-    </article>
-  `).join('');
+  const featuredTools = TOOLS.filter(tool => tool.featured).slice(0, 5);
+
+  featuredGrid.innerHTML = featuredTools.map(tool => toolRow(tool, {
+    badge: 'Good place to start',
+    contextLabel: 'Why start here',
+    contextText: tool.why,
+    primaryCta: 'See why it fits'
+  })).join('');
 }
 
 function renderCompanies() {
+  if (!companyGrid) return;
+
   const companies = companyGroups();
 
   companyGrid.innerHTML = companies.map(company => {
@@ -908,7 +868,7 @@ function renderCompanies() {
           </div>
           ${partnerBadge}
         </div>
-        <p>${company.summary}</p>
+        <p>${escapeHtml(companyPreviewDescription(company))}</p>
         <div class="meta">${categories}</div>
         <div class="company-foot">
           <span>${company.tools.length} tool${company.tools.length === 1 ? '' : 's'}</span>
@@ -1011,10 +971,10 @@ function directoryReasons(tool) {
 
 function directoryLeadCopy() {
   if (!state.search && state.goal === 'All' && state.audience === 'All' && state.price === 'All' && state.category === 'All' && state.company === 'All') {
-    return 'No filters are active, so this is a safe place to start if you want one good recommendation first.';
+    return 'No filters are active, so this is a safe place to start if you just want one strong recommendation first.';
   }
 
-  return 'This is near the top because it matches what you said you need.';
+  return 'This rose to the top because it lines up well with the filters you have active right now.';
 }
 
 function renderDirectorySummary(results) {
@@ -1038,14 +998,16 @@ function renderDirectorySummary(results) {
             <span class="tag">${top.category}</span>
             ${companyChip(top.company, top.officialUrl)}
             <span class="chip">${top.pricing}</span>
+            <span class="chip">${top.difficulty}</span>
           </div>
           <h3>${top.name}</h3>
-          <p>${top.summary}</p>
+          <p>${escapeHtml(toolPreviewDescription(top))}</p>
         </div>
-        <a class="button primary" href="./tools/${top.slug}.html">Start with ${top.name}</a>
+        <a class="button primary" href="./tools/${top.slug}.html">Read full review</a>
       </div>
       <div class="meta">${reasons.map(reason => `<span class="chip">${reason}</span>`).join('')}</div>
-      <div class="directory-summary-copy"><strong>Why it ranks here:</strong> ${directoryLeadCopy()} ${top.why}</div>
+      <div class="directory-summary-copy"><strong>Why it ranks here:</strong> ${directoryLeadCopy()}</div>
+      <div class="directory-summary-copy"><strong>Good first use:</strong> ${top.useCase}</div>
       <div class="directory-summary-copy"><strong>Watch out:</strong> ${top.watchOuts}</div>
       ${alternates.length ? `
         <div class="directory-alt">
@@ -1058,6 +1020,8 @@ function renderDirectorySummary(results) {
 }
 
 function renderPills(container, values, key) {
+  if (!container) return;
+
   const html = ['All', ...values].map(value => `
     <button class="pill ${state[key] === value ? 'active' : ''}" type="button" data-key="${key}" data-value="${value}">
       ${value}
@@ -1084,6 +1048,8 @@ function renderPills(container, values, key) {
 }
 
 function renderActiveFilters() {
+  if (!activeFilters || !clearButton) return;
+
   const entries = [
     ['Goal', state.goal],
     ['Category', state.category],
@@ -1104,39 +1070,35 @@ function renderActiveFilters() {
   clearButton.style.visibility = 'visible';
 }
 
-function card(tool) {
+function toolRow(tool, options = {}) {
   const audience = (tool.audience || []).slice(0, 3).join(' • ');
-  const tags = (tool.goals || []).slice(0, 3).map(goal => `<span class="chip">${goal}</span>`).join('');
-  const partnerNote = tool.affiliateUrl
-    ? '<div class="micro-note">Partner link included.</div>'
-    : '';
-  const startBadge = tool.difficulty === 'Easy'
-    ? '<span class="chip chip-accent">Easy to start</span>'
-    : '';
+  const badge = options.badge ? `<span class="chip chip-accent">${options.badge}</span>` : '';
+  const contextLabel = options.contextLabel || 'Why choose it';
+  const contextText = options.contextText || tool.why;
+  const primaryCta = options.primaryCta || 'Read full review';
+  const partnerNote = tool.affiliateUrl ? '<div class="micro-note">Partner link included.</div>' : '';
 
   return `
-    <article class="card">
-      <div class="card-top">
-        <div class="avatar">${initials(tool.name)}</div>
-        <div>
-          <div class="meta">
-            <span class="chip">${tool.category}</span>
-            ${companyChip(tool.company, tool.officialUrl)}
-            <span class="chip">${tool.pricing}</span>
-            ${startBadge}
-          </div>
-          <h3>${tool.name}</h3>
-          <p>${tool.summary}</p>
+    <article class="tool-row">
+      <div class="tool-row-main">
+        <div class="tagrow">
+          <span class="tag">${tool.category}</span>
+          ${companyChip(tool.company, tool.officialUrl)}
+          <span class="chip">${tool.pricing}</span>
+          ${badge}
         </div>
+        <h3>${tool.name}</h3>
+        <p class="tool-row-summary">${escapeHtml(toolPreviewDescription(tool))}</p>
+        <div class="tool-row-details">
+          <div><strong>Best for:</strong> ${audience}</div>
+          <div><strong>Good first use:</strong> ${tool.useCase}</div>
+          <div><strong>${contextLabel}:</strong> ${contextText}</div>
+          <div class="micro-note"><strong>Watch out:</strong> ${tool.watchOuts}</div>
+        </div>
+        ${partnerNote}
       </div>
-      <div><strong>Good for:</strong> ${audience}</div>
-      <div><strong>Why pick it:</strong> ${tool.why}</div>
-      <div><strong>Try it for:</strong> ${tool.useCase}</div>
-      <div class="micro-note"><strong>Skip it if:</strong> ${tool.watchOuts}</div>
-      <div class="meta">${tags}</div>
-      ${partnerNote}
-      <div class="card-links">
-        <a class="small-link primary" href="./tools/${tool.slug}.html">Learn more</a>
+      <div class="tool-row-actions">
+        <a class="small-link primary" href="./tools/${tool.slug}.html">${primaryCta}</a>
         <a class="small-link" href="${primaryUrl(tool)}" target="_blank" rel="${linkRel(tool)}">${primaryLabel(tool)}</a>
       </div>
     </article>
@@ -1144,6 +1106,8 @@ function card(tool) {
 }
 
 function renderDirectory() {
+  if (!grid || !countEl) return;
+
   const results = sortDirectoryResults(TOOLS.filter(matches));
   const visibleResults = results.slice(0, state.visibleCount);
 
@@ -1165,7 +1129,12 @@ function renderDirectory() {
     return;
   }
 
-  grid.innerHTML = visibleResults.map(card).join('');
+  grid.innerHTML = visibleResults.map(tool => toolRow(tool, {
+    badge: tool.featured ? 'Strong first pick' : '',
+    contextLabel: 'Why choose it',
+    contextText: tool.why,
+    primaryCta: 'Read full review'
+  })).join('');
 
   if (directoryActions) {
     const showMore = results.length > visibleResults.length
@@ -1308,7 +1277,6 @@ function render() {
   renderMatcher();
   renderGuideGrid();
   renderComparisonGrid();
-  renderFreshness();
   renderFeatured();
   renderCompanies();
   renderPills(goalPills, allGoals(), 'goal');
@@ -1320,23 +1288,25 @@ function render() {
   syncUrl();
 }
 
-clearButton.addEventListener('click', () => {
-  state.goal = 'All';
-  state.category = 'All';
-  state.price = 'All';
-  state.audience = 'All';
-  state.company = 'All';
-  state.search = '';
-  matchState.goal = '';
-  matchState.audience = 'All';
-  matchState.price = 'All';
-  matchState.difficulty = 'All';
-  resetDirectoryView();
-  if (searchEl) {
-    searchEl.value = '';
-  }
-  render();
-});
+if (clearButton) {
+  clearButton.addEventListener('click', () => {
+    state.goal = 'All';
+    state.category = 'All';
+    state.price = 'All';
+    state.audience = 'All';
+    state.company = 'All';
+    state.search = '';
+    matchState.goal = '';
+    matchState.audience = 'All';
+    matchState.price = 'All';
+    matchState.difficulty = 'All';
+    resetDirectoryView();
+    if (searchEl) {
+      searchEl.value = '';
+    }
+    render();
+  });
+}
 
 if (searchEl) {
   searchEl.addEventListener('input', event => {
@@ -1348,12 +1318,12 @@ if (searchEl) {
 
 if (matchOpenDirectoryButton) {
   matchOpenDirectoryButton.addEventListener('click', () => {
-    state.goal = matchState.goal || 'All';
-    state.price = matchState.price;
-    state.audience = matchState.audience;
-    resetDirectoryView();
-    render();
-    scrollToDirectory();
+    const params = new URLSearchParams();
+    if (matchState.goal) params.set('goal', matchState.goal);
+    if (matchState.price !== 'All') params.set('price', matchState.price);
+    if (matchState.audience !== 'All') params.set('audience', matchState.audience);
+    const query = params.toString();
+    window.location.href = `./directory.html${query ? `?${query}` : ''}`;
   });
 }
 

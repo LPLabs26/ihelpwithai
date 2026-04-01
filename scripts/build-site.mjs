@@ -12,8 +12,6 @@ const guidesDir = path.join(rootDir, 'guides');
 const publicGuidesDir = path.join(publicDir, 'guides');
 const comparisonsDir = path.join(rootDir, 'comparisons');
 const publicComparisonsDir = path.join(publicDir, 'comparisons');
-const methodologyPagePath = path.join(rootDir, 'editorial-methodology.html');
-const freeToolsPagePath = path.join(rootDir, 'best-free-ai-tools.html');
 const toolsJsonPath = path.join(rootDir, 'tools-starter.json');
 const comparisonsJsonPath = path.join(rootDir, 'comparisons.json');
 
@@ -156,6 +154,63 @@ function renderCompanyChip(name, url) {
   return renderCompanyLink(name, url, 'chip company-chip');
 }
 
+function cleanPreviewText(value = '') {
+  const text = String(value || '').trim().replace(/\s+/g, ' ');
+  if (!text) return '';
+  return /[.!?]$/.test(text) ? text : `${text}.`;
+}
+
+function toolPreviewDescription(tool) {
+  return cleanPreviewText(tool.summary || tool.whatFor || tool.useCase);
+}
+
+function companyPreviewDescription(company) {
+  return cleanPreviewText(
+    company.summary
+      || `${company.name} is represented here for ${company.categories.slice(0, 2).join(' and ').toLowerCase()} tools.`
+  );
+}
+
+function comparisonPreviewDescription(comparison) {
+  return cleanPreviewText(comparison.summary || comparison.quickTake || comparison.question);
+}
+
+function renderStartHereMenu(basePath = '.') {
+  return `
+      <nav class="navlinks">
+        <details class="nav-dropdown">
+          <summary class="nav-summary">Start here</summary>
+          <div class="nav-dropdown-menu">
+            <a href="${basePath}/index.html">Home</a>
+            <a href="${basePath}/shortlist.html">Shortlist</a>
+            <a href="${basePath}/directory.html">Directory</a>
+            <a href="${basePath}/companies.html">Companies</a>
+            <a href="${basePath}/reviews.html">Reviews</a>
+            <a href="${basePath}/get-help.html">Get help</a>
+            <a href="${basePath}/best-free-ai-tools.html">Best free tools</a>
+            <a href="${basePath}/editorial-methodology.html">Methodology</a>
+            <a href="${basePath}/affiliate-disclosure.html">Disclosure</a>
+          </div>
+        </details>
+      </nav>`;
+}
+
+function renderSiteFooter(basePath = '.') {
+  return `
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>ihelpwithai.com</strong>
+        <div>A curated guide for choosing the right AI tool.</div>
+      </div>
+      <div>
+        <div>Built to help people choose faster, not to catalog everything in AI.</div>
+        <a class="footer-email" href="mailto:info@ihelpwithai.com">info@ihelpwithai.com</a>
+      </div>
+    </div>
+  </footer>`;
+}
+
 function slugify(value = '') {
   return value
     .toLowerCase()
@@ -170,6 +225,82 @@ function guideFilename(goal) {
 
 function uniqueStrings(list) {
   return [...new Set(list.filter(Boolean))].sort((left, right) => left.localeCompare(right));
+}
+
+function absoluteUrl(pathname = '/') {
+  if (!pathname || pathname === '/') {
+    return SITE_URL;
+  }
+  return `${SITE_URL}${pathname.startsWith('/') ? pathname : `/${pathname}`}`;
+}
+
+function renderMetaTags({ title, description, pathname, type = 'website' }) {
+  const canonicalUrl = absoluteUrl(pathname);
+  return `
+  <link rel="canonical" href="${escapeHtml(canonicalUrl)}">
+  <meta property="og:site_name" content="ihelpwithai.com">
+  <meta property="og:type" content="${escapeHtml(type)}">
+  <meta property="og:title" content="${escapeHtml(title)}">
+  <meta property="og:description" content="${escapeHtml(description)}">
+  <meta property="og:url" content="${escapeHtml(canonicalUrl)}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="${escapeHtml(title)}">
+  <meta name="twitter:description" content="${escapeHtml(description)}">`;
+}
+
+function reviewTimestamp(tool) {
+  const timestamp = Date.parse(tool?.reviewedAt || '');
+  return Number.isNaN(timestamp) ? 0 : timestamp;
+}
+
+function sortByFeaturedThenReview(left, right) {
+  if (left.featured !== right.featured) {
+    return Number(right.featured) - Number(left.featured);
+  }
+
+  const reviewDelta = reviewTimestamp(right) - reviewTimestamp(left);
+  if (reviewDelta !== 0) {
+    return reviewDelta;
+  }
+
+  return left.name.localeCompare(right.name);
+}
+
+function groupCompanies(tools) {
+  const groups = new Map();
+
+  for (const tool of tools) {
+    if (!groups.has(tool.company)) {
+      groups.set(tool.company, {
+        name: tool.company,
+        summary: tool.companySummary,
+        officialUrl: tool.officialUrl,
+        tools: [],
+        categories: new Set(),
+        goals: new Set(),
+        featuredCount: 0
+      });
+    }
+
+    const group = groups.get(tool.company);
+    group.tools.push(tool);
+    group.categories.add(tool.category);
+    for (const goal of tool.goals || []) {
+      group.goals.add(goal);
+    }
+    if (tool.featured) {
+      group.featuredCount += 1;
+    }
+  }
+
+  return [...groups.values()]
+    .map(group => ({
+      ...group,
+      tools: [...group.tools].sort(sortByFeaturedThenReview),
+      categories: [...group.categories].sort((left, right) => left.localeCompare(right)),
+      goals: [...group.goals].sort((left, right) => left.localeCompare(right))
+    }))
+    .sort((left, right) => right.featuredCount - left.featuredCount || right.tools.length - left.tools.length || left.name.localeCompare(right.name));
 }
 
 function getRelatedTools(tool, tools) {
@@ -195,7 +326,7 @@ function renderToolPage(tool, tools) {
   const related = relatedTools.map(relatedTool => `
         <a class="related-item" href="./${escapeHtml(relatedTool.slug)}.html">
           <strong>${escapeHtml(relatedTool.name)}</strong>
-          <div class="related-copy">${escapeHtml(relatedTool.summary)}</div>
+          <div class="related-copy">${escapeHtml(toolPreviewDescription(relatedTool))}</div>
         </a>
       `).join('');
 
@@ -212,6 +343,12 @@ function renderToolPage(tool, tools) {
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>${escapeHtml(tool.name)} — ihelpwithai.com</title>
   <meta name="description" content="${escapeHtml(tool.summary)}">
+  ${renderMetaTags({
+    title: `${tool.name} — ihelpwithai.com`,
+    description: tool.summary,
+    pathname: `/tools/${tool.slug}.html`,
+    type: 'article'
+  })}
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body class="detail-body">
@@ -224,12 +361,7 @@ function renderToolPage(tool, tools) {
           <div class="brand-sub">AI tools that actually help</div>
         </div>
       </a>
-      <nav class="navlinks">
-        <a href="../index.html#featured">Start here</a>
-        <a href="../index.html#prompt-lab">Prompt Lab</a>
-        <a href="../index.html#companies">Companies</a>
-        <a href="../index.html#directory-filters">Directory</a>
-      </nav>
+${renderStartHereMenu('..')}
     </div>
   </header>
 
@@ -251,37 +383,37 @@ function renderToolPage(tool, tools) {
               <div class="eyebrow">Company</div>
               ${renderCompanyLink(tool.company, tool.officialUrl, 'company-link company-link-lg')}
               <h1>${escapeHtml(tool.name)}</h1>
-              <p class="summary">${escapeHtml(tool.summary)}</p>
+              <p class="summary">${escapeHtml(toolPreviewDescription(tool))}</p>
             </div>
           </div>
 
           <div class="detail-section">
-            <h2>What this tool does</h2>
+            <h2>What it’s for</h2>
             <p>${escapeHtml(tool.whatFor)}</p>
           </div>
 
           <div class="detail-section">
-            <h2>Who this is a good fit for</h2>
+            <h2>Who should use it</h2>
             <p>${escapeHtml(tool.who)}</p>
           </div>
 
           <div class="detail-section">
-            <h2>A good first use case</h2>
+            <h2>One real use case</h2>
             <p>${escapeHtml(tool.useCase)}</p>
           </div>
 
           <div class="detail-section">
-            <h2>Why you might pick it</h2>
+            <h2>Why it made the directory</h2>
             <p>${escapeHtml(tool.why)}</p>
           </div>
 
           <div class="detail-section">
-            <h2>Skip it if</h2>
+            <h2>Watch-outs</h2>
             <p>${escapeHtml(tool.watchOuts)}</p>
           </div>
 
           <div class="detail-section">
-            <h2>What to try first</h2>
+            <h2>Good first prompt</h2>
             <p class="prompt-box">${escapeHtml(tool.firstPrompt)}</p>
             <div class="card-links" style="margin-top:14px">
               <button class="small-link" type="button" data-copy-starter-prompt="${escapeHtml(tool.firstPrompt)}">Copy starter prompt</button>
@@ -289,8 +421,8 @@ function renderToolPage(tool, tools) {
           </div>
 
           <div class="detail-section">
-            <h2>Make the prompt more specific</h2>
-            <p>Start with the tool's first prompt, then make it match your real job, audience, and desired output.</p>
+            <h2>Prompt maker</h2>
+            <p>Start with the tool's best first prompt, then make it specific to your actual job, audience, and output.</p>
             <div
               class="prompt-builder"
               data-prompt-builder
@@ -336,19 +468,19 @@ function renderToolPage(tool, tools) {
           </div>
 
           <div class="detail-section">
-            <h2>About the company</h2>
+            <h2>Company snapshot</h2>
             <p>${escapeHtml(tool.companySummary)}</p>
           </div>
 
           <div class="card-links" style="margin-top:18px">
             <a class="small-link primary" href="${escapeHtml(primaryUrl)}" target="_blank" rel="${relFor(tool.affiliateUrl)}">${escapeHtml(primaryLabel)}</a>
-            <a class="small-link" href="../index.html#directory-filters">Compare more tools</a>
+            <a class="small-link" href="../directory.html">Compare more tools</a>
           </div>
           ${partnerNote}
         </article>
 
         <aside class="detail-side">
-          <h2 style="margin-top:0">Quick view</h2>
+          <h2 style="margin-top:0">Quick fit</h2>
           <div class="detail-section">
             <h3>Best for</h3>
             <div class="meta">${audiences}</div>
@@ -374,6 +506,7 @@ function renderToolPage(tool, tools) {
       </div>
     </section>
   </main>
+${renderSiteFooter('..')}
   <script src="../tool.js"></script>
 </body>
 </html>
@@ -415,6 +548,12 @@ function renderGuidePage(goal, tools) {
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>${escapeHtml(meta.title)} — ihelpwithai.com</title>
   <meta name="description" content="${escapeHtml(meta.description)}">
+  ${renderMetaTags({
+    title: `${meta.title} — ihelpwithai.com`,
+    description: meta.description,
+    pathname: `/guides/${guideFilename(goal)}`,
+    type: 'article'
+  })}
   <link rel="stylesheet" href="../styles.css">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
@@ -428,12 +567,7 @@ function renderGuidePage(goal, tools) {
           <div class="brand-sub">AI tools that actually help</div>
         </div>
       </a>
-      <nav class="navlinks">
-        <a href="../index.html#featured">Start here</a>
-        <a href="../index.html#prompt-lab">Prompt Lab</a>
-        <a href="../index.html#guides">Guides</a>
-        <a href="../index.html#directory-filters">Directory</a>
-      </nav>
+${renderStartHereMenu('..')}
     </div>
   </header>
 
@@ -463,7 +597,7 @@ function renderGuidePage(goal, tools) {
                     <span class="chip">${escapeHtml(tool.pricing)}</span>
                   </div>
                   <h3>${escapeHtml(tool.name)}</h3>
-                  <p>${escapeHtml(tool.summary)}</p>
+                  <p>${escapeHtml(toolPreviewDescription(tool))}</p>
                   <p><strong>Use it when:</strong> ${escapeHtml(tool.whatFor)}</p>
                   <p><strong>Real use case:</strong> ${escapeHtml(tool.useCase)}</p>
                   <div class="card-links" style="margin-top:14px">
@@ -482,7 +616,7 @@ function renderGuidePage(goal, tools) {
             <h3>Open the filtered directory</h3>
             <p>Jump into the live directory with the ${escapeHtml(goal)} filter already applied, then narrow the list by price, audience, company, or search term.</p>
             <div class="card-links" style="margin-top:14px">
-              <a class="small-link primary" href="../index.html?goal=${encodeURIComponent(goal)}#directory-filters">Open filtered directory</a>
+              <a class="small-link primary" href="../directory.html?goal=${encodeURIComponent(goal)}">Open filtered directory</a>
             </div>
           </div>
           <div class="detail-section">
@@ -500,234 +634,10 @@ function renderGuidePage(goal, tools) {
       </div>
     </section>
   </main>
+${renderSiteFooter()}
 </body>
 </html>
 `;
-}
-
-
-function reviewDateValue(tool) {
-  const value = Date.parse(tool.reviewedAt || '');
-  return Number.isNaN(value) ? 0 : value;
-}
-
-function addedDateValue(tool) {
-  const value = Date.parse(tool.addedAt || '');
-  return Number.isNaN(value) ? 0 : value;
-}
-
-function renderMethodologyPage(tools) {
-  const recentlyReviewed = [...tools].sort((left, right) => reviewDateValue(right) - reviewDateValue(left)).slice(0, 5);
-  const recentlyAdded = [...tools].sort((left, right) => addedDateValue(right) - addedDateValue(left)).slice(0, 5);
-
-  return `<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Editorial methodology — ihelpwithai.com</title>
-  <meta name="description" content="How ihelpwithai.com reviews AI tools, updates recommendations, and handles monetization disclosures.">
-  <link rel="stylesheet" href="./styles.css">
-</head>
-<body class="detail-body">
-  <header class="topbar">
-    <div class="container nav">
-      <a href="./index.html" class="brand">
-        <div class="logo"><span>IHAI</span></div>
-        <div>
-          <div>ihelpwithai.com</div>
-          <div class="brand-sub">AI tools that actually help</div>
-        </div>
-      </a>
-      <nav class="navlinks">
-        <a href="./index.html#featured">Start here</a>
-        <a href="./best-free-ai-tools.html">Best free tools</a>
-        <a href="./index.html#directory-filters">Directory</a>
-        <a href="./affiliate-disclosure.html">Disclosure</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container">
-    <div class="breadcrumb"><a class="backlink" href="./index.html">← Back to directory</a></div>
-
-    <section class="detail-hero methodology-shell">
-      <div class="detail-grid">
-        <article class="detail-main">
-          <div class="eyebrow">Editorial trust</div>
-          <h1>How ihelpwithai.com reviews tools</h1>
-          <p class="summary">The goal is not to list everything. The goal is to help someone choose faster with enough context to avoid bad-fit tools.</p>
-
-          <div class="detail-section">
-            <h2>What makes a tool worth including</h2>
-            <ul class="mini-list methodology-list">
-              <li>It solves a recurring job in a way a real buyer can explain quickly.</li>
-              <li>It earns a clear recommendation for a specific audience, not everybody.</li>
-              <li>It has visible tradeoffs, setup limits, or watch-outs worth calling out.</li>
-              <li>It belongs in a shortlist someone could realistically compare this week.</li>
-            </ul>
-          </div>
-
-          <div class="detail-section">
-            <h2>What goes into each review</h2>
-            <div class="method-grid">
-              <article class="trust-card"><h3>Fit first</h3><p>Every page explains what the tool is for, who should use it, and one real use case. That keeps the recommendation anchored to work, not hype.</p></article>
-              <article class="trust-card"><h3>Tradeoffs stay visible</h3><p>Every tool includes watch-outs so the page does not read like a sales page. The right answer depends on setup tolerance, budget, and desired output quality.</p></article>
-              <article class="trust-card"><h3>Plain-English summaries</h3><p>Reviews are written to help non-experts decide quickly. If a tool needs too much explanation to justify itself, it is usually not a great first recommendation.</p></article>
-            </div>
-          </div>
-
-          <div class="detail-section">
-            <h2>How updates work</h2>
-            <p>The directory tracks both <strong>review recency</strong> and <strong>new additions</strong>. Homepage freshness sections surface those updates so repeat visitors can see momentum instead of wondering whether the site is stale.</p>
-            <p>Current coverage: <strong>${tools.length} tools</strong>, <strong>${uniqueStrings(tools.flatMap(tool => tool.goals || [])).length} guide paths</strong>, and <strong>${comparisons.length} comparison pages</strong>.</p>
-          </div>
-
-          <div class="detail-section">
-            <h2>How monetization is handled</h2>
-            <p>Some pages may use partner links. That never changes the basic rule: if a tool is a bad fit, the review should say so. Partner links are disclosed and are not meant to replace fit-based recommendations.</p>
-            <div class="card-links" style="margin-top:14px">
-              <a class="small-link" href="./affiliate-disclosure.html">Read the affiliate disclosure</a>
-            </div>
-          </div>
-        </article>
-
-        <aside class="detail-side">
-          <h2 style="margin-top:0">Fresh review signals</h2>
-          <div class="detail-section">
-            <h3>Recently reviewed</h3>
-            <div class="related-list">
-              ${recentlyReviewed.map(tool => `<a class="related-item" href="./tools/${escapeHtml(tool.slug)}.html"><strong>${escapeHtml(tool.name)}</strong><div class="related-copy">Reviewed ${escapeHtml(tool.reviewedAt)}</div></a>`).join('')}
-            </div>
-          </div>
-          <div class="detail-section">
-            <h3>Recently added</h3>
-            <div class="related-list">
-              ${recentlyAdded.map(tool => `<a class="related-item" href="./tools/${escapeHtml(tool.slug)}.html"><strong>${escapeHtml(tool.name)}</strong><div class="related-copy">Added ${escapeHtml(tool.addedAt)}</div></a>`).join('')}
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
-  </main>
-</body>
-</html>`;
-}
-
-function renderBestFreeToolsPage(tools) {
-  const freeTools = [...tools]
-    .filter(tool => tool.pricing === 'Free to try')
-    .sort((left, right) => Number(right.featured) - Number(left.featured) || reviewDateValue(right) - reviewDateValue(left) || left.name.localeCompare(right.name));
-
-  const picks = freeTools.slice(0, 12);
-  const schema = {
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    name: 'Best Free AI Tools',
-    url: `${SITE_URL}/best-free-ai-tools.html`,
-    mainEntity: {
-      '@type': 'ItemList',
-      itemListElement: picks.map((tool, index) => ({
-        '@type': 'ListItem',
-        position: index + 1,
-        name: tool.name,
-        url: `${SITE_URL}/tools/${tool.slug}.html`
-      }))
-    }
-  };
-
-  return `<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Best Free AI Tools — ihelpwithai.com</title>
-  <meta name="description" content="A practical shortlist of free-to-try AI tools worth testing first across writing, research, design, meetings, video, and automation.">
-  <link rel="stylesheet" href="./styles.css">
-  <script type="application/ld+json">${JSON.stringify(schema)}</script>
-</head>
-<body class="detail-body">
-  <header class="topbar">
-    <div class="container nav">
-      <a href="./index.html" class="brand">
-        <div class="logo"><span>IHAI</span></div>
-        <div>
-          <div>ihelpwithai.com</div>
-          <div class="brand-sub">AI tools that actually help</div>
-        </div>
-      </a>
-      <nav class="navlinks">
-        <a href="./index.html#featured">Start here</a>
-        <a href="./editorial-methodology.html">Methodology</a>
-        <a href="./index.html#directory-filters">Directory</a>
-        <a href="./affiliate-disclosure.html">Disclosure</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container">
-    <div class="breadcrumb"><a class="backlink" href="./index.html">← Back to directory</a></div>
-
-    <section class="detail-hero">
-      <div class="detail-grid">
-        <article class="detail-main">
-          <div class="eyebrow">Entry path</div>
-          <h1>Best free AI tools to try first</h1>
-          <p class="summary">If you want the smartest zero-to-low-risk starting point, begin with tools that offer real free access and strong enough utility to prove the value quickly.</p>
-
-          <div class="detail-section">
-            <h2>What “free” means here</h2>
-            <p>This page focuses on tools labeled <strong>Free to try</strong>. Some have generous free plans. Others are better thought of as strong trial paths. Either way, they are the best first stop if you want proof before budget commitment.</p>
-          </div>
-
-          <div class="detail-section">
-            <h2>Best free AI tools across common jobs</h2>
-            <div class="guide-stack">
-              ${picks.map(tool => `
-                <article class="guide-tool">
-                  <div class="tagrow">
-                    <span class="tag">${escapeHtml(tool.category)}</span>
-                    ${renderCompanyChip(tool.company, tool.officialUrl)}
-                    <span class="chip">${escapeHtml(tool.pricing)}</span>
-                    <span class="chip">Reviewed ${escapeHtml(tool.reviewedAt)}</span>
-                  </div>
-                  <h3>${escapeHtml(tool.name)}</h3>
-                  <p>${escapeHtml(tool.summary)}</p>
-                  <p><strong>Use it when:</strong> ${escapeHtml(tool.whatFor)}</p>
-                  <p><strong>Real use case:</strong> ${escapeHtml(tool.useCase)}</p>
-                  <p><strong>Watch-outs:</strong> ${escapeHtml(tool.watchOuts)}</p>
-                  <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/${escapeHtml(tool.slug)}.html">Read the full review</a>
-                    <a class="small-link" href="${escapeHtml(getPrimaryUrl(tool))}" target="_blank" rel="${relFor(tool.affiliateUrl)}">${escapeHtml(getPrimaryLabel(tool))}</a>
-                  </div>
-                </article>
-              `).join('')}
-            </div>
-          </div>
-        </article>
-
-        <aside class="detail-side">
-          <h2 style="margin-top:0">Free-first shortcuts</h2>
-          <div class="detail-section">
-            <h3>Browse only free-to-try tools</h3>
-            <p>Jump into the homepage directory with the free filter already applied.</p>
-            <div class="card-links" style="margin-top:14px">
-              <a class="small-link primary" href="./index.html?price=Free%20to%20try#directory-filters">Open free-only directory</a>
-            </div>
-          </div>
-          <div class="detail-section">
-            <h3>Trust signal</h3>
-            <p>The site shows both recent reviews and recent additions so the shortlist feels maintained, not abandoned.</p>
-            <div class="card-links" style="margin-top:14px">
-              <a class="small-link" href="./editorial-methodology.html">Read the methodology</a>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
-  </main>
-</body>
-</html>`;
 }
 
 function renderComparisonPage(comparison, tools) {
@@ -758,6 +668,12 @@ function renderComparisonPage(comparison, tools) {
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>${escapeHtml(comparison.title)} — ihelpwithai.com</title>
   <meta name="description" content="${escapeHtml(comparison.summary)}">
+  ${renderMetaTags({
+    title: `${comparison.title} — ihelpwithai.com`,
+    description: comparison.summary,
+    pathname: `/comparisons/${comparison.slug}.html`,
+    type: 'article'
+  })}
   <link rel="stylesheet" href="../styles.css">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
@@ -771,12 +687,7 @@ function renderComparisonPage(comparison, tools) {
           <div class="brand-sub">AI tools that actually help</div>
         </div>
       </a>
-      <nav class="navlinks">
-        <a href="../index.html#featured">Start here</a>
-        <a href="../index.html#prompt-lab">Prompt Lab</a>
-        <a href="../index.html#compare">Compare</a>
-        <a href="../index.html#directory-filters">Directory</a>
-      </nav>
+${renderStartHereMenu('..')}
     </div>
   </header>
 
@@ -788,7 +699,7 @@ function renderComparisonPage(comparison, tools) {
         <article class="detail-main">
           <div class="eyebrow">Comparison</div>
           <h1>${escapeHtml(comparison.title)}</h1>
-          <p class="summary">${escapeHtml(comparison.summary)}</p>
+          <p class="summary">${escapeHtml(comparisonPreviewDescription(comparison))}</p>
 
           <div class="detail-section">
             <h2>The short answer</h2>
@@ -806,7 +717,7 @@ function renderComparisonPage(comparison, tools) {
                     <span class="chip">${escapeHtml(tool.pricing)}</span>
                   </div>
                   <h3>${escapeHtml(tool.name)}</h3>
-                  <p>${escapeHtml(tool.summary)}</p>
+                  <p>${escapeHtml(toolPreviewDescription(tool))}</p>
                   <p><strong>Best for:</strong> ${escapeHtml(tool.who)}</p>
                   <p><strong>Real use case:</strong> ${escapeHtml(tool.useCase)}</p>
                   <p><strong>Watch-outs:</strong> ${escapeHtml(tool.watchOuts)}</p>
@@ -831,7 +742,7 @@ function renderComparisonPage(comparison, tools) {
           <div class="detail-section">
             <h3>Keep exploring</h3>
             <div class="card-links" style="margin-top:14px">
-              <a class="small-link primary" href="../index.html#directory-filters">Open the full directory</a>
+              <a class="small-link primary" href="../directory.html">Open the full directory</a>
               <a class="small-link" href="../affiliate-disclosure.html">Read the disclosure</a>
             </div>
           </div>
@@ -839,6 +750,484 @@ function renderComparisonPage(comparison, tools) {
       </div>
     </section>
   </main>
+${renderSiteFooter()}
+</body>
+</html>
+`;
+}
+
+function renderBestFreePage(tools) {
+  const availableFreeTools = tools
+    .filter(tool => tool.pricing === 'Free to try')
+    .sort(sortByFeaturedThenReview);
+  const freeTools = availableFreeTools.slice(0, 8);
+
+  const coveredGoals = uniqueStrings(freeTools.flatMap(tool => tool.goals || [])).length;
+
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Best free AI tools — ihelpwithai.com</title>
+  <meta name="description" content="Start with the best free-to-try AI tools across common jobs, without guessing which free option is actually worth your time.">
+  ${renderMetaTags({
+    title: 'Best free AI tools — ihelpwithai.com',
+    description: 'Start with the best free-to-try AI tools across common jobs, without guessing which free option is actually worth your time.',
+    pathname: '/best-free-ai-tools.html',
+    type: 'article'
+  })}
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body class="detail-body">
+  <header class="topbar">
+    <div class="container nav">
+      <a href="./index.html" class="brand">
+        <div class="logo"><span>IHAI</span></div>
+        <div>
+          <div>ihelpwithai.com</div>
+          <div class="brand-sub">AI tools that actually help</div>
+        </div>
+      </a>
+${renderStartHereMenu('.')}
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb"><a class="backlink" href="./index.html">← Back to directory</a></div>
+
+    <section class="detail-hero">
+      <div class="detail-grid">
+        <article class="detail-main">
+          <div class="eyebrow">Entry path</div>
+          <h1>Best free AI tools to try first</h1>
+          <p class="summary">If you want the smartest low-risk starting point, begin with tools that offer real free access and enough utility to prove the value quickly.</p>
+
+          <div class="detail-section">
+            <h2>What “free” means here</h2>
+            <p>This page focuses on tools labeled <strong>Free to try</strong>. Some are generous free plans. Others are better thought of as strong trial paths. Either way, they are the best place to start if you want proof before budget commitment.</p>
+            <p>This page highlights <strong>${freeTools.length}</strong> of the strongest free-entry options from <strong>${availableFreeTools.length}</strong> free-to-try tools in the directory, covering <strong>${coveredGoals}</strong> common jobs.</p>
+          </div>
+
+          <div class="detail-section">
+            <h2>Selected free AI tools worth trying first</h2>
+            <div class="guide-stack">
+              ${freeTools.map(tool => `
+                <article class="guide-tool">
+                  <div class="tagrow">
+                    <span class="tag">${escapeHtml(tool.category)}</span>
+                    ${renderCompanyChip(tool.company, tool.officialUrl)}
+                    <span class="chip">${escapeHtml(tool.pricing)}</span>
+                    <span class="chip">Reviewed ${escapeHtml(tool.reviewedAt)}</span>
+                  </div>
+                  <h3>${escapeHtml(tool.name)}</h3>
+                  <p>${escapeHtml(toolPreviewDescription(tool))}</p>
+                  <p><strong>Use it when:</strong> ${escapeHtml(tool.whatFor)}</p>
+                  <p><strong>Real use case:</strong> ${escapeHtml(tool.useCase)}</p>
+                  <p><strong>Watch-outs:</strong> ${escapeHtml(tool.watchOuts)}</p>
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./tools/${escapeHtml(tool.slug)}.html">Read the full review</a>
+                    <a class="small-link" href="${escapeHtml(getPrimaryUrl(tool))}" target="_blank" rel="${relFor(tool.affiliateUrl)}">${escapeHtml(getPrimaryLabel(tool))}</a>
+                  </div>
+                </article>
+              `).join('')}
+            </div>
+          </div>
+        </article>
+
+        <aside class="detail-side">
+          <h2 style="margin-top:0">How to use this page</h2>
+          <div class="detail-section">
+            <h3>Start cheap, then narrow</h3>
+            <p>Use this as a lower-risk entry point, then switch to the full directory once you know whether your real priority is writing, meetings, research, video, or something else.</p>
+          </div>
+          <div class="detail-section">
+            <h3>Open the free-only directory</h3>
+            <p>Jump into the full directory with the price filter already set, then narrow by job, audience, or company.</p>
+            <div class="card-links" style="margin-top:14px">
+              <a class="small-link primary" href="./directory.html?price=Free%20to%20try">Open free-only directory</a>
+            </div>
+          </div>
+          <div class="detail-section">
+            <h3>See how picks are made</h3>
+            <p>If you want to know why these tools made the shortlist, review the editorial rules and trust model.</p>
+            <div class="card-links" style="margin-top:14px">
+              <a class="small-link" href="./editorial-methodology.html">Read the methodology</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+${renderSiteFooter()}
+</body>
+</html>
+`;
+}
+
+function renderEditorialMethodologyPage(tools, comparisons) {
+  const recentlyReviewed = [...tools]
+    .sort((left, right) => reviewTimestamp(right) - reviewTimestamp(left) || sortByFeaturedThenReview(left, right))
+    .slice(0, 5);
+
+  const goalCount = uniqueStrings(tools.flatMap(tool => tool.goals || [])).length;
+
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Editorial methodology — ihelpwithai.com</title>
+  <meta name="description" content="How ihelpwithai.com decides which AI tools make the shortlist, how reviews stay useful, and how trust is handled.">
+  ${renderMetaTags({
+    title: 'Editorial methodology — ihelpwithai.com',
+    description: 'How ihelpwithai.com decides which AI tools make the shortlist, how reviews stay useful, and how trust is handled.',
+    pathname: '/editorial-methodology.html',
+    type: 'article'
+  })}
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body class="detail-body">
+  <header class="topbar">
+    <div class="container nav">
+      <a href="./index.html" class="brand">
+        <div class="logo"><span>IHAI</span></div>
+        <div>
+          <div>ihelpwithai.com</div>
+          <div class="brand-sub">AI tools that actually help</div>
+        </div>
+      </a>
+${renderStartHereMenu('.')}
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb"><a class="backlink" href="./index.html">← Back to directory</a></div>
+
+    <section class="detail-hero">
+      <div class="detail-grid">
+        <article class="detail-main">
+          <div class="eyebrow">Editorial trust</div>
+          <h1>How ihelpwithai.com reviews tools</h1>
+          <p class="summary">The goal is not to list everything. The goal is to help someone choose faster with enough context to avoid bad-fit tools.</p>
+
+          <div class="detail-section">
+            <h2>What makes a tool worth including</h2>
+            <ul class="mini-list">
+              <li>It solves a recurring job in a way a real buyer can explain quickly.</li>
+              <li>It earns a clear recommendation for a specific audience, not everybody.</li>
+              <li>It has visible tradeoffs, setup limits, or watch-outs worth calling out.</li>
+              <li>It belongs in a shortlist someone could realistically compare this week.</li>
+            </ul>
+          </div>
+
+          <div class="detail-section">
+            <h2>What goes into each review</h2>
+            <div class="trust-grid">
+              <article class="trust-card">
+                <h3>Fit first</h3>
+                <p>Every page explains what the tool is for, who should use it, and one real use case. That keeps the recommendation anchored to work, not hype.</p>
+              </article>
+              <article class="trust-card">
+                <h3>Tradeoffs stay visible</h3>
+                <p>Every tool includes watch-outs so the page does not read like a sales page. The right answer depends on setup tolerance, budget, and desired output quality.</p>
+              </article>
+              <article class="trust-card">
+                <h3>Plain-English summaries</h3>
+                <p>Reviews are written to help non-experts decide quickly. If a tool needs too much explanation to justify itself, it is usually not a great first recommendation.</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <h2>How updates work</h2>
+            <p>The directory tracks review recency directly in the tool data. That makes it easier to show which pages were reviewed most recently and keep the shortlist from feeling stale.</p>
+            <p>Current coverage: <strong>${tools.length} tools</strong>, <strong>${goalCount} guide paths</strong>, and <strong>${comparisons.length} comparison pages</strong>.</p>
+          </div>
+
+          <div class="detail-section">
+            <h2>How monetization is handled</h2>
+            <p>Some pages may use partner links. That never changes the basic rule: if a tool is a bad fit, the review should say so. Partner links are disclosed and are not meant to replace fit-based recommendations.</p>
+            <div class="card-links" style="margin-top:14px">
+              <a class="small-link" href="./affiliate-disclosure.html">Read the affiliate disclosure</a>
+            </div>
+          </div>
+        </article>
+
+        <aside class="detail-side">
+          <h2 style="margin-top:0">Fresh review signals</h2>
+          <div class="detail-section">
+            <h3>Recently reviewed</h3>
+            <div class="related-list">
+              ${recentlyReviewed.map(tool => `
+                <a class="related-item" href="./tools/${escapeHtml(tool.slug)}.html">
+                  <strong>${escapeHtml(tool.name)}</strong>
+                  <div class="related-copy">Reviewed ${escapeHtml(tool.reviewedAt)}</div>
+                </a>
+              `).join('')}
+            </div>
+          </div>
+          <div class="detail-section">
+            <h3>Low-risk entry point</h3>
+            <p>If someone is new to AI buying, start them on the free-to-try page before asking them to compare the whole market.</p>
+            <div class="card-links" style="margin-top:14px">
+              <a class="small-link primary" href="./best-free-ai-tools.html">See best free tools</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+${renderSiteFooter()}
+</body>
+</html>
+`;
+}
+
+function renderCompaniesPage(tools) {
+  const companies = groupCompanies(tools);
+  const companyJumpList = [...companies].sort((left, right) => left.name.localeCompare(right.name));
+  const goalCounts = new Map();
+
+  for (const company of companies) {
+    for (const goal of company.goals || []) {
+      goalCounts.set(goal, (goalCounts.get(goal) || 0) + 1);
+    }
+  }
+
+  const popularGoals = [...goalCounts.entries()]
+    .sort((left, right) => right[1] - left[1] || left[0].localeCompare(right[0]))
+    .slice(0, 8)
+    .map(([goal]) => goal);
+
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI companies and their tools — ihelpwithai.com</title>
+  <meta name="description" content="Browse AI companies in one place, see which tools each company is known for here, and jump straight to the best first tool or compare the full lineup.">
+  ${renderMetaTags({
+    title: 'AI companies and their tools — ihelpwithai.com',
+    description: 'Browse AI companies in one place, see which tools each company is known for here, and jump straight to the best first tool or compare the full lineup.',
+    pathname: '/companies.html',
+    type: 'article'
+  })}
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body class="detail-body">
+  <header class="topbar">
+    <div class="container nav">
+      <a href="./index.html" class="brand">
+        <div class="logo"><span>IHAI</span></div>
+        <div>
+          <div>ihelpwithai.com</div>
+          <div class="brand-sub">AI tools that actually help</div>
+        </div>
+      </a>
+      <nav class="navlinks">
+        <a href="./index.html#matcher">Start here</a>
+        <a href="./index.html#directory-filters">Directory</a>
+        <a href="./best-free-ai-tools.html">Best free tools</a>
+        <a href="./editorial-methodology.html">Methodology</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb"><a class="backlink" href="./index.html">← Back to directory</a></div>
+
+    <section class="detail-hero">
+      <div class="detail-grid">
+        <article class="detail-main">
+          <div class="eyebrow">Company path</div>
+          <h1>Browse AI companies first</h1>
+          <p class="summary">Use this page when you already trust a brand, want to compare one company's AI lineup, or prefer starting with the vendor before narrowing to the tool.</p>
+
+          <div class="detail-section">
+            <h2>When this path is useful</h2>
+            <p>If you already know names like OpenAI, Anthropic, Canva, Adobe, or Zapier, this page gives you the shortest route from company to tool review without making you sift through the entire directory first.</p>
+            <p>Current coverage: <strong>${companies.length} companies</strong> represented in the directory.</p>
+          </div>
+
+          <div class="detail-section">
+            <h2>Quick ways to narrow this page</h2>
+            <p>Jump straight to a company if you already trust the vendor, or bounce back to the directory with a job filter if you realize the company-first path is still too broad.</p>
+            <div class="jump-stack">
+              <div>
+                <div class="jump-label">Jump to a company</div>
+                <div class="company-jump-grid">
+                  ${companyJumpList.map(company => `<a class="chip chip-link" href="#company-${slugify(company.name)}">${escapeHtml(company.name)}</a>`).join('')}
+                </div>
+              </div>
+              <div>
+                <div class="jump-label">Or start from a job instead</div>
+                <div class="company-jump-grid">
+                  ${popularGoals.map(goal => `<a class="chip chip-link" href="./index.html?goal=${encodeURIComponent(goal)}#directory-filters">${escapeHtml(goal)}</a>`).join('')}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <h2>AI companies covered</h2>
+            <div class="guide-stack">
+              ${companies.map(company => `
+                <article class="guide-tool company-anchor" id="company-${slugify(company.name)}">
+                  <div class="tagrow">
+                    <span class="tag">${escapeHtml(company.categories[0] || 'AI company')}</span>
+                    ${renderCompanyChip(company.name, company.officialUrl)}
+                    <span class="chip">${company.tools.length} tool${company.tools.length === 1 ? '' : 's'}</span>
+                    ${company.featuredCount ? `<span class="chip">${company.featuredCount} first-pick${company.featuredCount === 1 ? '' : 's'}</span>` : ''}
+                  </div>
+                  <h3>${escapeHtml(company.name)}</h3>
+                  <p>${escapeHtml(companyPreviewDescription(company))}</p>
+                  <p><strong>Best known here for:</strong> ${escapeHtml(company.categories.slice(0, 3).join(', ') || 'general AI tooling')}</p>
+                  ${company.tools[0] ? `<p><strong>Best place to start:</strong> <a href="./tools/${escapeHtml(company.tools[0].slug)}.html">${escapeHtml(company.tools[0].name)}</a> — ${escapeHtml(toolPreviewDescription(company.tools[0]))}</p>` : ''}
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      ${(company.goals || []).length ? company.goals.slice(0, 4).map(goal => `<a class="chip chip-link" href="./index.html?company=${encodeURIComponent(company.name)}&goal=${encodeURIComponent(goal)}#directory-filters">${escapeHtml(goal)}</a>`).join('') : '<span class="micro-note">General AI work</span>'}
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    ${company.tools.slice(0, 4).map(tool => `
+                      <a class="related-item" href="./tools/${escapeHtml(tool.slug)}.html">
+                        <strong>${escapeHtml(tool.name)}</strong>
+                        <div class="related-copy">${escapeHtml(toolPreviewDescription(tool))}</div>
+                      </a>
+                    `).join('')}
+                  </div>
+                  ${company.tools.length > 4 ? `<div class="micro-note" style="margin-top:12px">+${company.tools.length - 4} more tool${company.tools.length - 4 === 1 ? '' : 's'} from ${escapeHtml(company.name)} can still be filtered in the full directory.</div>` : ''}
+                  <div class="card-links" style="margin-top:14px">
+                    ${company.tools[0] ? `<a class="small-link primary" href="./tools/${escapeHtml(company.tools[0].slug)}.html">Start with ${escapeHtml(company.tools[0].name)}</a>` : ''}
+                    <a class="small-link" href="./directory.html?company=${encodeURIComponent(company.name)}">Compare ${escapeHtml(company.name)} tools</a>
+                  </div>
+                </article>
+              `).join('')}
+            </div>
+          </div>
+        </article>
+
+        <aside class="detail-side">
+          <h2 style="margin-top:0">How to use this page</h2>
+          <div class="detail-section">
+            <h3>Start by company when brand trust matters</h3>
+            <p>If procurement, brand familiarity, or an existing subscription matters more than the exact workflow, this path is usually faster than starting from the whole directory.</p>
+          </div>
+          <div class="detail-section">
+            <h3>Need a better first pick?</h3>
+            <p>If you do not already have a company in mind, the shortlist flow is still the best starting point.</p>
+            <div class="card-links" style="margin-top:14px">
+              <a class="small-link primary" href="./index.html#matcher">Go to the shortlist</a>
+            </div>
+          </div>
+          <div class="detail-section">
+            <h3>Want the cheapest low-risk start?</h3>
+            <p>Use the free-to-try page if budget is the first screen instead of brand trust.</p>
+            <div class="card-links" style="margin-top:14px">
+              <a class="small-link" href="./best-free-ai-tools.html">See best free tools</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+${renderSiteFooter()}
+</body>
+</html>
+`;
+}
+
+function renderReviewsPage(tools) {
+  const reviewedTools = [...tools].sort(sortByFeaturedThenReview);
+  const companies = groupCompanies(tools);
+
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI reviews — ihelpwithai.com</title>
+  <meta name="description" content="Browse product and company review coverage from ihelpwithai.com and jump straight to the reviews that matter.">
+  ${renderMetaTags({
+    title: 'AI reviews — ihelpwithai.com',
+    description: 'Browse product and company review coverage from ihelpwithai.com and jump straight to the reviews that matter.',
+    pathname: '/reviews.html',
+    type: 'article'
+  })}
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body class="detail-body">
+  <header class="topbar">
+    <div class="container nav">
+      <a href="./index.html" class="brand">
+        <div class="logo"><span>IHAI</span></div>
+        <div>
+          <div>ihelpwithai.com</div>
+          <div class="brand-sub">AI tools that actually help</div>
+        </div>
+      </a>
+${renderStartHereMenu('.')}
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb"><a class="backlink" href="./index.html">← Back to directory</a></div>
+
+    <section class="detail-hero">
+      <div class="detail-grid">
+        <article class="detail-main">
+          <div class="eyebrow">Review coverage</div>
+          <h1>Reviews for AI tools and companies</h1>
+          <p class="summary">Use this page when you want to browse the actual reviews, not just filter the directory. It is the quickest way to jump into product writeups and company coverage.</p>
+
+          <div class="detail-section">
+            <h2>Product reviews</h2>
+            <div class="guide-stack">
+              ${reviewedTools.map(tool => `
+                <article class="guide-tool">
+                  <div class="tagrow">
+                    <span class="tag">${escapeHtml(tool.category)}</span>
+                    ${renderCompanyChip(tool.company, tool.officialUrl)}
+                    <span class="chip">Reviewed ${escapeHtml(tool.reviewedAt)}</span>
+                  </div>
+                  <h3>${escapeHtml(tool.name)}</h3>
+                  <p>${escapeHtml(toolPreviewDescription(tool))}</p>
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./tools/${escapeHtml(tool.slug)}.html">Read product review</a>
+                    <a class="small-link" href="./directory.html?company=${encodeURIComponent(tool.company)}">Open ${escapeHtml(tool.company)} in directory</a>
+                  </div>
+                </article>
+              `).join('')}
+            </div>
+          </div>
+        </article>
+
+        <aside class="detail-side">
+          <h2 style="margin-top:0">Company coverage</h2>
+          <div class="detail-section">
+            <h3>Company review snapshots</h3>
+            <div class="related-list">
+              ${companies.slice(0, 12).map(company => `
+                <a class="related-item" href="./directory.html?company=${encodeURIComponent(company.name)}">
+                  <strong>${escapeHtml(company.name)}</strong>
+                  <div class="related-copy">${escapeHtml(companyPreviewDescription(company))}</div>
+                </a>
+              `).join('')}
+            </div>
+          </div>
+          <div class="detail-section">
+            <h3>Need all company coverage?</h3>
+            <div class="card-links" style="margin-top:14px">
+              <a class="small-link primary" href="./companies.html">Open companies page</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+${renderSiteFooter()}
 </body>
 </html>
 `;
@@ -848,7 +1237,6 @@ function buildCsv(tools) {
   const headers = [
     'name',
     'slug',
-    'addedAt',
     'company',
     'companySummary',
     'category',
@@ -881,8 +1269,13 @@ function buildSitemap(tools, comparisons) {
   const pages = [
     '',
     '/affiliate-disclosure.html',
-    '/editorial-methodology.html',
+    '/shortlist.html',
+    '/directory.html',
+    '/get-help.html',
+    '/companies.html',
+    '/reviews.html',
     '/best-free-ai-tools.html',
+    '/editorial-methodology.html',
     ...comparisons.map(comparison => `/comparisons/${comparison.slug}.html`),
     ...goals.map(goal => `/guides/${guideFilename(goal)}`),
     ...tools.map(tool => `/tools/${tool.slug}.html`)
@@ -924,6 +1317,10 @@ async function ensureValidTools() {
       throw new Error(`Duplicate slug found: ${tool.slug}`);
     }
     slugs.add(tool.slug);
+
+    if (Number.isNaN(Date.parse(tool.reviewedAt || ''))) {
+      throw new Error(`Invalid reviewedAt value for ${tool.slug}: ${tool.reviewedAt}`);
+    }
   }
 
   return tools.sort((left, right) => {
@@ -965,6 +1362,10 @@ await fs.writeFile(
   `window.IHWAI = ${JSON.stringify({ generatedAt, tools, comparisons }, null, 2)};\n`
 );
 
+await fs.writeFile(path.join(rootDir, 'companies.html'), renderCompaniesPage(tools));
+await fs.writeFile(path.join(rootDir, 'reviews.html'), renderReviewsPage(tools));
+await fs.writeFile(path.join(rootDir, 'best-free-ai-tools.html'), renderBestFreePage(tools));
+await fs.writeFile(path.join(rootDir, 'editorial-methodology.html'), renderEditorialMethodologyPage(tools, comparisons));
 await fs.writeFile(path.join(rootDir, 'tools-starter.csv'), buildCsv(tools));
 await fs.writeFile(path.join(rootDir, 'sitemap.xml'), buildSitemap(tools, comparisons));
 
@@ -1004,8 +1405,13 @@ for (const filename of [
   'CNAME',
   '.nojekyll',
   'affiliate-disclosure.html',
-  'editorial-methodology.html',
+  'shortlist.html',
+  'directory.html',
+  'get-help.html',
+  'companies.html',
+  'reviews.html',
   'best-free-ai-tools.html',
+  'editorial-methodology.html',
   'thanks.html',
   'README.md',
   'robots.txt',
@@ -1029,13 +1435,52 @@ for (const comparison of comparisons) {
   await fs.copyFile(path.join(comparisonsDir, `${comparison.slug}.html`), path.join(publicComparisonsDir, `${comparison.slug}.html`));
 }
 
-await fs.writeFile(methodologyPagePath, renderMethodologyPage(tools));
-await fs.writeFile(freeToolsPagePath, renderBestFreeToolsPage(tools));
-
 await fs.mkdir(path.join(publicDir, 'affiliate-disclosure'), { recursive: true });
 await fs.writeFile(
   path.join(publicDir, 'affiliate-disclosure', 'index.html'),
   renderRedirectPage('../affiliate-disclosure.html', 'Continue to the disclosure page')
+);
+
+await fs.mkdir(path.join(publicDir, 'companies'), { recursive: true });
+await fs.writeFile(
+  path.join(publicDir, 'companies', 'index.html'),
+  renderRedirectPage('../companies.html', 'Continue to the companies page')
+);
+
+await fs.mkdir(path.join(publicDir, 'shortlist'), { recursive: true });
+await fs.writeFile(
+  path.join(publicDir, 'shortlist', 'index.html'),
+  renderRedirectPage('../shortlist.html', 'Continue to the shortlist page')
+);
+
+await fs.mkdir(path.join(publicDir, 'directory'), { recursive: true });
+await fs.writeFile(
+  path.join(publicDir, 'directory', 'index.html'),
+  renderRedirectPage('../directory.html', 'Continue to the directory page')
+);
+
+await fs.mkdir(path.join(publicDir, 'get-help'), { recursive: true });
+await fs.writeFile(
+  path.join(publicDir, 'get-help', 'index.html'),
+  renderRedirectPage('../get-help.html', 'Continue to the get help page')
+);
+
+await fs.mkdir(path.join(publicDir, 'reviews'), { recursive: true });
+await fs.writeFile(
+  path.join(publicDir, 'reviews', 'index.html'),
+  renderRedirectPage('../reviews.html', 'Continue to the reviews page')
+);
+
+await fs.mkdir(path.join(publicDir, 'best-free-ai-tools'), { recursive: true });
+await fs.writeFile(
+  path.join(publicDir, 'best-free-ai-tools', 'index.html'),
+  renderRedirectPage('../best-free-ai-tools.html', 'Continue to the best free tools page')
+);
+
+await fs.mkdir(path.join(publicDir, 'editorial-methodology'), { recursive: true });
+await fs.writeFile(
+  path.join(publicDir, 'editorial-methodology', 'index.html'),
+  renderRedirectPage('../editorial-methodology.html', 'Continue to the editorial methodology page')
 );
 
 await fs.mkdir(path.join(publicDir, 'thanks'), { recursive: true });

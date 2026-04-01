@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI tool directory — ihelpwithai.com</title>
+  <meta name="description" content="Browse the full AI tool directory and narrow it by goal, category, audience, price, and company.">
+  <link rel="canonical" href="https://ihelpwithai.com/directory.html">
+  <meta property="og:site_name" content="ihelpwithai.com">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AI tool directory — ihelpwithai.com">
+  <meta property="og:description" content="Browse the full AI tool directory and narrow it by goal, category, audience, price, and company.">
+  <meta property="og:url" content="https://ihelpwithai.com/directory.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI tool directory — ihelpwithai.com">
+  <meta name="twitter:description" content="Browse the full AI tool directory and narrow it by goal, category, audience, price, and company.">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="./index.html" class="brand">
+        <div class="logo"><span>IHAI</span></div>
+        <div>
+          <div>ihelpwithai.com</div>
+          <div class="brand-sub">AI tools that actually help</div>
+        </div>
+      </a>
+      <nav class="navlinks">
+        <details class="nav-dropdown">
+          <summary class="nav-summary">Start here</summary>
+          <div class="nav-dropdown-menu">
+            <a href="./index.html">Home</a>
+            <a href="./shortlist.html">Shortlist</a>
+            <a href="./directory.html">Directory</a>
+            <a href="./companies.html">Companies</a>
+            <a href="./reviews.html">Reviews</a>
+            <a href="./get-help.html">Get help</a>
+            <a href="./best-free-ai-tools.html">Best free tools</a>
+            <a href="./editorial-methodology.html">Methodology</a>
+            <a href="./affiliate-disclosure.html">Disclosure</a>
+          </div>
+        </details>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero-simple">
+      <div class="container">
+        <div class="kicker">Full directory</div>
+        <h1>Browse the full directory and narrow it fast.</h1>
+        <p class="hero-copy">Use search and filters to move from a big list to a more useful shortlist.</p>
+        <div class="search-panel" id="directory">
+          <div class="search-grid">
+            <input id="search" type="search" placeholder="Describe the job to be done — e.g. meeting notes, research with sources, sales outreach, podcast editing">
+            <a class="button primary" href="./shortlist.html">Need guidance first?</a>
+          </div>
+          <div class="helper">Use the filters below to narrow by job, category, audience, price, and company.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tight">
+      <div class="container filter-shell">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Curated directory</div>
+            <h2>Find your fit faster</h2>
+            <p>Use the filters below to narrow the shortlist by job, category, audience, price, and company.</p>
+          </div>
+          <div class="toolbar">
+            <div class="count" id="count"></div>
+            <button class="clear-button" id="clear-filters" type="button">Clear filters</button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">Goal</div>
+          <div class="pills" id="goal-pills"></div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">Category</div>
+          <div class="pills" id="category-pills"></div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">Price</div>
+          <div class="pills" id="price-pills"></div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">Audience</div>
+          <div class="pills" id="audience-pills"></div>
+        </div>
+
+        <div class="active-filters" id="active-filters"></div>
+      </div>
+    </section>
+
+    <section class="section" id="cards">
+      <div class="container">
+        <div class="directory-topbar">
+          <div class="directory-topnote">Start with the highlighted recommendation, then compare a couple of alternates if you still are not sure.</div>
+          <label class="sort-control" for="sort-select">
+            <span>Sort by</span>
+            <select id="sort-select">
+              <option value="best">Best starting points</option>
+              <option value="easy">Easiest to start</option>
+              <option value="free">Free to try first</option>
+              <option value="alphabetical">Alphabetical</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="directory-summary" id="directory-summary"></div>
+        <div class="tool-list" id="card-grid"></div>
+        <div class="directory-actions" id="directory-actions"></div>
+
+        <div class="cta">
+          <div>
+            <div class="eyebrow">Need a tighter shortlist?</div>
+            <h2>If the full directory still feels broad, switch back to the guided shortlist.</h2>
+            <p>Use the shortlist flow if you want the site to narrow the first picks for you.</p>
+          </div>
+          <a class="button primary" href="./shortlist.html">Go to shortlist</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>ihelpwithai.com</strong>
+        <div>A curated guide for choosing the right AI tool.</div>
+      </div>
+      <div>
+        <div>Built to help people choose faster, not to catalog everything in AI.</div>
+        <a class="footer-email" href="mailto:info@ihelpwithai.com">info@ihelpwithai.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
