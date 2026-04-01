@@ -663,28 +663,31 @@ img {
 .detail-main .tagrow .tag {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(242, 248, 255, 0.9));
-  border: 1px solid rgba(126, 168, 218, 0.24);
-  color: #24486f;
+  background: radial-gradient(circle at 18% 50%, rgba(99, 179, 237, 0.34), rgba(99, 179, 237, 0) 34%), linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(246, 250, 255, 0.92));
+  border: 1px solid rgba(120, 167, 226, 0.28);
+  color: #173a63;
   text-transform: none;
   letter-spacing: 0;
   font-size: 11px;
   font-weight: 800;
-  padding: 7px 11px;
+  padding: 8px 13px 8px 18px;
   box-shadow:
-    0 10px 24px rgba(56, 109, 173, 0.10),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    0 12px 30px rgba(47, 96, 158, 0.14),
+    0 0 0 1px rgba(255,255,255,0.55) inset,
+    inset 0 1px 0 rgba(255,255,255,0.98);
 }
 
 .detail-main .tagrow .tag::before {
   content: "";
   position: absolute;
-  inset: -20% auto -20% -18px;
-  width: 32px;
-  background: linear-gradient(180deg, rgba(12, 123, 220, 0.24), rgba(20, 184, 108, 0.12));
+  left: 8px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  transform: translateY(-50%);
   border-radius: 999px;
-  filter: blur(4px);
-  opacity: 0.9;
+  background: linear-gradient(135deg, #67b7ff, #7af0bf);
+  box-shadow: 0 0 16px rgba(80, 174, 255, 0.75);
 }
 
 .detail-main .tagrow .tag::after {
@@ -692,7 +695,7 @@ img {
   position: absolute;
   inset: 1px;
   border-radius: 999px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0));
+  background: linear-gradient(135deg, rgba(255,255,255,0.32), rgba(255,255,255,0));
   pointer-events: none;
 }
 
