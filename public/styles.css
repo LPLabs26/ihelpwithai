@@ -661,14 +661,39 @@ img {
 }
 
 .detail-main .tagrow .tag {
-  background: linear-gradient(135deg, rgba(12, 123, 220, 0.08), rgba(20, 184, 108, 0.08));
-  border: 1px solid rgba(12, 123, 220, 0.12);
-  color: var(--muted-strong);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(242, 248, 255, 0.9));
+  border: 1px solid rgba(126, 168, 218, 0.24);
+  color: #24486f;
   text-transform: none;
   letter-spacing: 0;
   font-size: 11px;
-  font-weight: 700;
-  padding: 6px 10px;
+  font-weight: 800;
+  padding: 7px 11px;
+  box-shadow:
+    0 10px 24px rgba(56, 109, 173, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.detail-main .tagrow .tag::before {
+  content: "";
+  position: absolute;
+  inset: -20% auto -20% -18px;
+  width: 32px;
+  background: linear-gradient(180deg, rgba(12, 123, 220, 0.24), rgba(20, 184, 108, 0.12));
+  border-radius: 999px;
+  filter: blur(4px);
+  opacity: 0.9;
+}
+
+.detail-main .tagrow .tag::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0));
+  pointer-events: none;
 }
 
 .pill {
