@@ -26,6 +26,10 @@
           <div class="brand-sub">AI tools that actually help</div>
         </div>
       </a>
+      <form class="nav-search" action="./directory.html" method="get">
+        <input type="search" name="search" placeholder="Search AI tools or companies">
+        <button type="submit">Search</button>
+      </form>
       <nav class="navlinks">
         <details class="nav-dropdown">
           <summary class="nav-summary">Start here</summary>
@@ -51,13 +55,13 @@
         <div class="kicker">Full directory</div>
         <h1>Browse the full directory and narrow it fast.</h1>
         <p class="hero-copy">Use search and filters to move from a big list to a more useful shortlist.</p>
-        <div class="search-panel" id="directory">
+        <form class="search-panel" id="directory" action="./directory.html" method="get">
           <div class="search-grid">
-            <input id="search" type="search" placeholder="Describe the job to be done — e.g. meeting notes, research with sources, sales outreach, podcast editing">
-            <a class="button primary" href="./shortlist.html">Need guidance first?</a>
+            <input id="search" name="search" type="search" placeholder="Describe the job to be done — e.g. meeting notes, research with sources, sales outreach, podcast editing">
+            <button class="button primary" type="submit">Search directory</button>
           </div>
           <div class="helper">Use the filters below to narrow by job, category, audience, price, and company.</div>
-        </div>
+        </form>
       </div>
     </section>
 

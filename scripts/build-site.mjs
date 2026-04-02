@@ -12,6 +12,8 @@ const guidesDir = path.join(rootDir, 'guides');
 const publicGuidesDir = path.join(publicDir, 'guides');
 const comparisonsDir = path.join(rootDir, 'comparisons');
 const publicComparisonsDir = path.join(publicDir, 'comparisons');
+const companyReviewsDir = path.join(rootDir, 'companies');
+const publicCompanyReviewsDir = path.join(publicDir, 'companies');
 const toolsJsonPath = path.join(rootDir, 'tools-starter.json');
 const comparisonsJsonPath = path.join(rootDir, 'comparisons.json');
 
@@ -82,6 +84,25 @@ const GOAL_META = {
     description: 'Use these for emails, proposals, editing, content drafts, and clearer everyday communication.',
     hero: 'These are the strongest first tools to compare when the job is writing faster, rewriting better, or tightening a message without losing your voice.'
   }
+};
+
+const CATEGORY_LABELS = {
+  Assistant: 'General assistant',
+  Automation: 'Automation workflow',
+  Design: 'Design workflow',
+  Image: 'Image workflow',
+  Marketing: 'Marketing workflow',
+  Meetings: 'Meeting workflow',
+  Presentations: 'Presentation workflow',
+  Research: 'Research workflow',
+  Sales: 'Sales workflow',
+  SEO: 'SEO workflow',
+  Support: 'Support workflow',
+  Training: 'Training workflow',
+  Video: 'Video workflow',
+  Voice: 'Voice workflow',
+  Workspace: 'Workspace AI',
+  Writing: 'Writing workflow'
 };
 
 function escapeHtml(value = '') {
@@ -175,6 +196,26 @@ function comparisonPreviewDescription(comparison) {
   return cleanPreviewText(comparison.summary || comparison.quickTake || comparison.question);
 }
 
+function categoryLabel(category = '') {
+  return CATEGORY_LABELS[category] || category || 'AI tool';
+}
+
+function toolFitLabel(tool) {
+  return categoryLabel(tool.category);
+}
+
+function companyFitLabel(company) {
+  return categoryLabel(company.categories?.[0] || '');
+}
+
+function renderHeaderSearch(basePath = '.') {
+  return `
+      <form class="nav-search" action="${basePath}/directory.html" method="get">
+        <input type="search" name="search" placeholder="Search AI tools or companies">
+        <button type="submit">Search</button>
+      </form>`;
+}
+
 function renderStartHereMenu(basePath = '.') {
   return `
       <nav class="navlinks">
@@ -221,6 +262,10 @@ function slugify(value = '') {
 
 function guideFilename(goal) {
   return `best-ai-tools-for-${slugify(goal)}.html`;
+}
+
+function companyReviewFilename(companyName) {
+  return `${slugify(companyName)}.html`;
 }
 
 function uniqueStrings(list) {
@@ -361,6 +406,7 @@ function renderToolPage(tool, tools) {
           <div class="brand-sub">AI tools that actually help</div>
         </div>
       </a>
+${renderHeaderSearch('..')}
 ${renderStartHereMenu('..')}
     </div>
   </header>
@@ -372,7 +418,7 @@ ${renderStartHereMenu('..')}
       <div class="detail-grid">
         <article class="detail-main">
           <div class="tagrow">
-            <span class="tag">${escapeHtml(tool.category)}</span>
+            <span class="tag">${escapeHtml(toolFitLabel(tool))}</span>
             <span class="chip">${escapeHtml(tool.pricing)}</span>
             <span class="chip">${escapeHtml(tool.difficulty)}</span>
             <span class="chip">Reviewed ${escapeHtml(tool.reviewedAt)}</span>
@@ -567,6 +613,7 @@ function renderGuidePage(goal, tools) {
           <div class="brand-sub">AI tools that actually help</div>
         </div>
       </a>
+${renderHeaderSearch('..')}
 ${renderStartHereMenu('..')}
     </div>
   </header>
@@ -592,7 +639,7 @@ ${renderStartHereMenu('..')}
               ${guideTools.map(tool => `
                 <article class="guide-tool">
                   <div class="tagrow">
-                    <span class="tag">${escapeHtml(tool.category)}</span>
+                    <span class="tag">${escapeHtml(toolFitLabel(tool))}</span>
                     ${renderCompanyChip(tool.company, tool.officialUrl)}
                     <span class="chip">${escapeHtml(tool.pricing)}</span>
                   </div>
@@ -687,6 +734,7 @@ function renderComparisonPage(comparison, tools) {
           <div class="brand-sub">AI tools that actually help</div>
         </div>
       </a>
+${renderHeaderSearch('..')}
 ${renderStartHereMenu('..')}
     </div>
   </header>
@@ -712,7 +760,7 @@ ${renderStartHereMenu('..')}
               ${comparisonTools.map(tool => `
                 <article class="compare-card">
                   <div class="tagrow">
-                    <span class="tag">${escapeHtml(tool.category)}</span>
+                    <span class="tag">${escapeHtml(toolFitLabel(tool))}</span>
                     ${renderCompanyChip(tool.company, tool.officialUrl)}
                     <span class="chip">${escapeHtml(tool.pricing)}</span>
                   </div>
@@ -789,6 +837,7 @@ function renderBestFreePage(tools) {
           <div class="brand-sub">AI tools that actually help</div>
         </div>
       </a>
+${renderHeaderSearch('.')}
 ${renderStartHereMenu('.')}
     </div>
   </header>
@@ -815,7 +864,7 @@ ${renderStartHereMenu('.')}
               ${freeTools.map(tool => `
                 <article class="guide-tool">
                   <div class="tagrow">
-                    <span class="tag">${escapeHtml(tool.category)}</span>
+                    <span class="tag">${escapeHtml(toolFitLabel(tool))}</span>
                     ${renderCompanyChip(tool.company, tool.officialUrl)}
                     <span class="chip">${escapeHtml(tool.pricing)}</span>
                     <span class="chip">Reviewed ${escapeHtml(tool.reviewedAt)}</span>
@@ -897,6 +946,7 @@ function renderEditorialMethodologyPage(tools, comparisons) {
           <div class="brand-sub">AI tools that actually help</div>
         </div>
       </a>
+${renderHeaderSearch('.')}
 ${renderStartHereMenu('.')}
     </div>
   </header>
@@ -984,6 +1034,115 @@ ${renderSiteFooter()}
 `;
 }
 
+function renderCompanyReviewPage(company) {
+  const leadTool = company.tools[0];
+
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>${escapeHtml(company.name)} review — ihelpwithai.com</title>
+  <meta name="description" content="${escapeHtml(companyPreviewDescription(company))}">
+  ${renderMetaTags({
+    title: `${company.name} review — ihelpwithai.com`,
+    description: companyPreviewDescription(company),
+    pathname: `/companies/${companyReviewFilename(company.name)}`,
+    type: 'article'
+  })}
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="detail-body">
+  <header class="topbar">
+    <div class="container nav">
+      <a href="../index.html" class="brand">
+        <div class="logo"><span>IHAI</span></div>
+        <div>
+          <div>ihelpwithai.com</div>
+          <div class="brand-sub">AI tools that actually help</div>
+        </div>
+      </a>
+${renderHeaderSearch('..')}
+${renderStartHereMenu('..')}
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb"><a class="backlink" href="../companies.html">← Back to companies</a></div>
+
+    <section class="detail-hero">
+      <div class="detail-grid">
+        <article class="detail-main">
+          <div class="tagrow">
+            <span class="tag">${escapeHtml(companyFitLabel(company))}</span>
+            <span class="chip">${company.tools.length} reviewed tool${company.tools.length === 1 ? '' : 's'}</span>
+            ${company.featuredCount ? `<span class="chip">${company.featuredCount} first-pick${company.featuredCount === 1 ? '' : 's'}</span>` : ''}
+          </div>
+          <div class="detail-company-row">
+            <div class="avatar detail-avatar">${escapeHtml(initials(company.name))}</div>
+            <div>
+              <div class="eyebrow">Company review</div>
+              ${renderCompanyLink(company.name, company.officialUrl, 'company-link company-link-lg')}
+              <h1>${escapeHtml(company.name)}</h1>
+              <p class="summary">${escapeHtml(companyPreviewDescription(company))}</p>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <h2>What this company is strongest for here</h2>
+            <p>${escapeHtml(company.name)} is covered here because it shows up in ${escapeHtml(company.goals.slice(0, 4).join(', ') || 'general AI work')} and is especially relevant for ${escapeHtml(company.categories.slice(0, 3).join(', ') || 'AI tooling')}.</p>
+          </div>
+
+          <div class="detail-section">
+            <h2>Reviewed tools from ${escapeHtml(company.name)}</h2>
+            <div class="guide-stack">
+              ${company.tools.map(tool => `
+                <article class="guide-tool">
+                  <div class="tagrow">
+                    <span class="tag">${escapeHtml(toolFitLabel(tool))}</span>
+                    <span class="chip">${escapeHtml(tool.pricing)}</span>
+                    <span class="chip">Reviewed ${escapeHtml(tool.reviewedAt)}</span>
+                  </div>
+                  <h3>${escapeHtml(tool.name)}</h3>
+                  <p>${escapeHtml(toolPreviewDescription(tool))}</p>
+                  <p><strong>Use it when:</strong> ${escapeHtml(tool.whatFor)}</p>
+                  <p><strong>Watch-outs:</strong> ${escapeHtml(tool.watchOuts)}</p>
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="../tools/${escapeHtml(tool.slug)}.html">Read tool review</a>
+                    <a class="small-link" href="../directory.html?company=${encodeURIComponent(company.name)}">Compare in directory</a>
+                  </div>
+                </article>
+              `).join('')}
+            </div>
+          </div>
+        </article>
+
+        <aside class="detail-side">
+          <h2 style="margin-top:0">Quick take</h2>
+          <div class="detail-section">
+            <h3>Best jobs</h3>
+            <div class="company-goal-links">
+              ${(company.goals || []).length ? company.goals.slice(0, 6).map(goal => `<a class="chip chip-link" href="../directory.html?company=${encodeURIComponent(company.name)}&goal=${encodeURIComponent(goal)}">${escapeHtml(goal)}</a>`).join('') : '<span class="micro-note">General AI work</span>'}
+            </div>
+          </div>
+          <div class="detail-section">
+            <h3>Best place to start</h3>
+            <p>${leadTool ? `Start with ${leadTool.name} if you want the cleanest first review from ${company.name}.` : `Start with the directory if you want to compare ${company.name} with other vendors.`}</p>
+            <div class="card-links" style="margin-top:14px">
+              ${leadTool ? `<a class="small-link primary" href="../tools/${escapeHtml(leadTool.slug)}.html">Start with ${escapeHtml(leadTool.name)}</a>` : ''}
+              <a class="small-link" href="../companies.html">Back to companies</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+${renderSiteFooter('..')}
+</body>
+</html>
+`;
+}
+
 function renderCompaniesPage(tools) {
   const companies = groupCompanies(tools);
   const companyJumpList = [...companies].sort((left, right) => left.name.localeCompare(right.name));
@@ -999,6 +1158,36 @@ function renderCompaniesPage(tools) {
     .sort((left, right) => right[1] - left[1] || left[0].localeCompare(right[0]))
     .slice(0, 8)
     .map(([goal]) => goal);
+
+  const companyGoalRows = popularGoals.slice(0, 6).map(goal => {
+    const matchingCompanies = companies
+      .filter(company => (company.goals || []).includes(goal))
+      .sort((left, right) => right.featuredCount - left.featuredCount || right.tools.length - left.tools.length || left.name.localeCompare(right.name));
+    const topCompanies = matchingCompanies.slice(0, 4);
+    const firstPickTrail = topCompanies
+      .filter(company => company.tools[0])
+      .map(company => `${escapeHtml(company.name)} → <a href="./tools/${escapeHtml(company.tools[0].slug)}.html">${escapeHtml(company.tools[0].name)}</a>`)
+      .join(' • ');
+
+    return `
+      <article class="guide-tool">
+        <div class="tagrow">
+          <span class="tag">${escapeHtml(goal)}</span>
+          <span class="chip">${matchingCompanies.length} compan${matchingCompanies.length === 1 ? 'y' : 'ies'}</span>
+        </div>
+        <h3>Start with these companies for ${escapeHtml(goal.toLowerCase())}</h3>
+        <p>${escapeHtml(GOAL_META[goal]?.description || `Use these companies when ${goal.toLowerCase()} is the main job to be done.`)}</p>
+        <div class="company-goal-links" style="margin-top:12px">
+          ${topCompanies.map(company => `<a class="chip chip-link" href="#company-${slugify(company.name)}">${escapeHtml(company.name)}</a>`).join('')}
+        </div>
+        ${firstPickTrail ? `<div class="micro-note" style="margin-top:12px"><strong>Best first picks:</strong> ${firstPickTrail}</div>` : ''}
+        <div class="card-links" style="margin-top:14px">
+          <a class="small-link primary" href="./directory.html?goal=${encodeURIComponent(goal)}">Open ${escapeHtml(goal)} tools</a>
+          <a class="small-link" href="./guides/${escapeHtml(guideFilename(goal))}">See the ${escapeHtml(goal.toLowerCase())} guide</a>
+        </div>
+      </article>
+    `;
+  }).join('');
 
   return `<!doctype html>
 <html lang="en">
@@ -1025,17 +1214,13 @@ function renderCompaniesPage(tools) {
           <div class="brand-sub">AI tools that actually help</div>
         </div>
       </a>
-      <nav class="navlinks">
-        <a href="./index.html#matcher">Start here</a>
-        <a href="./index.html#directory-filters">Directory</a>
-        <a href="./best-free-ai-tools.html">Best free tools</a>
-        <a href="./editorial-methodology.html">Methodology</a>
-      </nav>
+${renderHeaderSearch('.')}
+${renderStartHereMenu('.')}
     </div>
   </header>
 
   <main class="container">
-    <div class="breadcrumb"><a class="backlink" href="./index.html">← Back to directory</a></div>
+    <div class="breadcrumb"><a class="backlink" href="./directory.html">← Back to directory</a></div>
 
     <section class="detail-hero">
       <div class="detail-grid">
@@ -1063,9 +1248,17 @@ function renderCompaniesPage(tools) {
               <div>
                 <div class="jump-label">Or start from a job instead</div>
                 <div class="company-jump-grid">
-                  ${popularGoals.map(goal => `<a class="chip chip-link" href="./index.html?goal=${encodeURIComponent(goal)}#directory-filters">${escapeHtml(goal)}</a>`).join('')}
+                  ${popularGoals.map(goal => `<a class="chip chip-link" href="./directory.html?goal=${encodeURIComponent(goal)}">${escapeHtml(goal)}</a>`).join('')}
                 </div>
               </div>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <h2>Start by the job, then pick a company</h2>
+            <p>If you know the work but still want a familiar vendor, these rows give you a calmer way to move from job to brand to first tool.</p>
+            <div class="guide-stack">
+              ${companyGoalRows}
             </div>
           </div>
 
@@ -1075,7 +1268,7 @@ function renderCompaniesPage(tools) {
               ${companies.map(company => `
                 <article class="guide-tool company-anchor" id="company-${slugify(company.name)}">
                   <div class="tagrow">
-                    <span class="tag">${escapeHtml(company.categories[0] || 'AI company')}</span>
+                    <span class="tag">${escapeHtml(companyFitLabel(company) || 'AI company')}</span>
                     ${renderCompanyChip(company.name, company.officialUrl)}
                     <span class="chip">${company.tools.length} tool${company.tools.length === 1 ? '' : 's'}</span>
                     ${company.featuredCount ? `<span class="chip">${company.featuredCount} first-pick${company.featuredCount === 1 ? '' : 's'}</span>` : ''}
@@ -1087,7 +1280,7 @@ function renderCompaniesPage(tools) {
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      ${(company.goals || []).length ? company.goals.slice(0, 4).map(goal => `<a class="chip chip-link" href="./index.html?company=${encodeURIComponent(company.name)}&goal=${encodeURIComponent(goal)}#directory-filters">${escapeHtml(goal)}</a>`).join('') : '<span class="micro-note">General AI work</span>'}
+                      ${(company.goals || []).length ? company.goals.slice(0, 4).map(goal => `<a class="chip chip-link" href="./directory.html?company=${encodeURIComponent(company.name)}&goal=${encodeURIComponent(goal)}">${escapeHtml(goal)}</a>`).join('') : '<span class="micro-note">General AI work</span>'}
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -1100,7 +1293,7 @@ function renderCompaniesPage(tools) {
                   </div>
                   ${company.tools.length > 4 ? `<div class="micro-note" style="margin-top:12px">+${company.tools.length - 4} more tool${company.tools.length - 4 === 1 ? '' : 's'} from ${escapeHtml(company.name)} can still be filtered in the full directory.</div>` : ''}
                   <div class="card-links" style="margin-top:14px">
-                    ${company.tools[0] ? `<a class="small-link primary" href="./tools/${escapeHtml(company.tools[0].slug)}.html">Start with ${escapeHtml(company.tools[0].name)}</a>` : ''}
+                    <a class="small-link primary" href="./companies/${escapeHtml(companyReviewFilename(company.name))}">Read company review</a>
                     <a class="small-link" href="./directory.html?company=${encodeURIComponent(company.name)}">Compare ${escapeHtml(company.name)} tools</a>
                   </div>
                 </article>
@@ -1119,7 +1312,7 @@ function renderCompaniesPage(tools) {
             <h3>Need a better first pick?</h3>
             <p>If you do not already have a company in mind, the shortlist flow is still the best starting point.</p>
             <div class="card-links" style="margin-top:14px">
-              <a class="small-link primary" href="./index.html#matcher">Go to the shortlist</a>
+              <a class="small-link primary" href="./shortlist.html">Go to the shortlist</a>
             </div>
           </div>
           <div class="detail-section">
@@ -1168,6 +1361,7 @@ function renderReviewsPage(tools) {
           <div class="brand-sub">AI tools that actually help</div>
         </div>
       </a>
+${renderHeaderSearch('.')}
 ${renderStartHereMenu('.')}
     </div>
   </header>
@@ -1188,7 +1382,7 @@ ${renderStartHereMenu('.')}
               ${reviewedTools.map(tool => `
                 <article class="guide-tool">
                   <div class="tagrow">
-                    <span class="tag">${escapeHtml(tool.category)}</span>
+                    <span class="tag">${escapeHtml(toolFitLabel(tool))}</span>
                     ${renderCompanyChip(tool.company, tool.officialUrl)}
                     <span class="chip">Reviewed ${escapeHtml(tool.reviewedAt)}</span>
                   </div>
@@ -1210,7 +1404,7 @@ ${renderStartHereMenu('.')}
             <h3>Company review snapshots</h3>
             <div class="related-list">
               ${companies.slice(0, 12).map(company => `
-                <a class="related-item" href="./directory.html?company=${encodeURIComponent(company.name)}">
+                <a class="related-item" href="./companies/${escapeHtml(companyReviewFilename(company.name))}">
                   <strong>${escapeHtml(company.name)}</strong>
                   <div class="related-copy">${escapeHtml(companyPreviewDescription(company))}</div>
                 </a>
@@ -1266,6 +1460,7 @@ function buildCsv(tools) {
 
 function buildSitemap(tools, comparisons) {
   const goals = uniqueStrings(tools.flatMap(tool => tool.goals || []));
+  const companies = groupCompanies(tools);
   const pages = [
     '',
     '/affiliate-disclosure.html',
@@ -1276,6 +1471,7 @@ function buildSitemap(tools, comparisons) {
     '/reviews.html',
     '/best-free-ai-tools.html',
     '/editorial-methodology.html',
+    ...companies.map(company => `/companies/${companyReviewFilename(company.name)}`),
     ...comparisons.map(comparison => `/comparisons/${comparison.slug}.html`),
     ...goals.map(goal => `/guides/${guideFilename(goal)}`),
     ...tools.map(tool => `/tools/${tool.slug}.html`)
@@ -1371,6 +1567,8 @@ await fs.writeFile(path.join(rootDir, 'sitemap.xml'), buildSitemap(tools, compar
 
 await fs.rm(toolsDir, { recursive: true, force: true });
 await fs.mkdir(toolsDir, { recursive: true });
+await fs.rm(companyReviewsDir, { recursive: true, force: true });
+await fs.mkdir(companyReviewsDir, { recursive: true });
 await fs.rm(guidesDir, { recursive: true, force: true });
 await fs.mkdir(guidesDir, { recursive: true });
 await fs.rm(comparisonsDir, { recursive: true, force: true });
@@ -1378,6 +1576,10 @@ await fs.mkdir(comparisonsDir, { recursive: true });
 
 for (const tool of tools) {
   await fs.writeFile(path.join(toolsDir, `${tool.slug}.html`), renderToolPage(tool, tools));
+}
+
+for (const company of groupCompanies(tools)) {
+  await fs.writeFile(path.join(companyReviewsDir, companyReviewFilename(company.name)), renderCompanyReviewPage(company));
 }
 
 for (const goal of uniqueStrings(tools.flatMap(tool => tool.goals || []))) {
@@ -1391,6 +1593,8 @@ for (const comparison of comparisons) {
 await fs.mkdir(publicDir, { recursive: true });
 await fs.rm(publicToolsDir, { recursive: true, force: true });
 await fs.mkdir(publicToolsDir, { recursive: true });
+await fs.rm(publicCompanyReviewsDir, { recursive: true, force: true });
+await fs.mkdir(publicCompanyReviewsDir, { recursive: true });
 await fs.rm(publicGuidesDir, { recursive: true, force: true });
 await fs.mkdir(publicGuidesDir, { recursive: true });
 await fs.rm(publicComparisonsDir, { recursive: true, force: true });
@@ -1425,6 +1629,10 @@ for (const filename of [
 
 for (const tool of tools) {
   await fs.copyFile(path.join(toolsDir, `${tool.slug}.html`), path.join(publicToolsDir, `${tool.slug}.html`));
+}
+
+for (const company of groupCompanies(tools)) {
+  await fs.copyFile(path.join(companyReviewsDir, companyReviewFilename(company.name)), path.join(publicCompanyReviewsDir, companyReviewFilename(company.name)));
 }
 
 for (const goal of uniqueStrings(tools.flatMap(tool => tool.goals || []))) {

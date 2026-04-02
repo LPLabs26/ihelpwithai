@@ -1,5 +1,5 @@
 window.IHWAI = {
-  "generatedAt": "2026-04-01T19:44:28.363Z",
+  "generatedAt": "2026-04-02T00:57:16.073Z",
   "tools": [
     {
       "name": "Adobe Firefly",
@@ -590,6 +590,47 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
+      "name": "Ada",
+      "slug": "ada",
+      "company": "Ada",
+      "companySummary": "Ada is included here for support AI products that support support, productivity work.",
+      "category": "Support",
+      "goals": [
+        "Support",
+        "Productivity"
+      ],
+      "audience": [
+        "Support team",
+        "Team",
+        "Operator",
+        "Founder"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://www.ada.cx/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A customer support automation platform for scaling repetitive support conversations and deflection.",
+      "whatFor": "Use Ada when your main goal is support and you want a dedicated support tool rather than a broad general assistant.",
+      "who": "Best for support team, team, operator, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Automate first-line support questions and surface the right handoff when escalation is needed.",
+      "why": "It earns a place because it can make support work faster and more practical for people who want a clearer support workflow.",
+      "watchOuts": "It usually needs setup, routing rules, and review before the quality feels reliable.",
+      "firstPrompt": "Help me do this job well: Automate first-line support questions and surface the right handoff when escalation is needed. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "support",
+        "productivity",
+        "support team",
+        "team",
+        "ada"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
       "name": "Airtable AI",
       "slug": "airtable-ai",
       "company": "Airtable",
@@ -629,6 +670,132 @@ window.IHWAI = {
         "records"
       ],
       "addedAt": "2026-03-29",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Anyword",
+      "slug": "anyword",
+      "company": "Anyword",
+      "companySummary": "Anyword is included here for marketing AI products that support marketing, writing work.",
+      "category": "Marketing",
+      "goals": [
+        "Marketing",
+        "Writing",
+        "Sales"
+      ],
+      "audience": [
+        "Marketer",
+        "Agency",
+        "Solo business",
+        "Founder"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://anyword.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A marketing copy tool for generating performance-focused messaging across ads, emails, and landing pages.",
+      "whatFor": "Use Anyword when your main goal is marketing and you want a dedicated marketing tool rather than a broad general assistant.",
+      "who": "Best for marketer, agency, solo business, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Create several ad and landing-page copy options aimed at one audience and offer.",
+      "why": "It earns a place because it can make marketing work faster and more practical for people who want a clearer marketing workflow.",
+      "watchOuts": "It helps with faster output, but messaging quality still depends on clear positioning and inputs.",
+      "firstPrompt": "Help me do this job well: Create several ad and landing-page copy options aimed at one audience and offer. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "marketing",
+        "writing",
+        "marketer",
+        "agency",
+        "anyword"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Apollo AI",
+      "slug": "apollo-ai",
+      "company": "Apollo",
+      "companySummary": "Apollo is included here for sales AI products that support sales, research work.",
+      "category": "Sales",
+      "goals": [
+        "Sales",
+        "Research",
+        "Writing"
+      ],
+      "audience": [
+        "Sales team",
+        "Founder",
+        "Operator",
+        "Solo business"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://www.apollo.io/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A sales prospecting platform with AI help around lead research, outreach prep, and pipeline workflows.",
+      "whatFor": "Use Apollo AI when your main goal is sales and you want a dedicated sales tool rather than a broad general assistant.",
+      "who": "Best for sales team, founder, operator, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Research a target account and draft a first outreach message based on likely pain points.",
+      "why": "It earns a place because it can make sales work faster and more practical for people who want a clearer sales workflow.",
+      "watchOuts": "It works best when your outreach process is already defined. It will not fix weak positioning by itself.",
+      "firstPrompt": "Help me do this job well: Research a target account and draft a first outreach message based on likely pain points. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "sales",
+        "research",
+        "sales team",
+        "founder",
+        "apollo ai"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Avoma",
+      "slug": "avoma",
+      "company": "Avoma",
+      "companySummary": "Avoma is included here for meetings AI products that support meetings, sales work.",
+      "category": "Meetings",
+      "goals": [
+        "Meetings",
+        "Sales",
+        "Productivity"
+      ],
+      "audience": [
+        "Team",
+        "Sales team",
+        "Founder",
+        "Operator"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://www.avoma.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A meeting assistant for notes, CRM follow-up, call summaries, and go-to-market collaboration.",
+      "whatFor": "Use Avoma when your main goal is meetings and you want a dedicated meetings tool rather than a broad general assistant.",
+      "who": "Best for team, sales team, founder, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Turn a customer meeting into action items, follow-up notes, and clean CRM updates.",
+      "why": "It earns a place because it can make meetings work faster and more practical for people who want a clearer meetings workflow.",
+      "watchOuts": "The value depends on consistent team usage. If people do not use it regularly, the ROI drops fast.",
+      "firstPrompt": "Help me do this job well: Turn a customer meeting into action items, follow-up notes, and clean CRM updates. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "meetings",
+        "sales",
+        "team",
+        "sales team",
+        "avoma"
+      ],
+      "addedAt": "2026-04-01",
       "reviewMethod": "Manual editorial review"
     },
     {
@@ -674,6 +841,172 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
+      "name": "Clearscope",
+      "slug": "clearscope",
+      "company": "Clearscope",
+      "companySummary": "Clearscope is included here for seo AI products that support seo, writing work.",
+      "category": "SEO",
+      "goals": [
+        "SEO",
+        "Writing"
+      ],
+      "audience": [
+        "Marketer",
+        "Agency",
+        "Writer",
+        "Team"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://www.clearscope.io/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A content optimization platform for improving topic coverage and strengthening search-focused content drafts.",
+      "whatFor": "Use Clearscope when your main goal is seo and you want a dedicated seo tool rather than a broad general assistant.",
+      "who": "Best for marketer, agency, writer, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Review an article draft and identify what topic coverage is still missing before publishing.",
+      "why": "It earns a place because it can make seo work faster and more practical for people who want a clearer seo workflow.",
+      "watchOuts": "It can speed up SEO work, but it should not replace human judgment on strategy and quality.",
+      "firstPrompt": "Help me do this job well: Review an article draft and identify what topic coverage is still missing before publishing. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "seo",
+        "writing",
+        "marketer",
+        "agency",
+        "clearscope"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Clipdrop",
+      "slug": "clipdrop",
+      "company": "Clipdrop",
+      "companySummary": "Clipdrop is included here for image AI products that support design, marketing work.",
+      "category": "Image",
+      "goals": [
+        "Design",
+        "Marketing"
+      ],
+      "audience": [
+        "Designer",
+        "Marketer",
+        "Creator",
+        "Solo business"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://clipdrop.co/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A quick image editing toolkit for cleanup, object removal, background work, and generative tweaks.",
+      "whatFor": "Use Clipdrop when your main goal is design and you want a dedicated image tool rather than a broad general assistant.",
+      "who": "Best for designer, marketer, creator, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Clean up a product or lifestyle image fast before using it in an ad or landing page.",
+      "why": "It earns a place because it can make design work faster and more practical for people who want a clearer image workflow.",
+      "watchOuts": "It helps with fast visual generation, but you may still need another tool for final production polish.",
+      "firstPrompt": "Help me do this job well: Clean up a product or lifestyle image fast before using it in an ad or landing page. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "image",
+        "design",
+        "marketing",
+        "designer",
+        "marketer",
+        "clipdrop"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Consensus",
+      "slug": "consensus",
+      "company": "Consensus",
+      "companySummary": "Consensus is included here for research AI products that support research, writing work.",
+      "category": "Research",
+      "goals": [
+        "Research",
+        "Writing"
+      ],
+      "audience": [
+        "Student",
+        "Educator",
+        "Analyst",
+        "Team"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://consensus.app/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A research assistant built around finding and summarizing evidence from academic sources.",
+      "whatFor": "Use Consensus when your main goal is research and you want a dedicated research tool rather than a broad general assistant.",
+      "who": "Best for student, educator, analyst, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Answer a research question with source-backed academic findings and a short summary of the consensus.",
+      "why": "It earns a place because it can make research work faster and more practical for people who want a clearer research workflow.",
+      "watchOuts": "It helps most with finding and structuring information. You may still want another tool for final deliverables.",
+      "firstPrompt": "Help me do this job well: Answer a research question with source-backed academic findings and a short summary of the consensus. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "research",
+        "writing",
+        "student",
+        "educator",
+        "consensus"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "ContentShake AI",
+      "slug": "contentshake-ai",
+      "company": "Semrush",
+      "companySummary": "Semrush is included here for seo AI products that support seo, writing work.",
+      "category": "SEO",
+      "goals": [
+        "SEO",
+        "Writing",
+        "Marketing"
+      ],
+      "audience": [
+        "Marketer",
+        "Solo business",
+        "Agency",
+        "Founder"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://www.semrush.com/contentshake/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A lightweight SEO content workflow for generating article ideas, outlines, and first drafts from search opportunities.",
+      "whatFor": "Use ContentShake AI when your main goal is seo and you want a dedicated seo tool rather than a broad general assistant.",
+      "who": "Best for marketer, solo business, agency, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Turn a target keyword into a content brief, outline, and draft for your next article.",
+      "why": "It earns a place because it can make seo work faster and more practical for people who want a clearer seo workflow.",
+      "watchOuts": "It can speed up SEO work, but it should not replace human judgment on strategy and quality.",
+      "firstPrompt": "Help me do this job well: Turn a target keyword into a content brief, outline, and draft for your next article. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "seo",
+        "writing",
+        "marketer",
+        "solo business",
+        "contentshake ai"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
       "name": "Copy.ai",
       "slug": "copy-ai",
       "company": "Copy.ai",
@@ -713,6 +1046,173 @@ window.IHWAI = {
         "gtm"
       ],
       "addedAt": "2026-03-28",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Decktopus",
+      "slug": "decktopus",
+      "company": "Decktopus",
+      "companySummary": "Decktopus is included here for presentations AI products that support presentations, design work.",
+      "category": "Presentations",
+      "goals": [
+        "Presentations",
+        "Design"
+      ],
+      "audience": [
+        "Founder",
+        "Educator",
+        "Marketer",
+        "Team"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://www.decktopus.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "An AI deck builder for faster first drafts of presentations, training materials, and explainers.",
+      "whatFor": "Use Decktopus when your main goal is presentations and you want a dedicated presentations tool rather than a broad general assistant.",
+      "who": "Best for founder, educator, marketer, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Create a first-pass training deck with sections, speaker notes, and simple visual structure.",
+      "why": "It earns a place because it can make presentations work faster and more practical for people who want a clearer presentations workflow.",
+      "watchOuts": "It is strongest for faster first drafts. You may still refine the final deck manually.",
+      "firstPrompt": "Help me do this job well: Create a first-pass training deck with sections, speaker notes, and simple visual structure. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "presentations",
+        "design",
+        "founder",
+        "educator",
+        "decktopus"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "DeepSeek",
+      "slug": "deepseek",
+      "company": "DeepSeek",
+      "companySummary": "DeepSeek is included here for assistant AI products that support research, writing work.",
+      "category": "Assistant",
+      "goals": [
+        "Research",
+        "Writing",
+        "Productivity"
+      ],
+      "audience": [
+        "Developer",
+        "Analyst",
+        "Student",
+        "Team"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://www.deepseek.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A capable general model option for analysis, writing, and technical reasoning at a lower-cost entry point.",
+      "whatFor": "Use DeepSeek when your main goal is research and you want a dedicated assistant tool rather than a broad general assistant.",
+      "who": "Best for developer, analyst, student, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Review a technical draft and identify weak reasoning, missing assumptions, and better structure.",
+      "why": "It earns a place because it can make research work faster and more practical for people who want a clearer assistant workflow.",
+      "watchOuts": "If you need a highly specialized workflow, a dedicated point solution may still fit better.",
+      "firstPrompt": "Help me do this job well: Review a technical draft and identify weak reasoning, missing assumptions, and better structure. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "assistant",
+        "research",
+        "writing",
+        "developer",
+        "analyst",
+        "deepseek"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Elicit",
+      "slug": "elicit",
+      "company": "Elicit",
+      "companySummary": "Elicit is included here for research AI products that support research, writing work.",
+      "category": "Research",
+      "goals": [
+        "Research",
+        "Writing"
+      ],
+      "audience": [
+        "Analyst",
+        "Student",
+        "Educator",
+        "Team"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://elicit.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A research-focused AI tool for literature review, evidence gathering, and structured source-backed analysis.",
+      "whatFor": "Use Elicit when your main goal is research and you want a dedicated research tool rather than a broad general assistant.",
+      "who": "Best for analyst, student, educator, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Collect research papers on a topic, cluster the findings, and summarize the strongest evidence.",
+      "why": "It earns a place because it can make research work faster and more practical for people who want a clearer research workflow.",
+      "watchOuts": "It helps most with finding and structuring information. You may still want another tool for final deliverables.",
+      "firstPrompt": "Help me do this job well: Collect research papers on a topic, cluster the findings, and summarize the strongest evidence. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "research",
+        "writing",
+        "analyst",
+        "student",
+        "elicit"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Frase",
+      "slug": "frase",
+      "company": "Frase",
+      "companySummary": "Frase is included here for seo AI products that support seo, writing work.",
+      "category": "SEO",
+      "goals": [
+        "SEO",
+        "Writing",
+        "Research"
+      ],
+      "audience": [
+        "Marketer",
+        "Solo business",
+        "Agency",
+        "Writer"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://www.frase.io/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "An SEO writing assistant for briefs, topic planning, and building content around search intent.",
+      "whatFor": "Use Frase when your main goal is seo and you want a dedicated seo tool rather than a broad general assistant.",
+      "who": "Best for marketer, solo business, agency, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Create an SEO brief and article structure for a keyword cluster before drafting the content.",
+      "why": "It earns a place because it can make seo work faster and more practical for people who want a clearer seo workflow.",
+      "watchOuts": "It can speed up SEO work, but it should not replace human judgment on strategy and quality.",
+      "firstPrompt": "Help me do this job well: Create an SEO brief and article structure for a keyword cluster before drafting the content. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "seo",
+        "writing",
+        "marketer",
+        "solo business",
+        "frase"
+      ],
+      "addedAt": "2026-04-01",
       "reviewMethod": "Manual editorial review"
     },
     {
@@ -799,6 +1299,131 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
+      "name": "Glean",
+      "slug": "glean",
+      "company": "Glean",
+      "companySummary": "Glean is included here for research AI products that support research, productivity work.",
+      "category": "Research",
+      "goals": [
+        "Research",
+        "Productivity"
+      ],
+      "audience": [
+        "Team",
+        "Operator",
+        "Support team",
+        "Analyst"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://www.glean.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "An enterprise search and knowledge assistant for finding answers across your company tools and documents.",
+      "whatFor": "Use Glean when your main goal is research and you want a dedicated research tool rather than a broad general assistant.",
+      "who": "Best for team, operator, support team, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Ask one question and pull the answer from scattered internal docs, tickets, and messages.",
+      "why": "It earns a place because it can make research work faster and more practical for people who want a clearer research workflow.",
+      "watchOuts": "It helps most with finding and structuring information. You may still want another tool for final deliverables.",
+      "firstPrompt": "Help me do this job well: Ask one question and pull the answer from scattered internal docs, tickets, and messages. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "research",
+        "productivity",
+        "team",
+        "operator",
+        "glean"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Gong",
+      "slug": "gong",
+      "company": "Gong",
+      "companySummary": "Gong is included here for sales AI products that support sales, meetings work.",
+      "category": "Sales",
+      "goals": [
+        "Sales",
+        "Meetings",
+        "Research"
+      ],
+      "audience": [
+        "Sales team",
+        "Team",
+        "Operator",
+        "Founder"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://www.gong.io/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A revenue intelligence platform for understanding calls, coaching reps, and spotting deal risks earlier.",
+      "whatFor": "Use Gong when your main goal is sales and you want a dedicated sales tool rather than a broad general assistant.",
+      "who": "Best for sales team, team, operator, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Review sales calls and surface coaching opportunities and common objections across the team.",
+      "why": "It earns a place because it can make sales work faster and more practical for people who want a clearer sales workflow.",
+      "watchOuts": "It works best when your outreach process is already defined. It will not fix weak positioning by itself.",
+      "firstPrompt": "Help me do this job well: Review sales calls and surface coaching opportunities and common objections across the team. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "sales",
+        "meetings",
+        "sales team",
+        "team",
+        "gong"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Grain",
+      "slug": "grain",
+      "company": "Grain",
+      "companySummary": "Grain is included here for meetings AI products that support meetings, writing work.",
+      "category": "Meetings",
+      "goals": [
+        "Meetings",
+        "Writing",
+        "Sales"
+      ],
+      "audience": [
+        "Team",
+        "Sales team",
+        "Founder",
+        "Creator"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://grain.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A meeting capture tool for turning calls into reusable clips, summaries, and follow-up assets.",
+      "whatFor": "Use Grain when your main goal is meetings and you want a dedicated meetings tool rather than a broad general assistant.",
+      "who": "Best for team, sales team, founder, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Turn a customer call into a few shareable highlights and a concise recap for the team.",
+      "why": "It earns a place because it can make meetings work faster and more practical for people who want a clearer meetings workflow.",
+      "watchOuts": "The value depends on consistent team usage. If people do not use it regularly, the ROI drops fast.",
+      "firstPrompt": "Help me do this job well: Turn a customer call into a few shareable highlights and a concise recap for the team. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "meetings",
+        "writing",
+        "team",
+        "sales team",
+        "grain"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
       "name": "Grammarly",
       "slug": "grammarly",
       "company": "Grammarly",
@@ -837,6 +1462,173 @@ window.IHWAI = {
         "email"
       ],
       "addedAt": "2026-03-26",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Grok",
+      "slug": "grok",
+      "company": "xAI",
+      "companySummary": "xAI is included here for assistant AI products that support research, productivity work.",
+      "category": "Assistant",
+      "goals": [
+        "Research",
+        "Productivity",
+        "Writing"
+      ],
+      "audience": [
+        "Creator",
+        "Marketer",
+        "Operator",
+        "Founder"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://x.ai/grok",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A general AI assistant aimed at fast answers, current-context thinking, and broad everyday work.",
+      "whatFor": "Use Grok when your main goal is research and you want a dedicated assistant tool rather than a broad general assistant.",
+      "who": "Best for creator, marketer, operator, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Turn a rough market question into a quick brief with takeaways, open questions, and next steps.",
+      "why": "It earns a place because it can make research work faster and more practical for people who want a clearer assistant workflow.",
+      "watchOuts": "If you need a highly specialized workflow, a dedicated point solution may still fit better.",
+      "firstPrompt": "Help me do this job well: Turn a rough market question into a quick brief with takeaways, open questions, and next steps. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "assistant",
+        "research",
+        "productivity",
+        "creator",
+        "marketer",
+        "grok"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Ideogram",
+      "slug": "ideogram",
+      "company": "Ideogram",
+      "companySummary": "Ideogram is included here for image AI products that support design, marketing work.",
+      "category": "Image",
+      "goals": [
+        "Design",
+        "Marketing"
+      ],
+      "audience": [
+        "Designer",
+        "Creator",
+        "Marketer",
+        "Agency"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://ideogram.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "An image generation tool known for fast concept creation and stronger text-in-image results.",
+      "whatFor": "Use Ideogram when your main goal is design and you want a dedicated image tool rather than a broad general assistant.",
+      "who": "Best for designer, creator, marketer, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Create ad concepts that need both a visual idea and readable embedded headline text.",
+      "why": "It earns a place because it can make design work faster and more practical for people who want a clearer image workflow.",
+      "watchOuts": "It helps with fast visual generation, but you may still need another tool for final production polish.",
+      "firstPrompt": "Help me do this job well: Create ad concepts that need both a visual idea and readable embedded headline text. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "image",
+        "design",
+        "marketing",
+        "designer",
+        "creator",
+        "ideogram"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Intercom Fin",
+      "slug": "intercom-fin",
+      "company": "Intercom",
+      "companySummary": "Intercom is included here for support AI products that support support, productivity work.",
+      "category": "Support",
+      "goals": [
+        "Support",
+        "Productivity"
+      ],
+      "audience": [
+        "Support team",
+        "Team",
+        "Founder",
+        "Operator"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://www.intercom.com/fin",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "An AI support assistant for answering common customer questions and reducing repetitive support load.",
+      "whatFor": "Use Intercom Fin when your main goal is support and you want a dedicated support tool rather than a broad general assistant.",
+      "who": "Best for support team, team, founder, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Handle common support requests automatically while routing edge cases to a human team.",
+      "why": "It earns a place because it can make support work faster and more practical for people who want a clearer support workflow.",
+      "watchOuts": "It usually needs setup, routing rules, and review before the quality feels reliable.",
+      "firstPrompt": "Help me do this job well: Handle common support requests automatically while routing edge cases to a human team. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "support",
+        "productivity",
+        "support team",
+        "team",
+        "intercom fin"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "InVideo AI",
+      "slug": "invideo-ai",
+      "company": "InVideo",
+      "companySummary": "InVideo is included here for video AI products that support video, marketing work.",
+      "category": "Video",
+      "goals": [
+        "Video",
+        "Marketing"
+      ],
+      "audience": [
+        "Marketer",
+        "Creator",
+        "Solo business",
+        "Agency"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://invideo.io/ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "An AI video generator for creating rough marketing videos quickly from prompts or scripts.",
+      "whatFor": "Use InVideo AI when your main goal is video and you want a dedicated video tool rather than a broad general assistant.",
+      "who": "Best for marketer, creator, solo business, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Create a first-pass promo video from a product description and a few campaign points.",
+      "why": "It earns a place because it can make video work faster and more practical for people who want a clearer video workflow.",
+      "watchOuts": "It is best for faster video production, not every kind of high-end post-production.",
+      "firstPrompt": "Help me do this job well: Create a first-pass promo video from a product description and a few campaign points. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "video",
+        "marketing",
+        "marketer",
+        "creator",
+        "invideo ai"
+      ],
+      "addedAt": "2026-04-01",
       "reviewMethod": "Manual editorial review"
     },
     {
@@ -882,6 +1674,90 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
+      "name": "Kapwing AI",
+      "slug": "kapwing-ai",
+      "company": "Kapwing",
+      "companySummary": "Kapwing is included here for video AI products that support video, writing work.",
+      "category": "Video",
+      "goals": [
+        "Video",
+        "Writing",
+        "Marketing"
+      ],
+      "audience": [
+        "Creator",
+        "Marketer",
+        "Team",
+        "Agency"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://www.kapwing.com/ai",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A browser-based editing platform with AI help for captions, clipping, and faster social-ready video edits.",
+      "whatFor": "Use Kapwing AI when your main goal is video and you want a dedicated video tool rather than a broad general assistant.",
+      "who": "Best for creator, marketer, team, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Edit a short social video, add captions, and create several resized outputs quickly.",
+      "why": "It earns a place because it can make video work faster and more practical for people who want a clearer video workflow.",
+      "watchOuts": "It is best for faster video production, not every kind of high-end post-production.",
+      "firstPrompt": "Help me do this job well: Edit a short social video, add captions, and create several resized outputs quickly. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "video",
+        "writing",
+        "creator",
+        "marketer",
+        "kapwing ai"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Krea",
+      "slug": "krea",
+      "company": "Krea",
+      "companySummary": "Krea is included here for image AI products that support design, video work.",
+      "category": "Image",
+      "goals": [
+        "Design",
+        "Video"
+      ],
+      "audience": [
+        "Designer",
+        "Creator",
+        "Agency",
+        "Marketer"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://www.krea.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A creative generation tool for fast visual ideation, live prompting, and concept exploration.",
+      "whatFor": "Use Krea when your main goal is design and you want a dedicated image tool rather than a broad general assistant.",
+      "who": "Best for designer, creator, agency, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Iterate on visual concepts quickly during a live creative session before moving into production.",
+      "why": "It earns a place because it can make design work faster and more practical for people who want a clearer image workflow.",
+      "watchOuts": "It helps with fast visual generation, but you may still need another tool for final production polish.",
+      "firstPrompt": "Help me do this job well: Iterate on visual concepts quickly during a live creative session before moving into production. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "image",
+        "design",
+        "video",
+        "designer",
+        "creator",
+        "krea"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
       "name": "Krisp",
       "slug": "krisp",
       "company": "Krisp",
@@ -921,6 +1797,258 @@ window.IHWAI = {
         "remote work"
       ],
       "addedAt": "2026-03-28",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Lavender",
+      "slug": "lavender",
+      "company": "Lavender",
+      "companySummary": "Lavender is included here for sales AI products that support sales, writing work.",
+      "category": "Sales",
+      "goals": [
+        "Sales",
+        "Writing"
+      ],
+      "audience": [
+        "Sales team",
+        "Founder",
+        "Marketer",
+        "Solo business"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://www.lavender.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "An email coaching assistant built for outbound sales teams that want clearer, more effective prospect emails.",
+      "whatFor": "Use Lavender when your main goal is sales and you want a dedicated sales tool rather than a broad general assistant.",
+      "who": "Best for sales team, founder, marketer, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Rewrite a cold outreach email so it feels shorter, more relevant, and easier to reply to.",
+      "why": "It earns a place because it can make sales work faster and more practical for people who want a clearer sales workflow.",
+      "watchOuts": "It works best when your outreach process is already defined. It will not fix weak positioning by itself.",
+      "firstPrompt": "Help me do this job well: Rewrite a cold outreach email so it feels shorter, more relevant, and easier to reply to. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "sales",
+        "writing",
+        "sales team",
+        "founder",
+        "lavender"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Le Chat",
+      "slug": "le-chat",
+      "company": "Mistral",
+      "companySummary": "Mistral is included here for assistant AI products that support productivity, writing work.",
+      "category": "Assistant",
+      "goals": [
+        "Productivity",
+        "Writing",
+        "Research"
+      ],
+      "audience": [
+        "Team",
+        "Developer",
+        "Analyst",
+        "Founder"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://chat.mistral.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A clean general assistant experience for drafting, reasoning, and everyday business work.",
+      "whatFor": "Use Le Chat when your main goal is productivity and you want a dedicated assistant tool rather than a broad general assistant.",
+      "who": "Best for team, developer, analyst, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Turn a rough project brief into a cleaner plan with milestones, owners, and likely blockers.",
+      "why": "It earns a place because it can make productivity work faster and more practical for people who want a clearer assistant workflow.",
+      "watchOuts": "If you need a highly specialized workflow, a dedicated point solution may still fit better.",
+      "firstPrompt": "Help me do this job well: Turn a rough project brief into a cleaner plan with milestones, owners, and likely blockers. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "assistant",
+        "productivity",
+        "writing",
+        "team",
+        "developer",
+        "le chat"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Leonardo AI",
+      "slug": "leonardo-ai",
+      "company": "Leonardo",
+      "companySummary": "Leonardo is included here for image AI products that support design, marketing work.",
+      "category": "Image",
+      "goals": [
+        "Design",
+        "Marketing",
+        "Video"
+      ],
+      "audience": [
+        "Designer",
+        "Marketer",
+        "Creator",
+        "Agency"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://leonardo.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "An image-generation tool for concept art, brand visuals, and faster creative exploration.",
+      "whatFor": "Use Leonardo AI when your main goal is design and you want a dedicated image tool rather than a broad general assistant.",
+      "who": "Best for designer, marketer, creator, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Generate several visual directions for a campaign concept before choosing one to refine.",
+      "why": "It earns a place because it can make design work faster and more practical for people who want a clearer image workflow.",
+      "watchOuts": "It helps with fast visual generation, but you may still need another tool for final production polish.",
+      "firstPrompt": "Help me do this job well: Generate several visual directions for a campaign concept before choosing one to refine. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "image",
+        "design",
+        "marketing",
+        "designer",
+        "marketer",
+        "leonardo ai"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Luma Dream Machine",
+      "slug": "luma-dream-machine",
+      "company": "Luma AI",
+      "companySummary": "Luma AI is included here for video AI products that support video, design work.",
+      "category": "Video",
+      "goals": [
+        "Video",
+        "Design"
+      ],
+      "audience": [
+        "Creator",
+        "Designer",
+        "Agency",
+        "Marketer"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://lumalabs.ai/dream-machine",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A generative video tool for exploring motion ideas, concept scenes, and fast visual experimentation.",
+      "whatFor": "Use Luma Dream Machine when your main goal is video and you want a dedicated video tool rather than a broad general assistant.",
+      "who": "Best for creator, designer, agency, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Create several motion concepts for a campaign moodboard before investing in production.",
+      "why": "It earns a place because it can make video work faster and more practical for people who want a clearer video workflow.",
+      "watchOuts": "It is best for faster video production, not every kind of high-end post-production.",
+      "firstPrompt": "Help me do this job well: Create several motion concepts for a campaign moodboard before investing in production. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "video",
+        "design",
+        "creator",
+        "designer",
+        "luma dream machine"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Mentimeter AI",
+      "slug": "mentimeter-ai",
+      "company": "Mentimeter",
+      "companySummary": "Mentimeter is included here for presentations AI products that support presentations, training work.",
+      "category": "Presentations",
+      "goals": [
+        "Presentations",
+        "Training"
+      ],
+      "audience": [
+        "Educator",
+        "Team",
+        "Founder",
+        "Marketer"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://www.mentimeter.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "An interactive presentation tool with AI help for creating audience-engaging sessions and live polls.",
+      "whatFor": "Use Mentimeter AI when your main goal is presentations and you want a dedicated presentations tool rather than a broad general assistant.",
+      "who": "Best for educator, team, founder, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Build an interactive workshop deck with questions, polls, and recap slides.",
+      "why": "It earns a place because it can make presentations work faster and more practical for people who want a clearer presentations workflow.",
+      "watchOuts": "It is strongest for faster first drafts. You may still refine the final deck manually.",
+      "firstPrompt": "Help me do this job well: Build an interactive workshop deck with questions, polls, and recap slides. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "presentations",
+        "training",
+        "educator",
+        "team",
+        "mentimeter ai"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Microsoft Copilot",
+      "slug": "microsoft-copilot",
+      "company": "Microsoft",
+      "companySummary": "Microsoft is included here for assistant AI products that support productivity, writing work.",
+      "category": "Assistant",
+      "goals": [
+        "Productivity",
+        "Writing",
+        "Research"
+      ],
+      "audience": [
+        "Team",
+        "Operator",
+        "Founder",
+        "Student"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://copilot.microsoft.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A practical everyday AI assistant for drafting, summarizing, and general work inside Microsoft-heavy environments.",
+      "whatFor": "Use Microsoft Copilot when your main goal is productivity and you want a dedicated assistant tool rather than a broad general assistant.",
+      "who": "Best for team, operator, founder, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Summarize a long email thread, turn the decisions into action items, and draft the follow-up.",
+      "why": "It earns a place because it can make productivity work faster and more practical for people who want a clearer assistant workflow.",
+      "watchOuts": "If you need a highly specialized workflow, a dedicated point solution may still fit better.",
+      "firstPrompt": "Help me do this job well: Summarize a long email thread, turn the decisions into action items, and draft the follow-up. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "assistant",
+        "productivity",
+        "writing",
+        "team",
+        "operator",
+        "microsoft copilot"
+      ],
+      "addedAt": "2026-04-01",
       "reviewMethod": "Manual editorial review"
     },
     {
@@ -1049,6 +2177,48 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
+      "name": "Opus Clip",
+      "slug": "opus-clip",
+      "company": "Opus",
+      "companySummary": "Opus is included here for video AI products that support video, marketing work.",
+      "category": "Video",
+      "goals": [
+        "Video",
+        "Marketing",
+        "Training"
+      ],
+      "audience": [
+        "Creator",
+        "Marketer",
+        "Agency",
+        "Solo business"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://www.opus.pro/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A video repurposing tool for turning longer videos into shorter clips for social distribution.",
+      "whatFor": "Use Opus Clip when your main goal is video and you want a dedicated video tool rather than a broad general assistant.",
+      "who": "Best for creator, marketer, agency, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Turn a webinar or interview into several short clips with captions and tighter framing.",
+      "why": "It earns a place because it can make video work faster and more practical for people who want a clearer video workflow.",
+      "watchOuts": "It is best for faster video production, not every kind of high-end post-production.",
+      "firstPrompt": "Help me do this job well: Turn a webinar or interview into several short clips with captions and tighter framing. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "video",
+        "marketing",
+        "creator",
+        "marketer",
+        "opus clip"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
       "name": "Otter",
       "slug": "otter",
       "company": "Otter.ai",
@@ -1088,6 +2258,426 @@ window.IHWAI = {
         "calls"
       ],
       "addedAt": "2026-03-26",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Phind",
+      "slug": "phind",
+      "company": "Phind",
+      "companySummary": "Phind is included here for research AI products that support research, productivity work.",
+      "category": "Research",
+      "goals": [
+        "Research",
+        "Productivity",
+        "Writing"
+      ],
+      "audience": [
+        "Developer",
+        "Analyst",
+        "Founder",
+        "Student"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://www.phind.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A fast answer engine for technical and problem-solving questions when you want research plus explanation.",
+      "whatFor": "Use Phind when your main goal is research and you want a dedicated research tool rather than a broad general assistant.",
+      "who": "Best for developer, analyst, founder, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Research an unfamiliar technical problem and get a practical explanation with next debugging steps.",
+      "why": "It earns a place because it can make research work faster and more practical for people who want a clearer research workflow.",
+      "watchOuts": "It helps most with finding and structuring information. You may still want another tool for final deliverables.",
+      "firstPrompt": "Help me do this job well: Research an unfamiliar technical problem and get a practical explanation with next debugging steps. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "research",
+        "productivity",
+        "developer",
+        "analyst",
+        "phind"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "PhotoRoom",
+      "slug": "photoroom",
+      "company": "PhotoRoom",
+      "companySummary": "PhotoRoom is included here for image AI products that support design, marketing work.",
+      "category": "Image",
+      "goals": [
+        "Design",
+        "Marketing",
+        "Sales"
+      ],
+      "audience": [
+        "Solo business",
+        "Marketer",
+        "Creator",
+        "Agency"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://www.photoroom.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A product image editing tool for backgrounds, cutouts, and cleaner commerce visuals.",
+      "whatFor": "Use PhotoRoom when your main goal is design and you want a dedicated image tool rather than a broad general assistant.",
+      "who": "Best for solo business, marketer, creator, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Turn rough product photos into cleaner listing images and ad-ready cutouts.",
+      "why": "It earns a place because it can make design work faster and more practical for people who want a clearer image workflow.",
+      "watchOuts": "It helps with fast visual generation, but you may still need another tool for final production polish.",
+      "firstPrompt": "Help me do this job well: Turn rough product photos into cleaner listing images and ad-ready cutouts. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "image",
+        "design",
+        "marketing",
+        "solo business",
+        "marketer",
+        "photoroom"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Pictory",
+      "slug": "pictory",
+      "company": "Pictory",
+      "companySummary": "Pictory is included here for video AI products that support video, marketing work.",
+      "category": "Video",
+      "goals": [
+        "Video",
+        "Marketing",
+        "Training"
+      ],
+      "audience": [
+        "Marketer",
+        "Creator",
+        "Educator",
+        "Solo business"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://pictory.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A video creation tool for turning scripts, blog posts, and long videos into shorter visual content.",
+      "whatFor": "Use Pictory when your main goal is video and you want a dedicated video tool rather than a broad general assistant.",
+      "who": "Best for marketer, creator, educator, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Turn a blog post into a short explainer video with visuals, captions, and simple narration.",
+      "why": "It earns a place because it can make video work faster and more practical for people who want a clearer video workflow.",
+      "watchOuts": "It is best for faster video production, not every kind of high-end post-production.",
+      "firstPrompt": "Help me do this job well: Turn a blog post into a short explainer video with visuals, captions, and simple narration. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "video",
+        "marketing",
+        "marketer",
+        "creator",
+        "pictory"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Pitch",
+      "slug": "pitch",
+      "company": "Pitch",
+      "companySummary": "Pitch is included here for presentations AI products that support presentations, productivity work.",
+      "category": "Presentations",
+      "goals": [
+        "Presentations",
+        "Productivity",
+        "Design"
+      ],
+      "audience": [
+        "Team",
+        "Founder",
+        "Marketer",
+        "Agency"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://pitch.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A collaborative presentation platform for teams that need faster deck creation and iteration.",
+      "whatFor": "Use Pitch when your main goal is presentations and you want a dedicated presentations tool rather than a broad general assistant.",
+      "who": "Best for team, founder, marketer, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Build a team presentation and keep comments, edits, and revisions in one collaborative workflow.",
+      "why": "It earns a place because it can make presentations work faster and more practical for people who want a clearer presentations workflow.",
+      "watchOuts": "It is strongest for faster first drafts. You may still refine the final deck manually.",
+      "firstPrompt": "Help me do this job well: Build a team presentation and keep comments, edits, and revisions in one collaborative workflow. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "presentations",
+        "productivity",
+        "team",
+        "founder",
+        "pitch"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Playground AI",
+      "slug": "playground-ai",
+      "company": "Playground AI",
+      "companySummary": "Playground AI is included here for image AI products that support design, marketing work.",
+      "category": "Image",
+      "goals": [
+        "Design",
+        "Marketing"
+      ],
+      "audience": [
+        "Creator",
+        "Designer",
+        "Marketer",
+        "Solo business"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://playground.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A browser-based image creation workspace for quick visual experiments, edits, and mockups.",
+      "whatFor": "Use Playground AI when your main goal is design and you want a dedicated image tool rather than a broad general assistant.",
+      "who": "Best for creator, designer, marketer, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Turn a campaign idea into a batch of fast visual options for social and landing pages.",
+      "why": "It earns a place because it can make design work faster and more practical for people who want a clearer image workflow.",
+      "watchOuts": "It helps with fast visual generation, but you may still need another tool for final production polish.",
+      "firstPrompt": "Help me do this job well: Turn a campaign idea into a batch of fast visual options for social and landing pages. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "image",
+        "design",
+        "marketing",
+        "creator",
+        "designer",
+        "playground ai"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "PlayHT",
+      "slug": "playht",
+      "company": "PlayHT",
+      "companySummary": "PlayHT is included here for voice AI products that support voice, support work.",
+      "category": "Voice",
+      "goals": [
+        "Voice",
+        "Support",
+        "Training"
+      ],
+      "audience": [
+        "Creator",
+        "Support team",
+        "Educator",
+        "Team"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://play.ht/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A voice generation tool for narration, voiceovers, and spoken content workflows.",
+      "whatFor": "Use PlayHT when your main goal is voice and you want a dedicated voice tool rather than a broad general assistant.",
+      "who": "Best for creator, support team, educator, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Create narration for a training video or product explainer without recording your own voice.",
+      "why": "It earns a place because it can make voice work faster and more practical for people who want a clearer voice workflow.",
+      "watchOuts": "It helps most with voice workflows. You may still need another tool for broader content operations.",
+      "firstPrompt": "Help me do this job well: Create narration for a training video or product explainer without recording your own voice. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "voice",
+        "support",
+        "creator",
+        "support team",
+        "playht"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Poe",
+      "slug": "poe",
+      "company": "Quora",
+      "companySummary": "Quora is included here for assistant AI products that support productivity, writing work.",
+      "category": "Assistant",
+      "goals": [
+        "Productivity",
+        "Writing",
+        "Research"
+      ],
+      "audience": [
+        "Student",
+        "Creator",
+        "Writer",
+        "Solo business"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://poe.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A flexible multi-model assistant hub for people who want to compare different AI models in one place.",
+      "whatFor": "Use Poe when your main goal is productivity and you want a dedicated assistant tool rather than a broad general assistant.",
+      "who": "Best for student, creator, writer, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Compare how a few different models answer the same planning or writing task before choosing one.",
+      "why": "It earns a place because it can make productivity work faster and more practical for people who want a clearer assistant workflow.",
+      "watchOuts": "If you need a highly specialized workflow, a dedicated point solution may still fit better.",
+      "firstPrompt": "Help me do this job well: Compare how a few different models answer the same planning or writing task before choosing one. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "assistant",
+        "productivity",
+        "writing",
+        "student",
+        "creator",
+        "poe"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "QuillBot",
+      "slug": "quillbot",
+      "company": "QuillBot",
+      "companySummary": "QuillBot is included here for writing AI products that support writing, productivity work.",
+      "category": "Writing",
+      "goals": [
+        "Writing",
+        "Productivity"
+      ],
+      "audience": [
+        "Student",
+        "Writer",
+        "Team",
+        "Solo business"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://quillbot.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A rewrite and paraphrasing assistant for tightening wording, changing tone, and simplifying drafts.",
+      "whatFor": "Use QuillBot when your main goal is writing and you want a dedicated writing tool rather than a broad general assistant.",
+      "who": "Best for student, writer, team, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Rewrite a rough paragraph into a clearer version that sounds more direct and easier to read.",
+      "why": "It earns a place because it can make writing work faster and more practical for people who want a clearer writing workflow.",
+      "watchOuts": "It works best for writing and rewriting, not every broader workflow around the content.",
+      "firstPrompt": "Help me do this job well: Rewrite a rough paragraph into a clearer version that sounds more direct and easier to read. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "writing",
+        "productivity",
+        "student",
+        "writer",
+        "quillbot"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Read AI",
+      "slug": "read-ai",
+      "company": "Read AI",
+      "companySummary": "Read AI is included here for meetings AI products that support meetings, productivity work.",
+      "category": "Meetings",
+      "goals": [
+        "Meetings",
+        "Productivity"
+      ],
+      "audience": [
+        "Team",
+        "Operator",
+        "Founder",
+        "Sales team"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://www.read.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A meeting intelligence tool for summaries, participation insights, and post-call productivity cleanup.",
+      "whatFor": "Use Read AI when your main goal is meetings and you want a dedicated meetings tool rather than a broad general assistant.",
+      "who": "Best for team, operator, founder, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Summarize a recurring team meeting and track the decisions and action items automatically.",
+      "why": "It earns a place because it can make meetings work faster and more practical for people who want a clearer meetings workflow.",
+      "watchOuts": "The value depends on consistent team usage. If people do not use it regularly, the ROI drops fast.",
+      "firstPrompt": "Help me do this job well: Summarize a recurring team meeting and track the decisions and action items automatically. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "meetings",
+        "productivity",
+        "team",
+        "operator",
+        "read ai"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Recraft",
+      "slug": "recraft",
+      "company": "Recraft",
+      "companySummary": "Recraft is included here for image AI products that support design, marketing work.",
+      "category": "Image",
+      "goals": [
+        "Design",
+        "Marketing"
+      ],
+      "audience": [
+        "Designer",
+        "Marketer",
+        "Agency",
+        "Creator"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://www.recraft.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A design-oriented image tool for generating visual assets, icons, and brand-adjacent creative variations.",
+      "whatFor": "Use Recraft when your main goal is design and you want a dedicated image tool rather than a broad general assistant.",
+      "who": "Best for designer, marketer, agency, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Create a family of visual assets that match one campaign idea across several formats.",
+      "why": "It earns a place because it can make design work faster and more practical for people who want a clearer image workflow.",
+      "watchOuts": "It helps with fast visual generation, but you may still need another tool for final production polish.",
+      "firstPrompt": "Help me do this job well: Create a family of visual assets that match one campaign idea across several formats. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "image",
+        "design",
+        "marketing",
+        "designer",
+        "marketer",
+        "recraft"
+      ],
+      "addedAt": "2026-04-01",
       "reviewMethod": "Manual editorial review"
     },
     {
@@ -1171,6 +2761,251 @@ window.IHWAI = {
         "creative"
       ],
       "addedAt": "2026-03-26",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Rytr",
+      "slug": "rytr",
+      "company": "Rytr",
+      "companySummary": "Rytr is included here for writing AI products that support writing, marketing work.",
+      "category": "Writing",
+      "goals": [
+        "Writing",
+        "Marketing"
+      ],
+      "audience": [
+        "Marketer",
+        "Solo business",
+        "Founder",
+        "Creator"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://rytr.me/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A lightweight writing assistant for quick drafts, marketing copy, and everyday content tasks.",
+      "whatFor": "Use Rytr when your main goal is writing and you want a dedicated writing tool rather than a broad general assistant.",
+      "who": "Best for marketer, solo business, founder, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Draft five headline options and a short landing-page section for a new product offer.",
+      "why": "It earns a place because it can make writing work faster and more practical for people who want a clearer writing workflow.",
+      "watchOuts": "It works best for writing and rewriting, not every broader workflow around the content.",
+      "firstPrompt": "Help me do this job well: Draft five headline options and a short landing-page section for a new product offer. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "writing",
+        "marketing",
+        "marketer",
+        "solo business",
+        "rytr"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Scholarcy",
+      "slug": "scholarcy",
+      "company": "Scholarcy",
+      "companySummary": "Scholarcy is included here for research AI products that support research, productivity work.",
+      "category": "Research",
+      "goals": [
+        "Research",
+        "Productivity"
+      ],
+      "audience": [
+        "Student",
+        "Educator",
+        "Analyst",
+        "Team"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://www.scholarcy.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A paper summarization tool for extracting key points, flashcards, and digestible takeaways from dense material.",
+      "whatFor": "Use Scholarcy when your main goal is research and you want a dedicated research tool rather than a broad general assistant.",
+      "who": "Best for student, educator, analyst, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Turn a long research paper into a faster executive digest before a meeting or literature review.",
+      "why": "It earns a place because it can make research work faster and more practical for people who want a clearer research workflow.",
+      "watchOuts": "It helps most with finding and structuring information. You may still want another tool for final deliverables.",
+      "firstPrompt": "Help me do this job well: Turn a long research paper into a faster executive digest before a meeting or literature review. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "research",
+        "productivity",
+        "student",
+        "educator",
+        "scholarcy"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Scite",
+      "slug": "scite",
+      "company": "Scite",
+      "companySummary": "Scite is included here for research AI products that support research, writing work.",
+      "category": "Research",
+      "goals": [
+        "Research",
+        "Writing"
+      ],
+      "audience": [
+        "Educator",
+        "Student",
+        "Analyst",
+        "Writer"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://scite.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A citation-aware research tool for understanding how papers are supported, disputed, or mentioned.",
+      "whatFor": "Use Scite when your main goal is research and you want a dedicated research tool rather than a broad general assistant.",
+      "who": "Best for educator, student, analyst, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Check whether a frequently cited study is broadly supported or challenged before using it in a report.",
+      "why": "It earns a place because it can make research work faster and more practical for people who want a clearer research workflow.",
+      "watchOuts": "It helps most with finding and structuring information. You may still want another tool for final deliverables.",
+      "firstPrompt": "Help me do this job well: Check whether a frequently cited study is broadly supported or challenged before using it in a report. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "research",
+        "writing",
+        "educator",
+        "student",
+        "scite"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Scribe",
+      "slug": "scribe",
+      "company": "Scribe",
+      "companySummary": "Scribe is included here for training AI products that support training, productivity work.",
+      "category": "Training",
+      "goals": [
+        "Training",
+        "Productivity"
+      ],
+      "audience": [
+        "Team",
+        "Operator",
+        "Educator",
+        "Support team"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://scribehow.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A documentation and SOP creation tool for turning workflows into step-by-step internal guides.",
+      "whatFor": "Use Scribe when your main goal is training and you want a dedicated training tool rather than a broad general assistant.",
+      "who": "Best for team, operator, educator, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Record a workflow once and publish it as a reusable internal process guide.",
+      "why": "It earns a place because it can make training work faster and more practical for people who want a clearer training workflow.",
+      "watchOuts": "It saves time once the workflow is stable, but it still needs someone to own the final training quality.",
+      "firstPrompt": "Help me do this job well: Record a workflow once and publish it as a reusable internal process guide. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "training",
+        "productivity",
+        "team",
+        "operator",
+        "scribe"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Speechify",
+      "slug": "speechify",
+      "company": "Speechify",
+      "companySummary": "Speechify is included here for voice AI products that support voice, training work.",
+      "category": "Voice",
+      "goals": [
+        "Voice",
+        "Training",
+        "Productivity"
+      ],
+      "audience": [
+        "Student",
+        "Educator",
+        "Team",
+        "Solo business"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://speechify.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A text-to-speech platform for listening workflows, spoken summaries, and accessible content consumption.",
+      "whatFor": "Use Speechify when your main goal is voice and you want a dedicated voice tool rather than a broad general assistant.",
+      "who": "Best for student, educator, team, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Turn long written material into spoken audio so it is easier to review on the go.",
+      "why": "It earns a place because it can make voice work faster and more practical for people who want a clearer voice workflow.",
+      "watchOuts": "It helps most with voice workflows. You may still need another tool for broader content operations.",
+      "firstPrompt": "Help me do this job well: Turn long written material into spoken audio so it is easier to review on the go. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "voice",
+        "training",
+        "student",
+        "educator",
+        "speechify"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Sudowrite",
+      "slug": "sudowrite",
+      "company": "Sudowrite",
+      "companySummary": "Sudowrite is included here for writing AI products that support writing work.",
+      "category": "Writing",
+      "goals": [
+        "Writing"
+      ],
+      "audience": [
+        "Writer",
+        "Creator",
+        "Solo business",
+        "Student"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://www.sudowrite.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A creative writing assistant for fiction drafting, scene expansion, and language exploration.",
+      "whatFor": "Use Sudowrite when your main goal is writing and you want a dedicated writing tool rather than a broad general assistant.",
+      "who": "Best for writer, creator, solo business, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Expand a rough story scene into a fuller draft with stronger description and better pacing.",
+      "why": "It earns a place because it can make writing work faster and more practical for people who want a clearer writing workflow.",
+      "watchOuts": "It works best for writing and rewriting, not every broader workflow around the content.",
+      "firstPrompt": "Help me do this job well: Expand a rough story scene into a fuller draft with stronger description and better pacing. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "writing",
+        "writer",
+        "creator",
+        "sudowrite"
+      ],
+      "addedAt": "2026-04-01",
       "reviewMethod": "Manual editorial review"
     },
     {
@@ -1258,6 +3093,215 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
+      "name": "Tactiq",
+      "slug": "tactiq",
+      "company": "Tactiq",
+      "companySummary": "Tactiq is included here for meetings AI products that support meetings, writing work.",
+      "category": "Meetings",
+      "goals": [
+        "Meetings",
+        "Writing",
+        "Productivity"
+      ],
+      "audience": [
+        "Team",
+        "Marketer",
+        "Founder",
+        "Operator"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://tactiq.io/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A lightweight transcription and meeting notes assistant for faster follow-up after online calls.",
+      "whatFor": "Use Tactiq when your main goal is meetings and you want a dedicated meetings tool rather than a broad general assistant.",
+      "who": "Best for team, marketer, founder, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Capture a meeting transcript and turn it into a summary, next steps, and a brief recap email.",
+      "why": "It earns a place because it can make meetings work faster and more practical for people who want a clearer meetings workflow.",
+      "watchOuts": "The value depends on consistent team usage. If people do not use it regularly, the ROI drops fast.",
+      "firstPrompt": "Help me do this job well: Capture a meeting transcript and turn it into a summary, next steps, and a brief recap email. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "meetings",
+        "writing",
+        "team",
+        "marketer",
+        "tactiq"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Tome",
+      "slug": "tome",
+      "company": "Tome",
+      "companySummary": "Tome is included here for presentations AI products that support presentations, writing work.",
+      "category": "Presentations",
+      "goals": [
+        "Presentations",
+        "Writing",
+        "Design"
+      ],
+      "audience": [
+        "Founder",
+        "Marketer",
+        "Team",
+        "Agency"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://tome.app/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A presentation and narrative tool for turning ideas into polished story-driven decks quickly.",
+      "whatFor": "Use Tome when your main goal is presentations and you want a dedicated presentations tool rather than a broad general assistant.",
+      "who": "Best for founder, marketer, team, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Turn a rough pitch idea into a cleaner narrative deck with supporting visuals and structure.",
+      "why": "It earns a place because it can make presentations work faster and more practical for people who want a clearer presentations workflow.",
+      "watchOuts": "It is strongest for faster first drafts. You may still refine the final deck manually.",
+      "firstPrompt": "Help me do this job well: Turn a rough pitch idea into a cleaner narrative deck with supporting visuals and structure. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "presentations",
+        "writing",
+        "founder",
+        "marketer",
+        "tome"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "WellSaid Labs",
+      "slug": "wellsaid-labs",
+      "company": "WellSaid Labs",
+      "companySummary": "WellSaid Labs is included here for voice AI products that support voice, training work.",
+      "category": "Voice",
+      "goals": [
+        "Voice",
+        "Training",
+        "Marketing"
+      ],
+      "audience": [
+        "Educator",
+        "Marketer",
+        "Team",
+        "Agency"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://wellsaidlabs.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A business-focused voiceover platform for polished narration in training, marketing, and explainers.",
+      "whatFor": "Use WellSaid Labs when your main goal is voice and you want a dedicated voice tool rather than a broad general assistant.",
+      "who": "Best for educator, marketer, team, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Generate a clean professional voiceover for onboarding or product demo content.",
+      "why": "It earns a place because it can make voice work faster and more practical for people who want a clearer voice workflow.",
+      "watchOuts": "It helps most with voice workflows. You may still need another tool for broader content operations.",
+      "firstPrompt": "Help me do this job well: Generate a clean professional voiceover for onboarding or product demo content. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "voice",
+        "training",
+        "educator",
+        "marketer",
+        "wellsaid labs"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Wordtune",
+      "slug": "wordtune",
+      "company": "AI21",
+      "companySummary": "AI21 is included here for writing AI products that support writing, productivity work.",
+      "category": "Writing",
+      "goals": [
+        "Writing",
+        "Productivity"
+      ],
+      "audience": [
+        "Writer",
+        "Marketer",
+        "Student",
+        "Team"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://www.wordtune.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A writing improvement tool for rephrasing, shortening, and polishing messages inside existing workflows.",
+      "whatFor": "Use Wordtune when your main goal is writing and you want a dedicated writing tool rather than a broad general assistant.",
+      "who": "Best for writer, marketer, student, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Rewrite a client message so it sounds more confident, concise, and action-oriented.",
+      "why": "It earns a place because it can make writing work faster and more practical for people who want a clearer writing workflow.",
+      "watchOuts": "It works best for writing and rewriting, not every broader workflow around the content.",
+      "firstPrompt": "Help me do this job well: Rewrite a client message so it sounds more confident, concise, and action-oriented. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "writing",
+        "productivity",
+        "writer",
+        "marketer",
+        "wordtune"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Writer",
+      "slug": "writer",
+      "company": "Writer",
+      "companySummary": "Writer is included here for writing AI products that support writing, marketing work.",
+      "category": "Writing",
+      "goals": [
+        "Writing",
+        "Marketing",
+        "Support"
+      ],
+      "audience": [
+        "Team",
+        "Marketer",
+        "Support team",
+        "Operator"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://writer.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A business writing platform for teams that need brand consistency, approved language, and scalable content operations.",
+      "whatFor": "Use Writer when your main goal is writing and you want a dedicated writing tool rather than a broad general assistant.",
+      "who": "Best for team, marketer, support team, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Generate support copy and marketing drafts that stay inside an approved brand voice.",
+      "why": "It earns a place because it can make writing work faster and more practical for people who want a clearer writing workflow.",
+      "watchOuts": "It works best for writing and rewriting, not every broader workflow around the content.",
+      "firstPrompt": "Help me do this job well: Generate support copy and marketing drafts that stay inside an approved brand voice. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "writing",
+        "marketing",
+        "team",
+        "marketer",
+        "writer"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
       "name": "Writesonic",
       "slug": "writesonic",
       "company": "Writesonic",
@@ -1297,6 +3341,47 @@ window.IHWAI = {
         "research"
       ],
       "addedAt": "2026-03-26",
+      "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Zendesk AI",
+      "slug": "zendesk-ai",
+      "company": "Zendesk",
+      "companySummary": "Zendesk is included here for support AI products that support support, productivity work.",
+      "category": "Support",
+      "goals": [
+        "Support",
+        "Productivity"
+      ],
+      "audience": [
+        "Support team",
+        "Team",
+        "Operator",
+        "Founder"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://www.zendesk.com/ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "An AI support layer for teams already working inside Zendesk who want better speed and consistency.",
+      "whatFor": "Use Zendesk AI when your main goal is support and you want a dedicated support tool rather than a broad general assistant.",
+      "who": "Best for support team, team, operator, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Summarize tickets, suggest replies, and reduce repetitive support handling time.",
+      "why": "It earns a place because it can make support work faster and more practical for people who want a clearer support workflow.",
+      "watchOuts": "It usually needs setup, routing rules, and review before the quality feels reliable.",
+      "firstPrompt": "Help me do this job well: Summarize tickets, suggest replies, and reduce repetitive support handling time. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "support",
+        "productivity",
+        "support team",
+        "team",
+        "zendesk ai"
+      ],
+      "addedAt": "2026-04-01",
       "reviewMethod": "Manual editorial review"
     }
   ],

@@ -191,6 +191,38 @@ img {
   background: var(--bg-soft);
 }
 
+.nav-search {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: min(420px, 100%);
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+}
+
+.nav-search input {
+  min-width: 0;
+  width: 240px;
+  border: 0;
+  background: transparent;
+  padding: 8px 12px;
+  font: inherit;
+  color: var(--text);
+}
+
+.nav-search button {
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: linear-gradient(135deg, rgba(12, 123, 220, 0.16), rgba(20, 184, 108, 0.14));
+  color: var(--text);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
 .button,
 .small-link,
 .inline-filter,
@@ -703,9 +735,9 @@ img {
 
 .chip-accent,
 .tag {
-  background: rgba(12, 123, 220, 0.1);
-  border-color: rgba(12, 123, 220, 0.16);
-  color: var(--accent-strong);
+  background: rgba(16, 33, 58, 0.04);
+  border-color: rgba(16, 33, 58, 0.08);
+  color: var(--muted-strong);
 }
 
 .chip-link {
@@ -722,8 +754,9 @@ img {
 }
 
 .tag {
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 700;
 }
 
 .pill {
@@ -1347,6 +1380,14 @@ img {
     position: static;
     margin-top: 10px;
     min-width: 0;
+    width: 100%;
+  }
+
+  .nav-search {
+    width: 100%;
+  }
+
+  .nav-search input {
     width: 100%;
   }
 

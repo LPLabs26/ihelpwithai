@@ -70,6 +70,25 @@ const GOAL_COPY = {
   }
 };
 
+const CATEGORY_LABELS = {
+  Assistant: 'General assistant',
+  Automation: 'Automation workflow',
+  Design: 'Design workflow',
+  Image: 'Image workflow',
+  Marketing: 'Marketing workflow',
+  Meetings: 'Meeting workflow',
+  Presentations: 'Presentation workflow',
+  Research: 'Research workflow',
+  Sales: 'Sales workflow',
+  SEO: 'SEO workflow',
+  Support: 'Support workflow',
+  Training: 'Training workflow',
+  Video: 'Video workflow',
+  Voice: 'Voice workflow',
+  Workspace: 'Workspace AI',
+  Writing: 'Writing workflow'
+};
+
 const grid = document.getElementById('card-grid');
 const countEl = document.getElementById('count');
 const searchEl = document.getElementById('search');
@@ -228,6 +247,14 @@ function companyPreviewDescription(company) {
 
 function comparisonPreviewDescription(comparison) {
   return cleanPreviewText(comparison.summary || comparison.quickTake || comparison.question);
+}
+
+function categoryLabel(category = '') {
+  return CATEGORY_LABELS[category] || category || 'AI tool';
+}
+
+function toolFitLabel(tool) {
+  return categoryLabel(tool.category);
 }
 
 function guideHref(goal) {
@@ -664,7 +691,7 @@ function renderMatcher() {
     return `
       <article class="match-card">
         <div class="tagrow">
-          <span class="tag">${tool.category}</span>
+          <span class="tag">${escapeHtml(toolFitLabel(tool))}</span>
           ${companyChip(tool.company, tool.officialUrl)}
           <span class="chip">${tool.pricing}</span>
           <span class="chip ${matcherIsExact(tool) ? 'chip-accent' : ''}">${fitLabel}</span>
@@ -995,7 +1022,7 @@ function renderDirectorySummary(results) {
         <div>
           <div class="eyebrow">Best current match</div>
           <div class="tagrow" style="margin-top:10px">
-            <span class="tag">${top.category}</span>
+            <span class="tag">${escapeHtml(toolFitLabel(top))}</span>
             ${companyChip(top.company, top.officialUrl)}
             <span class="chip">${top.pricing}</span>
             <span class="chip">${top.difficulty}</span>
@@ -1082,7 +1109,7 @@ function toolRow(tool, options = {}) {
     <article class="tool-row">
       <div class="tool-row-main">
         <div class="tagrow">
-          <span class="tag">${tool.category}</span>
+          <span class="tag">${escapeHtml(toolFitLabel(tool))}</span>
           ${companyChip(tool.company, tool.officialUrl)}
           <span class="chip">${tool.pricing}</span>
           ${badge}

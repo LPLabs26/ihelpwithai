@@ -27,17 +27,33 @@
           <div class="brand-sub">AI tools that actually help</div>
         </div>
       </a>
+
+      <form class="nav-search" action="./directory.html" method="get">
+        <input type="search" name="search" placeholder="Search AI tools or companies">
+        <button type="submit">Search</button>
+      </form>
+
       <nav class="navlinks">
-        <a href="./index.html#matcher">Start here</a>
-        <a href="./index.html#directory-filters">Directory</a>
-        <a href="./best-free-ai-tools.html">Best free tools</a>
-        <a href="./editorial-methodology.html">Methodology</a>
+        <details class="nav-dropdown">
+          <summary class="nav-summary">Start here</summary>
+          <div class="nav-dropdown-menu">
+            <a href="./index.html">Home</a>
+            <a href="./shortlist.html">Shortlist</a>
+            <a href="./directory.html">Directory</a>
+            <a href="./companies.html">Companies</a>
+            <a href="./reviews.html">Reviews</a>
+            <a href="./get-help.html">Get help</a>
+            <a href="./best-free-ai-tools.html">Best free tools</a>
+            <a href="./editorial-methodology.html">Methodology</a>
+            <a href="./affiliate-disclosure.html">Disclosure</a>
+          </div>
+        </details>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <div class="breadcrumb"><a class="backlink" href="./index.html">← Back to directory</a></div>
+    <div class="breadcrumb"><a class="backlink" href="./directory.html">← Back to directory</a></div>
 
     <section class="detail-hero">
       <div class="detail-grid">
@@ -49,7 +65,7 @@
           <div class="detail-section">
             <h2>When this path is useful</h2>
             <p>If you already know names like OpenAI, Anthropic, Canva, Adobe, or Zapier, this page gives you the shortest route from company to tool review without making you sift through the entire directory first.</p>
-            <p>Current coverage: <strong>31 companies</strong> represented in the directory.</p>
+            <p>Current coverage: <strong>81 companies</strong> represented in the directory.</p>
           </div>
 
           <div class="detail-section">
@@ -59,15 +75,125 @@
               <div>
                 <div class="jump-label">Jump to a company</div>
                 <div class="company-jump-grid">
-                  <a class="chip chip-link" href="#company-adobe">Adobe</a><a class="chip chip-link" href="#company-airtable">Airtable</a><a class="chip chip-link" href="#company-anthropic">Anthropic</a><a class="chip chip-link" href="#company-beautiful-ai">Beautiful.ai</a><a class="chip chip-link" href="#company-canva">Canva</a><a class="chip chip-link" href="#company-clickup">ClickUp</a><a class="chip chip-link" href="#company-copy-ai">Copy.ai</a><a class="chip chip-link" href="#company-descript">Descript</a><a class="chip chip-link" href="#company-elevenlabs">ElevenLabs</a><a class="chip chip-link" href="#company-fathom">Fathom</a><a class="chip chip-link" href="#company-fireflies-ai">Fireflies.ai</a><a class="chip chip-link" href="#company-gamma">Gamma</a><a class="chip chip-link" href="#company-google">Google</a><a class="chip chip-link" href="#company-grammarly">Grammarly</a><a class="chip chip-link" href="#company-heygen">HeyGen</a><a class="chip chip-link" href="#company-jasper">Jasper</a><a class="chip chip-link" href="#company-krisp">Krisp</a><a class="chip chip-link" href="#company-loom">Loom</a><a class="chip chip-link" href="#company-midjourney">Midjourney</a><a class="chip chip-link" href="#company-murf">Murf</a><a class="chip chip-link" href="#company-notion">Notion</a><a class="chip chip-link" href="#company-openai">OpenAI</a><a class="chip chip-link" href="#company-otter-ai">Otter.ai</a><a class="chip chip-link" href="#company-perplexity">Perplexity</a><a class="chip chip-link" href="#company-riverside">Riverside</a><a class="chip chip-link" href="#company-runway">Runway</a><a class="chip chip-link" href="#company-surfer">Surfer</a><a class="chip chip-link" href="#company-synthesia">Synthesia</a><a class="chip chip-link" href="#company-veed">VEED</a><a class="chip chip-link" href="#company-writesonic">Writesonic</a><a class="chip chip-link" href="#company-zapier">Zapier</a>
+                  <a class="chip chip-link" href="#company-ada">Ada</a><a class="chip chip-link" href="#company-adobe">Adobe</a><a class="chip chip-link" href="#company-ai21">AI21</a><a class="chip chip-link" href="#company-airtable">Airtable</a><a class="chip chip-link" href="#company-anthropic">Anthropic</a><a class="chip chip-link" href="#company-anyword">Anyword</a><a class="chip chip-link" href="#company-apollo">Apollo</a><a class="chip chip-link" href="#company-avoma">Avoma</a><a class="chip chip-link" href="#company-beautiful-ai">Beautiful.ai</a><a class="chip chip-link" href="#company-canva">Canva</a><a class="chip chip-link" href="#company-clearscope">Clearscope</a><a class="chip chip-link" href="#company-clickup">ClickUp</a><a class="chip chip-link" href="#company-clipdrop">Clipdrop</a><a class="chip chip-link" href="#company-consensus">Consensus</a><a class="chip chip-link" href="#company-copy-ai">Copy.ai</a><a class="chip chip-link" href="#company-decktopus">Decktopus</a><a class="chip chip-link" href="#company-deepseek">DeepSeek</a><a class="chip chip-link" href="#company-descript">Descript</a><a class="chip chip-link" href="#company-elevenlabs">ElevenLabs</a><a class="chip chip-link" href="#company-elicit">Elicit</a><a class="chip chip-link" href="#company-fathom">Fathom</a><a class="chip chip-link" href="#company-fireflies-ai">Fireflies.ai</a><a class="chip chip-link" href="#company-frase">Frase</a><a class="chip chip-link" href="#company-gamma">Gamma</a><a class="chip chip-link" href="#company-glean">Glean</a><a class="chip chip-link" href="#company-gong">Gong</a><a class="chip chip-link" href="#company-google">Google</a><a class="chip chip-link" href="#company-grain">Grain</a><a class="chip chip-link" href="#company-grammarly">Grammarly</a><a class="chip chip-link" href="#company-heygen">HeyGen</a><a class="chip chip-link" href="#company-ideogram">Ideogram</a><a class="chip chip-link" href="#company-intercom">Intercom</a><a class="chip chip-link" href="#company-invideo">InVideo</a><a class="chip chip-link" href="#company-jasper">Jasper</a><a class="chip chip-link" href="#company-kapwing">Kapwing</a><a class="chip chip-link" href="#company-krea">Krea</a><a class="chip chip-link" href="#company-krisp">Krisp</a><a class="chip chip-link" href="#company-lavender">Lavender</a><a class="chip chip-link" href="#company-leonardo">Leonardo</a><a class="chip chip-link" href="#company-loom">Loom</a><a class="chip chip-link" href="#company-luma-ai">Luma AI</a><a class="chip chip-link" href="#company-mentimeter">Mentimeter</a><a class="chip chip-link" href="#company-microsoft">Microsoft</a><a class="chip chip-link" href="#company-midjourney">Midjourney</a><a class="chip chip-link" href="#company-mistral">Mistral</a><a class="chip chip-link" href="#company-murf">Murf</a><a class="chip chip-link" href="#company-notion">Notion</a><a class="chip chip-link" href="#company-openai">OpenAI</a><a class="chip chip-link" href="#company-opus">Opus</a><a class="chip chip-link" href="#company-otter-ai">Otter.ai</a><a class="chip chip-link" href="#company-perplexity">Perplexity</a><a class="chip chip-link" href="#company-phind">Phind</a><a class="chip chip-link" href="#company-photoroom">PhotoRoom</a><a class="chip chip-link" href="#company-pictory">Pictory</a><a class="chip chip-link" href="#company-pitch">Pitch</a><a class="chip chip-link" href="#company-playground-ai">Playground AI</a><a class="chip chip-link" href="#company-playht">PlayHT</a><a class="chip chip-link" href="#company-quillbot">QuillBot</a><a class="chip chip-link" href="#company-quora">Quora</a><a class="chip chip-link" href="#company-read-ai">Read AI</a><a class="chip chip-link" href="#company-recraft">Recraft</a><a class="chip chip-link" href="#company-riverside">Riverside</a><a class="chip chip-link" href="#company-runway">Runway</a><a class="chip chip-link" href="#company-rytr">Rytr</a><a class="chip chip-link" href="#company-scholarcy">Scholarcy</a><a class="chip chip-link" href="#company-scite">Scite</a><a class="chip chip-link" href="#company-scribe">Scribe</a><a class="chip chip-link" href="#company-semrush">Semrush</a><a class="chip chip-link" href="#company-speechify">Speechify</a><a class="chip chip-link" href="#company-sudowrite">Sudowrite</a><a class="chip chip-link" href="#company-surfer">Surfer</a><a class="chip chip-link" href="#company-synthesia">Synthesia</a><a class="chip chip-link" href="#company-tactiq">Tactiq</a><a class="chip chip-link" href="#company-tome">Tome</a><a class="chip chip-link" href="#company-veed">VEED</a><a class="chip chip-link" href="#company-wellsaid-labs">WellSaid Labs</a><a class="chip chip-link" href="#company-writer">Writer</a><a class="chip chip-link" href="#company-writesonic">Writesonic</a><a class="chip chip-link" href="#company-xai">xAI</a><a class="chip chip-link" href="#company-zapier">Zapier</a><a class="chip chip-link" href="#company-zendesk">Zendesk</a>
                 </div>
               </div>
               <div>
                 <div class="jump-label">Or start from a job instead</div>
                 <div class="company-jump-grid">
-                  <a class="chip chip-link" href="./index.html?goal=Productivity#directory-filters">Productivity</a><a class="chip chip-link" href="./index.html?goal=Writing#directory-filters">Writing</a><a class="chip chip-link" href="./index.html?goal=Video#directory-filters">Video</a><a class="chip chip-link" href="./index.html?goal=Meetings#directory-filters">Meetings</a><a class="chip chip-link" href="./index.html?goal=Sales#directory-filters">Sales</a><a class="chip chip-link" href="./index.html?goal=Design#directory-filters">Design</a><a class="chip chip-link" href="./index.html?goal=Presentations#directory-filters">Presentations</a><a class="chip chip-link" href="./index.html?goal=Research#directory-filters">Research</a>
+                  <a class="chip chip-link" href="./directory.html?goal=Writing">Writing</a><a class="chip chip-link" href="./directory.html?goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?goal=Research">Research</a><a class="chip chip-link" href="./directory.html?goal=Video">Video</a><a class="chip chip-link" href="./directory.html?goal=Design">Design</a><a class="chip chip-link" href="./directory.html?goal=Marketing">Marketing</a><a class="chip chip-link" href="./directory.html?goal=Meetings">Meetings</a><a class="chip chip-link" href="./directory.html?goal=Sales">Sales</a>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <h2>Start by the job, then pick a company</h2>
+            <p>If you know the work but still want a familiar vendor, these rows give you a calmer way to move from job to brand to first tool.</p>
+            <div class="guide-stack">
+              
+      <article class="guide-tool">
+        <div class="tagrow">
+          <span class="tag">Writing</span>
+          <span class="chip">36 companies</span>
+        </div>
+        <h3>Start with these companies for writing</h3>
+        <p>Use these for emails, proposals, editing, content drafts, and clearer everyday communication.</p>
+        <div class="company-goal-links" style="margin-top:12px">
+          <a class="chip chip-link" href="#company-anthropic">Anthropic</a><a class="chip chip-link" href="#company-clickup">ClickUp</a><a class="chip chip-link" href="#company-descript">Descript</a><a class="chip chip-link" href="#company-openai">OpenAI</a>
+        </div>
+        <div class="micro-note" style="margin-top:12px"><strong>Best first picks:</strong> Anthropic → <a href="./tools/claude.html">Claude</a> • ClickUp → <a href="./tools/clickup-brain.html">ClickUp Brain</a> • Descript → <a href="./tools/descript.html">Descript</a> • OpenAI → <a href="./tools/chatgpt.html">ChatGPT</a></div>
+        <div class="card-links" style="margin-top:14px">
+          <a class="small-link primary" href="./directory.html?goal=Writing">Open Writing tools</a>
+          <a class="small-link" href="./guides/best-ai-tools-for-writing.html">See the writing guide</a>
+        </div>
+      </article>
+    
+      <article class="guide-tool">
+        <div class="tagrow">
+          <span class="tag">Productivity</span>
+          <span class="chip">34 companies</span>
+        </div>
+        <h3>Start with these companies for productivity</h3>
+        <p>Compare these if you want a general assistant that helps you think, plan, write, and move faster every day.</p>
+        <div class="company-goal-links" style="margin-top:12px">
+          <a class="chip chip-link" href="#company-anthropic">Anthropic</a><a class="chip chip-link" href="#company-canva">Canva</a><a class="chip chip-link" href="#company-clickup">ClickUp</a><a class="chip chip-link" href="#company-fathom">Fathom</a>
+        </div>
+        <div class="micro-note" style="margin-top:12px"><strong>Best first picks:</strong> Anthropic → <a href="./tools/claude.html">Claude</a> • Canva → <a href="./tools/canva-ai.html">Canva AI</a> • ClickUp → <a href="./tools/clickup-brain.html">ClickUp Brain</a> • Fathom → <a href="./tools/fathom.html">Fathom</a></div>
+        <div class="card-links" style="margin-top:14px">
+          <a class="small-link primary" href="./directory.html?goal=Productivity">Open Productivity tools</a>
+          <a class="small-link" href="./guides/best-ai-tools-for-productivity.html">See the productivity guide</a>
+        </div>
+      </article>
+    
+      <article class="guide-tool">
+        <div class="tagrow">
+          <span class="tag">Research</span>
+          <span class="chip">20 companies</span>
+        </div>
+        <h3>Start with these companies for research</h3>
+        <p>Start here if you need current information, source-backed answers, and faster market or competitor scans.</p>
+        <div class="company-goal-links" style="margin-top:12px">
+          <a class="chip chip-link" href="#company-anthropic">Anthropic</a><a class="chip chip-link" href="#company-openai">OpenAI</a><a class="chip chip-link" href="#company-perplexity">Perplexity</a><a class="chip chip-link" href="#company-apollo">Apollo</a>
+        </div>
+        <div class="micro-note" style="margin-top:12px"><strong>Best first picks:</strong> Anthropic → <a href="./tools/claude.html">Claude</a> • OpenAI → <a href="./tools/chatgpt.html">ChatGPT</a> • Perplexity → <a href="./tools/perplexity.html">Perplexity</a> • Apollo → <a href="./tools/apollo-ai.html">Apollo AI</a></div>
+        <div class="card-links" style="margin-top:14px">
+          <a class="small-link primary" href="./directory.html?goal=Research">Open Research tools</a>
+          <a class="small-link" href="./guides/best-ai-tools-for-research.html">See the research guide</a>
+        </div>
+      </article>
+    
+      <article class="guide-tool">
+        <div class="tagrow">
+          <span class="tag">Video</span>
+          <span class="chip">18 companies</span>
+        </div>
+        <h3>Start with these companies for video</h3>
+        <p>Compare these for recording, editing, repurposing, generating, and publishing video faster.</p>
+        <div class="company-goal-links" style="margin-top:12px">
+          <a class="chip chip-link" href="#company-adobe">Adobe</a><a class="chip chip-link" href="#company-descript">Descript</a><a class="chip chip-link" href="#company-elevenlabs">ElevenLabs</a><a class="chip chip-link" href="#company-heygen">HeyGen</a>
+        </div>
+        <div class="micro-note" style="margin-top:12px"><strong>Best first picks:</strong> Adobe → <a href="./tools/adobe-firefly.html">Adobe Firefly</a> • Descript → <a href="./tools/descript.html">Descript</a> • ElevenLabs → <a href="./tools/elevenlabs.html">ElevenLabs</a> • HeyGen → <a href="./tools/heygen.html">HeyGen</a></div>
+        <div class="card-links" style="margin-top:14px">
+          <a class="small-link primary" href="./directory.html?goal=Video">Open Video tools</a>
+          <a class="small-link" href="./guides/best-ai-tools-for-video.html">See the video guide</a>
+        </div>
+      </article>
+    
+      <article class="guide-tool">
+        <div class="tagrow">
+          <span class="tag">Design</span>
+          <span class="chip">17 companies</span>
+        </div>
+        <h3>Start with these companies for design</h3>
+        <p>Start here for social graphics, decks, visual directions, and fast brand-friendly design work.</p>
+        <div class="company-goal-links" style="margin-top:12px">
+          <a class="chip chip-link" href="#company-adobe">Adobe</a><a class="chip chip-link" href="#company-canva">Canva</a><a class="chip chip-link" href="#company-beautiful-ai">Beautiful.ai</a><a class="chip chip-link" href="#company-clipdrop">Clipdrop</a>
+        </div>
+        <div class="micro-note" style="margin-top:12px"><strong>Best first picks:</strong> Adobe → <a href="./tools/adobe-firefly.html">Adobe Firefly</a> • Canva → <a href="./tools/canva-ai.html">Canva AI</a> • Beautiful.ai → <a href="./tools/beautiful-ai.html">Beautiful.ai</a> • Clipdrop → <a href="./tools/clipdrop.html">Clipdrop</a></div>
+        <div class="card-links" style="margin-top:14px">
+          <a class="small-link primary" href="./directory.html?goal=Design">Open Design tools</a>
+          <a class="small-link" href="./guides/best-ai-tools-for-design.html">See the design guide</a>
+        </div>
+      </article>
+    
+      <article class="guide-tool">
+        <div class="tagrow">
+          <span class="tag">Marketing</span>
+          <span class="chip">15 companies</span>
+        </div>
+        <h3>Start with these companies for marketing</h3>
+        <p>Use these companies when marketing is the main job to be done.</p>
+        <div class="company-goal-links" style="margin-top:12px">
+          <a class="chip chip-link" href="#company-anyword">Anyword</a><a class="chip chip-link" href="#company-clipdrop">Clipdrop</a><a class="chip chip-link" href="#company-ideogram">Ideogram</a><a class="chip chip-link" href="#company-invideo">InVideo</a>
+        </div>
+        <div class="micro-note" style="margin-top:12px"><strong>Best first picks:</strong> Anyword → <a href="./tools/anyword.html">Anyword</a> • Clipdrop → <a href="./tools/clipdrop.html">Clipdrop</a> • Ideogram → <a href="./tools/ideogram.html">Ideogram</a> • InVideo → <a href="./tools/invideo-ai.html">InVideo AI</a></div>
+        <div class="card-links" style="margin-top:14px">
+          <a class="small-link primary" href="./directory.html?goal=Marketing">Open Marketing tools</a>
+          <a class="small-link" href="./guides/best-ai-tools-for-marketing.html">See the marketing guide</a>
+        </div>
+      </article>
+    
             </div>
           </div>
 
@@ -77,7 +203,7 @@
               
                 <article class="guide-tool company-anchor" id="company-adobe">
                   <div class="tagrow">
-                    <span class="tag">Design</span>
+                    <span class="tag">Design workflow</span>
                     
     <a class="chip company-chip" href="https://firefly.adobe.com/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=firefly.adobe.com&amp;sz=128" alt="Adobe logo" loading="lazy" decoding="async">
@@ -94,7 +220,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Adobe&goal=Design#directory-filters">Design</a><a class="chip chip-link" href="./index.html?company=Adobe&goal=Presentations#directory-filters">Presentations</a><a class="chip chip-link" href="./index.html?company=Adobe&goal=Video#directory-filters">Video</a>
+                      <a class="chip chip-link" href="./directory.html?company=Adobe&goal=Design">Design</a><a class="chip chip-link" href="./directory.html?company=Adobe&goal=Presentations">Presentations</a><a class="chip chip-link" href="./directory.html?company=Adobe&goal=Video">Video</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -107,14 +233,14 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/adobe-firefly.html">Start with Adobe Firefly</a>
+                    <a class="small-link primary" href="./companies/adobe.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Adobe">Compare Adobe tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-anthropic">
                   <div class="tagrow">
-                    <span class="tag">Assistant</span>
+                    <span class="tag">General assistant</span>
                     
     <a class="chip company-chip" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=claude.ai&amp;sz=128" alt="Anthropic logo" loading="lazy" decoding="async">
@@ -131,7 +257,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Anthropic&goal=Productivity#directory-filters">Productivity</a><a class="chip chip-link" href="./index.html?company=Anthropic&goal=Research#directory-filters">Research</a><a class="chip chip-link" href="./index.html?company=Anthropic&goal=Writing#directory-filters">Writing</a>
+                      <a class="chip chip-link" href="./directory.html?company=Anthropic&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=Anthropic&goal=Research">Research</a><a class="chip chip-link" href="./directory.html?company=Anthropic&goal=Writing">Writing</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -144,14 +270,14 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/claude.html">Start with Claude</a>
+                    <a class="small-link primary" href="./companies/anthropic.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Anthropic">Compare Anthropic tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-canva">
                   <div class="tagrow">
-                    <span class="tag">Design</span>
+                    <span class="tag">Design workflow</span>
                     
     <a class="chip company-chip" href="https://www.canva.com/magic/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=canva.com&amp;sz=128" alt="Canva logo" loading="lazy" decoding="async">
@@ -168,7 +294,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Canva&goal=Design#directory-filters">Design</a><a class="chip chip-link" href="./index.html?company=Canva&goal=Presentations#directory-filters">Presentations</a><a class="chip chip-link" href="./index.html?company=Canva&goal=Productivity#directory-filters">Productivity</a>
+                      <a class="chip chip-link" href="./directory.html?company=Canva&goal=Design">Design</a><a class="chip chip-link" href="./directory.html?company=Canva&goal=Presentations">Presentations</a><a class="chip chip-link" href="./directory.html?company=Canva&goal=Productivity">Productivity</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -181,14 +307,14 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/canva-ai.html">Start with Canva AI</a>
+                    <a class="small-link primary" href="./companies/canva.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Canva">Compare Canva tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-clickup">
                   <div class="tagrow">
-                    <span class="tag">Workspace</span>
+                    <span class="tag">Workspace AI</span>
                     
     <a class="chip company-chip" href="https://clickup.com/ai" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=clickup.com&amp;sz=128" alt="ClickUp logo" loading="lazy" decoding="async">
@@ -205,7 +331,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=ClickUp&goal=Meetings#directory-filters">Meetings</a><a class="chip chip-link" href="./index.html?company=ClickUp&goal=Productivity#directory-filters">Productivity</a><a class="chip chip-link" href="./index.html?company=ClickUp&goal=Writing#directory-filters">Writing</a>
+                      <a class="chip chip-link" href="./directory.html?company=ClickUp&goal=Meetings">Meetings</a><a class="chip chip-link" href="./directory.html?company=ClickUp&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=ClickUp&goal=Writing">Writing</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -218,14 +344,14 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/clickup-brain.html">Start with ClickUp Brain</a>
+                    <a class="small-link primary" href="./companies/clickup.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=ClickUp">Compare ClickUp tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-descript">
                   <div class="tagrow">
-                    <span class="tag">Video</span>
+                    <span class="tag">Video workflow</span>
                     
     <a class="chip company-chip" href="https://www.descript.com/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=descript.com&amp;sz=128" alt="Descript logo" loading="lazy" decoding="async">
@@ -242,7 +368,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Descript&goal=Meetings#directory-filters">Meetings</a><a class="chip chip-link" href="./index.html?company=Descript&goal=Video#directory-filters">Video</a><a class="chip chip-link" href="./index.html?company=Descript&goal=Writing#directory-filters">Writing</a>
+                      <a class="chip chip-link" href="./directory.html?company=Descript&goal=Meetings">Meetings</a><a class="chip chip-link" href="./directory.html?company=Descript&goal=Video">Video</a><a class="chip chip-link" href="./directory.html?company=Descript&goal=Writing">Writing</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -255,14 +381,14 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/descript.html">Start with Descript</a>
+                    <a class="small-link primary" href="./companies/descript.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Descript">Compare Descript tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-elevenlabs">
                   <div class="tagrow">
-                    <span class="tag">Voice</span>
+                    <span class="tag">Voice workflow</span>
                     
     <a class="chip company-chip" href="https://elevenlabs.io/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=elevenlabs.io&amp;sz=128" alt="ElevenLabs logo" loading="lazy" decoding="async">
@@ -279,7 +405,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=ElevenLabs&goal=Support#directory-filters">Support</a><a class="chip chip-link" href="./index.html?company=ElevenLabs&goal=Video#directory-filters">Video</a><a class="chip chip-link" href="./index.html?company=ElevenLabs&goal=Voice#directory-filters">Voice</a>
+                      <a class="chip chip-link" href="./directory.html?company=ElevenLabs&goal=Support">Support</a><a class="chip chip-link" href="./directory.html?company=ElevenLabs&goal=Video">Video</a><a class="chip chip-link" href="./directory.html?company=ElevenLabs&goal=Voice">Voice</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -292,14 +418,14 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/elevenlabs.html">Start with ElevenLabs</a>
+                    <a class="small-link primary" href="./companies/elevenlabs.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=ElevenLabs">Compare ElevenLabs tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-fathom">
                   <div class="tagrow">
-                    <span class="tag">Meetings</span>
+                    <span class="tag">Meeting workflow</span>
                     
     <a class="chip company-chip" href="https://www.fathom.video/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=fathom.video&amp;sz=128" alt="Fathom logo" loading="lazy" decoding="async">
@@ -316,7 +442,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Fathom&goal=Meetings#directory-filters">Meetings</a><a class="chip chip-link" href="./index.html?company=Fathom&goal=Productivity#directory-filters">Productivity</a><a class="chip chip-link" href="./index.html?company=Fathom&goal=Sales#directory-filters">Sales</a>
+                      <a class="chip chip-link" href="./directory.html?company=Fathom&goal=Meetings">Meetings</a><a class="chip chip-link" href="./directory.html?company=Fathom&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=Fathom&goal=Sales">Sales</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -329,14 +455,14 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/fathom.html">Start with Fathom</a>
+                    <a class="small-link primary" href="./companies/fathom.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Fathom">Compare Fathom tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-fireflies-ai">
                   <div class="tagrow">
-                    <span class="tag">Meetings</span>
+                    <span class="tag">Meeting workflow</span>
                     
     <a class="chip company-chip" href="https://fireflies.ai/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=fireflies.ai&amp;sz=128" alt="Fireflies.ai logo" loading="lazy" decoding="async">
@@ -353,7 +479,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Fireflies.ai&goal=Meetings#directory-filters">Meetings</a><a class="chip chip-link" href="./index.html?company=Fireflies.ai&goal=Productivity#directory-filters">Productivity</a><a class="chip chip-link" href="./index.html?company=Fireflies.ai&goal=Sales#directory-filters">Sales</a>
+                      <a class="chip chip-link" href="./directory.html?company=Fireflies.ai&goal=Meetings">Meetings</a><a class="chip chip-link" href="./directory.html?company=Fireflies.ai&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=Fireflies.ai&goal=Sales">Sales</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -366,14 +492,14 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/fireflies.html">Start with Fireflies</a>
+                    <a class="small-link primary" href="./companies/fireflies-ai.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Fireflies.ai">Compare Fireflies.ai tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-heygen">
                   <div class="tagrow">
-                    <span class="tag">Video</span>
+                    <span class="tag">Video workflow</span>
                     
     <a class="chip company-chip" href="https://www.heygen.com/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=heygen.com&amp;sz=128" alt="HeyGen logo" loading="lazy" decoding="async">
@@ -390,7 +516,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=HeyGen&goal=Sales#directory-filters">Sales</a><a class="chip chip-link" href="./index.html?company=HeyGen&goal=Training#directory-filters">Training</a><a class="chip chip-link" href="./index.html?company=HeyGen&goal=Video#directory-filters">Video</a>
+                      <a class="chip chip-link" href="./directory.html?company=HeyGen&goal=Sales">Sales</a><a class="chip chip-link" href="./directory.html?company=HeyGen&goal=Training">Training</a><a class="chip chip-link" href="./directory.html?company=HeyGen&goal=Video">Video</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -403,14 +529,14 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/heygen.html">Start with HeyGen</a>
+                    <a class="small-link primary" href="./companies/heygen.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=HeyGen">Compare HeyGen tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-loom">
                   <div class="tagrow">
-                    <span class="tag">Video</span>
+                    <span class="tag">Video workflow</span>
                     
     <a class="chip company-chip" href="https://www.loom.com/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=loom.com&amp;sz=128" alt="Loom logo" loading="lazy" decoding="async">
@@ -427,7 +553,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Loom&goal=Meetings#directory-filters">Meetings</a><a class="chip chip-link" href="./index.html?company=Loom&goal=Training#directory-filters">Training</a><a class="chip chip-link" href="./index.html?company=Loom&goal=Video#directory-filters">Video</a>
+                      <a class="chip chip-link" href="./directory.html?company=Loom&goal=Meetings">Meetings</a><a class="chip chip-link" href="./directory.html?company=Loom&goal=Training">Training</a><a class="chip chip-link" href="./directory.html?company=Loom&goal=Video">Video</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -440,14 +566,14 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/loom.html">Start with Loom</a>
+                    <a class="small-link primary" href="./companies/loom.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Loom">Compare Loom tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-openai">
                   <div class="tagrow">
-                    <span class="tag">Assistant</span>
+                    <span class="tag">General assistant</span>
                     
     <a class="chip company-chip" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=chatgpt.com&amp;sz=128" alt="OpenAI logo" loading="lazy" decoding="async">
@@ -464,7 +590,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=OpenAI&goal=Productivity#directory-filters">Productivity</a><a class="chip chip-link" href="./index.html?company=OpenAI&goal=Research#directory-filters">Research</a><a class="chip chip-link" href="./index.html?company=OpenAI&goal=Writing#directory-filters">Writing</a>
+                      <a class="chip chip-link" href="./directory.html?company=OpenAI&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=OpenAI&goal=Research">Research</a><a class="chip chip-link" href="./directory.html?company=OpenAI&goal=Writing">Writing</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -477,14 +603,14 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/chatgpt.html">Start with ChatGPT</a>
+                    <a class="small-link primary" href="./companies/openai.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=OpenAI">Compare OpenAI tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-perplexity">
                   <div class="tagrow">
-                    <span class="tag">Research</span>
+                    <span class="tag">Research workflow</span>
                     
     <a class="chip company-chip" href="https://www.perplexity.ai/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=perplexity.ai&amp;sz=128" alt="Perplexity logo" loading="lazy" decoding="async">
@@ -501,7 +627,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Perplexity&goal=Productivity#directory-filters">Productivity</a><a class="chip chip-link" href="./index.html?company=Perplexity&goal=Research#directory-filters">Research</a>
+                      <a class="chip chip-link" href="./directory.html?company=Perplexity&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=Perplexity&goal=Research">Research</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -514,14 +640,14 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/perplexity.html">Start with Perplexity</a>
+                    <a class="small-link primary" href="./companies/perplexity.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Perplexity">Compare Perplexity tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-veed">
                   <div class="tagrow">
-                    <span class="tag">Video</span>
+                    <span class="tag">Video workflow</span>
                     
     <a class="chip company-chip" href="https://www.veed.io/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=veed.io&amp;sz=128" alt="VEED logo" loading="lazy" decoding="async">
@@ -538,7 +664,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=VEED&goal=Training#directory-filters">Training</a><a class="chip chip-link" href="./index.html?company=VEED&goal=Video#directory-filters">Video</a><a class="chip chip-link" href="./index.html?company=VEED&goal=Voice#directory-filters">Voice</a>
+                      <a class="chip chip-link" href="./directory.html?company=VEED&goal=Training">Training</a><a class="chip chip-link" href="./directory.html?company=VEED&goal=Video">Video</a><a class="chip chip-link" href="./directory.html?company=VEED&goal=Voice">Voice</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -551,14 +677,14 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/veed.html">Start with VEED</a>
+                    <a class="small-link primary" href="./companies/veed.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=VEED">Compare VEED tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-zapier">
                   <div class="tagrow">
-                    <span class="tag">Automation</span>
+                    <span class="tag">Automation workflow</span>
                     
     <a class="chip company-chip" href="https://zapier.com/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=zapier.com&amp;sz=128" alt="Zapier logo" loading="lazy" decoding="async">
@@ -575,7 +701,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Zapier&goal=Automation#directory-filters">Automation</a><a class="chip chip-link" href="./index.html?company=Zapier&goal=Productivity#directory-filters">Productivity</a><a class="chip chip-link" href="./index.html?company=Zapier&goal=Sales#directory-filters">Sales</a>
+                      <a class="chip chip-link" href="./directory.html?company=Zapier&goal=Automation">Automation</a><a class="chip chip-link" href="./directory.html?company=Zapier&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=Zapier&goal=Sales">Sales</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -588,14 +714,88 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/zapier.html">Start with Zapier</a>
+                    <a class="small-link primary" href="./companies/zapier.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Zapier">Compare Zapier tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-ada">
+                  <div class="tagrow">
+                    <span class="tag">Support workflow</span>
+                    
+    <a class="chip company-chip" href="https://www.ada.cx/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=ada.cx&amp;sz=128" alt="Ada logo" loading="lazy" decoding="async">
+      <span>Ada</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Ada</h3>
+                  <p>Ada is included here for support AI products that support support, productivity work.</p>
+                  <p><strong>Best known here for:</strong> Support</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/ada.html">Ada</a> — A customer support automation platform for scaling repetitive support conversations and deflection.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Ada&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=Ada&goal=Support">Support</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/ada.html">
+                        <strong>Ada</strong>
+                        <div class="related-copy">A customer support automation platform for scaling repetitive support conversations and deflection.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/ada.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Ada">Compare Ada tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-ai21">
+                  <div class="tagrow">
+                    <span class="tag">Writing workflow</span>
+                    
+    <a class="chip company-chip" href="https://www.wordtune.com/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=wordtune.com&amp;sz=128" alt="AI21 logo" loading="lazy" decoding="async">
+      <span>AI21</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>AI21</h3>
+                  <p>AI21 is included here for writing AI products that support writing, productivity work.</p>
+                  <p><strong>Best known here for:</strong> Writing</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/wordtune.html">Wordtune</a> — A writing improvement tool for rephrasing, shortening, and polishing messages inside existing workflows.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=AI21&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=AI21&goal=Writing">Writing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/wordtune.html">
+                        <strong>Wordtune</strong>
+                        <div class="related-copy">A writing improvement tool for rephrasing, shortening, and polishing messages inside existing workflows.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/ai21.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=AI21">Compare AI21 tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-airtable">
                   <div class="tagrow">
-                    <span class="tag">Workspace</span>
+                    <span class="tag">Workspace AI</span>
                     
     <a class="chip company-chip" href="https://www.airtable.com/platform/ai" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=airtable.com&amp;sz=128" alt="Airtable logo" loading="lazy" decoding="async">
@@ -612,7 +812,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Airtable&goal=Automation#directory-filters">Automation</a><a class="chip chip-link" href="./index.html?company=Airtable&goal=Productivity#directory-filters">Productivity</a><a class="chip chip-link" href="./index.html?company=Airtable&goal=Sales#directory-filters">Sales</a>
+                      <a class="chip chip-link" href="./directory.html?company=Airtable&goal=Automation">Automation</a><a class="chip chip-link" href="./directory.html?company=Airtable&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=Airtable&goal=Sales">Sales</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -625,14 +825,125 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/airtable-ai.html">Start with Airtable AI</a>
+                    <a class="small-link primary" href="./companies/airtable.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Airtable">Compare Airtable tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-anyword">
+                  <div class="tagrow">
+                    <span class="tag">Marketing workflow</span>
+                    
+    <a class="chip company-chip" href="https://anyword.com/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=anyword.com&amp;sz=128" alt="Anyword logo" loading="lazy" decoding="async">
+      <span>Anyword</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Anyword</h3>
+                  <p>Anyword is included here for marketing AI products that support marketing, writing work.</p>
+                  <p><strong>Best known here for:</strong> Marketing</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/anyword.html">Anyword</a> — A marketing copy tool for generating performance-focused messaging across ads, emails, and landing pages.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Anyword&goal=Marketing">Marketing</a><a class="chip chip-link" href="./directory.html?company=Anyword&goal=Sales">Sales</a><a class="chip chip-link" href="./directory.html?company=Anyword&goal=Writing">Writing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/anyword.html">
+                        <strong>Anyword</strong>
+                        <div class="related-copy">A marketing copy tool for generating performance-focused messaging across ads, emails, and landing pages.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/anyword.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Anyword">Compare Anyword tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-apollo">
+                  <div class="tagrow">
+                    <span class="tag">Sales workflow</span>
+                    
+    <a class="chip company-chip" href="https://www.apollo.io/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=apollo.io&amp;sz=128" alt="Apollo logo" loading="lazy" decoding="async">
+      <span>Apollo</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Apollo</h3>
+                  <p>Apollo is included here for sales AI products that support sales, research work.</p>
+                  <p><strong>Best known here for:</strong> Sales</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/apollo-ai.html">Apollo AI</a> — A sales prospecting platform with AI help around lead research, outreach prep, and pipeline workflows.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Apollo&goal=Research">Research</a><a class="chip chip-link" href="./directory.html?company=Apollo&goal=Sales">Sales</a><a class="chip chip-link" href="./directory.html?company=Apollo&goal=Writing">Writing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/apollo-ai.html">
+                        <strong>Apollo AI</strong>
+                        <div class="related-copy">A sales prospecting platform with AI help around lead research, outreach prep, and pipeline workflows.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/apollo.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Apollo">Compare Apollo tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-avoma">
+                  <div class="tagrow">
+                    <span class="tag">Meeting workflow</span>
+                    
+    <a class="chip company-chip" href="https://www.avoma.com/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=avoma.com&amp;sz=128" alt="Avoma logo" loading="lazy" decoding="async">
+      <span>Avoma</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Avoma</h3>
+                  <p>Avoma is included here for meetings AI products that support meetings, sales work.</p>
+                  <p><strong>Best known here for:</strong> Meetings</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/avoma.html">Avoma</a> — A meeting assistant for notes, CRM follow-up, call summaries, and go-to-market collaboration.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Avoma&goal=Meetings">Meetings</a><a class="chip chip-link" href="./directory.html?company=Avoma&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=Avoma&goal=Sales">Sales</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/avoma.html">
+                        <strong>Avoma</strong>
+                        <div class="related-copy">A meeting assistant for notes, CRM follow-up, call summaries, and go-to-market collaboration.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/avoma.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Avoma">Compare Avoma tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-beautiful-ai">
                   <div class="tagrow">
-                    <span class="tag">Presentations</span>
+                    <span class="tag">Presentation workflow</span>
                     
     <a class="chip company-chip" href="https://www.beautiful.ai/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=beautiful.ai&amp;sz=128" alt="Beautiful.ai logo" loading="lazy" decoding="async">
@@ -649,7 +960,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Beautiful.ai&goal=Design#directory-filters">Design</a><a class="chip chip-link" href="./index.html?company=Beautiful.ai&goal=Presentations#directory-filters">Presentations</a><a class="chip chip-link" href="./index.html?company=Beautiful.ai&goal=Training#directory-filters">Training</a>
+                      <a class="chip chip-link" href="./directory.html?company=Beautiful.ai&goal=Design">Design</a><a class="chip chip-link" href="./directory.html?company=Beautiful.ai&goal=Presentations">Presentations</a><a class="chip chip-link" href="./directory.html?company=Beautiful.ai&goal=Training">Training</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -662,14 +973,125 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/beautiful-ai.html">Start with Beautiful.ai</a>
+                    <a class="small-link primary" href="./companies/beautiful-ai.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Beautiful.ai">Compare Beautiful.ai tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-clearscope">
+                  <div class="tagrow">
+                    <span class="tag">SEO workflow</span>
+                    
+    <a class="chip company-chip" href="https://www.clearscope.io/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=clearscope.io&amp;sz=128" alt="Clearscope logo" loading="lazy" decoding="async">
+      <span>Clearscope</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Clearscope</h3>
+                  <p>Clearscope is included here for seo AI products that support seo, writing work.</p>
+                  <p><strong>Best known here for:</strong> SEO</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/clearscope.html">Clearscope</a> — A content optimization platform for improving topic coverage and strengthening search-focused content drafts.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Clearscope&goal=SEO">SEO</a><a class="chip chip-link" href="./directory.html?company=Clearscope&goal=Writing">Writing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/clearscope.html">
+                        <strong>Clearscope</strong>
+                        <div class="related-copy">A content optimization platform for improving topic coverage and strengthening search-focused content drafts.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/clearscope.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Clearscope">Compare Clearscope tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-clipdrop">
+                  <div class="tagrow">
+                    <span class="tag">Image workflow</span>
+                    
+    <a class="chip company-chip" href="https://clipdrop.co/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=clipdrop.co&amp;sz=128" alt="Clipdrop logo" loading="lazy" decoding="async">
+      <span>Clipdrop</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Clipdrop</h3>
+                  <p>Clipdrop is included here for image AI products that support design, marketing work.</p>
+                  <p><strong>Best known here for:</strong> Image</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/clipdrop.html">Clipdrop</a> — A quick image editing toolkit for cleanup, object removal, background work, and generative tweaks.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Clipdrop&goal=Design">Design</a><a class="chip chip-link" href="./directory.html?company=Clipdrop&goal=Marketing">Marketing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/clipdrop.html">
+                        <strong>Clipdrop</strong>
+                        <div class="related-copy">A quick image editing toolkit for cleanup, object removal, background work, and generative tweaks.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/clipdrop.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Clipdrop">Compare Clipdrop tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-consensus">
+                  <div class="tagrow">
+                    <span class="tag">Research workflow</span>
+                    
+    <a class="chip company-chip" href="https://consensus.app/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=consensus.app&amp;sz=128" alt="Consensus logo" loading="lazy" decoding="async">
+      <span>Consensus</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Consensus</h3>
+                  <p>Consensus is included here for research AI products that support research, writing work.</p>
+                  <p><strong>Best known here for:</strong> Research</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/consensus.html">Consensus</a> — A research assistant built around finding and summarizing evidence from academic sources.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Consensus&goal=Research">Research</a><a class="chip chip-link" href="./directory.html?company=Consensus&goal=Writing">Writing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/consensus.html">
+                        <strong>Consensus</strong>
+                        <div class="related-copy">A research assistant built around finding and summarizing evidence from academic sources.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/consensus.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Consensus">Compare Consensus tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-copy-ai">
                   <div class="tagrow">
-                    <span class="tag">Sales</span>
+                    <span class="tag">Sales workflow</span>
                     
     <a class="chip company-chip" href="https://www.copy.ai/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=copy.ai&amp;sz=128" alt="Copy.ai logo" loading="lazy" decoding="async">
@@ -686,7 +1108,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Copy.ai&goal=Automation#directory-filters">Automation</a><a class="chip chip-link" href="./index.html?company=Copy.ai&goal=Sales#directory-filters">Sales</a><a class="chip chip-link" href="./index.html?company=Copy.ai&goal=Writing#directory-filters">Writing</a>
+                      <a class="chip chip-link" href="./directory.html?company=Copy.ai&goal=Automation">Automation</a><a class="chip chip-link" href="./directory.html?company=Copy.ai&goal=Sales">Sales</a><a class="chip chip-link" href="./directory.html?company=Copy.ai&goal=Writing">Writing</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -699,14 +1121,162 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/copy-ai.html">Start with Copy.ai</a>
+                    <a class="small-link primary" href="./companies/copy-ai.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Copy.ai">Compare Copy.ai tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-decktopus">
+                  <div class="tagrow">
+                    <span class="tag">Presentation workflow</span>
+                    
+    <a class="chip company-chip" href="https://www.decktopus.com/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=decktopus.com&amp;sz=128" alt="Decktopus logo" loading="lazy" decoding="async">
+      <span>Decktopus</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Decktopus</h3>
+                  <p>Decktopus is included here for presentations AI products that support presentations, design work.</p>
+                  <p><strong>Best known here for:</strong> Presentations</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/decktopus.html">Decktopus</a> — An AI deck builder for faster first drafts of presentations, training materials, and explainers.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Decktopus&goal=Design">Design</a><a class="chip chip-link" href="./directory.html?company=Decktopus&goal=Presentations">Presentations</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/decktopus.html">
+                        <strong>Decktopus</strong>
+                        <div class="related-copy">An AI deck builder for faster first drafts of presentations, training materials, and explainers.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/decktopus.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Decktopus">Compare Decktopus tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-deepseek">
+                  <div class="tagrow">
+                    <span class="tag">General assistant</span>
+                    
+    <a class="chip company-chip" href="https://www.deepseek.com/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=deepseek.com&amp;sz=128" alt="DeepSeek logo" loading="lazy" decoding="async">
+      <span>DeepSeek</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>DeepSeek</h3>
+                  <p>DeepSeek is included here for assistant AI products that support research, writing work.</p>
+                  <p><strong>Best known here for:</strong> Assistant</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/deepseek.html">DeepSeek</a> — A capable general model option for analysis, writing, and technical reasoning at a lower-cost entry point.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=DeepSeek&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=DeepSeek&goal=Research">Research</a><a class="chip chip-link" href="./directory.html?company=DeepSeek&goal=Writing">Writing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/deepseek.html">
+                        <strong>DeepSeek</strong>
+                        <div class="related-copy">A capable general model option for analysis, writing, and technical reasoning at a lower-cost entry point.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/deepseek.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=DeepSeek">Compare DeepSeek tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-elicit">
+                  <div class="tagrow">
+                    <span class="tag">Research workflow</span>
+                    
+    <a class="chip company-chip" href="https://elicit.com/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=elicit.com&amp;sz=128" alt="Elicit logo" loading="lazy" decoding="async">
+      <span>Elicit</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Elicit</h3>
+                  <p>Elicit is included here for research AI products that support research, writing work.</p>
+                  <p><strong>Best known here for:</strong> Research</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/elicit.html">Elicit</a> — A research-focused AI tool for literature review, evidence gathering, and structured source-backed analysis.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Elicit&goal=Research">Research</a><a class="chip chip-link" href="./directory.html?company=Elicit&goal=Writing">Writing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/elicit.html">
+                        <strong>Elicit</strong>
+                        <div class="related-copy">A research-focused AI tool for literature review, evidence gathering, and structured source-backed analysis.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/elicit.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Elicit">Compare Elicit tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-frase">
+                  <div class="tagrow">
+                    <span class="tag">SEO workflow</span>
+                    
+    <a class="chip company-chip" href="https://www.frase.io/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=frase.io&amp;sz=128" alt="Frase logo" loading="lazy" decoding="async">
+      <span>Frase</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Frase</h3>
+                  <p>Frase is included here for seo AI products that support seo, writing work.</p>
+                  <p><strong>Best known here for:</strong> SEO</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/frase.html">Frase</a> — An SEO writing assistant for briefs, topic planning, and building content around search intent.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Frase&goal=Research">Research</a><a class="chip chip-link" href="./directory.html?company=Frase&goal=SEO">SEO</a><a class="chip chip-link" href="./directory.html?company=Frase&goal=Writing">Writing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/frase.html">
+                        <strong>Frase</strong>
+                        <div class="related-copy">An SEO writing assistant for briefs, topic planning, and building content around search intent.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/frase.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Frase">Compare Frase tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-gamma">
                   <div class="tagrow">
-                    <span class="tag">Presentations</span>
+                    <span class="tag">Presentation workflow</span>
                     
     <a class="chip company-chip" href="https://gamma.app/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=gamma.app&amp;sz=128" alt="Gamma logo" loading="lazy" decoding="async">
@@ -723,7 +1293,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Gamma&goal=Design#directory-filters">Design</a><a class="chip chip-link" href="./index.html?company=Gamma&goal=Presentations#directory-filters">Presentations</a><a class="chip chip-link" href="./index.html?company=Gamma&goal=Productivity#directory-filters">Productivity</a>
+                      <a class="chip chip-link" href="./directory.html?company=Gamma&goal=Design">Design</a><a class="chip chip-link" href="./directory.html?company=Gamma&goal=Presentations">Presentations</a><a class="chip chip-link" href="./directory.html?company=Gamma&goal=Productivity">Productivity</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -736,14 +1306,88 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/gamma.html">Start with Gamma</a>
+                    <a class="small-link primary" href="./companies/gamma.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Gamma">Compare Gamma tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-glean">
+                  <div class="tagrow">
+                    <span class="tag">Research workflow</span>
+                    
+    <a class="chip company-chip" href="https://www.glean.com/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=glean.com&amp;sz=128" alt="Glean logo" loading="lazy" decoding="async">
+      <span>Glean</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Glean</h3>
+                  <p>Glean is included here for research AI products that support research, productivity work.</p>
+                  <p><strong>Best known here for:</strong> Research</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/glean.html">Glean</a> — An enterprise search and knowledge assistant for finding answers across your company tools and documents.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Glean&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=Glean&goal=Research">Research</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/glean.html">
+                        <strong>Glean</strong>
+                        <div class="related-copy">An enterprise search and knowledge assistant for finding answers across your company tools and documents.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/glean.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Glean">Compare Glean tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-gong">
+                  <div class="tagrow">
+                    <span class="tag">Sales workflow</span>
+                    
+    <a class="chip company-chip" href="https://www.gong.io/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=gong.io&amp;sz=128" alt="Gong logo" loading="lazy" decoding="async">
+      <span>Gong</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Gong</h3>
+                  <p>Gong is included here for sales AI products that support sales, meetings work.</p>
+                  <p><strong>Best known here for:</strong> Sales</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/gong.html">Gong</a> — A revenue intelligence platform for understanding calls, coaching reps, and spotting deal risks earlier.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Gong&goal=Meetings">Meetings</a><a class="chip chip-link" href="./directory.html?company=Gong&goal=Research">Research</a><a class="chip chip-link" href="./directory.html?company=Gong&goal=Sales">Sales</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/gong.html">
+                        <strong>Gong</strong>
+                        <div class="related-copy">A revenue intelligence platform for understanding calls, coaching reps, and spotting deal risks earlier.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/gong.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Gong">Compare Gong tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-google">
                   <div class="tagrow">
-                    <span class="tag">Assistant</span>
+                    <span class="tag">General assistant</span>
                     
     <a class="chip company-chip" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=gemini.google.com&amp;sz=128" alt="Google logo" loading="lazy" decoding="async">
@@ -760,7 +1404,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Google&goal=Productivity#directory-filters">Productivity</a><a class="chip chip-link" href="./index.html?company=Google&goal=Research#directory-filters">Research</a><a class="chip chip-link" href="./index.html?company=Google&goal=Writing#directory-filters">Writing</a>
+                      <a class="chip chip-link" href="./directory.html?company=Google&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=Google&goal=Research">Research</a><a class="chip chip-link" href="./directory.html?company=Google&goal=Writing">Writing</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -773,14 +1417,51 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/gemini.html">Start with Gemini</a>
+                    <a class="small-link primary" href="./companies/google.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Google">Compare Google tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-grain">
+                  <div class="tagrow">
+                    <span class="tag">Meeting workflow</span>
+                    
+    <a class="chip company-chip" href="https://grain.com/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=grain.com&amp;sz=128" alt="Grain logo" loading="lazy" decoding="async">
+      <span>Grain</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Grain</h3>
+                  <p>Grain is included here for meetings AI products that support meetings, writing work.</p>
+                  <p><strong>Best known here for:</strong> Meetings</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/grain.html">Grain</a> — A meeting capture tool for turning calls into reusable clips, summaries, and follow-up assets.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Grain&goal=Meetings">Meetings</a><a class="chip chip-link" href="./directory.html?company=Grain&goal=Sales">Sales</a><a class="chip chip-link" href="./directory.html?company=Grain&goal=Writing">Writing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/grain.html">
+                        <strong>Grain</strong>
+                        <div class="related-copy">A meeting capture tool for turning calls into reusable clips, summaries, and follow-up assets.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/grain.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Grain">Compare Grain tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-grammarly">
                   <div class="tagrow">
-                    <span class="tag">Writing</span>
+                    <span class="tag">Writing workflow</span>
                     
     <a class="chip company-chip" href="https://www.grammarly.com/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=grammarly.com&amp;sz=128" alt="Grammarly logo" loading="lazy" decoding="async">
@@ -797,7 +1478,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Grammarly&goal=Productivity#directory-filters">Productivity</a><a class="chip chip-link" href="./index.html?company=Grammarly&goal=Writing#directory-filters">Writing</a>
+                      <a class="chip chip-link" href="./directory.html?company=Grammarly&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=Grammarly&goal=Writing">Writing</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -810,14 +1491,125 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/grammarly.html">Start with Grammarly</a>
+                    <a class="small-link primary" href="./companies/grammarly.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Grammarly">Compare Grammarly tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-ideogram">
+                  <div class="tagrow">
+                    <span class="tag">Image workflow</span>
+                    
+    <a class="chip company-chip" href="https://ideogram.ai/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=ideogram.ai&amp;sz=128" alt="Ideogram logo" loading="lazy" decoding="async">
+      <span>Ideogram</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Ideogram</h3>
+                  <p>Ideogram is included here for image AI products that support design, marketing work.</p>
+                  <p><strong>Best known here for:</strong> Image</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/ideogram.html">Ideogram</a> — An image generation tool known for fast concept creation and stronger text-in-image results.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Ideogram&goal=Design">Design</a><a class="chip chip-link" href="./directory.html?company=Ideogram&goal=Marketing">Marketing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/ideogram.html">
+                        <strong>Ideogram</strong>
+                        <div class="related-copy">An image generation tool known for fast concept creation and stronger text-in-image results.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/ideogram.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Ideogram">Compare Ideogram tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-intercom">
+                  <div class="tagrow">
+                    <span class="tag">Support workflow</span>
+                    
+    <a class="chip company-chip" href="https://www.intercom.com/fin" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=intercom.com&amp;sz=128" alt="Intercom logo" loading="lazy" decoding="async">
+      <span>Intercom</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Intercom</h3>
+                  <p>Intercom is included here for support AI products that support support, productivity work.</p>
+                  <p><strong>Best known here for:</strong> Support</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/intercom-fin.html">Intercom Fin</a> — An AI support assistant for answering common customer questions and reducing repetitive support load.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Intercom&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=Intercom&goal=Support">Support</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/intercom-fin.html">
+                        <strong>Intercom Fin</strong>
+                        <div class="related-copy">An AI support assistant for answering common customer questions and reducing repetitive support load.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/intercom.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Intercom">Compare Intercom tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-invideo">
+                  <div class="tagrow">
+                    <span class="tag">Video workflow</span>
+                    
+    <a class="chip company-chip" href="https://invideo.io/ai/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=invideo.io&amp;sz=128" alt="InVideo logo" loading="lazy" decoding="async">
+      <span>InVideo</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>InVideo</h3>
+                  <p>InVideo is included here for video AI products that support video, marketing work.</p>
+                  <p><strong>Best known here for:</strong> Video</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/invideo-ai.html">InVideo AI</a> — An AI video generator for creating rough marketing videos quickly from prompts or scripts.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=InVideo&goal=Marketing">Marketing</a><a class="chip chip-link" href="./directory.html?company=InVideo&goal=Video">Video</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/invideo-ai.html">
+                        <strong>InVideo AI</strong>
+                        <div class="related-copy">An AI video generator for creating rough marketing videos quickly from prompts or scripts.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/invideo.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=InVideo">Compare InVideo tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-jasper">
                   <div class="tagrow">
-                    <span class="tag">Marketing</span>
+                    <span class="tag">Marketing workflow</span>
                     
     <a class="chip company-chip" href="https://www.jasper.ai/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=jasper.ai&amp;sz=128" alt="Jasper logo" loading="lazy" decoding="async">
@@ -834,7 +1626,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Jasper&goal=Sales#directory-filters">Sales</a><a class="chip chip-link" href="./index.html?company=Jasper&goal=SEO#directory-filters">SEO</a><a class="chip chip-link" href="./index.html?company=Jasper&goal=Writing#directory-filters">Writing</a>
+                      <a class="chip chip-link" href="./directory.html?company=Jasper&goal=Sales">Sales</a><a class="chip chip-link" href="./directory.html?company=Jasper&goal=SEO">SEO</a><a class="chip chip-link" href="./directory.html?company=Jasper&goal=Writing">Writing</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -847,14 +1639,88 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/jasper.html">Start with Jasper</a>
+                    <a class="small-link primary" href="./companies/jasper.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Jasper">Compare Jasper tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-kapwing">
+                  <div class="tagrow">
+                    <span class="tag">Video workflow</span>
+                    
+    <a class="chip company-chip" href="https://www.kapwing.com/ai" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=kapwing.com&amp;sz=128" alt="Kapwing logo" loading="lazy" decoding="async">
+      <span>Kapwing</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Kapwing</h3>
+                  <p>Kapwing is included here for video AI products that support video, writing work.</p>
+                  <p><strong>Best known here for:</strong> Video</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/kapwing-ai.html">Kapwing AI</a> — A browser-based editing platform with AI help for captions, clipping, and faster social-ready video edits.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Kapwing&goal=Marketing">Marketing</a><a class="chip chip-link" href="./directory.html?company=Kapwing&goal=Video">Video</a><a class="chip chip-link" href="./directory.html?company=Kapwing&goal=Writing">Writing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/kapwing-ai.html">
+                        <strong>Kapwing AI</strong>
+                        <div class="related-copy">A browser-based editing platform with AI help for captions, clipping, and faster social-ready video edits.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/kapwing.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Kapwing">Compare Kapwing tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-krea">
+                  <div class="tagrow">
+                    <span class="tag">Image workflow</span>
+                    
+    <a class="chip company-chip" href="https://www.krea.ai/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=krea.ai&amp;sz=128" alt="Krea logo" loading="lazy" decoding="async">
+      <span>Krea</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Krea</h3>
+                  <p>Krea is included here for image AI products that support design, video work.</p>
+                  <p><strong>Best known here for:</strong> Image</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/krea.html">Krea</a> — A creative generation tool for fast visual ideation, live prompting, and concept exploration.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Krea&goal=Design">Design</a><a class="chip chip-link" href="./directory.html?company=Krea&goal=Video">Video</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/krea.html">
+                        <strong>Krea</strong>
+                        <div class="related-copy">A creative generation tool for fast visual ideation, live prompting, and concept exploration.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/krea.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Krea">Compare Krea tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-krisp">
                   <div class="tagrow">
-                    <span class="tag">Meetings</span>
+                    <span class="tag">Meeting workflow</span>
                     
     <a class="chip company-chip" href="https://krisp.ai/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=krisp.ai&amp;sz=128" alt="Krisp logo" loading="lazy" decoding="async">
@@ -871,7 +1737,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Krisp&goal=Meetings#directory-filters">Meetings</a><a class="chip chip-link" href="./index.html?company=Krisp&goal=Productivity#directory-filters">Productivity</a><a class="chip chip-link" href="./index.html?company=Krisp&goal=Support#directory-filters">Support</a>
+                      <a class="chip chip-link" href="./directory.html?company=Krisp&goal=Meetings">Meetings</a><a class="chip chip-link" href="./directory.html?company=Krisp&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=Krisp&goal=Support">Support</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -884,14 +1750,199 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/krisp.html">Start with Krisp</a>
+                    <a class="small-link primary" href="./companies/krisp.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Krisp">Compare Krisp tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-lavender">
+                  <div class="tagrow">
+                    <span class="tag">Sales workflow</span>
+                    
+    <a class="chip company-chip" href="https://www.lavender.ai/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=lavender.ai&amp;sz=128" alt="Lavender logo" loading="lazy" decoding="async">
+      <span>Lavender</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Lavender</h3>
+                  <p>Lavender is included here for sales AI products that support sales, writing work.</p>
+                  <p><strong>Best known here for:</strong> Sales</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/lavender.html">Lavender</a> — An email coaching assistant built for outbound sales teams that want clearer, more effective prospect emails.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Lavender&goal=Sales">Sales</a><a class="chip chip-link" href="./directory.html?company=Lavender&goal=Writing">Writing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/lavender.html">
+                        <strong>Lavender</strong>
+                        <div class="related-copy">An email coaching assistant built for outbound sales teams that want clearer, more effective prospect emails.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/lavender.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Lavender">Compare Lavender tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-leonardo">
+                  <div class="tagrow">
+                    <span class="tag">Image workflow</span>
+                    
+    <a class="chip company-chip" href="https://leonardo.ai/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=leonardo.ai&amp;sz=128" alt="Leonardo logo" loading="lazy" decoding="async">
+      <span>Leonardo</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Leonardo</h3>
+                  <p>Leonardo is included here for image AI products that support design, marketing work.</p>
+                  <p><strong>Best known here for:</strong> Image</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/leonardo-ai.html">Leonardo AI</a> — An image-generation tool for concept art, brand visuals, and faster creative exploration.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Leonardo&goal=Design">Design</a><a class="chip chip-link" href="./directory.html?company=Leonardo&goal=Marketing">Marketing</a><a class="chip chip-link" href="./directory.html?company=Leonardo&goal=Video">Video</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/leonardo-ai.html">
+                        <strong>Leonardo AI</strong>
+                        <div class="related-copy">An image-generation tool for concept art, brand visuals, and faster creative exploration.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/leonardo.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Leonardo">Compare Leonardo tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-luma-ai">
+                  <div class="tagrow">
+                    <span class="tag">Video workflow</span>
+                    
+    <a class="chip company-chip" href="https://lumalabs.ai/dream-machine" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=lumalabs.ai&amp;sz=128" alt="Luma AI logo" loading="lazy" decoding="async">
+      <span>Luma AI</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Luma AI</h3>
+                  <p>Luma AI is included here for video AI products that support video, design work.</p>
+                  <p><strong>Best known here for:</strong> Video</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/luma-dream-machine.html">Luma Dream Machine</a> — A generative video tool for exploring motion ideas, concept scenes, and fast visual experimentation.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Luma%20AI&goal=Design">Design</a><a class="chip chip-link" href="./directory.html?company=Luma%20AI&goal=Video">Video</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/luma-dream-machine.html">
+                        <strong>Luma Dream Machine</strong>
+                        <div class="related-copy">A generative video tool for exploring motion ideas, concept scenes, and fast visual experimentation.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/luma-ai.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Luma%20AI">Compare Luma AI tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-mentimeter">
+                  <div class="tagrow">
+                    <span class="tag">Presentation workflow</span>
+                    
+    <a class="chip company-chip" href="https://www.mentimeter.com/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=mentimeter.com&amp;sz=128" alt="Mentimeter logo" loading="lazy" decoding="async">
+      <span>Mentimeter</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Mentimeter</h3>
+                  <p>Mentimeter is included here for presentations AI products that support presentations, training work.</p>
+                  <p><strong>Best known here for:</strong> Presentations</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/mentimeter-ai.html">Mentimeter AI</a> — An interactive presentation tool with AI help for creating audience-engaging sessions and live polls.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Mentimeter&goal=Presentations">Presentations</a><a class="chip chip-link" href="./directory.html?company=Mentimeter&goal=Training">Training</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/mentimeter-ai.html">
+                        <strong>Mentimeter AI</strong>
+                        <div class="related-copy">An interactive presentation tool with AI help for creating audience-engaging sessions and live polls.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/mentimeter.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Mentimeter">Compare Mentimeter tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-microsoft">
+                  <div class="tagrow">
+                    <span class="tag">General assistant</span>
+                    
+    <a class="chip company-chip" href="https://copilot.microsoft.com/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=copilot.microsoft.com&amp;sz=128" alt="Microsoft logo" loading="lazy" decoding="async">
+      <span>Microsoft</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Microsoft</h3>
+                  <p>Microsoft is included here for assistant AI products that support productivity, writing work.</p>
+                  <p><strong>Best known here for:</strong> Assistant</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/microsoft-copilot.html">Microsoft Copilot</a> — A practical everyday AI assistant for drafting, summarizing, and general work inside Microsoft-heavy environments.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Microsoft&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=Microsoft&goal=Research">Research</a><a class="chip chip-link" href="./directory.html?company=Microsoft&goal=Writing">Writing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/microsoft-copilot.html">
+                        <strong>Microsoft Copilot</strong>
+                        <div class="related-copy">A practical everyday AI assistant for drafting, summarizing, and general work inside Microsoft-heavy environments.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/microsoft.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Microsoft">Compare Microsoft tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-midjourney">
                   <div class="tagrow">
-                    <span class="tag">Image</span>
+                    <span class="tag">Image workflow</span>
                     
     <a class="chip company-chip" href="https://www.midjourney.com/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=midjourney.com&amp;sz=128" alt="Midjourney logo" loading="lazy" decoding="async">
@@ -908,7 +1959,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Midjourney&goal=Design#directory-filters">Design</a><a class="chip chip-link" href="./index.html?company=Midjourney&goal=Video#directory-filters">Video</a>
+                      <a class="chip chip-link" href="./directory.html?company=Midjourney&goal=Design">Design</a><a class="chip chip-link" href="./directory.html?company=Midjourney&goal=Video">Video</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -921,14 +1972,51 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/midjourney.html">Start with Midjourney</a>
+                    <a class="small-link primary" href="./companies/midjourney.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Midjourney">Compare Midjourney tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-mistral">
+                  <div class="tagrow">
+                    <span class="tag">General assistant</span>
+                    
+    <a class="chip company-chip" href="https://chat.mistral.ai/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=chat.mistral.ai&amp;sz=128" alt="Mistral logo" loading="lazy" decoding="async">
+      <span>Mistral</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Mistral</h3>
+                  <p>Mistral is included here for assistant AI products that support productivity, writing work.</p>
+                  <p><strong>Best known here for:</strong> Assistant</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/le-chat.html">Le Chat</a> — A clean general assistant experience for drafting, reasoning, and everyday business work.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Mistral&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=Mistral&goal=Research">Research</a><a class="chip chip-link" href="./directory.html?company=Mistral&goal=Writing">Writing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/le-chat.html">
+                        <strong>Le Chat</strong>
+                        <div class="related-copy">A clean general assistant experience for drafting, reasoning, and everyday business work.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/mistral.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Mistral">Compare Mistral tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-murf">
                   <div class="tagrow">
-                    <span class="tag">Voice</span>
+                    <span class="tag">Voice workflow</span>
                     
     <a class="chip company-chip" href="https://murf.ai/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=murf.ai&amp;sz=128" alt="Murf logo" loading="lazy" decoding="async">
@@ -945,7 +2033,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Murf&goal=Presentations#directory-filters">Presentations</a><a class="chip chip-link" href="./index.html?company=Murf&goal=Video#directory-filters">Video</a><a class="chip chip-link" href="./index.html?company=Murf&goal=Voice#directory-filters">Voice</a>
+                      <a class="chip chip-link" href="./directory.html?company=Murf&goal=Presentations">Presentations</a><a class="chip chip-link" href="./directory.html?company=Murf&goal=Video">Video</a><a class="chip chip-link" href="./directory.html?company=Murf&goal=Voice">Voice</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -958,14 +2046,14 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/murf.html">Start with Murf</a>
+                    <a class="small-link primary" href="./companies/murf.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Murf">Compare Murf tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-notion">
                   <div class="tagrow">
-                    <span class="tag">Workspace</span>
+                    <span class="tag">Workspace AI</span>
                     
     <a class="chip company-chip" href="https://www.notion.com/product/ai" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=notion.com&amp;sz=128" alt="Notion logo" loading="lazy" decoding="async">
@@ -982,7 +2070,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Notion&goal=Meetings#directory-filters">Meetings</a><a class="chip chip-link" href="./index.html?company=Notion&goal=Productivity#directory-filters">Productivity</a><a class="chip chip-link" href="./index.html?company=Notion&goal=Writing#directory-filters">Writing</a>
+                      <a class="chip chip-link" href="./directory.html?company=Notion&goal=Meetings">Meetings</a><a class="chip chip-link" href="./directory.html?company=Notion&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=Notion&goal=Writing">Writing</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -995,14 +2083,51 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/notion-ai.html">Start with Notion AI</a>
+                    <a class="small-link primary" href="./companies/notion.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Notion">Compare Notion tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-opus">
+                  <div class="tagrow">
+                    <span class="tag">Video workflow</span>
+                    
+    <a class="chip company-chip" href="https://www.opus.pro/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=opus.pro&amp;sz=128" alt="Opus logo" loading="lazy" decoding="async">
+      <span>Opus</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Opus</h3>
+                  <p>Opus is included here for video AI products that support video, marketing work.</p>
+                  <p><strong>Best known here for:</strong> Video</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/opus-clip.html">Opus Clip</a> — A video repurposing tool for turning longer videos into shorter clips for social distribution.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Opus&goal=Marketing">Marketing</a><a class="chip chip-link" href="./directory.html?company=Opus&goal=Training">Training</a><a class="chip chip-link" href="./directory.html?company=Opus&goal=Video">Video</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/opus-clip.html">
+                        <strong>Opus Clip</strong>
+                        <div class="related-copy">A video repurposing tool for turning longer videos into shorter clips for social distribution.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/opus.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Opus">Compare Opus tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-otter-ai">
                   <div class="tagrow">
-                    <span class="tag">Meetings</span>
+                    <span class="tag">Meeting workflow</span>
                     
     <a class="chip company-chip" href="https://otter.ai/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=otter.ai&amp;sz=128" alt="Otter.ai logo" loading="lazy" decoding="async">
@@ -1019,7 +2144,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Otter.ai&goal=Meetings#directory-filters">Meetings</a><a class="chip chip-link" href="./index.html?company=Otter.ai&goal=Productivity#directory-filters">Productivity</a><a class="chip chip-link" href="./index.html?company=Otter.ai&goal=Writing#directory-filters">Writing</a>
+                      <a class="chip chip-link" href="./directory.html?company=Otter.ai&goal=Meetings">Meetings</a><a class="chip chip-link" href="./directory.html?company=Otter.ai&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=Otter.ai&goal=Writing">Writing</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -1032,14 +2157,384 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/otter.html">Start with Otter</a>
+                    <a class="small-link primary" href="./companies/otter-ai.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Otter.ai">Compare Otter.ai tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-phind">
+                  <div class="tagrow">
+                    <span class="tag">Research workflow</span>
+                    
+    <a class="chip company-chip" href="https://www.phind.com/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=phind.com&amp;sz=128" alt="Phind logo" loading="lazy" decoding="async">
+      <span>Phind</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Phind</h3>
+                  <p>Phind is included here for research AI products that support research, productivity work.</p>
+                  <p><strong>Best known here for:</strong> Research</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/phind.html">Phind</a> — A fast answer engine for technical and problem-solving questions when you want research plus explanation.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Phind&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=Phind&goal=Research">Research</a><a class="chip chip-link" href="./directory.html?company=Phind&goal=Writing">Writing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/phind.html">
+                        <strong>Phind</strong>
+                        <div class="related-copy">A fast answer engine for technical and problem-solving questions when you want research plus explanation.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/phind.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Phind">Compare Phind tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-photoroom">
+                  <div class="tagrow">
+                    <span class="tag">Image workflow</span>
+                    
+    <a class="chip company-chip" href="https://www.photoroom.com/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=photoroom.com&amp;sz=128" alt="PhotoRoom logo" loading="lazy" decoding="async">
+      <span>PhotoRoom</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>PhotoRoom</h3>
+                  <p>PhotoRoom is included here for image AI products that support design, marketing work.</p>
+                  <p><strong>Best known here for:</strong> Image</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/photoroom.html">PhotoRoom</a> — A product image editing tool for backgrounds, cutouts, and cleaner commerce visuals.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=PhotoRoom&goal=Design">Design</a><a class="chip chip-link" href="./directory.html?company=PhotoRoom&goal=Marketing">Marketing</a><a class="chip chip-link" href="./directory.html?company=PhotoRoom&goal=Sales">Sales</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/photoroom.html">
+                        <strong>PhotoRoom</strong>
+                        <div class="related-copy">A product image editing tool for backgrounds, cutouts, and cleaner commerce visuals.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/photoroom.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=PhotoRoom">Compare PhotoRoom tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-pictory">
+                  <div class="tagrow">
+                    <span class="tag">Video workflow</span>
+                    
+    <a class="chip company-chip" href="https://pictory.ai/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=pictory.ai&amp;sz=128" alt="Pictory logo" loading="lazy" decoding="async">
+      <span>Pictory</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Pictory</h3>
+                  <p>Pictory is included here for video AI products that support video, marketing work.</p>
+                  <p><strong>Best known here for:</strong> Video</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/pictory.html">Pictory</a> — A video creation tool for turning scripts, blog posts, and long videos into shorter visual content.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Pictory&goal=Marketing">Marketing</a><a class="chip chip-link" href="./directory.html?company=Pictory&goal=Training">Training</a><a class="chip chip-link" href="./directory.html?company=Pictory&goal=Video">Video</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/pictory.html">
+                        <strong>Pictory</strong>
+                        <div class="related-copy">A video creation tool for turning scripts, blog posts, and long videos into shorter visual content.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/pictory.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Pictory">Compare Pictory tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-pitch">
+                  <div class="tagrow">
+                    <span class="tag">Presentation workflow</span>
+                    
+    <a class="chip company-chip" href="https://pitch.com/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=pitch.com&amp;sz=128" alt="Pitch logo" loading="lazy" decoding="async">
+      <span>Pitch</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Pitch</h3>
+                  <p>Pitch is included here for presentations AI products that support presentations, productivity work.</p>
+                  <p><strong>Best known here for:</strong> Presentations</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/pitch.html">Pitch</a> — A collaborative presentation platform for teams that need faster deck creation and iteration.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Pitch&goal=Design">Design</a><a class="chip chip-link" href="./directory.html?company=Pitch&goal=Presentations">Presentations</a><a class="chip chip-link" href="./directory.html?company=Pitch&goal=Productivity">Productivity</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/pitch.html">
+                        <strong>Pitch</strong>
+                        <div class="related-copy">A collaborative presentation platform for teams that need faster deck creation and iteration.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/pitch.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Pitch">Compare Pitch tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-playground-ai">
+                  <div class="tagrow">
+                    <span class="tag">Image workflow</span>
+                    
+    <a class="chip company-chip" href="https://playground.com/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=playground.com&amp;sz=128" alt="Playground AI logo" loading="lazy" decoding="async">
+      <span>Playground AI</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Playground AI</h3>
+                  <p>Playground AI is included here for image AI products that support design, marketing work.</p>
+                  <p><strong>Best known here for:</strong> Image</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/playground-ai.html">Playground AI</a> — A browser-based image creation workspace for quick visual experiments, edits, and mockups.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Playground%20AI&goal=Design">Design</a><a class="chip chip-link" href="./directory.html?company=Playground%20AI&goal=Marketing">Marketing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/playground-ai.html">
+                        <strong>Playground AI</strong>
+                        <div class="related-copy">A browser-based image creation workspace for quick visual experiments, edits, and mockups.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/playground-ai.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Playground%20AI">Compare Playground AI tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-playht">
+                  <div class="tagrow">
+                    <span class="tag">Voice workflow</span>
+                    
+    <a class="chip company-chip" href="https://play.ht/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=play.ht&amp;sz=128" alt="PlayHT logo" loading="lazy" decoding="async">
+      <span>PlayHT</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>PlayHT</h3>
+                  <p>PlayHT is included here for voice AI products that support voice, support work.</p>
+                  <p><strong>Best known here for:</strong> Voice</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/playht.html">PlayHT</a> — A voice generation tool for narration, voiceovers, and spoken content workflows.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=PlayHT&goal=Support">Support</a><a class="chip chip-link" href="./directory.html?company=PlayHT&goal=Training">Training</a><a class="chip chip-link" href="./directory.html?company=PlayHT&goal=Voice">Voice</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/playht.html">
+                        <strong>PlayHT</strong>
+                        <div class="related-copy">A voice generation tool for narration, voiceovers, and spoken content workflows.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/playht.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=PlayHT">Compare PlayHT tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-quillbot">
+                  <div class="tagrow">
+                    <span class="tag">Writing workflow</span>
+                    
+    <a class="chip company-chip" href="https://quillbot.com/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=quillbot.com&amp;sz=128" alt="QuillBot logo" loading="lazy" decoding="async">
+      <span>QuillBot</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>QuillBot</h3>
+                  <p>QuillBot is included here for writing AI products that support writing, productivity work.</p>
+                  <p><strong>Best known here for:</strong> Writing</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/quillbot.html">QuillBot</a> — A rewrite and paraphrasing assistant for tightening wording, changing tone, and simplifying drafts.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=QuillBot&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=QuillBot&goal=Writing">Writing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/quillbot.html">
+                        <strong>QuillBot</strong>
+                        <div class="related-copy">A rewrite and paraphrasing assistant for tightening wording, changing tone, and simplifying drafts.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/quillbot.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=QuillBot">Compare QuillBot tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-quora">
+                  <div class="tagrow">
+                    <span class="tag">General assistant</span>
+                    
+    <a class="chip company-chip" href="https://poe.com/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=poe.com&amp;sz=128" alt="Quora logo" loading="lazy" decoding="async">
+      <span>Quora</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Quora</h3>
+                  <p>Quora is included here for assistant AI products that support productivity, writing work.</p>
+                  <p><strong>Best known here for:</strong> Assistant</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/poe.html">Poe</a> — A flexible multi-model assistant hub for people who want to compare different AI models in one place.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Quora&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=Quora&goal=Research">Research</a><a class="chip chip-link" href="./directory.html?company=Quora&goal=Writing">Writing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/poe.html">
+                        <strong>Poe</strong>
+                        <div class="related-copy">A flexible multi-model assistant hub for people who want to compare different AI models in one place.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/quora.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Quora">Compare Quora tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-read-ai">
+                  <div class="tagrow">
+                    <span class="tag">Meeting workflow</span>
+                    
+    <a class="chip company-chip" href="https://www.read.ai/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=read.ai&amp;sz=128" alt="Read AI logo" loading="lazy" decoding="async">
+      <span>Read AI</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Read AI</h3>
+                  <p>Read AI is included here for meetings AI products that support meetings, productivity work.</p>
+                  <p><strong>Best known here for:</strong> Meetings</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/read-ai.html">Read AI</a> — A meeting intelligence tool for summaries, participation insights, and post-call productivity cleanup.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Read%20AI&goal=Meetings">Meetings</a><a class="chip chip-link" href="./directory.html?company=Read%20AI&goal=Productivity">Productivity</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/read-ai.html">
+                        <strong>Read AI</strong>
+                        <div class="related-copy">A meeting intelligence tool for summaries, participation insights, and post-call productivity cleanup.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/read-ai.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Read%20AI">Compare Read AI tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-recraft">
+                  <div class="tagrow">
+                    <span class="tag">Image workflow</span>
+                    
+    <a class="chip company-chip" href="https://www.recraft.ai/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=recraft.ai&amp;sz=128" alt="Recraft logo" loading="lazy" decoding="async">
+      <span>Recraft</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Recraft</h3>
+                  <p>Recraft is included here for image AI products that support design, marketing work.</p>
+                  <p><strong>Best known here for:</strong> Image</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/recraft.html">Recraft</a> — A design-oriented image tool for generating visual assets, icons, and brand-adjacent creative variations.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Recraft&goal=Design">Design</a><a class="chip chip-link" href="./directory.html?company=Recraft&goal=Marketing">Marketing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/recraft.html">
+                        <strong>Recraft</strong>
+                        <div class="related-copy">A design-oriented image tool for generating visual assets, icons, and brand-adjacent creative variations.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/recraft.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Recraft">Compare Recraft tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-riverside">
                   <div class="tagrow">
-                    <span class="tag">Video</span>
+                    <span class="tag">Video workflow</span>
                     
     <a class="chip company-chip" href="https://riverside.fm/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=riverside.fm&amp;sz=128" alt="Riverside logo" loading="lazy" decoding="async">
@@ -1056,7 +2551,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Riverside&goal=Meetings#directory-filters">Meetings</a><a class="chip chip-link" href="./index.html?company=Riverside&goal=Video#directory-filters">Video</a><a class="chip chip-link" href="./index.html?company=Riverside&goal=Voice#directory-filters">Voice</a>
+                      <a class="chip chip-link" href="./directory.html?company=Riverside&goal=Meetings">Meetings</a><a class="chip chip-link" href="./directory.html?company=Riverside&goal=Video">Video</a><a class="chip chip-link" href="./directory.html?company=Riverside&goal=Voice">Voice</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -1069,14 +2564,14 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/riverside.html">Start with Riverside</a>
+                    <a class="small-link primary" href="./companies/riverside.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Riverside">Compare Riverside tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-runway">
                   <div class="tagrow">
-                    <span class="tag">Video</span>
+                    <span class="tag">Video workflow</span>
                     
     <a class="chip company-chip" href="https://runwayml.com/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=runwayml.com&amp;sz=128" alt="Runway logo" loading="lazy" decoding="async">
@@ -1093,7 +2588,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Runway&goal=Design#directory-filters">Design</a><a class="chip chip-link" href="./index.html?company=Runway&goal=Video#directory-filters">Video</a>
+                      <a class="chip chip-link" href="./directory.html?company=Runway&goal=Design">Design</a><a class="chip chip-link" href="./directory.html?company=Runway&goal=Video">Video</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -1106,14 +2601,273 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/runway.html">Start with Runway</a>
+                    <a class="small-link primary" href="./companies/runway.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Runway">Compare Runway tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-rytr">
+                  <div class="tagrow">
+                    <span class="tag">Writing workflow</span>
+                    
+    <a class="chip company-chip" href="https://rytr.me/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=rytr.me&amp;sz=128" alt="Rytr logo" loading="lazy" decoding="async">
+      <span>Rytr</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Rytr</h3>
+                  <p>Rytr is included here for writing AI products that support writing, marketing work.</p>
+                  <p><strong>Best known here for:</strong> Writing</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/rytr.html">Rytr</a> — A lightweight writing assistant for quick drafts, marketing copy, and everyday content tasks.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Rytr&goal=Marketing">Marketing</a><a class="chip chip-link" href="./directory.html?company=Rytr&goal=Writing">Writing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/rytr.html">
+                        <strong>Rytr</strong>
+                        <div class="related-copy">A lightweight writing assistant for quick drafts, marketing copy, and everyday content tasks.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/rytr.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Rytr">Compare Rytr tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-scholarcy">
+                  <div class="tagrow">
+                    <span class="tag">Research workflow</span>
+                    
+    <a class="chip company-chip" href="https://www.scholarcy.com/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=scholarcy.com&amp;sz=128" alt="Scholarcy logo" loading="lazy" decoding="async">
+      <span>Scholarcy</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Scholarcy</h3>
+                  <p>Scholarcy is included here for research AI products that support research, productivity work.</p>
+                  <p><strong>Best known here for:</strong> Research</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/scholarcy.html">Scholarcy</a> — A paper summarization tool for extracting key points, flashcards, and digestible takeaways from dense material.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Scholarcy&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=Scholarcy&goal=Research">Research</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/scholarcy.html">
+                        <strong>Scholarcy</strong>
+                        <div class="related-copy">A paper summarization tool for extracting key points, flashcards, and digestible takeaways from dense material.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/scholarcy.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Scholarcy">Compare Scholarcy tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-scite">
+                  <div class="tagrow">
+                    <span class="tag">Research workflow</span>
+                    
+    <a class="chip company-chip" href="https://scite.ai/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=scite.ai&amp;sz=128" alt="Scite logo" loading="lazy" decoding="async">
+      <span>Scite</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Scite</h3>
+                  <p>Scite is included here for research AI products that support research, writing work.</p>
+                  <p><strong>Best known here for:</strong> Research</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/scite.html">Scite</a> — A citation-aware research tool for understanding how papers are supported, disputed, or mentioned.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Scite&goal=Research">Research</a><a class="chip chip-link" href="./directory.html?company=Scite&goal=Writing">Writing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/scite.html">
+                        <strong>Scite</strong>
+                        <div class="related-copy">A citation-aware research tool for understanding how papers are supported, disputed, or mentioned.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/scite.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Scite">Compare Scite tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-scribe">
+                  <div class="tagrow">
+                    <span class="tag">Training workflow</span>
+                    
+    <a class="chip company-chip" href="https://scribehow.com/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=scribehow.com&amp;sz=128" alt="Scribe logo" loading="lazy" decoding="async">
+      <span>Scribe</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Scribe</h3>
+                  <p>Scribe is included here for training AI products that support training, productivity work.</p>
+                  <p><strong>Best known here for:</strong> Training</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/scribe.html">Scribe</a> — A documentation and SOP creation tool for turning workflows into step-by-step internal guides.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Scribe&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=Scribe&goal=Training">Training</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/scribe.html">
+                        <strong>Scribe</strong>
+                        <div class="related-copy">A documentation and SOP creation tool for turning workflows into step-by-step internal guides.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/scribe.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Scribe">Compare Scribe tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-semrush">
+                  <div class="tagrow">
+                    <span class="tag">SEO workflow</span>
+                    
+    <a class="chip company-chip" href="https://www.semrush.com/contentshake/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=semrush.com&amp;sz=128" alt="Semrush logo" loading="lazy" decoding="async">
+      <span>Semrush</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Semrush</h3>
+                  <p>Semrush is included here for seo AI products that support seo, writing work.</p>
+                  <p><strong>Best known here for:</strong> SEO</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/contentshake-ai.html">ContentShake AI</a> — A lightweight SEO content workflow for generating article ideas, outlines, and first drafts from search opportunities.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Semrush&goal=Marketing">Marketing</a><a class="chip chip-link" href="./directory.html?company=Semrush&goal=SEO">SEO</a><a class="chip chip-link" href="./directory.html?company=Semrush&goal=Writing">Writing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/contentshake-ai.html">
+                        <strong>ContentShake AI</strong>
+                        <div class="related-copy">A lightweight SEO content workflow for generating article ideas, outlines, and first drafts from search opportunities.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/semrush.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Semrush">Compare Semrush tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-speechify">
+                  <div class="tagrow">
+                    <span class="tag">Voice workflow</span>
+                    
+    <a class="chip company-chip" href="https://speechify.com/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=speechify.com&amp;sz=128" alt="Speechify logo" loading="lazy" decoding="async">
+      <span>Speechify</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Speechify</h3>
+                  <p>Speechify is included here for voice AI products that support voice, training work.</p>
+                  <p><strong>Best known here for:</strong> Voice</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/speechify.html">Speechify</a> — A text-to-speech platform for listening workflows, spoken summaries, and accessible content consumption.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Speechify&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=Speechify&goal=Training">Training</a><a class="chip chip-link" href="./directory.html?company=Speechify&goal=Voice">Voice</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/speechify.html">
+                        <strong>Speechify</strong>
+                        <div class="related-copy">A text-to-speech platform for listening workflows, spoken summaries, and accessible content consumption.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/speechify.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Speechify">Compare Speechify tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-sudowrite">
+                  <div class="tagrow">
+                    <span class="tag">Writing workflow</span>
+                    
+    <a class="chip company-chip" href="https://www.sudowrite.com/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=sudowrite.com&amp;sz=128" alt="Sudowrite logo" loading="lazy" decoding="async">
+      <span>Sudowrite</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Sudowrite</h3>
+                  <p>Sudowrite is included here for writing AI products that support writing work.</p>
+                  <p><strong>Best known here for:</strong> Writing</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/sudowrite.html">Sudowrite</a> — A creative writing assistant for fiction drafting, scene expansion, and language exploration.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Sudowrite&goal=Writing">Writing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/sudowrite.html">
+                        <strong>Sudowrite</strong>
+                        <div class="related-copy">A creative writing assistant for fiction drafting, scene expansion, and language exploration.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/sudowrite.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Sudowrite">Compare Sudowrite tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-surfer">
                   <div class="tagrow">
-                    <span class="tag">Marketing</span>
+                    <span class="tag">Marketing workflow</span>
                     
     <a class="chip company-chip" href="https://surferseo.com/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=surferseo.com&amp;sz=128" alt="Surfer logo" loading="lazy" decoding="async">
@@ -1130,7 +2884,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Surfer&goal=Research#directory-filters">Research</a><a class="chip chip-link" href="./index.html?company=Surfer&goal=SEO#directory-filters">SEO</a><a class="chip chip-link" href="./index.html?company=Surfer&goal=Writing#directory-filters">Writing</a>
+                      <a class="chip chip-link" href="./directory.html?company=Surfer&goal=Research">Research</a><a class="chip chip-link" href="./directory.html?company=Surfer&goal=SEO">SEO</a><a class="chip chip-link" href="./directory.html?company=Surfer&goal=Writing">Writing</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -1143,14 +2897,14 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/surfer.html">Start with Surfer</a>
+                    <a class="small-link primary" href="./companies/surfer.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Surfer">Compare Surfer tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-synthesia">
                   <div class="tagrow">
-                    <span class="tag">Video</span>
+                    <span class="tag">Video workflow</span>
                     
     <a class="chip company-chip" href="https://www.synthesia.io/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=synthesia.io&amp;sz=128" alt="Synthesia logo" loading="lazy" decoding="async">
@@ -1167,7 +2921,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Synthesia&goal=Presentations#directory-filters">Presentations</a><a class="chip chip-link" href="./index.html?company=Synthesia&goal=Training#directory-filters">Training</a><a class="chip chip-link" href="./index.html?company=Synthesia&goal=Video#directory-filters">Video</a>
+                      <a class="chip chip-link" href="./directory.html?company=Synthesia&goal=Presentations">Presentations</a><a class="chip chip-link" href="./directory.html?company=Synthesia&goal=Training">Training</a><a class="chip chip-link" href="./directory.html?company=Synthesia&goal=Video">Video</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -1180,14 +2934,162 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/synthesia.html">Start with Synthesia</a>
+                    <a class="small-link primary" href="./companies/synthesia.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Synthesia">Compare Synthesia tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-tactiq">
+                  <div class="tagrow">
+                    <span class="tag">Meeting workflow</span>
+                    
+    <a class="chip company-chip" href="https://tactiq.io/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=tactiq.io&amp;sz=128" alt="Tactiq logo" loading="lazy" decoding="async">
+      <span>Tactiq</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Tactiq</h3>
+                  <p>Tactiq is included here for meetings AI products that support meetings, writing work.</p>
+                  <p><strong>Best known here for:</strong> Meetings</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/tactiq.html">Tactiq</a> — A lightweight transcription and meeting notes assistant for faster follow-up after online calls.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Tactiq&goal=Meetings">Meetings</a><a class="chip chip-link" href="./directory.html?company=Tactiq&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=Tactiq&goal=Writing">Writing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/tactiq.html">
+                        <strong>Tactiq</strong>
+                        <div class="related-copy">A lightweight transcription and meeting notes assistant for faster follow-up after online calls.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/tactiq.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Tactiq">Compare Tactiq tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-tome">
+                  <div class="tagrow">
+                    <span class="tag">Presentation workflow</span>
+                    
+    <a class="chip company-chip" href="https://tome.app/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=tome.app&amp;sz=128" alt="Tome logo" loading="lazy" decoding="async">
+      <span>Tome</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Tome</h3>
+                  <p>Tome is included here for presentations AI products that support presentations, writing work.</p>
+                  <p><strong>Best known here for:</strong> Presentations</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/tome.html">Tome</a> — A presentation and narrative tool for turning ideas into polished story-driven decks quickly.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Tome&goal=Design">Design</a><a class="chip chip-link" href="./directory.html?company=Tome&goal=Presentations">Presentations</a><a class="chip chip-link" href="./directory.html?company=Tome&goal=Writing">Writing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/tome.html">
+                        <strong>Tome</strong>
+                        <div class="related-copy">A presentation and narrative tool for turning ideas into polished story-driven decks quickly.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/tome.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Tome">Compare Tome tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-wellsaid-labs">
+                  <div class="tagrow">
+                    <span class="tag">Voice workflow</span>
+                    
+    <a class="chip company-chip" href="https://wellsaidlabs.com/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=wellsaidlabs.com&amp;sz=128" alt="WellSaid Labs logo" loading="lazy" decoding="async">
+      <span>WellSaid Labs</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>WellSaid Labs</h3>
+                  <p>WellSaid Labs is included here for voice AI products that support voice, training work.</p>
+                  <p><strong>Best known here for:</strong> Voice</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/wellsaid-labs.html">WellSaid Labs</a> — A business-focused voiceover platform for polished narration in training, marketing, and explainers.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=WellSaid%20Labs&goal=Marketing">Marketing</a><a class="chip chip-link" href="./directory.html?company=WellSaid%20Labs&goal=Training">Training</a><a class="chip chip-link" href="./directory.html?company=WellSaid%20Labs&goal=Voice">Voice</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/wellsaid-labs.html">
+                        <strong>WellSaid Labs</strong>
+                        <div class="related-copy">A business-focused voiceover platform for polished narration in training, marketing, and explainers.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/wellsaid-labs.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=WellSaid%20Labs">Compare WellSaid Labs tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-writer">
+                  <div class="tagrow">
+                    <span class="tag">Writing workflow</span>
+                    
+    <a class="chip company-chip" href="https://writer.com/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=writer.com&amp;sz=128" alt="Writer logo" loading="lazy" decoding="async">
+      <span>Writer</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Writer</h3>
+                  <p>Writer is included here for writing AI products that support writing, marketing work.</p>
+                  <p><strong>Best known here for:</strong> Writing</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/writer.html">Writer</a> — A business writing platform for teams that need brand consistency, approved language, and scalable content operations.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Writer&goal=Marketing">Marketing</a><a class="chip chip-link" href="./directory.html?company=Writer&goal=Support">Support</a><a class="chip chip-link" href="./directory.html?company=Writer&goal=Writing">Writing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/writer.html">
+                        <strong>Writer</strong>
+                        <div class="related-copy">A business writing platform for teams that need brand consistency, approved language, and scalable content operations.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/writer.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Writer">Compare Writer tools</a>
                   </div>
                 </article>
               
                 <article class="guide-tool company-anchor" id="company-writesonic">
                   <div class="tagrow">
-                    <span class="tag">Marketing</span>
+                    <span class="tag">Marketing workflow</span>
                     
     <a class="chip company-chip" href="https://writesonic.com/" target="_blank" rel="noopener noreferrer">
       <img class="company-logo" src="https://www.google.com/s2/favicons?domain=writesonic.com&amp;sz=128" alt="Writesonic logo" loading="lazy" decoding="async">
@@ -1204,7 +3106,7 @@
                   <div class="company-goal-block">
                     <strong>Useful jobs:</strong>
                     <div class="company-goal-links">
-                      <a class="chip chip-link" href="./index.html?company=Writesonic&goal=Research#directory-filters">Research</a><a class="chip chip-link" href="./index.html?company=Writesonic&goal=SEO#directory-filters">SEO</a><a class="chip chip-link" href="./index.html?company=Writesonic&goal=Writing#directory-filters">Writing</a>
+                      <a class="chip chip-link" href="./directory.html?company=Writesonic&goal=Research">Research</a><a class="chip chip-link" href="./directory.html?company=Writesonic&goal=SEO">SEO</a><a class="chip chip-link" href="./directory.html?company=Writesonic&goal=Writing">Writing</a>
                     </div>
                   </div>
                   <div class="related-list" style="margin-top:14px">
@@ -1217,8 +3119,82 @@
                   </div>
                   
                   <div class="card-links" style="margin-top:14px">
-                    <a class="small-link primary" href="./tools/writesonic.html">Start with Writesonic</a>
+                    <a class="small-link primary" href="./companies/writesonic.html">Read company review</a>
                     <a class="small-link" href="./directory.html?company=Writesonic">Compare Writesonic tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-xai">
+                  <div class="tagrow">
+                    <span class="tag">General assistant</span>
+                    
+    <a class="chip company-chip" href="https://x.ai/grok" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=x.ai&amp;sz=128" alt="xAI logo" loading="lazy" decoding="async">
+      <span>xAI</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>xAI</h3>
+                  <p>xAI is included here for assistant AI products that support research, productivity work.</p>
+                  <p><strong>Best known here for:</strong> Assistant</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/grok.html">Grok</a> — A general AI assistant aimed at fast answers, current-context thinking, and broad everyday work.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=xAI&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=xAI&goal=Research">Research</a><a class="chip chip-link" href="./directory.html?company=xAI&goal=Writing">Writing</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/grok.html">
+                        <strong>Grok</strong>
+                        <div class="related-copy">A general AI assistant aimed at fast answers, current-context thinking, and broad everyday work.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/xai.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=xAI">Compare xAI tools</a>
+                  </div>
+                </article>
+              
+                <article class="guide-tool company-anchor" id="company-zendesk">
+                  <div class="tagrow">
+                    <span class="tag">Support workflow</span>
+                    
+    <a class="chip company-chip" href="https://www.zendesk.com/ai/" target="_blank" rel="noopener noreferrer">
+      <img class="company-logo" src="https://www.google.com/s2/favicons?domain=zendesk.com&amp;sz=128" alt="Zendesk logo" loading="lazy" decoding="async">
+      <span>Zendesk</span>
+    </a>
+  
+                    <span class="chip">1 tool</span>
+                    
+                  </div>
+                  <h3>Zendesk</h3>
+                  <p>Zendesk is included here for support AI products that support support, productivity work.</p>
+                  <p><strong>Best known here for:</strong> Support</p>
+                  <p><strong>Best place to start:</strong> <a href="./tools/zendesk-ai.html">Zendesk AI</a> — An AI support layer for teams already working inside Zendesk who want better speed and consistency.</p>
+                  <div class="company-goal-block">
+                    <strong>Useful jobs:</strong>
+                    <div class="company-goal-links">
+                      <a class="chip chip-link" href="./directory.html?company=Zendesk&goal=Productivity">Productivity</a><a class="chip chip-link" href="./directory.html?company=Zendesk&goal=Support">Support</a>
+                    </div>
+                  </div>
+                  <div class="related-list" style="margin-top:14px">
+                    
+                      <a class="related-item" href="./tools/zendesk-ai.html">
+                        <strong>Zendesk AI</strong>
+                        <div class="related-copy">An AI support layer for teams already working inside Zendesk who want better speed and consistency.</div>
+                      </a>
+                    
+                  </div>
+                  
+                  <div class="card-links" style="margin-top:14px">
+                    <a class="small-link primary" href="./companies/zendesk.html">Read company review</a>
+                    <a class="small-link" href="./directory.html?company=Zendesk">Compare Zendesk tools</a>
                   </div>
                 </article>
               
@@ -1236,7 +3212,7 @@
             <h3>Need a better first pick?</h3>
             <p>If you do not already have a company in mind, the shortlist flow is still the best starting point.</p>
             <div class="card-links" style="margin-top:14px">
-              <a class="small-link primary" href="./index.html#matcher">Go to the shortlist</a>
+              <a class="small-link primary" href="./shortlist.html">Go to the shortlist</a>
             </div>
           </div>
           <div class="detail-section">

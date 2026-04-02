@@ -26,6 +26,10 @@
           <div class="brand-sub">AI tools that actually help</div>
         </div>
       </a>
+      <form class="nav-search" action="./directory.html" method="get">
+        <input type="search" name="search" placeholder="Search AI tools or companies">
+        <button type="submit">Search</button>
+      </form>
       <nav class="navlinks">
         <details class="nav-dropdown">
           <summary class="nav-summary">Start here</summary>
@@ -53,14 +57,14 @@
           <h1>Find the right AI tool for the job, not the loudest tool on the internet.</h1>
           <p class="hero-copy">We do not try to cover everything in AI. We help you narrow the shortlist fast, understand the tradeoffs, and choose the tool that actually matches your work.</p>
 
-          <div class="search-panel" id="directory">
+          <form class="search-panel" id="directory" action="./directory.html" method="get">
             <div class="search-grid">
-              <input id="search" type="search" placeholder="Describe the job to be done — e.g. meeting notes, research with sources, sales outreach, podcast editing">
-              <a class="button primary" href="./shortlist.html">See the shortlist</a>
+              <input id="search" name="search" type="search" placeholder="Describe the job to be done — e.g. meeting notes, research with sources, sales outreach, podcast editing">
+              <button class="button primary" type="submit">Search directory</button>
             </div>
             <div class="helper">Start with the task, not the brand. Try searches like “client follow-up”, “visual deck”, “voiceover”, or “research with citations”. If you already trust a brand, use the companies page instead.</div>
             <div class="quick-links" id="hero-goal-links"></div>
-          </div>
+          </form>
 
           <div class="hero-metrics">
             <div class="metric">
