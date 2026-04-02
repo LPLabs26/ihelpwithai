@@ -1320,20 +1320,25 @@ function landingCatalogItems() {
     officialUrl: tool.officialUrl,
     logoUrl: companyLogoUrl(tool.officialUrl),
     summary: tool.summary || tool.whatFor || tool.useCase || '',
-    meta: tool.company || tool.category
+    meta: tool.company || tool.category,
+    popularity: (tool.featured ? 100 : 0) + (tool.pricing === 'Free to try' ? 8 : 0) + (tool.difficulty === 'Easy' ? 5 : 0)
   }));
 
-  const companyItems = companyGroups().map(company => ({
-    id: `company:${slugify(company.name)}`,
-    name: company.name,
-    type: 'Company',
-    category: 'Company',
-    goals: uniqueStrings(company.tools.flatMap(tool => tool.goals || [])),
-    officialUrl: company.officialUrl,
-    logoUrl: companyLogoUrl(company.officialUrl),
-    summary: company.summary || `Known here for ${company.categories.slice(0, 2).join(' and ').toLowerCase()} workflows.`,
-    meta: `${company.tools.length} tool${company.tools.length === 1 ? '' : 's'}`
-  }));
+  const companyItems = companyGroups().map(company => {
+    const featuredCount = company.tools.filter(tool => tool.featured).length;
+    return {
+      id: `company:${slugify(company.name)}`,
+      name: company.name,
+      type: 'Company',
+      category: 'Company',
+      goals: uniqueStrings(company.tools.flatMap(tool => tool.goals || [])),
+      officialUrl: company.officialUrl,
+      logoUrl: companyLogoUrl(company.officialUrl),
+      summary: company.summary || `Known here for ${company.categories.slice(0, 2).join(' and ').toLowerCase()} workflows.`,
+      meta: `${company.tools.length} tool${company.tools.length === 1 ? '' : 's'}`,
+      popularity: (featuredCount * 40) + company.tools.length
+    };
+  });
 
   const deduped = new Map();
   for (const item of [...toolItems, ...companyItems]) {
@@ -1349,7 +1354,7 @@ function landingCatalogItems() {
     }
   }
 
-  return [...deduped.values()].sort((left, right) => left.name.localeCompare(right.name));
+  return [...deduped.values()].sort((left, right) => right.popularity - left.popularity || left.name.localeCompare(right.name));
 }
 
 function matchesLandingLogoItem(item) {
