@@ -437,11 +437,10 @@ function renderHeroGoalLinks() {
 
   container.querySelectorAll('[data-hero-goal]').forEach(button => {
     button.addEventListener('click', () => {
-      state.goal = button.getAttribute('data-hero-goal');
-      matchState.goal = state.goal;
-      resetDirectoryView();
-      scrollToChooser();
-      render();
+      const goal = button.getAttribute('data-hero-goal');
+      const params = new URLSearchParams();
+      if (goal) params.set('goal', goal);
+      window.location.href = `./directory.html${params.toString() ? `?${params.toString()}` : ''}`;
     });
   });
 }

@@ -101,201 +101,71 @@
       </div>
     </section>
 
-    <section class="section" id="matcher">
+    <section class="section">
       <div class="container">
         <div class="section-head">
           <div>
-            <div class="eyebrow">Quick shortlist</div>
-            <h2>Answer 3 questions and get better first picks</h2>
-            <p>Pick the main job first. Then use budget and audience to get closer to the tools that actually fit how you work.</p>
+            <div class="eyebrow">Start in one place</div>
+            <h2>Stop scrolling. Pick the path that matches how you already think.</h2>
+            <p>The homepage should route you, not make you browse everything at once.</p>
           </div>
-          <a class="button secondary" href="./directory.html">Prefer the full directory?</a>
+          <a class="button secondary" href="./get-help.html">Want us to narrow it for you?</a>
         </div>
 
-        <div class="match-shell">
-          <article class="match-panel">
-            <div class="match-intro">
-              <h3>Start with the job to be done</h3>
-              <p>The goal matters more than the brand. Choose the work you want help with, then tighten the shortlist with a few practical filters.</p>
-            </div>
+        <div class="path-grid">
+          <a class="path-card" href="./shortlist.html">
+            <div class="path-kicker">Fastest start</div>
+            <h3>Use the shortlist</h3>
+            <p>Best when you want a smaller set of first picks without working through the full directory.</p>
+            <div class="path-meta">Good if you know the job, but not the tool</div>
+          </a>
 
-            <div class="filter-group">
-              <div class="filter-label">Main job</div>
-              <div class="pills" id="match-goal-pills"></div>
-            </div>
+          <a class="path-card" href="./directory.html">
+            <div class="path-kicker">Search and filter</div>
+            <h3>Open the directory</h3>
+            <p>Best when you already know what kind of work you need help with and want to compare options quickly.</p>
+            <div class="path-meta">Good if you want control</div>
+          </a>
 
-            <div class="filter-group">
-              <div class="filter-label">Who is this for?</div>
-              <div class="pills" id="match-audience-pills"></div>
-            </div>
+          <a class="path-card" href="./companies.html">
+            <div class="path-kicker">Brand-first view</div>
+            <h3>Browse companies</h3>
+            <p>Best when you trust names like OpenAI, Google, Microsoft, Adobe, or Anthropic and want to start there.</p>
+            <div class="path-meta">Good if you already have vendors in mind</div>
+          </a>
 
-            <div class="filter-group">
-              <div class="filter-label">Budget</div>
-              <div class="pills" id="match-price-pills"></div>
-            </div>
-
-            <div class="filter-group">
-              <div class="filter-label">Setup tolerance</div>
-              <div class="pills" id="match-difficulty-pills"></div>
-            </div>
-          </article>
-
-          <article class="match-results">
-            <div class="match-status" id="match-status">Pick the main job and the site will turn the big list into a tighter starting shortlist.</div>
-            <div class="match-grid" id="match-grid"></div>
-            <div class="match-actions">
-              <button class="button primary" id="match-open-directory" type="button">Open these picks in the directory</button>
-              <button class="clear-button" id="match-reset" type="button">Reset chooser</button>
-            </div>
-          </article>
+          <a class="path-card" href="./reviews.html">
+            <div class="path-kicker">Deeper context</div>
+            <h3>Read reviews</h3>
+            <p>Best when you want the tradeoffs, watch-outs, and first-use guidance before picking a tool.</p>
+            <div class="path-meta">Good if you want more confidence before choosing</div>
+          </a>
         </div>
-      </div>
-    </section>
 
-    <section class="section section-tight" id="directory-filters">
-      <div class="container filter-shell">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">Curated directory</div>
-            <h2>Find your fit faster</h2>
-            <p>Use the filters below to narrow the shortlist by job, category, audience, price, and company.</p>
+        <div class="home-proof">
+          <div class="home-proof-item">
+            <strong>If you know the task</strong>
+            <span>Use search or the directory.</span>
           </div>
-          <div class="toolbar">
-            <div class="count" id="count"></div>
-            <button class="clear-button" id="clear-filters" type="button">Clear filters</button>
+          <div class="home-proof-item">
+            <strong>If you know the company</strong>
+            <span>Use the companies page.</span>
+          </div>
+          <div class="home-proof-item">
+            <strong>If you want the fastest answer</strong>
+            <span>Use the shortlist.</span>
+          </div>
+          <div class="home-proof-item">
+            <strong>If you still feel stuck</strong>
+            <span><a href="./get-help.html">Ask for help choosing.</a></span>
           </div>
         </div>
 
-        <div class="filter-group">
-          <div class="filter-label">Goal</div>
-          <div class="pills" id="goal-pills"></div>
+        <div class="home-link-row">
+          <a class="small-link" href="./best-free-ai-tools.html">Best free tools</a>
+          <a class="small-link" href="./editorial-methodology.html">How reviews work</a>
+          <a class="small-link" href="./affiliate-disclosure.html">Affiliate disclosure</a>
         </div>
-
-        <div class="filter-group">
-          <div class="filter-label">Category</div>
-          <div class="pills" id="category-pills"></div>
-        </div>
-
-        <div class="filter-group">
-          <div class="filter-label">Price</div>
-          <div class="pills" id="price-pills"></div>
-        </div>
-
-        <div class="filter-group">
-          <div class="filter-label">Audience</div>
-          <div class="pills" id="audience-pills"></div>
-        </div>
-
-        <div class="active-filters" id="active-filters"></div>
-      </div>
-    </section>
-
-    <section class="section" id="cards">
-      <div class="container">
-        <div class="directory-topbar">
-          <div class="directory-topnote">Start with the highlighted recommendation, then compare a couple of alternates if you still are not sure.</div>
-          <label class="sort-control" for="sort-select">
-            <span>Sort by</span>
-            <select id="sort-select">
-              <option value="best">Best starting points</option>
-              <option value="easy">Easiest to start</option>
-              <option value="free">Free to try first</option>
-              <option value="alphabetical">Alphabetical</option>
-            </select>
-          </label>
-        </div>
-
-        <div class="directory-summary" id="directory-summary"></div>
-        <div class="tool-list" id="card-grid"></div>
-        <div class="directory-actions" id="directory-actions"></div>
-
-        <div class="cta">
-          <div>
-            <div class="eyebrow">Need a tighter shortlist?</div>
-            <h2>Tell us what you are trying to do and get pointed in the right direction.</h2>
-            <p>If the directory still feels too broad, use the request form below and turn the browsing into a faster recommendation flow.</p>
-          </div>
-          <a class="button primary" href="./get-help.html">Get help choosing</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="help">
-      <div class="container lead-grid">
-        <article class="form-card">
-          <div class="eyebrow">Get a shortlist</div>
-          <h2>Tell us what you need help with.</h2>
-          <p class="form-note">Share the job, budget, and role, and this can turn from generic browsing into a much tighter recommendation.</p>
-          <form class="form-stack mailto-form" data-mailto-form="tool-match-request" data-mailto-subject="AI tool shortlist request">
-            <div class="field-grid">
-              <label class="field">
-                <span>Name</span>
-                <input type="text" name="name" required>
-              </label>
-              <label class="field">
-                <span>Email</span>
-                <input type="email" name="email" required>
-              </label>
-            </div>
-            <label class="field">
-              <span>What are you trying to do?</span>
-              <textarea name="goal" rows="5" required placeholder="Example: I need help with outbound sales, meeting follow-up, and content marketing for a small team."></textarea>
-            </label>
-            <div class="field-grid">
-              <label class="field">
-                <span>Budget</span>
-                <select name="budget">
-                  <option value="Free first">Free first</option>
-                  <option value="Under $50/mo">Under $50/mo</option>
-                  <option value="$50-$200/mo">$50-$200/mo</option>
-                  <option value="Business budget">Business budget</option>
-                </select>
-              </label>
-              <label class="field">
-                <span>Who are you?</span>
-                <input type="text" name="persona" placeholder="Founder, marketer, student, creator">
-              </label>
-            </div>
-            <p class="form-helper">This opens your email app with the details filled in so your request still works on the free GitHub Pages version of the site.</p>
-            <div class="prompt-actions">
-              <button class="button primary" type="submit">Open email draft</button>
-              <a class="small-link" href="mailto:info@ihelpwithai.com?subject=AI%20tool%20shortlist%20request">Prefer plain email</a>
-            </div>
-            <div class="mailto-status" aria-live="polite"></div>
-          </form>
-        </article>
-
-        <article class="form-card">
-          <div class="eyebrow">Suggest a tool</div>
-          <h2>Know a tool that belongs here?</h2>
-          <p class="form-note">If a tool solves a real recurring job well, suggest it and we can review whether it earns a place in the shortlist.</p>
-          <form class="form-stack mailto-form" data-mailto-form="tool-suggestion" data-mailto-subject="AI tool suggestion">
-            <div class="field-grid">
-              <label class="field">
-                <span>Tool name</span>
-                <input type="text" name="tool_name" required>
-              </label>
-              <label class="field">
-                <span>Official URL</span>
-                <input type="url" name="official_url" placeholder="https://">
-              </label>
-            </div>
-            <label class="field">
-              <span>Why is it worth adding?</span>
-              <textarea name="why_add" rows="5" required placeholder="Tell us what job it solves and who should care."></textarea>
-            </label>
-            <label class="field">
-              <span>Your email</span>
-              <input type="email" name="contact_email" placeholder="Optional">
-            </label>
-            <p class="form-helper">This opens an email draft with the tool details already filled in, which keeps suggestions working on GitHub Pages too.</p>
-            <div class="prompt-actions">
-              <button class="button primary" type="submit">Open suggestion email</button>
-              <a class="small-link" href="mailto:info@ihelpwithai.com?subject=AI%20tool%20suggestion">Prefer plain email</a>
-            </div>
-            <div class="mailto-status" aria-live="polite"></div>
-          </form>
-        </article>
       </div>
     </section>
   </main>
