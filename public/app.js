@@ -125,6 +125,11 @@ const pricePills = document.getElementById('price-pills');
 const audiencePills = document.getElementById('audience-pills');
 const activeFilters = document.getElementById('active-filters');
 const clearButton = document.getElementById('clear-filters');
+const logoGrid = document.getElementById('logo-grid');
+const logoCount = document.getElementById('logo-count');
+const logoSearchInput = document.getElementById('logo-search');
+const logoTypePills = document.getElementById('logo-type-pills');
+const logoGoalPills = document.getElementById('logo-goal-pills');
 
 const state = {
   goal: 'All',
@@ -145,6 +150,14 @@ const matchState = {
 };
 
 let promptLabInitialized = false;
+let landingLogoInitialized = false;
+let logoRevealObserver = null;
+
+const landingLogoState = {
+  type: 'All',
+  goal: 'All',
+  search: ''
+};
 
 function escapeHtml(value = '') {
   return String(value)
@@ -1297,6 +1310,138 @@ function setupMailtoForms() {
 }
 
 
+function landingCatalogItems() {
+  const toolItems = TOOLS.map(tool => ({
+    id: `tool:${tool.slug}`,
+    name: tool.name,
+    type: 'Tool',
+    category: tool.category,
+    goals: tool.goals || [],
+    officialUrl: tool.officialUrl,
+    logoUrl: companyLogoUrl(tool.officialUrl),
+    summary: tool.summary || tool.whatFor || tool.useCase || '',
+    meta: tool.company || tool.category
+  }));
+
+  const companyItems = companyGroups().map(company => ({
+    id: `company:${slugify(company.name)}`,
+    name: company.name,
+    type: 'Company',
+    category: 'Company',
+    goals: uniqueStrings(company.tools.flatMap(tool => tool.goals || [])),
+    officialUrl: company.officialUrl,
+    logoUrl: companyLogoUrl(company.officialUrl),
+    summary: company.summary || `Known here for ${company.categories.slice(0, 2).join(' and ').toLowerCase()} workflows.`,
+    meta: `${company.tools.length} tool${company.tools.length === 1 ? '' : 's'}`
+  }));
+
+  return [...toolItems, ...companyItems].sort((left, right) => left.name.localeCompare(right.name));
+}
+
+function matchesLandingLogoItem(item) {
+  const text = [
+    item.name,
+    item.type,
+    item.category,
+    item.summary,
+    item.meta,
+    ...(item.goals || [])
+  ].join(' ').toLowerCase();
+
+  const searchOk = !landingLogoState.search || text.includes(landingLogoState.search.toLowerCase());
+  const typeOk = landingLogoState.type === 'All' || item.type === landingLogoState.type;
+  const goalOk = landingLogoState.goal === 'All' || (item.goals || []).includes(landingLogoState.goal);
+  return searchOk && typeOk && goalOk;
+}
+
+function renderLandingLogoPills(container, values, activeValue, key) {
+  if (!container) return;
+  container.innerHTML = values.map(value => `
+    <button class="pill ${activeValue === value ? 'active' : ''}" type="button" data-landing-key="${key}" data-landing-value="${value}">
+      ${value}
+    </button>
+  `).join('');
+
+  container.querySelectorAll('[data-landing-key]').forEach(button => {
+    button.addEventListener('click', () => {
+      landingLogoState[key] = button.getAttribute('data-landing-value');
+      renderLandingLogoExplorer();
+    });
+  });
+}
+
+function observeLandingLogoCards() {
+  if (!logoGrid) return;
+  if (!('IntersectionObserver' in window)) {
+    logoGrid.querySelectorAll('.logo-card').forEach(card => card.classList.add('visible'));
+    return;
+  }
+
+  if (logoRevealObserver) {
+    logoRevealObserver.disconnect();
+  }
+
+  logoRevealObserver = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        logoRevealObserver.unobserve(entry.target);
+      }
+    }
+  }, { threshold: 0.12 });
+
+  logoGrid.querySelectorAll('.logo-card').forEach(card => logoRevealObserver.observe(card));
+}
+
+function renderLandingLogoExplorer() {
+  if (!logoGrid) return;
+
+  const items = landingCatalogItems();
+  const filtered = items.filter(matchesLandingLogoItem);
+
+  renderLandingLogoPills(logoTypePills, ['All', 'Tool', 'Company'], landingLogoState.type, 'type');
+  renderLandingLogoPills(logoGoalPills, ['All', ...allGoals()], landingLogoState.goal, 'goal');
+
+  if (logoCount) {
+    logoCount.textContent = `${filtered.length} of ${items.length} shown`;
+  }
+
+  if (!filtered.length) {
+    logoGrid.innerHTML = '<div class="empty">No logos match that search yet. Try a broader term or reset the filters.</div>';
+    return;
+  }
+
+  logoGrid.innerHTML = filtered.map(item => {
+    const logo = item.logoUrl
+      ? `<img src="${item.logoUrl}" alt="${escapeHtml(item.name)} logo" loading="lazy" decoding="async">`
+      : `<span class="logo-fallback">${escapeHtml(initials(item.name))}</span>`;
+
+    return `
+      <a class="logo-card" href="${escapeHtml(item.officialUrl || '#')}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(item.name)}" title="${escapeHtml(item.summary)}">
+        <div class="logo-orb">${logo}</div>
+        <div class="logo-name">${escapeHtml(item.name)}</div>
+        <div class="logo-meta">${escapeHtml(item.type)} • ${escapeHtml(item.meta)}</div>
+        <div class="logo-tooltip">${escapeHtml(item.summary)}</div>
+      </a>
+    `;
+  }).join('');
+
+  observeLandingLogoCards();
+}
+
+function initLandingLogoExplorer() {
+  if (landingLogoInitialized || !logoGrid) return;
+
+  if (logoSearchInput) {
+    logoSearchInput.addEventListener('input', event => {
+      landingLogoState.search = event.target.value.trim();
+      renderLandingLogoExplorer();
+    });
+  }
+
+  landingLogoInitialized = true;
+}
+
 function initLandingEffects() {
   const landingHero = document.getElementById('landing-hero');
   if (landingHero) {
@@ -1348,6 +1493,7 @@ function render() {
   renderPills(audiencePills, allAudiences(), 'audience');
   renderActiveFilters();
   renderDirectory();
+  renderLandingLogoExplorer();
   syncUrl();
 }
 
@@ -1415,5 +1561,6 @@ if (sortSelect) {
 applyUrlState();
 initPromptLab();
 setupMailtoForms();
+initLandingLogoExplorer();
 initLandingEffects();
 render();
