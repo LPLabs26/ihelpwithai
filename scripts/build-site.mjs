@@ -211,7 +211,7 @@ function companyFitLabel(company) {
 function renderHeaderSearch(basePath = '.') {
   return `
       <form class="nav-search" action="${basePath}/directory.html" method="get">
-        <input type="search" name="search" placeholder="Search AI tools or companies">
+        <input type="search" name="search" placeholder="Search problems or tools">
         <button type="submit">Search</button>
       </form>`;
 }
@@ -223,12 +223,12 @@ function renderStartHereMenu(basePath = '.') {
           <summary class="nav-summary">Start here</summary>
           <div class="nav-dropdown-menu">
             <a href="${basePath}/index.html">Home</a>
+            <a href="${basePath}/problems.html">Problems</a>
+            <a href="${basePath}/trades.html">Trades</a>
             <a href="${basePath}/shortlist.html">Shortlist</a>
             <a href="${basePath}/directory.html">Directory</a>
-            <a href="${basePath}/companies.html">Companies</a>
             <a href="${basePath}/reviews.html">Reviews</a>
             <a href="${basePath}/get-help.html">Get help</a>
-            <a href="${basePath}/best-free-ai-tools.html">Best free tools</a>
             <a href="${basePath}/editorial-methodology.html">Methodology</a>
             <a href="${basePath}/affiliate-disclosure.html">Disclosure</a>
           </div>
@@ -242,10 +242,10 @@ function renderSiteFooter(basePath = '.') {
     <div class="container footer-grid">
       <div>
         <strong>ihelpwithai.com</strong>
-        <div>A curated guide for choosing the right AI tool.</div>
+        <div>A practical guide to AI for contractors and trade businesses.</div>
       </div>
       <div>
-        <div>Built to help people choose faster, not to catalog everything in AI.</div>
+        <div>Built to help trade businesses win more jobs, respond faster, and cut admin work.</div>
         <a class="footer-email" href="mailto:info@ihelpwithai.com">info@ihelpwithai.com</a>
       </div>
     </div>
@@ -403,7 +403,7 @@ function renderToolPage(tool, tools) {
         <div class="logo"><span>IHAI</span></div>
         <div>
           <div>ihelpwithai.com</div>
-          <div class="brand-sub">AI tools that actually help</div>
+          <div class="brand-sub">Practical AI for the trades</div>
         </div>
       </a>
 ${renderHeaderSearch('..')}
@@ -610,7 +610,7 @@ function renderGuidePage(goal, tools) {
         <div class="logo"><span>IHAI</span></div>
         <div>
           <div>ihelpwithai.com</div>
-          <div class="brand-sub">AI tools that actually help</div>
+          <div class="brand-sub">Practical AI for the trades</div>
         </div>
       </a>
 ${renderHeaderSearch('..')}
@@ -731,7 +731,7 @@ function renderComparisonPage(comparison, tools) {
         <div class="logo"><span>IHAI</span></div>
         <div>
           <div>ihelpwithai.com</div>
-          <div class="brand-sub">AI tools that actually help</div>
+          <div class="brand-sub">Practical AI for the trades</div>
         </div>
       </a>
 ${renderHeaderSearch('..')}
@@ -834,7 +834,7 @@ function renderBestFreePage(tools) {
         <div class="logo"><span>IHAI</span></div>
         <div>
           <div>ihelpwithai.com</div>
-          <div class="brand-sub">AI tools that actually help</div>
+          <div class="brand-sub">Practical AI for the trades</div>
         </div>
       </a>
 ${renderHeaderSearch('.')}
@@ -943,7 +943,7 @@ function renderEditorialMethodologyPage(tools, comparisons) {
         <div class="logo"><span>IHAI</span></div>
         <div>
           <div>ihelpwithai.com</div>
-          <div class="brand-sub">AI tools that actually help</div>
+          <div class="brand-sub">Practical AI for the trades</div>
         </div>
       </a>
 ${renderHeaderSearch('.')}
@@ -1059,7 +1059,7 @@ function renderCompanyReviewPage(company) {
         <div class="logo"><span>IHAI</span></div>
         <div>
           <div>ihelpwithai.com</div>
-          <div class="brand-sub">AI tools that actually help</div>
+          <div class="brand-sub">Practical AI for the trades</div>
         </div>
       </a>
 ${renderHeaderSearch('..')}
@@ -1211,7 +1211,7 @@ function renderCompaniesPage(tools) {
         <div class="logo"><span>IHAI</span></div>
         <div>
           <div>ihelpwithai.com</div>
-          <div class="brand-sub">AI tools that actually help</div>
+          <div class="brand-sub">Practical AI for the trades</div>
         </div>
       </a>
 ${renderHeaderSearch('.')}
@@ -1358,7 +1358,7 @@ function renderReviewsPage(tools) {
         <div class="logo"><span>IHAI</span></div>
         <div>
           <div>ihelpwithai.com</div>
-          <div class="brand-sub">AI tools that actually help</div>
+          <div class="brand-sub">Practical AI for the trades</div>
         </div>
       </a>
 ${renderHeaderSearch('.')}
@@ -1464,6 +1464,8 @@ function buildSitemap(tools, comparisons) {
   const pages = [
     '',
     '/affiliate-disclosure.html',
+    '/problems.html',
+    '/trades.html',
     '/shortlist.html',
     '/directory.html',
     '/get-help.html',
@@ -1609,6 +1611,8 @@ for (const filename of [
   'CNAME',
   '.nojekyll',
   'affiliate-disclosure.html',
+  'problems.html',
+  'trades.html',
   'shortlist.html',
   'directory.html',
   'get-help.html',
@@ -1653,6 +1657,18 @@ await fs.mkdir(path.join(publicDir, 'companies'), { recursive: true });
 await fs.writeFile(
   path.join(publicDir, 'companies', 'index.html'),
   renderRedirectPage('../companies.html', 'Continue to the companies page')
+);
+
+await fs.mkdir(path.join(publicDir, 'problems'), { recursive: true });
+await fs.writeFile(
+  path.join(publicDir, 'problems', 'index.html'),
+  renderRedirectPage('../problems.html', 'Continue to the problems page')
+);
+
+await fs.mkdir(path.join(publicDir, 'trades'), { recursive: true });
+await fs.writeFile(
+  path.join(publicDir, 'trades', 'index.html'),
+  renderRedirectPage('../trades.html', 'Continue to the trades page')
 );
 
 await fs.mkdir(path.join(publicDir, 'shortlist'), { recursive: true });

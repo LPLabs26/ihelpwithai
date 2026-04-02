@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Get help choosing AI tools — ihelpwithai.com</title>
-  <meta name="description" content="Tell ihelpwithai.com what you need and open a ready-to-send email draft for a tighter shortlist or tool suggestion.">
+  <title>Get help choosing AI for the trades — ihelpwithai.com</title>
+  <meta name="description" content="Tell ihelpwithai.com your trade, biggest bottleneck, and budget to get pointed toward a better AI starting point.">
   <link rel="canonical" href="https://ihelpwithai.com/get-help.html">
   <meta property="og:site_name" content="ihelpwithai.com">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Get help choosing AI tools — ihelpwithai.com">
-  <meta property="og:description" content="Tell ihelpwithai.com what you need and open a ready-to-send email draft for a tighter shortlist or tool suggestion.">
+  <meta property="og:title" content="Get help choosing AI for the trades — ihelpwithai.com">
+  <meta property="og:description" content="Tell ihelpwithai.com your trade, biggest bottleneck, and budget to get pointed toward a better AI starting point.">
   <meta property="og:url" content="https://ihelpwithai.com/get-help.html">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Get help choosing AI tools — ihelpwithai.com">
-  <meta name="twitter:description" content="Tell ihelpwithai.com what you need and open a ready-to-send email draft for a tighter shortlist or tool suggestion.">
+  <meta name="twitter:title" content="Get help choosing AI for the trades — ihelpwithai.com">
+  <meta name="twitter:description" content="Tell ihelpwithai.com your trade, biggest bottleneck, and budget to get pointed toward a better AI starting point.">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
@@ -23,11 +23,11 @@
         <div class="logo"><span>IHAI</span></div>
         <div>
           <div>ihelpwithai.com</div>
-          <div class="brand-sub">AI tools that actually help</div>
+          <div class="brand-sub">Practical AI for the trades</div>
         </div>
       </a>
       <form class="nav-search" action="./directory.html" method="get">
-        <input type="search" name="search" placeholder="Search AI tools or companies">
+        <input type="search" name="search" placeholder="Search problems or tools">
         <button type="submit">Search</button>
       </form>
       <nav class="navlinks">
@@ -35,12 +35,12 @@
           <summary class="nav-summary">Start here</summary>
           <div class="nav-dropdown-menu">
             <a href="./index.html">Home</a>
+            <a href="./problems.html">Problems</a>
+            <a href="./trades.html">Trades</a>
             <a href="./shortlist.html">Shortlist</a>
             <a href="./directory.html">Directory</a>
-            <a href="./companies.html">Companies</a>
             <a href="./reviews.html">Reviews</a>
             <a href="./get-help.html">Get help</a>
-            <a href="./best-free-ai-tools.html">Best free tools</a>
             <a href="./editorial-methodology.html">Methodology</a>
             <a href="./affiliate-disclosure.html">Disclosure</a>
           </div>
@@ -53,18 +53,18 @@
     <section class="hero hero-simple">
       <div class="container">
         <div class="kicker">Get help</div>
-        <h1>Tell us what you need and get pointed in the right direction.</h1>
-        <p class="hero-copy">Use this page when you want a tighter shortlist or want to suggest a tool that should be reviewed.</p>
+        <h1>Tell us your trade and the bottleneck you want to fix first.</h1>
+        <p class="hero-copy">Use this when you want a tighter recommendation instead of browsing. This page also works for suggesting tools we should review.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="container lead-grid">
         <article class="form-card">
-          <div class="eyebrow">Get a shortlist</div>
-          <h2>Tell us what you need help with.</h2>
-          <p class="form-note">Share the job, budget, and role, and this can turn from generic browsing into a much tighter recommendation.</p>
-          <form class="form-stack mailto-form" data-mailto-form="tool-match-request" data-mailto-subject="AI tool shortlist request">
+          <div class="eyebrow">Get a recommendation</div>
+          <h2>Tell us what is slowing the business down.</h2>
+          <p class="form-note">Share your trade, biggest bottleneck, current setup, and budget, and this can turn into a much tighter starting point.</p>
+          <form class="form-stack mailto-form" data-mailto-form="trade-ai-help-request" data-mailto-subject="AI help request for trade business">
             <div class="field-grid">
               <label class="field">
                 <span>Name</span>
@@ -75,29 +75,39 @@
                 <input type="email" name="email" required>
               </label>
             </div>
+            <div class="field-grid">
+              <label class="field">
+                <span>Trade</span>
+                <input type="text" name="trade" required placeholder="HVAC, plumbing, roofing, electrical, cleaning">
+              </label>
+              <label class="field">
+                <span>Team size</span>
+                <input type="text" name="team_size" placeholder="Solo, 3 techs, 15 person team">
+              </label>
+            </div>
             <label class="field">
-              <span>What are you trying to do?</span>
-              <textarea name="goal" rows="5" required placeholder="Example: I need help with outbound sales, meeting follow-up, and content marketing for a small team."></textarea>
+              <span>Biggest bottleneck</span>
+              <textarea name="goal" rows="5" required placeholder="Example: We miss calls after hours, estimates are not getting followed up, and the office is spending too much time answering repeat questions."></textarea>
             </label>
             <div class="field-grid">
+              <label class="field">
+                <span>Current software</span>
+                <input type="text" name="current_stack" placeholder="Jobber, Housecall Pro, ServiceTitan, Google Workspace">
+              </label>
               <label class="field">
                 <span>Budget</span>
                 <select name="budget">
                   <option value="Free first">Free first</option>
-                  <option value="Under $50/mo">Under $50/mo</option>
-                  <option value="$50-$200/mo">$50-$200/mo</option>
+                  <option value="Under $100/mo">Under $100/mo</option>
+                  <option value="$100-$500/mo">$100-$500/mo</option>
                   <option value="Business budget">Business budget</option>
                 </select>
               </label>
-              <label class="field">
-                <span>Who are you?</span>
-                <input type="text" name="persona" placeholder="Founder, marketer, student, creator">
-              </label>
             </div>
-            <p class="form-helper">This opens your email app with the details filled in so your request still works on the free GitHub Pages version of the site.</p>
+            <p class="form-helper">This opens your email app with the details filled in so the request still works on the GitHub Pages version of the site.</p>
             <div class="prompt-actions">
               <button class="button primary" type="submit">Open email draft</button>
-              <a class="small-link" href="mailto:info@ihelpwithai.com?subject=AI%20tool%20shortlist%20request">Prefer plain email</a>
+              <a class="small-link" href="mailto:info@ihelpwithai.com?subject=AI%20help%20request%20for%20trade%20business">Prefer plain email</a>
             </div>
             <div class="mailto-status" aria-live="polite"></div>
           </form>
@@ -105,9 +115,9 @@
 
         <article class="form-card">
           <div class="eyebrow">Suggest a tool</div>
-          <h2>Know a tool that belongs here?</h2>
-          <p class="form-note">If a tool solves a real recurring job well, suggest it and we can review whether it earns a place in the shortlist.</p>
-          <form class="form-stack mailto-form" data-mailto-form="tool-suggestion" data-mailto-subject="AI tool suggestion">
+          <h2>Know a tool that helps a trade business in the real world?</h2>
+          <p class="form-note">Suggest tools that actually help contractors win more jobs, save office time, improve response speed, or clean up customer communication.</p>
+          <form class="form-stack mailto-form" data-mailto-form="trade-tool-suggestion" data-mailto-subject="Trade AI tool suggestion">
             <div class="field-grid">
               <label class="field">
                 <span>Tool name</span>
@@ -120,16 +130,16 @@
             </div>
             <label class="field">
               <span>Why is it worth adding?</span>
-              <textarea name="why_add" rows="5" required placeholder="Tell us what job it solves and who should care."></textarea>
+              <textarea name="why_add" rows="5" required placeholder="Tell us what trade problem it solves, who it is best for, and why it is worth reviewing."></textarea>
             </label>
             <label class="field">
               <span>Your email</span>
               <input type="email" name="contact_email" placeholder="Optional">
             </label>
-            <p class="form-helper">This opens an email draft with the tool details already filled in, which keeps suggestions working on GitHub Pages too.</p>
+            <p class="form-helper">This opens an email draft with the tool details already filled in.</p>
             <div class="prompt-actions">
               <button class="button primary" type="submit">Open suggestion email</button>
-              <a class="small-link" href="mailto:info@ihelpwithai.com?subject=AI%20tool%20suggestion">Prefer plain email</a>
+              <a class="small-link" href="mailto:info@ihelpwithai.com?subject=Trade%20AI%20tool%20suggestion">Prefer plain email</a>
             </div>
             <div class="mailto-status" aria-live="polite"></div>
           </form>
@@ -142,10 +152,10 @@
     <div class="container footer-grid">
       <div>
         <strong>ihelpwithai.com</strong>
-        <div>A curated guide for choosing the right AI tool.</div>
+        <div>A practical guide to AI for contractors and trade businesses.</div>
       </div>
       <div>
-        <div>Built to help people choose faster, not to catalog everything in AI.</div>
+        <div>Built to help trade businesses win more jobs, respond faster, and cut admin work.</div>
         <a class="footer-email" href="mailto:info@ihelpwithai.com">info@ihelpwithai.com</a>
       </div>
     </div>
