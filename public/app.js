@@ -1296,6 +1296,43 @@ function setupMailtoForms() {
   }
 }
 
+
+function initLandingEffects() {
+  const landingHero = document.getElementById('landing-hero');
+  if (landingHero) {
+    const updateSpotlight = event => {
+      const rect = landingHero.getBoundingClientRect();
+      landingHero.style.setProperty('--spot-x', `${event.clientX - rect.left}px`);
+      landingHero.style.setProperty('--spot-y', `${event.clientY - rect.top}px`);
+    };
+
+    landingHero.addEventListener('pointermove', updateSpotlight);
+  }
+
+  document.querySelectorAll('[data-tilt-card]').forEach(card => {
+    card.addEventListener('pointermove', event => {
+      const rect = card.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width - 0.5) * 6;
+      const y = ((event.clientY - rect.top) / rect.height - 0.5) * -6;
+      card.style.transform = `perspective(900px) rotateX(${y}deg) rotateY(${x}deg) translateY(-2px)`;
+    });
+
+    card.addEventListener('pointerleave', () => {
+      card.style.transform = '';
+    });
+  });
+
+  const signalItems = [...document.querySelectorAll('[data-signal-item]')];
+  if (signalItems.length > 1) {
+    let activeIndex = 0;
+    window.setInterval(() => {
+      signalItems[activeIndex]?.classList.remove('active');
+      activeIndex = (activeIndex + 1) % signalItems.length;
+      signalItems[activeIndex]?.classList.add('active');
+    }, 2200);
+  }
+}
+
 function render() {
   renderMetrics();
   renderHeroGoalLinks();
@@ -1378,4 +1415,5 @@ if (sortSelect) {
 applyUrlState();
 initPromptLab();
 setupMailtoForms();
+initLandingEffects();
 render();

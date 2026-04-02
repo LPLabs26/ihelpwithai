@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AI for the trades — ihelpwithai.com</title>
-  <meta name="description" content="A short, practical front door for contractors and trade businesses choosing AI.">
+  <meta name="description" content="A sharper front door for contractors and trade businesses choosing practical AI.">
   <link rel="canonical" href="https://ihelpwithai.com/index.html">
   <meta property="og:site_name" content="ihelpwithai.com">
   <meta property="og:type" content="website">
   <meta property="og:title" content="AI for the trades — ihelpwithai.com">
-  <meta property="og:description" content="A short, practical front door for contractors and trade businesses choosing AI.">
+  <meta property="og:description" content="A sharper front door for contractors and trade businesses choosing practical AI.">
   <meta property="og:url" content="https://ihelpwithai.com/index.html">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="AI for the trades — ihelpwithai.com">
-  <meta name="twitter:description" content="A short, practical front door for contractors and trade businesses choosing AI.">
+  <meta name="twitter:description" content="A sharper front door for contractors and trade businesses choosing practical AI.">
   <link rel="stylesheet" href="./styles.css">
 </head>
-<body>
+<body class="landing-page">
   <header class="topbar">
     <div class="container nav">
       <a href="./index.html" class="brand">
@@ -48,57 +48,86 @@
     </div>
   </header>
   <main>
-    <section class="hero landing-hero">
-      <div class="container landing-shell">
-        <div>
+    <section class="hero landing-hero" id="landing-hero">
+      <div class="container landing-shell landing-shell-premium">
+        <div class="landing-copy">
           <div class="kicker">AI for the trades</div>
-          <h1>What do you need help with first?</h1>
-          <p class="hero-copy">Choose one path and get a tighter recommendation without digging through a long site.</p>
+          <h1>Find the first AI move worth making in your business.</h1>
+          <p class="hero-copy">This is not a giant software directory. Pick the pain point first, then get a tighter answer fast.</p>
+          <div class="landing-proof">
+            <span class="proof-chip">Less admin drag</span>
+            <span class="proof-chip">Faster lead response</span>
+            <span class="proof-chip">Better follow-up</span>
+          </div>
+          <div class="mini-links">
+            <a class="small-link primary" href="./get-help.html">Get help choosing</a>
+            <a class="small-link" href="./reviews.html">See reviews</a>
+            <a class="small-link" href="./directory.html">Open directory</a>
+          </div>
         </div>
 
-        <div class="landing-actions">
-          <a class="decision-card" href="./missed-calls.html">
+        <aside class="signal-board" id="signal-board">
+          <div class="signal-board-head">
+            <div class="signal-label">Live pain board</div>
+            <div class="signal-status"><span class="signal-dot"></span> Trade AI advisor</div>
+          </div>
+          <div class="signal-list">
+            <button class="signal-item active" data-signal-item type="button" onclick="window.location.href='./missed-calls.html'">
+              <strong>Missed calls</strong>
+              <span>Protect speed to lead before jobs disappear.</span>
+            </button>
+            <button class="signal-item" data-signal-item type="button" onclick="window.location.href='./estimate-follow-up.html'">
+              <strong>Estimate follow-up</strong>
+              <span>Close more work after quotes go out.</span>
+            </button>
+            <button class="signal-item" data-signal-item type="button" onclick="window.location.href='./review-requests.html'">
+              <strong>Reviews</strong>
+              <span>Turn completed jobs into visible proof.</span>
+            </button>
+            <button class="signal-item" data-signal-item type="button" onclick="window.location.href='./office-admin.html'">
+              <strong>Office admin</strong>
+              <span>Cut repetitive messages, summaries, and notes.</span>
+            </button>
+          </div>
+        </aside>
+
+        <div class="landing-actions landing-actions-premium">
+          <a class="decision-card decision-card-premium" data-tilt-card href="./missed-calls.html">
             <div class="decision-kicker">Lead response</div>
             <h3>Missed calls</h3>
-            <p>Start here if jobs are being lost because no one answers or follows up fast enough.</p>
-            <div class="decision-note">Fastest high-ROI fix</div>
+            <p>Best first move when jobs are slipping because no one answered fast enough.</p>
+            <div class="decision-note">Fastest ROI fix</div>
           </a>
-          <a class="decision-card" href="./estimate-follow-up.html">
+          <a class="decision-card decision-card-premium" data-tilt-card href="./estimate-follow-up.html">
             <div class="decision-kicker">Sales process</div>
             <h3>Estimate follow-up</h3>
-            <p>Start here if quotes go out and then too many customers go quiet.</p>
-            <div class="decision-note">Best for closing more work</div>
+            <p>Best when quotes go out and then too many customers go quiet.</p>
+            <div class="decision-note">Close-rate fix</div>
           </a>
-          <a class="decision-card" href="./review-requests.html">
+          <a class="decision-card decision-card-premium" data-tilt-card href="./review-requests.html">
             <div class="decision-kicker">Local trust</div>
             <h3>Reviews</h3>
-            <p>Start here if happy customers are not turning into visible proof online.</p>
-            <div class="decision-note">Best for reputation growth</div>
+            <p>Best when happy customers are not turning into proof online.</p>
+            <div class="decision-note">Reputation growth</div>
           </a>
-          <a class="decision-card" href="./office-admin.html">
+          <a class="decision-card decision-card-premium" data-tilt-card href="./office-admin.html">
             <div class="decision-kicker">Office workload</div>
             <h3>Office admin</h3>
-            <p>Start here if the office is buried in repetitive messages, notes, and summaries.</p>
-            <div class="decision-note">Best for saving team time</div>
+            <p>Best when the office is buried in repetitive communication and notes.</p>
+            <div class="decision-note">Time-saver</div>
           </a>
-          <a class="decision-card" href="./contractor-marketing.html">
+          <a class="decision-card decision-card-premium" data-tilt-card href="./contractor-marketing.html">
             <div class="decision-kicker">Visibility</div>
             <h3>Marketing</h3>
-            <p>Start here if you want more local content, before-and-after promotion, or easier campaigns.</p>
-            <div class="decision-note">Best for lead generation</div>
+            <p>Best when you want stronger local content and easier promotion.</p>
+            <div class="decision-note">Lead generation</div>
           </a>
-          <a class="decision-card" href="./trades.html">
+          <a class="decision-card decision-card-premium" data-tilt-card href="./trades.html">
             <div class="decision-kicker">Trade-first</div>
             <h3>Pick your trade</h3>
-            <p>Use a trade page if you would rather start with HVAC, plumbing, electrical, roofing, landscaping, cleaning, or remodeling.</p>
-            <div class="decision-note">Best if you want trade-specific context</div>
+            <p>Start with HVAC, plumbing, electrical, roofing, landscaping, cleaning, or remodeling.</p>
+            <div class="decision-note">Trade context first</div>
           </a>
-        </div>
-
-        <div class="mini-links">
-          <a class="small-link" href="./problems.html">See all problems</a>
-          <a class="small-link" href="./directory.html">Open directory</a>
-          <a class="small-link primary" href="./get-help.html">Get help choosing</a>
         </div>
       </div>
     </section>
