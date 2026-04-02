@@ -1471,6 +1471,30 @@ body::before {
   box-shadow: var(--shadow-soft);
 }
 
+.landing-page .nav-search,
+.landing-page .nav-summary,
+.landing-page .logo-toolbar,
+.landing-page .logo-card,
+.landing-page .featured-logo-card {
+  background: rgba(13, 23, 37, 0.88);
+  border-color: rgba(91, 184, 255, 0.18);
+}
+
+.landing-page .pill,
+.landing-page .chip,
+.landing-page .active-filter {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(91, 184, 255, 0.18);
+  color: #d7e7fb;
+}
+
+.landing-page .pill.active,
+.landing-page .pill:hover {
+  background: linear-gradient(135deg, rgba(91, 184, 255, 0.24), rgba(255, 179, 92, 0.18));
+  border-color: rgba(91, 184, 255, 0.34);
+  color: #ffffff;
+}
+
 .hero {
   padding: 56px 0 18px;
 }
@@ -1519,6 +1543,18 @@ body::before {
   color: var(--text);
   font: inherit;
   font-size: 16px;
+}
+
+.landing-page .logo-search-row input,
+.landing-page .nav-search input {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(91, 184, 255, 0.18);
+  color: #edf4ff;
+}
+
+.landing-page .logo-search-row input::placeholder,
+.landing-page .nav-search input::placeholder {
+  color: #9fb1c7;
 }
 
 .filter-stack {
