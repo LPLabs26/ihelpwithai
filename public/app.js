@@ -1335,7 +1335,21 @@ function landingCatalogItems() {
     meta: `${company.tools.length} tool${company.tools.length === 1 ? '' : 's'}`
   }));
 
-  return [...toolItems, ...companyItems].sort((left, right) => left.name.localeCompare(right.name));
+  const deduped = new Map();
+  for (const item of [...toolItems, ...companyItems]) {
+    const key = `${item.name}`.trim().toLowerCase();
+    const existing = deduped.get(key);
+    if (!existing) {
+      deduped.set(key, item);
+      continue;
+    }
+
+    if (existing.type === 'Company' && item.type === 'Tool') {
+      deduped.set(key, item);
+    }
+  }
+
+  return [...deduped.values()].sort((left, right) => left.name.localeCompare(right.name));
 }
 
 function matchesLandingLogoItem(item) {
