@@ -225,9 +225,8 @@ function renderStartHereMenu(basePath = '.') {
             <a href="${basePath}/index.html">Home</a>
             <a href="${basePath}/problems.html">Problems</a>
             <a href="${basePath}/trades.html">Trades</a>
-            <a href="${basePath}/shortlist.html">Shortlist</a>
-            <a href="${basePath}/directory.html">Directory</a>
             <a href="${basePath}/reviews.html">Reviews</a>
+            <a href="${basePath}/directory.html">Directory</a>
             <a href="${basePath}/get-help.html">Get help</a>
             <a href="${basePath}/editorial-methodology.html">Methodology</a>
             <a href="${basePath}/affiliate-disclosure.html">Disclosure</a>
@@ -1466,6 +1465,18 @@ function buildSitemap(tools, comparisons) {
     '/affiliate-disclosure.html',
     '/problems.html',
     '/trades.html',
+    '/missed-calls.html',
+    '/estimate-follow-up.html',
+    '/review-requests.html',
+    '/office-admin.html',
+    '/contractor-marketing.html',
+    '/hvac.html',
+    '/plumbing.html',
+    '/electrical.html',
+    '/roofing.html',
+    '/landscaping.html',
+    '/cleaning.html',
+    '/remodeling.html',
     '/shortlist.html',
     '/directory.html',
     '/get-help.html',
@@ -1613,6 +1624,18 @@ for (const filename of [
   'affiliate-disclosure.html',
   'problems.html',
   'trades.html',
+  'missed-calls.html',
+  'estimate-follow-up.html',
+  'review-requests.html',
+  'office-admin.html',
+  'contractor-marketing.html',
+  'hvac.html',
+  'plumbing.html',
+  'electrical.html',
+  'roofing.html',
+  'landscaping.html',
+  'cleaning.html',
+  'remodeling.html',
   'shortlist.html',
   'directory.html',
   'get-help.html',
@@ -1670,6 +1693,28 @@ await fs.writeFile(
   path.join(publicDir, 'trades', 'index.html'),
   renderRedirectPage('../trades.html', 'Continue to the trades page')
 );
+
+for (const page of [
+  'missed-calls.html',
+  'estimate-follow-up.html',
+  'review-requests.html',
+  'office-admin.html',
+  'contractor-marketing.html',
+  'hvac.html',
+  'plumbing.html',
+  'electrical.html',
+  'roofing.html',
+  'landscaping.html',
+  'cleaning.html',
+  'remodeling.html',
+]) {
+  const redirectName = page.replace(/\.html$/, '');
+  await fs.mkdir(path.join(publicDir, redirectName), { recursive: true });
+  await fs.writeFile(
+    path.join(publicDir, redirectName, 'index.html'),
+    renderRedirectPage(`../${page}`, `Continue to ${redirectName.replace(/-/g, ' ')}`)
+  );
+}
 
 await fs.mkdir(path.join(publicDir, 'shortlist'), { recursive: true });
 await fs.writeFile(

@@ -1396,25 +1396,31 @@ img {
   }
 }
 
-/* Simpler, calmer homepage overrides */
+/* Trade-focused theme refresh */
 :root {
-  --bg: #f7f9fc;
-  --bg-soft: #f1f5f9;
-  --panel: #ffffff;
-  --panel-solid: #ffffff;
-  --panel-strong: #f8fbff;
-  --card: #ffffff;
-  --line: rgba(16, 33, 58, 0.09);
-  --line-strong: rgba(12, 123, 220, 0.18);
-  --shadow: 0 6px 18px rgba(42, 77, 124, 0.06);
-  --shadow-soft: 0 3px 10px rgba(42, 77, 124, 0.04);
-  --radius-lg: 22px;
-  --radius-md: 16px;
-  --radius-sm: 12px;
+  --bg: #f1ece3;
+  --bg-soft: #e7dfd1;
+  --panel: #fffaf2;
+  --panel-solid: #fffaf2;
+  --panel-strong: #f6ecdf;
+  --card: #fffaf2;
+  --text: #1f1a14;
+  --muted: #6a6155;
+  --muted-strong: #40382f;
+  --accent: #c96a2a;
+  --accent-strong: #8f4719;
+  --accent-2: #5e7b5a;
+  --line: rgba(71, 52, 33, 0.12);
+  --line-strong: rgba(201, 106, 42, 0.24);
+  --shadow: 0 10px 28px rgba(73, 48, 23, 0.08);
+  --shadow-soft: 0 6px 16px rgba(73, 48, 23, 0.05);
+  --radius-lg: 24px;
+  --radius-md: 18px;
+  --radius-sm: 14px;
 }
 
 body {
-  background: #f7f9fc;
+  background: linear-gradient(180deg, #f8f3ea 0%, #f1ece3 100%);
 }
 
 body::before {
@@ -1423,18 +1429,20 @@ body::before {
 
 .topbar {
   backdrop-filter: none;
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(248, 243, 234, 0.96);
 }
 
-.hero {
-  padding: 48px 0 26px;
+.logo,
+.avatar,
+.goal-icon {
+  background: linear-gradient(145deg, rgba(201, 106, 42, 0.14), rgba(94, 123, 90, 0.12));
+  border: 1px solid rgba(201, 106, 42, 0.18);
+  box-shadow: var(--shadow-soft);
 }
 
-.hero h1 {
-  max-width: 15ch;
-  font-size: clamp(2.4rem, 4vw, 4.2rem);
-}
-
+.nav-search,
+.nav-summary,
+.search-panel,
 .hero-card,
 .match-panel,
 .match-results,
@@ -1447,9 +1455,24 @@ body::before {
 .company-card,
 .feature-card,
 .card,
-.trust-card {
-  background: #ffffff;
-  box-shadow: var(--shadow);
+.trust-card,
+.path-card,
+.home-proof-item,
+.decision-card,
+.recommendation-card,
+.step-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+}
+
+.hero {
+  padding: 42px 0 18px;
+}
+
+.hero h1 {
+  max-width: 12ch;
+  font-size: clamp(2.6rem, 4vw, 4.4rem);
 }
 
 .hero-card,
@@ -1457,19 +1480,114 @@ body::before {
 .match-results,
 .filter-shell,
 .cta,
-.directory-summary-card {
-  border-radius: 18px;
+.directory-summary-card,
+.decision-card,
+.recommendation-card,
+.step-card,
+.path-card {
+  border-radius: 20px;
 }
 
 .search-panel {
   padding: 14px;
-  border-radius: 18px;
-  box-shadow: var(--shadow);
+  border-radius: 20px;
 }
 
 .metric {
-  background: #ffffff;
-  border-radius: 14px;
+  background: var(--panel);
+  border-radius: 16px;
+}
+
+.path-grid,
+.landing-actions,
+.recommendation-grid,
+.step-links {
+  display: grid;
+  gap: 16px;
+}
+
+.path-grid,
+.landing-actions {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.recommendation-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 18px;
+}
+
+.step-links {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 18px;
+}
+
+.path-card,
+.decision-card,
+.recommendation-card,
+.step-card {
+  display: block;
+  padding: 22px;
+}
+
+.path-card h3,
+.decision-card h3,
+.recommendation-card h3,
+.step-card h3 {
+  margin: 8px 0 8px;
+  font-size: 1.14rem;
+}
+
+.path-card p,
+.path-meta,
+.home-proof-item span,
+.decision-card p,
+.recommendation-card p,
+.step-card p,
+.decision-note,
+.recommendation-meta {
+  color: var(--muted);
+}
+
+.path-kicker,
+.decision-kicker,
+.recommendation-kicker {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-strong);
+}
+
+.path-meta,
+.decision-note,
+.recommendation-meta {
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.home-link-row,
+.mini-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.landing-shell {
+  display: grid;
+  gap: 20px;
+}
+
+.landing-hero {
+  min-height: calc(100vh - 88px);
+  display: grid;
+  align-items: center;
+}
+
+.section-tight {
+  padding-top: 18px;
+  padding-bottom: 18px;
 }
 
 .featured-list,
@@ -1486,7 +1604,7 @@ body::before {
   padding: 18px 20px;
   border: 1px solid var(--line);
   border-radius: 18px;
-  background: #ffffff;
+  background: var(--panel);
   box-shadow: var(--shadow-soft);
 }
 
@@ -1525,7 +1643,6 @@ body::before {
 
 .directory-summary-card {
   padding: 18px 20px;
-  background: #ffffff;
 }
 
 .directory-summary-head h3 {
@@ -1542,7 +1659,6 @@ body::before {
 .comparison-card {
   padding: 16px 18px;
   border-radius: 18px;
-  background: #ffffff;
 }
 
 .guide-card h3,
@@ -1554,80 +1670,22 @@ body::before {
   .featured-list,
   .tool-list,
   .guide-grid,
-  .comparison-grid {
+  .comparison-grid,
+  .recommendation-grid {
     grid-template-columns: 1fr;
   }
 }
 
-.path-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.path-card,
-.home-proof-item {
-  background: #ffffff;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-soft);
-}
-
-.path-card {
-  display: block;
-  padding: 22px;
-  border-radius: 18px;
-}
-
-.path-card h3 {
-  margin: 8px 0 8px;
-  font-size: 1.15rem;
-}
-
-.path-card p,
-.path-meta,
-.home-proof-item span {
-  color: var(--muted);
-}
-
-.path-kicker {
-  font-size: 12px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--accent-strong);
-}
-
-.path-meta {
-  margin-top: 12px;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.home-proof {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 16px;
-}
-
-.home-proof-item {
-  display: grid;
-  gap: 6px;
-  padding: 16px 18px;
-  border-radius: 16px;
-}
-
-.home-link-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 18px;
-}
-
 @media (max-width: 900px) {
   .path-grid,
+  .landing-actions,
+  .step-links,
   .home-proof {
     grid-template-columns: 1fr;
+  }
+
+  .landing-hero {
+    min-height: auto;
   }
 }
 
@@ -1641,7 +1699,10 @@ body::before {
     min-width: 0;
   }
 
-  .path-card {
+  .path-card,
+  .decision-card,
+  .recommendation-card,
+  .step-card {
     padding: 18px;
   }
 }
