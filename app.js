@@ -1311,6 +1311,8 @@ function setupMailtoForms() {
 
 
 function landingCatalogItems() {
+  const pinnedTopNames = ['OpenAI', 'Anthropic', 'Gemini', 'Grok'];
+
   const toolItems = TOOLS.map(tool => ({
     id: `tool:${tool.slug}`,
     name: tool.name,
@@ -1354,7 +1356,17 @@ function landingCatalogItems() {
     }
   }
 
-  return [...deduped.values()].sort((left, right) => right.popularity - left.popularity || left.name.localeCompare(right.name));
+  return [...deduped.values()].sort((left, right) => {
+    const leftPinned = pinnedTopNames.indexOf(left.name);
+    const rightPinned = pinnedTopNames.indexOf(right.name);
+    if (leftPinned !== -1 || rightPinned !== -1) {
+      if (leftPinned === -1) return 1;
+      if (rightPinned === -1) return -1;
+      return leftPinned - rightPinned;
+    }
+
+    return right.popularity - left.popularity || left.name.localeCompare(right.name);
+  });
 }
 
 function matchesLandingLogoItem(item) {
