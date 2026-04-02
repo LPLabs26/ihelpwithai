@@ -125,6 +125,7 @@ const pricePills = document.getElementById('price-pills');
 const audiencePills = document.getElementById('audience-pills');
 const activeFilters = document.getElementById('active-filters');
 const clearButton = document.getElementById('clear-filters');
+const featuredLogoRow = document.getElementById('featured-logo-row');
 const logoGrid = document.getElementById('logo-grid');
 const logoCount = document.getElementById('logo-count');
 const logoSearchInput = document.getElementById('logo-search');
@@ -1310,8 +1311,12 @@ function setupMailtoForms() {
 }
 
 
+function pinnedTopNames() {
+  return ['OpenAI', 'Anthropic', 'Gemini', 'Grok'];
+}
+
 function landingCatalogItems() {
-  const pinnedTopNames = ['OpenAI', 'Anthropic', 'Gemini', 'Grok'];
+  const pinnedTopNamesList = pinnedTopNames();
 
   const toolItems = TOOLS.map(tool => ({
     id: `tool:${tool.slug}`,
@@ -1357,8 +1362,8 @@ function landingCatalogItems() {
   }
 
   return [...deduped.values()].sort((left, right) => {
-    const leftPinned = pinnedTopNames.indexOf(left.name);
-    const rightPinned = pinnedTopNames.indexOf(right.name);
+    const leftPinned = pinnedTopNamesList.indexOf(left.name);
+    const rightPinned = pinnedTopNamesList.indexOf(right.name);
     if (leftPinned !== -1 || rightPinned !== -1) {
       if (leftPinned === -1) return 1;
       if (rightPinned === -1) return -1;
@@ -1383,6 +1388,27 @@ function matchesLandingLogoItem(item) {
   const typeOk = landingLogoState.type === 'All' || item.type === landingLogoState.type;
   const goalOk = landingLogoState.goal === 'All' || (item.goals || []).includes(landingLogoState.goal);
   return searchOk && typeOk && goalOk;
+}
+
+function renderFeaturedLogoRow(items) {
+  if (!featuredLogoRow) return;
+
+  const pinned = pinnedTopNames()
+    .map(name => items.find(item => item.name === name))
+    .filter(Boolean);
+
+  featuredLogoRow.innerHTML = pinned.map(item => {
+    const logo = item.logoUrl
+      ? `<img src="${item.logoUrl}" alt="${escapeHtml(item.name)} logo" loading="lazy" decoding="async">`
+      : `<span class="logo-fallback">${escapeHtml(initials(item.name))}</span>`;
+
+    return `
+      <a class="featured-logo-card" href="${escapeHtml(item.officialUrl || '#')}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(item.summary)}">
+        <div class="featured-logo-orb">${logo}</div>
+        <div class="featured-logo-name">${escapeHtml(item.name)}</div>
+      </a>
+    `;
+  }).join('');
 }
 
 function renderLandingLogoPills(container, values, activeValue, key) {
@@ -1428,13 +1454,15 @@ function renderLandingLogoExplorer() {
   if (!logoGrid) return;
 
   const items = landingCatalogItems();
-  const filtered = items.filter(matchesLandingLogoItem);
+  renderFeaturedLogoRow(items);
+  const pinnedSet = new Set(pinnedTopNames().map(name => name.toLowerCase()));
+  const filtered = items.filter(matchesLandingLogoItem).filter(item => !pinnedSet.has(item.name.toLowerCase()));
 
   renderLandingLogoPills(logoTypePills, ['All', 'Tool', 'Company'], landingLogoState.type, 'type');
   renderLandingLogoPills(logoGoalPills, ['All', ...allGoals()], landingLogoState.goal, 'goal');
 
   if (logoCount) {
-    logoCount.textContent = `${filtered.length} of ${items.length} shown`;
+    logoCount.textContent = `${filtered.length + Math.min(4, items.length)} shown`;
   }
 
   if (!filtered.length) {
