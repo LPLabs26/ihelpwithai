@@ -1419,7 +1419,7 @@ function renderFeaturedLogoRow(items) {
     const showFire = item.isTrending || ['OpenAI', 'Anthropic'].includes(item.name);
 
     return `
-      <a class="featured-logo-card ${item.isTopApp ? 'is-top-app' : ''} ${showFire ? 'is-trending' : ''}" href="${escapeHtml(item.officialUrl || '#')}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(item.summary)}">
+      <a class="featured-logo-card ${item.isTopApp ? 'is-top-app' : ''} ${showFire ? 'is-trending' : ''}" href="${escapeHtml(item.officialUrl || '#')}" target="_blank" rel="noopener noreferrer">
         ${showFire ? '<span class=\"logo-badge trend\">🔥</span>' : ''}
         <div class="featured-logo-orb">${logo}</div>
         <div class="featured-logo-name">${escapeHtml(item.name)}</div>
@@ -1493,7 +1493,7 @@ function renderLandingLogoExplorer() {
       : `<span class="logo-fallback">${escapeHtml(initials(item.name))}</span>`;
 
     return `
-      <a class="logo-card ${item.isTopApp ? 'is-top-app' : ''} ${item.isTrending ? 'is-trending' : ''}" href="${escapeHtml(item.officialUrl || '#')}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(item.name)}" title="${escapeHtml(item.summary)}">
+      <a class="logo-card ${item.isTopApp ? 'is-top-app' : ''} ${item.isTrending ? 'is-trending' : ''}" href="${escapeHtml(item.officialUrl || '#')}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(item.name)}">
         ${item.isTrending ? '<span class=\"logo-badge trend\">🔥</span>' : ''}
         <div class="logo-orb">${logo}</div>
         <div class="logo-name">${escapeHtml(item.name)}</div>

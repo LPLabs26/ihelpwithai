@@ -185,6 +185,17 @@ function toolPreviewDescription(tool) {
   return cleanPreviewText(tool.summary || tool.whatFor || tool.useCase);
 }
 
+function toolReviewParagraphs(tool) {
+  const first = cleanPreviewText(tool.summary || tool.whatFor || tool.useCase);
+  const second = cleanPreviewText(
+    [tool.why, tool.watchOuts]
+      .filter(Boolean)
+      .join(' ')
+  );
+
+  return [first, second].filter(Boolean).slice(0, 2);
+}
+
 function companyPreviewDescription(company) {
   return cleanPreviewText(
     company.summary
@@ -1373,7 +1384,9 @@ ${renderStartHereMenu('.')}
           <div class="detail-section">
             <h2>Product reviews</h2>
             <div class="guide-stack">
-              ${reviewedTools.map(tool => `
+              ${reviewedTools.map(tool => {
+                const reviewParagraphs = toolReviewParagraphs(tool);
+                return `
                 <article class="guide-tool">
                   <div class="tagrow">
                     <span class="tag">${escapeHtml(toolFitLabel(tool))}</span>
@@ -1381,13 +1394,13 @@ ${renderStartHereMenu('.')}
                     <span class="chip">Reviewed ${escapeHtml(tool.reviewedAt)}</span>
                   </div>
                   <h3>${escapeHtml(tool.name)}</h3>
-                  <p>${escapeHtml(toolPreviewDescription(tool))}</p>
+                  ${reviewParagraphs.map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join('')}
                   <div class="card-links" style="margin-top:14px">
                     <a class="small-link primary" href="./tools/${escapeHtml(tool.slug)}.html">Read product review</a>
                     <a class="small-link" href="./directory.html?company=${encodeURIComponent(tool.company)}">Open ${escapeHtml(tool.company)} in directory</a>
                   </div>
                 </article>
-              `).join('')}
+              `;}).join('')}
             </div>
           </div>
         </article>
