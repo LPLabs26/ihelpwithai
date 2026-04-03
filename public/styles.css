@@ -1605,9 +1605,10 @@ body::before {
 
 .landing-page .logo-search-row input,
 .landing-page .nav-search input {
-  background: rgba(255, 255, 255, 0.08);
+  background: transparent;
   border-color: rgba(91, 184, 255, 0.18);
   color: #edf4ff;
+  box-shadow: none;
 }
 
 .landing-page .logo-search-row input::placeholder,
