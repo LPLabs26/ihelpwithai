@@ -1416,10 +1416,11 @@ function renderFeaturedLogoRow(items) {
     const logo = item.logoUrl
       ? `<img src="${item.logoUrl}" alt="${escapeHtml(item.name)} logo" loading="lazy" decoding="async">`
       : `<span class="logo-fallback">${escapeHtml(initials(item.name))}</span>`;
+    const showFire = item.isTrending || ['OpenAI', 'Anthropic'].includes(item.name);
 
     return `
-      <a class="featured-logo-card ${item.isTopApp ? 'is-top-app' : ''} ${item.isTrending ? 'is-trending' : ''}" href="${escapeHtml(item.officialUrl || '#')}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(item.summary)}">
-        ${item.isTrending ? '<span class=\"logo-badge trend\">🔥</span>' : ''}
+      <a class="featured-logo-card ${item.isTopApp ? 'is-top-app' : ''} ${showFire ? 'is-trending' : ''}" href="${escapeHtml(item.officialUrl || '#')}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(item.summary)}">
+        ${showFire ? '<span class=\"logo-badge trend\">🔥</span>' : ''}
         <div class="featured-logo-orb">${logo}</div>
         <div class="featured-logo-name">${escapeHtml(item.name)}</div>
       </a>
