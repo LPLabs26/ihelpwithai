@@ -1834,25 +1834,25 @@ body::before {
 
 .logo-badge {
   position: absolute;
-  left: 50%;
-  bottom: 10px;
-  transform: translateX(-50%);
+  top: 10px;
+  right: 10px;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 9px;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
   border-radius: 999px;
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 800;
-  letter-spacing: 0.02em;
   z-index: 2;
   pointer-events: none;
 }
 
 .logo-badge.trend {
-  color: #08111c;
-  background: linear-gradient(135deg, #ffd76b, #ff9e57);
-  box-shadow: 0 10px 20px rgba(255, 166, 87, 0.22);
+  color: #ffd76b;
+  background: rgba(8, 17, 28, 0.78);
+  border: 1px solid rgba(255, 179, 92, 0.35);
+  box-shadow: 0 8px 18px rgba(255, 166, 87, 0.18);
 }
 
 .is-trending .logo-orb,
