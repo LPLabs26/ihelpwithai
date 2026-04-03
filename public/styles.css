@@ -1754,6 +1754,23 @@ body::before {
   .logo-grid {
     grid-template-columns: repeat(auto-fill, minmax(108px, 1fr));
   }
+
+  .landing-page .nav {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .landing-page .nav-search {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .landing-page .nav-search input {
+    width: 100%;
+  }
 }
 
 @media (max-width: 760px) {
