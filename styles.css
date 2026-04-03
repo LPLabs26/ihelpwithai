@@ -1808,6 +1808,69 @@ body::before {
   font-weight: 700;
 }
 
+
+@keyframes top-app-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(91, 184, 255, 0), 0 18px 40px rgba(0, 0, 0, 0.18);
+    border-color: rgba(91, 184, 255, 0.32);
+    transform: translateY(0);
+  }
+  50% {
+    box-shadow: 0 0 32px rgba(91, 184, 255, 0.55), 0 0 70px rgba(91, 184, 255, 0.22), 0 22px 44px rgba(0, 0, 0, 0.24);
+    border-color: rgba(91, 184, 255, 0.72);
+    transform: translateY(-2px);
+  }
+}
+
+.is-top-app {
+  animation: top-app-glow 2.8s ease-in-out infinite;
+  background: linear-gradient(180deg, rgba(17, 30, 48, 0.98), rgba(10, 19, 31, 0.96));
+}
+
+.is-top-app .logo-orb,
+.is-top-app .featured-logo-orb {
+  box-shadow: 0 0 24px rgba(91, 184, 255, 0.28);
+}
+
+.logo-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  z-index: 2;
+}
+
+.logo-badge.top {
+  left: 10px;
+  right: auto;
+  color: #eaf5ff;
+  background: linear-gradient(135deg, rgba(91, 184, 255, 0.95), rgba(53, 118, 255, 0.92));
+  box-shadow: 0 10px 20px rgba(91, 184, 255, 0.25);
+}
+
+.logo-badge.trend {
+  color: #08111c;
+  background: linear-gradient(135deg, #ffd76b, #ff9e57);
+  box-shadow: 0 10px 20px rgba(255, 166, 87, 0.22);
+}
+
+.is-trending .logo-orb,
+.is-trending .featured-logo-orb {
+  border-color: rgba(255, 179, 92, 0.45);
+}
+
+.is-trending .logo-name,
+.is-trending .featured-logo-name {
+  color: #fff4d7;
+}
+
 @media (max-width: 900px) {
   .logo-grid {
     grid-template-columns: repeat(auto-fill, minmax(108px, 1fr));

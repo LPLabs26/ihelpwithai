@@ -1,5 +1,5 @@
 window.IHWAI = {
-  "generatedAt": "2026-04-03T15:39:13.436Z",
+  "generatedAt": "2026-04-03T16:05:28.389Z",
   "tools": [
     {
       "name": "Adobe Firefly",
@@ -83,7 +83,9 @@ window.IHWAI = {
         "templates"
       ],
       "addedAt": "2026-03-26",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 90,
+      "trending": true
     },
     {
       "name": "ChatGPT",
@@ -126,7 +128,9 @@ window.IHWAI = {
         "voice"
       ],
       "addedAt": "2026-03-26",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 100,
+      "trending": true
     },
     {
       "name": "Claude",
@@ -168,7 +172,9 @@ window.IHWAI = {
         "code"
       ],
       "addedAt": "2026-03-26",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 94,
+      "trending": true
     },
     {
       "name": "ClickUp Brain",
@@ -294,7 +300,9 @@ window.IHWAI = {
         "voice agents"
       ],
       "addedAt": "2026-03-26",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 84,
+      "trending": true
     },
     {
       "name": "Fathom",
@@ -381,6 +389,94 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
+      "name": "Gemini",
+      "slug": "gemini",
+      "company": "Google",
+      "companySummary": "Google positions Gemini as an everyday AI assistant tied to productivity, planning, and research workflows.",
+      "category": "Assistant",
+      "goals": [
+        "Writing",
+        "Productivity",
+        "Research"
+      ],
+      "audience": [
+        "Student",
+        "Solo business",
+        "Team",
+        "Marketer"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": true,
+      "officialUrl": "https://gemini.google.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A practical assistant for writing, planning, brainstorming, and everyday productivity work.",
+      "whatFor": "Use Gemini when you want quick help turning rough ideas into plans, lists, drafts, or study materials.",
+      "who": "Best for people who want a general assistant with a familiar feel.",
+      "useCase": "Turn a messy launch idea into a week-by-week checklist with owners, deadlines, and risks.",
+      "why": "It is approachable for everyday tasks and fast enough for quick planning work.",
+      "watchOuts": "You will still want a separate tool for deeper automation, specialized research, or standout creative media.",
+      "firstPrompt": "Help me turn this rough idea into a 7-step plan with timelines, blockers, and a simple checklist.",
+      "reviewedAt": "March 25, 2026",
+      "tags": [
+        "planning",
+        "brainstorming",
+        "writing",
+        "productivity"
+      ],
+      "addedAt": "2026-03-26",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 98,
+      "trending": true
+    },
+    {
+      "name": "Grok",
+      "slug": "grok",
+      "company": "xAI",
+      "companySummary": "xAI is included here for assistant AI products that support research, productivity work.",
+      "category": "Assistant",
+      "goals": [
+        "Research",
+        "Productivity",
+        "Writing"
+      ],
+      "audience": [
+        "Creator",
+        "Marketer",
+        "Operator",
+        "Founder"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Paid",
+      "featured": true,
+      "officialUrl": "https://x.ai/grok",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A general AI assistant aimed at fast answers, current-context thinking, and broad everyday work.",
+      "whatFor": "Use Grok when your main goal is research and you want a dedicated assistant tool rather than a broad general assistant.",
+      "who": "Best for creator, marketer, operator, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Turn a rough market question into a quick brief with takeaways, open questions, and next steps.",
+      "why": "It earns a place because it can make research work faster and more practical for people who want a clearer assistant workflow.",
+      "watchOuts": "If you need a highly specialized workflow, a dedicated point solution may still fit better.",
+      "firstPrompt": "Help me do this job well: Turn a rough market question into a quick brief with takeaways, open questions, and next steps. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "assistant",
+        "research",
+        "productivity",
+        "creator",
+        "marketer",
+        "grok"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 88,
+      "trending": true
+    },
+    {
       "name": "HeyGen",
       "slug": "heygen",
       "company": "HeyGen",
@@ -465,6 +561,138 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
+      "name": "Microsoft Copilot",
+      "slug": "microsoft-copilot",
+      "company": "Microsoft",
+      "companySummary": "Microsoft is included here for assistant AI products that support productivity, writing work.",
+      "category": "Assistant",
+      "goals": [
+        "Productivity",
+        "Writing",
+        "Research"
+      ],
+      "audience": [
+        "Team",
+        "Operator",
+        "Founder",
+        "Student"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": true,
+      "officialUrl": "https://copilot.microsoft.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A practical everyday AI assistant for drafting, summarizing, and general work inside Microsoft-heavy environments.",
+      "whatFor": "Use Microsoft Copilot when your main goal is productivity and you want a dedicated assistant tool rather than a broad general assistant.",
+      "who": "Best for team, operator, founder, and teams with a repeatable workflow they want to speed up.",
+      "useCase": "Summarize a long email thread, turn the decisions into action items, and draft the follow-up.",
+      "why": "It earns a place because it can make productivity work faster and more practical for people who want a clearer assistant workflow.",
+      "watchOuts": "If you need a highly specialized workflow, a dedicated point solution may still fit better.",
+      "firstPrompt": "Help me do this job well: Summarize a long email thread, turn the decisions into action items, and draft the follow-up. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
+      "reviewedAt": "April 1, 2026",
+      "tags": [
+        "assistant",
+        "productivity",
+        "writing",
+        "team",
+        "operator",
+        "microsoft copilot"
+      ],
+      "addedAt": "2026-04-01",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 96,
+      "trending": true
+    },
+    {
+      "name": "Midjourney",
+      "slug": "midjourney",
+      "company": "Midjourney",
+      "companySummary": "Midjourney is a style-first image generation company favored for visual mood, concept work, and aesthetics.",
+      "category": "Image",
+      "goals": [
+        "Design",
+        "Video"
+      ],
+      "audience": [
+        "Creator",
+        "Marketer",
+        "Designer",
+        "Founder"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Paid",
+      "featured": true,
+      "officialUrl": "https://www.midjourney.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A favorite for strong visual style, concept art, moodboards, and distinctive AI image generation.",
+      "whatFor": "Use Midjourney when visual style matters more than convenience and you want more striking image output.",
+      "who": "Best for creative work such as campaigns, concepts, worldbuilding, and brand inspiration.",
+      "useCase": "Create a moodboard for a new brand before hiring a designer or photographer.",
+      "why": "It is often the pick for people who care deeply about aesthetics and image quality.",
+      "watchOuts": "It can take more prompt iteration than beginner-first tools, and it is not the easiest first stop for total beginners.",
+      "firstPrompt": "Create 4 visual directions for this brand concept, each with a different mood, color palette, and art style.",
+      "reviewedAt": "March 25, 2026",
+      "tags": [
+        "images",
+        "art",
+        "concept",
+        "moodboard",
+        "branding"
+      ],
+      "addedAt": "2026-03-26",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 86,
+      "trending": true
+    },
+    {
+      "name": "Notion AI",
+      "slug": "notion-ai",
+      "company": "Notion",
+      "companySummary": "Notion blends documents, wikis, databases, and AI into one workspace for teams and operators.",
+      "category": "Workspace",
+      "goals": [
+        "Productivity",
+        "Writing",
+        "Meetings"
+      ],
+      "audience": [
+        "Team",
+        "Solo business",
+        "Student",
+        "Operator"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Free to try",
+      "featured": true,
+      "officialUrl": "https://www.notion.com/product/ai",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "https://www.notion.com/de/affiliates",
+      "partnerStatus": "Affiliate program exists but is currently closed to new applicants",
+      "summary": "Best when your notes, docs, databases, and project info all need to live in one system.",
+      "whatFor": "Use Notion AI to generate docs, summarize knowledge, autofill databases, and keep work organized inside a workspace.",
+      "who": "Best for teams or solo operators who want an AI-ready home for docs and systems.",
+      "useCase": "Turn meeting notes into action items and push them into a task database.",
+      "why": "It is strongest when AI is embedded directly inside your operating system for work.",
+      "watchOuts": "You get the most value only if you are willing to build or maintain a structured workspace.",
+      "firstPrompt": "Summarize this page, pull out next actions, and turn them into a simple project tracker.",
+      "reviewedAt": "March 25, 2026",
+      "tags": [
+        "notes",
+        "docs",
+        "database",
+        "workspace",
+        "knowledge"
+      ],
+      "addedAt": "2026-03-26",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 82,
+      "trending": false
+    },
+    {
       "name": "Perplexity",
       "slug": "perplexity",
       "company": "Perplexity",
@@ -503,7 +731,52 @@ window.IHWAI = {
         "current info"
       ],
       "addedAt": "2026-03-26",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 92,
+      "trending": true
+    },
+    {
+      "name": "Runway",
+      "slug": "runway",
+      "company": "Runway",
+      "companySummary": "Runway focuses on AI-powered creative tools for video, motion, and production workflows.",
+      "category": "Video",
+      "goals": [
+        "Video",
+        "Design"
+      ],
+      "audience": [
+        "Creator",
+        "Marketer",
+        "Agency",
+        "Founder"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Free to try",
+      "featured": true,
+      "officialUrl": "https://runwayml.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A strong choice for AI video generation, concept scenes, and fast creative experiments.",
+      "whatFor": "Use Runway to generate short video clips, explore visual concepts, and build motion content faster.",
+      "who": "Best for creators and marketers producing ads, teasers, music visuals, or storyboards.",
+      "useCase": "Turn a product concept into a short teaser before paying for a full production shoot.",
+      "why": "It is built for visual creation, so it fits teams that need motion output rather than text help.",
+      "watchOuts": "AI video gets expensive and messy without a clear brief. You still need creative direction and taste.",
+      "firstPrompt": "Create a 10-second teaser for this product with 3 camera directions and a premium cinematic feel.",
+      "reviewedAt": "March 25, 2026",
+      "tags": [
+        "video",
+        "generation",
+        "teasers",
+        "storyboard",
+        "creative"
+      ],
+      "addedAt": "2026-03-26",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 80,
+      "trending": true
     },
     {
       "name": "VEED",
@@ -631,6 +904,48 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
+      "name": "Aider",
+      "slug": "aider",
+      "company": "Aider",
+      "companySummary": "Aider focuses on terminal-first AI coding for developers working directly in code repositories.",
+      "category": "Workspace",
+      "goals": [
+        "Productivity",
+        "Research",
+        "Automation"
+      ],
+      "audience": [
+        "Developer",
+        "Founder"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://aider.chat/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A terminal AI coding app for editing files, making changes, and working directly inside repos.",
+      "whatFor": "Use Aider when you need better support for productivity and research work.",
+      "who": "Best for developer, founder who want a stronger app for productivity workflows.",
+      "useCase": "Start with one productivity workflow and use Aider to reduce the manual work around it.",
+      "why": "It stands out when productivity is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Aider for productivity work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "aider",
+        "automation",
+        "productivity",
+        "research",
+        "workspace"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
       "name": "Airtable AI",
       "slug": "airtable-ai",
       "company": "Airtable",
@@ -671,6 +986,50 @@ window.IHWAI = {
       ],
       "addedAt": "2026-03-29",
       "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Amazon Q Developer",
+      "slug": "amazon-q-developer",
+      "company": "Amazon",
+      "companySummary": "Amazon offers AI assistants that help developers build, debug, and work faster inside AWS-heavy workflows.",
+      "category": "Workspace",
+      "goals": [
+        "Productivity",
+        "Research",
+        "Automation"
+      ],
+      "audience": [
+        "Developer",
+        "Team"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://aws.amazon.com/q/developer/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A developer-focused AI app for coding help, AWS-aware troubleshooting, and faster software delivery.",
+      "whatFor": "Use Amazon Q Developer when you need better support for productivity and research work.",
+      "who": "Best for developer, team who want a stronger app for productivity workflows.",
+      "useCase": "Start with one productivity workflow and use Amazon Q Developer to reduce the manual work around it.",
+      "why": "It stands out when productivity is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Amazon Q Developer for productivity work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "amazon",
+        "automation",
+        "developer",
+        "productivity",
+        "q",
+        "research",
+        "workspace"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
     },
     {
       "name": "Anyword",
@@ -797,6 +1156,49 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
+      "name": "Augment Code",
+      "slug": "augment-code",
+      "company": "Augment",
+      "companySummary": "Augment focuses on larger codebase understanding and developer productivity with AI.",
+      "category": "Workspace",
+      "goals": [
+        "Productivity",
+        "Research",
+        "Automation"
+      ],
+      "audience": [
+        "Developer",
+        "Team"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://www.augmentcode.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A coding app built to help developers understand bigger codebases and ship changes faster.",
+      "whatFor": "Use Augment Code when you need better support for productivity and research work.",
+      "who": "Best for developer, team who want a stronger app for productivity workflows.",
+      "useCase": "Start with one productivity workflow and use Augment Code to reduce the manual work around it.",
+      "why": "It stands out when productivity is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Augment Code for productivity work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "augment",
+        "automation",
+        "code",
+        "productivity",
+        "research",
+        "workspace"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
       "name": "Avoma",
       "slug": "avoma",
       "company": "Avoma",
@@ -881,6 +1283,93 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
+      "name": "Blackbox AI",
+      "slug": "blackbox-ai",
+      "company": "Blackbox AI",
+      "companySummary": "Blackbox AI provides coding and developer assistance tools for searching, writing, and understanding code.",
+      "category": "Workspace",
+      "goals": [
+        "Productivity",
+        "Research",
+        "Automation"
+      ],
+      "audience": [
+        "Developer",
+        "Student",
+        "Founder"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://www.blackbox.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A coding app for code search, generation, and development help across common programming workflows.",
+      "whatFor": "Use Blackbox AI when you need better support for productivity and research work.",
+      "who": "Best for developer, student, founder who want a stronger app for productivity workflows.",
+      "useCase": "Start with one productivity workflow and use Blackbox AI to reduce the manual work around it.",
+      "why": "It stands out when productivity is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Blackbox AI for productivity work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "ai",
+        "automation",
+        "blackbox",
+        "productivity",
+        "research",
+        "workspace"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
+      "name": "Bland AI",
+      "slug": "bland-ai",
+      "company": "Bland",
+      "companySummary": "Bland builds AI phone and voice automation for teams that want programmable calling workflows.",
+      "category": "Voice",
+      "goals": [
+        "Voice",
+        "Support",
+        "Sales"
+      ],
+      "audience": [
+        "Developer",
+        "Founder",
+        "Team"
+      ],
+      "difficulty": "Advanced",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://www.bland.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A voice agent app for programmable AI calls, support flows, and outbound phone automation.",
+      "whatFor": "Use Bland AI when you need better support for voice and support work.",
+      "who": "Best for developer, founder, team who want a stronger app for voice workflows.",
+      "useCase": "Start with one voice workflow and use Bland AI to reduce the manual work around it.",
+      "why": "It stands out when voice is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Bland AI for voice work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "ai",
+        "bland",
+        "sales",
+        "support",
+        "voice"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
       "name": "Bolt.new",
       "slug": "bolt-new",
       "company": "StackBlitz",
@@ -920,6 +1409,131 @@ window.IHWAI = {
       ],
       "addedAt": "2026-04-02",
       "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Captions",
+      "slug": "captions",
+      "company": "Captions",
+      "companySummary": "Captions helps creators make better talking-head, subtitled, and social-first video quickly.",
+      "category": "Video",
+      "goals": [
+        "Video",
+        "Voice",
+        "Marketing"
+      ],
+      "audience": [
+        "Creator",
+        "Marketer",
+        "Solo business"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://www.captions.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A video app for subtitles, talking-head polish, voice cleanup, and social video production.",
+      "whatFor": "Use Captions when you need better support for video and voice work.",
+      "who": "Best for creator, marketer, solo business who want a stronger app for video workflows.",
+      "useCase": "Start with one video workflow and use Captions to reduce the manual work around it.",
+      "why": "It stands out when video is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Captions for video work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "captions",
+        "marketing",
+        "video",
+        "voice"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
+      "name": "Cartesia",
+      "slug": "cartesia",
+      "company": "Cartesia",
+      "companySummary": "Cartesia focuses on real-time speech models and voice infrastructure for apps and agents.",
+      "category": "Voice",
+      "goals": [
+        "Voice",
+        "Support",
+        "Automation"
+      ],
+      "audience": [
+        "Developer",
+        "Team"
+      ],
+      "difficulty": "Advanced",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://cartesia.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A speech AI app platform for real-time voice generation and fast spoken experiences.",
+      "whatFor": "Use Cartesia when you need better support for voice and support work.",
+      "who": "Best for developer, team who want a stronger app for voice workflows.",
+      "useCase": "Start with one voice workflow and use Cartesia to reduce the manual work around it.",
+      "why": "It stands out when voice is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Cartesia for voice work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "automation",
+        "cartesia",
+        "support",
+        "voice"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
+      "name": "ChatPDF",
+      "slug": "chatpdf",
+      "company": "ChatPDF",
+      "companySummary": "ChatPDF gives people a simple way to ask questions about PDFs and reports quickly.",
+      "category": "Research",
+      "goals": [
+        "Research",
+        "Productivity",
+        "Writing"
+      ],
+      "audience": [
+        "Student",
+        "Analyst",
+        "Solo business"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://www.chatpdf.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A PDF chat app for summarizing reports, pulling answers, and navigating long documents faster.",
+      "whatFor": "Use ChatPDF when you need better support for research and productivity work.",
+      "who": "Best for student, analyst, solo business who want a stronger app for research workflows.",
+      "useCase": "Start with one research workflow and use ChatPDF to reduce the manual work around it.",
+      "why": "It stands out when research is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use ChatPDF for research work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "chatpdf",
+        "productivity",
+        "research",
+        "writing"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
     },
     {
       "name": "Clay",
@@ -1004,6 +1618,48 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
+      "name": "Cline",
+      "slug": "cline",
+      "company": "Cline",
+      "companySummary": "Cline focuses on open AI coding workflows for developers who want more control in the IDE.",
+      "category": "Workspace",
+      "goals": [
+        "Automation",
+        "Productivity",
+        "Research"
+      ],
+      "audience": [
+        "Developer",
+        "Student"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://cline.bot/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "An AI coding app for IDE-based agent workflows, repo changes, and developer assistance.",
+      "whatFor": "Use Cline when you need better support for automation and productivity work.",
+      "who": "Best for developer, student who want a stronger app for automation workflows.",
+      "useCase": "Start with one automation workflow and use Cline to reduce the manual work around it.",
+      "why": "It stands out when automation is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Cline for automation work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "automation",
+        "cline",
+        "productivity",
+        "research",
+        "workspace"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
       "name": "Clipdrop",
       "slug": "clipdrop",
       "company": "Clipdrop",
@@ -1044,6 +1700,91 @@ window.IHWAI = {
       ],
       "addedAt": "2026-04-01",
       "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Clockwise",
+      "slug": "clockwise",
+      "company": "Clockwise",
+      "companySummary": "Clockwise uses AI to optimize calendars and reduce schedule fragmentation for teams.",
+      "category": "Productivity",
+      "goals": [
+        "Productivity",
+        "Automation",
+        "Meetings"
+      ],
+      "audience": [
+        "Team",
+        "Manager",
+        "Founder"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://www.getclockwise.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A calendar optimization app for consolidating meetings and creating more uninterrupted focus time.",
+      "whatFor": "Use Clockwise when you need better support for productivity and automation work.",
+      "who": "Best for team, manager, founder who want a stronger app for productivity workflows.",
+      "useCase": "Start with one productivity workflow and use Clockwise to reduce the manual work around it.",
+      "why": "It stands out when productivity is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Clockwise for productivity work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "automation",
+        "clockwise",
+        "meetings",
+        "productivity"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
+      "name": "Codeium",
+      "slug": "codeium",
+      "company": "Codeium",
+      "companySummary": "Codeium builds AI coding tools for developers who want faster editing and software iteration.",
+      "category": "Workspace",
+      "goals": [
+        "Productivity",
+        "Research",
+        "Automation"
+      ],
+      "audience": [
+        "Developer",
+        "Team",
+        "Student"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://codeium.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A coding app for code completion, chat, and faster development workflows across editors.",
+      "whatFor": "Use Codeium when you need better support for productivity and research work.",
+      "who": "Best for developer, team, student who want a stronger app for productivity workflows.",
+      "useCase": "Start with one productivity workflow and use Codeium to reduce the manual work around it.",
+      "why": "It stands out when productivity is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Codeium for productivity work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "automation",
+        "codeium",
+        "productivity",
+        "research",
+        "workspace"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
     },
     {
       "name": "Consensus",
@@ -1129,6 +1870,48 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
+      "name": "Continue",
+      "slug": "continue",
+      "company": "Continue",
+      "companySummary": "Continue provides an open and flexible way to bring AI assistance into development environments.",
+      "category": "Workspace",
+      "goals": [
+        "Productivity",
+        "Research",
+        "Automation"
+      ],
+      "audience": [
+        "Developer",
+        "Team"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://www.continue.dev/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "An open AI coding app for IDE chat, code generation, and custom developer workflows.",
+      "whatFor": "Use Continue when you need better support for productivity and research work.",
+      "who": "Best for developer, team who want a stronger app for productivity workflows.",
+      "useCase": "Start with one productivity workflow and use Continue to reduce the manual work around it.",
+      "why": "It stands out when productivity is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Continue for productivity work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "automation",
+        "continue",
+        "productivity",
+        "research",
+        "workspace"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
       "name": "Copy.ai",
       "slug": "copy-ai",
       "company": "Copy.ai",
@@ -1171,6 +1954,48 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
+      "name": "Cresta",
+      "slug": "cresta",
+      "company": "Cresta",
+      "companySummary": "Cresta helps sales and support teams improve live conversations with AI guidance and analytics.",
+      "category": "Support",
+      "goals": [
+        "Support",
+        "Sales",
+        "Training"
+      ],
+      "audience": [
+        "Support team",
+        "Sales team",
+        "Team"
+      ],
+      "difficulty": "Advanced",
+      "pricing": "Enterprise",
+      "featured": false,
+      "officialUrl": "https://cresta.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A conversation AI app for real-time agent help, coaching, and performance insights in customer calls.",
+      "whatFor": "Use Cresta when you need better support for support and sales work.",
+      "who": "Best for support team, sales team, team who want a stronger app for support workflows.",
+      "useCase": "Start with one support workflow and use Cresta to reduce the manual work around it.",
+      "why": "It stands out when support is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Cresta for support work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "cresta",
+        "sales",
+        "support",
+        "training"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
       "name": "Cursor",
       "slug": "cursor",
       "company": "Anysphere",
@@ -1210,6 +2035,47 @@ window.IHWAI = {
       ],
       "addedAt": "2026-04-02",
       "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Decagon",
+      "slug": "decagon",
+      "company": "Decagon",
+      "companySummary": "Decagon builds AI agents for customer operations and enterprise support workflows.",
+      "category": "Support",
+      "goals": [
+        "Support",
+        "Automation",
+        "Sales"
+      ],
+      "audience": [
+        "Support team",
+        "Team"
+      ],
+      "difficulty": "Advanced",
+      "pricing": "Enterprise",
+      "featured": false,
+      "officialUrl": "https://decagon.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A support automation app for resolving customer requests, routing work, and scaling service operations.",
+      "whatFor": "Use Decagon when you need better support for support and automation work.",
+      "who": "Best for support team, team who want a stronger app for support workflows.",
+      "useCase": "Start with one support workflow and use Decagon to reduce the manual work around it.",
+      "why": "It stands out when support is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Decagon for support work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "automation",
+        "decagon",
+        "sales",
+        "support"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
     },
     {
       "name": "Decktopus",
@@ -1336,6 +2202,49 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
+      "name": "Devin",
+      "slug": "devin",
+      "company": "Cognition",
+      "companySummary": "Cognition focuses on autonomous software work and agent-style coding support.",
+      "category": "Workspace",
+      "goals": [
+        "Automation",
+        "Productivity",
+        "Research"
+      ],
+      "audience": [
+        "Developer",
+        "Founder",
+        "Team"
+      ],
+      "difficulty": "Advanced",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://devin.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "An autonomous coding app aimed at handling more end-to-end software tasks with less manual steering.",
+      "whatFor": "Use Devin when you need better support for automation and productivity work.",
+      "who": "Best for developer, founder, team who want a stronger app for automation workflows.",
+      "useCase": "Start with one automation workflow and use Devin to reduce the manual work around it.",
+      "why": "It stands out when automation is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Devin for automation work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "automation",
+        "devin",
+        "productivity",
+        "research",
+        "workspace"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
       "name": "Elicit",
       "slug": "elicit",
       "company": "Elicit",
@@ -1375,6 +2284,92 @@ window.IHWAI = {
       ],
       "addedAt": "2026-04-01",
       "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Fellow",
+      "slug": "fellow-ai",
+      "company": "Fellow",
+      "companySummary": "Fellow helps teams run better meetings, track follow-up, and keep work aligned after calls.",
+      "category": "Meetings",
+      "goals": [
+        "Meetings",
+        "Productivity",
+        "Training"
+      ],
+      "audience": [
+        "Team",
+        "Manager",
+        "Founder"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://fellow.app/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A meeting workflow app for agendas, notes, action items, and AI meeting summaries.",
+      "whatFor": "Use Fellow when you need better support for meetings and productivity work.",
+      "who": "Best for team, manager, founder who want a stronger app for meetings workflows.",
+      "useCase": "Start with one meetings workflow and use Fellow to reduce the manual work around it.",
+      "why": "It stands out when meetings is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Fellow for meetings work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "ai",
+        "fellow",
+        "meetings",
+        "productivity",
+        "training"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
+      "name": "Framer AI",
+      "slug": "framer-ai",
+      "company": "Framer",
+      "companySummary": "Framer helps teams generate and launch modern websites with AI-assisted design and copy.",
+      "category": "Design",
+      "goals": [
+        "Design",
+        "Marketing",
+        "Presentations"
+      ],
+      "audience": [
+        "Founder",
+        "Marketer",
+        "Designer"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://www.framer.com/ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A website-building app for generating landing pages and site copy from prompts.",
+      "whatFor": "Use Framer AI when you need better support for design and marketing work.",
+      "who": "Best for founder, marketer, designer who want a stronger app for design workflows.",
+      "useCase": "Start with one design workflow and use Framer AI to reduce the manual work around it.",
+      "why": "It stands out when design is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Framer AI for design work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "ai",
+        "design",
+        "framer",
+        "marketing",
+        "presentations"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
     },
     {
       "name": "Frase",
@@ -1456,47 +2451,6 @@ window.IHWAI = {
         "presentations",
         "documents",
         "visuals"
-      ],
-      "addedAt": "2026-03-26",
-      "reviewMethod": "Manual editorial review"
-    },
-    {
-      "name": "Gemini",
-      "slug": "gemini",
-      "company": "Google",
-      "companySummary": "Google positions Gemini as an everyday AI assistant tied to productivity, planning, and research workflows.",
-      "category": "Assistant",
-      "goals": [
-        "Writing",
-        "Productivity",
-        "Research"
-      ],
-      "audience": [
-        "Student",
-        "Solo business",
-        "Team",
-        "Marketer"
-      ],
-      "difficulty": "Easy",
-      "pricing": "Free to try",
-      "featured": false,
-      "officialUrl": "https://gemini.google.com/",
-      "affiliateUrl": "",
-      "affiliateProgramUrl": "",
-      "partnerStatus": "No public affiliate program found",
-      "summary": "A practical assistant for writing, planning, brainstorming, and everyday productivity work.",
-      "whatFor": "Use Gemini when you want quick help turning rough ideas into plans, lists, drafts, or study materials.",
-      "who": "Best for people who want a general assistant with a familiar feel.",
-      "useCase": "Turn a messy launch idea into a week-by-week checklist with owners, deadlines, and risks.",
-      "why": "It is approachable for everyday tasks and fast enough for quick planning work.",
-      "watchOuts": "You will still want a separate tool for deeper automation, specialized research, or standout creative media.",
-      "firstPrompt": "Help me turn this rough idea into a 7-step plan with timelines, blockers, and a simple checklist.",
-      "reviewedAt": "March 25, 2026",
-      "tags": [
-        "planning",
-        "brainstorming",
-        "writing",
-        "productivity"
       ],
       "addedAt": "2026-03-26",
       "reviewMethod": "Manual editorial review"
@@ -1668,47 +2622,129 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
-      "name": "Grok",
-      "slug": "grok",
-      "company": "xAI",
-      "companySummary": "xAI is included here for assistant AI products that support research, productivity work.",
-      "category": "Assistant",
+      "name": "Harvey",
+      "slug": "harvey",
+      "company": "Harvey",
+      "companySummary": "Harvey focuses on professional services and high-trust knowledge work supported by AI.",
+      "category": "Research",
+      "goals": [
+        "Research",
+        "Writing",
+        "Productivity"
+      ],
+      "audience": [
+        "Analyst",
+        "Team",
+        "Founder"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Enterprise",
+      "featured": false,
+      "officialUrl": "https://www.harvey.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A professional-services AI app for research, drafting, and high-stakes document work.",
+      "whatFor": "Use Harvey when you need better support for research and writing work.",
+      "who": "Best for analyst, team, founder who want a stronger app for research workflows.",
+      "useCase": "Start with one research workflow and use Harvey to reduce the manual work around it.",
+      "why": "It stands out when research is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Harvey for research work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "harvey",
+        "productivity",
+        "research",
+        "writing"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
+      "name": "Hebbia",
+      "slug": "hebbia",
+      "company": "Hebbia",
+      "companySummary": "Hebbia helps teams work through large information sets and extract useful answers faster.",
+      "category": "Research",
       "goals": [
         "Research",
         "Productivity",
         "Writing"
       ],
       "audience": [
-        "Creator",
-        "Marketer",
-        "Operator",
-        "Founder"
+        "Analyst",
+        "Team"
       ],
-      "difficulty": "Easy",
-      "pricing": "Paid",
+      "difficulty": "Advanced",
+      "pricing": "Enterprise",
       "featured": false,
-      "officialUrl": "https://x.ai/grok",
+      "officialUrl": "https://www.hebbia.com/",
       "affiliateUrl": "",
       "affiliateProgramUrl": "",
       "partnerStatus": "No public affiliate program found",
-      "summary": "A general AI assistant aimed at fast answers, current-context thinking, and broad everyday work.",
-      "whatFor": "Use Grok when your main goal is research and you want a dedicated assistant tool rather than a broad general assistant.",
-      "who": "Best for creator, marketer, operator, and teams with a repeatable workflow they want to speed up.",
-      "useCase": "Turn a rough market question into a quick brief with takeaways, open questions, and next steps.",
-      "why": "It earns a place because it can make research work faster and more practical for people who want a clearer assistant workflow.",
-      "watchOuts": "If you need a highly specialized workflow, a dedicated point solution may still fit better.",
-      "firstPrompt": "Help me do this job well: Turn a rough market question into a quick brief with takeaways, open questions, and next steps. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
-      "reviewedAt": "April 1, 2026",
+      "summary": "A research app for finding answers across large document sets and complex knowledge work.",
+      "whatFor": "Use Hebbia when you need better support for research and productivity work.",
+      "who": "Best for analyst, team who want a stronger app for research workflows.",
+      "useCase": "Start with one research workflow and use Hebbia to reduce the manual work around it.",
+      "why": "It stands out when research is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Hebbia for research work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
       "tags": [
-        "assistant",
-        "research",
+        "hebbia",
         "productivity",
-        "creator",
-        "marketer",
-        "grok"
+        "research",
+        "writing"
       ],
-      "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
+      "name": "Humata",
+      "slug": "humata",
+      "company": "Humata",
+      "companySummary": "Humata focuses on document Q&A and extracting useful answers from uploaded files.",
+      "category": "Research",
+      "goals": [
+        "Research",
+        "Productivity",
+        "Writing"
+      ],
+      "audience": [
+        "Student",
+        "Analyst",
+        "Team"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://www.humata.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A document AI app for chatting with PDFs, extracting answers, and summarizing long files.",
+      "whatFor": "Use Humata when you need better support for research and productivity work.",
+      "who": "Best for student, analyst, team who want a stronger app for research workflows.",
+      "useCase": "Start with one research workflow and use Humata to reduce the manual work around it.",
+      "why": "It stands out when research is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Humata for research work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "humata",
+        "productivity",
+        "research",
+        "writing"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
     },
     {
       "name": "Hume AI",
@@ -1750,6 +2786,48 @@ window.IHWAI = {
       ],
       "addedAt": "2026-04-02",
       "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "HyperWrite",
+      "slug": "hyperwrite",
+      "company": "OthersideAI",
+      "companySummary": "OthersideAI focuses on practical AI writing and personal productivity tools for everyday work.",
+      "category": "Writing",
+      "goals": [
+        "Writing",
+        "Productivity",
+        "Research"
+      ],
+      "audience": [
+        "Solo business",
+        "Student",
+        "Team"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://hyperwriteai.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "An AI writing app for drafting emails, rewriting text, brainstorming ideas, and speeding up everyday writing work.",
+      "whatFor": "Use HyperWrite when you need better support for writing and productivity work.",
+      "who": "Best for solo business, student, team who want a stronger app for writing workflows.",
+      "useCase": "Start with one writing workflow and use HyperWrite to reduce the manual work around it.",
+      "why": "It stands out when writing is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use HyperWrite for writing work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "hyperwrite",
+        "productivity",
+        "research",
+        "writing"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
     },
     {
       "name": "Ideogram",
@@ -1918,6 +2996,50 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
+      "name": "JetBrains AI Assistant",
+      "slug": "jetbrains-ai-assistant",
+      "company": "JetBrains",
+      "companySummary": "JetBrains adds AI assistance to the IDE workflows used by many professional software teams.",
+      "category": "Workspace",
+      "goals": [
+        "Productivity",
+        "Research",
+        "Automation"
+      ],
+      "audience": [
+        "Developer",
+        "Team"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://www.jetbrains.com/ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "An IDE-native AI app for code explanation, editing, tests, and developer assistance inside JetBrains tools.",
+      "whatFor": "Use JetBrains AI Assistant when you need better support for productivity and research work.",
+      "who": "Best for developer, team who want a stronger app for productivity workflows.",
+      "useCase": "Start with one productivity workflow and use JetBrains AI Assistant to reduce the manual work around it.",
+      "why": "It stands out when productivity is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use JetBrains AI Assistant for productivity work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "ai",
+        "assistant",
+        "automation",
+        "jetbrains",
+        "productivity",
+        "research",
+        "workspace"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
       "name": "Kapwing AI",
       "slug": "kapwing-ai",
       "company": "Kapwing",
@@ -1958,6 +3080,48 @@ window.IHWAI = {
       ],
       "addedAt": "2026-04-01",
       "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Kittl",
+      "slug": "kittl",
+      "company": "Kittl",
+      "companySummary": "Kittl focuses on branded design, merch graphics, and typography-heavy creative work.",
+      "category": "Design",
+      "goals": [
+        "Design",
+        "Marketing",
+        "Presentations"
+      ],
+      "audience": [
+        "Creator",
+        "Marketer",
+        "Team"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://www.kittl.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A design app for logos, merch, typography, and visual assets with AI-assisted creative tools.",
+      "whatFor": "Use Kittl when you need better support for design and marketing work.",
+      "who": "Best for creator, marketer, team who want a stronger app for design workflows.",
+      "useCase": "Start with one design workflow and use Kittl to reduce the manual work around it.",
+      "why": "It stands out when design is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Kittl for design work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "design",
+        "kittl",
+        "marketing",
+        "presentations"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
     },
     {
       "name": "Krea",
@@ -2042,6 +3206,49 @@ window.IHWAI = {
       ],
       "addedAt": "2026-03-28",
       "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "LALAL.AI",
+      "slug": "lalal-ai",
+      "company": "LALAL.AI",
+      "companySummary": "LALAL.AI focuses on audio separation and cleanup for music, podcasts, and media work.",
+      "category": "Voice",
+      "goals": [
+        "Voice",
+        "Video",
+        "Training"
+      ],
+      "audience": [
+        "Creator",
+        "Marketer",
+        "Team"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://www.lalal.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "An audio app for stem separation, vocal removal, and cleaner source audio preparation.",
+      "whatFor": "Use LALAL.AI when you need better support for voice and video work.",
+      "who": "Best for creator, marketer, team who want a stronger app for voice workflows.",
+      "useCase": "Start with one voice workflow and use LALAL.AI to reduce the manual work around it.",
+      "why": "It stands out when voice is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use LALAL.AI for voice work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "ai",
+        "lalal",
+        "training",
+        "video",
+        "voice"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
     },
     {
       "name": "Lavender",
@@ -2253,6 +3460,49 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
+      "name": "MagicSchool AI",
+      "slug": "magicschool-ai",
+      "company": "MagicSchool",
+      "companySummary": "MagicSchool builds AI tools focused on education, teaching, and instructional content workflows.",
+      "category": "Training",
+      "goals": [
+        "Training",
+        "Writing",
+        "Productivity"
+      ],
+      "audience": [
+        "Educator",
+        "Team",
+        "Student"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://www.magicschool.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "An education AI app for lesson planning, instructional content, and teacher productivity.",
+      "whatFor": "Use MagicSchool AI when you need better support for training and writing work.",
+      "who": "Best for educator, team, student who want a stronger app for training workflows.",
+      "useCase": "Start with one training workflow and use MagicSchool AI to reduce the manual work around it.",
+      "why": "It stands out when training is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use MagicSchool AI for training work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "ai",
+        "magicschool",
+        "productivity",
+        "training",
+        "writing"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
       "name": "Manychat AI",
       "slug": "manychat-ai",
       "company": "Manychat",
@@ -2292,6 +3542,91 @@ window.IHWAI = {
       ],
       "addedAt": "2026-04-02",
       "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "MeetGeek",
+      "slug": "meetgeek",
+      "company": "MeetGeek",
+      "companySummary": "MeetGeek helps teams capture meetings automatically and turn them into reusable knowledge.",
+      "category": "Meetings",
+      "goals": [
+        "Meetings",
+        "Productivity",
+        "Support"
+      ],
+      "audience": [
+        "Team",
+        "Support team",
+        "Sales team"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://meetgeek.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A meeting app for transcripts, highlights, summaries, and searchable call history.",
+      "whatFor": "Use MeetGeek when you need better support for meetings and productivity work.",
+      "who": "Best for team, support team, sales team who want a stronger app for meetings workflows.",
+      "useCase": "Start with one meetings workflow and use MeetGeek to reduce the manual work around it.",
+      "why": "It stands out when meetings is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use MeetGeek for meetings work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "meetgeek",
+        "meetings",
+        "productivity",
+        "support"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
+      "name": "Mem",
+      "slug": "mem",
+      "company": "Mem",
+      "companySummary": "Mem builds AI-assisted note-taking and memory tools for busy professionals.",
+      "category": "Workspace",
+      "goals": [
+        "Productivity",
+        "Writing",
+        "Research"
+      ],
+      "audience": [
+        "Founder",
+        "Solo business",
+        "Team"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://mem.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A note-taking app that uses AI to organize, surface, and connect your work automatically.",
+      "whatFor": "Use Mem when you need better support for productivity and writing work.",
+      "who": "Best for founder, solo business, team who want a stronger app for productivity workflows.",
+      "useCase": "Start with one productivity workflow and use Mem to reduce the manual work around it.",
+      "why": "It stands out when productivity is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Mem for productivity work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "mem",
+        "productivity",
+        "research",
+        "workspace",
+        "writing"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
     },
     {
       "name": "Mentimeter AI",
@@ -2335,88 +3670,46 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
-      "name": "Microsoft Copilot",
-      "slug": "microsoft-copilot",
-      "company": "Microsoft",
-      "companySummary": "Microsoft is included here for assistant AI products that support productivity, writing work.",
-      "category": "Assistant",
+      "name": "Motion",
+      "slug": "motion",
+      "company": "Motion",
+      "companySummary": "Motion uses AI to plan work, schedules, and priorities for overloaded professionals and teams.",
+      "category": "Productivity",
       "goals": [
         "Productivity",
-        "Writing",
-        "Research"
+        "Automation",
+        "Meetings"
       ],
       "audience": [
-        "Team",
-        "Operator",
+        "Solo business",
         "Founder",
-        "Student"
+        "Team"
       ],
       "difficulty": "Easy",
-      "pricing": "Free to try",
-      "featured": false,
-      "officialUrl": "https://copilot.microsoft.com/",
-      "affiliateUrl": "",
-      "affiliateProgramUrl": "",
-      "partnerStatus": "No public affiliate program found",
-      "summary": "A practical everyday AI assistant for drafting, summarizing, and general work inside Microsoft-heavy environments.",
-      "whatFor": "Use Microsoft Copilot when your main goal is productivity and you want a dedicated assistant tool rather than a broad general assistant.",
-      "who": "Best for team, operator, founder, and teams with a repeatable workflow they want to speed up.",
-      "useCase": "Summarize a long email thread, turn the decisions into action items, and draft the follow-up.",
-      "why": "It earns a place because it can make productivity work faster and more practical for people who want a clearer assistant workflow.",
-      "watchOuts": "If you need a highly specialized workflow, a dedicated point solution may still fit better.",
-      "firstPrompt": "Help me do this job well: Summarize a long email thread, turn the decisions into action items, and draft the follow-up. Start by outlining the smartest approach, what inputs you need, and a practical first draft or plan.",
-      "reviewedAt": "April 1, 2026",
-      "tags": [
-        "assistant",
-        "productivity",
-        "writing",
-        "team",
-        "operator",
-        "microsoft copilot"
-      ],
-      "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
-    },
-    {
-      "name": "Midjourney",
-      "slug": "midjourney",
-      "company": "Midjourney",
-      "companySummary": "Midjourney is a style-first image generation company favored for visual mood, concept work, and aesthetics.",
-      "category": "Image",
-      "goals": [
-        "Design",
-        "Video"
-      ],
-      "audience": [
-        "Creator",
-        "Marketer",
-        "Designer",
-        "Founder"
-      ],
-      "difficulty": "Medium",
       "pricing": "Paid",
       "featured": false,
-      "officialUrl": "https://www.midjourney.com/",
+      "officialUrl": "https://www.usemotion.com/",
       "affiliateUrl": "",
       "affiliateProgramUrl": "",
       "partnerStatus": "No public affiliate program found",
-      "summary": "A favorite for strong visual style, concept art, moodboards, and distinctive AI image generation.",
-      "whatFor": "Use Midjourney when visual style matters more than convenience and you want more striking image output.",
-      "who": "Best for creative work such as campaigns, concepts, worldbuilding, and brand inspiration.",
-      "useCase": "Create a moodboard for a new brand before hiring a designer or photographer.",
-      "why": "It is often the pick for people who care deeply about aesthetics and image quality.",
-      "watchOuts": "It can take more prompt iteration than beginner-first tools, and it is not the easiest first stop for total beginners.",
-      "firstPrompt": "Create 4 visual directions for this brand concept, each with a different mood, color palette, and art style.",
-      "reviewedAt": "March 25, 2026",
+      "summary": "A smart planning app that automatically schedules work, tasks, and calendar time.",
+      "whatFor": "Use Motion when you need better support for productivity and automation work.",
+      "who": "Best for solo business, founder, team who want a stronger app for productivity workflows.",
+      "useCase": "Start with one productivity workflow and use Motion to reduce the manual work around it.",
+      "why": "It stands out when productivity is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Motion for productivity work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
       "tags": [
-        "images",
-        "art",
-        "concept",
-        "moodboard",
-        "branding"
+        "automation",
+        "meetings",
+        "motion",
+        "productivity"
       ],
-      "addedAt": "2026-03-26",
-      "reviewMethod": "Manual editorial review"
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
     },
     {
       "name": "Murf",
@@ -2503,48 +3796,6 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
-      "name": "Notion AI",
-      "slug": "notion-ai",
-      "company": "Notion",
-      "companySummary": "Notion blends documents, wikis, databases, and AI into one workspace for teams and operators.",
-      "category": "Workspace",
-      "goals": [
-        "Productivity",
-        "Writing",
-        "Meetings"
-      ],
-      "audience": [
-        "Team",
-        "Solo business",
-        "Student",
-        "Operator"
-      ],
-      "difficulty": "Medium",
-      "pricing": "Free to try",
-      "featured": false,
-      "officialUrl": "https://www.notion.com/product/ai",
-      "affiliateUrl": "",
-      "affiliateProgramUrl": "https://www.notion.com/de/affiliates",
-      "partnerStatus": "Affiliate program exists but is currently closed to new applicants",
-      "summary": "Best when your notes, docs, databases, and project info all need to live in one system.",
-      "whatFor": "Use Notion AI to generate docs, summarize knowledge, autofill databases, and keep work organized inside a workspace.",
-      "who": "Best for teams or solo operators who want an AI-ready home for docs and systems.",
-      "useCase": "Turn meeting notes into action items and push them into a task database.",
-      "why": "It is strongest when AI is embedded directly inside your operating system for work.",
-      "watchOuts": "You get the most value only if you are willing to build or maintain a structured workspace.",
-      "firstPrompt": "Summarize this page, pull out next actions, and turn them into a simple project tracker.",
-      "reviewedAt": "March 25, 2026",
-      "tags": [
-        "notes",
-        "docs",
-        "database",
-        "workspace",
-        "knowledge"
-      ],
-      "addedAt": "2026-03-26",
-      "reviewMethod": "Manual editorial review"
-    },
-    {
       "name": "Notta",
       "slug": "notta",
       "company": "Notta",
@@ -2584,6 +3835,91 @@ window.IHWAI = {
       ],
       "addedAt": "2026-04-02",
       "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Nyota",
+      "slug": "nyota",
+      "company": "Nyota",
+      "companySummary": "Nyota focuses on meeting capture and AI follow-up for business teams.",
+      "category": "Meetings",
+      "goals": [
+        "Meetings",
+        "Productivity",
+        "Sales"
+      ],
+      "audience": [
+        "Team",
+        "Sales team",
+        "Founder"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://nyota.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A meeting assistant app for notes, action items, summaries, and cleaner team follow-up.",
+      "whatFor": "Use Nyota when you need better support for meetings and productivity work.",
+      "who": "Best for team, sales team, founder who want a stronger app for meetings workflows.",
+      "useCase": "Start with one meetings workflow and use Nyota to reduce the manual work around it.",
+      "why": "It stands out when meetings is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Nyota for meetings work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "meetings",
+        "nyota",
+        "productivity",
+        "sales"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
+      "name": "Observe.AI",
+      "slug": "observe-ai",
+      "company": "Observe.AI",
+      "companySummary": "Observe.AI focuses on contact-center analysis, coaching, and AI-assisted support operations.",
+      "category": "Support",
+      "goals": [
+        "Support",
+        "Sales",
+        "Voice"
+      ],
+      "audience": [
+        "Support team",
+        "Sales team",
+        "Team"
+      ],
+      "difficulty": "Advanced",
+      "pricing": "Enterprise",
+      "featured": false,
+      "officialUrl": "https://www.observe.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A support operations app for call analysis, QA, coaching, and contact-center performance improvement.",
+      "whatFor": "Use Observe.AI when you need better support for support and sales work.",
+      "who": "Best for support team, sales team, team who want a stronger app for support workflows.",
+      "useCase": "Start with one support workflow and use Observe.AI to reduce the manual work around it.",
+      "why": "It stands out when support is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Observe.AI for support work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "ai",
+        "observe",
+        "sales",
+        "support",
+        "voice"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
     },
     {
       "name": "Opus Clip",
@@ -2966,6 +4302,48 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
+      "name": "Qodo",
+      "slug": "qodo",
+      "company": "Qodo",
+      "companySummary": "Qodo builds AI tools focused on code quality, test generation, and more dependable engineering workflows.",
+      "category": "Workspace",
+      "goals": [
+        "Productivity",
+        "Research",
+        "Automation"
+      ],
+      "audience": [
+        "Developer",
+        "Team"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://www.qodo.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "An AI app for test generation, code review support, and cleaner software quality workflows.",
+      "whatFor": "Use Qodo when you need better support for productivity and research work.",
+      "who": "Best for developer, team who want a stronger app for productivity workflows.",
+      "useCase": "Start with one productivity workflow and use Qodo to reduce the manual work around it.",
+      "why": "It stands out when productivity is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Qodo for productivity work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "automation",
+        "productivity",
+        "qodo",
+        "research",
+        "workspace"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
       "name": "QuillBot",
       "slug": "quillbot",
       "company": "QuillBot",
@@ -3048,6 +4426,91 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
+      "name": "Readwise Reader",
+      "slug": "readwise-reader",
+      "company": "Readwise",
+      "companySummary": "Readwise helps people capture, revisit, and organize what they read with more AI support.",
+      "category": "Research",
+      "goals": [
+        "Research",
+        "Productivity",
+        "Writing"
+      ],
+      "audience": [
+        "Student",
+        "Analyst",
+        "Solo business"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://readwise.io/read",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A reading and research app for collecting articles, PDFs, highlights, and AI-assisted notes.",
+      "whatFor": "Use Readwise Reader when you need better support for research and productivity work.",
+      "who": "Best for student, analyst, solo business who want a stronger app for research workflows.",
+      "useCase": "Start with one research workflow and use Readwise Reader to reduce the manual work around it.",
+      "why": "It stands out when research is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Readwise Reader for research work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "productivity",
+        "reader",
+        "readwise",
+        "research",
+        "writing"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
+      "name": "Reclaim",
+      "slug": "reclaim",
+      "company": "Reclaim",
+      "companySummary": "Reclaim helps people protect time and automatically fit work into crowded calendars.",
+      "category": "Productivity",
+      "goals": [
+        "Productivity",
+        "Automation",
+        "Meetings"
+      ],
+      "audience": [
+        "Team",
+        "Founder",
+        "Solo business"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://reclaim.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A calendar automation app for protecting focus time, habits, and task time blocks automatically.",
+      "whatFor": "Use Reclaim when you need better support for productivity and automation work.",
+      "who": "Best for team, founder, solo business who want a stronger app for productivity workflows.",
+      "useCase": "Start with one productivity workflow and use Reclaim to reduce the manual work around it.",
+      "why": "It stands out when productivity is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Reclaim for productivity work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "automation",
+        "meetings",
+        "productivity",
+        "reclaim"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
       "name": "Recraft",
       "slug": "recraft",
       "company": "Recraft",
@@ -3088,6 +4551,93 @@ window.IHWAI = {
       ],
       "addedAt": "2026-04-01",
       "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Regie.ai",
+      "slug": "regie-ai",
+      "company": "Regie.ai",
+      "companySummary": "Regie.ai builds AI tools for outbound, prospecting, and revenue-team messaging workflows.",
+      "category": "Sales",
+      "goals": [
+        "Sales",
+        "Writing",
+        "Automation"
+      ],
+      "audience": [
+        "Sales team",
+        "Marketer",
+        "Founder"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://www.regie.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A revenue-team app for building outbound sequences, sales messaging, and AI-assisted prospecting workflows.",
+      "whatFor": "Use Regie.ai when you need better support for sales and writing work.",
+      "who": "Best for sales team, marketer, founder who want a stronger app for sales workflows.",
+      "useCase": "Start with one sales workflow and use Regie.ai to reduce the manual work around it.",
+      "why": "It stands out when sales is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Regie.ai for sales work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "ai",
+        "automation",
+        "regie",
+        "sales",
+        "writing"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
+      "name": "Replit Agent",
+      "slug": "replit-agent",
+      "company": "Replit",
+      "companySummary": "Replit blends AI, coding, and deployment into a browser-based workflow for fast product building.",
+      "category": "Workspace",
+      "goals": [
+        "Automation",
+        "Productivity",
+        "Research"
+      ],
+      "audience": [
+        "Developer",
+        "Founder",
+        "Student"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://replit.com/ai",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A browser-based AI app for turning prompts into working software prototypes and iterating fast.",
+      "whatFor": "Use Replit Agent when you need better support for automation and productivity work.",
+      "who": "Best for developer, founder, student who want a stronger app for automation workflows.",
+      "useCase": "Start with one automation workflow and use Replit Agent to reduce the manual work around it.",
+      "why": "It stands out when automation is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Replit Agent for automation work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "agent",
+        "automation",
+        "productivity",
+        "replit",
+        "research",
+        "workspace"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
     },
     {
       "name": "Replit AI",
@@ -3132,6 +4682,49 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
+      "name": "Retell AI",
+      "slug": "retell-ai",
+      "company": "Retell AI",
+      "companySummary": "Retell AI gives teams infrastructure for building fast voice agents and phone assistants.",
+      "category": "Voice",
+      "goals": [
+        "Voice",
+        "Support",
+        "Automation"
+      ],
+      "audience": [
+        "Developer",
+        "Founder",
+        "Team"
+      ],
+      "difficulty": "Advanced",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://www.retellai.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A voice platform app for building call agents, phone automation, and spoken AI experiences.",
+      "whatFor": "Use Retell AI when you need better support for voice and support work.",
+      "who": "Best for developer, founder, team who want a stronger app for voice workflows.",
+      "useCase": "Start with one voice workflow and use Retell AI to reduce the manual work around it.",
+      "why": "It stands out when voice is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Retell AI for voice work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "ai",
+        "automation",
+        "retell",
+        "support",
+        "voice"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
       "name": "Riverside",
       "slug": "riverside",
       "company": "Riverside",
@@ -3171,47 +4764,6 @@ window.IHWAI = {
         "captions"
       ],
       "addedAt": "2026-03-27",
-      "reviewMethod": "Manual editorial review"
-    },
-    {
-      "name": "Runway",
-      "slug": "runway",
-      "company": "Runway",
-      "companySummary": "Runway focuses on AI-powered creative tools for video, motion, and production workflows.",
-      "category": "Video",
-      "goals": [
-        "Video",
-        "Design"
-      ],
-      "audience": [
-        "Creator",
-        "Marketer",
-        "Agency",
-        "Founder"
-      ],
-      "difficulty": "Medium",
-      "pricing": "Free to try",
-      "featured": false,
-      "officialUrl": "https://runwayml.com/",
-      "affiliateUrl": "",
-      "affiliateProgramUrl": "",
-      "partnerStatus": "No public affiliate program found",
-      "summary": "A strong choice for AI video generation, concept scenes, and fast creative experiments.",
-      "whatFor": "Use Runway to generate short video clips, explore visual concepts, and build motion content faster.",
-      "who": "Best for creators and marketers producing ads, teasers, music visuals, or storyboards.",
-      "useCase": "Turn a product concept into a short teaser before paying for a full production shoot.",
-      "why": "It is built for visual creation, so it fits teams that need motion output rather than text help.",
-      "watchOuts": "AI video gets expensive and messy without a clear brief. You still need creative direction and taste.",
-      "firstPrompt": "Create a 10-second teaser for this product with 3 camera directions and a premium cinematic feel.",
-      "reviewedAt": "March 25, 2026",
-      "tags": [
-        "video",
-        "generation",
-        "teasers",
-        "storyboard",
-        "creative"
-      ],
-      "addedAt": "2026-03-26",
       "reviewMethod": "Manual editorial review"
     },
     {
@@ -3256,6 +4808,49 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
+      "name": "Sana",
+      "slug": "sana",
+      "company": "Sana",
+      "companySummary": "Sana builds AI knowledge and workplace tools for teams that need faster internal learning and search.",
+      "category": "Workspace",
+      "goals": [
+        "Productivity",
+        "Training",
+        "Research"
+      ],
+      "audience": [
+        "Team",
+        "Founder",
+        "Operator"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://sana.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A workplace AI app for internal knowledge, learning, answers, and team productivity workflows.",
+      "whatFor": "Use Sana when you need better support for productivity and training work.",
+      "who": "Best for team, founder, operator who want a stronger app for productivity workflows.",
+      "useCase": "Start with one productivity workflow and use Sana to reduce the manual work around it.",
+      "why": "It stands out when productivity is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Sana for productivity work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "productivity",
+        "research",
+        "sana",
+        "training",
+        "workspace"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
       "name": "Scholarcy",
       "slug": "scholarcy",
       "company": "Scholarcy",
@@ -3295,6 +4890,48 @@ window.IHWAI = {
       ],
       "addedAt": "2026-04-01",
       "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "SciSpace",
+      "slug": "scispace",
+      "company": "SciSpace",
+      "companySummary": "SciSpace helps people search, read, and understand academic papers with AI support.",
+      "category": "Research",
+      "goals": [
+        "Research",
+        "Writing",
+        "Productivity"
+      ],
+      "audience": [
+        "Student",
+        "Analyst",
+        "Team"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://scispace.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A research app for understanding papers faster, chatting with PDFs, and discovering related academic sources.",
+      "whatFor": "Use SciSpace when you need better support for research and writing work.",
+      "who": "Best for student, analyst, team who want a stronger app for research workflows.",
+      "useCase": "Start with one research workflow and use SciSpace to reduce the manual work around it.",
+      "why": "It stands out when research is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use SciSpace for research work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "productivity",
+        "research",
+        "scispace",
+        "writing"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
     },
     {
       "name": "Scite",
@@ -3379,6 +5016,133 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
+      "name": "Sierra",
+      "slug": "sierra",
+      "company": "Sierra",
+      "companySummary": "Sierra builds branded AI customer agents for companies that want higher-quality support automation.",
+      "category": "Support",
+      "goals": [
+        "Support",
+        "Sales",
+        "Voice"
+      ],
+      "audience": [
+        "Support team",
+        "Team"
+      ],
+      "difficulty": "Advanced",
+      "pricing": "Enterprise",
+      "featured": false,
+      "officialUrl": "https://sierra.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "An AI customer-agent app for handling support and service interactions with stronger brand control.",
+      "whatFor": "Use Sierra when you need better support for support and sales work.",
+      "who": "Best for support team, team who want a stronger app for support workflows.",
+      "useCase": "Start with one support workflow and use Sierra to reduce the manual work around it.",
+      "why": "It stands out when support is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Sierra for support work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "sales",
+        "sierra",
+        "support",
+        "voice"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
+      "name": "Sonix",
+      "slug": "sonix",
+      "company": "Sonix",
+      "companySummary": "Sonix helps teams turn audio and video into searchable transcripts and edited text faster.",
+      "category": "Voice",
+      "goals": [
+        "Voice",
+        "Meetings",
+        "Training"
+      ],
+      "audience": [
+        "Creator",
+        "Team",
+        "Analyst"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://sonix.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A transcription app for audio, interviews, meetings, and searchable spoken content workflows.",
+      "whatFor": "Use Sonix when you need better support for voice and meetings work.",
+      "who": "Best for creator, team, analyst who want a stronger app for voice workflows.",
+      "useCase": "Start with one voice workflow and use Sonix to reduce the manual work around it.",
+      "why": "It stands out when voice is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Sonix for voice work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "meetings",
+        "sonix",
+        "training",
+        "voice"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
+      "name": "Sourcegraph Cody",
+      "slug": "sourcegraph-cody",
+      "company": "Sourcegraph",
+      "companySummary": "Sourcegraph builds developer search and code intelligence tools for understanding large codebases faster.",
+      "category": "Workspace",
+      "goals": [
+        "Productivity",
+        "Research",
+        "Automation"
+      ],
+      "audience": [
+        "Developer",
+        "Team",
+        "Founder"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://sourcegraph.com/cody",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A codebase-aware AI app for searching, explaining, and generating code across larger software projects.",
+      "whatFor": "Use Sourcegraph Cody when you need better support for productivity and research work.",
+      "who": "Best for developer, team, founder who want a stronger app for productivity workflows.",
+      "useCase": "Start with one productivity workflow and use Sourcegraph Cody to reduce the manual work around it.",
+      "why": "It stands out when productivity is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Sourcegraph Cody for productivity work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "automation",
+        "cody",
+        "productivity",
+        "research",
+        "sourcegraph",
+        "workspace"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
       "name": "Speechify",
       "slug": "speechify",
       "company": "Speechify",
@@ -3419,6 +5183,48 @@ window.IHWAI = {
       ],
       "addedAt": "2026-04-01",
       "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Speechmatics",
+      "slug": "speechmatics",
+      "company": "Speechmatics",
+      "companySummary": "Speechmatics focuses on speech recognition and transcription for business and media workflows.",
+      "category": "Voice",
+      "goals": [
+        "Voice",
+        "Research",
+        "Support"
+      ],
+      "audience": [
+        "Team",
+        "Analyst",
+        "Developer"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://www.speechmatics.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A speech app for transcription, speech understanding, and multilingual voice workflows.",
+      "whatFor": "Use Speechmatics when you need better support for voice and research work.",
+      "who": "Best for team, analyst, developer who want a stronger app for voice workflows.",
+      "useCase": "Start with one voice workflow and use Speechmatics to reduce the manual work around it.",
+      "why": "It stands out when voice is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Speechmatics for voice work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "research",
+        "speechmatics",
+        "support",
+        "voice"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
     },
     {
       "name": "Sudowrite",
@@ -3499,6 +5305,48 @@ window.IHWAI = {
       ],
       "addedAt": "2026-04-02",
       "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Supernormal",
+      "slug": "supernormal",
+      "company": "Supernormal",
+      "companySummary": "Supernormal focuses on lightweight meeting notes and follow-up for busy teams.",
+      "category": "Meetings",
+      "goals": [
+        "Meetings",
+        "Productivity",
+        "Writing"
+      ],
+      "audience": [
+        "Team",
+        "Founder",
+        "Manager"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://supernormal.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A meeting notes app for fast summaries, action items, and follow-up without much setup.",
+      "whatFor": "Use Supernormal when you need better support for meetings and productivity work.",
+      "who": "Best for team, founder, manager who want a stronger app for meetings workflows.",
+      "useCase": "Start with one meetings workflow and use Supernormal to reduce the manual work around it.",
+      "why": "It stands out when meetings is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Supernormal for meetings work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "meetings",
+        "productivity",
+        "supernormal",
+        "writing"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
     },
     {
       "name": "Surfer",
@@ -3585,6 +5433,91 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
+      "name": "Synthflow",
+      "slug": "synthflow",
+      "company": "Synthflow",
+      "companySummary": "Synthflow focuses on voice and phone automation for businesses using AI agents.",
+      "category": "Voice",
+      "goals": [
+        "Voice",
+        "Support",
+        "Sales"
+      ],
+      "audience": [
+        "Founder",
+        "Support team",
+        "Sales team"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://synthflow.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A voice automation app for AI phone agents, inbound call handling, and conversation workflows.",
+      "whatFor": "Use Synthflow when you need better support for voice and support work.",
+      "who": "Best for founder, support team, sales team who want a stronger app for voice workflows.",
+      "useCase": "Start with one voice workflow and use Synthflow to reduce the manual work around it.",
+      "why": "It stands out when voice is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Synthflow for voice work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "sales",
+        "support",
+        "synthflow",
+        "voice"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
+      "name": "Tabnine",
+      "slug": "tabnine",
+      "company": "Tabnine",
+      "companySummary": "Tabnine focuses on AI coding support with an emphasis on speed, privacy, and team deployment.",
+      "category": "Workspace",
+      "goals": [
+        "Productivity",
+        "Research",
+        "Automation"
+      ],
+      "audience": [
+        "Developer",
+        "Team",
+        "Founder"
+      ],
+      "difficulty": "Medium",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://www.tabnine.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "An AI coding app for code completion, repo assistance, and faster development inside familiar editors.",
+      "whatFor": "Use Tabnine when you need better support for productivity and research work.",
+      "who": "Best for developer, team, founder who want a stronger app for productivity workflows.",
+      "useCase": "Start with one productivity workflow and use Tabnine to reduce the manual work around it.",
+      "why": "It stands out when productivity is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Tabnine for productivity work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "automation",
+        "productivity",
+        "research",
+        "tabnine",
+        "workspace"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
       "name": "Tactiq",
       "slug": "tactiq",
       "company": "Tactiq",
@@ -3627,6 +5560,91 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review"
     },
     {
+      "name": "Taskade",
+      "slug": "taskade",
+      "company": "Taskade",
+      "companySummary": "Taskade mixes work management, docs, and AI helpers into one lightweight workspace.",
+      "category": "Workspace",
+      "goals": [
+        "Productivity",
+        "Automation",
+        "Writing"
+      ],
+      "audience": [
+        "Team",
+        "Solo business",
+        "Creator"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://www.taskade.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A collaborative app for projects, notes, checklists, and simple AI-powered workflows.",
+      "whatFor": "Use Taskade when you need better support for productivity and automation work.",
+      "who": "Best for team, solo business, creator who want a stronger app for productivity workflows.",
+      "useCase": "Start with one productivity workflow and use Taskade to reduce the manual work around it.",
+      "why": "It stands out when productivity is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Taskade for productivity work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "automation",
+        "productivity",
+        "taskade",
+        "workspace",
+        "writing"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
+      "name": "tl;dv",
+      "slug": "tldv",
+      "company": "tl;dv",
+      "companySummary": "tl;dv focuses on turning meetings into searchable notes, clips, and follow-up workflows.",
+      "category": "Meetings",
+      "goals": [
+        "Meetings",
+        "Productivity",
+        "Sales"
+      ],
+      "audience": [
+        "Team",
+        "Founder",
+        "Sales team"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://tldv.io/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A meeting app for recording calls, generating summaries, and sharing the useful moments quickly.",
+      "whatFor": "Use tl;dv when you need better support for meetings and productivity work.",
+      "who": "Best for team, founder, sales team who want a stronger app for meetings workflows.",
+      "useCase": "Start with one meetings workflow and use tl;dv to reduce the manual work around it.",
+      "why": "It stands out when meetings is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use tl;dv for meetings work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "meetings",
+        "productivity",
+        "sales",
+        "tldv"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
+    },
+    {
       "name": "Tome",
       "slug": "tome",
       "company": "Tome",
@@ -3667,6 +5685,48 @@ window.IHWAI = {
       ],
       "addedAt": "2026-04-01",
       "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Trint",
+      "slug": "trint",
+      "company": "Trint",
+      "companySummary": "Trint focuses on turning spoken content into editable, searchable, and collaborative text.",
+      "category": "Voice",
+      "goals": [
+        "Voice",
+        "Writing",
+        "Training"
+      ],
+      "audience": [
+        "Team",
+        "Creator",
+        "Analyst"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://trint.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A transcription and editing app for turning speech into polished text and collaborative content.",
+      "whatFor": "Use Trint when you need better support for voice and writing work.",
+      "who": "Best for team, creator, analyst who want a stronger app for voice workflows.",
+      "useCase": "Start with one voice workflow and use Trint to reduce the manual work around it.",
+      "why": "It stands out when voice is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Trint for voice work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "training",
+        "trint",
+        "voice",
+        "writing"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
     },
     {
       "name": "Udio",
@@ -3748,6 +5808,48 @@ window.IHWAI = {
       ],
       "addedAt": "2026-04-02",
       "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "Vapi",
+      "slug": "vapi",
+      "company": "Vapi",
+      "companySummary": "Vapi gives teams a fast way to build production voice agents and phone automation.",
+      "category": "Voice",
+      "goals": [
+        "Voice",
+        "Support",
+        "Automation"
+      ],
+      "audience": [
+        "Developer",
+        "Founder",
+        "Team"
+      ],
+      "difficulty": "Advanced",
+      "pricing": "Paid",
+      "featured": false,
+      "officialUrl": "https://vapi.ai/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "A voice app platform for building phone agents, voice assistants, and call automation workflows.",
+      "whatFor": "Use Vapi when you need better support for voice and support work.",
+      "who": "Best for developer, founder, team who want a stronger app for voice workflows.",
+      "useCase": "Start with one voice workflow and use Vapi to reduce the manual work around it.",
+      "why": "It stands out when voice is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use Vapi for voice work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "automation",
+        "support",
+        "vapi",
+        "voice"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
     },
     {
       "name": "WellSaid Labs",
@@ -3915,6 +6017,50 @@ window.IHWAI = {
       ],
       "addedAt": "2026-03-26",
       "reviewMethod": "Manual editorial review"
+    },
+    {
+      "name": "You.com",
+      "slug": "you-com",
+      "company": "You.com",
+      "companySummary": "You.com blends AI search, assistants, and model access into a general-purpose productivity experience.",
+      "category": "Assistant",
+      "goals": [
+        "Research",
+        "Productivity",
+        "Writing"
+      ],
+      "audience": [
+        "Solo business",
+        "Student",
+        "Team"
+      ],
+      "difficulty": "Easy",
+      "pricing": "Free to try",
+      "featured": false,
+      "officialUrl": "https://you.com/",
+      "affiliateUrl": "",
+      "affiliateProgramUrl": "",
+      "partnerStatus": "No public affiliate program found",
+      "summary": "An AI search and assistant app for research, drafting, and comparing model-style answers in one place.",
+      "whatFor": "Use You.com when you need better support for research and productivity work.",
+      "who": "Best for solo business, student, team who want a stronger app for research workflows.",
+      "useCase": "Start with one research workflow and use You.com to reduce the manual work around it.",
+      "why": "It stands out when research is the main job to be done and you want a more specialized app than a general assistant.",
+      "watchOuts": "It is worth checking setup friction, pricing, and team fit before making it your default app.",
+      "firstPrompt": "Help me use You.com for research work and show me the smartest first workflow to try.",
+      "reviewedAt": "April 3, 2026",
+      "tags": [
+        "assistant",
+        "com",
+        "productivity",
+        "research",
+        "writing",
+        "you"
+      ],
+      "addedAt": "2026-04-03",
+      "reviewMethod": "Manual editorial review",
+      "popularityScore": 0,
+      "trending": false
     },
     {
       "name": "Zendesk AI",

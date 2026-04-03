@@ -160,6 +160,9 @@ const landingLogoState = {
   search: ''
 };
 
+const POPULAR_APP_NAMES = ['OpenAI', 'Anthropic', 'Gemini', 'Grok', 'ChatGPT', 'Claude', 'Microsoft Copilot', 'Perplexity', 'Canva AI', 'Midjourney'];
+const TRENDING_APP_NAMES = ['Grok', 'Perplexity', 'Claude', 'Gemini', 'Runway', 'ElevenLabs', 'ChatGPT', 'Midjourney', 'Microsoft Copilot', 'Canva AI'];
+
 function escapeHtml(value = '') {
   return String(value)
     .replaceAll('&', '&amp;')
@@ -1315,20 +1318,30 @@ function pinnedTopNames() {
   return ['OpenAI', 'Anthropic', 'Gemini', 'Grok'];
 }
 
+function popularAppNames() {
+  return POPULAR_APP_NAMES;
+}
+
+function trendingAppNames() {
+  return TRENDING_APP_NAMES;
+}
+
 function landingCatalogItems() {
   const pinnedTopNamesList = pinnedTopNames();
 
   const toolItems = TOOLS.map(tool => ({
     id: `tool:${tool.slug}`,
     name: tool.name,
-    type: 'Tool',
+    type: 'App',
     category: tool.category,
     goals: tool.goals || [],
     officialUrl: tool.officialUrl,
     logoUrl: companyLogoUrl(tool.officialUrl),
     summary: tool.summary || tool.whatFor || tool.useCase || '',
     meta: tool.company || tool.category,
-    popularity: (tool.featured ? 100 : 0) + (tool.pricing === 'Free to try' ? 8 : 0) + (tool.difficulty === 'Easy' ? 5 : 0)
+    isTopApp: popularAppNames().includes(tool.name),
+    isTrending: Boolean(tool.trending || trendingAppNames().includes(tool.name)),
+    popularity: (tool.popularityScore || 0) + (tool.featured ? 100 : 0) + (tool.pricing === 'Free to try' ? 8 : 0) + (tool.difficulty === 'Easy' ? 5 : 0) + (popularAppNames().includes(tool.name) ? 500 : 0) + ((tool.trending || trendingAppNames().includes(tool.name)) ? 80 : 0)
   }));
 
   const companyItems = companyGroups().map(company => {
@@ -1342,8 +1355,10 @@ function landingCatalogItems() {
       officialUrl: company.officialUrl,
       logoUrl: companyLogoUrl(company.officialUrl),
       summary: company.summary || `Known here for ${company.categories.slice(0, 2).join(' and ').toLowerCase()} workflows.`,
-      meta: `${company.tools.length} tool${company.tools.length === 1 ? '' : 's'}`,
-      popularity: (featuredCount * 40) + company.tools.length
+      meta: `${company.tools.length} app${company.tools.length === 1 ? '' : 's'}`,
+      isTopApp: popularAppNames().includes(company.name),
+      isTrending: trendingAppNames().includes(company.name),
+      popularity: (featuredCount * 40) + company.tools.length + (popularAppNames().includes(company.name) ? 500 : 0) + (trendingAppNames().includes(company.name) ? 80 : 0)
     };
   });
 
@@ -1356,7 +1371,7 @@ function landingCatalogItems() {
       continue;
     }
 
-    if (existing.type === 'Company' && item.type === 'Tool') {
+    if (existing.type === 'Company' && item.type === 'App') {
       deduped.set(key, item);
     }
   }
@@ -1403,7 +1418,9 @@ function renderFeaturedLogoRow(items) {
       : `<span class="logo-fallback">${escapeHtml(initials(item.name))}</span>`;
 
     return `
-      <a class="featured-logo-card" href="${escapeHtml(item.officialUrl || '#')}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(item.summary)}">
+      <a class="featured-logo-card ${item.isTopApp ? 'is-top-app' : ''} ${item.isTrending ? 'is-trending' : ''}" href="${escapeHtml(item.officialUrl || '#')}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(item.summary)}">
+        ${item.isTopApp ? '<span class=\"logo-badge top\">Most used</span>' : ''}
+        ${item.isTrending ? '<span class=\"logo-badge trend\">Trending</span>' : ''}
         <div class="featured-logo-orb">${logo}</div>
         <div class="featured-logo-name">${escapeHtml(item.name)}</div>
       </a>
@@ -1458,7 +1475,7 @@ function renderLandingLogoExplorer() {
   const pinnedSet = new Set(pinnedTopNames().map(name => name.toLowerCase()));
   const filtered = items.filter(matchesLandingLogoItem).filter(item => !pinnedSet.has(item.name.toLowerCase()));
 
-  renderLandingLogoPills(logoTypePills, ['All', 'Tool', 'Company'], landingLogoState.type, 'type');
+  renderLandingLogoPills(logoTypePills, ['All', 'App', 'Company'], landingLogoState.type, 'type');
   renderLandingLogoPills(logoGoalPills, ['All', ...allGoals()], landingLogoState.goal, 'goal');
 
   if (logoCount) {
@@ -1476,7 +1493,9 @@ function renderLandingLogoExplorer() {
       : `<span class="logo-fallback">${escapeHtml(initials(item.name))}</span>`;
 
     return `
-      <a class="logo-card" href="${escapeHtml(item.officialUrl || '#')}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(item.name)}" title="${escapeHtml(item.summary)}">
+      <a class="logo-card ${item.isTopApp ? 'is-top-app' : ''} ${item.isTrending ? 'is-trending' : ''}" href="${escapeHtml(item.officialUrl || '#')}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(item.name)}" title="${escapeHtml(item.summary)}">
+        ${item.isTopApp ? '<span class=\"logo-badge top\">Most used</span>' : ''}
+        ${item.isTrending ? '<span class=\"logo-badge trend\">Trending</span>' : ''}
         <div class="logo-orb">${logo}</div>
         <div class="logo-name">${escapeHtml(item.name)}</div>
         <div class="logo-meta">${escapeHtml(item.type)} • ${escapeHtml(item.meta)}</div>
