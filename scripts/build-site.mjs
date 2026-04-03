@@ -223,12 +223,8 @@ function renderStartHereMenu(basePath = '.') {
           <summary class="nav-summary">Start here</summary>
           <div class="nav-dropdown-menu">
             <a href="${basePath}/index.html">Home</a>
-            <a href="${basePath}/problems.html">Problems</a>
-                        <a href="${basePath}/reviews.html">Reviews</a>
+            <a href="${basePath}/reviews.html">Reviews</a>
             <a href="${basePath}/directory.html">Directory</a>
-            <a href="${basePath}/get-help.html">Get help</a>
-            <a href="${basePath}/editorial-methodology.html">Methodology</a>
-            <a href="${basePath}/affiliate-disclosure.html">Disclosure</a>
           </div>
         </details>
       </nav>`;
