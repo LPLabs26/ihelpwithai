@@ -1419,8 +1419,7 @@ function renderFeaturedLogoRow(items) {
 
     return `
       <a class="featured-logo-card ${item.isTopApp ? 'is-top-app' : ''} ${item.isTrending ? 'is-trending' : ''}" href="${escapeHtml(item.officialUrl || '#')}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(item.summary)}">
-        ${item.isTopApp ? '<span class=\"logo-badge top\">Most used</span>' : ''}
-        ${item.isTrending ? '<span class=\"logo-badge trend\">Trending</span>' : ''}
+        ${item.isTrending ? '<span class=\"logo-badge trend\">🔥 Trending</span>' : ''}
         <div class="featured-logo-orb">${logo}</div>
         <div class="featured-logo-name">${escapeHtml(item.name)}</div>
       </a>
@@ -1494,8 +1493,7 @@ function renderLandingLogoExplorer() {
 
     return `
       <a class="logo-card ${item.isTopApp ? 'is-top-app' : ''} ${item.isTrending ? 'is-trending' : ''}" href="${escapeHtml(item.officialUrl || '#')}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(item.name)}" title="${escapeHtml(item.summary)}">
-        ${item.isTopApp ? '<span class=\"logo-badge top\">Most used</span>' : ''}
-        ${item.isTrending ? '<span class=\"logo-badge trend\">Trending</span>' : ''}
+        ${item.isTrending ? '<span class=\"logo-badge trend\">🔥 Trending</span>' : ''}
         <div class="logo-orb">${logo}</div>
         <div class="logo-name">${escapeHtml(item.name)}</div>
         <div class="logo-meta">${escapeHtml(item.type)} • ${escapeHtml(item.meta)}</div>

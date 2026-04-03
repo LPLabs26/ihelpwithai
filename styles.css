@@ -1834,8 +1834,9 @@ body::before {
 
 .logo-badge {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -1845,14 +1846,7 @@ body::before {
   font-weight: 800;
   letter-spacing: 0.02em;
   z-index: 2;
-}
-
-.logo-badge.top {
-  left: 10px;
-  right: auto;
-  color: #eaf5ff;
-  background: linear-gradient(135deg, rgba(91, 184, 255, 0.95), rgba(53, 118, 255, 0.92));
-  box-shadow: 0 10px 20px rgba(91, 184, 255, 0.25);
+  pointer-events: none;
 }
 
 .logo-badge.trend {
