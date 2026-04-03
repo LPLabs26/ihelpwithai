@@ -1527,6 +1527,9 @@ body::before {
 
 .landing-page .nav-search {
   box-shadow: none;
+  background: transparent;
+  border-color: transparent;
+  padding: 0;
 }
 
 .landing-page .nav-search,
