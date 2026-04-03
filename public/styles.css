@@ -1231,6 +1231,46 @@ img {
   background: rgba(255, 255, 255, 0.82);
 }
 
+.detail-body .detail-main,
+.detail-body .detail-side,
+.detail-body .guide-tool,
+.detail-body .compare-card,
+.detail-body .related-item {
+  background: rgba(13, 23, 37, 0.88);
+  border-color: rgba(91, 184, 255, 0.18);
+}
+
+.detail-body .summary,
+.detail-body .detail-section p,
+.detail-body .guide-tool p,
+.detail-body .jump-label,
+.detail-body .breadcrumb,
+.detail-body .micro-note,
+.detail-body .related-copy {
+  color: #c7d7ea;
+}
+
+.detail-body .detail-main h1,
+.detail-body .detail-section h2,
+.detail-body .detail-section h3,
+.detail-body .guide-tool h3,
+.detail-body .backlink,
+.detail-body .related-item strong {
+  color: #edf4ff;
+}
+
+.detail-body .small-link {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(91, 184, 255, 0.18);
+  color: #d7e7fb;
+}
+
+.detail-body .small-link.primary {
+  background: linear-gradient(135deg, rgba(91, 184, 255, 0.24), rgba(255, 179, 92, 0.18));
+  border-color: rgba(91, 184, 255, 0.34);
+  color: #ffffff;
+}
+
 .guide-tool h3 {
   margin: 0 0 8px;
   font-size: 1.08rem;
