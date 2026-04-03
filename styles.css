@@ -1236,8 +1236,9 @@ img {
 .detail-body .guide-tool,
 .detail-body .compare-card,
 .detail-body .related-item {
-  background: rgba(13, 23, 37, 0.88);
-  border-color: rgba(91, 184, 255, 0.18);
+  background: linear-gradient(180deg, rgba(16, 29, 46, 0.96), rgba(10, 19, 31, 0.96));
+  border-color: rgba(91, 184, 255, 0.24);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
 }
 
 .detail-body .summary,
@@ -1247,7 +1248,7 @@ img {
 .detail-body .breadcrumb,
 .detail-body .micro-note,
 .detail-body .related-copy {
-  color: #c7d7ea;
+  color: #d5e3f4;
 }
 
 .detail-body .detail-main h1,
@@ -1256,18 +1257,31 @@ img {
 .detail-body .guide-tool h3,
 .detail-body .backlink,
 .detail-body .related-item strong {
-  color: #edf4ff;
+  color: #f4f8ff;
+}
+
+.detail-body .tag,
+.detail-body .chip,
+.detail-body .company-chip {
+  background: rgba(91, 184, 255, 0.14);
+  border-color: rgba(91, 184, 255, 0.26);
+  color: #eef5ff;
+}
+
+.detail-body .company-chip img {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
 }
 
 .detail-body .small-link {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(91, 184, 255, 0.18);
-  color: #d7e7fb;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(91, 184, 255, 0.22);
+  color: #eef5ff;
 }
 
 .detail-body .small-link.primary {
-  background: linear-gradient(135deg, rgba(91, 184, 255, 0.24), rgba(255, 179, 92, 0.18));
-  border-color: rgba(91, 184, 255, 0.34);
+  background: linear-gradient(135deg, rgba(91, 184, 255, 0.34), rgba(255, 179, 92, 0.24));
+  border-color: rgba(91, 184, 255, 0.4);
   color: #ffffff;
 }
 
