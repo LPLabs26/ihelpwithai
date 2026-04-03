@@ -1525,6 +1525,10 @@ body::before {
   box-shadow: var(--shadow-soft);
 }
 
+.landing-page .nav-search {
+  box-shadow: none;
+}
+
 .landing-page .nav-search,
 .landing-page .nav-summary,
 .landing-page .logo-toolbar,
