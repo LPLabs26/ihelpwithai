@@ -3,19 +3,11 @@
   <url><loc>https://ihelpwithai.com</loc></url>
   <url><loc>https://ihelpwithai.com/affiliate-disclosure.html</loc></url>
   <url><loc>https://ihelpwithai.com/problems.html</loc></url>
-  <url><loc>https://ihelpwithai.com/trades.html</loc></url>
   <url><loc>https://ihelpwithai.com/missed-calls.html</loc></url>
   <url><loc>https://ihelpwithai.com/estimate-follow-up.html</loc></url>
   <url><loc>https://ihelpwithai.com/review-requests.html</loc></url>
   <url><loc>https://ihelpwithai.com/office-admin.html</loc></url>
-  <url><loc>https://ihelpwithai.com/contractor-marketing.html</loc></url>
-  <url><loc>https://ihelpwithai.com/hvac.html</loc></url>
-  <url><loc>https://ihelpwithai.com/plumbing.html</loc></url>
-  <url><loc>https://ihelpwithai.com/electrical.html</loc></url>
-  <url><loc>https://ihelpwithai.com/roofing.html</loc></url>
-  <url><loc>https://ihelpwithai.com/landscaping.html</loc></url>
-  <url><loc>https://ihelpwithai.com/cleaning.html</loc></url>
-  <url><loc>https://ihelpwithai.com/remodeling.html</loc></url>
+  <url><loc>https://ihelpwithai.com/marketing.html</loc></url>
   <url><loc>https://ihelpwithai.com/shortlist.html</loc></url>
   <url><loc>https://ihelpwithai.com/directory.html</loc></url>
   <url><loc>https://ihelpwithai.com/get-help.html</loc></url>
@@ -37,27 +29,32 @@
   <url><loc>https://ihelpwithai.com/companies/perplexity.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/veed.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/zapier.html</loc></url>
+  <url><loc>https://ihelpwithai.com/companies/google.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/ada.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/ai21.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/airtable.html</loc></url>
+  <url><loc>https://ihelpwithai.com/companies/anysphere.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/anyword.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/apollo.html</loc></url>
+  <url><loc>https://ihelpwithai.com/companies/assemblyai.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/avoma.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/beautiful-ai.html</loc></url>
+  <url><loc>https://ihelpwithai.com/companies/clay.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/clearscope.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/clipdrop.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/consensus.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/copy-ai.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/decktopus.html</loc></url>
+  <url><loc>https://ihelpwithai.com/companies/deepgram.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/deepseek.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/elicit.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/frase.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/gamma.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/glean.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/gong.html</loc></url>
-  <url><loc>https://ihelpwithai.com/companies/google.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/grain.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/grammarly.html</loc></url>
+  <url><loc>https://ihelpwithai.com/companies/hume.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/ideogram.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/intercom.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/invideo.html</loc></url>
@@ -67,13 +64,16 @@
   <url><loc>https://ihelpwithai.com/companies/krisp.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/lavender.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/leonardo.html</loc></url>
+  <url><loc>https://ihelpwithai.com/companies/lovo.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/luma-ai.html</loc></url>
+  <url><loc>https://ihelpwithai.com/companies/manychat.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/mentimeter.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/microsoft.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/midjourney.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/mistral.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/murf.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/notion.html</loc></url>
+  <url><loc>https://ihelpwithai.com/companies/notta.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/opus.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/otter-ai.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/phind.html</loc></url>
@@ -86,6 +86,7 @@
   <url><loc>https://ihelpwithai.com/companies/quora.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/read-ai.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/recraft.html</loc></url>
+  <url><loc>https://ihelpwithai.com/companies/replit.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/riverside.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/runway.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/rytr.html</loc></url>
@@ -94,11 +95,15 @@
   <url><loc>https://ihelpwithai.com/companies/scribe.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/semrush.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/speechify.html</loc></url>
+  <url><loc>https://ihelpwithai.com/companies/stackblitz.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/sudowrite.html</loc></url>
+  <url><loc>https://ihelpwithai.com/companies/suno.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/surfer.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/synthesia.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/tactiq.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/tome.html</loc></url>
+  <url><loc>https://ihelpwithai.com/companies/udio.html</loc></url>
+  <url><loc>https://ihelpwithai.com/companies/vercel.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/wellsaid-labs.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/writer.html</loc></url>
   <url><loc>https://ihelpwithai.com/companies/writesonic.html</loc></url>
@@ -145,14 +150,19 @@
   <url><loc>https://ihelpwithai.com/tools/airtable-ai.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/anyword.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/apollo-ai.html</loc></url>
+  <url><loc>https://ihelpwithai.com/tools/assemblyai.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/avoma.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/beautiful-ai.html</loc></url>
+  <url><loc>https://ihelpwithai.com/tools/bolt-new.html</loc></url>
+  <url><loc>https://ihelpwithai.com/tools/clay.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/clearscope.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/clipdrop.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/consensus.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/contentshake-ai.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/copy-ai.html</loc></url>
+  <url><loc>https://ihelpwithai.com/tools/cursor.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/decktopus.html</loc></url>
+  <url><loc>https://ihelpwithai.com/tools/deepgram.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/deepseek.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/elicit.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/frase.html</loc></url>
@@ -163,6 +173,7 @@
   <url><loc>https://ihelpwithai.com/tools/grain.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/grammarly.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/grok.html</loc></url>
+  <url><loc>https://ihelpwithai.com/tools/hume-ai.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/ideogram.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/intercom-fin.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/invideo-ai.html</loc></url>
@@ -173,12 +184,16 @@
   <url><loc>https://ihelpwithai.com/tools/lavender.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/le-chat.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/leonardo-ai.html</loc></url>
+  <url><loc>https://ihelpwithai.com/tools/lovo-ai.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/luma-dream-machine.html</loc></url>
+  <url><loc>https://ihelpwithai.com/tools/manychat-ai.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/mentimeter-ai.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/microsoft-copilot.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/midjourney.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/murf.html</loc></url>
+  <url><loc>https://ihelpwithai.com/tools/notebooklm.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/notion-ai.html</loc></url>
+  <url><loc>https://ihelpwithai.com/tools/notta.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/opus-clip.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/otter.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/phind.html</loc></url>
@@ -191,6 +206,7 @@
   <url><loc>https://ihelpwithai.com/tools/quillbot.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/read-ai.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/recraft.html</loc></url>
+  <url><loc>https://ihelpwithai.com/tools/replit-ai.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/riverside.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/runway.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/rytr.html</loc></url>
@@ -199,10 +215,13 @@
   <url><loc>https://ihelpwithai.com/tools/scribe.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/speechify.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/sudowrite.html</loc></url>
+  <url><loc>https://ihelpwithai.com/tools/suno.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/surfer.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/synthesia.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/tactiq.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/tome.html</loc></url>
+  <url><loc>https://ihelpwithai.com/tools/udio.html</loc></url>
+  <url><loc>https://ihelpwithai.com/tools/v0.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/wellsaid-labs.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/wordtune.html</loc></url>
   <url><loc>https://ihelpwithai.com/tools/writer.html</loc></url>
