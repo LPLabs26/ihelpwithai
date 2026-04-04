@@ -385,6 +385,24 @@ function renderToolPage(tool, tools) {
   const partnerNote = tool.affiliateUrl
     ? `<p class="notice" style="margin-top:18px">This page uses a partner link for ${escapeHtml(tool.name)}. If you buy through it, ihelpwithai.com may earn a commission at no extra cost to you. <a href="../affiliate-disclosure.html">Read the disclosure</a>.</p>`
     : '';
+  const youtubeSection = tool.youtubeVideoId
+    ? `
+          <div class="detail-section">
+            <h2>Watch a quick overview</h2>
+            <p>Here is one YouTube video to help you understand what ${escapeHtml(tool.name)} does before you click out.</p>
+            <div class="video-embed">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/${escapeHtml(tool.youtubeVideoId)}"
+                title="${escapeHtml(tool.youtubeVideoTitle || `${tool.name} YouTube video`)}"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        `
+    : '';
 
   return `<!doctype html>
 <html lang="en">
@@ -447,6 +465,8 @@ ${renderStartHereMenu('..')}
             <h2>Who should use it</h2>
             <p>${escapeHtml(tool.who)}</p>
           </div>
+
+          ${youtubeSection}
 
           <div class="detail-section">
             <h2>One real use case</h2>
@@ -558,7 +578,7 @@ ${renderStartHereMenu('..')}
     </section>
   </main>
 ${renderSiteFooter('..')}
-  <script src="../tool.js"></script>
+  <script src="../tool.js?v=20260404a?v=20260404a"></script>
 </body>
 </html>
 `;

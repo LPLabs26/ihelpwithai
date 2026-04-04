@@ -1,5 +1,5 @@
 window.IHWAI = {
-  "generatedAt": "2026-04-04T01:49:28.384Z",
+  "generatedAt": "2026-04-04T14:51:30.869Z",
   "tools": [
     {
       "name": "Adobe Firefly",
@@ -41,7 +41,10 @@ window.IHWAI = {
         "adobe"
       ],
       "addedAt": "2026-03-26",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "VNs1lW8t4hw",
+      "youtubeVideoTitle": "How to Use Adobe Firefly 3 (& Why It's the Only AI Image Generator You Should Use)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=VNs1lW8t4hw"
     },
     {
       "name": "Canva AI",
@@ -85,7 +88,10 @@ window.IHWAI = {
       "addedAt": "2026-03-26",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 90,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "qjoNfqArTxA",
+      "youtubeVideoTitle": "Introduction to Canva AI: Work Smarter, Not Harder",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=qjoNfqArTxA"
     },
     {
       "name": "ChatGPT",
@@ -130,7 +136,10 @@ window.IHWAI = {
       "addedAt": "2026-03-26",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 100,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "AXn2XVLf7d0",
+      "youtubeVideoTitle": "How To Use ChatGPT by OpenAI For Beginners",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=AXn2XVLf7d0"
     },
     {
       "name": "Claude",
@@ -174,7 +183,10 @@ window.IHWAI = {
       "addedAt": "2026-03-26",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 94,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "kyB68hS-vco",
+      "youtubeVideoTitle": "The Complete Claude Anthropic Tutorial",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=kyB68hS-vco"
     },
     {
       "name": "ClickUp Brain",
@@ -216,7 +228,10 @@ window.IHWAI = {
         "team coordination"
       ],
       "addedAt": "2026-03-28",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "UxyBioSPvUQ",
+      "youtubeVideoTitle": "How To Use ClickUp AI Brain (Easiest Way) (2026 Guide)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=UxyBioSPvUQ"
     },
     {
       "name": "Descript",
@@ -258,7 +273,10 @@ window.IHWAI = {
         "social clips"
       ],
       "addedAt": "2026-03-26",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "G8jcK-qzwsg",
+      "youtubeVideoTitle": "Descript AI Video Editor (8 Mind Blowing Features!)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=G8jcK-qzwsg"
     },
     {
       "name": "ElevenLabs",
@@ -302,7 +320,10 @@ window.IHWAI = {
       "addedAt": "2026-03-26",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 84,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "lgvWO4tOBqs",
+      "youtubeVideoTitle": "What Is ElevenLabs? | ElevenLabs Explained For Dummies",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=lgvWO4tOBqs"
     },
     {
       "name": "Fathom",
@@ -344,7 +365,10 @@ window.IHWAI = {
         "calls"
       ],
       "addedAt": "2026-03-26",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "h45QUeYGQlA",
+      "youtubeVideoTitle": "Fathom Analysis Overview",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=h45QUeYGQlA"
     },
     {
       "name": "Fireflies",
@@ -386,7 +410,10 @@ window.IHWAI = {
         "follow-up"
       ],
       "addedAt": "2026-03-26",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "hdWyP-YqwBk",
+      "youtubeVideoTitle": "Fireflies AI Review 2025 | Pros and Cons – Honest & Unbiased",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=hdWyP-YqwBk"
     },
     {
       "name": "Gemini",
@@ -429,7 +456,10 @@ window.IHWAI = {
       "addedAt": "2026-03-26",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 98,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "WQ47Ued6Q4c",
+      "youtubeVideoTitle": "What Is Gemini? Google’s Most Advanced AI Model Explained",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=WQ47Ued6Q4c"
     },
     {
       "name": "Grok",
@@ -474,7 +504,10 @@ window.IHWAI = {
       "addedAt": "2026-04-01",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 88,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "V3YzhHlDt9c",
+      "youtubeVideoTitle": "Ultimate GROK 4 Guide 2026: How to Use GROK For Beginners",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=V3YzhHlDt9c"
     },
     {
       "name": "Hermes Agent",
@@ -518,7 +551,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 83,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "iqN6MVzpJTk",
+      "youtubeVideoTitle": "Hermes Agent by Nous Research: The Open-Source Agent Model Everyone Is Switching To",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=iqN6MVzpJTk"
     },
     {
       "name": "HeyGen",
@@ -560,7 +596,10 @@ window.IHWAI = {
         "talking head"
       ],
       "addedAt": "2026-03-29",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "RjQa-74eNVo",
+      "youtubeVideoTitle": "HeyGen’s Video Agent: The AI Tool That’s About to Replace Your Entire Editing Team",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=RjQa-74eNVo"
     },
     {
       "name": "Loom",
@@ -602,7 +641,10 @@ window.IHWAI = {
         "sops"
       ],
       "addedAt": "2026-03-27",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "bgOu-fN0QT4",
+      "youtubeVideoTitle": "What is Loom? Video messaging for work",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=bgOu-fN0QT4"
     },
     {
       "name": "Microsoft Copilot",
@@ -647,7 +689,10 @@ window.IHWAI = {
       "addedAt": "2026-04-01",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 96,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "MuNor5jjhVI",
+      "youtubeVideoTitle": "Microsoft Copilot Explained in 6 Minutes",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=MuNor5jjhVI"
     },
     {
       "name": "Midjourney",
@@ -690,7 +735,10 @@ window.IHWAI = {
       "addedAt": "2026-03-26",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 86,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "xoZG5WQbgMw",
+      "youtubeVideoTitle": "How to Use Midjourney for Beginners in 2026",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=xoZG5WQbgMw"
     },
     {
       "name": "Notion AI",
@@ -734,7 +782,10 @@ window.IHWAI = {
       "addedAt": "2026-03-26",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 82,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "Y5FvtQomPh8",
+      "youtubeVideoTitle": "Getting started with Notion AI",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=Y5FvtQomPh8"
     },
     {
       "name": "OpenClaw",
@@ -777,7 +828,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 85,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "n1sfrc-RjyM",
+      "youtubeVideoTitle": "OpenClaw Full Tutorial for Beginners – How to Set Up and Use OpenClaw (ClawdBot / MoltBot)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=n1sfrc-RjyM"
     },
     {
       "name": "Perplexity",
@@ -820,7 +874,10 @@ window.IHWAI = {
       "addedAt": "2026-03-26",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 92,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "l-J8RodcM_A",
+      "youtubeVideoTitle": "What is Perplexity Computer?",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=l-J8RodcM_A"
     },
     {
       "name": "Runway",
@@ -863,7 +920,10 @@ window.IHWAI = {
       "addedAt": "2026-03-26",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 80,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "k_CrrAfEQHE",
+      "youtubeVideoTitle": "All about runway markings [atc for you]",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=k_CrrAfEQHE"
     },
     {
       "name": "VEED",
@@ -905,7 +965,10 @@ window.IHWAI = {
         "repurposing"
       ],
       "addedAt": "2026-03-27",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "e05-wJI8dkc",
+      "youtubeVideoTitle": "VEED.IO Review - Do Not Try Until Watching This",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=e05-wJI8dkc"
     },
     {
       "name": "Zapier",
@@ -947,7 +1010,10 @@ window.IHWAI = {
         "no-code"
       ],
       "addedAt": "2026-03-26",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "lD8Llq2heis",
+      "youtubeVideoTitle": "Learn Zapier in 7 minutes: Business & Personal Automation Tutorial For Beginners (2025)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=lD8Llq2heis"
     },
     {
       "name": "10Web",
@@ -989,7 +1055,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 38,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "7qScrNWCVcg",
+      "youtubeVideoTitle": "10Web Website Builder Honest Review - Watch Before Using",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=7qScrNWCVcg"
     },
     {
       "name": "Abridge",
@@ -1030,7 +1099,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 39,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "gbjd1a8zWno",
+      "youtubeVideoTitle": "Life at Abridge: What makes Abridge Special?",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=gbjd1a8zWno"
     },
     {
       "name": "Activepieces",
@@ -1072,7 +1144,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 46,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "8ExraM9WLb8",
+      "youtubeVideoTitle": "Activepieces Quickstart Tutorial: Start Automating in 5 Minutes",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=8ExraM9WLb8"
     },
     {
       "name": "Ada",
@@ -1113,7 +1188,10 @@ window.IHWAI = {
         "ada"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "zKyjshcxbI0",
+      "youtubeVideoTitle": "What is the ADA? Basics and Definitions of the Americans with Disabilities Act",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=zKyjshcxbI0"
     },
     {
       "name": "Aider",
@@ -1155,7 +1233,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "_m6rpy0-Lrk",
+      "youtubeVideoTitle": "Why you should use Aider for AI coding",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=_m6rpy0-Lrk"
     },
     {
       "name": "AirOps",
@@ -1197,7 +1278,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 42,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "nqwoKSSjToE",
+      "youtubeVideoTitle": "NEW AirOps AI Builder Is INSANE! 🤯",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=nqwoKSSjToE"
     },
     {
       "name": "Airtable AI",
@@ -1239,7 +1323,10 @@ window.IHWAI = {
         "records"
       ],
       "addedAt": "2026-03-29",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "UcZfSIegPNw",
+      "youtubeVideoTitle": "Introducing a new generation of Airtable - built for the AI era",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=UcZfSIegPNw"
     },
     {
       "name": "Amazon Q Developer",
@@ -1283,7 +1370,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "YngKtTGJeX4",
+      "youtubeVideoTitle": "Amazon Q Business Explained (AWS Generative AI)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=YngKtTGJeX4"
     },
     {
       "name": "Ambience Healthcare",
@@ -1325,7 +1415,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 36,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "f2ro4YCCLS8",
+      "youtubeVideoTitle": "Ambience Healthcare Becomes First Ambient AI Platform to Launch Inpatient CDI at the Point of Care",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=f2ro4YCCLS8"
     },
     {
       "name": "Anyword",
@@ -1367,7 +1460,10 @@ window.IHWAI = {
         "anyword"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "XcIgyO3vd_8",
+      "youtubeVideoTitle": "Generate Content using Anyword AI Tool | Anyword Quick Demo",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=XcIgyO3vd_8"
     },
     {
       "name": "Apollo AI",
@@ -1409,7 +1505,10 @@ window.IHWAI = {
         "apollo ai"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "Bnr5Xqzr-Ec",
+      "youtubeVideoTitle": "How to Use Apollo.io in Less Than 2 Minutes",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=Bnr5Xqzr-Ec"
     },
     {
       "name": "AssemblyAI",
@@ -1449,7 +1548,10 @@ window.IHWAI = {
         "transcription"
       ],
       "addedAt": "2026-04-02",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "UT1sBCuSJxE",
+      "youtubeVideoTitle": "AssemblyAI Product Overview",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=UT1sBCuSJxE"
     },
     {
       "name": "Augment Code",
@@ -1492,7 +1594,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "6uqRw6Z1sBw",
+      "youtubeVideoTitle": "Introducing Augment Code Review",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=6uqRw6Z1sBw"
     },
     {
       "name": "Avoma",
@@ -1534,7 +1639,10 @@ window.IHWAI = {
         "avoma"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "F00XUV5PjTU",
+      "youtubeVideoTitle": "AVOMA IS AURA!!! Avoma 1000 Players Simulate Boys vs Girls Civilization in Minecraft! (REACTION!!!)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=F00XUV5PjTU"
     },
     {
       "name": "Bardeen",
@@ -1576,7 +1684,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 48,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "BTWslvrI8OM",
+      "youtubeVideoTitle": "Getting Started with Bardeen (2024)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=BTWslvrI8OM"
     },
     {
       "name": "Beautiful.ai",
@@ -1618,7 +1729,10 @@ window.IHWAI = {
         "visual storytelling"
       ],
       "addedAt": "2026-03-28",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "Q1DXOpBhepE",
+      "youtubeVideoTitle": "How to create a presentation in Beautiful.ai",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=Q1DXOpBhepE"
     },
     {
       "name": "Blackbox AI",
@@ -1662,7 +1776,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "Je-Hgd6L8Nk",
+      "youtubeVideoTitle": "Explainable AI vs. Black Box AI (Opaque AI)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=Je-Hgd6L8Nk"
     },
     {
       "name": "Bland AI",
@@ -1705,7 +1822,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "S5UwzzP_Qec",
+      "youtubeVideoTitle": "Bland AI Basics: Everything You Need to Start Building Voice Agents",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=S5UwzzP_Qec"
     },
     {
       "name": "Bolt.new",
@@ -1746,7 +1866,10 @@ window.IHWAI = {
         "web apps"
       ],
       "addedAt": "2026-04-02",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "ViAGOAc2LAo",
+      "youtubeVideoTitle": "How Bolt Hit $40M ARR in 5 Months with This AI Pivot Strategy | Stackblitz(Bolt.new), Eric Simons",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=ViAGOAc2LAo"
     },
     {
       "name": "Browse AI",
@@ -1789,7 +1912,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 46,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "cFlcrsjsvNE",
+      "youtubeVideoTitle": "Browse AI 1-Minute Overview",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=cFlcrsjsvNE"
     },
     {
       "name": "Captions",
@@ -1831,7 +1957,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "pFQ-LROXakY",
+      "youtubeVideoTitle": "Watch this Before getting Captions AI - Honest Review!",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=pFQ-LROXakY"
     },
     {
       "name": "Cartesia",
@@ -1872,7 +2001,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "QSnH1GfqaGI",
+      "youtubeVideoTitle": "Introducing Line by Cartesia: The Modern Voice Agent Development Platform",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=QSnH1GfqaGI"
     },
     {
       "name": "ChatPDF",
@@ -1914,7 +2046,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "DZrmDCMDWVE",
+      "youtubeVideoTitle": "ChatPDF: Use this AI Tool to Chat with any PDF documents",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=DZrmDCMDWVE"
     },
     {
       "name": "Clay",
@@ -1955,7 +2090,10 @@ window.IHWAI = {
         "research"
       ],
       "addedAt": "2026-04-02",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "v31hKg-WSCc",
+      "youtubeVideoTitle": "What is Clay?",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=v31hKg-WSCc"
     },
     {
       "name": "Clearscope",
@@ -1996,7 +2134,10 @@ window.IHWAI = {
         "clearscope"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "bIaGczn_w-Y",
+      "youtubeVideoTitle": "Introducing Clearscope 2.0: The Discoverability Platform for Modern Search",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=bIaGczn_w-Y"
     },
     {
       "name": "Cline",
@@ -2038,7 +2179,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "UBqh6ud5LqY",
+      "youtubeVideoTitle": "Ideal Setup for Cline",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=UBqh6ud5LqY"
     },
     {
       "name": "Clipdrop",
@@ -2080,7 +2224,10 @@ window.IHWAI = {
         "clipdrop"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "Xpg5JNJrsdo",
+      "youtubeVideoTitle": "ClipDrop",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=Xpg5JNJrsdo"
     },
     {
       "name": "Clockwise",
@@ -2122,7 +2269,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "SeDMBzXvy-k",
+      "youtubeVideoTitle": "Learning Clockwise and Counter (Anti) Clockwise For Kids",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=SeDMBzXvy-k"
     },
     {
       "name": "CoCounsel",
@@ -2163,7 +2313,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 34,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "VTOiMbOTLaE",
+      "youtubeVideoTitle": "Product Walk Through: Thomson Reuters CoCounsel",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=VTOiMbOTLaE"
     },
     {
       "name": "Coda AI",
@@ -2207,7 +2360,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 50,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "M4sF0AX71DE",
+      "youtubeVideoTitle": "Meet Coda",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=M4sF0AX71DE"
     },
     {
       "name": "Codeium",
@@ -2250,7 +2406,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "lu-p9wtps4w",
+      "youtubeVideoTitle": "Codeium AI Tutorial| How to Use Codeium",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=lu-p9wtps4w"
     },
     {
       "name": "Colossyan",
@@ -2292,7 +2451,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 44,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "LO-YHg-6ocA",
+      "youtubeVideoTitle": "Getting started with Colossyan | Colossyan Video Learning Center",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=LO-YHg-6ocA"
     },
     {
       "name": "Consensus",
@@ -2333,7 +2495,10 @@ window.IHWAI = {
         "consensus"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "UMxAlp0TPVg",
+      "youtubeVideoTitle": "Consensus AI Step-By-Step: The Fastest Way To Do Evidence-Based Research",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=UMxAlp0TPVg"
     },
     {
       "name": "ContentShake AI",
@@ -2375,7 +2540,10 @@ window.IHWAI = {
         "contentshake ai"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "4b60xE-QHuY",
+      "youtubeVideoTitle": "HONEST Semrush ContentShake AI Review",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=4b60xE-QHuY"
     },
     {
       "name": "Continue",
@@ -2417,7 +2585,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "yyBvpojtXSA",
+      "youtubeVideoTitle": "Introduction to functions continue",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=yyBvpojtXSA"
     },
     {
       "name": "Copy.ai",
@@ -2459,7 +2630,10 @@ window.IHWAI = {
         "gtm"
       ],
       "addedAt": "2026-03-28",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "QqAd7wo7uVU",
+      "youtubeVideoTitle": "How to use Copy.ai | Best AI writing software for small business (Copy.ai tutorial)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=QqAd7wo7uVU"
     },
     {
       "name": "Cresta",
@@ -2501,7 +2675,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "UsJSc2oZby8",
+      "youtubeVideoTitle": "Cresta AI Agent",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=UsJSc2oZby8"
     },
     {
       "name": "Cursor",
@@ -2542,7 +2719,10 @@ window.IHWAI = {
         "ide"
       ],
       "addedAt": "2026-04-02",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "S_5DhptpI6g",
+      "youtubeVideoTitle": "Anysphere CEO on Cursor Being Valued at $9.9 Billion",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=S_5DhptpI6g"
     },
     {
       "name": "D-ID",
@@ -2585,7 +2765,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 45,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "b1DLDt4Suzs",
+      "youtubeVideoTitle": "D-ID vs HeyGen Comparison - Which is Better?",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=b1DLDt4Suzs"
     },
     {
       "name": "Decagon",
@@ -2626,7 +2809,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "ckEQXDTmLSk",
+      "youtubeVideoTitle": "Decagon Product Overview",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=ckEQXDTmLSk"
     },
     {
       "name": "Decktopus",
@@ -2667,7 +2853,10 @@ window.IHWAI = {
         "decktopus"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "yVXtHdwL9DM",
+      "youtubeVideoTitle": "Decktopus AI Review 2026 After Making 10 Presentations",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=yVXtHdwL9DM"
     },
     {
       "name": "Deepgram",
@@ -2707,7 +2896,10 @@ window.IHWAI = {
         "audio"
       ],
       "addedAt": "2026-04-02",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "kibx5BR6trA",
+      "youtubeVideoTitle": "What is Deepgram?",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=kibx5BR6trA"
     },
     {
       "name": "DeepSeek",
@@ -2750,7 +2942,10 @@ window.IHWAI = {
         "deepseek"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "ExhKoFKEvh8",
+      "youtubeVideoTitle": "How To Use DeepSeek For Beginners",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=ExhKoFKEvh8"
     },
     {
       "name": "Devin",
@@ -2793,7 +2988,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "fjHtjT7GO1c",
+      "youtubeVideoTitle": "Introducing Devin, the first AI software engineer",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=fjHtjT7GO1c"
     },
     {
       "name": "Dify",
@@ -2835,7 +3033,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 54,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "gEVYQh5Wh9s",
+      "youtubeVideoTitle": "Introducing Dify Workflow",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=gEVYQh5Wh9s"
     },
     {
       "name": "Durable",
@@ -2877,7 +3078,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 50,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "-cipoKozJ2E",
+      "youtubeVideoTitle": "I Built a Complete Business in 10 Minutes with AI (Durable Review)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=-cipoKozJ2E"
     },
     {
       "name": "Dust",
@@ -2920,7 +3124,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 42,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "n-rBhbkvtm0",
+      "youtubeVideoTitle": "History Brief: the Dust Bowl",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=n-rBhbkvtm0"
     },
     {
       "name": "Elicit",
@@ -2961,7 +3168,10 @@ window.IHWAI = {
         "elicit"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "rJJPS-EvNfk",
+      "youtubeVideoTitle": "How to Use Elicit AI, Literature Reviews + More: Beginner Tutorial and Research Tips!",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=rJJPS-EvNfk"
     },
     {
       "name": "Ema",
@@ -3003,7 +3213,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 40,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "KWAnhOsALJ8",
+      "youtubeVideoTitle": "Overview of the European Medicines Agency (EMA), Part 3 of 3",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=KWAnhOsALJ8"
     },
     {
       "name": "Exa",
@@ -3045,7 +3258,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 49,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "JHMmmo8aSSE",
+      "youtubeVideoTitle": "EXA 1 - Overview and standard mode for diamonds",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=JHMmmo8aSSE"
     },
     {
       "name": "Fellow",
@@ -3088,7 +3304,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "gIjTAcewmhU",
+      "youtubeVideoTitle": "Everything You Need to Know About the Fellow Aiden Coffee Maker - Full Review and Brewing!",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=gIjTAcewmhU"
     },
     {
       "name": "Flowise",
@@ -3130,7 +3349,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 50,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "SLVVDUIbIBE",
+      "youtubeVideoTitle": "Flowise v3 Complete Tutorial: Build AI Agents WITHOUT Coding",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=SLVVDUIbIBE"
     },
     {
       "name": "Folk",
@@ -3173,7 +3395,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 40,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "mWTbfMKTxGo",
+      "youtubeVideoTitle": "The Difference Between Folk and Country Music",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=mWTbfMKTxGo"
     },
     {
       "name": "Framer AI",
@@ -3216,7 +3441,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "izpblc6ppwk",
+      "youtubeVideoTitle": "Framer - Full Tutorial for Beginners 2026: How to Use Framer AI",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=izpblc6ppwk"
     },
     {
       "name": "Frase",
@@ -3258,7 +3486,10 @@ window.IHWAI = {
         "frase"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "x4IIEnZUtBo",
+      "youtubeVideoTitle": "Las 100 frases más usadas en inglés",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=x4IIEnZUtBo"
     },
     {
       "name": "Galileo AI",
@@ -3301,7 +3532,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 47,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "qmMzOkrO3Uc",
+      "youtubeVideoTitle": "Unpacking Galileo's AI Agent Reliability Platform",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=qmMzOkrO3Uc"
     },
     {
       "name": "Gamma",
@@ -3343,7 +3577,10 @@ window.IHWAI = {
         "visuals"
       ],
       "addedAt": "2026-03-26",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "xWLx3vPfe7U",
+      "youtubeVideoTitle": "Gamma Exposure for Beginners",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=xWLx3vPfe7U"
     },
     {
       "name": "Gladia",
@@ -3385,7 +3622,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 37,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "NNDqbpRwnsc",
+      "youtubeVideoTitle": "Gladiator in Minutes | Recap",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=NNDqbpRwnsc"
     },
     {
       "name": "Glean",
@@ -3426,7 +3666,10 @@ window.IHWAI = {
         "glean"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "b7qojk3Ju9U",
+      "youtubeVideoTitle": "Introducing Glean: Work AI for all",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=b7qojk3Ju9U"
     },
     {
       "name": "Gong",
@@ -3468,7 +3711,10 @@ window.IHWAI = {
         "gong"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "wCpYJMIR1gs",
+      "youtubeVideoTitle": "How Gong Uses Gong // Gong for the CRO",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=wCpYJMIR1gs"
     },
     {
       "name": "Grain",
@@ -3510,7 +3756,10 @@ window.IHWAI = {
         "grain"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "YDxUChKk-p8",
+      "youtubeVideoTitle": "Guide to Grains",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=YDxUChKk-p8"
     },
     {
       "name": "Grammarly",
@@ -3551,7 +3800,10 @@ window.IHWAI = {
         "email"
       ],
       "addedAt": "2026-03-26",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "doTMUdBBq7A",
+      "youtubeVideoTitle": "What Is Grammarly?",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=doTMUdBBq7A"
     },
     {
       "name": "Gumloop",
@@ -3593,7 +3845,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 51,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "pNjZhhG00yk",
+      "youtubeVideoTitle": "Getting started with Gumloop: Flows, nodes & AI",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=pNjZhhG00yk"
     },
     {
       "name": "HARPA AI",
@@ -3636,7 +3891,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 43,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "zy1wuJSNdBI",
+      "youtubeVideoTitle": "Getting Started HARPA AI Guide & Tutorial",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=zy1wuJSNdBI"
     },
     {
       "name": "Harvey",
@@ -3678,7 +3936,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "ajqx0nDaptY",
+      "youtubeVideoTitle": "Harvey - Alex G (Lyrics)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=ajqx0nDaptY"
     },
     {
       "name": "Hebbia",
@@ -3719,7 +3980,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "lDUeyP4cdSM",
+      "youtubeVideoTitle": "Hebbia CEO on how its AI-powered platform is transforming data analysis for finance + research pros",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=lDUeyP4cdSM"
     },
     {
       "name": "Humata",
@@ -3761,7 +4025,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "rmcWnWZE2gM",
+      "youtubeVideoTitle": "Humata AI: Understand PDFs in seconds",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=rmcWnWZE2gM"
     },
     {
       "name": "Hume AI",
@@ -3802,7 +4069,10 @@ window.IHWAI = {
         "developer platform"
       ],
       "addedAt": "2026-04-02",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "gORScxxtYoQ",
+      "youtubeVideoTitle": "Hume AI Voice Generator (Better Than ElevenLabs?)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=gORScxxtYoQ"
     },
     {
       "name": "HyperWrite",
@@ -3844,7 +4114,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "rul3fJY8YGs",
+      "youtubeVideoTitle": "I Tested HyperWrite AI for 7 Days… Here’s What Happened",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=rul3fJY8YGs"
     },
     {
       "name": "Ideogram",
@@ -3886,7 +4159,10 @@ window.IHWAI = {
         "ideogram"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "FeHuGAaoDRM",
+      "youtubeVideoTitle": "Everything You Need to Know About Ideogram AI!",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=FeHuGAaoDRM"
     },
     {
       "name": "Intercom Fin",
@@ -3927,7 +4203,10 @@ window.IHWAI = {
         "intercom fin"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "yzdzJF4KcVo",
+      "youtubeVideoTitle": "A demo of Intercom's Fin AI Copilot: an AI assistant for every support agent",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=yzdzJF4KcVo"
     },
     {
       "name": "InVideo AI",
@@ -3968,7 +4247,10 @@ window.IHWAI = {
         "invideo ai"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "9rpOO0Bh7i0",
+      "youtubeVideoTitle": "Invideo AI - Full Tutorial 2026: The AI Video Generator that does it All",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=9rpOO0Bh7i0"
     },
     {
       "name": "Iris.ai",
@@ -4011,7 +4293,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 32,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "4k-OuLX53Fo",
+      "youtubeVideoTitle": "CodeProject.AI for Blue Iris - Installation and Setup",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=4k-OuLX53Fo"
     },
     {
       "name": "Jasper",
@@ -4053,7 +4338,10 @@ window.IHWAI = {
         "teams"
       ],
       "addedAt": "2026-03-26",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "SqI3CvKV4j8",
+      "youtubeVideoTitle": "Jasper AI: An Honest Review & Beginner’s Guide (2024)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=SqI3CvKV4j8"
     },
     {
       "name": "JetBrains AI Assistant",
@@ -4097,7 +4385,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "lTr06V9uyts",
+      "youtubeVideoTitle": "Get Started With JetBrains AI Assistant in PhpStorm",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=lTr06V9uyts"
     },
     {
       "name": "Julius",
@@ -4139,7 +4430,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 53,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "ir8qShUBCco",
+      "youtubeVideoTitle": "How to get started on Julius (in 3 easy steps)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=ir8qShUBCco"
     },
     {
       "name": "Kaiber",
@@ -4180,7 +4474,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 43,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "Q85d9qofuQk",
+      "youtubeVideoTitle": "Kaiber Ai Complete Tutorial - Ultimate Ai Video Generator",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=Q85d9qofuQk"
     },
     {
       "name": "Kapwing AI",
@@ -4222,7 +4519,10 @@ window.IHWAI = {
         "kapwing ai"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "Qd6o_9RtwHc",
+      "youtubeVideoTitle": "Kapwing's NEW AI Assistant — Explained",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=Qd6o_9RtwHc"
     },
     {
       "name": "Kittl",
@@ -4264,7 +4564,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "Ar7WpjoiK3I",
+      "youtubeVideoTitle": "How To Make Your First AI Video in Kittl",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=Ar7WpjoiK3I"
     },
     {
       "name": "Krea",
@@ -4306,7 +4609,10 @@ window.IHWAI = {
         "krea"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "fsrR8u8NvEc",
+      "youtubeVideoTitle": "Krea AI Tutorial - 2026 | New Updates | How to Use Krea AI - For Beginners",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=fsrR8u8NvEc"
     },
     {
       "name": "Krisp",
@@ -4348,7 +4654,10 @@ window.IHWAI = {
         "remote work"
       ],
       "addedAt": "2026-03-28",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "5LwBgkci6T4",
+      "youtubeVideoTitle": "Here's How to Get Started with Krisp [Detailed Tutorial]",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=5LwBgkci6T4"
     },
     {
       "name": "LALAL.AI",
@@ -4391,7 +4700,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "caVdqF2STaQ",
+      "youtubeVideoTitle": "This App Separates Vocal Files! | LALAL.AI App Overview/Tutorial",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=caVdqF2STaQ"
     },
     {
       "name": "Langflow",
@@ -4433,7 +4745,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 49,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "knPg4KdKU6w",
+      "youtubeVideoTitle": "Getting started with Langflow in under 3 minutes",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=knPg4KdKU6w"
     },
     {
       "name": "Lavender",
@@ -4474,7 +4789,10 @@ window.IHWAI = {
         "lavender"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "cfrdSRdksCc",
+      "youtubeVideoTitle": "Top 7 Most Popular Varieties of Lavender (+ Lavender Basics)! 💜🌿💜 // Garden Answer",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=cfrdSRdksCc"
     },
     {
       "name": "Le Chat",
@@ -4517,7 +4835,10 @@ window.IHWAI = {
         "le chat"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "WqTY_DHR6O8",
+      "youtubeVideoTitle": "Mistral AI Review (2026): Is This the Ultimate ChatGPT Alternative?",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=WqTY_DHR6O8"
     },
     {
       "name": "Leonardo AI",
@@ -4560,7 +4881,10 @@ window.IHWAI = {
         "leonardo ai"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "xbUE56kmVl0",
+      "youtubeVideoTitle": "Leonardo AI - Tutorial for Beginners in 12 MINS!  [ FULL GUIDE 2025 ]",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=xbUE56kmVl0"
     },
     {
       "name": "Lindy",
@@ -4602,7 +4926,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 52,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "-9mX4e5zqHQ",
+      "youtubeVideoTitle": "Lindy AI review | Best agentic AI platform there is?",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=-9mX4e5zqHQ"
     },
     {
       "name": "LOVO AI",
@@ -4643,7 +4970,10 @@ window.IHWAI = {
         "tts"
       ],
       "addedAt": "2026-04-02",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "NOvTdyQoLeI",
+      "youtubeVideoTitle": "LOVO AI Voice Generator Tutorial",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=NOvTdyQoLeI"
     },
     {
       "name": "Luma AI",
@@ -4686,7 +5016,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 54,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "CenxCa29Yh8",
+      "youtubeVideoTitle": "Getting Started With Dream Machine by Luma AI",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=CenxCa29Yh8"
     },
     {
       "name": "Luma Dream Machine",
@@ -4727,7 +5060,10 @@ window.IHWAI = {
         "luma dream machine"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "CenxCa29Yh8",
+      "youtubeVideoTitle": "Getting Started With Dream Machine by Luma AI",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=CenxCa29Yh8"
     },
     {
       "name": "Luminance",
@@ -4768,7 +5104,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 34,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "2D8wtLRGKYo",
+      "youtubeVideoTitle": "Luminance and illuminance",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=2D8wtLRGKYo"
     },
     {
       "name": "MagicSchool AI",
@@ -4811,7 +5150,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "bNem0FFRIz8",
+      "youtubeVideoTitle": "2025 MagicSchool AI Overview",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=bNem0FFRIz8"
     },
     {
       "name": "Manus",
@@ -4854,7 +5196,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 56,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "K27diMbCsuw",
+      "youtubeVideoTitle": "Introducing Manus: The General AI Agent",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=K27diMbCsuw"
     },
     {
       "name": "Manychat AI",
@@ -4895,7 +5240,10 @@ window.IHWAI = {
         "support"
       ],
       "addedAt": "2026-04-02",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "Y08dMvitfGc",
+      "youtubeVideoTitle": "NEW Manychat AI Features Just Released (Full Walkthrough)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=Y08dMvitfGc"
     },
     {
       "name": "MeetGeek",
@@ -4937,7 +5285,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "YYjVb9aKBWc",
+      "youtubeVideoTitle": "MeetGeek Quick Overview",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=YYjVb9aKBWc"
     },
     {
       "name": "Mem",
@@ -4980,7 +5331,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "KsmGBwvK51A",
+      "youtubeVideoTitle": "Introducing Mem 2.0 – The World's First AI Thought Partner",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=KsmGBwvK51A"
     },
     {
       "name": "Mentimeter AI",
@@ -5021,7 +5375,10 @@ window.IHWAI = {
         "mentimeter ai"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "Ckzd5DxHzL8",
+      "youtubeVideoTitle": "305. AI features on Mentimeter",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=Ckzd5DxHzL8"
     },
     {
       "name": "Miro AI",
@@ -5064,7 +5421,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 51,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "4C0cJ2BUYJI",
+      "youtubeVideoTitle": "What is Miro? 🚀 Discover the AI-Powered Innovation Workspace!",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=4C0cJ2BUYJI"
     },
     {
       "name": "Motion",
@@ -5106,7 +5466,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "ZM8ECpBuQYE",
+      "youtubeVideoTitle": "Motion in a Straight Line: Crash Course Physics #1",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=ZM8ECpBuQYE"
     },
     {
       "name": "Moveworks",
@@ -5147,7 +5510,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 41,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "PLGXg6PcB14",
+      "youtubeVideoTitle": "Moveworks Platform Introduction",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=PLGXg6PcB14"
     },
     {
       "name": "Mubert",
@@ -5189,7 +5555,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 35,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "-Y10SIPOviA",
+      "youtubeVideoTitle": "How To Generate Music With AI QUICKLY Using Mubert AI",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=-Y10SIPOviA"
     },
     {
       "name": "Murf",
@@ -5231,7 +5600,10 @@ window.IHWAI = {
         "audio"
       ],
       "addedAt": "2026-03-26",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "KvFCpw7lb1U",
+      "youtubeVideoTitle": "The Murf Trailer: Product Overview",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=KvFCpw7lb1U"
     },
     {
       "name": "n8n",
@@ -5273,7 +5645,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 60,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "_Wf0NikMyAA",
+      "youtubeVideoTitle": "n8n Explained In 2 Minutes",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=_Wf0NikMyAA"
     },
     {
       "name": "Nabla",
@@ -5314,7 +5689,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 37,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "mfHg_fHllEg",
+      "youtubeVideoTitle": "Nabla-symbol",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=mfHg_fHllEg"
     },
     {
       "name": "Napkin",
@@ -5357,7 +5735,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 47,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "XEnrQqOHx3I",
+      "youtubeVideoTitle": "The Back of a Napkin | Dan Roam | TEDxHarkerSchool",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=XEnrQqOHx3I"
     },
     {
       "name": "Not Diamond",
@@ -5400,7 +5781,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 44,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "khTnecn4orA",
+      "youtubeVideoTitle": "King Diamond: I'm not a stranger (lyrics)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=khTnecn4orA"
     },
     {
       "name": "NotebookLM",
@@ -5442,7 +5826,10 @@ window.IHWAI = {
         "google"
       ],
       "addedAt": "2026-04-02",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "6dHmu1GALmA",
+      "youtubeVideoTitle": "NotebookLM demo",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=6dHmu1GALmA"
     },
     {
       "name": "Notta",
@@ -5483,7 +5870,10 @@ window.IHWAI = {
         "summaries"
       ],
       "addedAt": "2026-04-02",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "hsloy1BK4Og",
+      "youtubeVideoTitle": "Notta Memo: The Ultimate AI Voice Recorder!",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=hsloy1BK4Og"
     },
     {
       "name": "Nyota",
@@ -5525,7 +5915,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "pSDzcDRP_as",
+      "youtubeVideoTitle": "Nyota — Episode 3: Bangs",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=pSDzcDRP_as"
     },
     {
       "name": "Observe.AI",
@@ -5568,7 +5961,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "YfRkj9kmQf0",
+      "youtubeVideoTitle": "Ex-Amazon AI Leader: In 1 Year, the Gap Between AI Users and Everyone Else Will Be Irreversible",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=YfRkj9kmQf0"
     },
     {
       "name": "Opus Clip",
@@ -5610,7 +6006,10 @@ window.IHWAI = {
         "opus clip"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "tEXaoozFRes",
+      "youtubeVideoTitle": "Opus Clip AI - 5 New Videos In 7 Minutes! 🤯",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=tEXaoozFRes"
     },
     {
       "name": "Otter",
@@ -5652,7 +6051,10 @@ window.IHWAI = {
         "calls"
       ],
       "addedAt": "2026-03-26",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "SyqipCxv0EY",
+      "youtubeVideoTitle": "How To Use Otter AI To Transcribe Audio - Features and Overview",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=SyqipCxv0EY"
     },
     {
       "name": "Phind",
@@ -5694,7 +6096,10 @@ window.IHWAI = {
         "phind"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "Hc0aqOEU2w8",
+      "youtubeVideoTitle": "Bluey Phone Review",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=Hc0aqOEU2w8"
     },
     {
       "name": "PhotoRoom",
@@ -5737,7 +6142,10 @@ window.IHWAI = {
         "photoroom"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "DHEbcS4pudo",
+      "youtubeVideoTitle": "How to use Photoroom?",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=DHEbcS4pudo"
     },
     {
       "name": "Pictory",
@@ -5779,7 +6187,10 @@ window.IHWAI = {
         "pictory"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "qAyOqy10vaU",
+      "youtubeVideoTitle": "Pictory 101: Learning the Basics of Pictory",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=qAyOqy10vaU"
     },
     {
       "name": "Pika",
@@ -5821,7 +6232,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 55,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "Q2ua2luJW00",
+      "youtubeVideoTitle": "Pika: The Tiny Mountain Bandit | Natural Born Rebels | BBC Earth",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=Q2ua2luJW00"
     },
     {
       "name": "Pitch",
@@ -5863,7 +6277,10 @@ window.IHWAI = {
         "pitch"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "YkOJQmaFGNw",
+      "youtubeVideoTitle": "Understanding Musical Pitch — Music Theory Crash Course",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=YkOJQmaFGNw"
     },
     {
       "name": "Playground AI",
@@ -5905,7 +6322,10 @@ window.IHWAI = {
         "playground ai"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "vg_v3RaqsA4",
+      "youtubeVideoTitle": "AI Playground 3.0 Image Gen Walk Thru",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=vg_v3RaqsA4"
     },
     {
       "name": "PlayHT",
@@ -5947,7 +6367,10 @@ window.IHWAI = {
         "playht"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "M_lu4zgtgac",
+      "youtubeVideoTitle": "Play ht AI Review – Still Good?",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=M_lu4zgtgac"
     },
     {
       "name": "Poe",
@@ -5990,7 +6413,10 @@ window.IHWAI = {
         "poe"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "Ts5KH6MgZSE",
+      "youtubeVideoTitle": "What is Quora PoE?",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=Ts5KH6MgZSE"
     },
     {
       "name": "Qodo",
@@ -6032,7 +6458,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "Oy2AewTmj0w",
+      "youtubeVideoTitle": "Qodo Ai Review - Is It Worth It | Best AI Agents For Code, Reviews 2025",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=Oy2AewTmj0w"
     },
     {
       "name": "QuillBot",
@@ -6073,7 +6502,10 @@ window.IHWAI = {
         "quillbot"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "pEDy9-FqsaA",
+      "youtubeVideoTitle": "How to use QuillBot AI in 2026 | Everything you need to know!",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=pEDy9-FqsaA"
     },
     {
       "name": "Read AI",
@@ -6114,7 +6546,10 @@ window.IHWAI = {
         "read ai"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "KQDNamRIYzo",
+      "youtubeVideoTitle": "How To Use Read AI In AI Teams 2025",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=KQDNamRIYzo"
     },
     {
       "name": "Readwise Reader",
@@ -6157,7 +6592,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "eJBtvfbcic0",
+      "youtubeVideoTitle": "Getting Started with Reader",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=eJBtvfbcic0"
     },
     {
       "name": "Reclaim",
@@ -6199,7 +6637,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "QlXtqDh5KYQ",
+      "youtubeVideoTitle": "Reclaim.ai: The AI Time Management App I Wish I Had 10 Years Ago",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=QlXtqDh5KYQ"
     },
     {
       "name": "Recraft",
@@ -6241,7 +6682,10 @@ window.IHWAI = {
         "recraft"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "ns30Qj4WTwk",
+      "youtubeVideoTitle": "Introducing Recraft V4",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=ns30Qj4WTwk"
     },
     {
       "name": "Regie.ai",
@@ -6284,7 +6728,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "1fez4RG8bxc",
+      "youtubeVideoTitle": "Regie.ai Agent: Step-by-Step Tutorial for Beginners (2024)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=1fez4RG8bxc"
     },
     {
       "name": "Relay.app",
@@ -6327,7 +6774,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 43,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "GFCKSkrHiZ4",
+      "youtubeVideoTitle": "Build your first AI agent with Relay.app",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=GFCKSkrHiZ4"
     },
     {
       "name": "Relevance AI",
@@ -6370,7 +6820,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 52,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "0C4JaEiuzkc",
+      "youtubeVideoTitle": "Building AI Agents with Relevance AI",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=0C4JaEiuzkc"
     },
     {
       "name": "Replit Agent",
@@ -6414,7 +6867,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "nr6qrQTv7QI",
+      "youtubeVideoTitle": "Now Available: Replit Agent 3",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=nr6qrQTv7QI"
     },
     {
       "name": "Replit AI",
@@ -6456,7 +6912,10 @@ window.IHWAI = {
         "developer tools"
       ],
       "addedAt": "2026-04-02",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "gVPsrXy2Hg8",
+      "youtubeVideoTitle": "Replit in 60 Seconds: everything you need to know",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=gVPsrXy2Hg8"
     },
     {
       "name": "Retell AI",
@@ -6499,7 +6958,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "D904X4VXXDA",
+      "youtubeVideoTitle": "Retell AI Basics: Everything You Need to Start Building Voice Agents",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=D904X4VXXDA"
     },
     {
       "name": "Riverside",
@@ -6541,7 +7003,10 @@ window.IHWAI = {
         "captions"
       ],
       "addedAt": "2026-03-27",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "uwL19-FD8uo",
+      "youtubeVideoTitle": "Riverside Platform Overview: How to Record, Edit, and Publish Videos & Podcasts [8 Minute Tutorial]",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=uwL19-FD8uo"
     },
     {
       "name": "Robin AI",
@@ -6583,7 +7048,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 33,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "z0_J-TA4048",
+      "youtubeVideoTitle": "Robin – AI OSINT Agent  for Deep Web Intelligence",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=z0_J-TA4048"
     },
     {
       "name": "Rows AI",
@@ -6626,7 +7094,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 39,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "awS8UC7cvEQ",
+      "youtubeVideoTitle": "Rows AI Analyst v5",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=awS8UC7cvEQ"
     },
     {
       "name": "Rytr",
@@ -6667,7 +7138,10 @@ window.IHWAI = {
         "rytr"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "bqQi_wDRz_w",
+      "youtubeVideoTitle": "Rytr AI Honest Review (2025) – Is It Worth It for Writers & Creators?",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=bqQi_wDRz_w"
     },
     {
       "name": "Sana",
@@ -6710,7 +7184,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "pICv0qQIbeY",
+      "youtubeVideoTitle": "Nathy Peluso - SANA SANA | A COLORS SHOW",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=pICv0qQIbeY"
     },
     {
       "name": "Saner.AI",
@@ -6753,7 +7230,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 34,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "4fQuzkL0JWg",
+      "youtubeVideoTitle": "This AI Manages Your Life (Saner AI Review & Tutorial)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=4fQuzkL0JWg"
     },
     {
       "name": "Scholarcy",
@@ -6794,7 +7274,10 @@ window.IHWAI = {
         "scholarcy"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "cQ9dOpirAQI",
+      "youtubeVideoTitle": "Scholarcy converts articles and research papers into interactive summary flashcards.",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=cQ9dOpirAQI"
     },
     {
       "name": "SciSpace",
@@ -6836,7 +7319,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "m6XAuewsjcM",
+      "youtubeVideoTitle": "How to Use SciSpace Literature Review Tool | Step-by-Step Tutorial",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=m6XAuewsjcM"
     },
     {
       "name": "Scite",
@@ -6877,7 +7363,10 @@ window.IHWAI = {
         "scite"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "7W6OecMhmjw",
+      "youtubeVideoTitle": "Meet Scite.ai - AI built for scholarly research",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=7W6OecMhmjw"
     },
     {
       "name": "Scribe",
@@ -6918,7 +7407,10 @@ window.IHWAI = {
         "scribe"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "9f2EkvJ_p8Y",
+      "youtubeVideoTitle": "What Is Scribe? Full Feature Walkthrough of the Workflow AI Platform",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=9f2EkvJ_p8Y"
     },
     {
       "name": "Shortwave",
@@ -6960,7 +7452,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 45,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "8-bYi3NJRa8",
+      "youtubeVideoTitle": "An Introduction to Shortwave Radio",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=8-bYi3NJRa8"
     },
     {
       "name": "Sierra",
@@ -7001,7 +7496,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "AhDQmcCLkWw",
+      "youtubeVideoTitle": "FIRST LOOK! 2026 GMC Sierra SLT Review!",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=AhDQmcCLkWw"
     },
     {
       "name": "Sonix",
@@ -7043,7 +7541,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "Rc0y5b3o0qo",
+      "youtubeVideoTitle": "Supernova 2024 TOP 8 - Acola (Steve) Vs. Sonix (Sonic) Smash Ultimate Tournament",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=Rc0y5b3o0qo"
     },
     {
       "name": "Sourcegraph Cody",
@@ -7087,7 +7588,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "5Z3TBxUH0lo",
+      "youtubeVideoTitle": "Cody: the AI assistant that actually knows your codebase",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=5Z3TBxUH0lo"
     },
     {
       "name": "Speechify",
@@ -7129,7 +7633,10 @@ window.IHWAI = {
         "speechify"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "A_0DMgvW7bg",
+      "youtubeVideoTitle": "How to use Speechify - Tutorial",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=A_0DMgvW7bg"
     },
     {
       "name": "Speechmatics",
@@ -7171,7 +7678,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "9-Pq3An_Cwo",
+      "youtubeVideoTitle": "How to Use Real-Time Speaker Diarization With Speechmatics - 2026 (Step-by-Step Tutorial)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=9-Pq3An_Cwo"
     },
     {
       "name": "Spellbook",
@@ -7212,7 +7722,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 33,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "J7Zerey-7rU",
+      "youtubeVideoTitle": "Spellbook Reviews: Contract Redlining with AI",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=J7Zerey-7rU"
     },
     {
       "name": "Sudowrite",
@@ -7251,7 +7764,10 @@ window.IHWAI = {
         "sudowrite"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "biEE_AEJYPk",
+      "youtubeVideoTitle": "Introduction to AI Writing with Sudowrite: A One Hour Overview",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=biEE_AEJYPk"
     },
     {
       "name": "Suki",
@@ -7292,7 +7808,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 38,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "N4o6OEVqVR8",
+      "youtubeVideoTitle": "Sukihana - Suki Suki",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=N4o6OEVqVR8"
     },
     {
       "name": "Suno",
@@ -7333,7 +7852,10 @@ window.IHWAI = {
         "marketing audio"
       ],
       "addedAt": "2026-04-02",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "72R1NjNaUnE",
+      "youtubeVideoTitle": "Suno Ai Tutorial 2026 (For Complete Beginners)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=72R1NjNaUnE"
     },
     {
       "name": "Supernormal",
@@ -7375,7 +7897,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "xPv-Fx8-mtE",
+      "youtubeVideoTitle": "I Uncovered This Dev’s Secret. Now He Wants to Sue Me - The Truth About Supernormal",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=xPv-Fx8-mtE"
     },
     {
       "name": "Surfer",
@@ -7417,7 +7942,10 @@ window.IHWAI = {
         "briefs"
       ],
       "addedAt": "2026-03-29",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "EFNM-Gsl8W8",
+      "youtubeVideoTitle": "Surfing for Dummies. Just the basics",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=EFNM-Gsl8W8"
     },
     {
       "name": "Synthesia",
@@ -7459,7 +7987,10 @@ window.IHWAI = {
         "multilingual"
       ],
       "addedAt": "2026-03-26",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "qekrkHtgFv0",
+      "youtubeVideoTitle": "AI Video in 5 Minutes with Synthesia",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=qekrkHtgFv0"
     },
     {
       "name": "Synthflow",
@@ -7501,7 +8032,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "q7OvyskbOMg",
+      "youtubeVideoTitle": "Agent Configuration & Flow Designer Explained | Synthflow Agents 101 (Part 2)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=q7OvyskbOMg"
     },
     {
       "name": "Tabnine",
@@ -7544,7 +8078,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "oL9K_w1nSJU",
+      "youtubeVideoTitle": "A quick overview of the Tabnine Agentic Platform",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=oL9K_w1nSJU"
     },
     {
       "name": "Tactiq",
@@ -7586,7 +8123,10 @@ window.IHWAI = {
         "tactiq"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "CZkJ-c1pJ3M",
+      "youtubeVideoTitle": "Introducing Tactiq AI Workflows for Meeting Process Automation",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=CZkJ-c1pJ3M"
     },
     {
       "name": "Tana",
@@ -7629,7 +8169,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 44,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "XM3sxkwU1Rg",
+      "youtubeVideoTitle": "Tana Tutorial in 10 Minutes",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=XM3sxkwU1Rg"
     },
     {
       "name": "Taskade",
@@ -7672,7 +8215,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "baSXyuaUesI",
+      "youtubeVideoTitle": "Taskade AI Review: The Tool That Organizes Your Life",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=baSXyuaUesI"
     },
     {
       "name": "Tavily",
@@ -7714,7 +8260,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 48,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "IGVXDWMH6DM",
+      "youtubeVideoTitle": "Meet Tavily: Powering AI That Gives You Answers You Can Trust",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=IGVXDWMH6DM"
     },
     {
       "name": "Tavus",
@@ -7756,7 +8305,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 46,
-      "trending": true
+      "trending": true,
+      "youtubeVideoId": "6yPs2nDpYZo",
+      "youtubeVideoTitle": "Tavus: The AI Human Platform",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=6yPs2nDpYZo"
     },
     {
       "name": "tl;dv",
@@ -7798,7 +8350,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "afP2oun4JoI",
+      "youtubeVideoTitle": "MeetGeek vs tl;dv: Which is the Best AI Notetaker?",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=afP2oun4JoI"
     },
     {
       "name": "Tome",
@@ -7840,7 +8395,10 @@ window.IHWAI = {
         "tome"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "sh1MemfmpjA",
+      "youtubeVideoTitle": "Tome AI Presentation App - Overview & Review",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=sh1MemfmpjA"
     },
     {
       "name": "Topaz Video AI",
@@ -7883,7 +8441,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 41,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "m7uCZoDKn_I",
+      "youtubeVideoTitle": "Topaz Labs Video AI Review: More than a refresh!",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=m7uCZoDKn_I"
     },
     {
       "name": "Trint",
@@ -7925,7 +8486,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "s2EhNAyfwn8",
+      "youtubeVideoTitle": "The story of Trint and how it helps deliver powerful content",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=s2EhNAyfwn8"
     },
     {
       "name": "Udio",
@@ -7965,7 +8529,10 @@ window.IHWAI = {
         "creator"
       ],
       "addedAt": "2026-04-02",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "mjv7O0KS1ug",
+      "youtubeVideoTitle": "AUDIO BASICS (Part 1): How Sound Works",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=mjv7O0KS1ug"
     },
     {
       "name": "Uizard",
@@ -8007,7 +8574,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 44,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "sgLs8CJ8W0Q",
+      "youtubeVideoTitle": "A Beginner's Guide to Uizard (Full Walkthrough)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=sgLs8CJ8W0Q"
     },
     {
       "name": "v0",
@@ -8048,7 +8618,10 @@ window.IHWAI = {
         "developer tools"
       ],
       "addedAt": "2026-04-02",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "41SR07p243Q",
+      "youtubeVideoTitle": "How To Use v0 by Vercel For Beginners",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=41SR07p243Q"
     },
     {
       "name": "Vapi",
@@ -8090,7 +8663,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "cuQI3UH2lDE",
+      "youtubeVideoTitle": "Deep dive into Voice AI with Vapi (Full Tutorial)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=cuQI3UH2lDE"
     },
     {
       "name": "Visily",
@@ -8132,7 +8708,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 39,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "8QgU58e7XVQ",
+      "youtubeVideoTitle": "Visily AI Review (2026): The Easiest App Design Tool Ever?",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=8QgU58e7XVQ"
     },
     {
       "name": "Visual Electric",
@@ -8176,7 +8755,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 36,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "GMik_ezLy5U",
+      "youtubeVideoTitle": "Getting started with Visual Electric",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=GMik_ezLy5U"
     },
     {
       "name": "WellSaid Labs",
@@ -8218,7 +8800,10 @@ window.IHWAI = {
         "wellsaid labs"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "2fXEEYDnCO0",
+      "youtubeVideoTitle": "An Instructional Designer's overview of Wellsaid Labs",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=2fXEEYDnCO0"
     },
     {
       "name": "Wondercraft",
@@ -8260,7 +8845,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 40,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "sgyPf07D3wg",
+      "youtubeVideoTitle": "Create AI Explainer Videos in Minutes with Wondercraft",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=sgyPf07D3wg"
     },
     {
       "name": "Wordtune",
@@ -8301,7 +8889,10 @@ window.IHWAI = {
         "wordtune"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "8SAXz25GBwo",
+      "youtubeVideoTitle": "Wordtune Review - 🔥 Wordtune Honest Review and Demo 🔥 AI Content Rewriting Tool 🔥",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=8SAXz25GBwo"
     },
     {
       "name": "Writer",
@@ -8343,7 +8934,10 @@ window.IHWAI = {
         "writer"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "4PmOhOXzBTo",
+      "youtubeVideoTitle": "7 Description Mistakes Every New Fantasy Writer Makes",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=4PmOhOXzBTo"
     },
     {
       "name": "Writesonic",
@@ -8385,7 +8979,10 @@ window.IHWAI = {
         "research"
       ],
       "addedAt": "2026-03-26",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "uvK2x6aQxPc",
+      "youtubeVideoTitle": "Writesonic Review (Is Writesonic Any Good?)",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=uvK2x6aQxPc"
     },
     {
       "name": "You.com",
@@ -8429,7 +9026,10 @@ window.IHWAI = {
       "addedAt": "2026-04-03",
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
-      "trending": false
+      "trending": false,
+      "youtubeVideoId": "aeR8Wnkt0DA",
+      "youtubeVideoTitle": "You.com Review (2026) - Is It WORTH IT?",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=aeR8Wnkt0DA"
     },
     {
       "name": "Zendesk AI",
@@ -8470,7 +9070,10 @@ window.IHWAI = {
         "zendesk ai"
       ],
       "addedAt": "2026-04-01",
-      "reviewMethod": "Manual editorial review"
+      "reviewMethod": "Manual editorial review",
+      "youtubeVideoId": "GvoRdGPleXk",
+      "youtubeVideoTitle": "Meet Zendesk AI Agents: The most autonomous AI for customer service",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=GvoRdGPleXk"
     }
   ],
   "comparisons": [

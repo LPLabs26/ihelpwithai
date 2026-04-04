@@ -1263,6 +1263,23 @@ img {
   color: #123f7b;
 }
 
+.video-embed {
+  margin-top: 14px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(91, 184, 255, 0.18);
+  background: rgba(8, 17, 28, 0.82);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+}
+
+.video-embed iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 260px;
+  border: 0;
+}
+
 .related-list {
   display: grid;
   gap: 10px;

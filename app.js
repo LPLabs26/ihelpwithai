@@ -1326,6 +1326,10 @@ function trendingAppNames() {
   return TRENDING_APP_NAMES;
 }
 
+function companyReviewPath(name) {
+  return `./companies/${slugify(name)}.html`;
+}
+
 function landingCatalogItems() {
   const pinnedTopNamesList = pinnedTopNames();
 
@@ -1336,6 +1340,7 @@ function landingCatalogItems() {
     category: tool.category,
     goals: tool.goals || [],
     officialUrl: tool.officialUrl,
+    detailUrl: `./tools/${tool.slug}.html`,
     logoUrl: companyLogoUrl(tool.officialUrl),
     summary: tool.summary || tool.whatFor || tool.useCase || '',
     meta: tool.company || tool.category,
@@ -1353,6 +1358,7 @@ function landingCatalogItems() {
       category: 'Company',
       goals: uniqueStrings(company.tools.flatMap(tool => tool.goals || [])),
       officialUrl: company.officialUrl,
+      detailUrl: companyReviewPath(company.name),
       logoUrl: companyLogoUrl(company.officialUrl),
       summary: company.summary || `Known here for ${company.categories.slice(0, 2).join(' and ').toLowerCase()} workflows.`,
       meta: `${company.tools.length} app${company.tools.length === 1 ? '' : 's'}`,
@@ -1419,7 +1425,7 @@ function renderFeaturedLogoRow(items) {
     const showFire = item.isTrending || ['OpenAI', 'Anthropic'].includes(item.name);
 
     return `
-      <a class="featured-logo-card ${item.isTopApp ? 'is-top-app' : ''} ${showFire ? 'is-trending' : ''}" href="${escapeHtml(item.officialUrl || '#')}" target="_blank" rel="noopener noreferrer">
+      <a class="featured-logo-card ${item.isTopApp ? 'is-top-app' : ''} ${showFire ? 'is-trending' : ''}" href="${escapeHtml(item.detailUrl || item.officialUrl || '#')}">
         ${showFire ? '<span class=\"logo-badge trend\">🔥</span>' : ''}
         <div class="featured-logo-orb">${logo}</div>
         <div class="featured-logo-name">${escapeHtml(item.name)}</div>
@@ -1493,7 +1499,7 @@ function renderLandingLogoExplorer() {
       : `<span class="logo-fallback">${escapeHtml(initials(item.name))}</span>`;
 
     return `
-      <a class="logo-card ${item.isTopApp ? 'is-top-app' : ''} ${item.isTrending ? 'is-trending' : ''}" href="${escapeHtml(item.officialUrl || '#')}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(item.name)}">
+      <a class="logo-card ${item.isTopApp ? 'is-top-app' : ''} ${item.isTrending ? 'is-trending' : ''}" href="${escapeHtml(item.detailUrl || item.officialUrl || '#')}" aria-label="${escapeHtml(item.name)}">
         ${item.isTrending ? '<span class=\"logo-badge trend\">🔥</span>' : ''}
         <div class="logo-orb">${logo}</div>
         <div class="logo-name">${escapeHtml(item.name)}</div>
