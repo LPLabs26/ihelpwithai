@@ -251,7 +251,7 @@ function renderSiteFooter(basePath = '.') {
       </div>
       <div>
         <div>Built to help people find the right AI tools faster.</div>
-        <a class="footer-email" href="mailto:info@ihelpwithai.com">info@ihelpwithai.com</a>
+        <div class="footer-links"><a class="small-link" href="${basePath}/submit-app.html">Submit an app</a><a class="footer-email" href="mailto:info@ihelpwithai.com">info@ihelpwithai.com</a></div>
       </div>
     </div>
   </footer>`;
@@ -1480,6 +1480,7 @@ function buildSitemap(tools, comparisons) {
     '/shortlist.html',
     '/directory.html',
     '/get-help.html',
+    '/submit-app.html',
     '/companies.html',
     '/reviews.html',
     '/best-free-ai-tools.html',
@@ -1631,6 +1632,7 @@ for (const filename of [
   'shortlist.html',
   'directory.html',
   'get-help.html',
+  'submit-app.html',
   'companies.html',
   'reviews.html',
   'best-free-ai-tools.html',
@@ -1711,6 +1713,12 @@ await fs.mkdir(path.join(publicDir, 'get-help'), { recursive: true });
 await fs.writeFile(
   path.join(publicDir, 'get-help', 'index.html'),
   renderRedirectPage('../get-help.html', 'Continue to the get help page')
+);
+
+await fs.mkdir(path.join(publicDir, 'submit-app'), { recursive: true });
+await fs.writeFile(
+  path.join(publicDir, 'submit-app', 'index.html'),
+  renderRedirectPage('../submit-app.html', 'Continue to the submit app page')
 );
 
 await fs.mkdir(path.join(publicDir, 'reviews'), { recursive: true });
