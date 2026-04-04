@@ -390,16 +390,16 @@ function renderToolPage(tool, tools) {
           <div class="detail-section">
             <h2>Watch a quick overview</h2>
             <p>Here is one YouTube video to help you understand what ${escapeHtml(tool.name)} does before you click out.</p>
-            <div class="video-embed">
-              <iframe
-                src="https://www.youtube-nocookie.com/embed/${escapeHtml(tool.youtubeVideoId)}"
-                title="${escapeHtml(tool.youtubeVideoTitle || `${tool.name} YouTube video`)}"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-              ></iframe>
-            </div>
+            <a class="video-card" href="${escapeHtml(tool.youtubeVideoUrl || `https://www.youtube.com/watch?v=${tool.youtubeVideoId}`)}" target="_blank" rel="noopener noreferrer">
+              <div class="video-thumb-wrap">
+                <img class="video-thumb" src="https://i.ytimg.com/vi/${escapeHtml(tool.youtubeVideoId)}/hqdefault.jpg" alt="${escapeHtml(tool.youtubeVideoTitle || `${tool.name} YouTube thumbnail`)}" loading="lazy" decoding="async">
+                <span class="video-play">▶</span>
+              </div>
+              <div class="video-card-copy">
+                <strong>${escapeHtml(tool.youtubeVideoTitle || `Watch ${tool.name} on YouTube`)}</strong>
+                <span>Open on YouTube</span>
+              </div>
+            </a>
           </div>
         `
     : '';
