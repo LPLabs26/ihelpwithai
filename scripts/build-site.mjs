@@ -417,7 +417,7 @@ ${renderStartHereMenu('..')}
   </header>
 
   <main class="container">
-    <div class="breadcrumb"><a class="backlink" href="../index.html">← Back to directory</a></div>
+    <div class="breadcrumb"><a class="backlink" href="../directory.html">← Back to directory</a></div>
 
     <section class="detail-hero">
       <div class="detail-grid">
@@ -624,7 +624,7 @@ ${renderStartHereMenu('..')}
   </header>
 
   <main class="container">
-    <div class="breadcrumb"><a class="backlink" href="../index.html">← Back to directory</a></div>
+    <div class="breadcrumb"><a class="backlink" href="../directory.html">← Back to directory</a></div>
 
     <section class="detail-hero">
       <div class="detail-grid">
@@ -745,7 +745,7 @@ ${renderStartHereMenu('..')}
   </header>
 
   <main class="container">
-    <div class="breadcrumb"><a class="backlink" href="../index.html">← Back to directory</a></div>
+    <div class="breadcrumb"><a class="backlink" href="../directory.html">← Back to directory</a></div>
 
     <section class="detail-hero">
       <div class="detail-grid">
@@ -848,7 +848,7 @@ ${renderStartHereMenu('.')}
   </header>
 
   <main class="container">
-    <div class="breadcrumb"><a class="backlink" href="./index.html">← Back to directory</a></div>
+    <div class="breadcrumb"><a class="backlink" href="./directory.html">← Back to directory</a></div>
 
     <section class="detail-hero">
       <div class="detail-grid">
@@ -957,7 +957,7 @@ ${renderStartHereMenu('.')}
   </header>
 
   <main class="container">
-    <div class="breadcrumb"><a class="backlink" href="./index.html">← Back to directory</a></div>
+    <div class="breadcrumb"><a class="backlink" href="./directory.html">← Back to directory</a></div>
 
     <section class="detail-hero">
       <div class="detail-grid">
@@ -1372,7 +1372,7 @@ ${renderStartHereMenu('.')}
   </header>
 
   <main class="container">
-    <div class="breadcrumb"><a class="backlink" href="./index.html">← Back to directory</a></div>
+    <div class="breadcrumb"><a class="backlink" href="./directory.html">← Back to directory</a></div>
 
     <section class="detail-hero">
       <div class="detail-grid">
