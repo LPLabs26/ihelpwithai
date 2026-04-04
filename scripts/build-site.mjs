@@ -251,7 +251,7 @@ function renderSiteFooter(basePath = '.') {
       </div>
       <div>
         <div>Built to help people find the right AI tools faster.</div>
-        <div class="footer-links"><a class="small-link" href="${basePath}/submit-app.html">Submit an app</a><a class="footer-email" href="mailto:info@ihelpwithai.com">info@ihelpwithai.com</a></div>
+        <div class="footer-links"><a class="visit-counter" href="https://hits.sh/ihelpwithai.com/" target="_blank" rel="noopener noreferrer"><img src="https://hits.sh/ihelpwithai.com.svg?style=flat-square&label=visits&color=132742&labelColor=09111c" alt="Visit counter for ihelpwithai.com" loading="lazy" decoding="async"></a><a class="small-link" href="${basePath}/submit-app.html">Submit an app</a><a class="footer-email" href="mailto:info@ihelpwithai.com">info@ihelpwithai.com</a></div>
       </div>
     </div>
   </footer>`;
@@ -578,7 +578,7 @@ ${renderStartHereMenu('..')}
     </section>
   </main>
 ${renderSiteFooter('..')}
-  <script src="../tool.js?v=20260404a?v=20260404a"></script>
+  <script src="../tool.js?v=20260404a"></script>
 </body>
 </html>
 `;

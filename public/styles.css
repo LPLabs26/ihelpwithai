@@ -2161,3 +2161,15 @@ body::before {
 .stack-item p {
   margin: 6px 0 0;
 }
+
+
+.visit-counter {
+  display: inline-flex;
+  align-items: center;
+}
+
+.visit-counter img {
+  display: block;
+  height: 20px;
+  border-radius: 999px;
+}
