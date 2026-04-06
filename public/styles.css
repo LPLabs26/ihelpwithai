@@ -1694,6 +1694,8 @@ body::before {
 
 .hero h1 {
   max-width: 12ch;
+  margin-left: auto;
+  margin-right: auto;
   font-size: clamp(2.9rem, 5vw, 5.2rem);
 }
 

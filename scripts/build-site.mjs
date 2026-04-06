@@ -417,7 +417,7 @@ function renderToolPage(tool, tools) {
     pathname: `/tools/${tool.slug}.html`,
     type: 'article'
   })}
-  <link rel="stylesheet" href="../styles.css?v=20260406e">
+  <link rel="stylesheet" href="../styles.css?v=20260406f">
 </head>
 <body class="detail-body">
   <header class="topbar">
@@ -625,7 +625,7 @@ function renderGuidePage(goal, tools) {
     pathname: `/guides/${guideFilename(goal)}`,
     type: 'article'
   })}
-  <link rel="stylesheet" href="../styles.css?v=20260406e">
+  <link rel="stylesheet" href="../styles.css?v=20260406f">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
 <body class="detail-body">
@@ -746,7 +746,7 @@ function renderComparisonPage(comparison, tools) {
     pathname: `/comparisons/${comparison.slug}.html`,
     type: 'article'
   })}
-  <link rel="stylesheet" href="../styles.css?v=20260406e">
+  <link rel="stylesheet" href="../styles.css?v=20260406f">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
 <body class="detail-body">
@@ -850,7 +850,7 @@ function renderBestFreePage(tools) {
     pathname: '/best-free-ai-tools.html',
     type: 'article'
   })}
-  <link rel="stylesheet" href="./styles.css?v=20260406e">
+  <link rel="stylesheet" href="./styles.css?v=20260406f">
 </head>
 <body class="detail-body">
   <header class="topbar">
@@ -959,7 +959,7 @@ function renderEditorialMethodologyPage(tools, comparisons) {
     pathname: '/editorial-methodology.html',
     type: 'article'
   })}
-  <link rel="stylesheet" href="./styles.css?v=20260406e">
+  <link rel="stylesheet" href="./styles.css?v=20260406f">
 </head>
 <body class="detail-body">
   <header class="topbar">
@@ -1075,7 +1075,7 @@ function renderCompanyReviewPage(company) {
     pathname: `/companies/${companyReviewFilename(company.name)}`,
     type: 'article'
   })}
-  <link rel="stylesheet" href="../styles.css?v=20260406e">
+  <link rel="stylesheet" href="../styles.css?v=20260406f">
 </head>
 <body class="detail-body">
   <header class="topbar">
@@ -1227,7 +1227,7 @@ function renderCompaniesPage(tools) {
     pathname: '/companies.html',
     type: 'article'
   })}
-  <link rel="stylesheet" href="./styles.css?v=20260406e">
+  <link rel="stylesheet" href="./styles.css?v=20260406f">
 </head>
 <body class="detail-body">
   <header class="topbar">
@@ -1374,7 +1374,7 @@ function renderReviewsPage(tools) {
     pathname: '/reviews.html',
     type: 'article'
   })}
-  <link rel="stylesheet" href="./styles.css?v=20260406e">
+  <link rel="stylesheet" href="./styles.css?v=20260406f">
 </head>
 <body class="detail-body">
   <header class="topbar">
