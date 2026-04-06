@@ -1645,6 +1645,23 @@ body::before {
   border-color: rgba(91, 184, 255, 0.18);
 }
 
+.landing-page .small-link {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(91, 184, 255, 0.22);
+  color: #eef5ff;
+  box-shadow: none;
+}
+
+.landing-page .small-link.primary {
+  background: linear-gradient(135deg, rgba(91, 184, 255, 0.34), rgba(255, 179, 92, 0.24));
+  border-color: rgba(91, 184, 255, 0.4);
+  color: #ffffff;
+}
+
+.landing-page .small-link:hover {
+  color: #ffffff;
+}
+
 .landing-page .pill,
 .landing-page .chip,
 .landing-page .active-filter {
