@@ -1060,6 +1060,17 @@ img {
   flex-wrap: wrap;
 }
 
+.form-card .small-link {
+  background: rgba(12, 24, 39, 0.92);
+  border-color: rgba(91, 184, 255, 0.22);
+  color: #eef5ff;
+  box-shadow: none;
+}
+
+.form-card .small-link:hover {
+  color: #ffffff;
+}
+
 .prompt-actions .clear-button {
   visibility: visible;
 }
