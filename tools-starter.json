@@ -208,8 +208,8 @@
     "featured": true,
     "officialUrl": "https://clickup.com/ai",
     "affiliateUrl": "",
-    "affiliateProgramUrl": "",
-    "partnerStatus": "No public affiliate program confirmed",
+    "affiliateProgramUrl": "https://market.partnerstack.com/artificial-intelligence",
+    "partnerStatus": "PartnerStack marketplace program found \u2014 $25 signup in tier-1 countries, with lower signup payouts in other regions.",
     "summary": "A workspace AI layer that helps across docs, tasks, meeting notes, summaries, and finding answers inside your work system.",
     "whatFor": "Use ClickUp Brain when you want AI embedded directly in the place your team already manages work instead of using a separate tool for every step.",
     "who": "Best for teams and operators who already run projects, docs, and handoffs inside ClickUp or want one hub for them.",
@@ -229,7 +229,9 @@
     "reviewMethod": "Manual editorial review",
     "youtubeVideoId": "UxyBioSPvUQ",
     "youtubeVideoTitle": "How To Use ClickUp AI Brain (Easiest Way) (2026 Guide)",
-    "youtubeVideoUrl": "https://www.youtube.com/watch?v=UxyBioSPvUQ"
+    "youtubeVideoUrl": "https://www.youtube.com/watch?v=UxyBioSPvUQ",
+    "trending": true,
+    "popularityScore": 140
   },
   {
     "name": "Descript",
@@ -253,8 +255,8 @@
     "featured": true,
     "officialUrl": "https://www.descript.com/",
     "affiliateUrl": "",
-    "affiliateProgramUrl": "https://www.descript.com/affiliate",
-    "partnerStatus": "Public affiliate program available",
+    "affiliateProgramUrl": "https://market.partnerstack.com/artificial-intelligence",
+    "partnerStatus": "PartnerStack marketplace program found \u2014 $25 flat fee per new conversion.",
     "summary": "Best for editing spoken content because it lets you edit audio and video like a document.",
     "whatFor": "Use Descript to record, transcribe, cut filler words, add captions, and publish polished content quickly.",
     "who": "Best for podcasters, educators, teams, and founders who make talking-head or interview content.",
@@ -274,7 +276,9 @@
     "reviewMethod": "Manual editorial review",
     "youtubeVideoId": "G8jcK-qzwsg",
     "youtubeVideoTitle": "Descript AI Video Editor (8 Mind Blowing Features!)",
-    "youtubeVideoUrl": "https://www.youtube.com/watch?v=G8jcK-qzwsg"
+    "youtubeVideoUrl": "https://www.youtube.com/watch?v=G8jcK-qzwsg",
+    "trending": true,
+    "popularityScore": 140
   },
   {
     "name": "ElevenLabs",
@@ -298,8 +302,8 @@
     "featured": true,
     "officialUrl": "https://elevenlabs.io/",
     "affiliateUrl": "",
-    "affiliateProgramUrl": "https://elevenlabs.io/affiliates",
-    "partnerStatus": "Public affiliate program available",
+    "affiliateProgramUrl": "https://market.partnerstack.com/artificial-intelligence",
+    "partnerStatus": "PartnerStack marketplace program found \u2014 22% commission for the first 12 months of every new referral.",
     "summary": "One of the strongest voice tools for realistic narration, multilingual audio, and voice agents.",
     "whatFor": "Use ElevenLabs for text-to-speech, voice cloning, speech-to-text, and voice experiences across channels.",
     "who": "Best for creators, media teams, customer support, and builders adding spoken AI to products.",
@@ -317,7 +321,7 @@
     ],
     "addedAt": "2026-03-26",
     "reviewMethod": "Manual editorial review",
-    "popularityScore": 84,
+    "popularityScore": 150,
     "trending": true,
     "youtubeVideoId": "lgvWO4tOBqs",
     "youtubeVideoTitle": "What Is ElevenLabs? | ElevenLabs Explained For Dummies",
@@ -410,7 +414,7 @@
     "addedAt": "2026-03-26",
     "reviewMethod": "Manual editorial review",
     "youtubeVideoId": "hdWyP-YqwBk",
-    "youtubeVideoTitle": "Fireflies AI Review 2025 | Pros and Cons – Honest & Unbiased",
+    "youtubeVideoTitle": "Fireflies AI Review 2025 | Pros and Cons \u2013 Honest & Unbiased",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=hdWyP-YqwBk"
   },
   {
@@ -455,7 +459,7 @@
     "addedAt": "2026-03-29",
     "reviewMethod": "Manual editorial review",
     "youtubeVideoId": "RjQa-74eNVo",
-    "youtubeVideoTitle": "HeyGen’s Video Agent: The AI Tool That’s About to Replace Your Entire Editing Team",
+    "youtubeVideoTitle": "HeyGen\u2019s Video Agent: The AI Tool That\u2019s About to Replace Your Entire Editing Team",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=RjQa-74eNVo"
   },
   {
@@ -1307,7 +1311,7 @@
     "addedAt": "2026-04-01",
     "reviewMethod": "Manual editorial review",
     "youtubeVideoId": "x4IIEnZUtBo",
-    "youtubeVideoTitle": "Las 100 frases más usadas en inglés",
+    "youtubeVideoTitle": "Las 100 frases m\u00e1s usadas en ingl\u00e9s",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=x4IIEnZUtBo"
   },
   {
@@ -1329,11 +1333,11 @@
     ],
     "difficulty": "Easy",
     "pricing": "Free to try",
-    "featured": false,
+    "featured": true,
     "officialUrl": "https://gamma.app/",
     "affiliateUrl": "",
-    "affiliateProgramUrl": "",
-    "partnerStatus": "No public affiliate program found",
+    "affiliateProgramUrl": "https://market.partnerstack.com/artificial-intelligence",
+    "partnerStatus": "PartnerStack marketplace program found \u2014 30% commission for the customer\u2019s first year.",
     "summary": "A fast way to turn rough notes into polished decks, one-pagers, and visual explainers.",
     "whatFor": "Use Gamma when you need something more polished than a plain doc and faster than building slides from scratch.",
     "who": "Best for founders, marketers, and students who need to communicate clearly without spending hours designing.",
@@ -1353,7 +1357,9 @@
     "reviewMethod": "Manual editorial review",
     "youtubeVideoId": "xWLx3vPfe7U",
     "youtubeVideoTitle": "Gamma Exposure for Beginners",
-    "youtubeVideoUrl": "https://www.youtube.com/watch?v=xWLx3vPfe7U"
+    "youtubeVideoUrl": "https://www.youtube.com/watch?v=xWLx3vPfe7U",
+    "trending": true,
+    "popularityScore": 150
   },
   {
     "name": "Gemini",
@@ -1398,7 +1404,7 @@
     "popularityScore": 98,
     "trending": true,
     "youtubeVideoId": "WQ47Ued6Q4c",
-    "youtubeVideoTitle": "What Is Gemini? Google’s Most Advanced AI Model Explained",
+    "youtubeVideoTitle": "What Is Gemini? Google\u2019s Most Advanced AI Model Explained",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=WQ47Ued6Q4c"
   },
   {
@@ -1802,7 +1808,7 @@
     "addedAt": "2026-03-26",
     "reviewMethod": "Manual editorial review",
     "youtubeVideoId": "SqI3CvKV4j8",
-    "youtubeVideoTitle": "Jasper AI: An Honest Review & Beginner’s Guide (2024)",
+    "youtubeVideoTitle": "Jasper AI: An Honest Review & Beginner\u2019s Guide (2024)",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=SqI3CvKV4j8"
   },
   {
@@ -1847,7 +1853,7 @@
     "addedAt": "2026-04-01",
     "reviewMethod": "Manual editorial review",
     "youtubeVideoId": "Qd6o_9RtwHc",
-    "youtubeVideoTitle": "Kapwing's NEW AI Assistant — Explained",
+    "youtubeVideoTitle": "Kapwing's NEW AI Assistant \u2014 Explained",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=Qd6o_9RtwHc"
   },
   {
@@ -1981,7 +1987,7 @@
     "addedAt": "2026-04-01",
     "reviewMethod": "Manual editorial review",
     "youtubeVideoId": "cfrdSRdksCc",
-    "youtubeVideoTitle": "Top 7 Most Popular Varieties of Lavender (+ Lavender Basics)! 💜🌿💜 // Garden Answer",
+    "youtubeVideoTitle": "Top 7 Most Popular Varieties of Lavender (+ Lavender Basics)! \ud83d\udc9c\ud83c\udf3f\ud83d\udc9c // Garden Answer",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=cfrdSRdksCc"
   },
   {
@@ -2277,11 +2283,11 @@
     ],
     "difficulty": "Easy",
     "pricing": "Free to try",
-    "featured": false,
+    "featured": true,
     "officialUrl": "https://murf.ai/",
     "affiliateUrl": "",
-    "affiliateProgramUrl": "https://murf.ai/partner-with-us/affiliate",
-    "partnerStatus": "Public affiliate program available",
+    "affiliateProgramUrl": "https://market.partnerstack.com/artificial-intelligence",
+    "partnerStatus": "PartnerStack marketplace program found \u2014 20% commission on each sale.",
     "summary": "A business-friendly voiceover tool for training, demos, explainers, and polished narration.",
     "whatFor": "Use Murf when you need clean voiceovers for presentations, training videos, ads, or product explainers.",
     "who": "Best for educators, marketers, customer support teams, and small businesses making narrated content.",
@@ -2301,7 +2307,9 @@
     "reviewMethod": "Manual editorial review",
     "youtubeVideoId": "KvFCpw7lb1U",
     "youtubeVideoTitle": "The Murf Trailer: Product Overview",
-    "youtubeVideoUrl": "https://www.youtube.com/watch?v=KvFCpw7lb1U"
+    "youtubeVideoUrl": "https://www.youtube.com/watch?v=KvFCpw7lb1U",
+    "trending": true,
+    "popularityScore": 135
   },
   {
     "name": "Notion AI",
@@ -2392,7 +2400,7 @@
     "addedAt": "2026-04-01",
     "reviewMethod": "Manual editorial review",
     "youtubeVideoId": "tEXaoozFRes",
-    "youtubeVideoTitle": "Opus Clip AI - 5 New Videos In 7 Minutes! 🤯",
+    "youtubeVideoTitle": "Opus Clip AI - 5 New Videos In 7 Minutes! \ud83e\udd2f",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=tEXaoozFRes"
   },
   {
@@ -2618,7 +2626,7 @@
     "addedAt": "2026-04-01",
     "reviewMethod": "Manual editorial review",
     "youtubeVideoId": "YkOJQmaFGNw",
-    "youtubeVideoTitle": "Understanding Musical Pitch — Music Theory Crash Course",
+    "youtubeVideoTitle": "Understanding Musical Pitch \u2014\u00a0Music Theory Crash Course",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=YkOJQmaFGNw"
   },
   {
@@ -2708,7 +2716,7 @@
     "addedAt": "2026-04-01",
     "reviewMethod": "Manual editorial review",
     "youtubeVideoId": "M_lu4zgtgac",
-    "youtubeVideoTitle": "Play ht AI Review – Still Good?",
+    "youtubeVideoTitle": "Play ht AI Review \u2013 Still Good?",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=M_lu4zgtgac"
   },
   {
@@ -2775,11 +2783,11 @@
     ],
     "difficulty": "Easy",
     "pricing": "Free to try",
-    "featured": false,
+    "featured": true,
     "officialUrl": "https://quillbot.com/",
     "affiliateUrl": "",
-    "affiliateProgramUrl": "",
-    "partnerStatus": "No public affiliate program found",
+    "affiliateProgramUrl": "https://market.partnerstack.com/artificial-intelligence",
+    "partnerStatus": "PartnerStack marketplace program found \u2014 10% monthly, 15% semi-annual, and 20% annual plan commissions.",
     "summary": "A rewrite and paraphrasing assistant for tightening wording, changing tone, and simplifying drafts.",
     "whatFor": "Use QuillBot when your main goal is writing and you want a dedicated writing tool rather than a broad general assistant.",
     "who": "Best for student, writer, team, and teams with a repeatable workflow they want to speed up.",
@@ -2799,7 +2807,9 @@
     "reviewMethod": "Manual editorial review",
     "youtubeVideoId": "pEDy9-FqsaA",
     "youtubeVideoTitle": "How to use QuillBot AI in 2026 | Everything you need to know!",
-    "youtubeVideoUrl": "https://www.youtube.com/watch?v=pEDy9-FqsaA"
+    "youtubeVideoUrl": "https://www.youtube.com/watch?v=pEDy9-FqsaA",
+    "trending": true,
+    "popularityScore": 135
   },
   {
     "name": "Read AI",
@@ -3022,7 +3032,7 @@
     "addedAt": "2026-04-01",
     "reviewMethod": "Manual editorial review",
     "youtubeVideoId": "bqQi_wDRz_w",
-    "youtubeVideoTitle": "Rytr AI Honest Review (2025) – Is It Worth It for Writers & Creators?",
+    "youtubeVideoTitle": "Rytr AI Honest Review (2025) \u2013 Is It Worth It for Writers & Creators?",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=bqQi_wDRz_w"
   },
   {
@@ -3510,7 +3520,7 @@
     "addedAt": "2026-04-01",
     "reviewMethod": "Manual editorial review",
     "youtubeVideoId": "8SAXz25GBwo",
-    "youtubeVideoTitle": "Wordtune Review - 🔥 Wordtune Honest Review and Demo 🔥 AI Content Rewriting Tool 🔥",
+    "youtubeVideoTitle": "Wordtune Review - \ud83d\udd25 Wordtune Honest Review and Demo \ud83d\udd25 AI Content Rewriting Tool \ud83d\udd25",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=8SAXz25GBwo"
   },
   {
@@ -4193,11 +4203,11 @@
     ],
     "difficulty": "Easy",
     "pricing": "Free to try",
-    "featured": false,
+    "featured": true,
     "officialUrl": "https://manychat.com/",
     "affiliateUrl": "",
-    "affiliateProgramUrl": "",
-    "partnerStatus": "No public affiliate program found",
+    "affiliateProgramUrl": "https://market.partnerstack.com/artificial-intelligence",
+    "partnerStatus": "PartnerStack marketplace program found \u2014 30\u201350% recurring commissions.",
     "summary": "A messaging automation platform with AI support for lead capture, follow-up, and conversational marketing.",
     "whatFor": "Use Manychat AI when you want more automated messaging across channels for lead handling and simple support.",
     "who": "Best for marketers and businesses using chat-based funnels or social messaging heavily.",
@@ -4217,7 +4227,9 @@
     "reviewMethod": "Manual editorial review",
     "youtubeVideoId": "Y08dMvitfGc",
     "youtubeVideoTitle": "NEW Manychat AI Features Just Released (Full Walkthrough)",
-    "youtubeVideoUrl": "https://www.youtube.com/watch?v=Y08dMvitfGc"
+    "youtubeVideoUrl": "https://www.youtube.com/watch?v=Y08dMvitfGc",
+    "trending": true,
+    "popularityScore": 135
   },
   {
     "name": "Deepgram",
@@ -4304,7 +4316,7 @@
     "popularityScore": 0,
     "trending": false,
     "youtubeVideoId": "rul3fJY8YGs",
-    "youtubeVideoTitle": "I Tested HyperWrite AI for 7 Days… Here’s What Happened",
+    "youtubeVideoTitle": "I Tested HyperWrite AI for 7 Days\u2026 Here\u2019s What Happened",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=rul3fJY8YGs"
   },
   {
@@ -5126,7 +5138,7 @@
     "popularityScore": 0,
     "trending": false,
     "youtubeVideoId": "xPv-Fx8-mtE",
-    "youtubeVideoTitle": "I Uncovered This Dev’s Secret. Now He Wants to Sue Me - The Truth About Supernormal",
+    "youtubeVideoTitle": "I Uncovered This Dev\u2019s Secret. Now He Wants to Sue Me - The Truth About Supernormal",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=xPv-Fx8-mtE"
   },
   {
@@ -5192,11 +5204,11 @@
     ],
     "difficulty": "Easy",
     "pricing": "Free to try",
-    "featured": false,
+    "featured": true,
     "officialUrl": "https://reclaim.ai/",
     "affiliateUrl": "",
-    "affiliateProgramUrl": "",
-    "partnerStatus": "No public affiliate program found",
+    "affiliateProgramUrl": "https://market.partnerstack.com/artificial-intelligence",
+    "partnerStatus": "PartnerStack marketplace program found \u2014 40% recurring commission for 12 months plus signup bounties.",
     "summary": "A calendar automation app for protecting focus time, habits, and task time blocks automatically.",
     "whatFor": "Use Reclaim when you need better support for productivity and automation work.",
     "who": "Best for team, founder, solo business who want a stronger app for productivity workflows.",
@@ -5213,8 +5225,8 @@
     ],
     "addedAt": "2026-04-03",
     "reviewMethod": "Manual editorial review",
-    "popularityScore": 0,
-    "trending": false,
+    "popularityScore": 130,
+    "trending": true,
     "youtubeVideoId": "QlXtqDh5KYQ",
     "youtubeVideoTitle": "Reclaim.ai: The AI Time Management App I Wish I Had 10 Years Ago",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=QlXtqDh5KYQ"
@@ -5624,7 +5636,7 @@
     "popularityScore": 0,
     "trending": false,
     "youtubeVideoId": "KsmGBwvK51A",
-    "youtubeVideoTitle": "Introducing Mem 2.0 – The World's First AI Thought Partner",
+    "youtubeVideoTitle": "Introducing Mem 2.0 \u2013 The World's First AI Thought Partner",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=KsmGBwvK51A"
   },
   {
@@ -5851,7 +5863,7 @@
     "popularityScore": 0,
     "trending": false,
     "youtubeVideoId": "pSDzcDRP_as",
-    "youtubeVideoTitle": "Nyota — Episode 3: Bangs",
+    "youtubeVideoTitle": "Nyota \u2014 Episode 3: Bangs",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=pSDzcDRP_as"
   },
   {
@@ -6009,11 +6021,11 @@
     ],
     "difficulty": "Easy",
     "pricing": "Free to try",
-    "featured": false,
+    "featured": true,
     "officialUrl": "https://www.blackbox.ai/",
     "affiliateUrl": "",
-    "affiliateProgramUrl": "",
-    "partnerStatus": "No public affiliate program found",
+    "affiliateProgramUrl": "https://market.partnerstack.com/artificial-intelligence",
+    "partnerStatus": "PartnerStack marketplace program found \u2014 30% commission on a new customer\u2019s first subscription for up to 12 months.",
     "summary": "A coding app for code search, generation, and development help across common programming workflows.",
     "whatFor": "Use Blackbox AI when you need better support for productivity and research work.",
     "who": "Best for developer, student, founder who want a stronger app for productivity workflows.",
@@ -6032,8 +6044,8 @@
     ],
     "addedAt": "2026-04-03",
     "reviewMethod": "Manual editorial review",
-    "popularityScore": 0,
-    "trending": false,
+    "popularityScore": 145,
+    "trending": true,
     "youtubeVideoId": "Je-Hgd6L8Nk",
     "youtubeVideoTitle": "Explainable AI vs. Black Box AI (Opaque AI)",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=Je-Hgd6L8Nk"
@@ -6847,7 +6859,7 @@
     "popularityScore": 33,
     "trending": false,
     "youtubeVideoId": "z0_J-TA4048",
-    "youtubeVideoTitle": "Robin – AI OSINT Agent  for Deep Web Intelligence",
+    "youtubeVideoTitle": "Robin \u2013 AI OSINT Agent  for Deep Web Intelligence",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=z0_J-TA4048"
   },
   {
@@ -7973,7 +7985,7 @@
     "popularityScore": 85,
     "trending": true,
     "youtubeVideoId": "n1sfrc-RjyM",
-    "youtubeVideoTitle": "OpenClaw Full Tutorial for Beginners – How to Set Up and Use OpenClaw (ClawdBot / MoltBot)",
+    "youtubeVideoTitle": "OpenClaw Full Tutorial for Beginners \u2013 How to Set Up and Use OpenClaw (ClawdBot / MoltBot)",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=n1sfrc-RjyM"
   },
   {
@@ -8338,7 +8350,7 @@
     "popularityScore": 42,
     "trending": false,
     "youtubeVideoId": "nqwoKSSjToE",
-    "youtubeVideoTitle": "NEW AirOps AI Builder Is INSANE! 🤯",
+    "youtubeVideoTitle": "NEW AirOps AI Builder Is INSANE! \ud83e\udd2f",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=nqwoKSSjToE"
   },
   {
@@ -8931,7 +8943,7 @@
     "popularityScore": 51,
     "trending": false,
     "youtubeVideoId": "4C0cJ2BUYJI",
-    "youtubeVideoTitle": "What is Miro? 🚀 Discover the AI-Powered Innovation Workspace!",
+    "youtubeVideoTitle": "What is Miro? \ud83d\ude80 Discover the AI-Powered Innovation Workspace!",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=4C0cJ2BUYJI"
   },
   {
@@ -9072,5 +9084,269 @@
     "youtubeVideoId": "XM3sxkwU1Rg",
     "youtubeVideoTitle": "Tana Tutorial in 10 Minutes",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=XM3sxkwU1Rg"
+  },
+  {
+    "name": "AdCreative.ai",
+    "slug": "adcreative-ai",
+    "company": "AdCreative.ai",
+    "companySummary": "AdCreative.ai focuses on AI-generated ad creatives, product visuals, and marketing assets built to improve conversion performance.",
+    "category": "Marketing",
+    "goals": [
+      "Marketing",
+      "Design",
+      "Sales"
+    ],
+    "audience": [
+      "Marketer",
+      "Agency",
+      "Solo business",
+      "Team"
+    ],
+    "difficulty": "Easy",
+    "pricing": "Free to try",
+    "featured": true,
+    "officialUrl": "https://www.adcreative.ai/",
+    "affiliateUrl": "",
+    "affiliateProgramUrl": "https://market.partnerstack.com/artificial-intelligence",
+    "partnerStatus": "PartnerStack marketplace program found \u2014 30% commission on every transaction plus milestone rewards.",
+    "summary": "An AI ad creative app built to help marketers generate faster ad variations, product visuals, and campaign assets that are closer to launch-ready.",
+    "whatFor": "Use AdCreative.ai when you want faster ad concepts, social creatives, and promotional visuals without starting every campaign from scratch.",
+    "who": "Best for marketers, ecommerce teams, and agencies that need more creative output for paid acquisition and testing.",
+    "useCase": "Generate several ad directions for the same product, narrow the strongest concepts, and move the best ones into campaign testing faster.",
+    "why": "It is useful when the main job is producing more ad-ready creative without waiting on a full design cycle for every experiment.",
+    "watchOuts": "You still need human judgment on brand quality, claims, and the final creative direction before spending against new ads.",
+    "firstPrompt": "Create 5 paid-social ad concepts for this product, each with a different angle, visual style, and short headline.",
+    "reviewedAt": "April 6, 2026",
+    "tags": [
+      "marketing",
+      "ad creative",
+      "paid social",
+      "design",
+      "campaigns"
+    ],
+    "addedAt": "2026-04-06",
+    "reviewMethod": "Manual editorial review + PartnerStack marketplace check",
+    "popularityScore": 150,
+    "trending": true
+  },
+  {
+    "name": "Wati.io",
+    "slug": "wati-io",
+    "company": "Wati",
+    "companySummary": "Wati helps businesses run WhatsApp-based marketing, support, and sales workflows with more automation and AI assistance.",
+    "category": "Support",
+    "goals": [
+      "Support",
+      "Sales",
+      "Marketing"
+    ],
+    "audience": [
+      "Support team",
+      "Sales team",
+      "Marketer",
+      "Team"
+    ],
+    "difficulty": "Medium",
+    "pricing": "Paid",
+    "featured": true,
+    "officialUrl": "https://www.wati.io/",
+    "affiliateUrl": "",
+    "affiliateProgramUrl": "https://market.partnerstack.com/artificial-intelligence",
+    "partnerStatus": "PartnerStack marketplace program found \u2014 30% total MRR on subscriptions and add-ons.",
+    "summary": "A WhatsApp business automation app for running customer messaging, support, and sales conversations with more structure and AI help.",
+    "whatFor": "Use Wati.io when WhatsApp is already a key customer channel and you want better automation, routing, and follow-up around it.",
+    "who": "Best for sales and support teams that rely on WhatsApp for inbound questions, outbound updates, and faster customer response loops.",
+    "useCase": "Set up automated replies, handoff rules, and campaign follow-up so more WhatsApp conversations move toward support resolution or a sale.",
+    "why": "It is practical when the business already wins conversations on WhatsApp and now needs a stronger system around speed, coverage, and follow-up.",
+    "watchOuts": "If WhatsApp is not already a meaningful customer channel, this can feel heavier than starting with a broader email or chat workflow.",
+    "firstPrompt": "Map a WhatsApp support and follow-up flow for new leads, repeat buyers, and support questions with clear handoff points.",
+    "reviewedAt": "April 6, 2026",
+    "tags": [
+      "whatsapp",
+      "support",
+      "sales",
+      "marketing automation",
+      "customer messaging"
+    ],
+    "addedAt": "2026-04-06",
+    "reviewMethod": "Manual editorial review + PartnerStack marketplace check",
+    "popularityScore": 140,
+    "trending": true
+  },
+  {
+    "name": "Leadpages",
+    "slug": "leadpages",
+    "company": "Leadpages",
+    "companySummary": "Leadpages helps small businesses and marketers build landing pages, lead capture flows, and simpler conversion-focused web pages.",
+    "category": "Marketing",
+    "goals": [
+      "Marketing",
+      "Sales",
+      "Design"
+    ],
+    "audience": [
+      "Marketer",
+      "Solo business",
+      "Agency",
+      "Team"
+    ],
+    "difficulty": "Easy",
+    "pricing": "Free to try",
+    "featured": true,
+    "officialUrl": "https://www.leadpages.com",
+    "affiliateUrl": "",
+    "affiliateProgramUrl": "https://market.partnerstack.com/artificial-intelligence",
+    "partnerStatus": "PartnerStack marketplace program found \u2014 30% recurring commission for the first 12 months.",
+    "summary": "A landing-page and lead-capture app with AI-assisted page building for marketers who want to launch funnels and offers faster.",
+    "whatFor": "Use Leadpages when you need campaign pages, opt-in forms, and conversion-focused landing experiences without a heavy web stack.",
+    "who": "Best for marketers, creators, agencies, and small businesses that need faster page launches and clearer lead capture.",
+    "useCase": "Launch a simple landing page for a new offer, capture leads, and test a clearer message without waiting on a custom build.",
+    "why": "It helps when the bottleneck is getting campaign pages live quickly enough to test and improve an offer.",
+    "watchOuts": "If you need a deeply custom product site or a complex app experience, a dedicated site builder may fit better.",
+    "firstPrompt": "Draft a landing page structure for this offer with a stronger headline, social proof, CTA, and lead capture flow.",
+    "reviewedAt": "April 6, 2026",
+    "tags": [
+      "landing pages",
+      "marketing",
+      "lead capture",
+      "conversion",
+      "campaigns"
+    ],
+    "addedAt": "2026-04-06",
+    "reviewMethod": "Manual editorial review + PartnerStack marketplace check",
+    "popularityScore": 130,
+    "trending": true
+  },
+  {
+    "name": "Instantly",
+    "slug": "instantly",
+    "company": "Instantly",
+    "companySummary": "Instantly focuses on AI-assisted outbound email, warm-up, and sales pipeline work for teams trying to scale cold outreach.",
+    "category": "Sales",
+    "goals": [
+      "Sales",
+      "Marketing",
+      "Automation"
+    ],
+    "audience": [
+      "Sales team",
+      "Agency",
+      "Solo business",
+      "Team"
+    ],
+    "difficulty": "Medium",
+    "pricing": "Paid",
+    "featured": true,
+    "officialUrl": "https://instantly.ai",
+    "affiliateUrl": "",
+    "affiliateProgramUrl": "https://market.partnerstack.com/artificial-intelligence",
+    "partnerStatus": "PartnerStack marketplace program found \u2014 up to 40% lifetime software commissions plus high-ticket service commissions.",
+    "summary": "An AI sales outreach app for finding leads, warming inboxes, and scaling outbound email without as much manual list and sequence work.",
+    "whatFor": "Use Instantly when the main job is outbound prospecting and you want more help with deliverability, lead workflow, and follow-up at scale.",
+    "who": "Best for outbound sales teams, agencies, and founders who rely on cold email to start conversations and book pipeline.",
+    "useCase": "Build a new outbound campaign, warm the sending setup, and run a cleaner prospecting workflow that can scale beyond manual email sending.",
+    "why": "It is useful when outbound remains important and the team wants a tighter system around lead generation, sending, and reply management.",
+    "watchOuts": "It is strongest for email-led outbound, so it may be the wrong first pick if your growth engine is more inbound or product-led.",
+    "firstPrompt": "Create a cold outbound sequence for this ICP with 3 angles, warm-up guidance, and follow-up steps that do not sound generic.",
+    "reviewedAt": "April 6, 2026",
+    "tags": [
+      "sales",
+      "outbound",
+      "cold email",
+      "lead generation",
+      "automation"
+    ],
+    "addedAt": "2026-04-06",
+    "reviewMethod": "Manual editorial review + PartnerStack marketplace check",
+    "popularityScore": 145,
+    "trending": true
+  },
+  {
+    "name": "Castmagic",
+    "slug": "castmagic",
+    "company": "Castmagic",
+    "companySummary": "Castmagic turns recorded audio and video into reusable written content, summaries, and publishing assets with AI.",
+    "category": "Writing",
+    "goals": [
+      "Writing",
+      "Marketing",
+      "Productivity"
+    ],
+    "audience": [
+      "Creator",
+      "Marketer",
+      "Team",
+      "Solo business"
+    ],
+    "difficulty": "Easy",
+    "pricing": "Free to try",
+    "featured": true,
+    "officialUrl": "https://castmagic.io",
+    "affiliateUrl": "",
+    "affiliateProgramUrl": "https://market.partnerstack.com/artificial-intelligence",
+    "partnerStatus": "PartnerStack marketplace program found \u2014 40% recurring revenue share.",
+    "summary": "An AI content repurposing app that turns podcast episodes, meetings, interviews, and recordings into usable written content faster.",
+    "whatFor": "Use Castmagic when you want one recording to become summaries, clips, outlines, social copy, and other publishing assets with less manual rewriting.",
+    "who": "Best for creators, marketers, and teams that already record useful conversations but struggle to turn them into enough follow-on content.",
+    "useCase": "Take a podcast or webinar recording and spin out a summary, show notes, promo copy, and multiple follow-up content ideas in one pass.",
+    "why": "It is helpful when content extraction and repurposing are the bottleneck rather than generating ideas from a blank page.",
+    "watchOuts": "You still need editing judgment for tone, factual accuracy, and what content is actually worth publishing.",
+    "firstPrompt": "Turn this recording into a clean summary, 5 social posts, 3 newsletter angles, and a short article outline.",
+    "reviewedAt": "April 6, 2026",
+    "tags": [
+      "content repurposing",
+      "audio",
+      "writing",
+      "marketing",
+      "creator workflow"
+    ],
+    "addedAt": "2026-04-06",
+    "reviewMethod": "Manual editorial review + PartnerStack marketplace check",
+    "popularityScore": 135,
+    "trending": true
+  },
+  {
+    "name": "Laxis",
+    "slug": "laxis",
+    "company": "Laxis",
+    "companySummary": "Laxis builds AI meeting and revenue-assistant tools for notes, follow-up, and sales workflow help.",
+    "category": "Meetings",
+    "goals": [
+      "Meetings",
+      "Sales",
+      "Productivity"
+    ],
+    "audience": [
+      "Sales team",
+      "Founder",
+      "Team",
+      "Solo business"
+    ],
+    "difficulty": "Easy",
+    "pricing": "Free to try",
+    "featured": true,
+    "officialUrl": "https://www.laxis.com/",
+    "affiliateUrl": "",
+    "affiliateProgramUrl": "https://market.partnerstack.com/artificial-intelligence",
+    "partnerStatus": "PartnerStack marketplace program found \u2014 up to 35% commission.",
+    "summary": "An AI meeting and sales assistant app built to capture conversations, organize follow-up, and help revenue teams move faster after calls.",
+    "whatFor": "Use Laxis when you want help with meeting notes, sales follow-up, and turning conversations into next steps with less manual admin.",
+    "who": "Best for founders, sales teams, and client-facing teams that need cleaner call capture and more consistent follow-up execution.",
+    "useCase": "Record a customer call, pull out action items and deal notes, and generate the next-step follow-up without doing all the recap work manually.",
+    "why": "It is useful when valuable meeting detail is getting lost between calls, CRM updates, and follow-up work.",
+    "watchOuts": "If you already have a meeting tool deeply embedded in your stack, the incremental value depends on whether Laxis fits the rest of your workflow.",
+    "firstPrompt": "Summarize this sales call, surface objections, list action items, and draft a concise follow-up email with next steps.",
+    "reviewedAt": "April 6, 2026",
+    "tags": [
+      "meetings",
+      "sales",
+      "notes",
+      "follow-up",
+      "revenue workflow"
+    ],
+    "addedAt": "2026-04-06",
+    "reviewMethod": "Manual editorial review + PartnerStack marketplace check",
+    "popularityScore": 135,
+    "trending": true
   }
 ]
