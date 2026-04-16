@@ -18,7 +18,7 @@ const toolsJsonPath = path.join(rootDir, 'tools-starter.json');
 const comparisonsJsonPath = path.join(rootDir, 'comparisons.json');
 
 const SITE_URL = 'https://ihelpwithai.com';
-const STYLES_VERSION = '20260415a';
+const STYLES_VERSION = '20260415c';
 const GOAL_META = {
   Automation: {
     title: 'Best AI tools for automation',
