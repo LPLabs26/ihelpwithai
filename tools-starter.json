@@ -3475,6 +3475,11 @@
     ],
     "addedAt": "2026-04-01",
     "reviewMethod": "Manual editorial review",
+    "relatedToolSlugs": [
+      "elevenlabs",
+      "playht",
+      "lovo-ai"
+    ],
     "youtubeVideoId": "2fXEEYDnCO0",
     "youtubeVideoTitle": "An Instructional Designer's overview of Wellsaid Labs",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=2fXEEYDnCO0"
@@ -4452,6 +4457,11 @@
     "reviewMethod": "Manual editorial review",
     "popularityScore": 0,
     "trending": false,
+    "relatedToolSlugs": [
+      "dust",
+      "glean",
+      "coda-ai"
+    ],
     "youtubeVideoId": "T3nG79YCP1U",
     "youtubeVideoTitle": "Sana Overview | Sana",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=T3nG79YCP1U"

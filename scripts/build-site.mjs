@@ -354,6 +354,14 @@ function groupCompanies(tools) {
 }
 
 function getRelatedTools(tool, tools) {
+  if (Array.isArray(tool.relatedToolSlugs) && tool.relatedToolSlugs.length > 0) {
+    const toolBySlug = new Map(tools.map(candidate => [candidate.slug, candidate]));
+    return tool.relatedToolSlugs
+      .map(slug => toolBySlug.get(slug))
+      .filter(Boolean)
+      .slice(0, 3);
+  }
+
   return tools
     .filter(candidate => candidate.slug !== tool.slug)
     .map(candidate => {
