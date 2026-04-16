@@ -18,7 +18,9 @@ const toolsJsonPath = path.join(rootDir, 'tools-starter.json');
 const comparisonsJsonPath = path.join(rootDir, 'comparisons.json');
 
 const SITE_URL = 'https://ihelpwithai.com';
-const STYLES_VERSION = '20260415c';
+const STYLES_VERSION = '20260416a';
+const DATA_VERSION = '20260416a';
+const COMPARE_VERSION = '20260416a';
 const GOAL_META = {
   Automation: {
     title: 'Best AI tools for automation',
@@ -139,6 +141,17 @@ function getPrimaryUrl(tool) {
 
 function getPrimaryLabel(tool) {
   return tool.affiliateUrl ? 'Visit partner offer' : 'Visit official site';
+}
+
+function renderCompareButton(tool) {
+  return `<button class="clear-button compare-button" type="button" data-compare-tool="${escapeHtml(tool.slug)}">Add to compare</button>`;
+}
+
+function renderCompareScripts(basePath = '.') {
+  return `
+  <script src="${basePath}/data.js?v=${DATA_VERSION}"></script>
+  <script src="${basePath}/compare.js?v=${COMPARE_VERSION}"></script>
+`;
 }
 
 function companyHost(url = '') {
@@ -608,6 +621,7 @@ ${renderStartHereMenu('..')}
           <div class="card-links" style="margin-top:18px">
             <a class="small-link primary" href="${escapeHtml(primaryUrl)}" target="_blank" rel="${relFor(tool.affiliateUrl)}">${escapeHtml(primaryLabel)}</a>
             <a class="small-link" href="../directory.html">Compare more tools</a>
+            ${renderCompareButton(tool)}
           </div>
           ${partnerNote}
         </article>
@@ -640,6 +654,7 @@ ${renderStartHereMenu('..')}
     </section>
   </main>
 ${renderSiteFooter('..')}
+${renderCompareScripts('..')}
   <script src="../tool.js?v=20260404a"></script>
 </body>
 </html>
@@ -737,6 +752,7 @@ ${renderStartHereMenu('..')}
                   <div class="card-links" style="margin-top:14px">
                     <a class="small-link primary" href="../tools/${escapeHtml(tool.slug)}.html">Read the full review</a>
                     <a class="small-link" href="${escapeHtml(getPrimaryUrl(tool))}" target="_blank" rel="${relFor(tool.affiliateUrl)}">${escapeHtml(getPrimaryLabel(tool))}</a>
+                    ${renderCompareButton(tool)}
                   </div>
                 </article>
               `).join('')}
@@ -769,6 +785,7 @@ ${renderStartHereMenu('..')}
     </section>
   </main>
 ${renderSiteFooter()}
+${renderCompareScripts('..')}
 </body>
 </html>
 `;
@@ -859,6 +876,7 @@ ${renderStartHereMenu('..')}
                   <div class="card-links" style="margin-top:14px">
                     <a class="small-link primary" href="../tools/${escapeHtml(tool.slug)}.html">Read full review</a>
                     <a class="small-link" href="${escapeHtml(getPrimaryUrl(tool))}" target="_blank" rel="${relFor(tool.affiliateUrl)}">${escapeHtml(getPrimaryLabel(tool))}</a>
+                    ${renderCompareButton(tool)}
                   </div>
                 </article>
               `).join('')}
@@ -886,6 +904,7 @@ ${renderStartHereMenu('..')}
     </section>
   </main>
 ${renderSiteFooter()}
+${renderCompareScripts('..')}
 </body>
 </html>
 `;
@@ -964,6 +983,7 @@ ${renderStartHereMenu('.')}
                   <div class="card-links" style="margin-top:14px">
                     <a class="small-link primary" href="./tools/${escapeHtml(tool.slug)}.html">Read the full review</a>
                     <a class="small-link" href="${escapeHtml(getPrimaryUrl(tool))}" target="_blank" rel="${relFor(tool.affiliateUrl)}">${escapeHtml(getPrimaryLabel(tool))}</a>
+                    ${renderCompareButton(tool)}
                   </div>
                 </article>
               `).join('')}
@@ -996,6 +1016,7 @@ ${renderStartHereMenu('.')}
     </section>
   </main>
 ${renderSiteFooter()}
+${renderCompareScripts('.')}
 </body>
 </html>
 `;
@@ -1274,6 +1295,7 @@ ${renderStartHereMenu('..')}
                   <div class="card-links" style="margin-top:14px">
                     <a class="small-link primary" href="../tools/${escapeHtml(tool.slug)}.html">Read tool review</a>
                     <a class="small-link" href="../directory.html?company=${encodeURIComponent(company.name)}">Compare in directory</a>
+                    ${renderCompareButton(tool)}
                   </div>
                 </article>
               `).join('')}
@@ -1302,6 +1324,7 @@ ${renderStartHereMenu('..')}
     </section>
   </main>
 ${renderSiteFooter('..')}
+${renderCompareScripts('..')}
 </body>
 </html>
 `;
@@ -1584,6 +1607,7 @@ ${renderStartHereMenu('.')}
                   <div class="card-links" style="margin-top:14px">
                     <a class="small-link primary" href="./tools/${escapeHtml(tool.slug)}.html">Read product review</a>
                     <a class="small-link" href="./directory.html?company=${encodeURIComponent(tool.company)}">Open ${escapeHtml(tool.company)} in directory</a>
+                    ${renderCompareButton(tool)}
                   </div>
                 </article>
               `;}).join('')}
@@ -1615,6 +1639,7 @@ ${renderStartHereMenu('.')}
     </section>
   </main>
 ${renderSiteFooter()}
+${renderCompareScripts('.')}
 </body>
 </html>
 `;
@@ -1814,6 +1839,7 @@ for (const filename of [
   'index.html',
   'styles.css',
   'app.js',
+  'compare.js',
   'tool.js',
   'data.js',
   'CNAME',

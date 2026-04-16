@@ -120,6 +120,7 @@ const matchStatus = document.getElementById('match-status');
 const matchNextStep = document.getElementById('match-next-step');
 const matchOpenDirectoryButton = document.getElementById('match-open-directory');
 const matchGetHelpLink = document.getElementById('match-get-help');
+const matchCompareButton = document.getElementById('match-compare-results');
 const matchCopyBriefButton = document.getElementById('match-copy-brief');
 const matchResetButton = document.getElementById('match-reset');
 const goalPills = document.getElementById('goal-pills');
@@ -257,6 +258,10 @@ function cleanPreviewText(value = '') {
   const text = String(value || '').trim().replace(/\s+/g, ' ');
   if (!text) return '';
   return /[.!?]$/.test(text) ? text : `${text}.`;
+}
+
+function compareButtonMarkup(tool, className = 'clear-button compare-button') {
+  return `<button class="${className}" type="button" data-compare-tool="${escapeHtml(tool.slug)}">Add to compare</button>`;
 }
 
 function toolPreviewDescription(tool) {
@@ -944,6 +949,7 @@ function renderMatcher() {
         <div class="card-links">
           <a class="small-link primary" href="./tools/${tool.slug}.html" data-track-review="${tool.slug}" data-track-tool-name="${escapeHtml(tool.name)}">See why it fits</a>
           <a class="small-link" href="${primaryUrl(tool)}" target="_blank" rel="${linkRel(tool)}" data-track-outbound="${tool.slug}" data-track-tool-name="${escapeHtml(tool.name)}">${primaryLabel(tool)}</a>
+          ${compareButtonMarkup(tool)}
         </div>
       </article>
     `;
@@ -1393,6 +1399,7 @@ function toolRow(tool, options = {}) {
       <div class="tool-row-actions">
         <a class="small-link primary" href="./tools/${tool.slug}.html" data-track-review="${tool.slug}" data-track-tool-name="${escapeHtml(tool.name)}">${primaryCta}</a>
         <a class="small-link" href="${primaryUrl(tool)}" target="_blank" rel="${linkRel(tool)}" data-track-outbound="${tool.slug}" data-track-tool-name="${escapeHtml(tool.name)}">${primaryLabel(tool)}</a>
+        ${compareButtonMarkup(tool)}
       </div>
     </article>
   `;
@@ -1947,6 +1954,13 @@ if (matchCopyBriefButton) {
     window.setTimeout(() => {
       matchCopyBriefButton.textContent = originalLabel;
     }, 1400);
+  });
+}
+
+if (matchCompareButton) {
+  matchCompareButton.addEventListener('click', () => {
+    if (!lastRenderedShortlistResults.length) return;
+    window.IHWAICompare?.compareTools(lastRenderedShortlistResults.map(tool => tool.slug));
   });
 }
 
