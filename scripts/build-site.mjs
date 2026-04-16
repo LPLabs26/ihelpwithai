@@ -376,6 +376,28 @@ function getRelatedTools(tool, tools) {
     .map(entry => entry.candidate);
 }
 
+function renderOptionalCard(title, body) {
+  if (!body) return '';
+  return `
+              <article class="trust-card">
+                <h3>${escapeHtml(title)}</h3>
+                <p>${escapeHtml(body)}</p>
+              </article>
+            `;
+}
+
+function renderOptionalListCard(title, items) {
+  if (!Array.isArray(items) || items.length === 0) return '';
+  return `
+              <article class="trust-card">
+                <h3>${escapeHtml(title)}</h3>
+                <ul class="mini-list">
+                  ${items.map(item => `<li>${escapeHtml(item)}</li>`).join('')}
+                </ul>
+              </article>
+            `;
+}
+
 function renderToolPage(tool, tools) {
   const relatedTools = getRelatedTools(tool, tools);
   const tags = tool.tags.map(tag => `<span class="chip">${escapeHtml(tag)}</span>`).join('');
@@ -390,6 +412,30 @@ function renderToolPage(tool, tools) {
 
   const primaryUrl = getPrimaryUrl(tool);
   const primaryLabel = getPrimaryLabel(tool);
+  const buyerGuideSection = [tool.bestFit, tool.badFit, tool.pricingSnapshot, tool.setupReality].some(Boolean)
+    ? `
+          <div class="detail-section">
+            <h2>Buyer guide</h2>
+            <div class="trust-grid">
+              ${renderOptionalCard('Best fit', tool.bestFit)}
+              ${renderOptionalCard('Bad fit', tool.badFit)}
+              ${renderOptionalCard('Pricing snapshot', tool.pricingSnapshot)}
+              ${renderOptionalCard('Setup reality', tool.setupReality)}
+            </div>
+          </div>
+        `
+    : '';
+  const prosConsSection = (Array.isArray(tool.pros) && tool.pros.length > 0) || (Array.isArray(tool.cons) && tool.cons.length > 0)
+    ? `
+          <div class="detail-section">
+            <h2>Pros and cons</h2>
+            <div class="trust-grid">
+              ${renderOptionalListCard('Pros', tool.pros)}
+              ${renderOptionalListCard('Cons', tool.cons)}
+            </div>
+          </div>
+        `
+    : '';
   const partnerNote = tool.affiliateUrl
     ? `<p class="notice" style="margin-top:18px">This page uses a partner link for ${escapeHtml(tool.name)}. If you buy through it, ihelpwithai.com may earn a commission at no extra cost to you. <a href="../affiliate-disclosure.html">Read the disclosure</a>.</p>`
     : '';
@@ -474,6 +520,8 @@ ${renderStartHereMenu('..')}
             <p>${escapeHtml(tool.who)}</p>
           </div>
 
+          ${buyerGuideSection}
+
           ${youtubeSection}
 
           <div class="detail-section">
@@ -490,6 +538,8 @@ ${renderStartHereMenu('..')}
             <h2>Watch-outs</h2>
             <p>${escapeHtml(tool.watchOuts)}</p>
           </div>
+
+          ${prosConsSection}
 
           <div class="detail-section">
             <h2>Good first prompt</h2>
