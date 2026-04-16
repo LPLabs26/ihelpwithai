@@ -752,9 +752,23 @@
     "summary": "A good fit for teams that want AI working inside structured workflows, records, briefs, and operational systems.",
     "whatFor": "Use Airtable AI when the work depends on organized data, repeatable workflows, and AI assistance inside that system.",
     "who": "Best for operations, marketing, agency, and revenue teams managing lots of records, requests, or production steps.",
+    "bestFit": "Best when the team already runs important work through structured records and needs AI to help inside that system, not outside it.",
+    "badFit": "Not the strongest first pick if your workflow still lives mostly in loose docs, chat threads, or ad hoc spreadsheets without a clear operating structure.",
+    "pricingSnapshot": "Airtable is usually a paid operational choice, and the cost makes more sense when the base replaces manual coordination or multiple scattered tracking systems.",
+    "setupReality": "The AI is only as good as the base design. If fields, ownership, and process rules are messy, Airtable AI will expose those gaps rather than solve them for you.",
     "useCase": "Route inbound leads, enrich the records, summarize the opportunity, and assign the right owner automatically.",
     "why": "It shines when AI needs to act inside structured business systems instead of only responding to one-off prompts.",
     "watchOuts": "If your workflow is still loose and unstructured, a general assistant may be easier to start with.",
+    "pros": [
+      "Excellent fit for teams that already think in records, workflows, queues, and operational pipelines.",
+      "More useful than a generic assistant when the goal is triage, routing, enrichment, and repeatable decision support.",
+      "Can become a real internal operating system for leads, content, requests, production, or client delivery."
+    ],
+    "cons": [
+      "Requires real system design, so weak process ownership will limit the value quickly.",
+      "Can feel expensive or heavy for teams that only need lightweight docs, tasks, or occasional AI help.",
+      "Less intuitive than workspace-first tools when the team prefers narrative docs over structured fields and databases."
+    ],
     "firstPrompt": "Review these records, flag the top-priority opportunities, summarize why they matter, and suggest the next action for each one.",
     "reviewedAt": "March 26, 2026",
     "tags": [
@@ -766,6 +780,11 @@
     ],
     "addedAt": "2026-03-29",
     "reviewMethod": "Manual editorial review",
+    "relatedToolSlugs": [
+      "clickup-brain",
+      "coda-ai",
+      "zapier"
+    ],
     "youtubeVideoId": "UcZfSIegPNw",
     "youtubeVideoTitle": "Introducing a new generation of Airtable - built for the AI era",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=UcZfSIegPNw"
