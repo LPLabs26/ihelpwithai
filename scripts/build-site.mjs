@@ -18,6 +18,7 @@ const toolsJsonPath = path.join(rootDir, 'tools-starter.json');
 const comparisonsJsonPath = path.join(rootDir, 'comparisons.json');
 
 const SITE_URL = 'https://ihelpwithai.com';
+const STYLES_VERSION = '20260415a';
 const GOAL_META = {
   Automation: {
     title: 'Best AI tools for automation',
@@ -231,11 +232,14 @@ function renderStartHereMenu(basePath = '.') {
   return `
       <nav class="navlinks">
         <details class="nav-dropdown">
-          <summary class="nav-summary">Start here</summary>
+          <summary class="nav-summary">Choose path</summary>
           <div class="nav-dropdown-menu">
-            <a href="${basePath}/index.html">Home</a>
-            <a href="${basePath}/reviews.html">Reviews</a>
-            <a href="${basePath}/directory.html">Directory</a>
+            <a href="${basePath}/shortlist.html">Start the shortlist</a>
+            <a href="${basePath}/problems.html">Browse by problem</a>
+            <a href="${basePath}/reviews.html">Browse reviews</a>
+            <a href="${basePath}/companies.html">Browse companies</a>
+            <a href="${basePath}/directory.html">Search full directory</a>
+            <a href="${basePath}/submit-app.html">For vendors</a>
           </div>
         </details>
       </nav>`;
@@ -247,11 +251,11 @@ function renderSiteFooter(basePath = '.') {
     <div class="container footer-grid">
       <div>
         <strong>ihelpwithai.com</strong>
-        <div>A practical guide to choosing useful AI tools.</div>
+        <div>A buyer's guide for small teams choosing AI tools.</div>
       </div>
       <div>
-        <div>Built to help people find the right AI tools faster.</div>
-        <div class="footer-links"><a class="small-link" href="${basePath}/submit-app.html">Submit an app</a><a class="footer-email" href="mailto:info@ihelpwithai.com">info@ihelpwithai.com</a></div>
+        <div>Built around workflows, tradeoffs, and practical first picks.</div>
+        <div class="footer-links"><a class="small-link" href="${basePath}/shortlist.html">Start shortlist</a><a class="small-link" href="${basePath}/editorial-methodology.html">Review methodology</a><a class="small-link" href="${basePath}/submit-app.html">For vendors</a><a class="footer-email" href="mailto:info@ihelpwithai.com">info@ihelpwithai.com</a></div>
       </div>
     </div>
   </footer>`;
@@ -471,7 +475,7 @@ function renderToolPage(tool, tools) {
     pathname: `/tools/${tool.slug}.html`,
     type: 'article'
   })}
-  <link rel="stylesheet" href="../styles.css?v=20260406f">
+  <link rel="stylesheet" href="../styles.css?v=${STYLES_VERSION}">
 </head>
 <body class="detail-body">
   <header class="topbar">
@@ -683,7 +687,7 @@ function renderGuidePage(goal, tools) {
     pathname: `/guides/${guideFilename(goal)}`,
     type: 'article'
   })}
-  <link rel="stylesheet" href="../styles.css?v=20260406f">
+  <link rel="stylesheet" href="../styles.css?v=${STYLES_VERSION}">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
 <body class="detail-body">
@@ -804,7 +808,7 @@ function renderComparisonPage(comparison, tools) {
     pathname: `/comparisons/${comparison.slug}.html`,
     type: 'article'
   })}
-  <link rel="stylesheet" href="../styles.css?v=20260406f">
+  <link rel="stylesheet" href="../styles.css?v=${STYLES_VERSION}">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
 <body class="detail-body">
@@ -908,7 +912,7 @@ function renderBestFreePage(tools) {
     pathname: '/best-free-ai-tools.html',
     type: 'article'
   })}
-  <link rel="stylesheet" href="./styles.css?v=20260406f">
+  <link rel="stylesheet" href="./styles.css?v=${STYLES_VERSION}">
 </head>
 <body class="detail-body">
   <header class="topbar">
@@ -1017,7 +1021,7 @@ function renderEditorialMethodologyPage(tools, comparisons) {
     pathname: '/editorial-methodology.html',
     type: 'article'
   })}
-  <link rel="stylesheet" href="./styles.css?v=20260406f">
+  <link rel="stylesheet" href="./styles.css?v=${STYLES_VERSION}">
 </head>
 <body class="detail-body">
   <header class="topbar">
@@ -1210,7 +1214,7 @@ function renderCompanyReviewPage(company) {
     pathname: `/companies/${companyReviewFilename(company.name)}`,
     type: 'article'
   })}
-  <link rel="stylesheet" href="../styles.css?v=20260406f">
+  <link rel="stylesheet" href="../styles.css?v=${STYLES_VERSION}">
 </head>
 <body class="detail-body">
   <header class="topbar">
@@ -1362,7 +1366,7 @@ function renderCompaniesPage(tools) {
     pathname: '/companies.html',
     type: 'article'
   })}
-  <link rel="stylesheet" href="./styles.css?v=20260406f">
+  <link rel="stylesheet" href="./styles.css?v=${STYLES_VERSION}">
 </head>
 <body class="detail-body">
   <header class="topbar">
@@ -1386,18 +1390,18 @@ ${renderStartHereMenu('.')}
       <div class="detail-grid">
         <article class="detail-main">
           <div class="eyebrow">Company path</div>
-          <h1>Browse AI companies first</h1>
-          <p class="summary">Use this page when you already trust a brand, want to compare one company's AI lineup, or prefer starting with the vendor before narrowing to the tool.</p>
+          <h1>Use companies as a supporting path, not the first step.</h1>
+          <p class="summary">This page is most useful when you already trust a brand, need to compare one company's lineup, or want to sanity-check a vendor after you already know the job to be done.</p>
 
           <div class="detail-section">
             <h2>When this path is useful</h2>
-            <p>If you already know names like OpenAI, Anthropic, Canva, Adobe, or Zapier, this page gives you the shortest route from company to tool review without making you sift through the entire directory first.</p>
+            <p>If you already know names like OpenAI, Anthropic, Canva, Adobe, or Zapier, this page gives you the shortest route from brand to tool review without making you sift through the entire directory first.</p>
             <p>Current coverage: <strong>${companies.length} companies</strong> represented in the directory.</p>
           </div>
 
           <div class="detail-section">
             <h2>Quick ways to narrow this page</h2>
-            <p>Jump straight to a company if you already trust the vendor, or bounce back to the directory with a job filter if you realize the company-first path is still too broad.</p>
+            <p>Jump straight to a company if you already trust the vendor, or bounce back to the shortlist and problem paths if you realize the company-first view is still too broad.</p>
             <div class="jump-stack">
               <div>
                 <div class="jump-label">Jump to a company</div>
@@ -1416,7 +1420,7 @@ ${renderStartHereMenu('.')}
 
           <div class="detail-section">
             <h2>Start by the job, then pick a company</h2>
-            <p>If you know the work but still want a familiar vendor, these rows give you a calmer way to move from job to brand to first tool.</p>
+            <p>If you know the work but still want a familiar vendor, these rows give you a calmer way to move from job to brand to first tool instead of browsing the full market cold.</p>
             <div class="guide-stack">
               ${companyGoalRows}
             </div>
@@ -1509,7 +1513,7 @@ function renderReviewsPage(tools) {
     pathname: '/reviews.html',
     type: 'article'
   })}
-  <link rel="stylesheet" href="./styles.css?v=20260406f">
+  <link rel="stylesheet" href="./styles.css?v=${STYLES_VERSION}">
 </head>
 <body class="detail-body">
   <header class="topbar">
@@ -1534,7 +1538,12 @@ ${renderStartHereMenu('.')}
         <article class="detail-main">
           <div class="eyebrow">Review coverage</div>
           <h1>Reviews for AI tools and companies</h1>
-          <p class="summary">Use this page when you want to browse the actual reviews, not just filter the directory. It is the quickest way to jump into product writeups and company coverage.</p>
+          <p class="summary">Use this page after the shortlist when you want to pressure-test the final options. It is the fastest way to see where a tool fits, where it breaks down, and how current the recommendation is.</p>
+
+          <div class="card-links" style="margin-top:18px">
+            <a class="small-link primary" href="./shortlist.html">Start with the shortlist</a>
+            <a class="small-link" href="./problems.html">Browse by problem</a>
+          </div>
 
           <div class="detail-section">
             <h2>How these reviews work</h2>
@@ -1552,6 +1561,7 @@ ${renderStartHereMenu('.')}
                 <p>We care about adoption friction, likely cost, and where a tool stops making sense for a small team or operator.</p>
               </article>
             </div>
+            <p>Every review is checked against the same five buyer questions: workflow fit, setup difficulty, value for cost, output quality, and editorial confidence.</p>
             <div class="card-links" style="margin-top:14px">
               <a class="small-link primary" href="./editorial-methodology.html">See full review methodology</a>
             </div>
@@ -1739,21 +1749,31 @@ async function copyIfExists(filename) {
   await fs.copyFile(source, destination);
 }
 
+function normalizeGeneratedOutput(contents) {
+  return String(contents)
+    .replace(/\r\n/g, '\n')
+    .replace(/[ \t]+$/gm, '');
+}
+
+async function writeGeneratedFile(filename, contents) {
+  await fs.writeFile(filename, normalizeGeneratedOutput(contents));
+}
+
 const tools = await ensureValidTools();
 const comparisons = await loadComparisons(tools);
 const generatedAt = new Date().toISOString();
 
-await fs.writeFile(
+await writeGeneratedFile(
   path.join(rootDir, 'data.js'),
   `window.IHWAI = ${JSON.stringify({ generatedAt, tools, comparisons }, null, 2)};\n`
 );
 
-await fs.writeFile(path.join(rootDir, 'companies.html'), renderCompaniesPage(tools));
-await fs.writeFile(path.join(rootDir, 'reviews.html'), renderReviewsPage(tools));
-await fs.writeFile(path.join(rootDir, 'best-free-ai-tools.html'), renderBestFreePage(tools));
-await fs.writeFile(path.join(rootDir, 'editorial-methodology.html'), renderEditorialMethodologyPage(tools, comparisons));
-await fs.writeFile(path.join(rootDir, 'tools-starter.csv'), buildCsv(tools));
-await fs.writeFile(path.join(rootDir, 'sitemap.xml'), buildSitemap(tools, comparisons));
+await writeGeneratedFile(path.join(rootDir, 'companies.html'), renderCompaniesPage(tools));
+await writeGeneratedFile(path.join(rootDir, 'reviews.html'), renderReviewsPage(tools));
+await writeGeneratedFile(path.join(rootDir, 'best-free-ai-tools.html'), renderBestFreePage(tools));
+await writeGeneratedFile(path.join(rootDir, 'editorial-methodology.html'), renderEditorialMethodologyPage(tools, comparisons));
+await writeGeneratedFile(path.join(rootDir, 'tools-starter.csv'), buildCsv(tools));
+await writeGeneratedFile(path.join(rootDir, 'sitemap.xml'), buildSitemap(tools, comparisons));
 
 await fs.rm(toolsDir, { recursive: true, force: true });
 await fs.mkdir(toolsDir, { recursive: true });
@@ -1765,19 +1785,19 @@ await fs.rm(comparisonsDir, { recursive: true, force: true });
 await fs.mkdir(comparisonsDir, { recursive: true });
 
 for (const tool of tools) {
-  await fs.writeFile(path.join(toolsDir, `${tool.slug}.html`), renderToolPage(tool, tools));
+  await writeGeneratedFile(path.join(toolsDir, `${tool.slug}.html`), renderToolPage(tool, tools));
 }
 
 for (const company of groupCompanies(tools)) {
-  await fs.writeFile(path.join(companyReviewsDir, companyReviewFilename(company.name)), renderCompanyReviewPage(company));
+  await writeGeneratedFile(path.join(companyReviewsDir, companyReviewFilename(company.name)), renderCompanyReviewPage(company));
 }
 
 for (const goal of uniqueStrings(tools.flatMap(tool => tool.goals || []))) {
-  await fs.writeFile(path.join(guidesDir, guideFilename(goal)), renderGuidePage(goal, tools));
+  await writeGeneratedFile(path.join(guidesDir, guideFilename(goal)), renderGuidePage(goal, tools));
 }
 
 for (const comparison of comparisons) {
-  await fs.writeFile(path.join(comparisonsDir, `${comparison.slug}.html`), renderComparisonPage(comparison, tools));
+  await writeGeneratedFile(path.join(comparisonsDir, `${comparison.slug}.html`), renderComparisonPage(comparison, tools));
 }
 
 await fs.mkdir(publicDir, { recursive: true });
@@ -1841,19 +1861,19 @@ for (const comparison of comparisons) {
 }
 
 await fs.mkdir(path.join(publicDir, 'affiliate-disclosure'), { recursive: true });
-await fs.writeFile(
+await writeGeneratedFile(
   path.join(publicDir, 'affiliate-disclosure', 'index.html'),
   renderRedirectPage('../affiliate-disclosure.html', 'Continue to the disclosure page')
 );
 
 await fs.mkdir(path.join(publicDir, 'companies'), { recursive: true });
-await fs.writeFile(
+await writeGeneratedFile(
   path.join(publicDir, 'companies', 'index.html'),
   renderRedirectPage('../companies.html', 'Continue to the companies page')
 );
 
 await fs.mkdir(path.join(publicDir, 'problems'), { recursive: true });
-await fs.writeFile(
+await writeGeneratedFile(
   path.join(publicDir, 'problems', 'index.html'),
   renderRedirectPage('../problems.html', 'Continue to the problems page')
 );
@@ -1867,56 +1887,56 @@ for (const page of [
 ]) {
   const redirectName = page.replace(/\.html$/, '');
   await fs.mkdir(path.join(publicDir, redirectName), { recursive: true });
-  await fs.writeFile(
+  await writeGeneratedFile(
     path.join(publicDir, redirectName, 'index.html'),
     renderRedirectPage(`../${page}`, `Continue to ${redirectName.replace(/-/g, ' ')}`)
   );
 }
 
 await fs.mkdir(path.join(publicDir, 'shortlist'), { recursive: true });
-await fs.writeFile(
+await writeGeneratedFile(
   path.join(publicDir, 'shortlist', 'index.html'),
   renderRedirectPage('../shortlist.html', 'Continue to the shortlist page')
 );
 
 await fs.mkdir(path.join(publicDir, 'directory'), { recursive: true });
-await fs.writeFile(
+await writeGeneratedFile(
   path.join(publicDir, 'directory', 'index.html'),
   renderRedirectPage('../directory.html', 'Continue to the directory page')
 );
 
 await fs.mkdir(path.join(publicDir, 'get-help'), { recursive: true });
-await fs.writeFile(
+await writeGeneratedFile(
   path.join(publicDir, 'get-help', 'index.html'),
   renderRedirectPage('../get-help.html', 'Continue to the get help page')
 );
 
 await fs.mkdir(path.join(publicDir, 'submit-app'), { recursive: true });
-await fs.writeFile(
+await writeGeneratedFile(
   path.join(publicDir, 'submit-app', 'index.html'),
   renderRedirectPage('../submit-app.html', 'Continue to the submit app page')
 );
 
 await fs.mkdir(path.join(publicDir, 'reviews'), { recursive: true });
-await fs.writeFile(
+await writeGeneratedFile(
   path.join(publicDir, 'reviews', 'index.html'),
   renderRedirectPage('../reviews.html', 'Continue to the reviews page')
 );
 
 await fs.mkdir(path.join(publicDir, 'best-free-ai-tools'), { recursive: true });
-await fs.writeFile(
+await writeGeneratedFile(
   path.join(publicDir, 'best-free-ai-tools', 'index.html'),
   renderRedirectPage('../best-free-ai-tools.html', 'Continue to the best free tools page')
 );
 
 await fs.mkdir(path.join(publicDir, 'editorial-methodology'), { recursive: true });
-await fs.writeFile(
+await writeGeneratedFile(
   path.join(publicDir, 'editorial-methodology', 'index.html'),
   renderRedirectPage('../editorial-methodology.html', 'Continue to the editorial methodology page')
 );
 
 await fs.mkdir(path.join(publicDir, 'thanks'), { recursive: true });
-await fs.writeFile(
+await writeGeneratedFile(
   path.join(publicDir, 'thanks', 'index.html'),
   renderRedirectPage('../thanks.html', 'Continue to the thanks page')
 );
@@ -1924,7 +1944,7 @@ await fs.writeFile(
 for (const tool of tools) {
   const redirectDir = path.join(publicToolsDir, tool.slug);
   await fs.mkdir(redirectDir, { recursive: true });
-  await fs.writeFile(
+  await writeGeneratedFile(
     path.join(redirectDir, 'index.html'),
     renderRedirectPage(`../${tool.slug}.html`, `Continue to ${tool.name}`)
   );
@@ -1934,7 +1954,7 @@ for (const goal of uniqueStrings(tools.flatMap(tool => tool.goals || []))) {
   const filename = guideFilename(goal);
   const redirectDir = path.join(publicGuidesDir, filename.replace(/\.html$/, ''));
   await fs.mkdir(redirectDir, { recursive: true });
-  await fs.writeFile(
+  await writeGeneratedFile(
     path.join(redirectDir, 'index.html'),
     renderRedirectPage(`../${filename}`, `Continue to the ${goal} guide`)
   );
@@ -1943,7 +1963,7 @@ for (const goal of uniqueStrings(tools.flatMap(tool => tool.goals || []))) {
 for (const comparison of comparisons) {
   const redirectDir = path.join(publicComparisonsDir, comparison.slug);
   await fs.mkdir(redirectDir, { recursive: true });
-  await fs.writeFile(
+  await writeGeneratedFile(
     path.join(redirectDir, 'index.html'),
     renderRedirectPage(`../${comparison.slug}.html`, `Continue to ${comparison.title}`)
   );

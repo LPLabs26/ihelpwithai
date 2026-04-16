@@ -14,7 +14,7 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="AI tool directory — ihelpwithai.com">
   <meta name="twitter:description" content="Browse the full AI directory and narrow it by problem, workflow, audience, price, and company.">
-  <link rel="stylesheet" href="./styles.css?v=20260406f">
+  <link rel="stylesheet" href="./styles.css?v=20260415a">
 </head>
 <body>
   <header class="topbar">
@@ -32,11 +32,14 @@
       </form>
       <nav class="navlinks">
         <details class="nav-dropdown">
-          <summary class="nav-summary">Start here</summary>
+          <summary class="nav-summary">Choose path</summary>
           <div class="nav-dropdown-menu">
-            <a href="./index.html">Home</a>
-            <a href="./reviews.html">Reviews</a>
-            <a href="./directory.html">Directory</a>
+            <a href="./shortlist.html">Start the shortlist</a>
+            <a href="./problems.html">Browse by problem</a>
+            <a href="./reviews.html">Browse reviews</a>
+            <a href="./companies.html">Browse companies</a>
+            <a href="./directory.html">Search full directory</a>
+            <a href="./submit-app.html">For vendors</a>
           </div>
         </details>
       </nav>
@@ -46,16 +49,21 @@
   <main>
     <section class="hero hero-simple">
       <div class="container">
-        <div class="kicker">Full directory</div>
-        <h1>Browse the full directory and narrow it fast.</h1>
-        <p class="hero-copy">Use search and filters to move from a broad list to a tighter set of tools that can support office work, communication, marketing, research, support, and follow-up for your workflow.</p>
+        <div class="kicker">Supporting directory</div>
+        <h1>Use the full directory after you know the job.</h1>
+        <p class="hero-copy">This is the broadest view in the product. Use it when the shortlist, reviews, and problem paths still are not enough and you want to compare more options by workflow, company, audience, and price.</p>
         <form class="search-panel" id="directory" action="./directory.html" method="get">
           <div class="search-grid">
             <input id="search" name="search" type="search" placeholder="Search by problem — e.g. missed calls, follow-up, reviews">
             <button class="button primary" type="submit">Search directory</button>
           </div>
-          <div class="helper">This is the broadest view. If you want guidance first, use Problems or Shortlist.</div>
+          <div class="helper">Start with the shortlist if you want the site to narrow the first 2-3 tools for you before you browse the wider market.</div>
         </form>
+        <div class="card-links" style="margin-top:18px">
+          <a class="small-link primary" href="./shortlist.html">Start with shortlist</a>
+          <a class="small-link" href="./problems.html">Browse by problem</a>
+          <a class="small-link" href="./reviews.html">See review coverage</a>
+        </div>
       </div>
     </section>
 
@@ -63,9 +71,9 @@
       <div class="container filter-shell">
         <div class="section-head">
           <div>
-            <div class="eyebrow">Curated directory</div>
-            <h2>Find your fit faster</h2>
-            <p>Use the filters below to narrow the shortlist by workflow, category, audience, price, and company.</p>
+            <div class="eyebrow">Supporting database</div>
+            <h2>Narrow a bigger list without losing the signal</h2>
+            <p>Use the filters below to move from a broad list to a tighter comparison by workflow, category, audience, price, and company.</p>
           </div>
           <div class="toolbar">
             <div class="count" id="count"></div>
@@ -132,16 +140,16 @@
     <div class="container footer-grid">
       <div>
         <strong>ihelpwithai.com</strong>
-        <div>A practical guide to choosing useful AI tools.</div>
+        <div>A buyer's guide for small teams choosing AI tools.</div>
       </div>
       <div>
-        <div>Built to help people find the right AI tools faster.</div>
-        <div class="footer-links"><a class="visit-counter" href="https://hits.sh/ihelpwithai.com/" target="_blank" rel="noopener noreferrer"><img src="https://hits.sh/ihelpwithai.com.svg?style=flat-square&label=visits&color=132742&labelColor=09111c" alt="Visit counter for ihelpwithai.com" loading="lazy" decoding="async"></a><a class="small-link" href="./submit-app.html">Submit an app</a><a class="visit-counter" href="https://hits.sh/ihelpwithai.com/" target="_blank" rel="noopener noreferrer"><img src="https://hits.sh/ihelpwithai.com.svg?style=flat-square&label=visits&color=132742&labelColor=09111c" alt="Visit counter for ihelpwithai.com" loading="lazy" decoding="async"></a><a class="footer-email" href="mailto:info@ihelpwithai.com">info@ihelpwithai.com</a></div>
+        <div>Built around workflows, tradeoffs, and practical first picks.</div>
+        <div class="footer-links"><a class="small-link" href="./shortlist.html">Start shortlist</a><a class="small-link" href="./editorial-methodology.html">Review methodology</a><a class="small-link" href="./submit-app.html">For vendors</a><a class="footer-email" href="mailto:info@ihelpwithai.com">info@ihelpwithai.com</a></div>
       </div>
     </div>
   </footer>
 
   <script src="./data.js?v=20260404a"></script>
-  <script src="./app.js?v=20260404a"></script>
+  <script src="./app.js?v=20260415a"></script>
 </body>
 </html>
