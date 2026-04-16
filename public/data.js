@@ -1,5 +1,5 @@
 window.IHWAI = {
-  "generatedAt": "2026-04-06T21:23:56.755Z",
+  "generatedAt": "2026-04-16T03:55:55.674Z",
   "tools": [
     {
       "name": "AdCreative.ai",
@@ -1543,9 +1543,23 @@ window.IHWAI = {
       "summary": "The easiest way to connect apps and let AI actually trigger work, not just answer questions.",
       "whatFor": "Use Zapier to move data between apps, create AI-assisted workflows, and automate repetitive business steps.",
       "who": "Best for operations, marketing, support, and founders who want less manual work.",
+      "bestFit": "Best when a small team already runs work across multiple apps and wants fast wins without hiring an automation engineer first.",
+      "badFit": "Not the right first pick if your process is still changing every week, your source data is messy, or you need highly custom logic from day one.",
+      "pricingSnapshot": "There is a free starting point, but meaningful team automation usually pushes you into paid task and volume limits pretty quickly.",
+      "setupReality": "Zapier is approachable for non-developers, but the real work is mapping the workflow, handling edge cases, and deciding what should happen when data is incomplete.",
       "useCase": "When a lead form is submitted, enrich it, summarize intent with AI, and route it to the right pipeline.",
       "why": "It turns AI from a chat box into a working system across your tools.",
       "watchOuts": "Automation gets messy if your process is unclear or your source data is inconsistent.",
+      "pros": [
+        "Fastest way for a small team to connect forms, CRMs, inboxes, and spreadsheets without custom code.",
+        "Strong app ecosystem, which makes it practical for everyday ops, marketing, and support workflows.",
+        "Good first automation layer when you want AI to trigger actions instead of staying trapped in chat."
+      ],
+      "cons": [
+        "Task-based pricing can become expensive once important workflows run at higher volume.",
+        "Messy processes get automated into bigger messes if you skip workflow design and data cleanup.",
+        "Advanced branching, reliability checks, and complex logic can eventually push technical teams toward more flexible tools."
+      ],
       "firstPrompt": "Map a workflow for new inbound leads: capture, qualify, summarize, assign, and follow up automatically.",
       "reviewedAt": "March 25, 2026",
       "tags": [
@@ -1557,6 +1571,11 @@ window.IHWAI = {
       ],
       "addedAt": "2026-03-26",
       "reviewMethod": "Manual editorial review",
+      "relatedToolSlugs": [
+        "n8n",
+        "activepieces",
+        "relay-app"
+      ],
       "youtubeVideoId": "lD8Llq2heis",
       "youtubeVideoTitle": "Learn Zapier in 7 minutes: Business & Personal Automation Tutorial For Beginners (2025)",
       "youtubeVideoUrl": "https://www.youtube.com/watch?v=lD8Llq2heis"
@@ -2841,12 +2860,26 @@ window.IHWAI = {
       "affiliateProgramUrl": "",
       "partnerStatus": "No public affiliate program found",
       "summary": "A docs-and-tables app with AI help for operations, planning, and team knowledge workflows.",
-      "whatFor": "Use Coda AI when you want stronger support for productivity and writing work.",
-      "who": "Best for team, operator, founder who want a more focused app for productivity workflows.",
-      "useCase": "Start with one productivity workflow and use Coda AI to reduce the manual work around it.",
-      "why": "It stands out when productivity is the main job and you want a more specialized app than a general assistant.",
-      "watchOuts": "It is worth checking setup, pricing, and team fit before making it your default app.",
-      "firstPrompt": "Help me use Coda AI for productivity work and suggest the smartest first workflow to try.",
+      "whatFor": "Use Coda AI when you want docs, tables, and light automation living in one place instead of spreading operational work across too many disconnected tools.",
+      "who": "Best for operators, founders, and small teams that run planning, handoffs, trackers, and internal documentation from shared workspaces.",
+      "bestFit": "Best when your team already lives in docs and spreadsheets and wants one operating system for planning, status tracking, and repeatable workflows.",
+      "badFit": "Not the best first pick if your team needs a true CRM, a heavyweight project-management system, or deep database logic before the process is even defined.",
+      "pricingSnapshot": "There is a free entry point, but serious team use usually means paying once the workspace becomes core to planning, docs, automations, and shared operating processes.",
+      "setupReality": "Coda AI is easy to start, but the real lift is structuring docs, tables, and ownership clearly enough that the workspace actually becomes useful for the team.",
+      "useCase": "Build one weekly operating doc that pulls key metrics, tracks open projects, drafts status updates, and keeps the whole team working from the same source of truth.",
+      "why": "It is a strong fit when the real buying question is how to run work more cleanly, not just how to generate more text with AI.",
+      "watchOuts": "Coda works best when someone owns the operating system. Without that owner, the workspace can turn into another half-maintained knowledge base.",
+      "pros": [
+        "Combines docs, tables, and AI in one workspace, which is useful for ops-heavy teams that hate context switching.",
+        "Strong fit for recurring planning, status reporting, trackers, and internal process docs.",
+        "More structured than a plain AI assistant, so it can support repeatable team workflows instead of one-off prompts."
+      ],
+      "cons": [
+        "Can feel overbuilt if the team only needs simple notes or lightweight task tracking.",
+        "Good results depend on clean workspace design, which means someone has to own structure and maintenance.",
+        "May not replace specialized tools if you need deep project management, CRM workflows, or complex databases."
+      ],
+      "firstPrompt": "Help me turn this operating doc into a weekly command center with owners, status summaries, blockers, and the next best follow-up actions.",
       "reviewedAt": "April 3, 2026",
       "tags": [
         "ai",
@@ -2860,6 +2893,11 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review",
       "popularityScore": 50,
       "trending": false,
+      "relatedToolSlugs": [
+        "notion-ai",
+        "clickup-brain",
+        "airtable-ai"
+      ],
       "youtubeVideoId": "M4sF0AX71DE",
       "youtubeVideoTitle": "Meet Coda",
       "youtubeVideoUrl": "https://www.youtube.com/watch?v=M4sF0AX71DE"
@@ -4032,9 +4070,9 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review",
       "popularityScore": 47,
       "trending": true,
-      "youtubeVideoId": "qmMzOkrO3Uc",
-      "youtubeVideoTitle": "Unpacking Galileo's AI Agent Reliability Platform",
-      "youtubeVideoUrl": "https://www.youtube.com/watch?v=qmMzOkrO3Uc"
+      "youtubeVideoId": "6x_eOCBTvPk",
+      "youtubeVideoTitle": "Introducing Galileo LLM Studio",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=6x_eOCBTvPk"
     },
     {
       "name": "Gladia",
@@ -4077,9 +4115,9 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review",
       "popularityScore": 37,
       "trending": false,
-      "youtubeVideoId": "NNDqbpRwnsc",
-      "youtubeVideoTitle": "Gladiator in Minutes | Recap",
-      "youtubeVideoUrl": "https://www.youtube.com/watch?v=NNDqbpRwnsc"
+      "youtubeVideoId": "toAcpe0LSpI",
+      "youtubeVideoTitle": "Attention x Gladia: Closing More Deals and Powering Smarter AI Sales Workflows",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=toAcpe0LSpI"
     },
     {
       "name": "Glean",
@@ -6643,9 +6681,9 @@ window.IHWAI = {
       ],
       "addedAt": "2026-04-01",
       "reviewMethod": "Manual editorial review",
-      "youtubeVideoId": "YkOJQmaFGNw",
-      "youtubeVideoTitle": "Understanding Musical Pitch — Music Theory Crash Course",
-      "youtubeVideoUrl": "https://www.youtube.com/watch?v=YkOJQmaFGNw"
+      "youtubeVideoId": "8MUXIwkkMww",
+      "youtubeVideoTitle": "Getting started with Pitch | Remy Soni | Pitch Academy",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=8MUXIwkkMww"
     },
     {
       "name": "Playground AI",
@@ -7461,9 +7499,14 @@ window.IHWAI = {
       "reviewMethod": "Manual editorial review",
       "popularityScore": 0,
       "trending": false,
-      "youtubeVideoId": "pICv0qQIbeY",
-      "youtubeVideoTitle": "Nathy Peluso - SANA SANA | A COLORS SHOW",
-      "youtubeVideoUrl": "https://www.youtube.com/watch?v=pICv0qQIbeY"
+      "relatedToolSlugs": [
+        "dust",
+        "glean",
+        "coda-ai"
+      ],
+      "youtubeVideoId": "T3nG79YCP1U",
+      "youtubeVideoTitle": "Sana Overview | Sana",
+      "youtubeVideoUrl": "https://www.youtube.com/watch?v=T3nG79YCP1U"
     },
     {
       "name": "Saner.AI",
@@ -9077,6 +9120,11 @@ window.IHWAI = {
       ],
       "addedAt": "2026-04-01",
       "reviewMethod": "Manual editorial review",
+      "relatedToolSlugs": [
+        "elevenlabs",
+        "playht",
+        "lovo-ai"
+      ],
       "youtubeVideoId": "2fXEEYDnCO0",
       "youtubeVideoTitle": "An Instructional Designer's overview of Wellsaid Labs",
       "youtubeVideoUrl": "https://www.youtube.com/watch?v=2fXEEYDnCO0"
