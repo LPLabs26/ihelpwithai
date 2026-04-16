@@ -14,7 +14,7 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Get help choosing AI tools — ihelpwithai.com">
   <meta name="twitter:description" content="Tell ihelpwithai.com what you need and get pointed toward a better AI starting point.">
-  <link rel="stylesheet" href="./styles.css?v=20260415a">
+  <link rel="stylesheet" href="./styles.css?v=20260415b">
 </head>
 <body>
   <header class="topbar">
@@ -61,11 +61,15 @@
           <div class="eyebrow">Get a recommendation</div>
           <h2>Share the bottleneck.</h2>
           <p class="form-note">This helps turn a broad category problem into a tighter starting recommendation for a founder, operator, or small team.</p>
+          <div class="form-context-note" id="help-context-note" hidden></div>
           <form class="form-stack" action="https://formsubmit.co/info@ihelpwithai.com" method="POST">
             <input type="hidden" name="_subject" value="AI help request · ihelpwithai.com">
             <input type="hidden" name="_next" value="https://ihelpwithai.com/thanks.html">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="submission_type" value="AI help request">
+            <input type="hidden" name="source_path" id="help-source-path">
+            <input type="hidden" name="shortlist_context" id="help-shortlist-context">
+            <input type="hidden" name="buyer_signal_summary" id="help-buyer-signal-summary">
 
             <div class="field-grid">
               <label class="field">
@@ -110,7 +114,7 @@
               </label>
             </div>
 
-            <p class="form-helper">This sends the request through the site so it can be reviewed without relying on your email app.</p>
+            <p class="form-helper">This sends the request through the site so it can be reviewed without relying on your email app. If you came from the shortlist, your current picks and click trail will be included.</p>
             <div class="prompt-actions">
               <button class="button primary" type="submit">Send request</button>
               <a class="small-link" href="mailto:info@ihelpwithai.com?subject=AI%20help%20request">Prefer plain email</a>
@@ -174,6 +178,6 @@
   </footer>
 
   <script src="./data.js?v=20260404a"></script>
-  <script src="./app.js?v=20260415a"></script>
+  <script src="./app.js?v=20260415b"></script>
 </body>
 </html>

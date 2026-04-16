@@ -513,6 +513,10 @@ img {
   padding: 26px;
 }
 
+.shortlist-steps {
+  margin-bottom: 18px;
+}
+
 .match-intro h3,
 .match-card h3 {
   margin: 0;
@@ -535,6 +539,49 @@ img {
   font-weight: 700;
 }
 
+.match-brief,
+.match-next-step,
+.form-context-note {
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(245, 248, 252, 0.94));
+  box-shadow: var(--shadow);
+}
+
+.match-brief {
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.match-brief-lead {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.match-brief-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.match-brief-card {
+  padding: 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(91, 184, 255, 0.14);
+  background: rgba(239, 247, 255, 0.72);
+}
+
+.match-brief-card strong {
+  display: block;
+  font-size: 0.95rem;
+}
+
+.match-brief-card p {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
 .match-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: 18px;
@@ -554,6 +601,28 @@ img {
   gap: 12px;
   flex-wrap: wrap;
   margin-top: 18px;
+}
+
+.match-next-step {
+  margin-top: 18px;
+  padding: 18px;
+}
+
+.match-next-step h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.match-next-step p {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.match-next-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
 }
 
 .match-actions .clear-button {
@@ -1039,6 +1108,17 @@ img {
 .form-note {
   margin: 10px 0 0;
   color: var(--muted);
+}
+
+.form-context-note {
+  margin-top: 18px;
+  padding: 16px 18px;
+  color: var(--muted-strong);
+}
+
+.form-context-note strong {
+  display: block;
+  margin-bottom: 6px;
 }
 
 .prompt-meta {

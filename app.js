@@ -114,9 +114,13 @@ const matchGoalPills = document.getElementById('match-goal-pills');
 const matchAudiencePills = document.getElementById('match-audience-pills');
 const matchPricePills = document.getElementById('match-price-pills');
 const matchDifficultyPills = document.getElementById('match-difficulty-pills');
+const matchBrief = document.getElementById('match-brief');
 const matchGrid = document.getElementById('match-grid');
 const matchStatus = document.getElementById('match-status');
+const matchNextStep = document.getElementById('match-next-step');
 const matchOpenDirectoryButton = document.getElementById('match-open-directory');
+const matchGetHelpLink = document.getElementById('match-get-help');
+const matchCopyBriefButton = document.getElementById('match-copy-brief');
 const matchResetButton = document.getElementById('match-reset');
 const goalPills = document.getElementById('goal-pills');
 const categoryPills = document.getElementById('category-pills');
@@ -130,6 +134,10 @@ const logoCount = document.getElementById('logo-count');
 const logoSearchInput = document.getElementById('logo-search');
 const logoTypePills = document.getElementById('logo-type-pills');
 const logoGoalPills = document.getElementById('logo-goal-pills');
+const helpContextNote = document.getElementById('help-context-note');
+const helpSourcePathInput = document.getElementById('help-source-path');
+const helpShortlistContextInput = document.getElementById('help-shortlist-context');
+const helpBuyerSignalSummaryInput = document.getElementById('help-buyer-signal-summary');
 
 const state = {
   goal: 'All',
@@ -152,6 +160,9 @@ const matchState = {
 let promptLabInitialized = false;
 let landingLogoInitialized = false;
 let logoRevealObserver = null;
+let lastTrackedShortlistSignature = '';
+let lastRenderedShortlistContext = '';
+let lastRenderedShortlistResults = [];
 
 const landingLogoState = {
   type: 'All',
@@ -161,6 +172,8 @@ const landingLogoState = {
 
 const POPULAR_APP_NAMES = ['OpenAI', 'Anthropic', 'Gemini', 'Grok', 'ChatGPT', 'Claude', 'Microsoft Copilot', 'Perplexity', 'Canva AI', 'Midjourney'];
 const TRENDING_APP_NAMES = ['Grok', 'Perplexity', 'Claude', 'Gemini', 'Runway', 'ElevenLabs', 'ChatGPT', 'Midjourney', 'Microsoft Copilot', 'Canva AI'];
+const BUYER_SIGNAL_STORAGE_KEY = 'ihwaiBuyerSignalsV1';
+const BUYER_SIGNAL_LIMIT = 40;
 
 function escapeHtml(value = '') {
   return String(value)
@@ -340,6 +353,60 @@ async function copyText(text) {
   textarea.select();
   document.execCommand('copy');
   textarea.remove();
+}
+
+function readBuyerSignals() {
+  try {
+    const raw = window.localStorage.getItem(BUYER_SIGNAL_STORAGE_KEY);
+    const parsed = raw ? JSON.parse(raw) : null;
+    if (parsed && Array.isArray(parsed.events)) {
+      return parsed;
+    }
+  } catch {
+    // Ignore storage read failures and fall back to an empty state.
+  }
+
+  return { events: [] };
+}
+
+function writeBuyerSignals(store) {
+  try {
+    window.localStorage.setItem(BUYER_SIGNAL_STORAGE_KEY, JSON.stringify(store));
+  } catch {
+    // Ignore storage write failures so the site keeps working.
+  }
+}
+
+function trackBuyerSignal(type, details = {}) {
+  const store = readBuyerSignals();
+  const event = {
+    type,
+    details,
+    page: window.location.pathname,
+    at: new Date().toISOString()
+  };
+
+  store.events = [...store.events, event].slice(-BUYER_SIGNAL_LIMIT);
+  store.updatedAt = event.at;
+  writeBuyerSignals(store);
+}
+
+function uniqueRecent(values, limit = 5) {
+  const seen = new Set();
+  const results = [];
+
+  for (const value of values) {
+    if (!value || seen.has(value)) continue;
+    seen.add(value);
+    results.push(value);
+    if (results.length >= limit) break;
+  }
+
+  return results;
+}
+
+function parsedHelpParams() {
+  return new URLSearchParams(window.location.search);
 }
 
 function sortedPromptTools() {
@@ -620,6 +687,90 @@ function matcherPreferenceSummary() {
   return parts.join(' • ');
 }
 
+function activeShortlistFilters() {
+  return [
+    matchState.goal ? `Main job: ${matchState.goal}` : '',
+    matchState.audience !== 'All' ? `Who it is for: ${matchState.audience}` : '',
+    matchState.price !== 'All' ? `Budget: ${matchState.price}` : '',
+    matchState.difficulty !== 'All' ? `Setup tolerance: ${matchState.difficulty}` : ''
+  ].filter(Boolean);
+}
+
+function bestComparisonForResults(results) {
+  if (!results.length) return null;
+
+  const resultSlugs = new Set(results.map(tool => tool.slug));
+  const toolBySlug = new Map(TOOLS.map(tool => [tool.slug, tool]));
+  let bestMatch = null;
+
+  for (const comparison of COMPARISONS) {
+    const overlap = comparison.tools.filter(slug => resultSlugs.has(slug));
+    if (overlap.length < Math.min(2, results.length)) continue;
+
+    let score = overlap.length * 10 - comparison.tools.length;
+    if (matchState.goal && overlap.some(slug => (toolBySlug.get(slug)?.goals || []).includes(matchState.goal))) {
+      score += 2;
+    }
+
+    if (!bestMatch || score > bestMatch.score) {
+      bestMatch = { comparison, score };
+    }
+  }
+
+  return bestMatch?.comparison || null;
+}
+
+function buildShortlistContext(results) {
+  if (!results.length) {
+    return 'Shortlist not set yet.';
+  }
+
+  const filters = activeShortlistFilters();
+  const picks = results.map(tool => tool.name).join(', ');
+  const lead = results[0];
+
+  return [
+    filters.length ? `Buying brief: ${filters.join(' | ')}` : 'Buying brief: still broad, no specific shortlist filters selected yet.',
+    `Current shortlist: ${picks}`,
+    lead ? `Best first place to start: ${lead.name} — ${cleanPreviewText(lead.why || lead.whatFor)}` : ''
+  ].filter(Boolean).join('\n');
+}
+
+function buildBuyerSignalSummary() {
+  const store = readBuyerSignals();
+  const recentEvents = [...store.events].reverse();
+  const latestShortlist = recentEvents.find(event => event.type === 'shortlist_updated');
+  const reviewClicks = uniqueRecent(
+    recentEvents
+      .filter(event => event.type === 'review_opened')
+      .map(event => event.details.toolName || event.details.toolSlug || event.details.href)
+  );
+  const outboundClicks = uniqueRecent(
+    recentEvents
+      .filter(event => event.type === 'outbound_click')
+      .map(event => event.details.toolName || event.details.hostname || event.details.href)
+  );
+
+  return [
+    latestShortlist?.details?.brief ? `Latest shortlist:\n${latestShortlist.details.brief}` : '',
+    reviewClicks.length ? `Recent review clicks: ${reviewClicks.join(', ')}` : '',
+    outboundClicks.length ? `Recent outbound clicks: ${outboundClicks.join(', ')}` : ''
+  ].filter(Boolean).join('\n\n');
+}
+
+function shortlistHelpUrl(results) {
+  const params = new URLSearchParams();
+  params.set('source', 'shortlist');
+  if (matchState.goal) params.set('goal', matchState.goal);
+  if (matchState.audience !== 'All') params.set('audience', matchState.audience);
+  if (matchState.price !== 'All') params.set('price', matchState.price);
+  if (matchState.difficulty !== 'All') params.set('difficulty', matchState.difficulty);
+  if (results.length) {
+    params.set('recommended_tools', results.map(tool => tool.name).join(' | '));
+  }
+  return `./get-help.html?${params.toString()}`;
+}
+
 function matcherResultsData() {
   const base = matcherBaseTools().sort(matcherSort);
   const exact = base.filter(matcherIsExact);
@@ -642,6 +793,78 @@ function matcherResultsData() {
     exactCount: exact.length,
     relaxed: secondaryFiltersSelected && exact.length < Math.min(3, base.length)
   };
+}
+
+function renderMatchBrief(results) {
+  if (!matchBrief) return;
+
+  if (!results.length) {
+    matchBrief.innerHTML = '';
+    matchBrief.hidden = true;
+    lastRenderedShortlistContext = '';
+    lastRenderedShortlistResults = [];
+    return;
+  }
+
+  const [lead, compare, reserve] = results;
+  const filters = activeShortlistFilters();
+
+  matchBrief.hidden = false;
+  matchBrief.innerHTML = `
+    <div class="eyebrow">Current buying brief</div>
+    <h3>Start with ${escapeHtml(lead.name)}.</h3>
+    <p class="match-brief-lead">${escapeHtml(filters.length ? `This shortlist is tuned around ${filters.join(' | ')}.` : 'This is still broad, so the top pick is a safe general starting point.')}</p>
+    <div class="match-brief-grid">
+      <div class="match-brief-card">
+        <strong>Best first place to start</strong>
+        <p>${escapeHtml(`${lead.name} is the strongest first pick because ${cleanPreviewText(lead.why || lead.whatFor)}`)}</p>
+      </div>
+      ${compare ? `
+        <div class="match-brief-card">
+          <strong>Best compare-against option</strong>
+          <p>${escapeHtml(`${compare.name} is worth comparing if you want a different tradeoff around setup, pricing, or workflow depth.`)}</p>
+        </div>
+      ` : ''}
+      ${reserve ? `
+        <div class="match-brief-card">
+          <strong>Keep in reserve</strong>
+          <p>${escapeHtml(`${reserve.name} belongs on the shortlist if the first two options feel too narrow, too heavy, or too expensive.`)}</p>
+        </div>
+      ` : ''}
+    </div>
+  `;
+
+  lastRenderedShortlistContext = buildShortlistContext(results);
+  lastRenderedShortlistResults = results;
+}
+
+function renderMatchNextStep(results) {
+  if (!matchNextStep) return;
+
+  if (!results.length) {
+    matchNextStep.innerHTML = '';
+    matchNextStep.hidden = true;
+    return;
+  }
+
+  const comparison = bestComparisonForResults(results);
+  const goalGuideLink = matchState.goal ? guideHref(matchState.goal) : './problems.html';
+  const goalGuideLabel = matchState.goal ? `See the ${matchState.goal} guide` : 'Browse by problem';
+  const comparisonLink = comparison
+    ? `<a class="small-link primary" href="${comparisonHref(comparison)}">Best next comparison: ${escapeHtml(comparison.title)}</a>`
+    : '<a class="small-link primary" href="./reviews.html">Browse reviews for these picks</a>';
+
+  matchNextStep.hidden = false;
+  matchNextStep.innerHTML = `
+    <h3>Best next step</h3>
+    <p>${escapeHtml(comparison
+      ? 'Compare the top shortlist options before widening the search again.'
+      : 'Pressure-test the shortlist with reviews or a problem page before opening the full directory again.')}</p>
+    <div class="match-next-links">
+      ${comparisonLink}
+      <a class="small-link" href="${goalGuideLink}">${goalGuideLabel}</a>
+    </div>
+  `;
 }
 
 function renderMatcher() {
@@ -678,8 +901,13 @@ function renderMatcher() {
   const summary = matcherPreferenceSummary();
 
   if (!results.length) {
+    renderMatchBrief([]);
     matchStatus.textContent = 'No tools matched those picks yet. Try a broader main job or leave one of the secondary filters open.';
     matchGrid.innerHTML = '<div class="empty">Nothing matched that combination yet. Broaden the job, budget, or setup preference and try again.</div>';
+    if (matchNextStep) {
+      matchNextStep.innerHTML = '';
+      matchNextStep.hidden = true;
+    }
     return;
   }
 
@@ -693,6 +921,7 @@ function renderMatcher() {
     matchStatus.textContent = `These are the strongest starting points${summary ? ` for ${summary}` : ''}.`;
   }
 
+  renderMatchBrief(results);
   matchGrid.innerHTML = results.map(tool => {
     const reasons = matcherReasons(tool);
     const fitLabel = matcherHasPreferences()
@@ -713,15 +942,41 @@ function renderMatcher() {
         <div><strong>Why choose it:</strong> ${tool.why}</div>
         <div class="micro-note"><strong>Skip if:</strong> ${tool.watchOuts}</div>
         <div class="card-links">
-          <a class="small-link primary" href="./tools/${tool.slug}.html">See why it fits</a>
-          <a class="small-link" href="${primaryUrl(tool)}" target="_blank" rel="${linkRel(tool)}">${primaryLabel(tool)}</a>
+          <a class="small-link primary" href="./tools/${tool.slug}.html" data-track-review="${tool.slug}" data-track-tool-name="${escapeHtml(tool.name)}">See why it fits</a>
+          <a class="small-link" href="${primaryUrl(tool)}" target="_blank" rel="${linkRel(tool)}" data-track-outbound="${tool.slug}" data-track-tool-name="${escapeHtml(tool.name)}">${primaryLabel(tool)}</a>
         </div>
       </article>
     `;
   }).join('');
 
+  renderMatchNextStep(results);
+
   if (matchOpenDirectoryButton) {
     matchOpenDirectoryButton.disabled = total === 0;
+  }
+
+  if (matchGetHelpLink) {
+    matchGetHelpLink.href = shortlistHelpUrl(results);
+  }
+
+  const shortlistSignature = JSON.stringify({
+    goal: matchState.goal,
+    audience: matchState.audience,
+    price: matchState.price,
+    difficulty: matchState.difficulty,
+    results: results.map(tool => tool.slug)
+  });
+
+  if (shortlistSignature !== lastTrackedShortlistSignature) {
+    lastTrackedShortlistSignature = shortlistSignature;
+    trackBuyerSignal('shortlist_updated', {
+      goal: matchState.goal,
+      audience: matchState.audience,
+      price: matchState.price,
+      difficulty: matchState.difficulty,
+      results: results.map(tool => tool.name),
+      brief: lastRenderedShortlistContext
+    });
   }
 }
 
@@ -1041,7 +1296,7 @@ function renderDirectorySummary(results) {
           <h3>${top.name}</h3>
           <p>${escapeHtml(toolPreviewDescription(top))}</p>
         </div>
-        <a class="button primary" href="./tools/${top.slug}.html">Read full review</a>
+        <a class="button primary" href="./tools/${top.slug}.html" data-track-review="${top.slug}" data-track-tool-name="${escapeHtml(top.name)}">Read full review</a>
       </div>
       <div class="meta">${reasons.map(reason => `<span class="chip">${reason}</span>`).join('')}</div>
       <div class="directory-summary-copy"><strong>Why it ranks here:</strong> ${directoryLeadCopy()}</div>
@@ -1050,7 +1305,7 @@ function renderDirectorySummary(results) {
       ${alternates.length ? `
         <div class="directory-alt">
           <strong>Also compare:</strong>
-          ${alternates.map(tool => `<a href="./tools/${tool.slug}.html">${tool.name}</a>`).join(' • ')}
+          ${alternates.map(tool => `<a href="./tools/${tool.slug}.html" data-track-review="${tool.slug}" data-track-tool-name="${escapeHtml(tool.name)}">${tool.name}</a>`).join(' • ')}
         </div>
       ` : ''}
     </article>
@@ -1136,8 +1391,8 @@ function toolRow(tool, options = {}) {
         ${partnerNote}
       </div>
       <div class="tool-row-actions">
-        <a class="small-link primary" href="./tools/${tool.slug}.html">${primaryCta}</a>
-        <a class="small-link" href="${primaryUrl(tool)}" target="_blank" rel="${linkRel(tool)}">${primaryLabel(tool)}</a>
+        <a class="small-link primary" href="./tools/${tool.slug}.html" data-track-review="${tool.slug}" data-track-tool-name="${escapeHtml(tool.name)}">${primaryCta}</a>
+        <a class="small-link" href="${primaryUrl(tool)}" target="_blank" rel="${linkRel(tool)}" data-track-outbound="${tool.slug}" data-track-tool-name="${escapeHtml(tool.name)}">${primaryLabel(tool)}</a>
       </div>
     </article>
   `;
@@ -1253,6 +1508,111 @@ function syncUrl() {
   const hash = window.location.hash || '';
   const nextUrl = `${window.location.pathname}${query ? `?${query}` : ''}${hash}`;
   window.history.replaceState({}, '', nextUrl);
+}
+
+function extractToolSlugFromHref(href = '') {
+  const match = href.match(/\/tools\/([^/?#]+)(?:\.html)?/);
+  return match?.[1] || '';
+}
+
+function syncHelpRequestContext() {
+  if (!helpContextNote && !helpShortlistContextInput && !helpBuyerSignalSummaryInput) return;
+
+  const params = parsedHelpParams();
+  const source = params.get('source') || window.location.pathname;
+  const helpGoalField = document.querySelector('textarea[name="goal"]');
+  const recommendedTools = params.get('recommended_tools');
+  const shortlistLines = [
+    params.get('goal') ? `Main job: ${params.get('goal')}` : '',
+    params.get('audience') ? `Who it is for: ${params.get('audience')}` : '',
+    params.get('price') ? `Budget: ${params.get('price')}` : '',
+    params.get('difficulty') ? `Setup tolerance: ${params.get('difficulty')}` : '',
+    recommendedTools ? `Current shortlist: ${recommendedTools}` : ''
+  ].filter(Boolean);
+  const shortlistContext = shortlistLines.join('\n');
+  const buyerSignalSummary = buildBuyerSignalSummary();
+
+  if (helpSourcePathInput) {
+    helpSourcePathInput.value = source;
+  }
+
+  if (helpShortlistContextInput) {
+    helpShortlistContextInput.value = shortlistContext;
+  }
+
+  if (helpBuyerSignalSummaryInput) {
+    helpBuyerSignalSummaryInput.value = buyerSignalSummary;
+  }
+
+  if (helpContextNote && shortlistContext) {
+    helpContextNote.hidden = false;
+    helpContextNote.innerHTML = `
+      <strong>Shortlist context attached</strong>
+      <span>${escapeHtml(shortlistLines.join(' | '))}</span>
+    `;
+  }
+
+  if (helpGoalField && shortlistContext && !helpGoalField.value.trim()) {
+    helpGoalField.value = `I came from the shortlist.\n${shortlistContext}\n\nHere is the real workflow bottleneck:\n`;
+  }
+}
+
+function initBuyerSignalTracking() {
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a');
+    if (!link) return;
+
+    const href = link.getAttribute('href') || '';
+    if (!href || href.startsWith('#') || href.startsWith('mailto:')) return;
+
+    if (link.id === 'match-get-help') {
+      trackBuyerSignal('second_opinion_requested', {
+        brief: lastRenderedShortlistContext,
+        results: lastRenderedShortlistResults.map(tool => tool.name)
+      });
+      return;
+    }
+
+    if (href.includes('/comparisons/') || href.startsWith('./comparisons/')) {
+      trackBuyerSignal('comparison_opened', {
+        href,
+        label: link.textContent.trim()
+      });
+      return;
+    }
+
+    if (href.includes('/tools/') || href.startsWith('./tools/')) {
+      trackBuyerSignal('review_opened', {
+        href,
+        toolSlug: link.dataset.trackReview || extractToolSlugFromHref(href),
+        toolName: link.dataset.trackToolName || link.textContent.trim()
+      });
+      return;
+    }
+
+    if (/^https?:\/\//i.test(href)) {
+      let hostname = '';
+      try {
+        hostname = new URL(href).hostname.replace(/^www\./, '');
+      } catch {
+        hostname = '';
+      }
+
+      trackBuyerSignal('outbound_click', {
+        href,
+        hostname,
+        toolName: link.dataset.trackToolName || link.textContent.trim()
+      });
+    }
+  });
+
+  document.querySelectorAll('form[action*="formsubmit.co"]').forEach(form => {
+    form.addEventListener('submit', () => {
+      if (helpBuyerSignalSummaryInput) {
+        helpBuyerSignalSummaryInput.value = buildBuyerSignalSummary();
+      }
+    });
+  });
 }
 
 function scrollToDirectory() {
@@ -1564,7 +1924,29 @@ if (matchOpenDirectoryButton) {
     if (matchState.price !== 'All') params.set('price', matchState.price);
     if (matchState.audience !== 'All') params.set('audience', matchState.audience);
     const query = params.toString();
+    trackBuyerSignal('shortlist_open_directory', {
+      goal: matchState.goal,
+      audience: matchState.audience,
+      price: matchState.price,
+      difficulty: matchState.difficulty,
+      results: lastRenderedShortlistResults.map(tool => tool.name)
+    });
     window.location.href = `./directory.html${query ? `?${query}` : ''}`;
+  });
+}
+
+if (matchCopyBriefButton) {
+  matchCopyBriefButton.addEventListener('click', async () => {
+    if (!lastRenderedShortlistContext) return;
+    await copyText(lastRenderedShortlistContext);
+    trackBuyerSignal('shortlist_brief_copied', {
+      brief: lastRenderedShortlistContext
+    });
+    const originalLabel = matchCopyBriefButton.textContent;
+    matchCopyBriefButton.textContent = 'Copied';
+    window.setTimeout(() => {
+      matchCopyBriefButton.textContent = originalLabel;
+    }, 1400);
   });
 }
 
@@ -1591,7 +1973,9 @@ if (sortSelect) {
 }
 
 applyUrlState();
+syncHelpRequestContext();
 initPromptLab();
 initLandingLogoExplorer();
 initLandingEffects();
+initBuyerSignalTracking();
 render();

@@ -14,7 +14,7 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Shortlist useful AI tools — ihelpwithai.com">
   <meta name="twitter:description" content="Answer a few simple questions and get a tighter shortlist of useful AI tools.">
-  <link rel="stylesheet" href="./styles.css?v=20260415a">
+  <link rel="stylesheet" href="./styles.css?v=20260415b">
 </head>
 <body>
   <header class="topbar">
@@ -70,6 +70,21 @@
           <a class="button secondary" href="./directory.html">Prefer the full directory?</a>
         </div>
 
+        <div class="trust-grid shortlist-steps">
+          <article class="trust-card">
+            <h3>1. Pick the job</h3>
+            <p>Start with the workflow that matters most right now. That keeps the shortlist from turning back into a generic directory.</p>
+          </article>
+          <article class="trust-card">
+            <h3>2. Add budget and setup pressure</h3>
+            <p>Use budget and setup tolerance to separate interesting tools from tools your team will actually adopt.</p>
+          </article>
+          <article class="trust-card">
+            <h3>3. Compare the top few only</h3>
+            <p>Once the shortlist is tight, jump into the most relevant comparison or ask for a second opinion with your picks attached.</p>
+          </article>
+        </div>
+
         <div class="match-shell">
           <article class="match-panel">
             <div class="filter-group">
@@ -94,10 +109,14 @@
           </article>
 
           <article class="match-results">
+            <div class="match-brief" id="match-brief" hidden></div>
             <div class="match-status" id="match-status">Pick the main job and the site will turn the larger list into a tighter starting shortlist.</div>
             <div class="match-grid" id="match-grid"></div>
+            <div class="match-next-step" id="match-next-step" hidden></div>
             <div class="match-actions">
               <button class="button primary" id="match-open-directory" type="button">Open these picks in the directory</button>
+              <a class="button secondary" id="match-get-help" href="./get-help.html">Need a second opinion?</a>
+              <button class="clear-button" id="match-copy-brief" type="button">Copy shortlist brief</button>
               <button class="clear-button" id="match-reset" type="button">Reset chooser</button>
             </div>
           </article>
@@ -120,6 +139,6 @@
   </footer>
 
   <script src="./data.js?v=20260404a"></script>
-  <script src="./app.js?v=20260415a"></script>
+  <script src="./app.js?v=20260415b"></script>
 </body>
 </html>
