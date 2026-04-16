@@ -1023,9 +1023,86 @@ ${renderStartHereMenu('.')}
           </div>
 
           <div class="detail-section">
+            <h2>What every review should include</h2>
+            <div class="trust-grid">
+              <article class="trust-card">
+                <h3>Best fit and bad fit</h3>
+                <p>Every useful review should make it obvious who the tool is for, who should probably skip it, and what kind of workflow it actually improves.</p>
+              </article>
+              <article class="trust-card">
+                <h3>Setup and pricing reality</h3>
+                <p>We look for setup difficulty, pricing shape, and the practical cost of adopting the tool, not just the most flattering plan or feature list.</p>
+              </article>
+              <article class="trust-card">
+                <h3>Pros, cons, and shortlist case</h3>
+                <p>A review should explain the strongest reason to consider the tool, the main drawback to watch, and why it still deserves shortlist attention.</p>
+              </article>
+            </div>
+            <ul class="mini-list">
+              <li><strong>Reviewer:</strong> ihelpwithai.com editorial review process.</li>
+              <li><strong>Last reviewed or tested:</strong> visible freshness signals so buyers can judge recency.</li>
+              <li><strong>Setup difficulty:</strong> how much effort it takes to get value, not just to create an account.</li>
+              <li><strong>Pricing snapshot:</strong> the likely starting point a small team or operator will care about first.</li>
+              <li><strong>Best fit and bad fit:</strong> where the tool earns a recommendation and where it starts to become the wrong choice.</li>
+              <li><strong>Pros and cons:</strong> the practical upside and the most important tradeoff.</li>
+            </ul>
+          </div>
+
+          <div class="detail-section">
+            <h2>How we evaluate tools</h2>
+            <div class="trust-grid">
+              <article class="trust-card">
+                <h3>Workflow fit</h3>
+                <p>Does the tool clearly solve a recurring job for a real team, founder, or operator without needing too much explanation?</p>
+              </article>
+              <article class="trust-card">
+                <h3>Ease to start</h3>
+                <p>How much setup, prompt engineering, process change, or team training is required before the tool becomes genuinely useful?</p>
+              </article>
+              <article class="trust-card">
+                <h3>Value for cost</h3>
+                <p>Would a small team feel good about the spend once the tool is part of real work, or does the value stay too vague for the price?</p>
+              </article>
+            </div>
+            <div class="trust-grid" style="margin-top:16px">
+              <article class="trust-card">
+                <h3>Output quality</h3>
+                <p>Are the results good enough to create leverage, or does the user still need too much cleanup before the work is usable?</p>
+              </article>
+              <article class="trust-card">
+                <h3>Team readiness</h3>
+                <p>Does the tool work for the kind of buyer we serve, or is it really aimed at a much larger org, a hobby user, or a specialist team?</p>
+              </article>
+              <article class="trust-card">
+                <h3>Editorial confidence</h3>
+                <p>Can we explain the recommendation clearly, defend the tradeoffs, and name adjacent alternatives without hand-wavy filler?</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <h2>How we test</h2>
+            <ul class="mini-list">
+              <li>Check the tool's official positioning, pricing, and onboarding flow.</li>
+              <li>Review the workflow claim against the kind of buyer the site is actually built for.</li>
+              <li>Compare the tool against adjacent alternatives so the recommendation is not made in isolation.</li>
+              <li>Refresh priority pages when positioning, pricing, or quality signals materially change.</li>
+            </ul>
+          </div>
+
+          <div class="detail-section">
             <h2>How updates work</h2>
             <p>The directory tracks review recency directly in the tool data. That makes it easier to show which pages were reviewed most recently and keep the shortlist from feeling stale.</p>
             <p>Current coverage: <strong>${tools.length} tools</strong>, <strong>${goalCount} guide paths</strong>, and <strong>${comparisons.length} comparison pages</strong>.</p>
+          </div>
+
+          <div class="detail-section">
+            <h2>What we do not do</h2>
+            <ul class="mini-list">
+              <li>We do not treat every AI tool as equally relevant to every buyer.</li>
+              <li>We do not let affiliate payouts override fit, tradeoffs, or recommendation quality.</li>
+              <li>We do not assume a broad directory page is enough to earn trust on its own.</li>
+            </ul>
           </div>
 
           <div class="detail-section">
@@ -1408,6 +1485,27 @@ ${renderStartHereMenu('.')}
           <div class="eyebrow">Review coverage</div>
           <h1>Reviews for AI tools and companies</h1>
           <p class="summary">Use this page when you want to browse the actual reviews, not just filter the directory. It is the quickest way to jump into product writeups and company coverage.</p>
+
+          <div class="detail-section">
+            <h2>How these reviews work</h2>
+            <div class="trust-grid">
+              <article class="trust-card">
+                <h3>Last reviewed dates</h3>
+                <p>Freshness signals stay visible so you can tell whether a page has been checked recently enough to trust for a current buying decision.</p>
+              </article>
+              <article class="trust-card">
+                <h3>Best fit and bad fit</h3>
+                <p>Reviews are meant to help you rule tools in and out, not just collect more tabs with vague AI claims.</p>
+              </article>
+              <article class="trust-card">
+                <h3>Setup, pricing, and tradeoffs</h3>
+                <p>We care about adoption friction, likely cost, and where a tool stops making sense for a small team or operator.</p>
+              </article>
+            </div>
+            <div class="card-links" style="margin-top:14px">
+              <a class="small-link primary" href="./editorial-methodology.html">See full review methodology</a>
+            </div>
+          </div>
 
           <div class="detail-section">
             <h2>Product reviews</h2>
