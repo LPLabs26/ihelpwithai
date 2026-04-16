@@ -373,9 +373,23 @@
     "summary": "A very approachable AI meeting assistant for notes, action items, summaries, and cleaner post-call follow-up.",
     "whatFor": "Use Fathom when your biggest problem is losing time after meetings and you want the notes, highlights, and next steps handled fast.",
     "who": "Best for founders, account teams, operators, and anyone who wants meeting follow-up without a lot of setup.",
+    "bestFit": "Best for small teams that live in Zoom and want fast meeting summaries, action items, and follow-up emails without adding a heavy sales platform.",
+    "badFit": "Not the right fit if you need deep coaching analytics, formal revenue intelligence, or a system built mainly around CRM governance and pipeline inspection.",
+    "pricingSnapshot": "There is a free starting point, which makes Fathom attractive for small teams testing whether meeting notes actually save time before committing to a broader workflow tool.",
+    "setupReality": "Setup is light. The real work is getting the team to use the summaries consistently and deciding where actions, notes, and follow-ups should live after the meeting ends.",
     "useCase": "Turn a customer call into a clean summary, a short follow-up email, and a list of next actions for the owner.",
     "why": "It is one of the easiest meeting-note tools to start using well on day one.",
     "watchOuts": "If you need deeper conversation intelligence, coaching, or a larger system around calls, a heavier platform may fit better.",
+    "pros": [
+      "Very fast to start using, which makes it a practical first meeting AI tool for founders and lean teams.",
+      "Strong for turning calls into usable summaries and next steps right away.",
+      "Low-friction way to reduce post-meeting admin without rebuilding the whole stack."
+    ],
+    "cons": [
+      "Lighter on advanced sales intelligence than more revenue-focused tools.",
+      "Value drops if the team still copies notes manually into other systems anyway.",
+      "Less compelling if your org already has a deeply embedded meeting or call-intelligence platform."
+    ],
     "firstPrompt": "Summarize this call into the top decisions, risks, next actions, and one short follow-up email I can send today.",
     "reviewedAt": "March 26, 2026",
     "tags": [
@@ -387,6 +401,11 @@
     ],
     "addedAt": "2026-03-26",
     "reviewMethod": "Manual editorial review",
+    "relatedToolSlugs": [
+      "fireflies",
+      "otter",
+      "laxis"
+    ],
     "youtubeVideoId": "h45QUeYGQlA",
     "youtubeVideoTitle": "Fathom Analysis Overview",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=h45QUeYGQlA"
