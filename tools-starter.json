@@ -437,9 +437,23 @@
     "summary": "A strong meeting assistant for recording calls, pulling summaries, and keeping follow-ups from slipping.",
     "whatFor": "Use Fireflies when you want automatic notes, searchable transcripts, and meeting follow-up help without manual admin work.",
     "who": "Best for sales teams, operators, agencies, and client-facing teams in lots of calls.",
+    "bestFit": "Best for teams with a lot of recurring customer, sales, or internal calls that want searchable transcripts, automatic summaries, and more structured follow-up at scale.",
+    "badFit": "Not the best first pick if your team only has occasional meetings, dislikes call recording, or mainly wants a simple note taker without extra workflow depth.",
+    "pricingSnapshot": "Free to try, but the real value usually shows up when a team standardizes around it for regular call capture, search, and follow-up rather than casual one-off use.",
+    "setupReality": "Getting started is easy, but rollout takes policy and habit-setting. You need agreement on recording permissions, where notes get shared, and who owns follow-up actions.",
     "useCase": "After every discovery call, create a summary, action list, and CRM-ready handoff without doing it by hand.",
     "why": "It solves a real pain fast: people forget details, and meetings rarely turn into clean follow-up by themselves.",
     "watchOuts": "It works best when your team is comfortable with meeting recording, permissions, and review workflows.",
+    "pros": [
+      "Strong balance of transcription, summaries, and searchable meeting history for busy teams.",
+      "Better suited than lighter tools when multiple people need access to past conversations.",
+      "Useful for turning discovery and client calls into repeatable handoff material."
+    ],
+    "cons": [
+      "Can create noise if every meeting is recorded but nobody reviews or acts on the outputs.",
+      "Requires more team coordination around permissions and meeting workflows than the simplest tools.",
+      "May feel heavier than necessary for founders or small teams with low meeting volume."
+    ],
     "firstPrompt": "Summarize this meeting into decisions, risks, action items, owners, and next steps I can send to the team.",
     "reviewedAt": "March 25, 2026",
     "tags": [
@@ -451,6 +465,11 @@
     ],
     "addedAt": "2026-03-26",
     "reviewMethod": "Manual editorial review",
+    "relatedToolSlugs": [
+      "fathom",
+      "otter",
+      "laxis"
+    ],
     "youtubeVideoId": "hdWyP-YqwBk",
     "youtubeVideoTitle": "Fireflies AI Review 2025 | Pros and Cons \u2013 Honest & Unbiased",
     "youtubeVideoUrl": "https://www.youtube.com/watch?v=hdWyP-YqwBk"
