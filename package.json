@@ -2,6 +2,7 @@
   "name": "ihelpwithai-directory",
   "private": true,
   "scripts": {
-    "build": "node scripts/build-site.mjs"
+    "build": "node scripts/build-site.mjs",
+    "qa:live": "node scripts/live-site-qa.mjs"
   }
 }

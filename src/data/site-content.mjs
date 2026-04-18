@@ -7,6 +7,10 @@ export const site = {
     'Choose the right AI and software for your contracting business without wasting hours on demos, hype, or bad-fit tools.',
   contactEmail: 'info@ihelpwithai.com',
   socialImage: '/assets/og-default.png',
+  analytics: {
+    posthogToken: 'phc_REPLACE_ME',
+    posthogHost: 'https://us.i.posthog.com'
+  },
   navLinks: [
     { href: '/', label: 'Home' },
     { href: '/shortlist/', label: 'Shortlist' },
@@ -970,7 +974,7 @@ export const comparisons = [
       'You have someone who can actually own the extra tool and its handoffs.'
     ],
     doNeither: [
-      'Do neither if the real problem is still undefined and the team cannot name the one workflow to improve first.',
+      'Do neither if the real problem is still unclear and the team cannot name the one workflow to improve first.',
       'Do neither if everyone expects software to fix weak ownership and inconsistent process.'
     ],
     startHere: [
@@ -1782,6 +1786,8 @@ export const compatibilityRedirects = {
   'learn-ai/index.html': '/learn/',
   'editorial-methodology.html': '/methodology/',
   'editorial-methodology/index.html': '/methodology/',
+  'comparisons.html': '/compare/',
+  'comparisons/index.html': '/compare/',
   'thanks.html': '/thank-you/',
   'thanks/index.html': '/thank-you/',
   'estimate-follow-up.html': '/problems/quote-follow-up/',

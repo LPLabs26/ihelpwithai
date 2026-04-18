@@ -1,4 +1,8 @@
 window.IHWAI_SITE_DATA = {
+  "analytics": {
+    "posthogToken": "phc_REPLACE_ME",
+    "posthogHost": "https://us.i.posthog.com"
+  },
   "tradeOptions": [
     {
       "slug": "hvac",

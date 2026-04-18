@@ -24,7 +24,7 @@ const publicAssetsDir = path.join(publicDir, 'assets');
 const rootAssetsDir = path.join(rootDir, 'assets');
 
 const SITE_URL = 'https://ihelpwithai.com';
-const ASSET_VERSION = '20260418b';
+const ASSET_VERSION = '20260418c';
 const FORM_ACTION = `https://formsubmit.co/${site.contactEmail}`;
 const ROUTE_SUFFIX = '/';
 const SITEMAP_EXCLUDED_ROUTES = new Set(['/thank-you/']);
@@ -149,7 +149,7 @@ function renderNav(currentRoute) {
         link.href === '/'
           ? currentRoute === '/'
           : currentRoute === link.href || currentRoute.startsWith(link.href);
-      return `<a class="${active ? 'is-active' : ''}" href="${link.href}">${escapeHtml(link.label)}</a>`;
+      return `<a class="${active ? 'is-active' : ''}" href="${link.href}" data-analytics="nav_click">${escapeHtml(link.label)}</a>`;
     })
     .join('');
 }
@@ -171,7 +171,8 @@ function renderFooter() {
             <ul class="footer-links">
               ${group.links
                 .map(
-                  (link) => `<li><a href="${link.href}">${escapeHtml(link.label)}</a></li>`
+                  (link) =>
+                    `<li><a href="${link.href}" data-analytics="footer_click">${escapeHtml(link.label)}</a></li>`
                 )
                 .join('')}
             </ul>
@@ -297,7 +298,7 @@ function renderReviewCard(review) {
 
 function renderComparisonCard(comparison) {
   return `
-    <a class="card" href="${routeForComparison(comparison.slug)}">
+    <a class="card" href="${routeForComparison(comparison.slug)}" data-analytics="compare_cta">
       <div class="card-kicker">Comparison</div>
       <h3>${escapeHtml(comparison.shortTitle)}</h3>
       <p>${escapeHtml(comparison.summary)}</p>
@@ -441,9 +442,9 @@ function renderHomePage() {
               <h1>Choose the right AI and software for your contracting business.</h1>
               <p class="hero-copy">Built for owners, office managers, dispatchers, estimators, and GMs who need clearer next steps around missed calls, quote follow-up, dispatch, reviews, and office admin.</p>
               <div class="hero-actions">
-                <a class="btn primary" href="/shortlist/" data-track="home_primary_cta">Start the shortlist</a>
-                <a class="btn secondary" href="/problems/" data-track="home_problem_cta">Browse by problem</a>
-                <a class="btn ghost" href="/trades/" data-track="home_trade_cta">Browse by trade</a>
+                <a class="btn primary" href="/shortlist/" data-analytics="home_cta">Start the shortlist</a>
+                <a class="btn secondary" href="/problems/" data-analytics="home_cta">Browse by problem</a>
+                <a class="btn ghost" href="/trades/" data-analytics="home_cta">Browse by trade</a>
               </div>
             </div>
             <aside class="hero-panel">
@@ -465,19 +466,19 @@ function renderHomePage() {
                 <div class="card-kicker">Path one</div>
                 <h3>Start by trade</h3>
                 <p>See the stack and bottlenecks that matter most for HVAC, plumbing, electrical, roofing, landscaping, cleaning, handyman, and general contracting.</p>
-                <div class="cta-row"><a class="btn secondary small" href="/trades/">Explore trades</a></div>
+                <div class="cta-row"><a class="btn secondary small" href="/trades/" data-analytics="home_cta">Explore trades</a></div>
               </article>
               <article class="route-card">
                 <div class="card-kicker">Path two</div>
                 <h3>Start by bottleneck</h3>
                 <p>Go straight to missed calls, quote follow-up, scheduling, reviews, or office admin if you already know where the leak is.</p>
-                <div class="cta-row"><a class="btn secondary small" href="/problems/">Explore problems</a></div>
+                <div class="cta-row"><a class="btn secondary small" href="/problems/" data-analytics="home_cta">Explore problems</a></div>
               </article>
               <article class="route-card">
                 <div class="card-kicker">Path three</div>
                 <h3>Get a shortlist fast</h3>
                 <p>Use the guided shortlist to narrow your next move by trade, team size, current stack, budget, and setup tolerance.</p>
-                <div class="cta-row"><a class="btn secondary small" href="/shortlist/">Build shortlist</a></div>
+                <div class="cta-row"><a class="btn secondary small" href="/shortlist/" data-analytics="home_cta">Build shortlist</a></div>
               </article>
             </div>
           </div>
@@ -543,7 +544,7 @@ function renderHomePage() {
               <p>The starter pack includes missed-call texts, estimate follow-up examples, review request copy, one SOP prompt pack, and a simple decision checklist.</p>
               ${renderBulletList(legalPages.starterPack.bullets)}
             </div>
-            <form class="lead-form" data-lead-form="starter-pack-home" action="${FORM_ACTION}" method="POST">
+            <form class="lead-form" data-lead-form="starter-pack-home" data-analytics="starter_pack_form" action="${FORM_ACTION}" method="POST">
               ${renderLeadFormHiddenFields('ihelpwithai starter pack request')}
               <label>Name<input type="text" name="name" placeholder="Your name"></label>
               <label>Work email<input type="email" name="email" required placeholder="Work email"></label>
@@ -630,7 +631,7 @@ function renderShortlistPage() {
                 <div class="step-progress-bar"><div class="step-progress-fill" data-shortlist-progress></div></div>
                 <div class="microcopy" data-shortlist-progress-label>Step 1 of 4</div>
               </div>
-              <form data-shortlist-form>
+              <form data-shortlist-form data-analytics="shortlist_start">
                 <div class="step-panel" data-shortlist-step="trade-team">
                   <h3>Start with the shop profile</h3>
                   <p class="muted">These two answers frame the kind of stack that is realistic for your business right now.</p>
@@ -721,8 +722,8 @@ function renderShortlistPage() {
                 </div>
                 <div class="quiz-nav">
                   <button class="btn secondary" type="button" data-shortlist-back>Back</button>
-                  <button class="btn secondary" type="button" data-shortlist-next>Next</button>
-                  <button class="btn primary" type="submit" data-shortlist-submit hidden>Build my shortlist</button>
+                  <button class="btn secondary" type="button" data-shortlist-next data-analytics="shortlist_step">Next</button>
+                  <button class="btn primary" type="submit" data-shortlist-submit data-analytics="shortlist_submit" hidden>Build my shortlist</button>
                 </div>
               </form>
             </div>
@@ -1041,7 +1042,7 @@ function renderReviewPage(review) {
                 ${renderPills(review.tradeFit, (slug) => tradeBySlug.get(slug)?.title || toSlugLabel(slug))}
                 ${renderPills(review.teamSizeFit)}
                 <div class="cta-row" style="margin-top:16px">
-                  <a class="btn primary" href="${review.officialUrl}" target="_blank" rel="noopener noreferrer" data-track="review_official_click">Visit official site</a>
+                  <a class="btn primary" href="${review.officialUrl}" target="_blank" rel="noopener noreferrer" data-analytics="review_cta outbound_tool_click">Visit official site</a>
                   <a class="btn secondary" href="/shortlist/">Run the shortlist</a>
                 </div>
               </div>
@@ -1310,7 +1311,7 @@ function renderTemplatesPage() {
                           <div class="card-kicker">Copy block ${index + 1}</div>
                           <h3>${escapeHtml(block.title)}</h3>
                         </div>
-                        <button class="btn secondary small" type="button" data-copy-target="${section.id}-${index}">Copy</button>
+                        <button class="btn secondary small" type="button" data-copy-target="${section.id}-${index}" data-analytics="template_copy">Copy</button>
                       </div>
                       <pre class="template-copy" id="${section.id}-${index}">${escapeHtml(block.copy)}</pre>
                     </div>`
@@ -1431,7 +1432,7 @@ function renderStarterPackPage() {
               <p>${escapeHtml(legalPages.starterPack.intro)}</p>
               ${renderBulletList(legalPages.starterPack.bullets)}
             </div>
-            <form class="lead-form" data-lead-form="starter-pack-page" action="${FORM_ACTION}" method="POST">
+            <form class="lead-form" data-lead-form="starter-pack-page" data-analytics="starter_pack_form" action="${FORM_ACTION}" method="POST">
               ${renderLeadFormHiddenFields('ihelpwithai starter pack request')}
               <label>Name<input type="text" name="name" placeholder="Your name"></label>
               <label>Email<input type="email" name="email" required placeholder="Work email"></label>
@@ -1472,7 +1473,7 @@ function renderContactPage() {
               <p>${escapeHtml(legalPages.contact.intro)}</p>
               ${renderBulletList(legalPages.contact.bullets)}
             </div>
-            <form class="contact-form" data-lead-form="contact" action="${FORM_ACTION}" method="POST">
+            <form class="contact-form" data-lead-form="contact" data-analytics="contact_form" action="${FORM_ACTION}" method="POST">
               ${renderLeadFormHiddenFields('ihelpwithai contact request')}
               <label>Name<input type="text" name="name" placeholder="Your name"></label>
               <label>Email<input type="email" name="email" required placeholder="Best email"></label>
@@ -1584,6 +1585,8 @@ function renderRedirectPage(targetRoute, title = 'Redirecting') {
   <meta charset="utf-8">
   <meta http-equiv="refresh" content="0; url=${escapeHtml(targetRoute)}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="${escapeHtml(absoluteUrl(targetRoute))}">
   <title>${escapeHtml(title)}</title>
 </head>
 <body>
@@ -1625,6 +1628,7 @@ function renderSiteDataScript() {
   }));
 
   return `window.IHWAI_SITE_DATA = ${JSON.stringify({
+    analytics: site.analytics,
     tradeOptions: trades.map((trade) => ({ slug: trade.slug, title: trade.title })),
     problemOptions: problems.map((problem) => ({ slug: problem.slug, title: problem.title })),
     tools

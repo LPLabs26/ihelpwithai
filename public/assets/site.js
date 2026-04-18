@@ -1,9 +1,15 @@
 (function () {
-  const data = window.IHWAI_SITE_DATA || { tools: [], tradeOptions: [], problemOptions: [] };
+  const data = Object.assign(
+    { tools: [], tradeOptions: [], problemOptions: [], analytics: {} },
+    window.IHWAI_SITE_DATA || {}
+  );
   const stepIds = ['trade-team', 'bottleneck-stack', 'office-volume', 'budget-setup'];
   const budgetRank = { lean: 0, roi: 1, enterprise: 2 };
   const setupRank = { simple: 0, moderate: 1, invest: 2 };
-  const teamRank = { solo: 0, '2-5': 1, '6-15': 2, '16-40': 3, '40+': 4 };
+  const shortlistState = {
+    started: false,
+    lastChoices: null
+  };
 
   function qs(selector, root) {
     return (root || document).querySelector(selector);
@@ -13,15 +19,176 @@
     return Array.from((root || document).querySelectorAll(selector));
   }
 
-  function track(name, props) {
-    const payload = Object.assign({ path: window.location.pathname }, props || {});
+  function safeStorageGet(key) {
     try {
-      if (Array.isArray(window.dataLayer)) window.dataLayer.push(Object.assign({ event: name }, payload));
-      if (typeof window.plausible === 'function') window.plausible(name, { props: payload });
-      if (window.posthog && typeof window.posthog.capture === 'function') window.posthog.capture(name, payload);
+      return window.localStorage.getItem(key);
+    } catch (error) {
+      return '';
+    }
+  }
+
+  function safeStorageSet(key, value) {
+    try {
+      window.localStorage.setItem(key, value);
     } catch (error) {
       void error;
     }
+  }
+
+  function createDistinctId() {
+    if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+      return window.crypto.randomUUID();
+    }
+    return 'ihai-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
+  }
+
+  function createAnalytics(config) {
+    const token = String(config.posthogToken || '').trim();
+    const host = String(config.posthogHost || '')
+      .trim()
+      .replace(/\/+$/, '');
+    const enabled = Boolean(token && token !== 'phc_REPLACE_ME' && host);
+    const storageKey = 'ihai_anon_id';
+    let distinctId = '';
+
+    function getDistinctId() {
+      if (distinctId) return distinctId;
+      distinctId = safeStorageGet(storageKey);
+      if (!distinctId) {
+        distinctId = createDistinctId();
+        safeStorageSet(storageKey, distinctId);
+      }
+      return distinctId;
+    }
+
+    function capture(eventName, properties) {
+      if (!enabled) return;
+
+      const payload = JSON.stringify({
+        api_key: token,
+        event: eventName,
+        distinct_id: getDistinctId(),
+        properties: Object.assign(
+          {
+            $current_url: window.location.href,
+            $pathname: window.location.pathname,
+            $lib: 'ihai-static-site'
+          },
+          properties || {}
+        )
+      });
+      const endpoint = host + '/capture/';
+
+      try {
+        if (typeof navigator.sendBeacon === 'function') {
+          const beacon = new Blob([payload], { type: 'application/json' });
+          if (navigator.sendBeacon(endpoint, beacon)) return;
+        }
+      } catch (error) {
+        void error;
+      }
+
+      try {
+        window
+          .fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: payload,
+            mode: 'cors',
+            credentials: 'omit',
+            keepalive: true
+          })
+          .catch(function () {});
+      } catch (error) {
+        void error;
+      }
+    }
+
+    return {
+      enabled: enabled,
+      capture: capture
+    };
+  }
+
+  const analytics = createAnalytics(data.analytics || {});
+
+  function track(name, props, options) {
+    const settings = Object.assign({ includePath: true }, options || {});
+    const payload = Object.assign(
+      {},
+      settings.includePath ? { path: window.location.pathname } : {},
+      props || {}
+    );
+
+    try {
+      if (Array.isArray(window.dataLayer)) {
+        window.dataLayer.push(Object.assign({ event: name }, payload));
+      }
+    } catch (error) {
+      void error;
+    }
+
+    analytics.capture(name, payload);
+  }
+
+  function cleanLabel(target) {
+    return String(target.getAttribute('aria-label') || target.textContent || '')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function normalizeInternalPath(href) {
+    if (!href) return '';
+    try {
+      const url = new URL(href, window.location.href);
+      if (url.origin !== window.location.origin) return '';
+      return url.pathname.endsWith('/') || /\.[a-z0-9]+$/i.test(url.pathname)
+        ? url.pathname
+        : url.pathname + '/';
+    } catch (error) {
+      return '';
+    }
+  }
+
+  function getDestinationHostname(href) {
+    if (!href) return '';
+    try {
+      const url = new URL(href, window.location.href);
+      if (url.origin === window.location.origin) return '';
+      return url.hostname.replace(/^www\./i, '');
+    } catch (error) {
+      return '';
+    }
+  }
+
+  function getAnalyticsTokens(target) {
+    return String(target.getAttribute('data-analytics') || '')
+      .split(/\s+/)
+      .filter(Boolean);
+  }
+
+  function shortlistAnalyticsProps(choices) {
+    const selected = choices || {};
+    return {
+      trade: selected.trade || '',
+      team_size: selected.teamSize || '',
+      bottleneck: selected.bottleneck || '',
+      budget: selected.budget || '',
+      setup_tolerance: selected.setupTolerance || '',
+      current_stack: selected.currentStack || ''
+    };
+  }
+
+  function buildLinkProps(target) {
+    const href = target.getAttribute('href') || '';
+    const props = {
+      label: cleanLabel(target)
+    };
+    const targetPath = normalizeInternalPath(href);
+    const destinationHostname = getDestinationHostname(href);
+    if (targetPath) props.target_path = targetPath;
+    if (destinationHostname) props.destination_hostname = destinationHostname;
+    return props;
   }
 
   function initMenu() {
@@ -43,7 +210,9 @@
         try {
           await navigator.clipboard.writeText(target.textContent.trim());
           button.textContent = 'Copied';
-          track('template_copy', { target: button.getAttribute('data-copy-target') });
+          track('ihai_template_copy_clicked', {
+            template_id: button.getAttribute('data-copy-target') || ''
+          });
         } catch (error) {
           button.textContent = 'Copy failed';
         }
@@ -80,11 +249,28 @@
     if (choices.afterHoursLeadVolume === 'frequent') score += tool.afterHoursStrength;
     if (choices.afterHoursLeadVolume === 'major') score += tool.afterHoursStrength * 2;
 
-    if (choices.currentStack === 'advanced-fsm' && tool.categoryLabel === 'All in one field-service software') score -= 2;
-    if (choices.currentStack === 'none-spreadsheets' && tool.categoryLabel === 'All in one field-service software') score += 2;
+    if (
+      choices.currentStack === 'advanced-fsm' &&
+      tool.categoryLabel === 'All in one field-service software'
+    ) {
+      score -= 2;
+    }
+    if (
+      choices.currentStack === 'none-spreadsheets' &&
+      tool.categoryLabel === 'All in one field-service software'
+    ) {
+      score += 2;
+    }
 
-    if (choices.bottleneck === 'office-admin' && (tool.slug === 'chatgpt' || tool.slug === 'zapier')) score += 3;
-    if (choices.bottleneck === 'missed-calls' && (tool.slug === 'callrail' || tool.slug === 'openphone')) score += 3;
+    if (choices.bottleneck === 'office-admin' && (tool.slug === 'chatgpt' || tool.slug === 'zapier')) {
+      score += 3;
+    }
+    if (
+      choices.bottleneck === 'missed-calls' &&
+      (tool.slug === 'callrail' || tool.slug === 'openphone')
+    ) {
+      score += 3;
+    }
 
     return score;
   }
@@ -106,24 +292,52 @@
     const tool = entry.tool;
     const compareLinks = (tool.compareLinks || [])
       .map(function (compareLink) {
-        return '<a class="inline-link" href="' + compareLink.href + '">' + compareLink.label + '</a>';
+        return (
+          '<a class="inline-link" href="' +
+          compareLink.href +
+          '" data-analytics="compare_cta">' +
+          compareLink.label +
+          '</a>'
+        );
       })
       .join('');
 
     return (
       '<article class="card result-card">' +
-      '<div class="card-kicker">Recommendation score ' + entry.score + '</div>' +
-      '<h3>' + tool.name + '</h3>' +
-      '<p>' + tool.summary + '</p>' +
-      '<div class="pill-row">' +
-      '<span class="pill">' + tool.categoryLabel + '</span>' +
-      '<span class="pill">' + tool.setupLabel + '</span>' +
-      '<span class="pill">' + tool.pricingLabel + '</span>' +
+      '<div class="card-kicker">Recommendation score ' +
+      entry.score +
       '</div>' +
-      '<p class="result-note"><strong>Why it fits:</strong> ' + tool.shortlistReason + '</p>' +
+      '<h3>' +
+      tool.name +
+      '</h3>' +
+      '<p>' +
+      tool.summary +
+      '</p>' +
+      '<div class="pill-row">' +
+      '<span class="pill">' +
+      tool.categoryLabel +
+      '</span>' +
+      '<span class="pill">' +
+      tool.setupLabel +
+      '</span>' +
+      '<span class="pill">' +
+      tool.pricingLabel +
+      '</span>' +
+      '</div>' +
+      '<p class="result-note"><strong>Why it fits:</strong> ' +
+      tool.shortlistReason +
+      '</p>' +
       '<div class="result-links">' +
-      (tool.reviewPath ? '<a class="btn secondary small" href="' + tool.reviewPath + '">Read review</a>' : '') +
-      (tool.officialUrl ? '<a class="btn ghost-link" href="' + tool.officialUrl + '" target="_blank" rel="noopener noreferrer">Official site</a>' : '') +
+      (tool.reviewPath
+        ? '<a class="btn secondary small" href="' +
+          tool.reviewPath +
+          '" data-analytics="shortlist_result_click">Read review</a>'
+        : '') +
+      (tool.officialUrl
+        ? '<a class="btn ghost-link" href="' +
+          tool.officialUrl +
+          '" target="_blank" rel="noopener noreferrer" data-analytics="shortlist_result_click outbound_tool_click">Official site</a>'
+        : '') +
       '</div>' +
       (compareLinks ? '<div class="inline-links">' + compareLinks + '</div>' : '') +
       '</article>'
@@ -133,11 +347,17 @@
   function renderPrimaryDecision(tool, choices) {
     const lines = [];
     if (choices.bottleneck === 'missed-calls') {
-      lines.push('Start with the inbound lead leak first. If the team is missing calls, more marketing and better estimates will not matter much.');
+      lines.push(
+        'Start with the inbound lead leak first. If the team is missing calls, more marketing and better estimates will not matter much.'
+      );
     } else if (choices.bottleneck === 'quote-follow-up') {
-      lines.push('Your first move should tighten how estimates turn into decisions. That usually means a stronger quote workflow, clearer follow-up, or both.');
+      lines.push(
+        'Your first move should tighten how estimates turn into decisions. That usually means a stronger quote workflow, clearer follow-up, or both.'
+      );
     } else if (choices.bottleneck === 'office-admin') {
-      lines.push('The fastest win is usually reducing repeat office drag before buying another giant platform.');
+      lines.push(
+        'The fastest win is usually reducing repeat office drag before buying another giant platform.'
+      );
     } else {
       lines.push('Pick the tool that matches the current bottleneck, not the broadest feature list.');
     }
@@ -150,19 +370,28 @@
     const form = qs('[data-shortlist-form]');
     if (!form) return;
 
-    const steps = stepIds.map(function (id) {
-      return qs('[data-shortlist-step="' + id + '"]');
-    }).filter(Boolean);
+    const steps = stepIds
+      .map(function (id) {
+        return qs('[data-shortlist-step="' + id + '"]');
+      })
+      .filter(Boolean);
     const progressBar = qs('[data-shortlist-progress]');
     const progressLabel = qs('[data-shortlist-progress-label]');
     const backButton = qs('[data-shortlist-back]');
     const nextButton = qs('[data-shortlist-next]');
     const submitButton = qs('[data-shortlist-submit]');
-    const results = qs('[data-shortlist-results]');
     const resultGrid = qs('[data-shortlist-grid]');
     const primary = qs('[data-shortlist-primary]');
     const empty = qs('[data-shortlist-empty]');
     let currentStep = 0;
+
+    function markStarted() {
+      if (shortlistState.started) return;
+      shortlistState.started = true;
+      track('ihai_shortlist_started', shortlistAnalyticsProps(readChoices(form)), {
+        includePath: false
+      });
+    }
 
     function validateCurrentStep() {
       const step = steps[currentStep];
@@ -192,6 +421,7 @@
 
     function runShortlist() {
       const choices = readChoices(form);
+      shortlistState.lastChoices = choices;
       const ranked = data.tools
         .map(function (tool) {
           return { tool: tool, score: rankTool(tool, choices) };
@@ -209,17 +439,21 @@
       }
       if (primary) {
         primary.innerHTML = ranked[0]
-          ? '<h3>Recommended first move</h3><p>' + renderPrimaryDecision(ranked[0].tool, choices) + '</p>'
+          ? '<h3>Recommended first move</h3><p>' +
+            renderPrimaryDecision(ranked[0].tool, choices) +
+            '</p>'
           : '<h3>No strong match yet</h3><p>Try loosening budget or setup constraints first. If the workflow itself is still undefined, start with the problem pages instead of forcing a tool pick.</p>';
       }
       if (empty) empty.hidden = ranked.length !== 0;
-      track('shortlist_completed', {
-        trade: choices.trade || '',
-        bottleneck: choices.bottleneck || '',
-        topTool: ranked[0] ? ranked[0].tool.slug : '',
-        results: ranked.length
+
+      track('ihai_shortlist_completed', shortlistAnalyticsProps(choices), {
+        includePath: false
       });
     }
+
+    form.addEventListener('change', function () {
+      markStarted();
+    });
 
     if (backButton) {
       backButton.addEventListener('click', function () {
@@ -231,6 +465,10 @@
     if (nextButton) {
       nextButton.addEventListener('click', function () {
         if (!validateCurrentStep()) return;
+        markStarted();
+        track('ihai_shortlist_step_completed', shortlistAnalyticsProps(readChoices(form)), {
+          includePath: false
+        });
         currentStep = Math.min(steps.length - 1, currentStep + 1);
         syncStep();
       });
@@ -239,6 +477,7 @@
     form.addEventListener('submit', function (event) {
       event.preventDefault();
       if (!validateCurrentStep()) return;
+      markStarted();
       runShortlist();
       const target = qs('[data-shortlist-output]');
       if (target && typeof target.scrollIntoView === 'function') {
@@ -249,10 +488,53 @@
     syncStep();
   }
 
+  function getLeadFormKind(form) {
+    const key = form.getAttribute('data-lead-form') || '';
+    if (key.indexOf('starter-pack') === 0) return 'starter_pack';
+    if (key === 'contact') return 'contact';
+    return '';
+  }
+
+  function buildLeadFormProps(form, kind) {
+    const props = {
+      path: window.location.pathname,
+      form_type: kind
+    };
+    const tradeField = form.elements.trade;
+    if (tradeField && tradeField.value) props.trade = tradeField.value;
+    return props;
+  }
+
   function initLeadForms() {
+    const startedForms = new WeakSet();
+
     qsa('[data-lead-form]').forEach(function (form) {
+      const kind = getLeadFormKind(form);
+      if (!kind) return;
+
+      function markStarted() {
+        if (startedForms.has(form)) return;
+        startedForms.add(form);
+        track(
+          kind === 'starter_pack'
+            ? 'ihai_starter_pack_form_started'
+            : 'ihai_contact_form_started',
+          buildLeadFormProps(form, kind),
+          { includePath: false }
+        );
+      }
+
+      form.addEventListener('focusin', markStarted);
+      form.addEventListener('change', markStarted);
       form.addEventListener('submit', function () {
-        track('lead_form_submitted', { form: form.getAttribute('data-lead-form') || 'unknown' });
+        markStarted();
+        track(
+          kind === 'starter_pack'
+            ? 'ihai_starter_pack_form_submitted'
+            : 'ihai_contact_form_submitted',
+          buildLeadFormProps(form, kind),
+          { includePath: false }
+        );
       });
     });
   }
@@ -261,19 +543,37 @@
     document.addEventListener(
       'click',
       function (event) {
-        const target = event.target.closest('[data-track], a[href], button[data-track]');
+        const target = event.target.closest('[data-analytics]');
         if (!target) return;
-        const name = target.getAttribute('data-track');
-        if (name) {
-          track(name, { label: (target.textContent || '').trim() });
-          return;
-        }
-        if (target.tagName === 'A') {
-          const href = target.getAttribute('href') || '';
-          if (/^https?:/i.test(href) && href.indexOf(window.location.hostname) === -1) {
-            track('outbound_click', { href: href });
+
+        const linkProps = buildLinkProps(target);
+        getAnalyticsTokens(target).forEach(function (token) {
+          if (token === 'home_cta') {
+            track('ihai_home_cta_click', linkProps);
+          } else if (token === 'nav_click') {
+            track('ihai_nav_click', linkProps);
+          } else if (token === 'footer_click') {
+            track('ihai_footer_click', linkProps);
+          } else if (token === 'template_download') {
+            track('ihai_template_download_clicked', linkProps);
+          } else if (token === 'review_cta') {
+            track('ihai_review_cta_clicked', linkProps);
+          } else if (token === 'compare_cta') {
+            track('ihai_compare_cta_clicked', linkProps);
+          } else if (token === 'outbound_tool_click') {
+            if (linkProps.destination_hostname) {
+              track('ihai_outbound_tool_click', {
+                destination_hostname: linkProps.destination_hostname
+              });
+            }
+          } else if (token === 'shortlist_result_click') {
+            track(
+              'ihai_shortlist_result_clicked',
+              shortlistAnalyticsProps(shortlistState.lastChoices),
+              { includePath: false }
+            );
           }
-        }
+        });
       },
       true
     );
@@ -284,4 +584,5 @@
   initShortlist();
   initLeadForms();
   initLinkTracking();
+  track('ihai_page_view', { title: document.title });
 })();
