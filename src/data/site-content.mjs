@@ -8,7 +8,7 @@ export const site = {
   contactEmail: 'info@ihelpwithai.com',
   socialImage: '/assets/og-default.png',
   analytics: {
-    posthogToken: 'phc_REPLACE_ME',
+    posthogToken: 'phc_oBCQc5RDzTRAMXA2HSGqfGP4BbkYEg5HnrawXk5AV6PH',
     posthogHost: 'https://us.i.posthog.com'
   },
   navLinks: [

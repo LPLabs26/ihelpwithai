@@ -1,6 +1,6 @@
 window.IHWAI_SITE_DATA = {
   "analytics": {
-    "posthogToken": "phc_REPLACE_ME",
+    "posthogToken": "phc_oBCQc5RDzTRAMXA2HSGqfGP4BbkYEg5HnrawXk5AV6PH",
     "posthogHost": "https://us.i.posthog.com"
   },
   "tradeOptions": [
