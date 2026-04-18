@@ -629,6 +629,14 @@ textarea {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.form-honeypot {
+  position: absolute;
+  left: -100vw;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 label {
   display: grid;
   gap: 8px;

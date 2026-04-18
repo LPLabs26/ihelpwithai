@@ -439,8 +439,8 @@ export const reviews = [
       'Base operating system for adding review requests or call-routing tools later.'
     ],
     alternatives: [
-      { slug: 'housecall-pro', reason: 'better fit when you want broader home-service depth and more growth-stage features' },
-      { slug: 'servicetitan', reason: 'better fit when the team is much larger and reporting depth matters more than simplicity' }
+      { slug: 'housecall-pro', reason: 'you want broader home-service depth and more growth-stage features' },
+      { slug: 'servicetitan', reason: 'the team is much larger and reporting depth matters more than simplicity' }
     ],
     compareLinks: [
       'jobber-vs-housecall-pro',
@@ -503,8 +503,8 @@ export const reviews = [
       'Growth-stage operating system when the business is outgrowing simple admin tools.'
     ],
     alternatives: [
-      { slug: 'jobber', reason: 'better fit when simplicity and a lighter day-to-day feel matter most' },
-      { slug: 'servicetitan', reason: 'better fit when the operation is much larger and demands deeper enterprise layers' }
+      { slug: 'jobber', reason: 'simplicity and a lighter day-to-day feel matter most' },
+      { slug: 'servicetitan', reason: 'the operation is much larger and demands deeper enterprise layers' }
     ],
     compareLinks: [
       'jobber-vs-housecall-pro',
@@ -567,8 +567,8 @@ export const reviews = [
       'Operations that need stronger control layers across the office and field.'
     ],
     alternatives: [
-      { slug: 'housecall-pro', reason: 'better fit when you need growth-stage depth but not enterprise weight' },
-      { slug: 'jobber', reason: 'better fit when the business still values speed and simplicity over scale layers' }
+      { slug: 'housecall-pro', reason: 'you need growth-stage depth but not enterprise weight' },
+      { slug: 'jobber', reason: 'the business still values speed and simplicity over scale layers' }
     ],
     compareLinks: ['all-in-one-field-service-software-vs-separate-ai-tools'],
     officialUrl: 'https://www.servicetitan.com/',
@@ -628,8 +628,8 @@ export const reviews = [
       'Referral-friendly closeout flow for repeat-service businesses.'
     ],
     alternatives: [
-      { slug: 'callrail', reason: 'better fit when the bigger problem is lead intake and attribution, not review volume' },
-      { slug: 'jobber', reason: 'better fit when the whole operating system is disorganized, not just review requests' }
+      { slug: 'callrail', reason: 'the bigger problem is lead intake and attribution, not review volume' },
+      { slug: 'jobber', reason: 'the whole operating system is disorganized, not just review requests' }
     ],
     compareLinks: ['all-in-one-field-service-software-vs-separate-ai-tools'],
     officialUrl: 'https://www.nicejob.com/',
@@ -689,8 +689,8 @@ export const reviews = [
       'Missed-call workflow analysis before adding more automation.'
     ],
     alternatives: [
-      { slug: 'openphone', reason: 'better fit when a simpler shared business phone workflow matters more than attribution depth' },
-      { slug: 'housecall-pro', reason: 'better fit when the business really needs a full contractor operating system instead of a lead-intake layer' }
+      { slug: 'openphone', reason: 'a simpler shared business phone workflow matters more than attribution depth' },
+      { slug: 'housecall-pro', reason: 'the business really needs a full contractor operating system instead of a lead-intake layer' }
     ],
     compareLinks: ['all-in-one-field-service-software-vs-separate-ai-tools'],
     officialUrl: 'https://www.callrail.com/',
@@ -750,8 +750,8 @@ export const reviews = [
       'Cleaner texting and call ownership for smaller service teams.'
     ],
     alternatives: [
-      { slug: 'callrail', reason: 'better fit when attribution and inbound call visibility matter more than simple team phone workflow' },
-      { slug: 'jobber', reason: 'better fit when the business needs a bigger operating system instead of just cleaner phone handling' }
+      { slug: 'callrail', reason: 'attribution and inbound call visibility matter more than simple team phone workflow' },
+      { slug: 'jobber', reason: 'the business needs a bigger operating system instead of just cleaner phone handling' }
     ],
     compareLinks: [],
     officialUrl: 'https://www.openphone.com/',
@@ -806,8 +806,8 @@ export const reviews = [
       'Office notifications when specific sales or service events happen.'
     ],
     alternatives: [
-      { slug: 'chatgpt', reason: 'better fit when the bigger pain is writing and admin support rather than system-to-system automation' },
-      { slug: 'jobber', reason: 'better fit when you still need the base operating system first' }
+      { slug: 'chatgpt', reason: 'the bigger pain is writing and admin support rather than system-to-system automation' },
+      { slug: 'jobber', reason: 'you still need the base operating system first' }
     ],
     compareLinks: ['all-in-one-field-service-software-vs-separate-ai-tools'],
     officialUrl: 'https://zapier.com/',
@@ -862,8 +862,8 @@ export const reviews = [
       'Creating cleaner customer-facing responses for the office team.'
     ],
     alternatives: [
-      { slug: 'zapier', reason: 'better fit when the pain is system handoffs rather than writing' },
-      { slug: 'jobber', reason: 'better fit when the business needs a real operating system instead of a drafting assistant' }
+      { slug: 'zapier', reason: 'the pain is system handoffs rather than writing' },
+      { slug: 'jobber', reason: 'the business needs a real operating system instead of a drafting assistant' }
     ],
     compareLinks: ['all-in-one-field-service-software-vs-separate-ai-tools'],
     officialUrl: 'https://openai.com/chatgpt/',
@@ -950,8 +950,9 @@ export const comparisons = [
       'Choose all-in-one software when the operating system itself is fragmented. Choose separate AI tools when the base system is stable and one specific leak deserves a focused fix.',
     leftTool: 'jobber',
     rightTool: 'chatgpt',
+    leftLabel: 'All-in-one field-service software',
+    rightLabel: 'Separate AI or point tools',
     rows: [
-      ['Decision point', 'All-in-one field-service software', 'Separate AI or point tools'],
       ['Best for', 'Shops with messy quotes, jobs, invoices, and customer records', 'Teams with a stable base stack and one expensive leak'],
       ['Simplicity', 'Higher once adopted', 'Lower if too many tools pile up'],
       ['Flexibility', 'Lower, but more controlled', 'Higher, but easier to sprawl'],
@@ -1727,15 +1728,93 @@ export const legalPages = {
   }
 };
 
+function withHtmlAndIndexRedirects(paths, targetRoute) {
+  return Object.fromEntries(
+    paths.flatMap((relativePath) => {
+      const entries = [[relativePath, targetRoute]];
+      if (relativePath.endsWith('.html') && relativePath !== 'index.html') {
+        entries.push([relativePath.replace(/\.html$/, '/index.html'), targetRoute]);
+      }
+      return entries;
+    })
+  );
+}
+
+const legacyGuidePaths = [
+  'guides/best-ai-tools-for-automation.html',
+  'guides/best-ai-tools-for-design.html',
+  'guides/best-ai-tools-for-marketing.html',
+  'guides/best-ai-tools-for-meetings.html',
+  'guides/best-ai-tools-for-presentations.html',
+  'guides/best-ai-tools-for-productivity.html',
+  'guides/best-ai-tools-for-research.html',
+  'guides/best-ai-tools-for-sales.html',
+  'guides/best-ai-tools-for-seo.html',
+  'guides/best-ai-tools-for-support.html',
+  'guides/best-ai-tools-for-training.html',
+  'guides/best-ai-tools-for-video.html',
+  'guides/best-ai-tools-for-voice.html',
+  'guides/best-ai-tools-for-writing.html'
+];
+
+const legacyComparisonPaths = [
+  'comparisons/canva-ai-vs-gamma.html',
+  'comparisons/chatgpt-vs-claude-vs-gemini.html',
+  'comparisons/elevenlabs-vs-murf.html',
+  'comparisons/fathom-vs-fireflies-vs-otter.html',
+  'comparisons/fireflies-vs-otter.html',
+  'comparisons/gamma-vs-beautiful-ai.html',
+  'comparisons/heygen-vs-synthesia.html',
+  'comparisons/perplexity-vs-chatgpt-for-research.html',
+  'comparisons/runway-vs-synthesia.html'
+];
+
+const legacyToolReviewPaths = {
+  'tools/chatgpt.html': '/reviews/chatgpt/',
+  'tools/zapier.html': '/reviews/zapier/',
+  'tools/jobber.html': '/reviews/jobber/',
+  'tools/housecall-pro.html': '/reviews/housecall-pro/',
+  'tools/callrail.html': '/reviews/callrail/'
+};
+
 export const compatibilityRedirects = {
   'learn-ai.html': '/learn/',
+  'learn-ai/index.html': '/learn/',
   'editorial-methodology.html': '/methodology/',
+  'editorial-methodology/index.html': '/methodology/',
   'thanks.html': '/thank-you/',
+  'thanks/index.html': '/thank-you/',
   'estimate-follow-up.html': '/problems/quote-follow-up/',
+  'estimate-follow-up/index.html': '/problems/quote-follow-up/',
   'dispatch-scheduling.html': '/problems/scheduling-dispatch/',
+  'dispatch-scheduling/index.html': '/problems/scheduling-dispatch/',
   'reviews-referrals.html': '/problems/reviews-referrals/',
+  'reviews-referrals/index.html': '/problems/reviews-referrals/',
+  'review-requests.html': '/problems/reviews-referrals/',
+  'review-requests/index.html': '/problems/reviews-referrals/',
   'office-admin.html': '/problems/office-admin/',
+  'office-admin/index.html': '/problems/office-admin/',
   'missed-calls.html': '/problems/missed-calls/',
+  'missed-calls/index.html': '/problems/missed-calls/',
+  'directory.html': '/shortlist/',
+  'directory/index.html': '/shortlist/',
+  'companies.html': '/reviews/',
+  'companies/index.html': '/reviews/',
+  'best-free-ai-tools.html': '/shortlist/',
+  'best-free-ai-tools/index.html': '/shortlist/',
+  'submit-app.html': '/for-vendors/',
+  'submit-app/index.html': '/for-vendors/',
+  'get-help.html': '/contact/',
+  'get-help/index.html': '/contact/',
   'contractors.html': '/',
-  'contractors/index.html': '/'
+  'contractors/index.html': '/',
+  ...withHtmlAndIndexRedirects(legacyGuidePaths, '/learn/'),
+  ...withHtmlAndIndexRedirects(legacyComparisonPaths, '/compare/'),
+  ...Object.fromEntries(
+    Object.entries(legacyToolReviewPaths).flatMap(([relativePath, targetRoute]) => {
+      const entries = [[relativePath, targetRoute]];
+      entries.push([relativePath.replace(/\.html$/, '/index.html'), targetRoute]);
+      return entries;
+    })
+  )
 };

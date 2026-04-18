@@ -24,7 +24,7 @@ const publicAssetsDir = path.join(publicDir, 'assets');
 const rootAssetsDir = path.join(rootDir, 'assets');
 
 const SITE_URL = 'https://ihelpwithai.com';
-const ASSET_VERSION = '20260418a';
+const ASSET_VERSION = '20260418b';
 const FORM_ACTION = `https://formsubmit.co/${site.contactEmail}`;
 const ROUTE_SUFFIX = '/';
 
@@ -210,6 +210,17 @@ function renderBulletList(items, className = 'bullet-list') {
   return `<ul class="${className}">${items
     .map((item) => `<li>${escapeHtml(item)}</li>`)
     .join('')}</ul>`;
+}
+
+function renderLeadFormHiddenFields(subject) {
+  return `
+    <input type="hidden" name="_subject" value="${escapeHtml(subject)}">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="${absoluteUrl('/thank-you/')}">
+    <label class="form-honeypot" aria-hidden="true">
+      Leave this field blank
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off">
+    </label>`;
 }
 
 function renderFaqList(faqs) {
@@ -531,9 +542,7 @@ function renderHomePage() {
               ${renderBulletList(legalPages.starterPack.bullets)}
             </div>
             <form class="lead-form" data-lead-form="starter-pack-home" action="${FORM_ACTION}" method="POST">
-              <input type="hidden" name="_subject" value="ihelpwithai starter pack request">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_next" value="${absoluteUrl('/thank-you/')}">
+              ${renderLeadFormHiddenFields('ihelpwithai starter pack request')}
               <label>Name<input type="text" name="name" placeholder="Your name"></label>
               <label>Work email<input type="email" name="email" required placeholder="Work email"></label>
               <label>Trade
@@ -1078,7 +1087,8 @@ function renderReviewPage(review) {
                 ${review.alternatives
                   .map((alternative) => {
                     const target = reviewBySlug.get(alternative.slug);
-                    return `<li><a href="${routeForReview(alternative.slug)}">${escapeHtml(target.toolName)}</a> is a better fit when ${escapeHtml(alternative.reason)}.</li>`;
+                    const reason = alternative.reason.replace(/^better fit when\s+/i, '');
+                    return `<li><a href="${routeForReview(alternative.slug)}">${escapeHtml(target.toolName)}</a> is a better fit when ${escapeHtml(reason)}.</li>`;
                   })
                   .join('')}
               </ul>
@@ -1122,6 +1132,8 @@ function renderReviewPage(review) {
 function renderComparisonPage(comparison) {
   const left = reviewBySlug.get(comparison.leftTool);
   const right = reviewBySlug.get(comparison.rightTool);
+  const leftLabel = comparison.leftLabel || left.toolName;
+  const rightLabel = comparison.rightLabel || right.toolName;
 
   return renderShell({
     route: routeForComparison(comparison.slug),
@@ -1155,11 +1167,11 @@ function renderComparisonPage(comparison) {
         <section class="section">
           <div class="container split-panel">
             <article class="card">
-              <div class="card-kicker">Choose ${escapeHtml(left.toolName)} if...</div>
+              <div class="card-kicker">Choose ${escapeHtml(leftLabel)} if...</div>
               ${renderBulletList(comparison.chooseLeft)}
             </article>
             <article class="card">
-              <div class="card-kicker">Choose ${escapeHtml(right.toolName)} if...</div>
+              <div class="card-kicker">Choose ${escapeHtml(rightLabel)} if...</div>
               ${renderBulletList(comparison.chooseRight)}
             </article>
           </div>
@@ -1171,8 +1183,8 @@ function renderComparisonPage(comparison) {
               <thead>
                 <tr>
                   <th>Decision point</th>
-                  <th>${escapeHtml(left.toolName)}</th>
-                  <th>${escapeHtml(right.toolName === 'ChatGPT' ? 'Separate AI or point tools' : right.toolName)}</th>
+                  <th>${escapeHtml(leftLabel)}</th>
+                  <th>${escapeHtml(rightLabel)}</th>
                 </tr>
               </thead>
               <tbody>
@@ -1418,9 +1430,7 @@ function renderStarterPackPage() {
               ${renderBulletList(legalPages.starterPack.bullets)}
             </div>
             <form class="lead-form" data-lead-form="starter-pack-page" action="${FORM_ACTION}" method="POST">
-              <input type="hidden" name="_subject" value="ihelpwithai starter pack request">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_next" value="${absoluteUrl('/thank-you/')}">
+              ${renderLeadFormHiddenFields('ihelpwithai starter pack request')}
               <label>Name<input type="text" name="name" placeholder="Your name"></label>
               <label>Email<input type="email" name="email" required placeholder="Work email"></label>
               <label>Trade
@@ -1461,12 +1471,10 @@ function renderContactPage() {
               ${renderBulletList(legalPages.contact.bullets)}
             </div>
             <form class="contact-form" data-lead-form="contact" action="${FORM_ACTION}" method="POST">
-              <input type="hidden" name="_subject" value="ihelpwithai contact request">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_next" value="${absoluteUrl('/thank-you/')}">
+              ${renderLeadFormHiddenFields('ihelpwithai contact request')}
               <label>Name<input type="text" name="name" placeholder="Your name"></label>
               <label>Email<input type="email" name="email" required placeholder="Best email"></label>
-              <label>What do you need help with?<textarea name="message" placeholder="Tell us the trade, the bottleneck, and what you are deciding between."></textarea></label>
+              <label>What do you need help with?<textarea name="message" required placeholder="Tell us the trade, the bottleneck, and what you are deciding between."></textarea></label>
               <button class="btn primary" type="submit">Send message</button>
               <p class="microcopy">Prefer email? Write directly to <a href="mailto:${site.contactEmail}">${site.contactEmail}</a>.</p>
             </form>
@@ -1503,9 +1511,7 @@ function renderForVendorsPage() {
               </div>
             </div>
             <form class="contact-form" data-lead-form="vendor" action="${FORM_ACTION}" method="POST">
-              <input type="hidden" name="_subject" value="ihelpwithai vendor submission">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_next" value="${absoluteUrl('/thank-you/')}">
+              ${renderLeadFormHiddenFields('ihelpwithai vendor submission')}
               <label>Company<input type="text" name="company" placeholder="Vendor name"></label>
               <label>Work email<input type="email" name="email" required placeholder="Email"></label>
               <label>Contractor use case<textarea name="use_case" placeholder="Explain the contractor workflow, best-fit shop profile, and where the product does not fit."></textarea></label>

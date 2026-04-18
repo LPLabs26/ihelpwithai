@@ -164,6 +164,21 @@
     const empty = qs('[data-shortlist-empty]');
     let currentStep = 0;
 
+    function validateCurrentStep() {
+      const step = steps[currentStep];
+      if (!step) return true;
+      const fields = qsa('input, select, textarea', step).filter(function (field) {
+        return !field.disabled && field.type !== 'hidden';
+      });
+      const firstInvalid = fields.find(function (field) {
+        return !field.checkValidity();
+      });
+      if (!firstInvalid) return true;
+      if (typeof firstInvalid.reportValidity === 'function') firstInvalid.reportValidity();
+      if (typeof firstInvalid.focus === 'function') firstInvalid.focus();
+      return false;
+    }
+
     function syncStep() {
       steps.forEach(function (step, index) {
         step.hidden = index !== currentStep;
@@ -215,6 +230,7 @@
 
     if (nextButton) {
       nextButton.addEventListener('click', function () {
+        if (!validateCurrentStep()) return;
         currentStep = Math.min(steps.length - 1, currentStep + 1);
         syncStep();
       });
@@ -222,9 +238,12 @@
 
     form.addEventListener('submit', function (event) {
       event.preventDefault();
+      if (!validateCurrentStep()) return;
       runShortlist();
       const target = qs('[data-shortlist-output]');
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (target && typeof target.scrollIntoView === 'function') {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
 
     syncStep();
