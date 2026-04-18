@@ -1,0 +1,1326 @@
+{
+  "generatedAt": "2026-04-18T18:25:33.395Z",
+  "site": "https://ihelpwithai.com",
+  "summary": {
+    "sections": 5,
+    "checks": 182,
+    "failures": 0
+  },
+  "sections": [
+    {
+      "title": "Critical Pages",
+      "checks": [
+        {
+          "pass": true,
+          "message": "/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/ includes a title",
+          "details": {
+            "title": "Choose the right AI and software for your contracting business | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/ includes a meta description",
+          "details": {
+            "description": "Choose the right AI and software for your contracting business without wasting hours on demos, hype, or bad-fit tools."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/shortlist/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/shortlist/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/shortlist/ includes a title",
+          "details": {
+            "title": "Shortlist contractor software and AI by bottleneck | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/shortlist/ includes a meta description",
+          "details": {
+            "description": "Use the contractor shortlist to narrow the right next software decision by trade, team size, bottleneck, budget, and setup tolerance."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/shortlist/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/shortlist/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/shortlist/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/shortlist/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/trades/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/trades/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/trades/ includes a title",
+          "details": {
+            "title": "Trades | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/trades/ includes a meta description",
+          "details": {
+            "description": "Browse contractor software and AI guidance by trade."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/trades/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/trades/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/trades/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/trades/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/problems/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/problems/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/problems/ includes a title",
+          "details": {
+            "title": "Problems | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/problems/ includes a meta description",
+          "details": {
+            "description": "Browse contractor software and AI guidance by business bottleneck."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/problems/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/problems/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/problems/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/problems/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/ includes a title",
+          "details": {
+            "title": "Reviews | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/ includes a meta description",
+          "details": {
+            "description": "Read contractor-first software reviews with best fit, bad fit, setup reality, and alternatives."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/reviews/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/compare/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/compare/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/compare/ includes a title",
+          "details": {
+            "title": "Compare | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/compare/ includes a meta description",
+          "details": {
+            "description": "Compare contractor software and stack decisions by use case."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/compare/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/compare/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/compare/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/compare/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/templates/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/templates/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/templates/ includes a title",
+          "details": {
+            "title": "Copyable templates for contractor teams | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/templates/ includes a meta description",
+          "details": {
+            "description": "Use copyable texts, follow-up sequences, review requests, SOP prompts, and recap templates built for contractor and field-service businesses."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/templates/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/templates/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/templates/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/templates/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/learn/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/learn/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/learn/ includes a title",
+          "details": {
+            "title": "Learn what to automate first | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/learn/ includes a meta description",
+          "details": {
+            "description": "Practical guidance for contractor businesses deciding what AI should handle, what should stay human, and where automation usually pays off first."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/learn/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/learn/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/learn/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/learn/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/jobber/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/jobber/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/jobber/ includes a title",
+          "details": {
+            "title": "Jobber review for contractors | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/jobber/ includes a meta description",
+          "details": {
+            "description": "A strong all-in-one choice for contractor businesses that want quoting, scheduling, invoicing, payments, and customer follow-up in one operating system without jumping straight to enterprise complexity."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/jobber/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/reviews/jobber/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/jobber/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/jobber/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/housecall-pro/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/housecall-pro/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/housecall-pro/ includes a title",
+          "details": {
+            "title": "Housecall Pro review for contractors | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/housecall-pro/ includes a meta description",
+          "details": {
+            "description": "A strong home-service platform for teams that want quoting, scheduling, dispatch, payments, online booking, and customer communication in one contractor-friendly system."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/housecall-pro/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/reviews/housecall-pro/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/housecall-pro/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/housecall-pro/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/servicetitan/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/servicetitan/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/servicetitan/ includes a title",
+          "details": {
+            "title": "ServiceTitan review for contractors | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/servicetitan/ includes a meta description",
+          "details": {
+            "description": "A heavier-duty operating system for contractor businesses that need deeper dispatch control, reporting, sales workflow visibility, and operational structure across bigger teams."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/servicetitan/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/reviews/servicetitan/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/servicetitan/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/servicetitan/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/nicejob/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/nicejob/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/nicejob/ includes a title",
+          "details": {
+            "title": "NiceJob review for contractors | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/nicejob/ includes a meta description",
+          "details": {
+            "description": "A focused reputation tool for contractor businesses that want more review requests going out consistently without turning the office into a follow-up machine."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/nicejob/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/reviews/nicejob/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/nicejob/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/nicejob/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/callrail/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/callrail/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/callrail/ includes a title",
+          "details": {
+            "title": "CallRail review for contractors | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/callrail/ includes a meta description",
+          "details": {
+            "description": "A strong fit when call-heavy contractor businesses need better visibility into lead sources, cleaner intake tracking, and more discipline around how inbound calls are handled."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/callrail/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/reviews/callrail/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/callrail/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/reviews/callrail/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/compare/jobber-vs-housecall-pro/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/compare/jobber-vs-housecall-pro/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/compare/jobber-vs-housecall-pro/ includes a title",
+          "details": {
+            "title": "Jobber vs Housecall Pro for contractor businesses | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/compare/jobber-vs-housecall-pro/ includes a meta description",
+          "details": {
+            "description": "Choose Jobber when simplicity and faster adoption matter most. Choose Housecall Pro when you want broader home-service depth and are willing to carry a little more platform weight."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/compare/jobber-vs-housecall-pro/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/compare/jobber-vs-housecall-pro/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/compare/jobber-vs-housecall-pro/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/compare/jobber-vs-housecall-pro/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/compare/all-in-one-field-service-software-vs-separate-ai-tools/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/compare/all-in-one-field-service-software-vs-separate-ai-tools/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/compare/all-in-one-field-service-software-vs-separate-ai-tools/ includes a title",
+          "details": {
+            "title": "All-in-one field-service software vs separate AI tools | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/compare/all-in-one-field-service-software-vs-separate-ai-tools/ includes a meta description",
+          "details": {
+            "description": "Choose all-in-one software when the operating system itself is fragmented. Choose separate AI tools when the base system is stable and one specific leak deserves a focused fix."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/compare/all-in-one-field-service-software-vs-separate-ai-tools/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/compare/all-in-one-field-service-software-vs-separate-ai-tools/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/compare/all-in-one-field-service-software-vs-separate-ai-tools/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/compare/all-in-one-field-service-software-vs-separate-ai-tools/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/starter-pack/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/starter-pack/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/starter-pack/ includes a title",
+          "details": {
+            "title": "Get the contractor AI starter pack | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/starter-pack/ includes a meta description",
+          "details": {
+            "description": "The starter pack is built to help a contractor business act before it buys more software. It bundles missed-call texts, estimate follow-up examples, review requests, one SOP prompt pack, and a simple decision checklist."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/starter-pack/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/starter-pack/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/starter-pack/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/starter-pack/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/contact/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/contact/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/contact/ includes a title",
+          "details": {
+            "title": "Contact | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/contact/ includes a meta description",
+          "details": {
+            "description": "Use this page if you want help thinking through the first software decision, want to suggest a tool or workflow to review, or need help understanding where your contractor stack is leaking."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/contact/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/contact/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/contact/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/contact/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/privacy/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/privacy/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/privacy/ includes a title",
+          "details": {
+            "title": "Privacy | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/privacy/ includes a meta description",
+          "details": {
+            "description": "If you submit a form on this site, the information you provide is used to respond to your request, send the starter pack, or continue a conversation you initiated."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/privacy/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/privacy/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/privacy/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/privacy/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/terms/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/terms/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/terms/ includes a title",
+          "details": {
+            "title": "Terms | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/terms/ includes a meta description",
+          "details": {
+            "description": "Content on this site is for informational purposes and should support software research, not replace your own business judgment or legal, accounting, or implementation advice."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/terms/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/terms/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/terms/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/terms/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/affiliate-disclosure/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/affiliate-disclosure/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/affiliate-disclosure/ includes a title",
+          "details": {
+            "title": "Affiliate disclosure | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/affiliate-disclosure/ includes a meta description",
+          "details": {
+            "description": "Some pages may include affiliate or referral links. If you click one of those links and buy, ihelpwithai.com may earn a commission at no extra cost to you."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/affiliate-disclosure/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/affiliate-disclosure/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/affiliate-disclosure/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/affiliate-disclosure/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/methodology/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/methodology/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/methodology/ includes a title",
+          "details": {
+            "title": "Editorial methodology | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/methodology/ includes a meta description",
+          "details": {
+            "description": "Every review and comparison is supposed to answer a practical contractor question: is this worth looking at, which shop profile fits best, what setup pain is realistic, and what should you compare it against."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/methodology/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/methodology/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/methodology/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/methodology/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        }
+      ]
+    },
+    {
+      "title": "Indexing Rules",
+      "checks": [
+        {
+          "pass": true,
+          "message": "/thank-you/ is fetchable",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/thank-you/ includes the noindex robots directive",
+          "details": {
+            "robots": "noindex, nofollow"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/sitemap.xml returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/thank-you/ is absent from sitemap.xml",
+          "details": {}
+        }
+      ]
+    },
+    {
+      "title": "Sitemap And Robots",
+      "checks": [
+        {
+          "pass": true,
+          "message": "sitemap.xml includes /",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "sitemap.xml includes /shortlist/",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "sitemap.xml includes /trades/",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "sitemap.xml includes /problems/",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "sitemap.xml includes /reviews/",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "sitemap.xml includes /compare/",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "sitemap.xml includes /templates/",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "sitemap.xml includes /learn/",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "sitemap.xml includes /reviews/jobber/",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "sitemap.xml includes /compare/jobber-vs-housecall-pro/",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "sitemap.xml includes /starter-pack/",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "sitemap.xml includes /contact/",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "sitemap.xml includes /privacy/",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "sitemap.xml includes /terms/",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "sitemap.xml includes /affiliate-disclosure/",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "sitemap.xml includes /methodology/",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "/robots.txt returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/robots.txt references sitemap.xml",
+          "details": {}
+        }
+      ]
+    },
+    {
+      "title": "Legacy Compatibility",
+      "checks": [
+        {
+          "pass": true,
+          "message": "/tools/chatgpt.html lands on a useful replacement",
+          "details": {
+            "status": 200,
+            "finalPath": "/tools/chatgpt.html",
+            "expected": [
+              "/reviews/chatgpt/"
+            ]
+          }
+        },
+        {
+          "pass": true,
+          "message": "/tools/zapier.html lands on a useful replacement",
+          "details": {
+            "status": 200,
+            "finalPath": "/tools/zapier.html",
+            "expected": [
+              "/reviews/zapier/"
+            ]
+          }
+        },
+        {
+          "pass": true,
+          "message": "/tools/jobber.html lands on a useful replacement",
+          "details": {
+            "status": 200,
+            "finalPath": "/tools/jobber.html",
+            "expected": [
+              "/reviews/jobber/"
+            ]
+          }
+        },
+        {
+          "pass": true,
+          "message": "/tools/housecall-pro.html lands on a useful replacement",
+          "details": {
+            "status": 200,
+            "finalPath": "/tools/housecall-pro.html",
+            "expected": [
+              "/reviews/housecall-pro/"
+            ]
+          }
+        },
+        {
+          "pass": true,
+          "message": "/tools/callrail.html lands on a useful replacement",
+          "details": {
+            "status": 200,
+            "finalPath": "/tools/callrail.html",
+            "expected": [
+              "/reviews/callrail/"
+            ]
+          }
+        },
+        {
+          "pass": true,
+          "message": "/directory.html lands on a useful replacement",
+          "details": {
+            "status": 200,
+            "finalPath": "/directory.html",
+            "expected": [
+              "/shortlist/"
+            ]
+          }
+        },
+        {
+          "pass": true,
+          "message": "/companies.html lands on a useful replacement",
+          "details": {
+            "status": 200,
+            "finalPath": "/companies.html",
+            "expected": [
+              "/reviews/",
+              "/shortlist/"
+            ]
+          }
+        },
+        {
+          "pass": true,
+          "message": "/guides/best-ai-tools-for-productivity.html lands on a useful replacement",
+          "details": {
+            "status": 200,
+            "finalPath": "/guides/best-ai-tools-for-productivity.html",
+            "expected": [
+              "/learn/"
+            ]
+          }
+        },
+        {
+          "pass": true,
+          "message": "/comparisons.html lands on a useful replacement",
+          "details": {
+            "status": 200,
+            "finalPath": "/comparisons.html",
+            "expected": [
+              "/compare/"
+            ]
+          }
+        },
+        {
+          "pass": true,
+          "message": "/estimate-follow-up.html lands on a useful replacement",
+          "details": {
+            "status": 200,
+            "finalPath": "/estimate-follow-up.html",
+            "expected": [
+              "/problems/quote-follow-up/"
+            ]
+          }
+        },
+        {
+          "pass": true,
+          "message": "/missed-calls.html lands on a useful replacement",
+          "details": {
+            "status": 200,
+            "finalPath": "/missed-calls.html",
+            "expected": [
+              "/problems/missed-calls/"
+            ]
+          }
+        },
+        {
+          "pass": true,
+          "message": "/office-admin.html lands on a useful replacement",
+          "details": {
+            "status": 200,
+            "finalPath": "/office-admin.html",
+            "expected": [
+              "/problems/office-admin/"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Internal Link Crawl",
+      "checks": [
+        {
+          "pass": true,
+          "message": "Internal crawl found no same-origin 404/500 links",
+          "details": {
+            "brokenLinks": [],
+            "visitedPages": 40,
+            "checkedLinks": 40
+          }
+        }
+      ]
+    }
+  ],
+  "failures": []
+}
