@@ -1,44 +1,38 @@
 # ihelpwithai.com
 
-Static source for the ihelpwithai.com website.
+Static source for the rebuilt contractor-first ihelpwithai.com site.
 
-The site is a curated AI tool directory for non-technical buyers. It is intentionally job-to-be-done driven: the goal is to help someone choose the right tool faster, not catalog every AI product on the internet.
+The current direction is a buyer's guide and decision engine for contractor and field-service businesses. The site is built around trade fit, business bottlenecks, shortlist logic, reviews, and compare pages rather than a broad AI directory.
 
 ## Source of truth
 
 The main editable source files are:
 
-- `tools-starter.json` — canonical tool/company data
-- `comparisons.json` — comparison-page definitions
-- `index.html` — homepage shell and static sections
-- `app.js` — homepage filtering, matcher, and mailto flows
-- `tool.js` — tool-detail prompt builder logic
-- `styles.css` — global styling
-- `scripts/build-site.mjs` — generates static pages and deploy output
+- `src/data/site-content.mjs` — structured site content, review data, comparisons, templates, learn content, and trust pages
+- `src/assets/site.css` — design system and page styling
+- `src/assets/site.js` — shortlist logic, nav behavior, CTA tracking, and template copy actions
+- `scripts/build-site.mjs` — generates the root site output plus the deploy-ready `public/` mirror
 
-## Generated artifacts
+## Generated output
 
 Running the build regenerates:
 
-- `data.js`
-- `tools/*.html`
-- `guides/*.html`
-- `comparisons/*.html`
-- `best-free-ai-tools.html`
-- `editorial-methodology.html`
-- `tools-starter.csv`
+- route directories such as `trades/`, `problems/`, `reviews/`, `compare/`, `templates/`, and `learn/`
+- top-level redirect aliases such as `about.html` and `reviews.html`
+- `assets/site-data.js`
+- `robots.txt`
 - `sitemap.xml`
-- `public/` mirror for deployment
+- the full deploy-ready `public/` mirror
 
-Treat generated files as build output. Do not hand-edit generated tool, guide, comparison, or deploy-mirror files unless you are fixing an emergency and intend to regenerate immediately afterward.
+Treat generated route output as build artifacts. Update the source layer under `src/` and regenerate instead of hand-editing generated pages.
 
 ## Local workflow
 
-1. Edit content or UX files.
+1. Update the source data or frontend assets.
 2. Run `npm run build`.
-3. Review the generated diff.
-4. Preview locally if needed.
-5. Deploy the updated `public/` output through the active hosting flow.
+3. Review the generated diff in both the repo root and `public/`.
+4. Preview with a local static server if needed.
+5. Push through the existing GitHub Pages flow once the diff is ready.
 
 ## Build command
 
@@ -50,7 +44,7 @@ This runs `node scripts/build-site.mjs`.
 
 ## Deployment
 
-This repo is prepared for static deployment.
+Deployment remains static and still publishes from `public/`.
 
 - GitHub Pages workflow: `.github/workflows/deploy-github-pages.yml`
 - Custom domain file: `CNAME`
@@ -58,18 +52,10 @@ This repo is prepared for static deployment.
 - Static-host compatibility: `public/` contains the deploy-ready mirror
 - Netlify compatibility: `netlify.toml` still points at `public/`
 
-Because production history has involved more than one hosting path, always confirm the active production target before assuming a push to `main` is what updates the live site.
-
-## Maintenance docs
-
-- `GITHUB_PAGES_MIGRATION.md` — deployment audit and GitHub Pages notes
-- `docs/maintenance-playbook.md` — repeatable maintenance workflow for content, UX, build, and release work
-
 ## Content principles
 
-- Start with the job to be done.
-- Explain tools in plain English.
-- Be specific about who each tool is for.
-- Show one real use case.
-- Keep watch-outs visible.
-- Prefer shortlist quality over directory size.
+- Start with the contractor bottleneck, not the tool catalog.
+- Say who a tool is for and who it is not for.
+- Keep setup reality and pricing posture visible.
+- Prefer high-intent guidance over breadth.
+- Keep the tone practical, specific, and anti-hype.
