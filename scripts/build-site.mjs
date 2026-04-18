@@ -27,6 +27,7 @@ const SITE_URL = 'https://ihelpwithai.com';
 const ASSET_VERSION = '20260418b';
 const FORM_ACTION = `https://formsubmit.co/${site.contactEmail}`;
 const ROUTE_SUFFIX = '/';
+const SITEMAP_EXCLUDED_ROUTES = new Set(['/thank-you/']);
 
 const reviewBySlug = new Map(reviews.map((review) => [review.slug, review]));
 const tradeBySlug = new Map(trades.map((trade) => [trade.slug, trade]));
@@ -371,12 +372,13 @@ function faqSchema(faqs) {
   };
 }
 
-function renderMetaTags({ title, description, route }) {
+function renderMetaTags({ title, description, route, robots }) {
   const canonical = absoluteUrl(route);
   const socialImage = absoluteUrl(site.socialImage);
   return `
     <title>${escapeHtml(pageTitle(title))}</title>
     <meta name="description" content="${escapeHtml(description)}">
+    ${robots ? `<meta name="robots" content="${escapeHtml(robots)}">` : ''}
     <link rel="canonical" href="${escapeHtml(canonical)}">
     <meta property="og:site_name" content="${escapeHtml(site.title)}">
     <meta property="og:type" content="website">
@@ -391,7 +393,7 @@ function renderMetaTags({ title, description, route }) {
     <meta name="twitter:image" content="${escapeHtml(socialImage)}">`;
 }
 
-function renderShell({ route, title, description, body, breadcrumbs = [], faqs = [] }) {
+function renderShell({ route, title, description, body, breadcrumbs = [], faqs = [], robots = '' }) {
   const schemas = [organizationSchema(), websiteSchema()];
   if (route !== '/') schemas.push(breadcrumbSchema(route, breadcrumbs));
   const faqJson = faqSchema(faqs);
@@ -402,7 +404,7 @@ function renderShell({ route, title, description, body, breadcrumbs = [], faqs =
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  ${renderMetaTags({ title, description, route })}
+  ${renderMetaTags({ title, description, route, robots })}
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/assets/site.css?v=${ASSET_VERSION}">
   <script defer src="/assets/site-data.js?v=${ASSET_VERSION}"></script>
@@ -1528,6 +1530,7 @@ function renderThankYouPage() {
     route: '/thank-you/',
     title: legalPages.thankYou.title,
     description: legalPages.thankYou.intro,
+    robots: 'noindex, nofollow',
     body: `
       <main class="page">
         <section class="section">
@@ -1632,6 +1635,7 @@ function buildSitemap(routes) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${routes
+  .filter((route) => !SITEMAP_EXCLUDED_ROUTES.has(route))
   .map(
     (route) => `  <url>
     <loc>${escapeHtml(absoluteUrl(route))}</loc>
@@ -1771,8 +1775,7 @@ function collectCanonicalRoutes() {
     '/terms/',
     '/for-vendors/',
     '/starter-pack/',
-    '/contact/',
-    '/thank-you/'
+    '/contact/'
   ];
 }
 
