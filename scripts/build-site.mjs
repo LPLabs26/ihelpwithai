@@ -733,27 +733,34 @@ function renderHomePage() {
         </section>
 
         <section class="section">
-          <div class="container signup-panel">
-            <div>
-              <div class="trust-chip">Field-trades starter pack</div>
-              <h2>Get the field-trades starter pack.</h2>
-              <p>The starter pack includes missed-call texts, estimate follow-up examples, review request copy, one SOP prompt pack, and a simple decision checklist.</p>
-              ${renderBulletList(legalPages.starterPack.bullets)}
-              <p class="microcopy">Need the Beauty &amp; Wellness path instead? Start with the <a href="/beauty/shortlist/">beauty shortlist</a> or browse <a href="/beauty/templates/">beauty templates</a>.</p>
+          <div class="container">
+            <div class="section-heading">
+              <div class="trust-chip">Starter packs</div>
+              <h2>Pick the starter pack that matches the business.</h2>
+              <p class="section-intro">Both paths lead with practical copy, fast decision support, and a cleaner next step than opening ten vendor tabs at once.</p>
             </div>
-            <form class="lead-form" data-lead-form="starter-pack-home" data-analytics="starter_pack_form" action="${FORM_ACTION}" method="POST">
-              ${renderLeadFormHiddenFields('ihelpwithai starter pack request')}
-              <label>Name<input type="text" name="name" placeholder="Your name"></label>
-              <label>Work email<input type="email" name="email" required placeholder="Work email"></label>
-              <label>Trade
-                <select name="trade">
-                  <option value="">Select your trade</option>
-                  ${trades.map((trade) => `<option value="${trade.slug}">${escapeHtml(trade.title)}</option>`).join('')}
-                </select>
-              </label>
-              <button class="btn primary" type="submit">Send the starter pack</button>
-              <p class="microcopy">You can also <a href="/starter-pack/">read what is in the pack first</a>.</p>
-            </form>
+            <div class="grid cols-2">
+              <article class="card">
+                <div class="card-kicker">Field Trades</div>
+                <h3>Get the Field Trades starter pack.</h3>
+                <p>The field-trades pack includes missed-call texts, estimate follow-up examples, review request copy, one SOP prompt pack, and a simple decision checklist.</p>
+                ${renderBulletList(legalPages.starterPack.bullets)}
+                <div class="cta-row" style="margin-top:18px">
+                  <a class="btn primary" href="/starter-pack/" data-analytics="home_cta">Get the Field Trades starter pack</a>
+                  <a class="btn secondary" href="/shortlist/" data-analytics="home_cta">Start the field-trades shortlist</a>
+                </div>
+              </article>
+              <article class="card">
+                <div class="card-kicker">Beauty &amp; Wellness</div>
+                <h3>Get the Beauty &amp; Wellness starter pack.</h3>
+                <p>The beauty pack helps tighten reminders, no-show policies, deposits, rebooking, review asks, and client follow-up before you add more software.</p>
+                ${renderBulletList(beautyStarterPack.bullets)}
+                <div class="cta-row" style="margin-top:18px">
+                  <a class="btn primary" href="${routeForBeautyStarterPack()}" data-analytics="home_cta">Get the Beauty &amp; Wellness starter pack</a>
+                  <a class="btn secondary" href="/beauty/shortlist/" data-analytics="home_cta">Start the beauty shortlist</a>
+                </div>
+              </article>
+            </div>
           </div>
         </section>
 
