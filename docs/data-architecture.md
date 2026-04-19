@@ -2,12 +2,16 @@
 
 ## Current state
 
+Today the site stack is intentionally split across static delivery, behavior analytics, and email-based lead handling.
+
 - The site is a static GitHub Pages deployment generated from this repo.
 - Live forms still post to FormSubmit and arrive through `info@ihelpwithai.com`.
 - PostHog handles behavior analytics and funnel-style event tracking.
 - There is no owned lead database yet, so lead records, shortlist outcomes, and tool-intent context are not stored in a first-party system.
 
 ## Target state
+
+The long-term goal is a cleaner ownership split between analytics, operational data, and follow-up tooling.
 
 - GitHub Pages continues to serve the static marketing site.
 - Supabase becomes the owned source of truth for leads, form submissions, shortlist sessions, and tool-intent events.
@@ -31,7 +35,11 @@
 ## Recommended migration path
 
 1. Add schema, docs, and config hooks in the site repo.
+
 2. Create the Supabase project manually.
+
 3. Add a Supabase Edge Function or another secure serverless intake endpoint.
+
 4. Test owned intake while keeping FormSubmit live.
+
 5. Decide whether to keep FormSubmit as an email backup or replace it after the owned flow is proven stable.

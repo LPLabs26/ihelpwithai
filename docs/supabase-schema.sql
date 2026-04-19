@@ -1,5 +1,7 @@
 -- Supabase schema proposal for future owned data intake.
--- RLS and security policies must be configured before any direct client writes are allowed.
+-- Row Level Security is enabled by default below for safety.
+-- Direct client writes should remain blocked unless carefully scoped policies are added later.
+-- The preferred intake path is a Supabase Edge Function or another secure serverless endpoint.
 -- Service-role keys must never be exposed client-side.
 
 create extension if not exists pgcrypto;
@@ -45,6 +47,9 @@ create table if not exists public.form_submissions (
 comment on table public.form_submissions is
   'Proposal only. Stores normalized form submissions plus raw payload context for debugging secure intake.';
 
+comment on column public.form_submissions.raw_payload is
+  'Use cautiously. raw_payload may contain PII, should be minimized where possible, should be reviewed before broad use, and may be pruned or removed once the intake normalizer is stable.';
+
 create table if not exists public.shortlist_sessions (
   id uuid primary key default gen_random_uuid(),
   created_at timestamptz not null default now(),
@@ -77,6 +82,23 @@ create table if not exists public.tool_intent_events (
 
 comment on table public.tool_intent_events is
   'Proposal only. Stores owned tool-intent clicks separately from behavior analytics when first-party intake is enabled.';
+
+alter table public.leads enable row level security;
+alter table public.form_submissions enable row level security;
+alter table public.shortlist_sessions enable row level security;
+alter table public.tool_intent_events enable row level security;
+
+comment on table public.leads is
+  'Proposal only. Stores owned lead records after secure intake is configured. RLS is enabled by default for safety; direct client writes should stay blocked unless narrowly scoped policies are added later. Preferred intake path: Edge Function or secure serverless endpoint.';
+
+comment on table public.form_submissions is
+  'Proposal only. Stores normalized form submissions plus raw payload context for debugging secure intake. RLS is enabled by default for safety; direct client writes should stay blocked unless narrowly scoped policies are added later. Preferred intake path: Edge Function or secure serverless endpoint.';
+
+comment on table public.shortlist_sessions is
+  'Proposal only. Stores shortlist answers and recommendation outcomes once a secure owned endpoint exists. RLS is enabled by default for safety; direct client writes should stay blocked unless narrowly scoped policies are added later. Preferred intake path: Edge Function or secure serverless endpoint.';
+
+comment on table public.tool_intent_events is
+  'Proposal only. Stores owned tool-intent clicks separately from behavior analytics when first-party intake is enabled. RLS is enabled by default for safety; direct client writes should stay blocked unless narrowly scoped policies are added later. Preferred intake path: Edge Function or secure serverless endpoint.';
 
 create index if not exists leads_email_idx on public.leads (email);
 create index if not exists leads_vertical_idx on public.leads (vertical);

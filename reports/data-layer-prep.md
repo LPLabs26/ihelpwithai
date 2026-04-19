@@ -2,6 +2,8 @@
 
 ## What was added
 
+This PR is the prep layer only. It adds schema, docs, config hooks, and a disabled-by-default owned-data helper while keeping the current production form flow unchanged.
+
 - `docs/data-architecture.md` to document the current split between GitHub Pages, FormSubmit, PostHog, and the future owned data layer.
 - `docs/supabase-schema.sql` with a proposed schema for leads, form submissions, shortlist sessions, and tool-intent events.
 - `docs/supabase-setup.md` with the recommended secure rollout path.
@@ -48,7 +50,11 @@
 ## How Supabase would be tested later
 
 1. Keep FormSubmit active.
+
 2. Turn on the owned endpoint in a controlled environment.
+
 3. Submit real starter-pack and contact tests.
+
 4. Confirm data lands in Supabase and email delivery still works.
+
 5. Review payload shape, consent fields, and shortlist records before any broader rollout.
