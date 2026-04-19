@@ -14,6 +14,16 @@ import {
   templateSections,
   trades
 } from '../src/data/site-content.mjs';
+import {
+  beautyBusinesses,
+  beautyComparisons,
+  beautyProblems,
+  beautyReviews,
+  beautyShortlistQuestions,
+  beautyStarterPack,
+  beautyTemplates,
+  beautyVertical
+} from '../src/data/beauty-content.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -35,6 +45,11 @@ const problemBySlug = new Map(problems.map((problem) => [problem.slug, problem])
 const comparisonBySlug = new Map(comparisons.map((comparison) => [comparison.slug, comparison]));
 const templateById = new Map(templateSections.map((template) => [template.id, template]));
 const learnById = new Map(learnSections.map((entry) => [entry.id, entry]));
+const beautyBusinessBySlug = new Map(beautyBusinesses.map((entry) => [entry.slug, entry]));
+const beautyProblemBySlug = new Map(beautyProblems.map((entry) => [entry.slug, entry]));
+const beautyReviewBySlug = new Map(beautyReviews.map((entry) => [entry.slug, entry]));
+const beautyComparisonBySlug = new Map(beautyComparisons.map((entry) => [entry.slug, entry]));
+const beautyTemplateById = new Map(beautyTemplates.map((entry) => [entry.id, entry]));
 
 const legacyRootPaths = [
   'affiliate-disclosure.html',
@@ -90,20 +105,44 @@ function routeForTrade(slug) {
   return `/trades/${slug}${ROUTE_SUFFIX}`;
 }
 
+function routeForBeautyBusiness(slug) {
+  return `/beauty/${slug}${ROUTE_SUFFIX}`;
+}
+
 function routeForProblem(slug) {
   return `/problems/${slug}${ROUTE_SUFFIX}`;
+}
+
+function routeForBeautyProblem(slug) {
+  return `/beauty/problems/${slug}${ROUTE_SUFFIX}`;
 }
 
 function routeForReview(slug) {
   return `/reviews/${slug}${ROUTE_SUFFIX}`;
 }
 
+function routeForBeautyReview(slug) {
+  return `/beauty/reviews/${slug}${ROUTE_SUFFIX}`;
+}
+
 function routeForComparison(slug) {
   return `/compare/${slug}${ROUTE_SUFFIX}`;
 }
 
+function routeForBeautyComparison(slug) {
+  return `/beauty/compare/${slug}${ROUTE_SUFFIX}`;
+}
+
+function routeForBeautyStarterPack() {
+  return `/beauty/starter-pack/`;
+}
+
 function routeForTemplate(id) {
   return `/templates/#${id}`;
+}
+
+function routeForBeautyTemplate(id) {
+  return `/beauty/templates/#${id}`;
 }
 
 function routeForLearn(id) {
@@ -142,8 +181,58 @@ function toSlugLabel(slug) {
     .join(' ');
 }
 
+function isBeautyRoute(route) {
+  return route === '/beauty/' || route.startsWith('/beauty/');
+}
+
+function navLinksForRoute(currentRoute) {
+  if (!isBeautyRoute(currentRoute)) return site.navLinks;
+
+  return site.navLinks.map((link) => {
+    if (link.href === '/shortlist/') {
+      return { href: '/beauty/shortlist/', label: 'Beauty Shortlist' };
+    }
+    if (link.href === '/reviews/') {
+      return { href: '/beauty/reviews/', label: 'Beauty Reviews' };
+    }
+    if (link.href === '/compare/') {
+      return { href: '/beauty/compare/', label: 'Beauty Compare' };
+    }
+    if (link.href === '/templates/') {
+      return { href: '/beauty/templates/', label: 'Beauty Templates' };
+    }
+    return link;
+  });
+}
+
+function footerGroupsForRoute(currentRoute) {
+  if (!isBeautyRoute(currentRoute)) return site.footerGroups;
+
+  return [
+    {
+      title: 'Start Here',
+      links: [
+        { href: '/beauty/shortlist/', label: 'Start the beauty shortlist' },
+        { href: '/beauty/', label: 'Browse beauty & wellness' },
+        { href: '/beauty/problems/', label: 'Browse beauty problems' },
+        { href: '/beauty/reviews/', label: 'Browse beauty reviews' }
+      ]
+    },
+    {
+      title: 'Resources',
+      links: [
+        { href: '/beauty/compare/', label: 'Beauty comparisons' },
+        { href: '/beauty/templates/', label: 'Copy beauty templates' },
+        { href: routeForBeautyStarterPack(), label: 'Get the Beauty & Wellness starter pack' },
+        { href: '/learn/', label: 'Learn what to automate first' }
+      ]
+    },
+    ...site.footerGroups.slice(2)
+  ];
+}
+
 function renderNav(currentRoute) {
-  return site.navLinks
+  return navLinksForRoute(currentRoute)
     .map((link) => {
       const active =
         link.href === '/'
@@ -154,16 +243,16 @@ function renderNav(currentRoute) {
     .join('');
 }
 
-function renderFooter() {
+function renderFooter(currentRoute) {
   return `
     <footer class="site-footer">
       <div class="container footer-grid">
         <div>
           <div class="footer-brand">${escapeHtml(site.title)}</div>
           <p>${escapeHtml(site.description)}</p>
-          <p class="microcopy">Built around trade fit, workflow reality, and practical first picks for contractor businesses.</p>
+          <p class="microcopy">Built around workflow reality, setup tolerance, and practical next picks for hands-on service businesses.</p>
         </div>
-        ${site.footerGroups
+        ${footerGroupsForRoute(currentRoute)
           .map(
             (group) => `
           <div>
@@ -191,10 +280,10 @@ function renderHeader(currentRoute) {
           <span class="brand-mark">IHAI</span>
           <span class="brand-text">
             <strong>${escapeHtml(site.title)}</strong>
-            <small>Contractor software and AI that actually help</small>
+            <small>AI and software buyer's guides for service businesses</small>
           </span>
         </a>
-        <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" data-menu-toggle>☰</button>
+        <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" data-menu-toggle>&#9776;</button>
         <nav class="site-nav" data-menu>
           ${renderNav(currentRoute)}
         </nav>
@@ -263,6 +352,17 @@ function renderTrustPanel() {
     </aside>`;
 }
 
+function renderAudienceChoiceCard({ kicker, title, description, href, cta, detail, className = '' }) {
+  return `
+    <article class="route-card ${className}">
+      <div class="card-kicker">${escapeHtml(kicker)}</div>
+      <h3>${escapeHtml(title)}</h3>
+      <p>${escapeHtml(description)}</p>
+      ${detail ? `<p class="microcopy">${escapeHtml(detail)}</p>` : ''}
+      <div class="cta-row"><a class="btn secondary small" href="${href}" data-analytics="home_cta">${escapeHtml(cta)}</a></div>
+    </article>`;
+}
+
 function renderTradeCard(trade) {
   return `
     <a class="card" href="${routeForTrade(trade.slug)}">
@@ -284,7 +384,7 @@ function renderProblemCard(problem) {
 
 function renderReviewCard(review) {
   return `
-    <a class="card" href="${routeForReview(review.slug)}">
+    <a class="card" href="${routeForReview(review.slug)}" data-analytics="review_cta">
       <div class="card-kicker">${escapeHtml(review.category)}</div>
       <h3>${escapeHtml(review.toolName)}</h3>
       <p>${escapeHtml(review.oneLineVerdict)}</p>
@@ -311,6 +411,57 @@ function renderTemplateCard(template) {
       <div class="card-kicker">Template</div>
       <h3>${escapeHtml(template.title)}</h3>
       <p>${escapeHtml(template.intro)}</p>
+    </a>`;
+}
+
+function renderBeautyBusinessCard(entry) {
+  return `
+    <a class="card" href="${routeForBeautyBusiness(entry.slug)}">
+      <div class="card-kicker">Beauty category</div>
+      <h3>${escapeHtml(entry.title)}</h3>
+      <p>${escapeHtml(entry.description)}</p>
+      ${renderPills(entry.featuredProblems.map((slug) => beautyProblemBySlug.get(slug)?.title || toSlugLabel(slug)))}
+    </a>`;
+}
+
+function renderBeautyProblemCard(entry) {
+  return `
+    <a class="card" href="${routeForBeautyProblem(entry.slug)}">
+      <div class="card-kicker">Beauty problem</div>
+      <h3>${escapeHtml(entry.title)}</h3>
+      <p>${escapeHtml(entry.description)}</p>
+    </a>`;
+}
+
+function renderBeautyReviewCard(entry) {
+  return `
+    <a class="card" href="${routeForBeautyReview(entry.slug)}" data-analytics="review_cta beauty_review_cta">
+      <div class="card-kicker">${escapeHtml(entry.category)}</div>
+      <h3>${escapeHtml(entry.toolName)}</h3>
+      <p>${escapeHtml(entry.oneLineVerdict)}</p>
+      ${renderPills([
+        entry.setupEffort,
+        entry.pricingPosture,
+        `${entry.businessTypeFit.length} business fits`
+      ])}
+    </a>`;
+}
+
+function renderBeautyComparisonCard(entry) {
+  return `
+    <a class="card" href="${routeForBeautyComparison(entry.slug)}" data-analytics="compare_cta beauty_compare_cta">
+      <div class="card-kicker">Beauty comparison</div>
+      <h3>${escapeHtml(entry.shortTitle)}</h3>
+      <p>${escapeHtml(entry.summary)}</p>
+    </a>`;
+}
+
+function renderBeautyTemplateCard(entry) {
+  return `
+    <a class="card" href="${routeForBeautyTemplate(entry.id)}">
+      <div class="card-kicker">Beauty template</div>
+      <h3>${escapeHtml(entry.title)}</h3>
+      <p>${escapeHtml(entry.intro)}</p>
     </a>`;
 }
 
@@ -379,6 +530,7 @@ function renderMetaTags({ title, description, route, robots }) {
   return `
     <title>${escapeHtml(pageTitle(title))}</title>
     <meta name="description" content="${escapeHtml(description)}">
+    ${site.googleSiteVerification ? `<meta name="google-site-verification" content="${escapeHtml(site.googleSiteVerification)}">` : ''}
     ${robots ? `<meta name="robots" content="${escapeHtml(robots)}">` : ''}
     <link rel="canonical" href="${escapeHtml(canonical)}">
     <meta property="og:site_name" content="${escapeHtml(site.title)}">
@@ -387,18 +539,31 @@ function renderMetaTags({ title, description, route, robots }) {
     <meta property="og:description" content="${escapeHtml(description)}">
     <meta property="og:url" content="${escapeHtml(canonical)}">
     <meta property="og:image" content="${escapeHtml(socialImage)}">
-    <meta property="og:image:alt" content="ihelpwithai.com contractor guide preview">
+    <meta property="og:image:alt" content="ihelpwithai.com service business buyer's guide preview">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="${escapeHtml(pageTitle(title))}">
     <meta name="twitter:description" content="${escapeHtml(description)}">
     <meta name="twitter:image" content="${escapeHtml(socialImage)}">`;
 }
 
-function renderShell({ route, title, description, body, breadcrumbs = [], faqs = [], robots = '' }) {
+function renderShell({
+  route,
+  title,
+  description,
+  body,
+  breadcrumbs = [],
+  faqs = [],
+  robots = '',
+  themeClass = '',
+  pageEvent = '',
+  pageEventProps = null
+}) {
   const schemas = [organizationSchema(), websiteSchema()];
   if (route !== '/') schemas.push(breadcrumbSchema(route, breadcrumbs));
   const faqJson = faqSchema(faqs);
   if (faqJson) schemas.push(faqJson);
+  const bodyClasses = [themeClass].filter(Boolean).join(' ');
+  const bodyEventProps = pageEventProps ? escapeHtml(JSON.stringify(pageEventProps)) : '';
 
   return `<!doctype html>
 <html lang="en">
@@ -412,25 +577,35 @@ function renderShell({ route, title, description, body, breadcrumbs = [], faqs =
   <script defer src="/assets/site.js?v=${ASSET_VERSION}"></script>
   <script type="application/ld+json">${JSON.stringify(schemas)}</script>
 </head>
-<body>
+<body${bodyClasses ? ` class="${bodyClasses}"` : ''}${pageEvent ? ` data-page-event="${escapeHtml(pageEvent)}"` : ''}${bodyEventProps ? ` data-page-event-props="${bodyEventProps}"` : ''}>
   ${renderHeader(route)}
   ${body}
-  ${renderFooter()}
+  ${renderFooter(route)}
 </body>
 </html>`;
 }
 
 function renderHomePage() {
-  const featuredReviewCards = ['jobber', 'housecall-pro', 'nicejob', 'callrail']
+  const featuredFieldReviewCards = ['jobber', 'housecall-pro', 'nicejob', 'callrail']
     .map((slug) => renderReviewCard(reviewBySlug.get(slug)))
     .join('');
-  const featuredCompareCards = comparisons.map(renderComparisonCard).join('');
-  const tradeCards = trades.map(renderTradeCard).join('');
-  const problemCards = problems.map(renderProblemCard).join('');
+  const featuredBeautyReviewCards = ['glossgenius', 'vagaro', 'boulevard', 'chatgpt']
+    .map((slug) => renderBeautyReviewCard(beautyReviewBySlug.get(slug)))
+    .join('');
+  const featuredCompareCards = [
+    renderComparisonCard(comparisonBySlug.get('jobber-vs-housecall-pro')),
+    renderComparisonCard(comparisonBySlug.get('all-in-one-field-service-software-vs-separate-ai-tools')),
+    renderBeautyComparisonCard(beautyComparisonBySlug.get('vagaro-vs-glossgenius')),
+    renderBeautyComparisonCard(beautyComparisonBySlug.get('all-in-one-salon-software-vs-separate-ai-tools'))
+  ].join('');
+  const featuredFieldTradeCards = trades.slice(0, 4).map(renderTradeCard).join('');
+  const featuredBeautyBusinessCards = ['hair-salons', 'barbers', 'medspas', 'tattoo-piercing-studios']
+    .map((slug) => renderBeautyBusinessCard(beautyBusinessBySlug.get(slug)))
+    .join('');
 
   return renderShell({
     route: '/',
-    title: 'Choose the right AI and software for your contracting business',
+    title: 'Choose the right AI and software for your service business',
     description: site.description,
     faqs: site.homeFaqs,
     body: `
@@ -438,20 +613,20 @@ function renderHomePage() {
         <section class="hero">
           <div class="container hero-grid">
             <div>
-              <div class="eyebrow">Contractor-first buyer's guide</div>
-              <h1>Choose the right AI and software for your contracting business.</h1>
-              <p class="hero-copy">Built for owners, office managers, dispatchers, estimators, and GMs who need clearer next steps around missed calls, quote follow-up, dispatch, reviews, and office admin.</p>
+              <div class="eyebrow">AI and software buyer's guides for hands-on service businesses</div>
+              <h1>Choose the right AI and software for your service business.</h1>
+              <p class="hero-copy">Built for hands-on businesses that need fewer missed bookings, better follow-up, smoother scheduling, stronger reviews, and less admin.</p>
               <div class="hero-actions">
                 <a class="btn primary" href="/shortlist/" data-analytics="home_cta">Start the shortlist</a>
-                <a class="btn secondary" href="/problems/" data-analytics="home_cta">Browse by problem</a>
-                <a class="btn ghost" href="/trades/" data-analytics="home_cta">Browse by trade</a>
+                <a class="btn secondary" href="/trades/" data-analytics="home_cta">Explore field trades</a>
+                <a class="btn ghost" href="/beauty/" data-analytics="home_cta">Explore beauty &amp; wellness</a>
               </div>
             </div>
             <aside class="hero-panel">
               <div class="trust-chip">Decision engine, not directory sprawl</div>
               <ul class="checklist">
                 <li>Start with the bottleneck, not the brand list.</li>
-                <li>See who a tool is for and who it is not for.</li>
+                <li>Choose the path that matches how the business actually runs.</li>
                 <li>Use compare pages when the stack decision gets murky.</li>
                 <li>Grab copyable templates before you buy another tool.</li>
               </ul>
@@ -461,25 +636,33 @@ function renderHomePage() {
 
         <section class="section">
           <div class="container">
-            <div class="route-strip">
-              <article class="route-card">
-                <div class="card-kicker">Path one</div>
-                <h3>Start by trade</h3>
-                <p>See the stack and bottlenecks that matter most for HVAC, plumbing, electrical, roofing, landscaping, cleaning, handyman, and general contracting.</p>
-                <div class="cta-row"><a class="btn secondary small" href="/trades/" data-analytics="home_cta">Explore trades</a></div>
-              </article>
-              <article class="route-card">
-                <div class="card-kicker">Path two</div>
-                <h3>Start by bottleneck</h3>
-                <p>Go straight to missed calls, quote follow-up, scheduling, reviews, or office admin if you already know where the leak is.</p>
-                <div class="cta-row"><a class="btn secondary small" href="/problems/" data-analytics="home_cta">Explore problems</a></div>
-              </article>
-              <article class="route-card">
-                <div class="card-kicker">Path three</div>
-                <h3>Get a shortlist fast</h3>
-                <p>Use the guided shortlist to narrow your next move by trade, team size, current stack, budget, and setup tolerance.</p>
-                <div class="cta-row"><a class="btn secondary small" href="/shortlist/" data-analytics="home_cta">Build shortlist</a></div>
-              </article>
+            <div class="section-heading">
+              <div class="trust-chip">Choose your business type</div>
+              <h2>One umbrella site, two clear service-business paths.</h2>
+              <p class="section-intro">Use the path that matches the day-to-day reality of the business, then narrow by bottleneck, shortlist, reviews, comparisons, and templates.</p>
+            </div>
+            <div class="route-strip audience-strip">
+              ${renderAudienceChoiceCard({
+                kicker: 'Field trades',
+                title: 'I run a field-trades business',
+                description:
+                  'HVAC, plumbing, electrical, roofing, landscaping, handyman, cleaning, and general contracting teams that need better lead handling, follow-up, dispatch, reviews, and office structure.',
+                detail:
+                  'Use the field-trades hub, field shortlist, contractor reviews, compare pages, and templates.',
+                href: '/trades/',
+                cta: 'Go to field trades'
+              })}
+              ${renderAudienceChoiceCard({
+                kicker: 'Beauty & wellness',
+                title: 'I run a beauty or wellness business',
+                description:
+                  'Salons, barbers, nails, lashes, brows, esthetics, medspas, massage, makeup, and tattoo or piercing studios that need better booking, rebooking, reviews, content, deposits, and front-desk flow.',
+                detail:
+                  'Use the Beauty & Wellness hub, beauty shortlist, beauty reviews, beauty comparisons, and beauty templates.',
+                href: '/beauty/',
+                cta: 'Go to beauty & wellness',
+                className: 'theme-beauty-card'
+              })}
             </div>
           </div>
         </section>
@@ -487,21 +670,24 @@ function renderHomePage() {
         <section class="section">
           <div class="container">
             <div class="section-heading">
-              <div class="trust-chip">Trades</div>
-              <h2>Advice built around how service businesses actually run.</h2>
-              <p class="section-intro">The first wedge is practical business-side software for trades and field-service teams, not a generic AI catalog.</p>
+              <div class="trust-chip">Field Trades</div>
+              <h2>Guidance for crews, dispatch, quotes, reviews, and office follow-up.</h2>
+              <p class="section-intro">The field-trades side stays focused on missed calls, quote follow-up, dispatch, reviews, and admin for service teams that live in the field.</p>
             </div>
-            <div class="grid cols-3">${tradeCards}</div>
+            <div class="grid cols-2">${featuredFieldTradeCards}</div>
+            <div class="cta-row" style="margin-top:18px"><a class="btn secondary" href="/trades/" data-analytics="home_cta">Browse all field-trades guides</a><a class="btn secondary" href="/problems/" data-analytics="home_cta">Browse field-trade problems</a></div>
           </div>
         </section>
 
         <section class="section">
           <div class="container">
             <div class="section-heading">
-              <div class="trust-chip">Core bottlenecks</div>
-              <h2>Start where the office or phone is quietly leaking revenue.</h2>
+              <div class="trust-chip">Beauty &amp; Wellness</div>
+              <h2>Guidance for booking, rebooking, retention, reviews, content, and front-desk flow.</h2>
+              <p class="section-intro">${escapeHtml(beautyVertical.intro)}</p>
             </div>
-            <div class="grid cols-3">${problemCards}</div>
+            <div class="grid cols-2">${featuredBeautyBusinessCards}</div>
+            <div class="cta-row" style="margin-top:18px"><a class="btn secondary" href="/beauty/" data-analytics="home_cta">Browse Beauty &amp; Wellness</a><a class="btn secondary" href="/beauty/shortlist/" data-analytics="home_cta">Start the beauty shortlist</a><a class="btn secondary" href="${routeForBeautyStarterPack()}" data-analytics="home_cta">Get the beauty starter pack</a></div>
           </div>
         </section>
 
@@ -510,18 +696,28 @@ function renderHomePage() {
             <div class="section-heading">
               <div class="trust-chip">Featured comparisons</div>
               <h2>Use compare pages when the stack decision is the real problem.</h2>
+              <p class="section-intro">The compare library now covers both field-trades and Beauty &amp; Wellness software decisions.</p>
             </div>
             <div class="grid cols-2">${featuredCompareCards}</div>
           </div>
         </section>
 
         <section class="section">
-          <div class="container">
-            <div class="section-heading">
-              <div class="trust-chip">Featured reviews</div>
-              <h2>Pressure-test the software before you commit to a demo cycle.</h2>
+          <div class="container split-panel">
+            <div>
+              <div class="section-heading">
+                <div class="trust-chip">Field-trades reviews</div>
+                <h2>Pressure-test field-trades software before you commit to a demo cycle.</h2>
+              </div>
+              <div class="grid cols-2">${featuredFieldReviewCards}</div>
             </div>
-            <div class="grid cols-2">${featuredReviewCards}</div>
+            <div>
+              <div class="section-heading">
+                <div class="trust-chip">Beauty reviews</div>
+                <h2>Compare booking, retention, and content tools for beauty teams.</h2>
+              </div>
+              <div class="grid cols-2">${featuredBeautyReviewCards}</div>
+            </div>
           </div>
         </section>
 
@@ -530,7 +726,7 @@ function renderHomePage() {
             <article class="banner">
               <div class="trust-chip">What to automate first</div>
               <h2>Automate the leak, not the fantasy.</h2>
-              <p>Good first automations usually touch missed calls, estimate follow-up, review requests, or repeat office communication. If the whole operating system is fragmented, fix that first.</p>
+              <p>Good first automations usually touch missed calls, estimate follow-up, review requests, rebooking nudges, reminders, deposits, or repeat office communication. If the whole operating system is fragmented, fix that first.</p>
             </article>
             ${renderTrustPanel()}
           </div>
@@ -539,10 +735,11 @@ function renderHomePage() {
         <section class="section">
           <div class="container signup-panel">
             <div>
-              <div class="trust-chip">Starter pack</div>
-              <h2>Get the contractor AI starter pack.</h2>
+              <div class="trust-chip">Field-trades starter pack</div>
+              <h2>Get the field-trades starter pack.</h2>
               <p>The starter pack includes missed-call texts, estimate follow-up examples, review request copy, one SOP prompt pack, and a simple decision checklist.</p>
               ${renderBulletList(legalPages.starterPack.bullets)}
+              <p class="microcopy">Need the Beauty &amp; Wellness path instead? Start with the <a href="/beauty/shortlist/">beauty shortlist</a> or browse <a href="/beauty/templates/">beauty templates</a>.</p>
             </div>
             <form class="lead-form" data-lead-form="starter-pack-home" data-analytics="starter_pack_form" action="${FORM_ACTION}" method="POST">
               ${renderLeadFormHiddenFields('ihelpwithai starter pack request')}
@@ -573,17 +770,32 @@ function renderHomePage() {
   });
 }
 
-function renderHubPage({ route, title, description, eyebrow, intro, cards, secondaryPanel }) {
+function renderHubPage({
+  route,
+  title,
+  description,
+  eyebrow,
+  intro,
+  cards,
+  secondaryPanel,
+  breadcrumbs = [{ label: title }],
+  themeClass = '',
+  pageEvent = '',
+  pageEventProps = null
+}) {
   return renderShell({
     route,
     title,
     description,
+    themeClass,
+    pageEvent,
+    pageEventProps,
     body: `
       <main class="page">
         <section class="section">
           <div class="container">
             <div class="page-heading">
-              ${renderBreadcrumbs([{ label: title }])}
+              ${renderBreadcrumbs(breadcrumbs)}
               <div class="trust-chip">${escapeHtml(eyebrow)}</div>
               <h1 class="page-title">${escapeHtml(title)}</h1>
               <p>${escapeHtml(intro)}</p>
@@ -601,15 +813,15 @@ function renderHubPage({ route, title, description, eyebrow, intro, cards, secon
 function renderShortlistPage() {
   return renderShell({
     route: '/shortlist/',
-    title: 'Shortlist contractor software and AI by bottleneck',
+    title: 'Shortlist field-trades software and AI by bottleneck',
     description:
-      'Use the contractor shortlist to narrow the right next software decision by trade, team size, bottleneck, budget, and setup tolerance.',
+      'Use the field-trades shortlist to narrow the right next software decision by trade, team size, bottleneck, budget, and setup tolerance.',
     body: `
       <main class="page">
         <section class="hero">
           <div class="container hero-grid">
             <div>
-              <div class="eyebrow">Guided shortlist</div>
+              <div class="eyebrow">Field-trades shortlist</div>
               <h1>Get a practical shortlist in under five minutes.</h1>
               <p class="hero-copy">Answer a few questions about your trade, team, bottleneck, current stack, and setup reality. The goal is to narrow the next move, not create more software tabs to compare.</p>
             </div>
@@ -620,18 +832,19 @@ function renderShortlistPage() {
                 <li>Two alternative routes to compare</li>
                 <li>Context on whether you need an all-in-one or a focused fix</li>
               </ul>
+              <p class="microcopy">Need the appointment-based path instead? Start the <a href="/beauty/shortlist/">Beauty &amp; Wellness shortlist</a>.</p>
             </aside>
           </div>
         </section>
         <section class="section">
-          <div class="container shortlist-layout">
+          <div class="container shortlist-layout" data-shortlist-root>
             <div class="shortlist-shell">
               <div class="step-progress">
                 <div class="trust-chip">Quiz progress</div>
                 <div class="step-progress-bar"><div class="step-progress-fill" data-shortlist-progress></div></div>
                 <div class="microcopy" data-shortlist-progress-label>Step 1 of 4</div>
               </div>
-              <form data-shortlist-form data-analytics="shortlist_start">
+              <form data-shortlist-form="field" data-analytics="shortlist_start">
                 <div class="step-panel" data-shortlist-step="trade-team">
                   <h3>Start with the shop profile</h3>
                   <p class="muted">These two answers frame the kind of stack that is realistic for your business right now.</p>
@@ -728,16 +941,889 @@ function renderShortlistPage() {
               </form>
             </div>
             ${renderTrustPanel()}
-          </div>
-          <div class="container shortlist-output" data-shortlist-output>
-            <div class="results-shell" data-shortlist-results>
-              <div class="result-primary" data-shortlist-primary>
-                <h3>Recommended first move</h3>
-                <p>Finish the shortlist to see the first route that best matches your trade, bottleneck, and setup reality.</p>
+            <div class="shortlist-output" data-shortlist-output>
+              <div class="results-shell" data-shortlist-results>
+                <div class="result-primary" data-shortlist-primary>
+                  <h3>Recommended first move</h3>
+                  <p>Finish the shortlist to see the first route that best matches your trade, bottleneck, and setup reality.</p>
+                </div>
+                <div class="result-grid" data-shortlist-grid></div>
               </div>
-              <div class="result-grid" data-shortlist-grid></div>
+              <p class="empty-state" data-shortlist-empty hidden>There is not a strong fit inside the current shortlist for that exact combination yet. Loosen the constraints and try again.</p>
             </div>
-            <p class="empty-state" data-shortlist-empty hidden>There is not a strong fit inside the current shortlist for that exact combination yet. Loosen the constraints and try again.</p>
+          </div>
+        </section>
+      </main>`
+  });
+}
+
+function renderBeautyShortlistPage() {
+  return renderShell({
+    route: '/beauty/shortlist/',
+    title: 'Shortlist beauty and wellness software by bottleneck',
+    description:
+      'Use the Beauty & Wellness shortlist to narrow the right next software decision by business type, team model, bottleneck, current setup, budget, and setup tolerance.',
+    themeClass: 'theme-beauty',
+    body: `
+      <main class="page">
+        <section class="hero">
+          <div class="container hero-grid">
+            <div>
+              <div class="eyebrow">Beauty &amp; Wellness shortlist</div>
+              <h1>Get a practical beauty-tech shortlist in under five minutes.</h1>
+              <p class="hero-copy">Answer a few questions about your business type, team model, biggest bottleneck, current setup, budget, and setup reality. The goal is to narrow the next move, not to add more tabs and more software noise.</p>
+            </div>
+            <aside class="hero-panel">
+              <div class="trust-chip">What you get</div>
+              <ul class="checklist">
+                <li>A primary recommendation for the next software move</li>
+                <li>Two alternative routes to compare before you switch</li>
+                <li>Clearer separation between operating-system problems and one-tool fixes</li>
+              </ul>
+              <p class="microcopy">Need the crew, dispatch, and field-service side instead? Start the <a href="/shortlist/">field-trades shortlist</a>.</p>
+            </aside>
+          </div>
+        </section>
+        <section class="section">
+          <div class="container shortlist-layout" data-shortlist-root>
+            <div class="shortlist-shell">
+              <div class="step-progress">
+                <div class="trust-chip">Quiz progress</div>
+                <div class="step-progress-bar"><div class="step-progress-fill" data-shortlist-progress></div></div>
+                <div class="microcopy" data-shortlist-progress-label>Step 1 of 3</div>
+              </div>
+              <form data-shortlist-form="beauty" data-analytics="shortlist_start">
+                <div class="step-panel" data-shortlist-step="business-team">
+                  <h3>Start with the business model</h3>
+                  <p class="muted">These first two answers shape whether the right next move is a solo-friendly booking stack, a stronger front-desk system, or a more team-oriented platform.</p>
+                  <div class="form-grid two">
+                    <label>Business type
+                      <select name="businessType" required>
+                        <option value="">Select a business type</option>
+                        ${beautyShortlistQuestions[0].options
+                          .map(([value, label]) => `<option value="${value}">${escapeHtml(label)}</option>`)
+                          .join('')}
+                      </select>
+                    </label>
+                    <label>How you work
+                      <select name="teamSize" required>
+                        <option value="">Select the team model</option>
+                        ${beautyShortlistQuestions[1].options
+                          .map(([value, label]) => `<option value="${value}">${escapeHtml(label)}</option>`)
+                          .join('')}
+                      </select>
+                    </label>
+                  </div>
+                </div>
+                <div class="step-panel" data-shortlist-step="bottleneck-stack" hidden>
+                  <h3>Find the main leak</h3>
+                  <p class="muted">Pick the bottleneck that is costing the business the most time, revenue, or front-desk energy right now.</p>
+                  <div class="form-grid two">
+                    <label>Biggest bottleneck
+                      <select name="bottleneck" required>
+                        <option value="">Select the bottleneck</option>
+                        ${beautyShortlistQuestions[2].options
+                          .map(([value, label]) => `<option value="${value}">${escapeHtml(label)}</option>`)
+                          .join('')}
+                      </select>
+                    </label>
+                    <label>Current setup
+                      <select name="currentStack" required>
+                        <option value="">Select the current setup</option>
+                        ${beautyShortlistQuestions[3].options
+                          .map(([value, label]) => `<option value="${value}">${escapeHtml(label)}</option>`)
+                          .join('')}
+                      </select>
+                    </label>
+                  </div>
+                </div>
+                <div class="step-panel" data-shortlist-step="budget-setup" hidden>
+                  <h3>Budget and setup reality</h3>
+                  <p class="muted">Be honest about cost tolerance and rollout capacity so the shortlist leans toward tools the business can actually absorb.</p>
+                  <div class="form-grid two">
+                    <label>Budget
+                      <select name="budget" required>
+                        <option value="">Select the budget</option>
+                        ${beautyShortlistQuestions[4].options
+                          .map(([value, label]) => `<option value="${value}">${escapeHtml(label)}</option>`)
+                          .join('')}
+                      </select>
+                    </label>
+                    <label>Setup tolerance
+                      <select name="setupTolerance" required>
+                        <option value="">Select setup tolerance</option>
+                        ${beautyShortlistQuestions[5].options
+                          .map(([value, label]) => `<option value="${value}">${escapeHtml(label)}</option>`)
+                          .join('')}
+                      </select>
+                    </label>
+                  </div>
+                </div>
+                <div class="quiz-nav">
+                  <button class="btn secondary" type="button" data-shortlist-back>Back</button>
+                  <button class="btn secondary" type="button" data-shortlist-next data-analytics="shortlist_step">Next</button>
+                  <button class="btn primary" type="submit" data-shortlist-submit data-analytics="shortlist_submit" hidden>Build my shortlist</button>
+                </div>
+              </form>
+            </div>
+            ${renderTrustPanel()}
+            <div class="shortlist-output" data-shortlist-output>
+              <div class="results-shell" data-shortlist-results>
+                <div class="result-primary" data-shortlist-primary>
+                  <h3>Recommended first move</h3>
+                  <p>Finish the shortlist to see the first route that best matches your business type, bottleneck, and setup reality.</p>
+                </div>
+                <div class="result-grid" data-shortlist-grid></div>
+              </div>
+              <p class="empty-state" data-shortlist-empty hidden>There is not a strong fit inside the current beauty shortlist for that exact mix yet. Loosen the constraints and try again.</p>
+            </div>
+          </div>
+        </section>
+      </main>`
+  });
+}
+
+function renderBeautyHubPage() {
+  return renderShell({
+    route: '/beauty/',
+    title: 'Beauty & Wellness software buyer\'s guide',
+    description: beautyVertical.description,
+    themeClass: 'theme-beauty',
+    pageEvent: 'ihai_beauty_hub_viewed',
+    pageEventProps: { vertical: 'beauty' },
+    body: `
+      <main class="page">
+        <section class="hero">
+          <div class="container hero-grid">
+            <div>
+              <div class="eyebrow">Beauty &amp; Wellness</div>
+              <h1>Choose the right AI and software for the business side of beauty and wellness work.</h1>
+              <p class="hero-copy">${escapeHtml(beautyVertical.description)}</p>
+              <div class="hero-actions">
+                <a class="btn primary" href="/beauty/shortlist/" data-analytics="home_cta">Start the beauty shortlist</a>
+                <a class="btn secondary" href="/beauty/reviews/" data-analytics="home_cta">Browse beauty reviews</a>
+                <a class="btn ghost" href="${routeForBeautyStarterPack()}" data-analytics="home_cta">Get the beauty starter pack</a>
+              </div>
+            </div>
+            <aside class="hero-panel">
+              <div class="trust-chip">What this vertical covers</div>
+              <ul class="checklist">
+                <li>Online booking, deposits, and no-show protection</li>
+                <li>Rebooking, retention, and loyalty follow-up</li>
+                <li>DM response, reviews, and social-content workflows</li>
+                <li>Front-desk admin, client notes, and service-policy communication</li>
+              </ul>
+            </aside>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="section-heading">
+              <div class="trust-chip">Business categories</div>
+              <h2>Find the software fit for how the business actually books, serves, and follows up.</h2>
+              <p class="section-intro">${escapeHtml(beautyVertical.homeBlurb)}</p>
+            </div>
+            <div class="grid cols-3">${beautyBusinesses.map(renderBeautyBusinessCard).join('')}</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="section-heading">
+              <div class="trust-chip">Beauty bottlenecks</div>
+              <h2>Start where the calendar, front desk, or client follow-up is leaking revenue.</h2>
+              <p class="section-intro">${escapeHtml(beautyVertical.problemBlurb)}</p>
+            </div>
+            <div class="grid cols-2">${beautyProblems.map(renderBeautyProblemCard).join('')}</div>
+            <div class="cta-row" style="margin-top:18px">
+              <a class="btn secondary" href="/beauty/problems/">Browse beauty problems</a>
+              <a class="btn secondary" href="${routeForBeautyStarterPack()}">Get the beauty starter pack</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container split-panel">
+            <div>
+              <div class="section-heading">
+                <h2>Beauty reviews</h2>
+              </div>
+              <div class="grid">${beautyReviews.slice(0, 4).map(renderBeautyReviewCard).join('')}</div>
+            </div>
+            <div>
+              <div class="section-heading">
+                <h2>Beauty comparisons</h2>
+              </div>
+              <div class="grid">${beautyComparisons.map(renderBeautyComparisonCard).join('')}</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container split-panel">
+            <div>
+              <div class="section-heading">
+                <h2>Beauty templates</h2>
+              </div>
+              <div class="grid">${beautyTemplates.slice(0, 4).map(renderBeautyTemplateCard).join('')}</div>
+              <div class="cta-row" style="margin-top:18px"><a class="btn secondary" href="${routeForBeautyStarterPack()}">Get the beauty starter pack</a></div>
+            </div>
+            <article class="banner">
+              <div class="trust-chip">Need a faster answer?</div>
+              <h2>Use the beauty shortlist before you demo another tool.</h2>
+              <p>${escapeHtml(beautyVertical.shortlistBlurb)}</p>
+              <div class="cta-row">
+                <a class="btn primary" href="/beauty/shortlist/">Build the beauty shortlist</a>
+                <a class="btn secondary" href="/trades/">See the field-trades side</a>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>`
+  });
+}
+
+function renderBeautyReviewScorecard(review) {
+  return `
+    <aside class="scorecard">
+      <div class="scorecard-row">
+        <span>One-line verdict</span>
+        <div class="scorecard-label"><strong>${escapeHtml(review.oneLineVerdict)}</strong></div>
+      </div>
+      <div class="scorecard-row">
+        <span>Booking strength</span>
+        <div class="scorecard-label"><strong>${escapeHtml(review.bookingStrength)}</strong></div>
+      </div>
+      <div class="scorecard-row">
+        <span>No-show and rebooking</span>
+        <div class="scorecard-label"><strong>${escapeHtml(review.noShowSupport)}</strong></div>
+      </div>
+      <div class="scorecard-row">
+        <span>Payments and deposits</span>
+        <div class="scorecard-label"><strong>${escapeHtml(review.paymentsSupport)}</strong></div>
+      </div>
+      <div class="scorecard-row">
+        <span>Pricing posture</span>
+        <div class="scorecard-label"><strong>${escapeHtml(review.pricingPosture)}</strong></div>
+      </div>
+      <div class="scorecard-row">
+        <span>Last reviewed</span>
+        <div class="scorecard-label"><strong>${escapeHtml(review.lastReviewed)}</strong></div>
+      </div>
+    </aside>`;
+}
+
+function renderBeautyBusinessPage(entry) {
+  return renderShell({
+    route: routeForBeautyBusiness(entry.slug),
+    title: `Best AI and software for ${entry.title}`,
+    description: entry.description,
+    breadcrumbs: [
+      { label: 'Beauty & Wellness', href: '/beauty/' },
+      { label: entry.title }
+    ],
+    faqs: entry.faqs,
+    themeClass: 'theme-beauty',
+    body: `
+      <main class="page">
+        <section class="section">
+          <div class="container">
+            ${renderBreadcrumbs([
+              { label: 'Beauty & Wellness', href: '/beauty/' },
+              { label: entry.title }
+            ])}
+            <div class="page-grid">
+              <div>
+                <div class="trust-chip">Beauty category guide</div>
+                <h1 class="page-title">Best AI and software for ${escapeHtml(entry.title)}</h1>
+                <p>${escapeHtml(entry.description)}</p>
+                ${renderPills(entry.featuredProblems.map((slug) => beautyProblemBySlug.get(slug)?.title || toSlugLabel(slug)))}
+              </div>
+              ${renderTrustPanel()}
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="section-heading">
+              <h2>Top bottlenecks in this category</h2>
+            </div>
+            <div class="grid cols-3">
+              ${entry.bottlenecks
+                .map(
+                  (item) => `
+                <article class="card">
+                  <div class="card-kicker">Where teams lose time</div>
+                  <p>${escapeHtml(item)}</p>
+                </article>`
+                )
+                .join('')}
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="section-heading">
+              <h2>Recommended stack by business stage</h2>
+            </div>
+            <div class="grid cols-3">
+              ${entry.stackStages
+                .map(
+                  (stage) => `
+                <article class="card">
+                  <h3>${escapeHtml(stage.title)}</h3>
+                  <p>${escapeHtml(stage.body)}</p>
+                </article>`
+                )
+                .join('')}
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container split-panel">
+            <article class="card">
+              <div class="card-kicker">Best-fit categories</div>
+              <h3>What this business usually needs first</h3>
+              ${renderBulletList(entry.categories)}
+            </article>
+            <article class="banner">
+              <div class="trust-chip">Next step</div>
+              <h2>If you are still not sure, run the beauty shortlist.</h2>
+              <p>The beauty shortlist is built to narrow the next move by business type, team model, bottleneck, budget, and setup tolerance.</p>
+              <div class="cta-row"><a class="btn primary" href="/beauty/shortlist/">Build the beauty shortlist</a></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="section-heading">
+              <h2>Featured reviews</h2>
+            </div>
+            <div class="grid cols-3">${entry.featuredReviews
+              .map((slug) => renderBeautyReviewCard(beautyReviewBySlug.get(slug)))
+              .join('')}</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container split-panel">
+            <div>
+              <div class="section-heading">
+                <h2>Featured comparisons</h2>
+              </div>
+              <div class="grid">${entry.featuredComparisons
+                .map((slug) => renderBeautyComparisonCard(beautyComparisonBySlug.get(slug)))
+                .join('')}</div>
+            </div>
+            <div>
+              <div class="section-heading">
+                <h2>Related templates</h2>
+              </div>
+              <div class="grid">${entry.featuredTemplates
+                .map((id) => renderBeautyTemplateCard(beautyTemplateById.get(id)))
+                .join('')}</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="section-heading">
+              <h2>Frequently asked questions</h2>
+            </div>
+            ${renderFaqList(entry.faqs)}
+          </div>
+        </section>
+      </main>`
+  });
+}
+
+function renderBeautyProblemPage(entry) {
+  return renderShell({
+    route: routeForBeautyProblem(entry.slug),
+    title: `How beauty and wellness businesses can fix ${entry.title.toLowerCase()}`,
+    description: entry.description,
+    breadcrumbs: [
+      { label: 'Beauty & Wellness', href: '/beauty/' },
+      { label: entry.title }
+    ],
+    faqs: entry.faqs,
+    themeClass: 'theme-beauty',
+    body: `
+      <main class="page">
+        <section class="section">
+          <div class="container">
+            ${renderBreadcrumbs([
+              { label: 'Beauty & Wellness', href: '/beauty/' },
+              { label: entry.title }
+            ])}
+            <div class="page-grid">
+              <div>
+                <div class="trust-chip">Beauty problem path</div>
+                <h1 class="page-title">How beauty and wellness businesses can fix ${escapeHtml(entry.title.toLowerCase())} without more admin drag</h1>
+                <p>${escapeHtml(entry.description)}</p>
+                <p>${escapeHtml(entry.whyItMatters)}</p>
+              </div>
+              ${renderTrustPanel()}
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container split-panel">
+            <article class="card">
+              <div class="card-kicker">Signs this is the real problem</div>
+              ${renderBulletList(entry.symptoms)}
+            </article>
+            <article class="card">
+              <div class="card-kicker">What to measure</div>
+              ${renderBulletList(entry.roiFactors)}
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="section-heading">
+              <h2>Solution categories that usually help</h2>
+            </div>
+            <div class="grid cols-3">
+              ${entry.solutionCategories
+                .map(
+                  (category) => `
+                <article class="card">
+                  <h3>${escapeHtml(category.title)}</h3>
+                  <p>${escapeHtml(category.body)}</p>
+                </article>`
+                )
+                .join('')}
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container split-panel">
+            <div>
+              <div class="section-heading">
+                <h2>Recommended reviews</h2>
+              </div>
+              <div class="grid">${entry.recommendedReviews
+                .map((slug) => renderBeautyReviewCard(beautyReviewBySlug.get(slug)))
+                .join('')}</div>
+            </div>
+            <div>
+              <div class="section-heading">
+                <h2>Related compare pages</h2>
+              </div>
+              <div class="grid">${entry.recommendedComparisons
+                .map((slug) => renderBeautyComparisonCard(beautyComparisonBySlug.get(slug)))
+                .join('')}</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container split-panel">
+            <div>
+              <div class="section-heading">
+                <h2>Templates you can use today</h2>
+              </div>
+              <div class="grid">${entry.recommendedTemplates
+                .map((id) => renderBeautyTemplateCard(beautyTemplateById.get(id)))
+                .join('')}</div>
+            </div>
+            <article class="banner">
+              <div class="trust-chip">Still unsure?</div>
+              <h2>Use the beauty shortlist to choose the first software move.</h2>
+              <p>The beauty shortlist helps separate "fix the booking system" problems from "fix one workflow" problems.</p>
+              <div class="cta-row"><a class="btn primary" href="/beauty/shortlist/">Start the beauty shortlist</a></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="section-heading">
+              <h2>Frequently asked questions</h2>
+            </div>
+            ${renderFaqList(entry.faqs)}
+          </div>
+        </section>
+      </main>`
+  });
+}
+
+function renderBeautyReviewPage(review) {
+  return renderShell({
+    route: routeForBeautyReview(review.slug),
+    title: `${review.toolName} review for beauty and wellness businesses`,
+    description: review.summary,
+    breadcrumbs: [
+      { label: 'Beauty & Wellness', href: '/beauty/' },
+      { label: 'Reviews', href: '/beauty/reviews/' },
+      { label: review.toolName }
+    ],
+    faqs: review.faqs,
+    themeClass: 'theme-beauty',
+    body: `
+      <main class="page">
+        <section class="section">
+          <div class="container">
+            ${renderBreadcrumbs([
+              { label: 'Beauty & Wellness', href: '/beauty/' },
+              { label: 'Reviews', href: '/beauty/reviews/' },
+              { label: review.toolName }
+            ])}
+            <div class="page-grid">
+              <div>
+                <div class="trust-chip">${escapeHtml(review.category)}</div>
+                <h1 class="page-title">${escapeHtml(review.toolName)} review for beauty and wellness businesses</h1>
+                <p>${escapeHtml(review.summary)}</p>
+                ${renderPills(review.businessTypeFit, (slug) => beautyBusinessBySlug.get(slug)?.title || toSlugLabel(slug))}
+                ${renderPills(review.teamSizeFit, toSlugLabel)}
+                <div class="cta-row" style="margin-top:16px">
+                  <a class="btn primary" href="${review.officialUrl}" target="_blank" rel="noopener noreferrer" data-analytics="review_cta beauty_review_cta outbound_tool_click">Visit official site</a>
+                  <a class="btn secondary" href="/beauty/shortlist/">Run the beauty shortlist</a>
+                  <a class="btn secondary" href="${routeForBeautyStarterPack()}">Get the beauty starter pack</a>
+                </div>
+              </div>
+              ${renderBeautyReviewScorecard(review)}
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container split-panel">
+            <article class="card">
+              <div class="card-kicker">Best fit</div>
+              <p>${escapeHtml(review.bestFit)}</p>
+            </article>
+            <article class="card">
+              <div class="card-kicker">Bad fit</div>
+              <p>${escapeHtml(review.badFit)}</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container split-panel">
+            <article class="card">
+              <div class="card-kicker">Business types served</div>
+              ${renderBulletList(review.businessTypeFit.map((slug) => beautyBusinessBySlug.get(slug)?.title || toSlugLabel(slug)))}
+            </article>
+            <article class="card">
+              <div class="card-kicker">Solo vs team fit</div>
+              ${renderBulletList([review.soloTeamFit, `Works best for: ${review.teamSizeFit.map(toSlugLabel).join(', ')}`])}
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container grid cols-3">
+            <article class="card">
+              <div class="card-kicker">Booking and calendar</div>
+              ${renderBulletList([
+                `Booking strength: ${review.bookingStrength}`,
+                `No-show and rebooking support: ${review.noShowSupport}`,
+                `Payments and deposit support: ${review.paymentsSupport}`
+              ])}
+            </article>
+            <article class="card">
+              <div class="card-kicker">Marketing and retention</div>
+              ${renderBulletList([
+                `Marketing and client retention: ${review.marketingSupport}`,
+                `Social and content support: ${review.socialSupport}`,
+                `Setup reality: ${review.setupEffort}`
+              ])}
+            </article>
+            <article class="card">
+              <div class="card-kicker">First workflow to try</div>
+              <p>${escapeHtml(review.firstWorkflow)}</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container split-panel">
+            <article class="card">
+              <div class="card-kicker">Where it shines</div>
+              ${renderBulletList(review.strengths)}
+            </article>
+            <article class="card">
+              <div class="card-kicker">Do not buy this if...</div>
+              ${renderBulletList([review.doNotBuyIf, ...review.watchOuts])}
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container split-panel">
+            <article class="card">
+              <div class="card-kicker">Alternatives</div>
+              <ul class="bullet-list">
+                ${review.alternatives
+                  .map((alternative) => {
+                    const target = beautyReviewBySlug.get(alternative.slug);
+                    const reason = alternative.reason.replace(/^better fit when\s+/i, '');
+                    return `<li><a href="${routeForBeautyReview(alternative.slug)}">${escapeHtml(target.toolName)}</a> is a better fit when ${escapeHtml(reason)}.</li>`;
+                  })
+                  .join('')}
+              </ul>
+            </article>
+            <article class="card">
+              <div class="card-kicker">Related comparisons</div>
+              <ul class="bullet-list">
+                ${review.compareLinks
+                  .map((slug) => {
+                    const comparison = beautyComparisonBySlug.get(slug);
+                    return `<li><a href="${routeForBeautyComparison(slug)}" data-analytics="compare_cta beauty_compare_cta">${escapeHtml(comparison.shortTitle)}</a></li>`;
+                  })
+                  .join('')}
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container split-panel">
+            <article class="banner">
+              <div class="trust-chip">Disclosure</div>
+              <p>This review is framed around buyer fit, workflow reality, and alternatives. See the <a href="/affiliate-disclosure/">affiliate disclosure</a> for how referral relationships are handled.</p>
+            </article>
+            ${renderTrustPanel()}
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="section-heading">
+              <h2>Frequently asked questions</h2>
+            </div>
+            ${renderFaqList(review.faqs)}
+          </div>
+        </section>
+      </main>`
+  });
+}
+
+function renderBeautyComparisonPage(comparison) {
+  const left = beautyReviewBySlug.get(comparison.leftTool);
+  const right = beautyReviewBySlug.get(comparison.rightTool);
+  const leftLabel = comparison.leftLabel || left.toolName;
+  const rightLabel = comparison.rightLabel || right.toolName;
+
+  return renderShell({
+    route: routeForBeautyComparison(comparison.slug),
+    title: comparison.title,
+    description: comparison.summary,
+    breadcrumbs: [
+      { label: 'Beauty & Wellness', href: '/beauty/' },
+      { label: 'Compare', href: '/beauty/compare/' },
+      { label: comparison.shortTitle }
+    ],
+    faqs: comparison.faqs,
+    themeClass: 'theme-beauty',
+    body: `
+      <main class="page">
+        <section class="section">
+          <div class="container">
+            ${renderBreadcrumbs([
+              { label: 'Beauty & Wellness', href: '/beauty/' },
+              { label: 'Compare', href: '/beauty/compare/' },
+              { label: comparison.shortTitle }
+            ])}
+            <div class="page-grid">
+              <div>
+                <div class="trust-chip">Beauty comparison</div>
+                <h1 class="page-title">${escapeHtml(comparison.shortTitle)}</h1>
+                <p>${escapeHtml(comparison.scenario)}</p>
+                <p>${escapeHtml(comparison.summary)}</p>
+              </div>
+              ${renderTrustPanel()}
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container split-panel">
+            <article class="card">
+              <div class="card-kicker">Choose ${escapeHtml(leftLabel)} if...</div>
+              ${renderBulletList(comparison.chooseLeft)}
+            </article>
+            <article class="card">
+              <div class="card-kicker">Choose ${escapeHtml(rightLabel)} if...</div>
+              ${renderBulletList(comparison.chooseRight)}
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container table-wrap">
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th>Decision point</th>
+                  <th>${escapeHtml(leftLabel)}</th>
+                  <th>${escapeHtml(rightLabel)}</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${comparison.rows
+                  .map(
+                    (row) => `
+                  <tr>
+                    <th>${escapeHtml(row[0])}</th>
+                    <td>${escapeHtml(row[1])}</td>
+                    <td>${escapeHtml(row[2])}</td>
+                  </tr>`
+                  )
+                  .join('')}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container split-panel">
+            <article class="card">
+              <div class="card-kicker">Final recommendation by business type</div>
+              ${renderBulletList(comparison.finalRecommendations)}
+            </article>
+            <article class="banner">
+              <div class="trust-chip">Still split?</div>
+              <h2>Use the beauty shortlist to narrow the next move.</h2>
+              <p>The shortlist helps separate operating-system problems from lighter add-on decisions.</p>
+              <div class="cta-row"><a class="btn primary" href="/beauty/shortlist/">Run the beauty shortlist</a></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container split-panel">
+            ${renderBeautyReviewCard(left)}
+            ${renderBeautyReviewCard(right)}
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="section-heading">
+              <h2>Frequently asked questions</h2>
+            </div>
+            ${renderFaqList(comparison.faqs)}
+          </div>
+        </section>
+      </main>`
+  });
+}
+
+function renderBeautyProblemsPage() {
+  return renderHubPage({
+    route: '/beauty/problems/',
+    title: 'Beauty Problems',
+    description: 'Browse Beauty & Wellness software and AI guidance by bottleneck.',
+    eyebrow: 'Beauty problem hub',
+    intro:
+      'Start here when you already know the leak. These pages stay focused on booking, rebooking, reviews, deposits, DMs, content, and front-desk admin instead of forcing category jargon first.',
+    cards: beautyProblems.map(renderBeautyProblemCard).join(''),
+    secondaryPanel: `
+      <aside class="card">
+        <div class="card-kicker">Most common first moves</div>
+        ${renderBulletList([
+          'Fix no-shows and deposits before buying more awareness.',
+          'Fix rebooking before spending more to refill the calendar.',
+          'Fix front-desk admin before piling on more automations.'
+        ])}
+        <div class="cta-row"><a class="btn secondary small" href="/beauty/shortlist/">Run the beauty shortlist</a><a class="btn secondary small" href="${routeForBeautyStarterPack()}">Get the beauty starter pack</a></div>
+      </aside>`,
+    breadcrumbs: [
+      { label: 'Beauty & Wellness', href: '/beauty/' },
+      { label: 'Beauty Problems' }
+    ],
+    themeClass: 'theme-beauty'
+  });
+}
+
+function renderBeautyTemplatesPage() {
+  return renderShell({
+    route: '/beauty/templates/',
+    title: 'Copyable templates for beauty and wellness businesses',
+    description:
+      'Use copyable messages, prompts, policies, rebooking nudges, and follow-up templates built for salons, barbers, medspas, studios, and independent beauty pros.',
+    themeClass: 'theme-beauty',
+    body: `
+      <main class="page">
+        <section class="section">
+          <div class="container">
+            <div class="page-heading">
+              ${renderBreadcrumbs([
+                { label: 'Beauty & Wellness', href: '/beauty/' },
+                { label: 'Templates' }
+              ])}
+              <div class="trust-chip">Beauty template library</div>
+              <h1 class="page-title">Copyable templates for the business side of beauty and wellness work.</h1>
+              <p>These are meant to be useful right away, even before you switch software.</p>
+              <p class="microcopy">Want the shortcut version first? Grab the <a href="${routeForBeautyStarterPack()}">Beauty &amp; Wellness starter pack</a>.</p>
+            </div>
+            <div class="grid">
+              ${beautyTemplates
+                .map(
+                  (section) => `
+                <section class="template-block" id="${section.id}">
+                  <div class="template-header">
+                    <div>
+                      <div class="card-kicker">Beauty template</div>
+                      <h3>${escapeHtml(section.title)}</h3>
+                      <p>${escapeHtml(section.intro)}</p>
+                    </div>
+                  </div>
+                  <div class="split-panel">
+                    <article class="note-card">
+                      <h3>How to use it</h3>
+                      ${renderBulletList(section.tips)}
+                    </article>
+                    <article class="note-card">
+                      <h3>Good companion paths</h3>
+                      <div class="inline-links">
+                        ${section.relatedProblems
+                          .map(
+                            (slug) => `<a class="inline-link" href="${routeForBeautyProblem(slug)}">${escapeHtml(beautyProblemBySlug.get(slug).title)}</a>`
+                          )
+                          .join('')}
+                      </div>
+                      <div class="inline-links">
+                        ${section.relatedBusinesses
+                          .map(
+                            (slug) => `<a class="inline-link" href="${routeForBeautyBusiness(slug)}">${escapeHtml(beautyBusinessBySlug.get(slug).title)}</a>`
+                          )
+                          .join('')}
+                      </div>
+                    </article>
+                  </div>
+                  ${section.blocks
+                    .map(
+                      (block, index) => `
+                    <div class="template-copy-wrap">
+                      <div class="template-header">
+                        <div>
+                          <div class="card-kicker">Copy block ${index + 1}</div>
+                          <h3>${escapeHtml(block.title)}</h3>
+                        </div>
+                        <button class="btn secondary small" type="button" data-copy-target="${section.id}-${index}" data-analytics="template_copy beauty_template_copy">Copy</button>
+                      </div>
+                      <pre class="template-copy" id="${section.id}-${index}">${escapeHtml(block.copy)}</pre>
+                    </div>`
+                    )
+                    .join('')}
+                </section>`
+                )
+                .join('')}
+            </div>
           </div>
         </section>
       </main>`
@@ -1266,6 +2352,7 @@ function renderTemplatesPage() {
               <div class="trust-chip">Helpful content layer</div>
               <h1 class="page-title">Copyable templates for the business side of the job.</h1>
               <p>These are meant to be useful right away, even before you change your software stack.</p>
+              <p class="microcopy">Need the appointment-based side instead? Browse the <a href="/beauty/templates/">Beauty &amp; Wellness template library</a>.</p>
             </div>
             <div class="grid">
               ${templateSections
@@ -1332,7 +2419,7 @@ function renderLearnPage() {
     route: '/learn/',
     title: 'Learn what to automate first',
     description:
-      'Practical guidance for contractor businesses deciding what AI should handle, what should stay human, and where automation usually pays off first.',
+      'Practical guidance for hands-on service businesses deciding what AI should handle, what should stay human, and where automation usually pays off first.',
     body: `
       <main class="page">
         <section class="section">
@@ -1341,7 +2428,7 @@ function renderLearnPage() {
               ${renderBreadcrumbs([{ label: 'Learn' }])}
               <div class="trust-chip">Practical education</div>
               <h1 class="page-title">Learn what to automate first and what to leave alone.</h1>
-              <p>This section is built to keep contractor teams from buying the wrong thing for the wrong reason.</p>
+              <p>This section is built to keep hands-on service teams from buying the wrong thing for the wrong reason.</p>
             </div>
             <div class="grid">
               ${learnSections
@@ -1356,6 +2443,20 @@ function renderLearnPage() {
                 )
                 .join('')}
             </div>
+          </div>
+        </section>
+        <section class="section">
+          <div class="container split-panel">
+            <article class="card">
+              <div class="card-kicker">Field Trades</div>
+              <p>Use the field-trades side when the business runs on crews, jobs, dispatch, quotes, and after-hours lead handling.</p>
+              <div class="cta-row"><a class="btn secondary small" href="/trades/">Browse field trades</a><a class="btn secondary small" href="/shortlist/">Run the field shortlist</a></div>
+            </article>
+            <article class="card">
+              <div class="card-kicker">Beauty &amp; Wellness</div>
+              <p>Use the beauty side when the business runs on booking, rebooking, retention, front-desk flow, reviews, content, and deposits.</p>
+              <div class="cta-row"><a class="btn secondary small" href="/beauty/">Browse Beauty &amp; Wellness</a><a class="btn secondary small" href="/beauty/shortlist/">Run the beauty shortlist</a></div>
+            </article>
           </div>
         </section>
       </main>`
@@ -1398,7 +2499,7 @@ function renderFaqPage() {
   return renderShell({
     route: '/faq/',
     title: legalPages.faq.title,
-    description: 'Common questions about how to use ihelpwithai.com and how the contractor-first recommendations are framed.',
+    description: 'Common questions about how to use ihelpwithai.com and how the service-business recommendations are framed.',
     faqs: legalPages.faq.faqs,
     body: `
       <main class="page">
@@ -1451,6 +2552,62 @@ function renderStarterPackPage() {
               <button class="btn primary" type="submit">Send the pack</button>
               <p class="microcopy">The pack is meant to help you act before buying more software.</p>
             </form>
+          </div>
+        </section>
+      </main>`
+  });
+}
+
+function renderBeautyStarterPackPage() {
+  return renderShell({
+    route: routeForBeautyStarterPack(),
+    title: beautyStarterPack.title,
+    description: beautyStarterPack.intro,
+    themeClass: 'theme-beauty',
+    body: `
+      <main class="page">
+        <section class="section">
+          <div class="container signup-panel">
+            <div>
+              ${renderBreadcrumbs([
+                { label: 'Beauty & Wellness', href: '/beauty/' },
+                { label: 'Starter Pack' }
+              ])}
+              <div class="trust-chip">Lead magnet</div>
+              <h1 class="page-title">${escapeHtml(beautyStarterPack.title)}</h1>
+              <p>${escapeHtml(beautyStarterPack.intro)}</p>
+              ${renderBulletList(beautyStarterPack.bullets)}
+              <p class="microcopy">This pack is meant to help you tighten booking, rebooking, reviews, and client follow-up before you add more software.</p>
+            </div>
+            <form class="lead-form" data-lead-form="beauty-starter-pack" data-analytics="beauty_starter_pack_form" action="${FORM_ACTION}" method="POST">
+              ${renderLeadFormHiddenFields('ihelpwithai beauty starter pack request')}
+              <label>Name<input type="text" name="name" placeholder="Your name"></label>
+              <label>Email<input type="email" name="email" required placeholder="Work email"></label>
+              <label>Business type
+                <select name="businessType">
+                  <option value="">Select a business type</option>
+                  ${beautyShortlistQuestions[0].options
+                    .map(([value, label]) => `<option value="${value}">${escapeHtml(label)}</option>`)
+                    .join('')}
+                </select>
+              </label>
+              <button class="btn primary" type="submit">Send the beauty starter pack</button>
+              <p class="microcopy">Prefer to compare software first? Run the <a href="/beauty/shortlist/">beauty shortlist</a>.</p>
+            </form>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="section-heading">
+              <div class="trust-chip">Inside the pack</div>
+              <h2>The most useful booking, policy, rebooking, review, and follow-up templates in one place.</h2>
+            </div>
+            <div class="grid cols-2">
+              ${beautyStarterPack.templateIds
+                .map((id) => renderBeautyTemplateCard(beautyTemplateById.get(id)))
+                .join('')}
+            </div>
           </div>
         </section>
       </main>`
@@ -1517,7 +2674,7 @@ function renderForVendorsPage() {
               ${renderLeadFormHiddenFields('ihelpwithai vendor submission')}
               <label>Company<input type="text" name="company" placeholder="Vendor name"></label>
               <label>Work email<input type="email" name="email" required placeholder="Email"></label>
-              <label>Contractor use case<textarea name="use_case" placeholder="Explain the contractor workflow, best-fit shop profile, and where the product does not fit."></textarea></label>
+              <label>Service-business use case<textarea name="use_case" placeholder="Explain the field-trades or beauty-and-wellness workflow, best-fit shop profile, and where the product does not fit."></textarea></label>
               <button class="btn primary" type="submit">Submit vendor context</button>
             </form>
           </div>
@@ -1542,7 +2699,7 @@ function renderThankYouPage() {
               <p>${escapeHtml(legalPages.thankYou.intro)}</p>
               <div class="cta-row">
                 <a class="btn primary" href="/shortlist/">Run the shortlist</a>
-                <a class="btn secondary" href="/trades/">Browse by trade</a>
+                <a class="btn secondary" href="/beauty/">Browse Beauty &amp; Wellness</a>
               </div>
             </article>
             ${renderTrustPanel()}
@@ -1564,11 +2721,11 @@ function render404Page() {
             <article class="banner">
               <div class="trust-chip">404</div>
               <h1 class="page-title">That page is not here.</h1>
-              <p>Try the shortlist, the trade guides, or the problem paths to get back into the contractor-first part of the site.</p>
+              <p>Try the shortlist, the field-trades guides, the Beauty &amp; Wellness hub, or the problem paths to get back into the main decision paths on the site.</p>
               <div class="cta-row">
                 <a class="btn primary" href="/shortlist/">Start the shortlist</a>
                 <a class="btn secondary" href="/problems/">Browse problems</a>
-                <a class="btn secondary" href="/trades/">Browse trades</a>
+                <a class="btn secondary" href="/beauty/">Browse Beauty &amp; Wellness</a>
               </div>
             </article>
             ${renderTrustPanel()}
@@ -1596,7 +2753,7 @@ function renderRedirectPage(targetRoute, title = 'Redirecting') {
 }
 
 function renderSiteDataScript() {
-  const comparisonLinksBySlug = new Map(
+  const fieldComparisonLinksBySlug = new Map(
     comparisons.map((comparison) => [
       comparison.slug,
       {
@@ -1606,7 +2763,17 @@ function renderSiteDataScript() {
     ])
   );
 
-  const tools = reviews.map((review) => ({
+  const beautyComparisonLinksBySlug = new Map(
+    beautyComparisons.map((comparison) => [
+      comparison.slug,
+      {
+        label: comparison.shortTitle,
+        href: routeForBeautyComparison(comparison.slug)
+      }
+    ])
+  );
+
+  const fieldTools = reviews.map((review) => ({
     slug: review.slug,
     name: review.toolName,
     summary: review.summary,
@@ -1624,14 +2791,47 @@ function renderSiteDataScript() {
     setupLevel: review.shortlist.setupLevel,
     afterHoursStrength: review.shortlist.afterHoursStrength,
     officeStrength: review.shortlist.officeStrength,
-    compareLinks: review.compareLinks.map((slug) => comparisonLinksBySlug.get(slug)).filter(Boolean)
+    compareLinks: review.compareLinks.map((slug) => fieldComparisonLinksBySlug.get(slug)).filter(Boolean)
+  }));
+
+  const beautyTools = beautyReviews.map((review) => ({
+    slug: review.slug,
+    name: review.toolName,
+    summary: review.summary,
+    categoryLabel: review.category,
+    setupLabel: `${review.setupEffort} setup`,
+    pricingLabel: review.pricingPosture,
+    shortlistReason: review.bestFit,
+    businessTypeFit: review.shortlist.businessTypeFit,
+    teamSizeFit: review.shortlist.teamSizeFit,
+    reviewPath: routeForBeautyReview(review.slug),
+    officialUrl: review.officialUrl,
+    problems: review.shortlist.problems,
+    currentStackFit: review.shortlist.currentStackFit,
+    budgetLevel: review.shortlist.budgetLevel,
+    setupLevel: review.shortlist.setupLevel,
+    bookingStrength: review.shortlist.bookingStrength,
+    noShowStrength: review.shortlist.noShowStrength,
+    retentionStrength: review.shortlist.retentionStrength,
+    leadResponseStrength: review.shortlist.leadResponseStrength,
+    socialStrength: review.shortlist.socialStrength,
+    adminStrength: review.shortlist.adminStrength,
+    depositStrength: review.shortlist.depositStrength,
+    compareLinks: review.compareLinks.map((slug) => beautyComparisonLinksBySlug.get(slug)).filter(Boolean)
   }));
 
   return `window.IHWAI_SITE_DATA = ${JSON.stringify({
     analytics: site.analytics,
-    tradeOptions: trades.map((trade) => ({ slug: trade.slug, title: trade.title })),
-    problemOptions: problems.map((problem) => ({ slug: problem.slug, title: problem.title })),
-    tools
+    shortlists: {
+      field: {
+        stepIds: ['trade-team', 'bottleneck-stack', 'office-volume', 'budget-setup'],
+        tools: fieldTools
+      },
+      beauty: {
+        stepIds: ['business-team', 'bottleneck-stack', 'budget-setup'],
+        tools: beautyTools
+      }
+    }
   }, null, 2)};\n`;
 }
 
@@ -1755,6 +2955,69 @@ function validateReferences() {
       throw new Error(`Comparison "${comparison.slug}" references unknown right tool "${comparison.rightTool}"`);
     }
   }
+
+  for (const entry of beautyBusinesses) {
+    for (const slug of entry.featuredReviews) {
+      if (!beautyReviewBySlug.has(slug)) {
+        throw new Error(`Beauty business "${entry.slug}" references unknown review "${slug}"`);
+      }
+    }
+    for (const slug of entry.featuredComparisons) {
+      if (!beautyComparisonBySlug.has(slug)) {
+        throw new Error(`Beauty business "${entry.slug}" references unknown comparison "${slug}"`);
+      }
+    }
+    for (const id of entry.featuredTemplates) {
+      if (!beautyTemplateById.has(id)) {
+        throw new Error(`Beauty business "${entry.slug}" references unknown template "${id}"`);
+      }
+    }
+    for (const slug of entry.featuredProblems) {
+      if (!beautyProblemBySlug.has(slug)) {
+        throw new Error(`Beauty business "${entry.slug}" references unknown problem "${slug}"`);
+      }
+    }
+  }
+
+  for (const entry of beautyProblems) {
+    for (const slug of entry.recommendedReviews) {
+      if (!beautyReviewBySlug.has(slug)) {
+        throw new Error(`Beauty problem "${entry.slug}" references unknown review "${slug}"`);
+      }
+    }
+    for (const slug of entry.recommendedComparisons) {
+      if (!beautyComparisonBySlug.has(slug)) {
+        throw new Error(`Beauty problem "${entry.slug}" references unknown comparison "${slug}"`);
+      }
+    }
+    for (const id of entry.recommendedTemplates) {
+      if (!beautyTemplateById.has(id)) {
+        throw new Error(`Beauty problem "${entry.slug}" references unknown template "${id}"`);
+      }
+    }
+  }
+
+  for (const review of beautyReviews) {
+    for (const alternative of review.alternatives) {
+      if (!beautyReviewBySlug.has(alternative.slug)) {
+        throw new Error(`Beauty review "${review.slug}" references unknown alternative "${alternative.slug}"`);
+      }
+    }
+    for (const slug of review.compareLinks) {
+      if (!beautyComparisonBySlug.has(slug)) {
+        throw new Error(`Beauty review "${review.slug}" references unknown comparison "${slug}"`);
+      }
+    }
+  }
+
+  for (const comparison of beautyComparisons) {
+    if (!beautyReviewBySlug.has(comparison.leftTool)) {
+      throw new Error(`Beauty comparison "${comparison.slug}" references unknown left tool "${comparison.leftTool}"`);
+    }
+    if (!beautyReviewBySlug.has(comparison.rightTool)) {
+      throw new Error(`Beauty comparison "${comparison.slug}" references unknown right tool "${comparison.rightTool}"`);
+    }
+  }
 }
 
 function collectCanonicalRoutes() {
@@ -1771,6 +3034,17 @@ function collectCanonicalRoutes() {
     ...comparisons.map((comparison) => routeForComparison(comparison.slug)),
     '/templates/',
     '/learn/',
+    '/beauty/',
+    '/beauty/problems/',
+    '/beauty/shortlist/',
+    ...beautyBusinesses.map((entry) => routeForBeautyBusiness(entry.slug)),
+    ...beautyProblems.map((entry) => routeForBeautyProblem(entry.slug)),
+    '/beauty/reviews/',
+    ...beautyReviews.map((entry) => routeForBeautyReview(entry.slug)),
+    '/beauty/compare/',
+    ...beautyComparisons.map((entry) => routeForBeautyComparison(entry.slug)),
+    '/beauty/templates/',
+    routeForBeautyStarterPack(),
     '/about/',
     '/faq/',
     '/methodology/',
@@ -1789,21 +3063,24 @@ async function buildOutput(root) {
   const pages = [
     { route: '/', html: renderHomePage() },
     { route: '/shortlist/', html: renderShortlistPage() },
+    { route: '/beauty/', html: renderBeautyHubPage() },
+    { route: '/beauty/problems/', html: renderBeautyProblemsPage() },
+    { route: '/beauty/shortlist/', html: renderBeautyShortlistPage() },
     {
       route: '/trades/',
       html: renderHubPage({
         route: '/trades/',
-        title: 'Trades',
-        description: 'Browse contractor software and AI guidance by trade.',
-        eyebrow: 'Trade hub',
+        title: 'Field Trades',
+        description: 'Browse field-trades software and AI guidance by trade.',
+        eyebrow: 'Field-trades hub',
         intro:
-          'Use the trade guides when you want to see the bottlenecks, stack choices, and practical next steps that match how your shop actually runs.',
+          'Use the field-trades guides when you want to see the bottlenecks, stack choices, and practical next steps that match how your shop actually runs.',
         cards: trades.map(renderTradeCard).join(''),
         secondaryPanel: `
           <aside class="card">
             <div class="card-kicker">How to use this hub</div>
             <p>Start with your trade if the same bottleneck looks different depending on emergency work, route density, repeat service, or project-cycle complexity.</p>
-            <div class="cta-row"><a class="btn secondary small" href="/shortlist/">Run the shortlist</a></div>
+            <div class="cta-row"><a class="btn secondary small" href="/shortlist/">Run the field shortlist</a><a class="btn secondary small" href="/beauty/">See Beauty &amp; Wellness</a></div>
           </aside>`
       })
     },
@@ -1833,10 +3110,10 @@ async function buildOutput(root) {
       html: renderHubPage({
         route: '/reviews/',
         title: 'Reviews',
-        description: 'Read contractor-first software reviews with best fit, bad fit, setup reality, and alternatives.',
+        description: 'Read field-trades software reviews with best fit, bad fit, setup reality, and alternatives.',
         eyebrow: 'Review hub',
         intro:
-          'Review pages are built to answer whether a tool is worth evaluating for a specific contractor profile, not whether the vendor marketing sounds good.',
+          'Review pages are built to answer whether a tool is worth evaluating for a specific field-trades profile, not whether the vendor marketing sounds good.',
         cards: reviews.map(renderReviewCard).join(''),
         secondaryPanel: `
           <aside class="card">
@@ -1847,7 +3124,36 @@ async function buildOutput(root) {
               'Setup effort and pricing posture',
               'Alternatives and compare links'
             ])}
+            <div class="cta-row"><a class="btn secondary small" href="/beauty/reviews/">See beauty reviews</a></div>
           </aside>`
+      })
+    },
+    {
+      route: '/beauty/reviews/',
+      html: renderHubPage({
+        route: '/beauty/reviews/',
+        title: 'Beauty Reviews',
+        description: 'Read Beauty & Wellness software reviews with best fit, bad fit, setup reality, and alternatives.',
+        eyebrow: 'Beauty review hub',
+        intro:
+          'These review pages are built around booking fit, no-show protection, deposits, client retention, content workflows, and front-desk reality for beauty and wellness businesses.',
+        cards: beautyReviews.map(renderBeautyReviewCard).join(''),
+        secondaryPanel: `
+          <aside class="card">
+            <div class="card-kicker">What every beauty review includes</div>
+            ${renderBulletList([
+              'Best fit and bad fit',
+              'Business-type and team fit',
+              'Booking, deposit, and retention support',
+              'Alternatives and related compare pages'
+            ])}
+            <div class="cta-row"><a class="btn secondary small" href="/reviews/">See field-trades reviews</a></div>
+          </aside>`,
+        breadcrumbs: [
+          { label: 'Beauty & Wellness', href: '/beauty/' },
+          { label: 'Beauty Reviews' }
+        ],
+        themeClass: 'theme-beauty'
       })
     },
     {
@@ -1855,7 +3161,7 @@ async function buildOutput(root) {
       html: renderHubPage({
         route: '/compare/',
         title: 'Compare',
-        description: 'Compare contractor software and stack decisions by use case.',
+        description: 'Compare field-trades software and stack decisions by use case.',
         eyebrow: 'Compare hub',
         intro:
           'These pages are for high-intent decisions where the buyer already has two paths in mind and needs help choosing the better fit.',
@@ -1868,10 +3174,39 @@ async function buildOutput(root) {
               'Show where each option wins',
               'Say when the right move is neither option'
             ])}
+            <div class="cta-row"><a class="btn secondary small" href="/beauty/compare/">See beauty comparisons</a></div>
           </aside>`
       })
     },
+    {
+      route: '/beauty/compare/',
+      html: renderHubPage({
+        route: '/beauty/compare/',
+        title: 'Beauty Compare',
+        description: 'Compare Beauty & Wellness software and stack decisions by use case.',
+        eyebrow: 'Beauty compare hub',
+        intro:
+          'These pages are for higher-intent beauty and wellness decisions where the owner or manager is deciding between two real platform paths.',
+        cards: beautyComparisons.map(renderBeautyComparisonCard).join(''),
+        secondaryPanel: `
+          <aside class="card">
+            <div class="card-kicker">Good beauty compare pages do this</div>
+            ${renderBulletList([
+              'Separate solo fit from team fit',
+              'Call out booking, deposits, and client experience clearly',
+              'Finish with a recommendation by business type'
+            ])}
+            <div class="cta-row"><a class="btn secondary small" href="/compare/">See field-trades comparisons</a></div>
+          </aside>`,
+        breadcrumbs: [
+          { label: 'Beauty & Wellness', href: '/beauty/' },
+          { label: 'Beauty Compare' }
+        ],
+        themeClass: 'theme-beauty'
+      })
+    },
     { route: '/templates/', html: renderTemplatesPage() },
+    { route: '/beauty/templates/', html: renderBeautyTemplatesPage() },
     { route: '/learn/', html: renderLearnPage() },
     {
       route: '/about/',
@@ -1921,6 +3256,7 @@ async function buildOutput(root) {
     },
     { route: '/for-vendors/', html: renderForVendorsPage() },
     { route: '/starter-pack/', html: renderStarterPackPage() },
+    { route: routeForBeautyStarterPack(), html: renderBeautyStarterPackPage() },
     { route: '/contact/', html: renderContactPage() },
     { route: '/thank-you/', html: renderThankYouPage() }
   ];
@@ -1929,16 +3265,32 @@ async function buildOutput(root) {
     pages.push({ route: routeForTrade(trade.slug), html: renderTradePage(trade) });
   }
 
+  for (const entry of beautyBusinesses) {
+    pages.push({ route: routeForBeautyBusiness(entry.slug), html: renderBeautyBusinessPage(entry) });
+  }
+
   for (const problem of problems) {
     pages.push({ route: routeForProblem(problem.slug), html: renderProblemPage(problem) });
+  }
+
+  for (const entry of beautyProblems) {
+    pages.push({ route: routeForBeautyProblem(entry.slug), html: renderBeautyProblemPage(entry) });
   }
 
   for (const review of reviews) {
     pages.push({ route: routeForReview(review.slug), html: renderReviewPage(review) });
   }
 
+  for (const review of beautyReviews) {
+    pages.push({ route: routeForBeautyReview(review.slug), html: renderBeautyReviewPage(review) });
+  }
+
   for (const comparison of comparisons) {
     pages.push({ route: routeForComparison(comparison.slug), html: renderComparisonPage(comparison) });
+  }
+
+  for (const comparison of beautyComparisons) {
+    pages.push({ route: routeForBeautyComparison(comparison.slug), html: renderBeautyComparisonPage(comparison) });
   }
 
   for (const page of pages) {

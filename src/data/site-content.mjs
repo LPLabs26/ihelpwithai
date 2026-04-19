@@ -2,33 +2,34 @@ export const BUILD_DATE = 'April 18, 2026';
 
 export const site = {
   title: 'ihelpwithai.com',
-  tagline: 'Buyer\'s guide for contractor software and practical AI',
+  tagline: 'Buyer\'s guide for hands-on service business software and practical AI',
   description:
-    'Choose the right AI and software for your contracting business without wasting hours on demos, hype, or bad-fit tools.',
+    'Choose the right AI and software for your service business without wasting hours on demos, hype, or bad-fit tools.',
   contactEmail: 'info@ihelpwithai.com',
   socialImage: '/assets/og-default.png',
+  googleSiteVerification: '',
   analytics: {
     posthogToken: 'phc_oBCQc5RDzTRAMXA2HSGqfGP4BbkYEg5HnrawXk5AV6PH',
     posthogHost: 'https://us.i.posthog.com'
   },
   navLinks: [
     { href: '/', label: 'Home' },
+    { href: '/trades/', label: 'Field Trades' },
+    { href: '/beauty/', label: 'Beauty & Wellness' },
     { href: '/shortlist/', label: 'Shortlist' },
-    { href: '/trades/', label: 'By Trade' },
-    { href: '/problems/', label: 'By Problem' },
     { href: '/reviews/', label: 'Reviews' },
     { href: '/compare/', label: 'Compare' },
     { href: '/templates/', label: 'Templates' },
-    { href: '/learn/', label: 'Learn' },
-    { href: '/starter-pack/', label: 'Starter Pack' }
+    { href: '/learn/', label: 'Learn' }
   ],
   footerGroups: [
     {
       title: 'Start Here',
       links: [
         { href: '/shortlist/', label: 'Start the shortlist' },
-        { href: '/trades/', label: 'Browse by trade' },
-        { href: '/problems/', label: 'Browse by problem' },
+        { href: '/trades/', label: 'Browse field trades' },
+        { href: '/beauty/', label: 'Browse beauty & wellness' },
+        { href: '/problems/', label: 'Browse field-trade problems' },
         { href: '/reviews/', label: 'Browse reviews' }
       ]
     },
@@ -38,7 +39,7 @@ export const site = {
         { href: '/compare/', label: 'Compare tools' },
         { href: '/templates/', label: 'Copyable templates' },
         { href: '/learn/', label: 'Learn what to automate first' },
-        { href: '/starter-pack/', label: 'Get the starter pack' }
+        { href: '/starter-pack/', label: 'Get the field-trades starter pack' }
       ]
     },
     {
@@ -64,7 +65,7 @@ export const site = {
     {
       question: 'Who is this site built for?',
       answer:
-        'The site is built for contractor owners, office managers, dispatchers, estimators, and GMs who need clearer software decisions around missed calls, quote follow-up, dispatch, reviews, and office admin.'
+        'The site is built for hands-on service businesses that run on appointments, jobs, crews, front-desk work, follow-up, reviews, and repeat client communication. That includes field-trades teams and beauty or wellness operators.'
     },
     {
       question: 'Is this an AI news site or a giant software directory?',
@@ -72,14 +73,14 @@ export const site = {
         'No. The point is to help a service business narrow to the right next move fast. We use reviews, compare pages, and the shortlist to cut noise, not add more tabs to open.'
     },
     {
-      question: 'Do I need a full field-service platform before I try AI add-ons?',
+      question: 'Do I need a full operating system before I try AI add-ons?',
       answer:
-        'Not always. If your whole operating system is messy, an all-in-one platform usually comes first. If you already have a stable FSM and one leak hurts most, a focused add-on can be the better move.'
+        'Not always. If your whole operating system is messy, an all-in-one platform usually comes first. If you already have a stable base stack and one leak hurts most, a focused add-on can be the better move.'
     },
     {
       question: 'How are recommendations made?',
       answer:
-        'Recommendations are built around contractor workflows, trade fit, setup reality, and likely payoff for a specific shop profile. Every review is expected to show best fit, bad fit, tradeoffs, and alternatives.'
+        'Recommendations are built around business model fit, workflow reality, setup tolerance, and likely payoff for a specific shop profile. Every review is expected to show best fit, bad fit, tradeoffs, and alternatives.'
     }
   ],
   shortlistQuestions: [
@@ -1559,22 +1560,22 @@ export const legalPages = {
   about: {
     title: 'About ihelpwithai.com',
     intro:
-      'ihelpwithai.com is being rebuilt as a practical buyer\'s guide for contractor and field-service businesses. The goal is to help a busy operator decide what to solve first, what to compare next, and what is probably not worth the time.',
+      'ihelpwithai.com is being rebuilt as a practical buyer\'s guide for hands-on service businesses. The goal is to help a busy operator decide what to solve first, what to compare next, and what is probably not worth the time.',
     sections: [
       {
         title: 'What this site is trying to do',
         body:
-          'This is not a giant AI directory for everyone. It is a decision engine for contractor owners, office managers, dispatchers, estimators, and GMs who want practical software guidance around lead response, quote follow-up, scheduling, reviews, and office admin.'
+          'This is not a giant AI directory for everyone. It is a decision engine for field-trades owners, office teams, salon operators, independent beauty pros, front-desk teams, and service-business managers who want practical software guidance around booking, follow-up, scheduling, reviews, and admin.'
       },
       {
         title: 'What this site is not trying to do',
         body:
-          'It is not trying to publish hype, chase every software release, or pretend every contractor needs the same stack. If a tool is not a realistic fit for the shop profile, that needs to be said clearly.'
+          'It is not trying to publish hype, chase every software release, or pretend every service business needs the same stack. If a tool is not a realistic fit for the shop profile, that needs to be said clearly.'
       },
       {
         title: 'How the content is framed',
         body:
-          'Recommendations are organized around trade fit, business bottlenecks, team size, budget posture, and setup reality. We care more about decision quality than about catalog size.'
+          'Recommendations are organized around business model fit, bottlenecks, team size, budget posture, and setup reality. We care more about decision quality than catalog size.'
       }
     ]
   },
@@ -1582,17 +1583,17 @@ export const legalPages = {
     title: 'Frequently asked questions',
     faqs: [
       {
-        question: 'Does every contractor business need AI right now?',
+        question: 'Does every service business need AI right now?',
         answer:
           'No. Some businesses first need cleaner process, a stronger operating system, or more discipline around follow-up. AI helps most when it supports a known workflow instead of replacing judgment.'
       },
       {
         question: 'Why are some tools missing from the site?',
         answer:
-          'Because breadth is not the goal. The goal is helping a contractor business decide between realistic next options instead of browsing hundreds of shallow entries.'
+          'Because breadth is not the goal. The goal is helping a service business decide between realistic next options instead of browsing hundreds of shallow entries.'
       },
       {
-        question: 'Do you only recommend all-in-one field-service platforms?',
+        question: 'Do you only recommend all-in-one platforms?',
         answer:
           'No. Some businesses need all-in-one platforms first. Others should start with a focused phone, review, automation, or office-assistant tool. The site is built around that decision, not around one product category.'
       },
@@ -1606,12 +1607,12 @@ export const legalPages = {
   methodology: {
     title: 'Editorial methodology',
     intro:
-      'Every review and comparison is supposed to answer a practical contractor question: is this worth looking at, which shop profile fits best, what setup pain is realistic, and what should you compare it against.',
+      'Every review and comparison is supposed to answer a practical service-business question: is this worth looking at, which shop profile fits best, what setup pain is realistic, and what should you compare it against.',
     sections: [
       {
         title: 'How pages are evaluated',
         body:
-          'Pages are framed around contractor workflows, trade fit, team-size fit, likely setup friction, and where the tool does not fit. If the downsides matter, they belong on the page.'
+          'Pages are framed around workflow fit, business type, team-size fit, likely setup friction, and where the tool does not fit. If the downsides matter, they belong on the page.'
       },
       {
         title: 'How pricing is described',
@@ -1655,12 +1656,12 @@ export const legalPages = {
       {
         title: 'What may be collected',
         body:
-          'Basic contact details, trade context, and message content submitted through forms may be received through the connected form handler or email inbox.'
+          'Basic contact details, business context, and message content submitted through forms may be received through the connected form handler or email inbox.'
       },
       {
         title: 'How it is used',
         body:
-          'Information is used to send requested resources, respond to inquiries, and understand what kinds of contractor questions the site should serve better.'
+          'Information is used to send requested resources, respond to inquiries, and understand what kinds of service-business questions the site should serve better.'
       },
       {
         title: 'What this page does not promise',
@@ -1689,12 +1690,12 @@ export const legalPages = {
   forVendors: {
     title: 'For vendors',
     intro:
-      'Vendor submissions are welcome, but the main buyer journey is not built around vendor needs. If you want your product considered, send practical information that helps a contractor buyer understand fit.',
+      'Vendor submissions are welcome, but the main buyer journey is not built around vendor needs. If you want your product considered, send practical information that helps a service-business buyer understand fit.',
     sections: [
       {
         title: 'What to include',
         body:
-          'Send the contractor use case, best-fit shop profile, setup expectations, integrations that matter, and the clearest reasons a buyer should still say no.'
+          'Send the field-trades or beauty-and-wellness use case, best-fit shop profile, setup expectations, integrations that matter, and the clearest reasons a buyer should still say no.'
       },
       {
         title: 'What not to send',
