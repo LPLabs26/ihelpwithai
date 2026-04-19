@@ -14,6 +14,32 @@ export const beautyVertical = {
     'The beauty shortlist narrows the next move by business type, team model, bottleneck, budget, and setup tolerance.'
 };
 
+export const beautyStarterPack = {
+  title: 'Get the Beauty & Wellness starter pack',
+  intro:
+    'The Beauty & Wellness starter pack is built to help appointment-based businesses tighten booking, rebooking, deposits, reviews, and client follow-up before they buy another tool.',
+  bullets: [
+    'Appointment reminder text',
+    'No-show policy message',
+    'Deposit request message',
+    'Rebooking text after appointment',
+    'Review request message',
+    'Instagram caption prompt',
+    'Client consultation prompt',
+    'Aftercare instruction template'
+  ],
+  templateIds: [
+    'appointment-reminder-text',
+    'no-show-policy-message',
+    'deposit-request-message',
+    'rebooking-text-after-appointment',
+    'review-request-message',
+    'instagram-caption-prompt',
+    'client-consultation-prompt',
+    'aftercare-instruction-template'
+  ]
+};
+
 export const beautyShortlistQuestions = [
   {
     id: 'businessType',

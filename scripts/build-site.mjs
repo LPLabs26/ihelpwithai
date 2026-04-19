@@ -20,6 +20,7 @@ import {
   beautyProblems,
   beautyReviews,
   beautyShortlistQuestions,
+  beautyStarterPack,
   beautyTemplates,
   beautyVertical
 } from '../src/data/beauty-content.mjs';
@@ -132,6 +133,10 @@ function routeForBeautyComparison(slug) {
   return `/beauty/compare/${slug}${ROUTE_SUFFIX}`;
 }
 
+function routeForBeautyStarterPack() {
+  return `/beauty/starter-pack/`;
+}
+
 function routeForTemplate(id) {
   return `/templates/#${id}`;
 }
@@ -176,8 +181,58 @@ function toSlugLabel(slug) {
     .join(' ');
 }
 
+function isBeautyRoute(route) {
+  return route === '/beauty/' || route.startsWith('/beauty/');
+}
+
+function navLinksForRoute(currentRoute) {
+  if (!isBeautyRoute(currentRoute)) return site.navLinks;
+
+  return site.navLinks.map((link) => {
+    if (link.href === '/shortlist/') {
+      return { href: '/beauty/shortlist/', label: 'Beauty Shortlist' };
+    }
+    if (link.href === '/reviews/') {
+      return { href: '/beauty/reviews/', label: 'Beauty Reviews' };
+    }
+    if (link.href === '/compare/') {
+      return { href: '/beauty/compare/', label: 'Beauty Compare' };
+    }
+    if (link.href === '/templates/') {
+      return { href: '/beauty/templates/', label: 'Beauty Templates' };
+    }
+    return link;
+  });
+}
+
+function footerGroupsForRoute(currentRoute) {
+  if (!isBeautyRoute(currentRoute)) return site.footerGroups;
+
+  return [
+    {
+      title: 'Start Here',
+      links: [
+        { href: '/beauty/shortlist/', label: 'Start the beauty shortlist' },
+        { href: '/beauty/', label: 'Browse beauty & wellness' },
+        { href: '/beauty/problems/', label: 'Browse beauty problems' },
+        { href: '/beauty/reviews/', label: 'Browse beauty reviews' }
+      ]
+    },
+    {
+      title: 'Resources',
+      links: [
+        { href: '/beauty/compare/', label: 'Beauty comparisons' },
+        { href: '/beauty/templates/', label: 'Copy beauty templates' },
+        { href: routeForBeautyStarterPack(), label: 'Get the Beauty & Wellness starter pack' },
+        { href: '/learn/', label: 'Learn what to automate first' }
+      ]
+    },
+    ...site.footerGroups.slice(2)
+  ];
+}
+
 function renderNav(currentRoute) {
-  return site.navLinks
+  return navLinksForRoute(currentRoute)
     .map((link) => {
       const active =
         link.href === '/'
@@ -188,7 +243,7 @@ function renderNav(currentRoute) {
     .join('');
 }
 
-function renderFooter() {
+function renderFooter(currentRoute) {
   return `
     <footer class="site-footer">
       <div class="container footer-grid">
@@ -197,7 +252,7 @@ function renderFooter() {
           <p>${escapeHtml(site.description)}</p>
           <p class="microcopy">Built around workflow reality, setup tolerance, and practical next picks for hands-on service businesses.</p>
         </div>
-        ${site.footerGroups
+        ${footerGroupsForRoute(currentRoute)
           .map(
             (group) => `
           <div>
@@ -475,6 +530,7 @@ function renderMetaTags({ title, description, route, robots }) {
   return `
     <title>${escapeHtml(pageTitle(title))}</title>
     <meta name="description" content="${escapeHtml(description)}">
+    ${site.googleSiteVerification ? `<meta name="google-site-verification" content="${escapeHtml(site.googleSiteVerification)}">` : ''}
     ${robots ? `<meta name="robots" content="${escapeHtml(robots)}">` : ''}
     <link rel="canonical" href="${escapeHtml(canonical)}">
     <meta property="og:site_name" content="${escapeHtml(site.title)}">
@@ -524,7 +580,7 @@ function renderShell({
 <body${bodyClasses ? ` class="${bodyClasses}"` : ''}${pageEvent ? ` data-page-event="${escapeHtml(pageEvent)}"` : ''}${bodyEventProps ? ` data-page-event-props="${bodyEventProps}"` : ''}>
   ${renderHeader(route)}
   ${body}
-  ${renderFooter()}
+  ${renderFooter(route)}
 </body>
 </html>`;
 }
@@ -631,7 +687,7 @@ function renderHomePage() {
               <p class="section-intro">${escapeHtml(beautyVertical.intro)}</p>
             </div>
             <div class="grid cols-2">${featuredBeautyBusinessCards}</div>
-            <div class="cta-row" style="margin-top:18px"><a class="btn secondary" href="/beauty/" data-analytics="home_cta">Browse Beauty &amp; Wellness</a><a class="btn secondary" href="/beauty/shortlist/" data-analytics="home_cta">Start the beauty shortlist</a></div>
+            <div class="cta-row" style="margin-top:18px"><a class="btn secondary" href="/beauty/" data-analytics="home_cta">Browse Beauty &amp; Wellness</a><a class="btn secondary" href="/beauty/shortlist/" data-analytics="home_cta">Start the beauty shortlist</a><a class="btn secondary" href="${routeForBeautyStarterPack()}" data-analytics="home_cta">Get the beauty starter pack</a></div>
           </div>
         </section>
 
@@ -1046,7 +1102,7 @@ function renderBeautyHubPage() {
               <div class="hero-actions">
                 <a class="btn primary" href="/beauty/shortlist/" data-analytics="home_cta">Start the beauty shortlist</a>
                 <a class="btn secondary" href="/beauty/reviews/" data-analytics="home_cta">Browse beauty reviews</a>
-                <a class="btn ghost" href="/beauty/templates/" data-analytics="home_cta">Use beauty templates</a>
+                <a class="btn ghost" href="${routeForBeautyStarterPack()}" data-analytics="home_cta">Get the beauty starter pack</a>
               </div>
             </div>
             <aside class="hero-panel">
@@ -1080,6 +1136,10 @@ function renderBeautyHubPage() {
               <p class="section-intro">${escapeHtml(beautyVertical.problemBlurb)}</p>
             </div>
             <div class="grid cols-2">${beautyProblems.map(renderBeautyProblemCard).join('')}</div>
+            <div class="cta-row" style="margin-top:18px">
+              <a class="btn secondary" href="/beauty/problems/">Browse beauty problems</a>
+              <a class="btn secondary" href="${routeForBeautyStarterPack()}">Get the beauty starter pack</a>
+            </div>
           </div>
         </section>
 
@@ -1107,6 +1167,7 @@ function renderBeautyHubPage() {
                 <h2>Beauty templates</h2>
               </div>
               <div class="grid">${beautyTemplates.slice(0, 4).map(renderBeautyTemplateCard).join('')}</div>
+              <div class="cta-row" style="margin-top:18px"><a class="btn secondary" href="${routeForBeautyStarterPack()}">Get the beauty starter pack</a></div>
             </div>
             <article class="banner">
               <div class="trust-chip">Need a faster answer?</div>
@@ -1428,6 +1489,7 @@ function renderBeautyReviewPage(review) {
                 <div class="cta-row" style="margin-top:16px">
                   <a class="btn primary" href="${review.officialUrl}" target="_blank" rel="noopener noreferrer" data-analytics="review_cta beauty_review_cta outbound_tool_click">Visit official site</a>
                   <a class="btn secondary" href="/beauty/shortlist/">Run the beauty shortlist</a>
+                  <a class="btn secondary" href="${routeForBeautyStarterPack()}">Get the beauty starter pack</a>
                 </div>
               </div>
               ${renderBeautyReviewScorecard(review)}
@@ -1660,6 +1722,33 @@ function renderBeautyComparisonPage(comparison) {
   });
 }
 
+function renderBeautyProblemsPage() {
+  return renderHubPage({
+    route: '/beauty/problems/',
+    title: 'Beauty Problems',
+    description: 'Browse Beauty & Wellness software and AI guidance by bottleneck.',
+    eyebrow: 'Beauty problem hub',
+    intro:
+      'Start here when you already know the leak. These pages stay focused on booking, rebooking, reviews, deposits, DMs, content, and front-desk admin instead of forcing category jargon first.',
+    cards: beautyProblems.map(renderBeautyProblemCard).join(''),
+    secondaryPanel: `
+      <aside class="card">
+        <div class="card-kicker">Most common first moves</div>
+        ${renderBulletList([
+          'Fix no-shows and deposits before buying more awareness.',
+          'Fix rebooking before spending more to refill the calendar.',
+          'Fix front-desk admin before piling on more automations.'
+        ])}
+        <div class="cta-row"><a class="btn secondary small" href="/beauty/shortlist/">Run the beauty shortlist</a><a class="btn secondary small" href="${routeForBeautyStarterPack()}">Get the beauty starter pack</a></div>
+      </aside>`,
+    breadcrumbs: [
+      { label: 'Beauty & Wellness', href: '/beauty/' },
+      { label: 'Beauty Problems' }
+    ],
+    themeClass: 'theme-beauty'
+  });
+}
+
 function renderBeautyTemplatesPage() {
   return renderShell({
     route: '/beauty/templates/',
@@ -1679,6 +1768,7 @@ function renderBeautyTemplatesPage() {
               <div class="trust-chip">Beauty template library</div>
               <h1 class="page-title">Copyable templates for the business side of beauty and wellness work.</h1>
               <p>These are meant to be useful right away, even before you switch software.</p>
+              <p class="microcopy">Want the shortcut version first? Grab the <a href="${routeForBeautyStarterPack()}">Beauty &amp; Wellness starter pack</a>.</p>
             </div>
             <div class="grid">
               ${beautyTemplates
@@ -2468,6 +2558,62 @@ function renderStarterPackPage() {
   });
 }
 
+function renderBeautyStarterPackPage() {
+  return renderShell({
+    route: routeForBeautyStarterPack(),
+    title: beautyStarterPack.title,
+    description: beautyStarterPack.intro,
+    themeClass: 'theme-beauty',
+    body: `
+      <main class="page">
+        <section class="section">
+          <div class="container signup-panel">
+            <div>
+              ${renderBreadcrumbs([
+                { label: 'Beauty & Wellness', href: '/beauty/' },
+                { label: 'Starter Pack' }
+              ])}
+              <div class="trust-chip">Lead magnet</div>
+              <h1 class="page-title">${escapeHtml(beautyStarterPack.title)}</h1>
+              <p>${escapeHtml(beautyStarterPack.intro)}</p>
+              ${renderBulletList(beautyStarterPack.bullets)}
+              <p class="microcopy">This pack is meant to help you tighten booking, rebooking, reviews, and client follow-up before you add more software.</p>
+            </div>
+            <form class="lead-form" data-lead-form="beauty-starter-pack" data-analytics="beauty_starter_pack_form" action="${FORM_ACTION}" method="POST">
+              ${renderLeadFormHiddenFields('ihelpwithai beauty starter pack request')}
+              <label>Name<input type="text" name="name" placeholder="Your name"></label>
+              <label>Email<input type="email" name="email" required placeholder="Work email"></label>
+              <label>Business type
+                <select name="businessType">
+                  <option value="">Select a business type</option>
+                  ${beautyShortlistQuestions[0].options
+                    .map(([value, label]) => `<option value="${value}">${escapeHtml(label)}</option>`)
+                    .join('')}
+                </select>
+              </label>
+              <button class="btn primary" type="submit">Send the beauty starter pack</button>
+              <p class="microcopy">Prefer to compare software first? Run the <a href="/beauty/shortlist/">beauty shortlist</a>.</p>
+            </form>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="section-heading">
+              <div class="trust-chip">Inside the pack</div>
+              <h2>The most useful booking, policy, rebooking, review, and follow-up templates in one place.</h2>
+            </div>
+            <div class="grid cols-2">
+              ${beautyStarterPack.templateIds
+                .map((id) => renderBeautyTemplateCard(beautyTemplateById.get(id)))
+                .join('')}
+            </div>
+          </div>
+        </section>
+      </main>`
+  });
+}
+
 function renderContactPage() {
   return renderShell({
     route: '/contact/',
@@ -2889,6 +3035,7 @@ function collectCanonicalRoutes() {
     '/templates/',
     '/learn/',
     '/beauty/',
+    '/beauty/problems/',
     '/beauty/shortlist/',
     ...beautyBusinesses.map((entry) => routeForBeautyBusiness(entry.slug)),
     ...beautyProblems.map((entry) => routeForBeautyProblem(entry.slug)),
@@ -2897,6 +3044,7 @@ function collectCanonicalRoutes() {
     '/beauty/compare/',
     ...beautyComparisons.map((entry) => routeForBeautyComparison(entry.slug)),
     '/beauty/templates/',
+    routeForBeautyStarterPack(),
     '/about/',
     '/faq/',
     '/methodology/',
@@ -2916,6 +3064,7 @@ async function buildOutput(root) {
     { route: '/', html: renderHomePage() },
     { route: '/shortlist/', html: renderShortlistPage() },
     { route: '/beauty/', html: renderBeautyHubPage() },
+    { route: '/beauty/problems/', html: renderBeautyProblemsPage() },
     { route: '/beauty/shortlist/', html: renderBeautyShortlistPage() },
     {
       route: '/trades/',
@@ -3107,6 +3256,7 @@ async function buildOutput(root) {
     },
     { route: '/for-vendors/', html: renderForVendorsPage() },
     { route: '/starter-pack/', html: renderStarterPackPage() },
+    { route: routeForBeautyStarterPack(), html: renderBeautyStarterPackPage() },
     { route: '/contact/', html: renderContactPage() },
     { route: '/thank-you/', html: renderThankYouPage() }
   ];

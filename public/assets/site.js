@@ -712,6 +712,7 @@
 
   function getLeadFormKind(form) {
     const key = form.getAttribute('data-lead-form') || '';
+    if (key.indexOf('beauty-starter-pack') === 0) return 'beauty_starter_pack';
     if (key.indexOf('starter-pack') === 0) return 'starter_pack';
     if (key === 'contact') return 'contact';
     return '';
@@ -724,6 +725,9 @@
     };
     const tradeField = form.elements.trade;
     if (tradeField && tradeField.value) props.trade = tradeField.value;
+    const businessTypeField = form.elements.businessType;
+    if (businessTypeField && businessTypeField.value) props.business_type = businessTypeField.value;
+    if (kind === 'beauty_starter_pack') props.vertical = 'beauty';
     return props;
   }
 
@@ -738,9 +742,11 @@
         if (startedForms.has(form)) return;
         startedForms.add(form);
         track(
-          kind === 'starter_pack'
-            ? 'ihai_starter_pack_form_started'
-            : 'ihai_contact_form_started',
+          kind === 'beauty_starter_pack'
+            ? 'ihai_beauty_starter_pack_form_started'
+            : kind === 'starter_pack'
+              ? 'ihai_starter_pack_form_started'
+              : 'ihai_contact_form_started',
           buildLeadFormProps(form, kind),
           { includePath: false }
         );
@@ -751,9 +757,11 @@
       form.addEventListener('submit', function () {
         markStarted();
         track(
-          kind === 'starter_pack'
-            ? 'ihai_starter_pack_form_submitted'
-            : 'ihai_contact_form_submitted',
+          kind === 'beauty_starter_pack'
+            ? 'ihai_beauty_starter_pack_form_submitted'
+            : kind === 'starter_pack'
+              ? 'ihai_starter_pack_form_submitted'
+              : 'ihai_contact_form_submitted',
           buildLeadFormProps(form, kind),
           { includePath: false }
         );

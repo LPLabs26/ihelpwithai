@@ -16,6 +16,7 @@ const criticalPaths = [
   '/shortlist/',
   '/trades/',
   '/beauty/',
+  '/beauty/problems/',
   '/beauty/shortlist/',
   '/problems/',
   '/reviews/',
@@ -25,6 +26,7 @@ const criticalPaths = [
   '/beauty/reviews/',
   '/beauty/compare/',
   '/beauty/templates/',
+  '/beauty/starter-pack/',
   '/reviews/jobber/',
   '/reviews/housecall-pro/',
   '/reviews/servicetitan/',
@@ -59,6 +61,7 @@ const coreLaunchPaths = [
   '/shortlist/',
   '/trades/',
   '/beauty/',
+  '/beauty/problems/',
   '/beauty/shortlist/',
   '/problems/',
   '/reviews/',
@@ -68,6 +71,7 @@ const coreLaunchPaths = [
   '/beauty/reviews/',
   '/beauty/compare/',
   '/beauty/templates/',
+  '/beauty/starter-pack/',
   '/reviews/jobber/',
   '/compare/jobber-vs-housecall-pro/',
   '/beauty/reviews/glossgenius/',
@@ -85,6 +89,7 @@ const crawlSeeds = [
   '/shortlist/',
   '/trades/',
   '/beauty/',
+  '/beauty/problems/',
   '/beauty/shortlist/',
   '/problems/',
   '/reviews/',
@@ -93,6 +98,7 @@ const crawlSeeds = [
   '/beauty/compare/',
   '/templates/',
   '/beauty/templates/',
+  '/beauty/starter-pack/',
   '/learn/'
 ];
 

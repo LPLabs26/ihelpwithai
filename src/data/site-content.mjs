@@ -7,6 +7,7 @@ export const site = {
     'Choose the right AI and software for your service business without wasting hours on demos, hype, or bad-fit tools.',
   contactEmail: 'info@ihelpwithai.com',
   socialImage: '/assets/og-default.png',
+  googleSiteVerification: '',
   analytics: {
     posthogToken: 'phc_oBCQc5RDzTRAMXA2HSGqfGP4BbkYEg5HnrawXk5AV6PH',
     posthogHost: 'https://us.i.posthog.com'
