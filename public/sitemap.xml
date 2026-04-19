@@ -7,6 +7,12 @@
     <loc>https://ihelpwithai.com/shortlist/</loc>
   </url>
   <url>
+    <loc>https://ihelpwithai.com/beauty/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/shortlist/</loc>
+  </url>
+  <url>
     <loc>https://ihelpwithai.com/trades/</loc>
   </url>
   <url>
@@ -16,10 +22,19 @@
     <loc>https://ihelpwithai.com/reviews/</loc>
   </url>
   <url>
+    <loc>https://ihelpwithai.com/beauty/reviews/</loc>
+  </url>
+  <url>
     <loc>https://ihelpwithai.com/compare/</loc>
   </url>
   <url>
+    <loc>https://ihelpwithai.com/beauty/compare/</loc>
+  </url>
+  <url>
     <loc>https://ihelpwithai.com/templates/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/templates/</loc>
   </url>
   <url>
     <loc>https://ihelpwithai.com/learn/</loc>
@@ -76,6 +91,33 @@
     <loc>https://ihelpwithai.com/trades/general-contracting/</loc>
   </url>
   <url>
+    <loc>https://ihelpwithai.com/beauty/hair-salons/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/barbers/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/nail-techs/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/lash-brow-artists/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/estheticians/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/medspas/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/massage-therapists/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/makeup-artists/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/tattoo-piercing-studios/</loc>
+  </url>
+  <url>
     <loc>https://ihelpwithai.com/problems/missed-calls/</loc>
   </url>
   <url>
@@ -89,6 +131,30 @@
   </url>
   <url>
     <loc>https://ihelpwithai.com/problems/office-admin/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/problems/no-shows/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/problems/rebooking/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/problems/client-retention/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/problems/dms-and-lead-response/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/problems/reviews-and-referrals/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/problems/social-content/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/problems/deposits-and-cancellations/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/problems/front-desk-admin/</loc>
   </url>
   <url>
     <loc>https://ihelpwithai.com/reviews/jobber/</loc>
@@ -115,9 +181,51 @@
     <loc>https://ihelpwithai.com/reviews/chatgpt/</loc>
   </url>
   <url>
+    <loc>https://ihelpwithai.com/beauty/reviews/vagaro/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/reviews/glossgenius/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/reviews/square-appointments/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/reviews/boulevard/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/reviews/fresha/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/reviews/booksy/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/reviews/mangomint/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/reviews/chatgpt/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/reviews/canva/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/reviews/zapier/</loc>
+  </url>
+  <url>
     <loc>https://ihelpwithai.com/compare/jobber-vs-housecall-pro/</loc>
   </url>
   <url>
     <loc>https://ihelpwithai.com/compare/all-in-one-field-service-software-vs-separate-ai-tools/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/compare/vagaro-vs-glossgenius/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/compare/square-appointments-vs-glossgenius/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/compare/boulevard-vs-vagaro/</loc>
+  </url>
+  <url>
+    <loc>https://ihelpwithai.com/beauty/compare/all-in-one-salon-software-vs-separate-ai-tools/</loc>
   </url>
 </urlset>
