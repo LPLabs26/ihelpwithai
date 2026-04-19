@@ -1,5 +1,6 @@
 (function () {
   const data = Object.assign({ analytics: {}, shortlists: {} }, window.IHWAI_SITE_DATA || {});
+  const ownedDataCapture = window.IHWAI_DATA_CAPTURE || null;
   const fieldBudgetRank = { lean: 0, roi: 1, enterprise: 2 };
   const fieldSetupRank = { simple: 0, moderate: 1, invest: 2 };
   const beautyBudgetRank = {
@@ -666,6 +667,16 @@
 
         if (empty) empty.hidden = ranked.length !== 0;
 
+        if (ownedDataCapture && typeof ownedDataCapture.captureShortlist === 'function') {
+          ownedDataCapture.captureShortlist({
+            vertical: config.key === 'beauty' ? 'beauty' : 'field_trades',
+            answers: choices,
+            top_recommendation: ranked[0] ? ranked[0].tool.slug : '',
+            second_recommendation: ranked[1] ? ranked[1].tool.slug : '',
+            third_recommendation: ranked[2] ? ranked[2].tool.slug : ''
+          });
+        }
+
         track(config.completeEvent, config.analyticsProps(choices), {
           includePath: false
         });
@@ -723,10 +734,14 @@
       path: window.location.pathname,
       form_type: kind
     };
+    const verticalField = form.elements.vertical;
+    if (verticalField && verticalField.value) props.vertical = verticalField.value;
     const tradeField = form.elements.trade;
     if (tradeField && tradeField.value) props.trade = tradeField.value;
     const businessTypeField = form.elements.businessType;
     if (businessTypeField && businessTypeField.value) props.business_type = businessTypeField.value;
+    const bottleneckField = form.elements.bottleneck;
+    if (bottleneckField && bottleneckField.value) props.bottleneck = bottleneckField.value;
     if (kind === 'beauty_starter_pack') props.vertical = 'beauty';
     return props;
   }

@@ -9,6 +9,7 @@ export const site = {
   contactEmail: 'info@ihelpwithai.com',
   socialImage: '/assets/og-default.png',
   googleSiteVerification: '',
+  ownedDataEndpoint: '',
   analytics: {
     posthogToken: 'phc_oBCQc5RDzTRAMXA2HSGqfGP4BbkYEg5HnrawXk5AV6PH',
     posthogHost: 'https://us.i.posthog.com'
@@ -1722,22 +1723,27 @@ export const legalPages = {
   privacy: {
     title: 'Privacy',
     intro:
-      'If you submit a form on this site, the information you provide is used to respond to your request, send the starter pack, or continue a conversation you initiated.',
+      'If you submit a form on this site, the information you provide may be used to respond to your request, send the starter pack, continue a conversation you initiated, or improve how the site recommends tools and workflows.',
     sections: [
       {
-        title: 'What may be collected',
+        title: 'How form submissions may be received',
         body:
-          'Basic contact details, business context, and message content submitted through forms may be received through the connected form handler or email inbox.'
+          'Form submissions may be received through email, a connected form handler, a CRM, or an owned database if that intake stack is added later. Right now the live site still uses a form handler and email delivery for starter-pack, contact, and vendor submissions.'
       },
       {
-        title: 'How it is used',
+        title: 'What analytics is meant to capture',
         body:
-          'Information is used to send requested resources, respond to inquiries, and understand what kinds of service-business questions the site should serve better.'
+          'Site analytics may track behavior such as page usage, navigation, shortlist progress, starter-pack interest, review clicks, compare clicks, and outbound vendor interest. Analytics is not intended to store names, email addresses, phone numbers, addresses, or free-form message bodies.'
       },
       {
-        title: 'What this page does not promise',
+        title: 'Business context and recommendation quality',
         body:
-          'This page is a plain-language privacy summary, not a custom legal memo. If the site later adds richer analytics or email tooling, this page should be updated to reflect that change clearly.'
+          'Category-level business context such as vertical, trade or business type, bottleneck, budget range, setup tolerance, and current stack may be used to improve recommendations, shortlist logic, and future follow-up systems.'
+      },
+      {
+        title: 'Keeping this page current',
+        body:
+          'This page is a plain-language privacy summary, not a custom legal memo. If new CRM, database, automation, or intake tools are added, this page should be updated to reflect that change clearly.'
       }
     ]
   },

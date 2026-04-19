@@ -34,7 +34,7 @@ const publicAssetsDir = path.join(publicDir, 'assets');
 const rootAssetsDir = path.join(rootDir, 'assets');
 
 const SITE_URL = 'https://ihelpwithai.com';
-const ASSET_VERSION = '20260418c';
+const ASSET_VERSION = '20260419a';
 const FORM_ACTION = `https://formsubmit.co/${site.contactEmail}`;
 const ROUTE_SUFFIX = '/';
 const SITEMAP_EXCLUDED_ROUTES = new Set(['/thank-you/']);
@@ -303,11 +303,18 @@ function renderBulletList(items, className = 'bullet-list') {
     .join('')}</ul>`;
 }
 
-function renderLeadFormHiddenFields(subject) {
+function renderLeadFormHiddenFields(subject, metadata = {}) {
+  const sourcePage = metadata.sourcePage || '';
+  const vertical = metadata.vertical || '';
+  const starterPackType = metadata.starterPackType || '';
   return `
     <input type="hidden" name="_subject" value="${escapeHtml(subject)}">
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_next" value="${absoluteUrl('/thank-you/')}">
+    <input type="hidden" name="source_page" value="${escapeHtml(sourcePage)}">
+    <input type="hidden" name="vertical" value="${escapeHtml(vertical)}">
+    <input type="hidden" name="starter_pack_type" value="${escapeHtml(starterPackType)}">
+    <input type="hidden" name="trade_or_business_type" value="">
     <label class="form-honeypot" aria-hidden="true">
       Leave this field blank
       <input type="text" name="_honey" tabindex="-1" autocomplete="off">
@@ -608,6 +615,7 @@ function renderShell({
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/assets/site.css?v=${ASSET_VERSION}">
   <script defer src="/assets/site-data.js?v=${ASSET_VERSION}"></script>
+  <script defer src="/assets/data-capture.js?v=${ASSET_VERSION}"></script>
   <script defer src="/assets/site.js?v=${ASSET_VERSION}"></script>
   <script type="application/ld+json">${JSON.stringify(schemas)}</script>
 </head>
@@ -2800,8 +2808,12 @@ function renderStarterPackPage() {
               <p>${escapeHtml(legalPages.starterPack.intro)}</p>
               ${renderBulletList(legalPages.starterPack.bullets)}
             </div>
-            <form class="lead-form" data-lead-form="starter-pack-page" data-analytics="starter_pack_form" action="${FORM_ACTION}" method="POST">
-              ${renderLeadFormHiddenFields('ihelpwithai starter pack request')}
+            <form class="lead-form" data-lead-form="starter-pack-page" data-form-type="field_starter_pack" data-vertical="field_trades" data-starter-pack-type="field_trades" data-analytics="starter_pack_form" action="${FORM_ACTION}" method="POST">
+              ${renderLeadFormHiddenFields('ihelpwithai starter pack request', {
+                sourcePage: '/starter-pack/',
+                vertical: 'field_trades',
+                starterPackType: 'field_trades'
+              })}
               <label>Name<input type="text" name="name" placeholder="Your name"></label>
               <label>Email<input type="email" name="email" required placeholder="Work email"></label>
               <label>Trade
@@ -2846,8 +2858,12 @@ function renderBeautyStarterPackPage() {
               ${renderBulletList(beautyStarterPack.bullets)}
               <p class="microcopy">This pack is meant to help you tighten booking, rebooking, reviews, and client follow-up before you add more software.</p>
             </div>
-            <form class="lead-form" data-lead-form="beauty-starter-pack" data-analytics="beauty_starter_pack_form" action="${FORM_ACTION}" method="POST">
-              ${renderLeadFormHiddenFields('ihelpwithai beauty starter pack request')}
+            <form class="lead-form" data-lead-form="beauty-starter-pack" data-form-type="beauty_starter_pack" data-vertical="beauty" data-starter-pack-type="beauty" data-analytics="beauty_starter_pack_form" action="${FORM_ACTION}" method="POST">
+              ${renderLeadFormHiddenFields('ihelpwithai beauty starter pack request', {
+                sourcePage: routeForBeautyStarterPack(),
+                vertical: 'beauty',
+                starterPackType: 'beauty'
+              })}
               <label>Name<input type="text" name="name" placeholder="Your name"></label>
               <label>Email<input type="email" name="email" required placeholder="Work email"></label>
               <label>Business type
@@ -2897,8 +2913,8 @@ function renderContactPage() {
               <p>${escapeHtml(legalPages.contact.intro)}</p>
               ${renderBulletList(legalPages.contact.bullets)}
             </div>
-            <form class="contact-form" data-lead-form="contact" data-analytics="contact_form" action="${FORM_ACTION}" method="POST">
-              ${renderLeadFormHiddenFields('ihelpwithai contact request')}
+            <form class="contact-form" data-lead-form="contact" data-form-type="contact" data-analytics="contact_form" action="${FORM_ACTION}" method="POST">
+              ${renderLeadFormHiddenFields('ihelpwithai contact request', { sourcePage: '/contact/' })}
               <label>Name<input type="text" name="name" placeholder="Your name"></label>
               <label>Email<input type="email" name="email" required placeholder="Best email"></label>
               <label>What do you need help with?<textarea name="message" required placeholder="Tell us the trade, the bottleneck, and what you are deciding between."></textarea></label>
@@ -2937,8 +2953,8 @@ function renderForVendorsPage() {
                   .join('')}
               </div>
             </div>
-            <form class="contact-form" data-lead-form="vendor" action="${FORM_ACTION}" method="POST">
-              ${renderLeadFormHiddenFields('ihelpwithai vendor submission')}
+            <form class="contact-form" data-lead-form="vendor" data-form-type="vendor" action="${FORM_ACTION}" method="POST">
+              ${renderLeadFormHiddenFields('ihelpwithai vendor submission', { sourcePage: '/for-vendors/' })}
               <label>Company<input type="text" name="company" placeholder="Vendor name"></label>
               <label>Work email<input type="email" name="email" required placeholder="Email"></label>
               <label>Service-business use case<textarea name="use_case" placeholder="Explain the field-trades or beauty-and-wellness workflow, best-fit shop profile, and where the product does not fit."></textarea></label>
@@ -3089,6 +3105,7 @@ function renderSiteDataScript() {
 
   return `window.IHWAI_SITE_DATA = ${JSON.stringify({
     analytics: site.analytics,
+    ownedDataEndpoint: site.ownedDataEndpoint,
     shortlists: {
       field: {
         stepIds: ['trade-team', 'bottleneck-stack', 'office-volume', 'budget-setup'],
@@ -3146,7 +3163,7 @@ async function cleanRoot() {
 
 async function copyStaticAssets(destination) {
   await fs.mkdir(path.join(destination, 'assets'), { recursive: true });
-  for (const filename of ['site.css', 'site.js', 'favicon.svg', 'og-default.png']) {
+  for (const filename of ['site.css', 'site.js', 'data-capture.js', 'favicon.svg', 'og-default.png']) {
     await fs.copyFile(path.join(srcAssetsDir, filename), path.join(destination, 'assets', filename));
   }
   await writeFile(path.join(destination, 'assets', 'site-data.js'), renderSiteDataScript());
