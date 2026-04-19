@@ -94,6 +94,12 @@ const analyticsEvents = [
   'ihai_outbound_tool_click'
 ];
 
+const localAnalyticsFiles = [
+  path.join(rootDir, 'src', 'assets', 'site.js'),
+  path.join(rootDir, 'assets', 'site.js'),
+  path.join(rootDir, 'public', 'assets', 'site.js')
+];
+
 const crawlSeeds = [
   '/',
   '/shortlist/',
@@ -483,6 +489,29 @@ async function runAnalyticsChecks(entry) {
   );
 }
 
+async function runAnalyticsGuardrailChecks(entry) {
+  for (const filePath of localAnalyticsFiles) {
+    const source = await fs.readFile(filePath, 'utf8');
+    const relative = path.relative(rootDir, filePath);
+
+    record(
+      entry,
+      source.includes('$current_url: window.location.origin + window.location.pathname'),
+      `${relative} sanitizes $current_url to origin plus pathname`
+    );
+    record(
+      entry,
+      source.includes('$pathname: window.location.pathname'),
+      `${relative} keeps $pathname based on window.location.pathname`
+    );
+    record(
+      entry,
+      !source.includes('$current_url: window.location.href'),
+      `${relative} does not send window.location.href as $current_url`
+    );
+  }
+}
+
 function buildMarkdownReport() {
   const lines = [
     '# Live Site QA Report',
@@ -555,6 +584,7 @@ async function main() {
   await runIndexingChecks(section('Indexing Rules'));
   await runSitemapAndRobotsChecks(section('Sitemap And Robots'));
   await runAnalyticsChecks(section('Analytics Instrumentation'));
+  await runAnalyticsGuardrailChecks(section('Analytics Guardrails'));
   await runLegacyChecks(section('Legacy Compatibility'));
   await runInternalCrawl(section('Internal Link Crawl'));
   await writeReports();

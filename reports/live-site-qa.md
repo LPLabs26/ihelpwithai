@@ -1,8 +1,8 @@
 # Live Site QA Report
 
 - Site: https://ihelpwithai.com
-- Generated: 2026-04-19T16:55:09.894Z
-- Sections: 6
+- Generated: 2026-04-19T17:22:45.150Z
+- Sections: 7
 - Failures: 0
 
 ## Critical Pages
@@ -29,6 +29,13 @@
 ## Analytics Instrumentation
 
 - Passed: 19
+- Failed: 0
+
+- No failures in this section.
+
+## Analytics Guardrails
+
+- Passed: 9
 - Failed: 0
 
 - No failures in this section.

@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-04-19T16:55:09.892Z",
+  "generatedAt": "2026-04-19T17:22:45.149Z",
   "site": "https://ihelpwithai.com",
   "summary": {
-    "sections": 6,
-    "checks": 349,
+    "sections": 7,
+    "checks": 358,
     "failures": 0
   },
   "sections": [
@@ -2303,6 +2303,56 @@
         {
           "pass": true,
           "message": "Live site data includes a PostHog host configuration",
+          "details": {}
+        }
+      ]
+    },
+    {
+      "title": "Analytics Guardrails",
+      "checks": [
+        {
+          "pass": true,
+          "message": "src/assets/site.js sanitizes $current_url to origin plus pathname",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "src/assets/site.js keeps $pathname based on window.location.pathname",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "src/assets/site.js does not send window.location.href as $current_url",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "assets/site.js sanitizes $current_url to origin plus pathname",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "assets/site.js keeps $pathname based on window.location.pathname",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "assets/site.js does not send window.location.href as $current_url",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "public/assets/site.js sanitizes $current_url to origin plus pathname",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "public/assets/site.js keeps $pathname based on window.location.pathname",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "public/assets/site.js does not send window.location.href as $current_url",
           "details": {}
         }
       ]

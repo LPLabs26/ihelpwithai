@@ -9,7 +9,7 @@ Preferred:
 
 URL-prefix fallback:
 - Verify `https://ihelpwithai.com/` as a URL-prefix property.
-- If Google gives you an HTML meta verification token, paste the real token into `site.googleSiteVerification` in [src/data/site-content.mjs](/Users/jorgesanchez/Documents/ihelpwithai/src/data/site-content.mjs).
+- If Google gives you an HTML meta verification token, paste the real token into `site.googleSiteVerification` in `src/data/site-content.mjs`.
 - Leave that value blank until you have a real token. Do not add a fake token.
 
 ## 2. Submit The Sitemap

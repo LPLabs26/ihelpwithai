@@ -71,7 +71,7 @@
         distinct_id: getDistinctId(),
         properties: Object.assign(
           {
-            $current_url: window.location.href,
+            $current_url: window.location.origin + window.location.pathname,
             $pathname: window.location.pathname,
             $lib: 'ihai-static-site'
           },

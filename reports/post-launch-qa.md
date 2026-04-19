@@ -25,7 +25,7 @@
 
 ## Analytics Events Verified In Code
 
-Confirmed in [src/assets/site.js](/Users/jorgesanchez/Documents/ihelpwithai/src/assets/site.js):
+Confirmed in `src/assets/site.js`:
 - `ihai_page_view`
 - `ihai_home_cta_click`
 - `ihai_shortlist_started`
@@ -44,10 +44,11 @@ Confirmed in [src/assets/site.js](/Users/jorgesanchez/Documents/ihelpwithai/src/
 
 ## Analytics Privacy Audit
 
-Manual code audit of [src/assets/site.js](/Users/jorgesanchez/Documents/ihelpwithai/src/assets/site.js) confirms:
+Manual code audit of `src/assets/site.js` confirms:
 - shortlist analytics send only business-fit properties such as trade, business type, team size, bottleneck, budget, setup tolerance, current stack, and vertical
 - form analytics send only path, form type, trade, business type, and vertical where relevant
 - outbound tool analytics send destination hostname only
+- PostHog page context now uses origin plus pathname and does not send query strings or hash fragments
 - names, emails, phone numbers, addresses, messages, and free-text user input are not added as event properties
 
 ## Trust / Conversion Pages Deepened In This PR
@@ -92,5 +93,5 @@ Each targeted page now carries stronger trust/conversion depth through pricing-c
 
 ## Notes
 
-- Search Console verification support already exists at the source layer through `site.googleSiteVerification` in [src/data/site-content.mjs](/Users/jorgesanchez/Documents/ihelpwithai/src/data/site-content.mjs)
+- Search Console verification support already exists at the source layer through `site.googleSiteVerification` in `src/data/site-content.mjs`
 - That token remains blank in this PR because no real Google verification token was provided
