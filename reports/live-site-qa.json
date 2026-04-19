@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-04-18T18:25:33.395Z",
+  "generatedAt": "2026-04-19T16:55:09.892Z",
   "site": "https://ihelpwithai.com",
   "summary": {
-    "sections": 5,
-    "checks": 182,
+    "sections": 6,
+    "checks": 349,
     "failures": 0
   },
   "sections": [
@@ -28,14 +28,14 @@
           "pass": true,
           "message": "/ includes a title",
           "details": {
-            "title": "Choose the right AI and software for your contracting business | ihelpwithai.com"
+            "title": "Choose the right AI and software for your service business | ihelpwithai.com"
           }
         },
         {
           "pass": true,
           "message": "/ includes a meta description",
           "details": {
-            "description": "Choose the right AI and software for your contracting business without wasting hours on demos, hype, or bad-fit tools."
+            "description": "Choose the right AI and software for your service business without wasting hours on demos, hype, or bad-fit tools."
           }
         },
         {
@@ -77,14 +77,14 @@
           "pass": true,
           "message": "/shortlist/ includes a title",
           "details": {
-            "title": "Shortlist contractor software and AI by bottleneck | ihelpwithai.com"
+            "title": "Shortlist field-trades software and AI by bottleneck | ihelpwithai.com"
           }
         },
         {
           "pass": true,
           "message": "/shortlist/ includes a meta description",
           "details": {
-            "description": "Use the contractor shortlist to narrow the right next software decision by trade, team size, bottleneck, budget, and setup tolerance."
+            "description": "Use the field-trades shortlist to narrow the right next software decision by trade, team size, bottleneck, budget, and setup tolerance."
           }
         },
         {
@@ -126,14 +126,14 @@
           "pass": true,
           "message": "/trades/ includes a title",
           "details": {
-            "title": "Trades | ihelpwithai.com"
+            "title": "Field Trades | ihelpwithai.com"
           }
         },
         {
           "pass": true,
           "message": "/trades/ includes a meta description",
           "details": {
-            "description": "Browse contractor software and AI guidance by trade."
+            "description": "Browse field-trades software and AI guidance by trade."
           }
         },
         {
@@ -153,6 +153,153 @@
         {
           "pass": true,
           "message": "/trades/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/ includes a title",
+          "details": {
+            "title": "Beauty & Wellness software buyer's guide | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/ includes a meta description",
+          "details": {
+            "description": "AI and software buyer's guides for beauty and wellness businesses that need fewer missed bookings, better rebooking, smoother scheduling, stronger reviews, and less front-desk drag."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/beauty/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/problems/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/problems/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/problems/ includes a title",
+          "details": {
+            "title": "Beauty Problems | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/problems/ includes a meta description",
+          "details": {
+            "description": "Browse Beauty & Wellness software and AI guidance by bottleneck."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/problems/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/beauty/problems/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/problems/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/problems/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/shortlist/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/shortlist/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/shortlist/ includes a title",
+          "details": {
+            "title": "Shortlist beauty and wellness software by bottleneck | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/shortlist/ includes a meta description",
+          "details": {
+            "description": "Use the Beauty & Wellness shortlist to narrow the right next software decision by business type, team model, bottleneck, current setup, budget, and setup tolerance."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/shortlist/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/beauty/shortlist/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/shortlist/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/shortlist/ has no placeholder copy in visible text",
           "details": {
             "forbiddenMatch": ""
           }
@@ -231,7 +378,7 @@
           "pass": true,
           "message": "/reviews/ includes a meta description",
           "details": {
-            "description": "Read contractor-first software reviews with best fit, bad fit, setup reality, and alternatives."
+            "description": "Read field-trades software reviews with best fit, bad fit, setup reality, and alternatives."
           }
         },
         {
@@ -280,7 +427,7 @@
           "pass": true,
           "message": "/compare/ includes a meta description",
           "details": {
-            "description": "Compare contractor software and stack decisions by use case."
+            "description": "Compare field-trades software and stack decisions by use case."
           }
         },
         {
@@ -378,7 +525,7 @@
           "pass": true,
           "message": "/learn/ includes a meta description",
           "details": {
-            "description": "Practical guidance for contractor businesses deciding what AI should handle, what should stay human, and where automation usually pays off first."
+            "description": "Practical guidance for hands-on service businesses deciding what AI should handle, what should stay human, and where automation usually pays off first."
           }
         },
         {
@@ -398,6 +545,202 @@
         {
           "pass": true,
           "message": "/learn/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/ includes a title",
+          "details": {
+            "title": "Beauty Reviews | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/ includes a meta description",
+          "details": {
+            "description": "Read Beauty & Wellness software reviews with best fit, bad fit, setup reality, and alternatives."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/beauty/reviews/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/ includes a title",
+          "details": {
+            "title": "Beauty Compare | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/ includes a meta description",
+          "details": {
+            "description": "Compare Beauty & Wellness software and stack decisions by use case."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/beauty/compare/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/templates/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/templates/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/templates/ includes a title",
+          "details": {
+            "title": "Copyable templates for beauty and wellness businesses | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/templates/ includes a meta description",
+          "details": {
+            "description": "Use copyable messages, prompts, policies, rebooking nudges, and follow-up templates built for salons, barbers, medspas, studios, and independent beauty pros."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/templates/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/beauty/templates/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/templates/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/templates/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/starter-pack/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/starter-pack/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/starter-pack/ includes a title",
+          "details": {
+            "title": "Get the Beauty & Wellness starter pack | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/starter-pack/ includes a meta description",
+          "details": {
+            "description": "The Beauty & Wellness starter pack is built to help appointment-based businesses tighten booking, rebooking, deposits, reviews, and client follow-up before they buy another tool."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/starter-pack/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/beauty/starter-pack/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/starter-pack/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/starter-pack/ has no placeholder copy in visible text",
           "details": {
             "forbiddenMatch": ""
           }
@@ -649,6 +992,496 @@
         },
         {
           "pass": true,
+          "message": "/beauty/reviews/vagaro/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/vagaro/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/vagaro/ includes a title",
+          "details": {
+            "title": "Vagaro review for beauty and wellness businesses | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/vagaro/ includes a meta description",
+          "details": {
+            "description": "A broad beauty and wellness platform for businesses that want booking, calendar management, payments, memberships, marketing tools, and client management in one system."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/vagaro/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/beauty/reviews/vagaro/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/vagaro/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/vagaro/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/glossgenius/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/glossgenius/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/glossgenius/ includes a title",
+          "details": {
+            "title": "GlossGenius review for beauty and wellness businesses | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/glossgenius/ includes a meta description",
+          "details": {
+            "description": "A polished booking and payments platform built around beauty pros who want a strong client-facing booking flow, cleaner payments, and a simpler modern setup."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/glossgenius/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/beauty/reviews/glossgenius/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/glossgenius/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/glossgenius/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/square-appointments/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/square-appointments/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/square-appointments/ includes a title",
+          "details": {
+            "title": "Square Appointments review for beauty and wellness businesses | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/square-appointments/ includes a meta description",
+          "details": {
+            "description": "A practical appointment and payments option when beauty businesses want online booking, reminders, checkout, and client notes tied to the wider Square ecosystem."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/square-appointments/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/beauty/reviews/square-appointments/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/square-appointments/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/square-appointments/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/boulevard/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/boulevard/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/boulevard/ includes a title",
+          "details": {
+            "title": "Boulevard review for beauty and wellness businesses | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/boulevard/ includes a meta description",
+          "details": {
+            "description": "A premium platform aimed at client experience, front-desk precision, and stronger scheduling control for salons, spas, and medspas."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/boulevard/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/beauty/reviews/boulevard/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/boulevard/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/boulevard/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/fresha/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/fresha/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/fresha/ includes a title",
+          "details": {
+            "title": "Fresha review for beauty and wellness businesses | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/fresha/ includes a meta description",
+          "details": {
+            "description": "A beauty and wellness booking platform known for online booking, payments, reminders, and visibility through its client-facing marketplace."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/fresha/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/beauty/reviews/fresha/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/fresha/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/fresha/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/booksy/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/booksy/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/booksy/ includes a title",
+          "details": {
+            "title": "Booksy review for beauty and wellness businesses | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/booksy/ includes a meta description",
+          "details": {
+            "description": "A mobile-first booking platform that is especially common in barbering and appointment-led beauty businesses that want easy booking and in-app client convenience."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/booksy/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/beauty/reviews/booksy/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/booksy/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/booksy/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/mangomint/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/mangomint/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/mangomint/ includes a title",
+          "details": {
+            "title": "Mangomint review for beauty and wellness businesses | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/mangomint/ includes a meta description",
+          "details": {
+            "description": "A premium salon and spa software option for businesses that want online booking, payments, team management, and stronger operational polish than basic appointment tools."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/mangomint/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/beauty/reviews/mangomint/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/mangomint/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/mangomint/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/chatgpt/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/chatgpt/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/chatgpt/ includes a title",
+          "details": {
+            "title": "ChatGPT review for beauty and wellness businesses | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/chatgpt/ includes a meta description",
+          "details": {
+            "description": "Useful for drafting captions, review replies, aftercare instructions, consultation summaries, retention messages, and SOPs, but not a replacement for booking software."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/chatgpt/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/beauty/reviews/chatgpt/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/chatgpt/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/chatgpt/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/canva/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/canva/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/canva/ includes a title",
+          "details": {
+            "title": "Canva review for beauty and wellness businesses | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/canva/ includes a meta description",
+          "details": {
+            "description": "Useful when the business needs faster content creation, simple graphics, social templates, and lighter publishing support without hiring a full design team."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/canva/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/beauty/reviews/canva/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/canva/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/canva/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/zapier/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/zapier/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/zapier/ includes a title",
+          "details": {
+            "title": "Zapier review for beauty and wellness businesses | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/zapier/ includes a meta description",
+          "details": {
+            "description": "Useful when the business already has core tools but wants to automate follow-up, notification handoffs, lead routing, or admin glue work between systems."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/zapier/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/beauty/reviews/zapier/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/zapier/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/reviews/zapier/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
           "message": "/compare/jobber-vs-housecall-pro/ returns HTTP 200",
           "details": {
             "status": 200
@@ -741,6 +1574,202 @@
         {
           "pass": true,
           "message": "/compare/all-in-one-field-service-software-vs-separate-ai-tools/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/vagaro-vs-glossgenius/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/vagaro-vs-glossgenius/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/vagaro-vs-glossgenius/ includes a title",
+          "details": {
+            "title": "Vagaro vs GlossGenius for beauty and wellness businesses | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/vagaro-vs-glossgenius/ includes a meta description",
+          "details": {
+            "description": "Choose Vagaro when the business needs broader all-in-one depth. Choose GlossGenius when simplicity, speed, and a more independent-friendly feel matter more."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/vagaro-vs-glossgenius/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/beauty/compare/vagaro-vs-glossgenius/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/vagaro-vs-glossgenius/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/vagaro-vs-glossgenius/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/square-appointments-vs-glossgenius/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/square-appointments-vs-glossgenius/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/square-appointments-vs-glossgenius/ includes a title",
+          "details": {
+            "title": "Square Appointments vs GlossGenius for beauty businesses | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/square-appointments-vs-glossgenius/ includes a meta description",
+          "details": {
+            "description": "Choose Square Appointments when budget control and Square familiarity matter most. Choose GlossGenius when beauty-first polish and booking feel matter more."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/square-appointments-vs-glossgenius/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/beauty/compare/square-appointments-vs-glossgenius/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/square-appointments-vs-glossgenius/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/square-appointments-vs-glossgenius/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/boulevard-vs-vagaro/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/boulevard-vs-vagaro/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/boulevard-vs-vagaro/ includes a title",
+          "details": {
+            "title": "Boulevard vs Vagaro for salons, spas, and medspas | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/boulevard-vs-vagaro/ includes a meta description",
+          "details": {
+            "description": "Choose Boulevard when premium client experience and stronger front-desk polish matter most. Choose Vagaro when broader all-in-one depth and flexibility matter more."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/boulevard-vs-vagaro/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/beauty/compare/boulevard-vs-vagaro/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/boulevard-vs-vagaro/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/boulevard-vs-vagaro/ has no placeholder copy in visible text",
+          "details": {
+            "forbiddenMatch": ""
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/all-in-one-salon-software-vs-separate-ai-tools/ returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/all-in-one-salon-software-vs-separate-ai-tools/ returns HTML",
+          "details": {
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/all-in-one-salon-software-vs-separate-ai-tools/ includes a title",
+          "details": {
+            "title": "All-in-one salon software vs separate AI tools | ihelpwithai.com"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/all-in-one-salon-software-vs-separate-ai-tools/ includes a meta description",
+          "details": {
+            "description": "Choose all-in-one salon software when booking, deposits, client notes, payments, and follow-up are all messy. Choose separate AI tools when the base system already works and one leak deserves a focused fix."
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/all-in-one-salon-software-vs-separate-ai-tools/ includes the expected canonical",
+          "details": {
+            "canonical": "https://ihelpwithai.com/beauty/compare/all-in-one-salon-software-vs-separate-ai-tools/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/all-in-one-salon-software-vs-separate-ai-tools/ includes an internal nav link",
+          "details": {
+            "navLink": "/"
+          }
+        },
+        {
+          "pass": true,
+          "message": "/beauty/compare/all-in-one-salon-software-vs-separate-ai-tools/ has no placeholder copy in visible text",
           "details": {
             "forbiddenMatch": ""
           }
@@ -1015,7 +2044,7 @@
           "pass": true,
           "message": "/methodology/ includes a meta description",
           "details": {
-            "description": "Every review and comparison is supposed to answer a practical contractor question: is this worth looking at, which shop profile fits best, what setup pain is realistic, and what should you compare it against."
+            "description": "Every review and comparison is supposed to answer a practical service-business question: is this worth looking at, which shop profile fits best, what setup pain is realistic, and what should you compare it against."
           }
         },
         {
@@ -1092,37 +2121,12 @@
         },
         {
           "pass": true,
-          "message": "sitemap.xml includes /problems/",
+          "message": "sitemap.xml includes /beauty/",
           "details": {}
         },
         {
           "pass": true,
-          "message": "sitemap.xml includes /reviews/",
-          "details": {}
-        },
-        {
-          "pass": true,
-          "message": "sitemap.xml includes /compare/",
-          "details": {}
-        },
-        {
-          "pass": true,
-          "message": "sitemap.xml includes /templates/",
-          "details": {}
-        },
-        {
-          "pass": true,
-          "message": "sitemap.xml includes /learn/",
-          "details": {}
-        },
-        {
-          "pass": true,
-          "message": "sitemap.xml includes /reviews/jobber/",
-          "details": {}
-        },
-        {
-          "pass": true,
-          "message": "sitemap.xml includes /compare/jobber-vs-housecall-pro/",
+          "message": "sitemap.xml includes /beauty/shortlist/",
           "details": {}
         },
         {
@@ -1132,7 +2136,47 @@
         },
         {
           "pass": true,
-          "message": "sitemap.xml includes /contact/",
+          "message": "sitemap.xml includes /beauty/starter-pack/",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "sitemap.xml includes /reviews/jobber/",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "sitemap.xml includes /reviews/housecall-pro/",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "sitemap.xml includes /reviews/servicetitan/",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "sitemap.xml includes /beauty/reviews/vagaro/",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "sitemap.xml includes /beauty/reviews/glossgenius/",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "sitemap.xml includes /beauty/reviews/boulevard/",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "sitemap.xml includes /compare/jobber-vs-housecall-pro/",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "sitemap.xml includes /beauty/compare/vagaro-vs-glossgenius/",
           "details": {}
         },
         {
@@ -1147,16 +2191,6 @@
         },
         {
           "pass": true,
-          "message": "sitemap.xml includes /affiliate-disclosure/",
-          "details": {}
-        },
-        {
-          "pass": true,
-          "message": "sitemap.xml includes /methodology/",
-          "details": {}
-        },
-        {
-          "pass": true,
           "message": "/robots.txt returns HTTP 200",
           "details": {
             "status": 200
@@ -1165,6 +2199,110 @@
         {
           "pass": true,
           "message": "/robots.txt references sitemap.xml",
+          "details": {}
+        }
+      ]
+    },
+    {
+      "title": "Analytics Instrumentation",
+      "checks": [
+        {
+          "pass": true,
+          "message": "/assets/site.js returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "/assets/site-data.js returns HTTP 200",
+          "details": {
+            "status": 200
+          }
+        },
+        {
+          "pass": true,
+          "message": "ihai_page_view is present in the live analytics script",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "ihai_home_cta_click is present in the live analytics script",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "ihai_shortlist_started is present in the live analytics script",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "ihai_shortlist_completed is present in the live analytics script",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "ihai_beauty_shortlist_started is present in the live analytics script",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "ihai_beauty_shortlist_completed is present in the live analytics script",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "ihai_starter_pack_form_started is present in the live analytics script",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "ihai_starter_pack_form_submitted is present in the live analytics script",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "ihai_beauty_starter_pack_form_started is present in the live analytics script",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "ihai_beauty_starter_pack_form_submitted is present in the live analytics script",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "ihai_review_cta_clicked is present in the live analytics script",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "ihai_beauty_review_cta_clicked is present in the live analytics script",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "ihai_compare_cta_clicked is present in the live analytics script",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "ihai_beauty_compare_cta_clicked is present in the live analytics script",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "ihai_outbound_tool_click is present in the live analytics script",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "Live site data does not use the PostHog placeholder token",
+          "details": {}
+        },
+        {
+          "pass": true,
+          "message": "Live site data includes a PostHog host configuration",
           "details": {}
         }
       ]
@@ -1315,8 +2453,8 @@
           "message": "Internal crawl found no same-origin 404/500 links",
           "details": {
             "brokenLinks": [],
-            "visitedPages": 40,
-            "checkedLinks": 40
+            "visitedPages": 78,
+            "checkedLinks": 78
           }
         }
       ]

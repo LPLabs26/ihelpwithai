@@ -352,6 +352,40 @@ function renderTrustPanel() {
     </aside>`;
 }
 
+const POTENTIAL_MONETIZATION_NOTE =
+  'Some review and comparison pages may earn referral revenue now or later if you click through or buy from linked vendors. Fit, bad fit, switching cost, and stack reality still come first.';
+
+function renderInfoCard(card) {
+  if (!card) return '';
+  const hasBullets = Array.isArray(card.bullets) && card.bullets.length > 0;
+  return `
+    <article class="card">
+      <div class="card-kicker">${escapeHtml(card.kicker)}</div>
+      ${card.title ? `<h3>${escapeHtml(card.title)}</h3>` : ''}
+      ${card.text ? `<p>${escapeHtml(card.text)}</p>` : ''}
+      ${hasBullets ? renderBulletList(card.bullets) : ''}
+    </article>`;
+}
+
+function renderInfoCardSection(cards, containerClass = 'grid cols-3') {
+  const activeCards = cards.filter(Boolean);
+  if (activeCards.length === 0) return '';
+
+  return `
+    <section class="section">
+      <div class="container ${containerClass}">
+        ${activeCards.map((card) => renderInfoCard(card)).join('')}
+      </div>
+    </section>`;
+}
+
+function renderMonetizationCard(note = POTENTIAL_MONETIZATION_NOTE) {
+  return renderInfoCard({
+    kicker: 'Potential monetization',
+    text: note
+  });
+}
+
 function renderAudienceChoiceCard({ kicker, title, description, href, cta, detail, className = '' }) {
   return `
     <article class="route-card ${className}">
@@ -1214,6 +1248,16 @@ function renderBeautyReviewScorecard(review) {
         <span>Pricing posture</span>
         <div class="scorecard-label"><strong>${escapeHtml(review.pricingPosture)}</strong></div>
       </div>
+      ${review.reviewBasis ? `
+      <div class="scorecard-row">
+        <span>Review basis</span>
+        <div class="scorecard-label"><strong>${escapeHtml(review.reviewBasis)}</strong></div>
+      </div>` : ''}
+      ${review.pricingCheckDate ? `
+      <div class="scorecard-row">
+        <span>Pricing checked</span>
+        <div class="scorecard-label"><strong>${escapeHtml(review.pricingCheckDate)}</strong></div>
+      </div>` : ''}
       <div class="scorecard-row">
         <span>Last reviewed</span>
         <div class="scorecard-label"><strong>${escapeHtml(review.lastReviewed)}</strong></div>
@@ -1495,6 +1539,7 @@ function renderBeautyReviewPage(review) {
                 ${renderPills(review.teamSizeFit, toSlugLabel)}
                 <div class="cta-row" style="margin-top:16px">
                   <a class="btn primary" href="${review.officialUrl}" target="_blank" rel="noopener noreferrer" data-analytics="review_cta beauty_review_cta outbound_tool_click">Visit official site</a>
+                  ${review.compareLinks[0] ? `<a class="btn secondary" href="${routeForBeautyComparison(review.compareLinks[0])}" data-analytics="compare_cta beauty_compare_cta">Read the closest comparison</a>` : ''}
                   <a class="btn secondary" href="/beauty/shortlist/">Run the beauty shortlist</a>
                   <a class="btn secondary" href="${routeForBeautyStarterPack()}">Get the beauty starter pack</a>
                 </div>
@@ -1503,6 +1548,38 @@ function renderBeautyReviewPage(review) {
             </div>
           </div>
         </section>
+
+        ${renderInfoCardSection([
+          review.reviewBasis || review.pricingCheckDate
+            ? {
+                kicker: 'Editorial snapshot',
+                bullets: [
+                  review.reviewBasis ? `Review basis: ${review.reviewBasis}` : '',
+                  review.pricingCheckDate ? `Pricing check date: ${review.pricingCheckDate}` : ''
+                ].filter(Boolean)
+              }
+            : null,
+          review.bestFitBusinessSize
+            ? {
+                kicker: 'Best-fit business size',
+                text: review.bestFitBusinessSize
+              }
+            : null,
+          review.switchingDifficulty
+            ? {
+                kicker: 'Switching difficulty',
+                text: review.switchingDifficulty
+              }
+            : null,
+          review.integrationsStackFit
+            ? {
+                kicker: 'Integrations and stack fit',
+                bullets: Array.isArray(review.integrationsStackFit)
+                  ? review.integrationsStackFit
+                  : [review.integrationsStackFit]
+              }
+            : null
+        ])}
 
         <section class="section">
           <div class="container split-panel">
@@ -1577,7 +1654,7 @@ function renderBeautyReviewPage(review) {
                   .map((alternative) => {
                     const target = beautyReviewBySlug.get(alternative.slug);
                     const reason = alternative.reason.replace(/^better fit when\s+/i, '');
-                    return `<li><a href="${routeForBeautyReview(alternative.slug)}">${escapeHtml(target.toolName)}</a> is a better fit when ${escapeHtml(reason)}.</li>`;
+                    return `<li><a href="${routeForBeautyReview(alternative.slug)}" data-analytics="review_cta beauty_review_cta">${escapeHtml(target.toolName)}</a> is a better fit when ${escapeHtml(reason)}.</li>`;
                   })
                   .join('')}
               </ul>
@@ -1599,10 +1676,16 @@ function renderBeautyReviewPage(review) {
         <section class="section">
           <div class="container split-panel">
             <article class="banner">
-              <div class="trust-chip">Disclosure</div>
-              <p>This review is framed around buyer fit, workflow reality, and alternatives. See the <a href="/affiliate-disclosure/">affiliate disclosure</a> for how referral relationships are handled.</p>
+              <div class="trust-chip">Ready to choose?</div>
+              <h2>Use the beauty shortlist if you still need a fit check before you buy.</h2>
+              <p>The shortlist helps separate booking-system problems from lighter add-on decisions like content, review response, or automation glue.</p>
+              <div class="cta-row">
+                <a class="btn primary" href="${review.officialUrl}" target="_blank" rel="noopener noreferrer" data-analytics="review_cta beauty_review_cta outbound_tool_click">Visit official site</a>
+                <a class="btn secondary" href="/beauty/shortlist/">Run the beauty shortlist</a>
+                <a class="btn secondary" href="${routeForBeautyStarterPack()}">Get the beauty starter pack</a>
+              </div>
             </article>
-            ${renderTrustPanel()}
+            ${renderMonetizationCard(review.disclosureNote)}
           </div>
         </section>
 
@@ -1650,11 +1733,54 @@ function renderBeautyComparisonPage(comparison) {
                 <h1 class="page-title">${escapeHtml(comparison.shortTitle)}</h1>
                 <p>${escapeHtml(comparison.scenario)}</p>
                 <p>${escapeHtml(comparison.summary)}</p>
+                <div class="cta-row" style="margin-top:16px">
+                  <a class="btn primary" href="${routeForBeautyReview(comparison.leftTool)}" data-analytics="review_cta beauty_review_cta">Read ${escapeHtml(left.toolName)}</a>
+                  <a class="btn secondary" href="${routeForBeautyReview(comparison.rightTool)}" data-analytics="review_cta beauty_review_cta">Read ${escapeHtml(right.toolName)}</a>
+                  <a class="btn secondary" href="/beauty/shortlist/">Run the beauty shortlist</a>
+                </div>
               </div>
               ${renderTrustPanel()}
             </div>
           </div>
         </section>
+
+        ${renderInfoCardSection([
+          comparison.reviewBasis || comparison.pricingCheckDate
+            ? {
+                kicker: 'Editorial snapshot',
+                bullets: [
+                  comparison.reviewBasis ? `Review basis: ${comparison.reviewBasis}` : '',
+                  comparison.pricingCheckDate ? `Pricing check date: ${comparison.pricingCheckDate}` : ''
+                ].filter(Boolean)
+              }
+            : null,
+          comparison.bestFitBusinessSize
+            ? {
+                kicker: 'Best-fit business size',
+                text: comparison.bestFitBusinessSize
+              }
+            : null,
+          comparison.switchingDifficulty
+            ? {
+                kicker: 'Switching difficulty',
+                text: comparison.switchingDifficulty
+              }
+            : null,
+          comparison.integrationsStackFit
+            ? {
+                kicker: 'Integrations and stack fit',
+                bullets: Array.isArray(comparison.integrationsStackFit)
+                  ? comparison.integrationsStackFit
+                  : [comparison.integrationsStackFit]
+              }
+            : null,
+          comparison.firstWorkflow
+            ? {
+                kicker: 'First workflow to try',
+                text: comparison.firstWorkflow
+              }
+            : null
+        ])}
 
         <section class="section">
           <div class="container split-panel">
@@ -1714,6 +1840,22 @@ function renderBeautyComparisonPage(comparison) {
           <div class="container split-panel">
             ${renderBeautyReviewCard(left)}
             ${renderBeautyReviewCard(right)}
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container split-panel">
+            <article class="banner">
+              <div class="trust-chip">Still comparing?</div>
+              <h2>Read both reviews, then use the shortlist if the fit still feels muddy.</h2>
+              <p>That usually clarifies whether the business needs the broader operating system, the lighter setup, or a smaller add-on instead.</p>
+              <div class="cta-row">
+                <a class="btn primary" href="${routeForBeautyReview(comparison.leftTool)}" data-analytics="review_cta beauty_review_cta">Read ${escapeHtml(left.toolName)}</a>
+                <a class="btn secondary" href="${routeForBeautyReview(comparison.rightTool)}" data-analytics="review_cta beauty_review_cta">Read ${escapeHtml(right.toolName)}</a>
+                <a class="btn secondary" href="/beauty/shortlist/">Run the beauty shortlist</a>
+              </div>
+            </article>
+            ${renderMonetizationCard(comparison.disclosureNote)}
           </div>
         </section>
 
@@ -2102,6 +2244,16 @@ function renderScorecard(review) {
         <span>Pricing posture</span>
         <div class="scorecard-label"><strong>${escapeHtml(review.pricingPosture)}</strong></div>
       </div>
+      ${review.reviewBasis ? `
+      <div class="scorecard-row">
+        <span>Review basis</span>
+        <div class="scorecard-label"><strong>${escapeHtml(review.reviewBasis)}</strong></div>
+      </div>` : ''}
+      ${review.pricingCheckDate ? `
+      <div class="scorecard-row">
+        <span>Pricing checked</span>
+        <div class="scorecard-label"><strong>${escapeHtml(review.pricingCheckDate)}</strong></div>
+      </div>` : ''}
       <div class="scorecard-row">
         <span>Last reviewed</span>
         <div class="scorecard-label"><strong>${escapeHtml(review.lastReviewed)}</strong></div>
@@ -2136,6 +2288,7 @@ function renderReviewPage(review) {
                 ${renderPills(review.teamSizeFit)}
                 <div class="cta-row" style="margin-top:16px">
                   <a class="btn primary" href="${review.officialUrl}" target="_blank" rel="noopener noreferrer" data-analytics="review_cta outbound_tool_click">Visit official site</a>
+                  ${review.compareLinks[0] ? `<a class="btn secondary" href="${routeForComparison(review.compareLinks[0])}" data-analytics="compare_cta">Read the closest comparison</a>` : ''}
                   <a class="btn secondary" href="/shortlist/">Run the shortlist</a>
                 </div>
               </div>
@@ -2144,6 +2297,44 @@ function renderReviewPage(review) {
           </div>
         </section>
 
+        ${renderInfoCardSection([
+          review.reviewBasis || review.pricingCheckDate
+            ? {
+                kicker: 'Editorial snapshot',
+                bullets: [
+                  review.reviewBasis ? `Review basis: ${review.reviewBasis}` : '',
+                  review.pricingCheckDate ? `Pricing check date: ${review.pricingCheckDate}` : ''
+                ].filter(Boolean)
+              }
+            : null,
+          review.bestFitBusinessSize
+            ? {
+                kicker: 'Best-fit business size',
+                text: review.bestFitBusinessSize
+              }
+            : null,
+          review.switchingDifficulty
+            ? {
+                kicker: 'Switching difficulty',
+                text: review.switchingDifficulty
+              }
+            : null,
+          review.integrationsStackFit
+            ? {
+                kicker: 'Integrations and stack fit',
+                bullets: Array.isArray(review.integrationsStackFit)
+                  ? review.integrationsStackFit
+                  : [review.integrationsStackFit]
+              }
+            : null,
+          review.firstWorkflow
+            ? {
+                kicker: 'First workflow to try',
+                text: review.firstWorkflow
+              }
+            : null
+        ])}
+
         <section class="section">
           <div class="container split-panel">
             <article class="card">
@@ -2151,8 +2342,8 @@ function renderReviewPage(review) {
               ${renderBulletList(review.strengths)}
             </article>
             <article class="card">
-              <div class="card-kicker">Watch-outs</div>
-              ${renderBulletList(review.watchOuts)}
+              <div class="card-kicker">Do not buy this if...</div>
+              ${renderBulletList([review.doNotBuyIf || review.badFit, ...review.watchOuts])}
             </article>
           </div>
         </section>
@@ -2184,7 +2375,7 @@ function renderReviewPage(review) {
                   .map((alternative) => {
                     const target = reviewBySlug.get(alternative.slug);
                     const reason = alternative.reason.replace(/^better fit when\s+/i, '');
-                    return `<li><a href="${routeForReview(alternative.slug)}">${escapeHtml(target.toolName)}</a> is a better fit when ${escapeHtml(reason)}.</li>`;
+                    return `<li><a href="${routeForReview(alternative.slug)}" data-analytics="review_cta">${escapeHtml(target.toolName)}</a> is a better fit when ${escapeHtml(reason)}.</li>`;
                   })
                   .join('')}
               </ul>
@@ -2195,7 +2386,7 @@ function renderReviewPage(review) {
                 ${review.compareLinks
                   .map((slug) => {
                     const comparison = comparisonBySlug.get(slug);
-                    return `<li><a href="${routeForComparison(slug)}">${escapeHtml(comparison.shortTitle)}</a></li>`;
+                    return `<li><a href="${routeForComparison(slug)}" data-analytics="compare_cta">${escapeHtml(comparison.shortTitle)}</a></li>`;
                   })
                   .join('')}
               </ul>
@@ -2206,10 +2397,16 @@ function renderReviewPage(review) {
         <section class="section">
           <div class="container split-panel">
             <article class="banner">
-              <div class="trust-chip">Disclosure</div>
-              <p>This review is framed around buyer fit, tradeoffs, and alternatives. See the <a href="/affiliate-disclosure/">affiliate disclosure</a> for how referral relationships are handled.</p>
+              <div class="trust-chip">Ready to choose?</div>
+              <h2>Use the shortlist if you still need fit help before you buy.</h2>
+              <p>The shortlist helps separate full operating-system needs from narrower fixes like reviews, calls, or office automation.</p>
+              <div class="cta-row">
+                <a class="btn primary" href="${review.officialUrl}" target="_blank" rel="noopener noreferrer" data-analytics="review_cta outbound_tool_click">Visit official site</a>
+                <a class="btn secondary" href="/shortlist/">Run the shortlist</a>
+                ${review.compareLinks[0] ? `<a class="btn secondary" href="${routeForComparison(review.compareLinks[0])}" data-analytics="compare_cta">Read the closest comparison</a>` : ''}
+              </div>
             </article>
-            ${renderTrustPanel()}
+            ${renderMonetizationCard(review.disclosureNote)}
           </div>
         </section>
 
@@ -2254,11 +2451,54 @@ function renderComparisonPage(comparison) {
                 <h1 class="page-title">${escapeHtml(comparison.shortTitle)}</h1>
                 <p>${escapeHtml(comparison.scenario)}</p>
                 <p>${escapeHtml(comparison.summary)}</p>
+                <div class="cta-row" style="margin-top:16px">
+                  <a class="btn primary" href="${routeForReview(comparison.leftTool)}" data-analytics="review_cta">Read ${escapeHtml(left.toolName)}</a>
+                  <a class="btn secondary" href="${routeForReview(comparison.rightTool)}" data-analytics="review_cta">Read ${escapeHtml(right.toolName)}</a>
+                  <a class="btn secondary" href="/shortlist/">Run the shortlist</a>
+                </div>
               </div>
               ${renderTrustPanel()}
             </div>
           </div>
         </section>
+
+        ${renderInfoCardSection([
+          comparison.reviewBasis || comparison.pricingCheckDate
+            ? {
+                kicker: 'Editorial snapshot',
+                bullets: [
+                  comparison.reviewBasis ? `Review basis: ${comparison.reviewBasis}` : '',
+                  comparison.pricingCheckDate ? `Pricing check date: ${comparison.pricingCheckDate}` : ''
+                ].filter(Boolean)
+              }
+            : null,
+          comparison.bestFitBusinessSize
+            ? {
+                kicker: 'Best-fit business size',
+                text: comparison.bestFitBusinessSize
+              }
+            : null,
+          comparison.switchingDifficulty
+            ? {
+                kicker: 'Switching difficulty',
+                text: comparison.switchingDifficulty
+              }
+            : null,
+          comparison.integrationsStackFit
+            ? {
+                kicker: 'Integrations and stack fit',
+                bullets: Array.isArray(comparison.integrationsStackFit)
+                  ? comparison.integrationsStackFit
+                  : [comparison.integrationsStackFit]
+              }
+            : null,
+          comparison.firstWorkflow
+            ? {
+                kicker: 'First workflow to try',
+                text: comparison.firstWorkflow
+              }
+            : null
+        ])}
 
         <section class="section">
           <div class="container split-panel">
@@ -2302,11 +2542,15 @@ function renderComparisonPage(comparison) {
         <section class="section">
           <div class="container split-panel">
             <article class="card">
-              <div class="card-kicker">Do neither if...</div>
-              ${renderBulletList(comparison.doNeither)}
+              <div class="card-kicker">Do not buy either if...</div>
+              ${renderBulletList(
+                comparison.doNotBuyIf
+                  ? [comparison.doNotBuyIf, ...comparison.doNeither]
+                  : comparison.doNeither
+              )}
             </article>
             <article class="card">
-              <div class="card-kicker">Start here if you are not ready</div>
+              <div class="card-kicker">First workflow to try</div>
               ${renderBulletList(comparison.startHere)}
             </article>
           </div>
@@ -2329,6 +2573,22 @@ function renderComparisonPage(comparison) {
           <div class="container split-panel">
             ${renderReviewCard(left)}
             ${renderReviewCard(right)}
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container split-panel">
+            <article class="banner">
+              <div class="trust-chip">Still comparing?</div>
+              <h2>Read both reviews, then run the shortlist if the operating-system choice is still unclear.</h2>
+              <p>That usually makes it obvious whether the team needs the simpler rollout, the deeper platform, or a narrower fix first.</p>
+              <div class="cta-row">
+                <a class="btn primary" href="${routeForReview(comparison.leftTool)}" data-analytics="review_cta">Read ${escapeHtml(left.toolName)}</a>
+                <a class="btn secondary" href="${routeForReview(comparison.rightTool)}" data-analytics="review_cta">Read ${escapeHtml(right.toolName)}</a>
+                <a class="btn secondary" href="/shortlist/">Run the shortlist</a>
+              </div>
+            </article>
+            ${renderMonetizationCard(comparison.disclosureNote)}
           </div>
         </section>
 

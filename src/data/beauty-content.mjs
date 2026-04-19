@@ -1,4 +1,5 @@
 import { BUILD_DATE } from './site-content.mjs';
+const STABILIZATION_REVIEW_DATE = 'April 19, 2026';
 
 export const beautyVertical = {
   title: 'Beauty & Wellness',
@@ -404,6 +405,16 @@ export const beautyReviews = [
     ],
     compareLinks: ['vagaro-vs-glossgenius', 'boulevard-vs-vagaro', 'all-in-one-salon-software-vs-separate-ai-tools'],
     officialUrl: 'https://www.vagaro.com/',
+    reviewBasis: 'Researched',
+    pricingCheckDate: STABILIZATION_REVIEW_DATE,
+    bestFitBusinessSize:
+      'Usually strongest once the business has enough appointments, service variety, or front-desk load to justify a broader operating system.',
+    integrationsStackFit: [
+      'Fits best when booking, reminders, deposits, memberships, and client follow-up need to live in one beauty operating system.',
+      'Less attractive if you already have a stable booking core and only need a lighter content, review, or automation layer.'
+    ],
+    switchingDifficulty:
+      'Moderate. Straightforward from manual booking, but heavier when the team is moving staff schedules, memberships, and client history from another platform.',
     faqs: [
       {
         question: 'Who usually benefits most from Vagaro?',
@@ -426,7 +437,7 @@ export const beautyReviews = [
       adminStrength: 3,
       depositStrength: 3
     },
-    lastReviewed: BUILD_DATE
+    lastReviewed: STABILIZATION_REVIEW_DATE
   },
   {
     slug: 'glossgenius',
@@ -470,6 +481,16 @@ export const beautyReviews = [
     ],
     compareLinks: ['vagaro-vs-glossgenius', 'square-appointments-vs-glossgenius'],
     officialUrl: 'https://glossgenius.com/',
+    reviewBasis: 'Researched',
+    pricingCheckDate: STABILIZATION_REVIEW_DATE,
+    bestFitBusinessSize:
+      'Usually strongest for solo pros, booth renters, and smaller teams that want beauty-first polish without a heavier front-desk rollout.',
+    integrationsStackFit: [
+      'Fits best when booking, payments, deposits, and client messaging need to feel cleaner without building a complex front-desk stack.',
+      'Less compelling when the business already knows it needs deeper permissions, heavier scheduling coordination, or multi-location structure.'
+    ],
+    switchingDifficulty:
+      'Low to moderate. Usually easier from manual tools or another light booking setup than from a broader salon platform with layered staff workflows.',
     faqs: [
       {
         question: 'Who should start with GlossGenius?',
@@ -492,7 +513,7 @@ export const beautyReviews = [
       adminStrength: 2,
       depositStrength: 3
     },
-    lastReviewed: BUILD_DATE
+    lastReviewed: STABILIZATION_REVIEW_DATE
   },
   {
     slug: 'square-appointments',
@@ -536,6 +557,16 @@ export const beautyReviews = [
     ],
     compareLinks: ['square-appointments-vs-glossgenius'],
     officialUrl: 'https://squareup.com/us/en/appointments',
+    reviewBasis: 'Researched',
+    pricingCheckDate: STABILIZATION_REVIEW_DATE,
+    bestFitBusinessSize:
+      'Usually strongest for solo pros, booth renters, and smaller studios that already like Square or want a leaner booking-and-payments setup.',
+    integrationsStackFit: [
+      'Fits best when the business already uses Square for payments, retail, or checkout and wants appointments to plug into that ecosystem.',
+      'Less attractive when premium booking feel or a heavier front-desk operating system matters more than cost control and familiarity.'
+    ],
+    switchingDifficulty:
+      'Low. Usually one of the easier switches for teams already using Square, with more work only when existing reminders, packages, or staff rules are messy.',
     faqs: [
       {
         question: 'When does Square Appointments make the most sense?',
@@ -558,7 +589,7 @@ export const beautyReviews = [
       adminStrength: 2,
       depositStrength: 2
     },
-    lastReviewed: BUILD_DATE
+    lastReviewed: STABILIZATION_REVIEW_DATE
   },
   {
     slug: 'boulevard',
@@ -602,6 +633,16 @@ export const beautyReviews = [
     ],
     compareLinks: ['boulevard-vs-vagaro', 'all-in-one-salon-software-vs-separate-ai-tools'],
     officialUrl: 'https://www.joinblvd.com/',
+    reviewBasis: 'Researched',
+    pricingCheckDate: STABILIZATION_REVIEW_DATE,
+    bestFitBusinessSize:
+      'Usually strongest for growing salons, spas, and medspas with a real front desk, premium service expectations, and enough volume to justify the extra software weight.',
+    integrationsStackFit: [
+      'Fits best when premium booking, client communication, deposits, and front-desk coordination all need to tighten together.',
+      'Less attractive if the business is still deciding whether it needs a full operating system at all.'
+    ],
+    switchingDifficulty:
+      'Moderate to high. The client experience lift is real, but the switch is heavier when schedules, staff rules, notes, and packages already live somewhere else.',
     faqs: [
       {
         question: 'Who should look seriously at Boulevard?',
@@ -624,7 +665,7 @@ export const beautyReviews = [
       adminStrength: 3,
       depositStrength: 3
     },
-    lastReviewed: BUILD_DATE
+    lastReviewed: STABILIZATION_REVIEW_DATE
   },
   {
     slug: 'fresha',
@@ -1068,7 +1109,21 @@ export const beautyComparisons = [
           'Choosing the broader platform because it sounds more complete when the team really wanted the one they would actually use consistently.'
       }
     ],
-    lastReviewed: BUILD_DATE
+    reviewBasis: 'Researched',
+    pricingCheckDate: STABILIZATION_REVIEW_DATE,
+    bestFitBusinessSize:
+      'GlossGenius usually fits solo pros and smaller teams best. Vagaro stretches better once the business has a front desk, a larger service mix, or more operational weight.',
+    integrationsStackFit: [
+      'Use this comparison when the business is choosing its core booking, deposits, payments, and client-management system.',
+      'Skip it if the booking system is already stable and the real gap is content, review response, or a lighter automation layer.'
+    ],
+    switchingDifficulty:
+      'Low to moderate from manual booking. More disruptive if the team is migrating recurring clients, deposits, memberships, and staff schedules from another platform.',
+    firstWorkflow:
+      'Map booking rules, deposits, reminders, checkout, and rebooking handoff before deciding whether you need broader depth or a lighter setup.',
+    disclosureNote:
+      'Some review and comparison pages may earn referral revenue now or later if you click through or buy from linked vendors. The recommendation here still centers on switching cost, team fit, and operational reality.',
+    lastReviewed: STABILIZATION_REVIEW_DATE
   },
   {
     slug: 'square-appointments-vs-glossgenius',

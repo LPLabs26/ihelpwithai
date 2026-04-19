@@ -1,4 +1,5 @@
 export const BUILD_DATE = 'April 18, 2026';
+const STABILIZATION_REVIEW_DATE = 'April 19, 2026';
 
 export const site = {
   title: 'ihelpwithai.com',
@@ -452,7 +453,21 @@ export const reviews = [
       'all-in-one-field-service-software-vs-separate-ai-tools'
     ],
     officialUrl: 'https://www.jobber.com/',
-    lastReviewed: BUILD_DATE,
+    reviewBasis: 'Researched',
+    pricingCheckDate: STABILIZATION_REVIEW_DATE,
+    bestFitBusinessSize:
+      'Usually strongest for owner-led to mid-sized teams that want one office-and-field operating system before layering specialty add-ons.',
+    integrationsStackFit: [
+      'Fits best when quoting, jobs, invoices, and payments need to live in one core system first.',
+      'Often paired later with review software, call tracking, or automation once the base workflow is stable.'
+    ],
+    switchingDifficulty:
+      'Moderate from spreadsheets or disconnected tools. Heavier if you are migrating active jobs, pricebooks, and payment habits from another FSM.',
+    firstWorkflow:
+      'Build the estimate-to-approved-job-to-invoice flow first, then turn on reminders and payment collection.',
+    doNotBuyIf:
+      'Do not buy this if the team only wants a prettier invoice tool while leaving dispatch, follow-up, and office ownership unresolved.',
+    lastReviewed: STABILIZATION_REVIEW_DATE,
     faqs: [
       {
         question: 'Is Jobber enough on its own for a small shop?',
@@ -516,7 +531,21 @@ export const reviews = [
       'all-in-one-field-service-software-vs-separate-ai-tools'
     ],
     officialUrl: 'https://www.housecallpro.com/',
-    lastReviewed: BUILD_DATE,
+    reviewBasis: 'Researched',
+    pricingCheckDate: STABILIZATION_REVIEW_DATE,
+    bestFitBusinessSize:
+      'Usually strongest for growing residential service teams with an office plus multiple techs that can support a fuller rollout.',
+    integrationsStackFit: [
+      'Fits best when dispatch, invoicing, online booking, payments, and customer communication all need to move into one contractor system.',
+      'Often sits well with review or call-intake tools later, but is less compelling if the business only needs one narrow fix.'
+    ],
+    switchingDifficulty:
+      'Moderate. Easier from spreadsheets or basic admin tools, but heavier when you are migrating active jobs, recurring workflows, and payment habits from another contractor platform.',
+    firstWorkflow:
+      'Standardize scheduling, dispatch ownership, reminders, and payment collection before exploring the deeper add-ons.',
+    doNotBuyIf:
+      'Do not buy this if the real problem is only one leak like missed calls or reviews and the team has no appetite for a broader rollout.',
+    lastReviewed: STABILIZATION_REVIEW_DATE,
     faqs: [
       {
         question: 'When does Housecall Pro make more sense than a point solution?',
@@ -577,7 +606,21 @@ export const reviews = [
     ],
     compareLinks: ['all-in-one-field-service-software-vs-separate-ai-tools'],
     officialUrl: 'https://www.servicetitan.com/',
-    lastReviewed: BUILD_DATE,
+    reviewBasis: 'Researched',
+    pricingCheckDate: STABILIZATION_REVIEW_DATE,
+    bestFitBusinessSize:
+      'Usually best once the business has enough volume, management layers, and reporting pressure to justify a heavier implementation.',
+    integrationsStackFit: [
+      'Best when dispatch control, reporting, sales workflow visibility, and office permissions all need to live inside one deeper operating system.',
+      'Hard to justify if the shop still needs clean basics more than enterprise control.'
+    ],
+    switchingDifficulty:
+      'High. Migrating from spreadsheets is not the hard part; migrating live jobs, pricebooks, and reporting expectations from another platform is.',
+    firstWorkflow:
+      'Map dispatch ownership, pricebook rules, permissions, and reporting targets before you try to roll out every module.',
+    doNotBuyIf:
+      'Do not buy this if the shop mostly needs faster adoption and cleaner basics rather than enterprise depth.',
+    lastReviewed: STABILIZATION_REVIEW_DATE,
     faqs: [
       {
         question: 'Who should seriously look at ServiceTitan?',
@@ -699,7 +742,21 @@ export const reviews = [
     ],
     compareLinks: ['all-in-one-field-service-software-vs-separate-ai-tools'],
     officialUrl: 'https://www.callrail.com/',
-    lastReviewed: BUILD_DATE,
+    reviewBasis: 'Researched',
+    pricingCheckDate: STABILIZATION_REVIEW_DATE,
+    bestFitBusinessSize:
+      'Usually strongest for call-heavy teams with real inbound volume, real marketing spend, and someone who will act on attribution data.',
+    integrationsStackFit: [
+      'Best as a layer beside an existing FSM, CRM, or phone workflow when inbound calls still drive booked work.',
+      'Less compelling if the business mainly needs dispatch, invoicing, or a shared texting system first.'
+    ],
+    switchingDifficulty:
+      'Low to moderate if you already know where calls should route. Harder when multiple numbers, agencies, or office owners are involved.',
+    firstWorkflow:
+      'Start with source tracking, answer rules, and missed-call follow-up so the office can see whether leads are actually being handled well.',
+    doNotBuyIf:
+      'Do not buy this if the business needs a full operating system more than call visibility or if nobody will review the call data.',
+    lastReviewed: STABILIZATION_REVIEW_DATE,
     faqs: [
       {
         question: 'Is CallRail a full contractor operating system?',
@@ -943,7 +1000,21 @@ export const comparisons = [
           'Jobber often wins when simplicity and faster adoption matter most. Housecall Pro starts to look stronger when the business wants broader workflow depth and can support a slightly heavier rollout.'
       }
     ],
-    lastReviewed: BUILD_DATE
+    reviewBasis: 'Researched',
+    pricingCheckDate: STABILIZATION_REVIEW_DATE,
+    bestFitBusinessSize:
+      'Jobber usually fits owner-led to mid-sized teams best. Housecall Pro stretches better into growth-stage home-service teams with more office, dispatch, and customer-communication load.',
+    integrationsStackFit: [
+      'Use this comparison when the business is replacing patchwork quoting, scheduling, invoicing, and payments with one core platform.',
+      'Skip it if the FSM is already stable and the real gap is only reviews, phones, or office writing.'
+    ],
+    switchingDifficulty:
+      'Moderate from spreadsheets or lighter tools. Heavier if active jobs, customer records, and pricebooks are already living inside another field-service platform.',
+    firstWorkflow:
+      'Map estimate, scheduling, reminders, invoices, and payment collection end to end before you judge either platform on extras.',
+    doNotBuyIf:
+      'Do not buy either if the business only needs one narrow fix like missed-call coverage, reviews, or office drafting support.',
+    lastReviewed: STABILIZATION_REVIEW_DATE
   },
   {
     slug: 'all-in-one-field-service-software-vs-separate-ai-tools',

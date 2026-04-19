@@ -1,13 +1,13 @@
 # Live Site QA Report
 
 - Site: https://ihelpwithai.com
-- Generated: 2026-04-18T18:25:33.397Z
-- Sections: 5
+- Generated: 2026-04-19T16:55:09.894Z
+- Sections: 6
 - Failures: 0
 
 ## Critical Pages
 
-- Passed: 147
+- Passed: 294
 - Failed: 0
 
 - No failures in this section.
@@ -21,7 +21,14 @@
 
 ## Sitemap And Robots
 
-- Passed: 18
+- Passed: 19
+- Failed: 0
+
+- No failures in this section.
+
+## Analytics Instrumentation
+
+- Passed: 19
 - Failed: 0
 
 - No failures in this section.

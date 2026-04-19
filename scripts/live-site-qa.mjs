@@ -61,27 +61,37 @@ const coreLaunchPaths = [
   '/shortlist/',
   '/trades/',
   '/beauty/',
-  '/beauty/problems/',
   '/beauty/shortlist/',
-  '/problems/',
-  '/reviews/',
-  '/compare/',
-  '/templates/',
-  '/learn/',
-  '/beauty/reviews/',
-  '/beauty/compare/',
-  '/beauty/templates/',
+  '/starter-pack/',
   '/beauty/starter-pack/',
   '/reviews/jobber/',
-  '/compare/jobber-vs-housecall-pro/',
+  '/reviews/housecall-pro/',
+  '/reviews/servicetitan/',
+  '/beauty/reviews/vagaro/',
   '/beauty/reviews/glossgenius/',
+  '/beauty/reviews/boulevard/',
+  '/compare/jobber-vs-housecall-pro/',
   '/beauty/compare/vagaro-vs-glossgenius/',
-  '/starter-pack/',
-  '/contact/',
   '/privacy/',
-  '/terms/',
-  '/affiliate-disclosure/',
-  '/methodology/'
+  '/terms/'
+];
+
+const analyticsEvents = [
+  'ihai_page_view',
+  'ihai_home_cta_click',
+  'ihai_shortlist_started',
+  'ihai_shortlist_completed',
+  'ihai_beauty_shortlist_started',
+  'ihai_beauty_shortlist_completed',
+  'ihai_starter_pack_form_started',
+  'ihai_starter_pack_form_submitted',
+  'ihai_beauty_starter_pack_form_started',
+  'ihai_beauty_starter_pack_form_submitted',
+  'ihai_review_cta_clicked',
+  'ihai_beauty_review_cta_clicked',
+  'ihai_compare_cta_clicked',
+  'ihai_beauty_compare_cta_clicked',
+  'ihai_outbound_tool_click'
 ];
 
 const crawlSeeds = [
@@ -442,6 +452,37 @@ async function runInternalCrawl(entry) {
   });
 }
 
+async function runAnalyticsChecks(entry) {
+  const siteScript = await fetchUrl('/assets/site.js', { skipText: true });
+  const siteData = await fetchUrl('/assets/site-data.js', { skipText: true });
+
+  record(entry, siteScript.status === 200, '/assets/site.js returns HTTP 200', {
+    status: siteScript.status
+  });
+  record(entry, siteData.status === 200, '/assets/site-data.js returns HTTP 200', {
+    status: siteData.status
+  });
+
+  for (const eventName of analyticsEvents) {
+    record(
+      entry,
+      siteScript.text.includes(eventName),
+      `${eventName} is present in the live analytics script`
+    );
+  }
+
+  record(
+    entry,
+    !siteData.text.includes('phc_REPLACE_ME'),
+    'Live site data does not use the PostHog placeholder token'
+  );
+  record(
+    entry,
+    /posthogHost/i.test(siteData.text),
+    'Live site data includes a PostHog host configuration'
+  );
+}
+
 function buildMarkdownReport() {
   const lines = [
     '# Live Site QA Report',
@@ -513,6 +554,7 @@ async function main() {
   await runCriticalPages(section('Critical Pages'));
   await runIndexingChecks(section('Indexing Rules'));
   await runSitemapAndRobotsChecks(section('Sitemap And Robots'));
+  await runAnalyticsChecks(section('Analytics Instrumentation'));
   await runLegacyChecks(section('Legacy Compatibility'));
   await runInternalCrawl(section('Internal Link Crawl'));
   await writeReports();
