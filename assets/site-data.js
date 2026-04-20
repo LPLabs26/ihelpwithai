@@ -4,6 +4,7 @@ window.IHWAI_SITE_DATA = {
     "posthogHost": "https://us.i.posthog.com"
   },
   "ownedDataEndpoint": "",
+  "ownedDataAllowedHosts": [],
   "shortlists": {
     "field": {
       "stepIds": [

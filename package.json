@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "build": "node scripts/build-site.mjs",
-    "qa:live": "node scripts/live-site-qa.mjs"
+    "qa:live": "node scripts/live-site-qa.mjs",
+    "test:owned-intake": "node scripts/validate-owned-intake.mjs"
   }
 }

@@ -15,6 +15,7 @@ The long-term goal is a cleaner ownership split between analytics, operational d
 
 - GitHub Pages continues to serve the static marketing site.
 - Supabase becomes the owned source of truth for leads, form submissions, shortlist sessions, and tool-intent events.
+- A secure Edge Function or another server-side intake endpoint sits between the browser and Supabase.
 - PostHog remains the behavior analytics layer for page views, funnel steps, and outbound intent.
 - Email delivery and a future CRM or lifecycle tool handle follow-up sequences and notifications.
 
@@ -40,6 +41,6 @@ The long-term goal is a cleaner ownership split between analytics, operational d
 
 3. Add a Supabase Edge Function or another secure serverless intake endpoint.
 
-4. Test owned intake while keeping FormSubmit live.
+4. Test owned intake while keeping FormSubmit live in parallel.
 
 5. Decide whether to keep FormSubmit as an email backup or replace it after the owned flow is proven stable.

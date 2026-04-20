@@ -1,6 +1,32 @@
 (function () {
-  const data = Object.assign({ ownedDataEndpoint: '' }, window.IHWAI_SITE_DATA || {});
-  const endpoint = String(data.ownedDataEndpoint || '').trim();
+  const data = Object.assign({ ownedDataEndpoint: '', ownedDataAllowedHosts: [] }, window.IHWAI_SITE_DATA || {});
+
+  function normalizeAllowedHosts(value) {
+    if (!Array.isArray(value)) return [];
+    return value
+      .map(function (entry) {
+        return String(entry || '').trim().toLowerCase();
+      })
+      .filter(Boolean);
+  }
+
+  function resolveOwnedEndpoint(value, allowedHosts) {
+    const raw = String(value || '').trim();
+    if (!raw) return '';
+
+    try {
+      const url = new URL(raw);
+      if (url.protocol !== 'https:') return '';
+      if (url.username || url.password || url.hash) return '';
+      if (!allowedHosts.includes(url.hostname.toLowerCase())) return '';
+      return url.toString();
+    } catch (error) {
+      return '';
+    }
+  }
+
+  const allowedHosts = normalizeAllowedHosts(data.ownedDataAllowedHosts);
+  const endpoint = resolveOwnedEndpoint(data.ownedDataEndpoint, allowedHosts);
   const enabled = Boolean(endpoint);
 
   function qsa(selector, root) {
@@ -17,6 +43,14 @@
     const field = form.elements.namedItem(name);
     if (!field || typeof field.value === 'undefined') return '';
     return String(field.value || '').trim();
+  }
+
+  function safeStorageGet(key) {
+    try {
+      return window.localStorage.getItem(key) || '';
+    } catch (error) {
+      return '';
+    }
   }
 
   function syncFormMetadata(form) {
@@ -94,7 +128,8 @@
       Object.assign(
         {
           type: 'shortlist_session',
-          page_path: window.location.pathname
+          page_path: window.location.pathname,
+          anonymous_id: safeStorageGet('ihai_anon_id')
         },
         payload
       )

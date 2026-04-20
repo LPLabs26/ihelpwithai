@@ -14,6 +14,10 @@ It does not switch the live site away from FormSubmit yet.
 
 3. Run `docs/supabase-schema.sql` in the Supabase SQL editor.
 
+4. Deploy the Edge Function from `supabase/functions/owned-intake/`.
+
+5. Keep FormSubmit live while the owned endpoint is tested end to end.
+
 ## Recommended safer intake path
 
 1. The website form posts to a Supabase Edge Function.
@@ -34,12 +38,81 @@ This keeps service-role credentials off the frontend and gives the team one plac
 - A public anon key should only be exposed if Row Level Security and insert policies are configured correctly for the exact writes allowed.
 - Keep FormSubmit live until Supabase intake is tested end to end.
 
+## Edge Function deployment
+
+Typical deployment flow:
+
+1. Install and log into the Supabase CLI.
+
+2. Link the local repo to the Supabase project.
+
+3. Set the required function secrets or confirm they exist in the project environment.
+
+4. Deploy the function:
+
+   ```bash
+   supabase functions deploy owned-intake
+   ```
+
+The function path in this repo is `supabase/functions/owned-intake/index.ts`.
+
+## Required secrets and config
+
+Required in the function environment:
+
+- `SUPABASE_URL`
+- `SUPABASE_SERVICE_ROLE_KEY`
+
+Recommended function config values:
+
+- `OWNED_INTAKE_ALLOWED_ORIGINS=https://ihelpwithai.com,https://www.ihelpwithai.com`
+- `OWNED_INTAKE_DEV_ORIGIN=http://127.0.0.1:4173`
+
+Only set a dev origin when local testing is actually needed.
+
+## Allowed origins
+
+The function is designed to allow:
+
+- `https://ihelpwithai.com`
+- `https://www.ihelpwithai.com`
+- one optional local dev origin when explicitly configured
+
+The frontend helper also requires an approved HTTPS endpoint host before it will send any owned payloads.
+
+## Test checklist
+
+- Send an `OPTIONS` request from an allowed origin and confirm CORS headers are returned.
+- Send a valid `form_submission` payload and confirm rows land in `leads` and `form_submissions`.
+- Send a valid `shortlist_session` payload and confirm rows land in `shortlist_sessions`.
+- Confirm malformed JSON returns `400`.
+- Confirm unsupported payload types return `400`.
+- Confirm disallowed origins return `403`.
+- Confirm oversized payloads are rejected.
+- Confirm the live FormSubmit email flow still works while owned intake is enabled.
+
+## Enabling ownedDataEndpoint after deploy
+
+Do not enable the frontend endpoint until the function has been deployed and tested.
+
+When the function is ready:
+
+1. Set `site.ownedDataEndpoint` to the deployed HTTPS function URL.
+
+2. Set `site.ownedDataAllowedHosts` to the function hostname, for example:
+
+   - `["your-project-ref.functions.supabase.co"]`
+
+3. Rebuild and deploy the static site.
+
+4. Re-test owned intake and confirm FormSubmit still works in parallel.
+
 ## Manual steps still required by the site owner
 
 - Create the Supabase project.
 - Choose the region.
 - Run the schema from `docs/supabase-schema.sql`.
-- Create the Edge Function.
-- Set the function secrets.
-- Test starter-pack and contact submissions.
+- Deploy the `owned-intake` Edge Function.
+- Set the function secrets/config.
+- Test starter-pack, contact, vendor, and shortlist submissions.
 - Decide whether FormSubmit remains a backup path or is replaced later.

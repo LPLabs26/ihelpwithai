@@ -10,6 +10,7 @@ export const site = {
   socialImage: '/assets/og-default.png',
   googleSiteVerification: '',
   ownedDataEndpoint: '',
+  ownedDataAllowedHosts: [],
   analytics: {
     posthogToken: 'phc_oBCQc5RDzTRAMXA2HSGqfGP4BbkYEg5HnrawXk5AV6PH',
     posthogHost: 'https://us.i.posthog.com'

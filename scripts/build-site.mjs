@@ -34,7 +34,7 @@ const publicAssetsDir = path.join(publicDir, 'assets');
 const rootAssetsDir = path.join(rootDir, 'assets');
 
 const SITE_URL = 'https://ihelpwithai.com';
-const ASSET_VERSION = '20260419a';
+const ASSET_VERSION = '20260420a';
 const FORM_ACTION = `https://formsubmit.co/${site.contactEmail}`;
 const ROUTE_SUFFIX = '/';
 const SITEMAP_EXCLUDED_ROUTES = new Set(['/thank-you/']);
@@ -3106,6 +3106,7 @@ function renderSiteDataScript() {
   return `window.IHWAI_SITE_DATA = ${JSON.stringify({
     analytics: site.analytics,
     ownedDataEndpoint: site.ownedDataEndpoint,
+    ownedDataAllowedHosts: site.ownedDataAllowedHosts,
     shortlists: {
       field: {
         stepIds: ['trade-team', 'bottleneck-stack', 'office-volume', 'budget-setup'],

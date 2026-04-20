@@ -1,0 +1,174 @@
+import { createClient } from 'npm:@supabase/supabase-js@2';
+import {
+  buildCorsHeaders,
+  normalizeOwnedPayload,
+  readJsonRequest,
+  resolveAllowedOrigin
+} from './shared.mjs';
+
+type JsonRecord = Record<string, unknown>;
+
+function jsonResponse(body: JsonRecord, status: number, headers: Record<string, string>) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+      ...headers
+    }
+  });
+}
+
+function getEnv(name: string): string {
+  return String(Deno.env.get(name) || '').trim();
+}
+
+function createAdminClient() {
+  const supabaseUrl = getEnv('SUPABASE_URL');
+  const serviceRoleKey = getEnv('SUPABASE_SERVICE_ROLE_KEY');
+
+  if (!supabaseUrl || !serviceRoleKey) {
+    throw new Error('Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY');
+  }
+
+  return createClient(supabaseUrl, serviceRoleKey, {
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false
+    }
+  });
+}
+
+function buildLeadInsert(lead: JsonRecord) {
+  return {
+    ...lead,
+    updated_at: new Date().toISOString()
+  };
+}
+
+function buildLeadUpdate(lead: JsonRecord) {
+  const entries = Object.entries(lead).filter(([, value]) => value !== '' && value !== null);
+  return Object.fromEntries([...entries, ['updated_at', new Date().toISOString()]]);
+}
+
+async function findLeadIdByEmail(client: ReturnType<typeof createAdminClient>, email: string) {
+  const { data, error } = await client.from('leads').select('id').ilike('email', email).limit(1);
+  if (error) throw error;
+  return Array.isArray(data) && data.length > 0 ? String(data[0].id) : '';
+}
+
+async function upsertLead(client: ReturnType<typeof createAdminClient>, lead: JsonRecord) {
+  const email = String(lead.email || '');
+  if (!email) return '';
+
+  const existingId = await findLeadIdByEmail(client, email);
+  if (existingId) {
+    const updatePayload = buildLeadUpdate(lead);
+    if (Object.keys(updatePayload).length > 0) {
+      const { error } = await client.from('leads').update(updatePayload).eq('id', existingId);
+      if (error) throw error;
+    }
+    return existingId;
+  }
+
+  const { data, error } = await client
+    .from('leads')
+    .insert(buildLeadInsert(lead))
+    .select('id')
+    .single();
+
+  if (error) throw error;
+  return String(data.id);
+}
+
+async function handleFormSubmission(client: ReturnType<typeof createAdminClient>, normalized: JsonRecord) {
+  const leadId = await upsertLead(client, normalized.lead as JsonRecord);
+  const submission = normalized.submission as JsonRecord;
+  const rawPayload = normalized.raw_payload as JsonRecord;
+
+  const { error } = await client.from('form_submissions').insert({
+    lead_id: leadId || null,
+    form_type: submission.form_type,
+    source_page: submission.source_page || null,
+    vertical: submission.vertical || null,
+    trade_or_business_type: submission.trade_or_business_type || null,
+    bottleneck: submission.bottleneck || null,
+    message: submission.message || null,
+    raw_payload: Object.keys(rawPayload || {}).length ? rawPayload : null
+  });
+
+  if (error) throw error;
+  return { lead_id: leadId || null, stored: 'form_submission' };
+}
+
+async function handleShortlistSession(client: ReturnType<typeof createAdminClient>, normalized: JsonRecord) {
+  const email = String(normalized.email || '');
+  const leadId = email ? await findLeadIdByEmail(client, email) : '';
+  const session = normalized.session as JsonRecord;
+
+  const { error } = await client.from('shortlist_sessions').insert({
+    lead_id: leadId || null,
+    anonymous_id: session.anonymous_id || null,
+    vertical: session.vertical,
+    answers: session.answers,
+    top_recommendation: session.top_recommendation || null,
+    second_recommendation: session.second_recommendation || null,
+    third_recommendation: session.third_recommendation || null,
+    result_clicked: session.result_clicked || null,
+    source_page: session.source_page || null
+  });
+
+  if (error) throw error;
+  return { lead_id: leadId || null, stored: 'shortlist_session' };
+}
+
+Deno.serve(async (request) => {
+  const env = {
+    OWNED_INTAKE_ALLOWED_ORIGINS: getEnv('OWNED_INTAKE_ALLOWED_ORIGINS'),
+    OWNED_INTAKE_DEV_ORIGIN: getEnv('OWNED_INTAKE_DEV_ORIGIN')
+  };
+  const requestOrigin = String(request.headers.get('origin') || '');
+  const allowedOrigin = resolveAllowedOrigin(requestOrigin, env);
+  const corsHeaders = buildCorsHeaders(allowedOrigin);
+
+  if (request.method === 'OPTIONS') {
+    if (!allowedOrigin) {
+      return jsonResponse({ error: 'Origin not allowed' }, 403, buildCorsHeaders(''));
+    }
+    return new Response(null, { status: 204, headers: corsHeaders });
+  }
+
+  if (request.method !== 'POST') {
+    return jsonResponse({ error: 'Method not allowed' }, 405, {
+      ...corsHeaders,
+      Allow: 'POST, OPTIONS'
+    });
+  }
+
+  if (!allowedOrigin) {
+    return jsonResponse({ error: 'Origin not allowed' }, 403, buildCorsHeaders(''));
+  }
+
+  const parsed = await readJsonRequest(request);
+  if (!parsed.ok) {
+    return jsonResponse({ error: parsed.error }, parsed.status, corsHeaders);
+  }
+
+  const normalized = normalizeOwnedPayload(parsed.value);
+  if (!normalized.ok) {
+    return jsonResponse({ error: normalized.error }, normalized.status, corsHeaders);
+  }
+
+  try {
+    const client = createAdminClient();
+    const payload = normalized.value as JsonRecord;
+    const result =
+      payload.type === 'form_submission'
+        ? await handleFormSubmission(client, payload)
+        : await handleShortlistSession(client, payload);
+
+    return jsonResponse({ ok: true, type: payload.type, result }, 202, corsHeaders);
+  } catch (error) {
+    console.error('owned-intake failure', error);
+    return jsonResponse({ error: 'Owned intake failed' }, 500, corsHeaders);
+  }
+});
