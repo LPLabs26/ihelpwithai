@@ -48,13 +48,28 @@ Typical deployment flow:
 
 3. Set the required function secrets or confirm they exist in the project environment.
 
-4. Deploy the function:
+4. Confirm the repo includes `supabase/config.toml` with:
+
+   ```toml
+   [functions.owned-intake]
+   verify_jwt = false
+   ```
+
+   This is required because the static site calls the Edge Function directly without a Supabase user JWT. Gateway-level JWT verification must be disabled for this specific function, while the function's own CORS and origin checks still stay in place.
+
+5. Deploy the function:
 
    ```bash
    supabase functions deploy owned-intake
    ```
 
-The function path in this repo is `supabase/functions/owned-intake/index.ts`.
+   If the project is deployed another way, the equivalent flag is:
+
+   ```bash
+   supabase functions deploy owned-intake --no-verify-jwt
+   ```
+
+The function entrypoint in this repo is `supabase/functions/owned-intake/index.ts`.
 
 ## Required secrets and config
 
@@ -80,6 +95,16 @@ The function is designed to allow:
 
 The frontend helper also requires an approved HTTPS endpoint host before it will send any owned payloads.
 
+## Deno validation
+
+If `deno` is available locally, run:
+
+```bash
+deno check supabase/functions/owned-intake/index.ts
+```
+
+If `deno` is not available in the local environment, treat that check as a required manual verification before deployment.
+
 ## Test checklist
 
 - Send an `OPTIONS` request from an allowed origin and confirm CORS headers are returned.
@@ -97,11 +122,13 @@ Do not enable the frontend endpoint until the function has been deployed and tes
 
 When the function is ready:
 
-1. Set `site.ownedDataEndpoint` to the deployed HTTPS function URL.
+1. Set `site.ownedDataEndpoint` to the full deployed HTTPS function URL, for example:
 
-2. Set `site.ownedDataAllowedHosts` to the function hostname, for example:
+   - `https://your-project-ref.supabase.co/functions/v1/owned-intake`
 
-   - `["your-project-ref.functions.supabase.co"]`
+2. Set `site.ownedDataAllowedHosts` to the hostname only, for example:
+
+   - `["your-project-ref.supabase.co"]`
 
 3. Rebuild and deploy the static site.
 
@@ -114,5 +141,6 @@ When the function is ready:
 - Run the schema from `docs/supabase-schema.sql`.
 - Deploy the `owned-intake` Edge Function.
 - Set the function secrets/config.
+- Run `deno check supabase/functions/owned-intake/index.ts` if it was not already run locally.
 - Test starter-pack, contact, vendor, and shortlist submissions.
 - Decide whether FormSubmit remains a backup path or is replaced later.

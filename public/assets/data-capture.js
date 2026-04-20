@@ -66,6 +66,10 @@
   function buildFormPayload(form) {
     syncFormMetadata(form);
 
+    if (getFieldValue(form, '_honey')) {
+      return null;
+    }
+
     const payload = {
       type: 'form_submission',
       form_type: form.getAttribute('data-form-type') || '',
@@ -116,10 +120,12 @@
 
   function captureForm(form, extra) {
     if (!form) return false;
+    const payload = buildFormPayload(form);
+    if (!payload) return false;
     // This helper may eventually send PII to an owned endpoint only.
     // It must never be reused to forward names, emails, phone numbers,
     // addresses, or message bodies into analytics tooling.
-    return sendToOwnedEndpoint(Object.assign(buildFormPayload(form), extra || {}));
+    return sendToOwnedEndpoint(Object.assign(payload, extra || {}));
   }
 
   function captureShortlist(payload) {

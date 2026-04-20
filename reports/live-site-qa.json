@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-20T02:54:00.530Z",
+  "generatedAt": "2026-04-20T19:30:07.756Z",
   "site": "https://ihelpwithai.com",
   "summary": {
     "sections": 7,
@@ -1897,7 +1897,7 @@
           "pass": true,
           "message": "/privacy/ includes a meta description",
           "details": {
-            "description": "If you submit a form on this site, the information you provide is used to respond to your request, send the starter pack, or continue a conversation you initiated."
+            "description": "If you submit a form on this site, the information you provide may be used to respond to your request, send the starter pack, continue a conversation you initiated, or improve how the site recommends tools and workflows."
           }
         },
         {

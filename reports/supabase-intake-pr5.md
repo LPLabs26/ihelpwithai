@@ -4,6 +4,7 @@
 
 - A secure Supabase Edge Function at `supabase/functions/owned-intake/index.ts`
 - Shared payload validation and origin helpers in `supabase/functions/owned-intake/shared.mjs`
+- Repeatable function config in `supabase/config.toml` with JWT verification disabled for this public endpoint
 - A lightweight validation script at `scripts/validate-owned-intake.mjs`
 - Frontend endpoint guards so owned capture only runs for approved HTTPS hosts
 - Updated Supabase rollout docs for deploy, secrets, origins, and enablement
@@ -23,6 +24,7 @@
 - Unsupported methods, malformed JSON, oversized payloads, and unsupported payload types are rejected.
 - Service-role access stays inside the function runtime only.
 - The frontend helper requires both an HTTPS endpoint and an approved host allowlist before any owned payload is sent.
+- If the hidden honeypot field is filled, owned capture is skipped entirely and the normal form flow continues.
 
 ## Payloads covered now
 
@@ -36,10 +38,11 @@
 1. Deploy the `owned-intake` Edge Function.
 2. Set `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` in the function environment.
 3. Set allowed-origin config for production, and only add a dev origin if needed.
-4. Test direct function requests first.
-5. Then enable `site.ownedDataEndpoint` and `site.ownedDataAllowedHosts`.
-6. Rebuild and deploy the static site.
-7. Verify FormSubmit and owned intake both work in parallel.
+4. Run `deno check supabase/functions/owned-intake/index.ts` if it was not already run in local development.
+5. Test direct function requests first.
+6. Then enable `site.ownedDataEndpoint` with the full function URL and `site.ownedDataAllowedHosts` with the hostname only.
+7. Rebuild and deploy the static site.
+8. Verify FormSubmit and owned intake both work in parallel.
 
 ## Risks to watch
 
