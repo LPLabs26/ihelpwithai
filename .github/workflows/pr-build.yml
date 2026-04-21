@@ -6,25 +6,37 @@ on:
       - main
 
 jobs:
-  build:
+  node-checks:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 24
+          package-manager-cache: false
 
-      - name: Build site
-        run: npm run build
+      - name: Build and validate
+        run: |
+          npm run build
+          npm run test:owned-intake
+          npm run check:owned-intake-config
+          node --check scripts/build-site.mjs
+          node --check src/assets/site.js
+          node --check src/assets/data-capture.js
+          node --check scripts/live-site-qa.mjs
+          node --check scripts/validate-owned-intake.mjs
+          node --check scripts/smoke-owned-intake.mjs
+          node --check scripts/check-owned-intake-config.mjs
+          node --check supabase/functions/owned-intake/shared.mjs
 
   deno-check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Deno
         uses: denoland/setup-deno@v2

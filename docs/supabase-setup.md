@@ -6,6 +6,8 @@ This repo now includes the schema proposal and frontend-safe config hooks needed
 
 It does not switch the live site away from FormSubmit yet.
 
+For the Codex-run production rollout checklist, use [`docs/owned-intake-rollout.md`](docs/owned-intake-rollout.md).
+
 ## Setup flow
 
 1. Create a Supabase project.
@@ -164,13 +166,13 @@ When the function is ready:
 
 4. Re-test owned intake and confirm FormSubmit still works in parallel.
 
-## Manual steps still required by the site owner
+## Access still required by Codex
 
-- Create the Supabase project.
-- Choose the region.
-- Run the schema from `docs/supabase-schema.sql`.
-- Deploy the `owned-intake` Edge Function.
-- Set the function secrets/config.
-- Run `deno check supabase/functions/owned-intake/index.ts` if it was not already run locally.
-- Test starter-pack, contact, vendor, and shortlist submissions.
-- Decide whether FormSubmit remains a backup path or is replaced later.
+- Secure access to the production Supabase project
+- Function secret injection for:
+  - `SUPABASE_URL`
+  - `SUPABASE_SERVICE_ROLE_KEY`
+  - `OWNED_INTAKE_ALLOWED_ORIGINS`
+  - optional `OWNED_INTAKE_DEV_ORIGIN`
+- Secure SQL access to run `docs/supabase-schema.sql`
+- Direct smoke-test access to the deployed function URL
