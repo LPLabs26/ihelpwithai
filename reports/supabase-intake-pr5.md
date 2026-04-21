@@ -55,4 +55,5 @@
 
 - `deno` was not available in the local environment for this PR.
 - The shared validator logic was exercised through `node scripts/validate-owned-intake.mjs`.
+- The pull request workflow now runs `deno check supabase/functions/owned-intake/index.ts` so the Edge Function is validated in GitHub before merge.
 - Static-site checks and live QA were still run from the existing repo toolchain.

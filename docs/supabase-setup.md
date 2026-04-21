@@ -116,6 +116,26 @@ If `deno` is not available in the local environment, treat that check as a requi
 - Confirm oversized payloads are rejected.
 - Confirm the live FormSubmit email flow still works while owned intake is enabled.
 
+Sample direct `curl` test:
+
+```bash
+curl -i 'https://your-project-ref.supabase.co/functions/v1/owned-intake' \
+  -X POST \
+  -H 'Origin: https://ihelpwithai.com' \
+  -H 'Content-Type: application/json' \
+  --data '{
+    "type": "form_submission",
+    "form_type": "field_starter_pack",
+    "email": "owner@example.com",
+    "source_page": "/starter-pack/",
+    "vertical": "field_trades",
+    "trade": "hvac",
+    "bottleneck": "missed-calls"
+  }'
+```
+
+Include the `Origin: https://ihelpwithai.com` header during direct testing. The function intentionally rejects requests with a missing or disallowed origin.
+
 ## Enabling ownedDataEndpoint after deploy
 
 Do not enable the frontend endpoint until the function has been deployed and tested.
