@@ -4,3 +4,4 @@
 archive/
 *.zip
 \$\{escapeHtml(tool.company)\}
+node_modules/
