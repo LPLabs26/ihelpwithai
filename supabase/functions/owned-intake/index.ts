@@ -7,6 +7,13 @@ import {
 } from './shared.mjs';
 
 type JsonRecord = Record<string, unknown>;
+type ResultOk<T> = { ok: true; value: T };
+type ResultError = { ok: false; status: number; error: string };
+type Result<T> = ResultOk<T> | ResultError;
+
+function isResultError<T>(result: Result<T>): result is ResultError {
+  return result.ok === false;
+}
 
 function jsonResponse(body: JsonRecord, status: number, headers: Record<string, string>) {
   return new Response(JSON.stringify(body), {
@@ -148,13 +155,13 @@ Deno.serve(async (request) => {
     return jsonResponse({ error: 'Origin not allowed' }, 403, buildCorsHeaders(''));
   }
 
-  const parsed = await readJsonRequest(request);
-  if (!parsed.ok) {
+  const parsed = (await readJsonRequest(request)) as Result<JsonRecord>;
+  if (isResultError(parsed)) {
     return jsonResponse({ error: parsed.error }, parsed.status, corsHeaders);
   }
 
-  const normalized = normalizeOwnedPayload(parsed.value);
-  if (!normalized.ok) {
+  const normalized = normalizeOwnedPayload(parsed.value) as Result<JsonRecord>;
+  if (isResultError(normalized)) {
     return jsonResponse({ error: normalized.error }, normalized.status, corsHeaders);
   }
 

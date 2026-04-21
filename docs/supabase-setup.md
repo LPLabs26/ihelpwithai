@@ -57,7 +57,17 @@ Typical deployment flow:
 
    This is required because the static site calls the Edge Function directly without a Supabase user JWT. Gateway-level JWT verification must be disabled for this specific function, while the function's own CORS and origin checks still stay in place.
 
-5. Deploy the function:
+5. Confirm the function directory includes `supabase/functions/owned-intake/deno.json` with:
+
+   ```json
+   {
+     "nodeModulesDir": "auto"
+   }
+   ```
+
+   This allows `deno check` and Edge Function tooling to resolve the `npm:@supabase/supabase-js@2` import cleanly.
+
+6. Deploy the function:
 
    ```bash
    supabase functions deploy owned-intake

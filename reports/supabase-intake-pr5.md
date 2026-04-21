@@ -3,6 +3,7 @@
 ## What this PR adds
 
 - A secure Supabase Edge Function at `supabase/functions/owned-intake/index.ts`
+- Function-local Deno config at `supabase/functions/owned-intake/deno.json` so `deno check` can resolve npm imports
 - Shared payload validation and origin helpers in `supabase/functions/owned-intake/shared.mjs`
 - Repeatable function config in `supabase/config.toml` with JWT verification disabled for this public endpoint
 - A lightweight validation script at `scripts/validate-owned-intake.mjs`
@@ -56,4 +57,5 @@
 - `deno` was not available in the local environment for this PR.
 - The shared validator logic was exercised through `node scripts/validate-owned-intake.mjs`.
 - The pull request workflow now runs `deno check supabase/functions/owned-intake/index.ts` so the Edge Function is validated in GitHub before merge.
+- `supabase/functions/owned-intake/deno.json` enables Deno npm resolution for the Supabase client import.
 - Static-site checks and live QA were still run from the existing repo toolchain.
