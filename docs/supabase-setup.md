@@ -115,7 +115,23 @@ If `deno` is available locally, run:
 deno check supabase/functions/owned-intake/index.ts
 ```
 
-If `deno` is not available in the local environment, treat that check as a required manual verification before deployment.
+If `deno` is not available in the local environment, treat that check as a required operator-run verification before deployment.
+
+## Existing-project hardening migration
+
+For an existing owned-intake project that already has the base schema, apply:
+
+- `supabase/migrations/20260422_owned_intake_dedupe_hardening.sql`
+
+Use the repo's normal secure SQL path for that environment. If the Supabase CLI is configured for the project, that can be done through the migration workflow. If not, run the migration file through secure SQL access in the Supabase SQL editor.
+
+That migration:
+
+- normalizes existing lead emails to lowercase
+- re-points child rows away from duplicate lead records
+- removes duplicate lead rows after reassignment
+- adds a unique normalized-email guard
+- creates the SQL upsert function used by the Edge Function
 
 ## Test checklist
 

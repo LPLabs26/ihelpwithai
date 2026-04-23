@@ -45,46 +45,43 @@ function createAdminClient() {
   });
 }
 
-function buildLeadInsert(lead: JsonRecord) {
-  return {
-    ...lead,
-    updated_at: new Date().toISOString()
-  };
-}
-
-function buildLeadUpdate(lead: JsonRecord) {
-  const entries = Object.entries(lead).filter(([, value]) => value !== '' && value !== null);
-  return Object.fromEntries([...entries, ['updated_at', new Date().toISOString()]]);
+function stringOrNull(value: unknown): string | null {
+  const raw = String(value ?? '').trim();
+  return raw ? raw : null;
 }
 
 async function findLeadIdByEmail(client: ReturnType<typeof createAdminClient>, email: string) {
-  const { data, error } = await client.from('leads').select('id').ilike('email', email).limit(1);
+  const { data, error } = await client.from('leads').select('id').eq('email', email).maybeSingle();
   if (error) throw error;
-  return Array.isArray(data) && data.length > 0 ? String(data[0].id) : '';
+  return data ? String(data.id) : '';
+}
+
+function buildLeadUpsertArgs(lead: JsonRecord) {
+  return {
+    p_name: stringOrNull(lead.name),
+    p_email: stringOrNull(lead.email),
+    p_phone: stringOrNull(lead.phone),
+    p_company: stringOrNull(lead.company),
+    p_vertical: stringOrNull(lead.vertical),
+    p_trade_or_business_type: stringOrNull(lead.trade_or_business_type),
+    p_team_size: stringOrNull(lead.team_size),
+    p_bottleneck: stringOrNull(lead.bottleneck),
+    p_current_stack: stringOrNull(lead.current_stack),
+    p_budget_range: stringOrNull(lead.budget_range),
+    p_setup_tolerance: stringOrNull(lead.setup_tolerance),
+    p_source_page: stringOrNull(lead.source_page),
+    p_starter_pack_type: stringOrNull(lead.starter_pack_type),
+    p_consent_status: stringOrNull(lead.consent_status)
+  };
 }
 
 async function upsertLead(client: ReturnType<typeof createAdminClient>, lead: JsonRecord) {
   const email = String(lead.email || '');
   if (!email) return '';
 
-  const existingId = await findLeadIdByEmail(client, email);
-  if (existingId) {
-    const updatePayload = buildLeadUpdate(lead);
-    if (Object.keys(updatePayload).length > 0) {
-      const { error } = await client.from('leads').update(updatePayload).eq('id', existingId);
-      if (error) throw error;
-    }
-    return existingId;
-  }
-
-  const { data, error } = await client
-    .from('leads')
-    .insert(buildLeadInsert(lead))
-    .select('id')
-    .single();
-
+  const { data, error } = await client.rpc('upsert_owned_intake_lead', buildLeadUpsertArgs(lead));
   if (error) throw error;
-  return String(data.id);
+  return data ? String(data) : '';
 }
 
 async function handleFormSubmission(client: ReturnType<typeof createAdminClient>, normalized: JsonRecord) {
