@@ -1729,12 +1729,12 @@ export const legalPages = {
       {
         title: 'How form submissions may be received',
         body:
-          'Form submissions may be received through email, a connected form handler, a CRM, or an owned database if that intake stack is added later. Right now the live site still uses a form handler and email delivery for starter-pack, contact, and vendor submissions.'
+          'Starter-pack, contact, and vendor submissions may be received through FormSubmit and email delivery, and through the owned Supabase intake and database. FormSubmit remains live in parallel while the owned intake path is active.'
       },
       {
         title: 'What analytics is meant to capture',
         body:
-          'Site analytics may track behavior such as page usage, navigation, shortlist progress, starter-pack interest, review clicks, compare clicks, and outbound vendor interest. Analytics is not intended to store names, email addresses, phone numbers, addresses, or free-form message bodies.'
+          'Site analytics is still behavior-only. It may track page usage, navigation, shortlist progress, starter-pack interest, review clicks, compare clicks, and outbound vendor interest. It must not store names, email addresses, phone numbers, addresses, or free-form message bodies.'
       },
       {
         title: 'Business context and recommendation quality',
@@ -1744,7 +1744,7 @@ export const legalPages = {
       {
         title: 'Keeping this page current',
         body:
-          'This page is a plain-language privacy summary, not a custom legal memo. If new CRM, database, automation, or intake tools are added, this page should be updated to reflect that change clearly.'
+          'This page is a plain-language privacy summary, not a custom legal memo. If the intake stack changes again, this page should be updated clearly so the live setup matches what this page says.'
       }
     ]
   },
