@@ -9,8 +9,8 @@ export const site = {
   contactEmail: 'info@ihelpwithai.com',
   socialImage: '/assets/og-default.png',
   googleSiteVerification: '',
-  ownedDataEndpoint: '',
-  ownedDataAllowedHosts: [],
+  ownedDataEndpoint: 'https://fiopwsdzcbmjcbpkdxwr.supabase.co/functions/v1/owned-intake',
+  ownedDataAllowedHosts: ['fiopwsdzcbmjcbpkdxwr.supabase.co'],
   analytics: {
     posthogToken: 'phc_oBCQc5RDzTRAMXA2HSGqfGP4BbkYEg5HnrawXk5AV6PH',
     posthogHost: 'https://us.i.posthog.com'

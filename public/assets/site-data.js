@@ -3,8 +3,10 @@ window.IHWAI_SITE_DATA = {
     "posthogToken": "phc_oBCQc5RDzTRAMXA2HSGqfGP4BbkYEg5HnrawXk5AV6PH",
     "posthogHost": "https://us.i.posthog.com"
   },
-  "ownedDataEndpoint": "",
-  "ownedDataAllowedHosts": [],
+  "ownedDataEndpoint": "https://fiopwsdzcbmjcbpkdxwr.supabase.co/functions/v1/owned-intake",
+  "ownedDataAllowedHosts": [
+    "fiopwsdzcbmjcbpkdxwr.supabase.co"
+  ],
   "shortlists": {
     "field": {
       "stepIds": [
