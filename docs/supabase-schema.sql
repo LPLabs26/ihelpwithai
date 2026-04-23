@@ -108,9 +108,11 @@ comment on table public.shortlist_sessions is
 comment on table public.tool_intent_events is
   'Proposal only. Stores owned tool-intent clicks separately from behavior analytics when first-party intake is enabled. RLS is enabled by default for safety; direct client writes should stay blocked unless narrowly scoped policies are added later. Preferred intake path: Edge Function or secure serverless endpoint.';
 
+-- Normalize existing emails in place without changing historical recency.
+-- The later merge step still uses original updated_at ordering to decide which
+-- duplicate row supplies the newest field values.
 update public.leads
-set email = public.normalize_owned_intake_email(email),
-    updated_at = greatest(updated_at, now())
+set email = public.normalize_owned_intake_email(email)
 where public.normalize_owned_intake_email(email) is not null
   and email is distinct from public.normalize_owned_intake_email(email);
 

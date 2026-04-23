@@ -21,6 +21,7 @@ This PR hardens owned-intake dedupe and operations without changing the frontend
 - replaced the lead `select-then-insert` flow with a database-backed atomic upsert contract
 - added normalized-email dedupe migration SQL for existing projects
 - added a unique normalized-email guard in schema and migration SQL
+- fixed a merge-precedence bug so pre-merge email normalization does not bump `updated_at`
 - added fake smoke-row cleanup SQL that targets only test-marked rows
 - added clearer monitoring and rollback guidance
 - added validation coverage for repeated same-email submissions and the new migration contract

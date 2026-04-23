@@ -8,9 +8,11 @@ as $$
   select nullif(lower(btrim(coalesce(input, ''))), '');
 $$;
 
+-- Normalize existing emails in place without changing historical recency.
+-- The later merge step still uses original updated_at ordering to decide which
+-- duplicate row supplies the newest field values.
 update public.leads
-set email = public.normalize_owned_intake_email(email),
-    updated_at = greatest(updated_at, now())
+set email = public.normalize_owned_intake_email(email)
 where public.normalize_owned_intake_email(email) is not null
   and email is distinct from public.normalize_owned_intake_email(email);
 

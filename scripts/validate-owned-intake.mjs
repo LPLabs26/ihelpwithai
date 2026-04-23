@@ -115,6 +115,24 @@ async function main() {
   assert.match(migrationSql, /create unique index if not exists leads_email_normalized_unique_idx/i);
   assert.match(migrationSql, /create or replace function public\.upsert_owned_intake_lead/i);
   assert.match(migrationSql, /on conflict\s*\(\(public\.normalize_owned_intake_email\(email\)\)\)\s*do update/i);
+  assert.match(
+    migrationSql,
+    /update public\.leads\s+set email = public\.normalize_owned_intake_email\(email\)\s+where/i
+  );
+  assert.doesNotMatch(
+    migrationSql,
+    /update public\.leads\s+set email = public\.normalize_owned_intake_email\(email\),\s*updated_at\s*=/i
+  );
+
+  const schemaSql = await fs.readFile(new URL('../docs/supabase-schema.sql', import.meta.url), 'utf8');
+  assert.match(
+    schemaSql,
+    /update public\.leads\s+set email = public\.normalize_owned_intake_email\(email\)\s+where/i
+  );
+  assert.doesNotMatch(
+    schemaSql,
+    /update public\.leads\s+set email = public\.normalize_owned_intake_email\(email\),\s*updated_at\s*=/i
+  );
 
   const cleanupSql = await fs.readFile(
     new URL('../docs/owned-intake-fake-smoke-cleanup.sql', import.meta.url),
