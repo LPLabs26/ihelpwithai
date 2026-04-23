@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
 
 import {
   buildAllowedOrigins,
@@ -59,6 +60,23 @@ async function main() {
   assert.equal(normalizedForm.value.raw_payload.trade_or_business_type, 'hvac');
   assert.equal('name' in normalizedForm.value.raw_payload, false);
 
+  const repeatedFormA = normalizeOwnedPayload({
+    type: 'form_submission',
+    form_type: 'contact',
+    email: 'Owner@Example.com',
+    source_page: '/contact/'
+  });
+  const repeatedFormB = normalizeOwnedPayload({
+    type: 'form_submission',
+    form_type: 'contact',
+    email: 'owner@example.com',
+    source_page: '/contact/'
+  });
+  assert.equal(repeatedFormA.ok, true);
+  assert.equal(repeatedFormB.ok, true);
+  assert.equal(repeatedFormA.value.lead.email, 'owner@example.com');
+  assert.equal(repeatedFormA.value.lead.email, repeatedFormB.value.lead.email);
+
   const normalizedShortlist = normalizeOwnedPayload({
     type: 'shortlist_session',
     vertical: 'beauty',
@@ -89,6 +107,28 @@ async function main() {
   );
   assert.equal(malformed.ok, false);
   assert.equal(malformed.status, 400);
+
+  const migrationSql = await fs.readFile(
+    new URL('../supabase/migrations/20260422_owned_intake_dedupe_hardening.sql', import.meta.url),
+    'utf8'
+  );
+  assert.match(migrationSql, /create unique index if not exists leads_email_normalized_unique_idx/i);
+  assert.match(migrationSql, /create or replace function public\.upsert_owned_intake_lead/i);
+  assert.match(migrationSql, /on conflict\s*\(\(public\.normalize_owned_intake_email\(email\)\)\)\s*do update/i);
+
+  const cleanupSql = await fs.readFile(
+    new URL('../docs/owned-intake-fake-smoke-cleanup.sql', import.meta.url),
+    'utf8'
+  );
+  assert.match(cleanupSql, /test\+owned-intake-%@example\.com/);
+  assert.match(cleanupSql, /anonymous_id like 'smoke-%'/);
+
+  const edgeFunctionSource = await fs.readFile(
+    new URL('../supabase/functions/owned-intake/index.ts', import.meta.url),
+    'utf8'
+  );
+  assert.match(edgeFunctionSource, /rpc\('upsert_owned_intake_lead'/);
+  assert.doesNotMatch(edgeFunctionSource, /\.insert\(buildLeadInsert/);
 
   console.log('owned-intake validation passed');
 }

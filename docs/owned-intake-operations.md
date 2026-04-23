@@ -81,7 +81,9 @@ Current fake markers:
 - leads: `test+owned-intake-...@example.com`
 - shortlist sessions: `smoke-...`
 
-Example cleanup SQL:
+Use `docs/owned-intake-fake-smoke-cleanup.sql` for the canonical cleanup command.
+
+Canonical cleanup SQL:
 
 ```sql
 begin;
@@ -102,11 +104,44 @@ where email like 'test+owned-intake-%@example.com';
 commit;
 ```
 
+## Supabase Logs To Check
+
+For owned intake, check:
+
+- Edge Function logs for `owned-intake`
+- recent `403` counts for disallowed origins
+- recent `400` counts for malformed or unsupported payloads
+- any `500` spikes or repeated `Owned intake failed` entries
+
+What healthy behavior looks like:
+
+- `202` responses for valid `form_submission` and `shortlist_session`
+- occasional `400` responses from bad payloads during testing or bot noise
+- occasional `403` responses from disallowed origins
+- near-zero `500` responses during normal traffic
+
+## Expected Status Patterns
+
+- `202`: accepted and stored by the owned-intake function
+- `400`: malformed JSON, unsupported payload type, or missing required data
+- `403`: origin rejected by the function guard
+- `405`: wrong HTTP method
+- `413`: payload too large
+- `500`: unexpected storage or runtime failure and worth immediate review
+
+## Rollback Trigger Conditions
+
+Rollback should be considered when any of these happen:
+
+- repeated `500` errors over a short window instead of isolated failures
+- valid smoke payloads stop returning `202`
+- suspicious origins begin succeeding instead of returning `403`
+- duplicate lead growth resumes after the dedupe migration is applied
+- writes start landing with obviously broken normalization or missing expected lead links
+
 ## Hardening Follow-Ups
 
 Recommended next improvements:
 
-- add a normalized email column or a unique functional index for dedupe
-- replace select-then-insert lead handling with a true upsert path
-- add a short recurring verification checklist to the operator docs
-- add lightweight monitoring guidance for Supabase function errors and rejected origins
+- add alerting or a lightweight dashboard for sustained `500` spikes and unusual `403` growth
+- document a regular cadence for cleaning only clearly test-marked smoke rows

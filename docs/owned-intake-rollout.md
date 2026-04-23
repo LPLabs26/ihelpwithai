@@ -14,6 +14,7 @@ Production rollout is now live.
 - PostHog remains behavior-only
 
 For recurring verification, rollback, and fake-row cleanup guidance, use `docs/owned-intake-operations.md`.
+For duplicate-email hardening on an existing Supabase project, apply `supabase/migrations/20260422_owned_intake_dedupe_hardening.sql` before redeploying the Edge Function.
 
 Current production rules:
 
@@ -95,13 +96,14 @@ What that script verifies or performs:
 
 2. Links the local repo to `SUPABASE_PROJECT_REF`.
 3. Applies `docs/supabase-schema.sql` when secure SQL access is available.
-4. Sets function secrets:
+4. For an already-live project, applies `supabase/migrations/20260422_owned_intake_dedupe_hardening.sql` before redeploying the function.
+5. Sets function secrets:
    - `SUPABASE_URL`
    - `SUPABASE_SERVICE_ROLE_KEY`
    - `OWNED_INTAKE_ALLOWED_ORIGINS`
    - optional `OWNED_INTAKE_DEV_ORIGIN`
-5. Deploys `owned-intake`.
-6. Runs the direct smoke tests against the deployed endpoint.
+6. Deploys `owned-intake`.
+7. Runs the direct smoke tests against the deployed endpoint.
 
 ## Direct smoke tests
 
