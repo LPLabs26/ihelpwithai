@@ -35,7 +35,7 @@ Run this after any config change, deploy, or suspicious intake issue:
    - `shortlist_sessions`
 7. Confirm PostHog still carries only behavior metadata and not names, emails, phone numbers, addresses, or free-form message bodies.
 
-## Periodic Manual Checks
+## Periodic Operator-Run Checks
 
 Recommended cadence:
 
