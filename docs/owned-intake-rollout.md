@@ -4,12 +4,24 @@
 
 This is the operator checklist for Codex to move the owned-intake path from repo-ready to production-ready without breaking the live static site.
 
+## Status Update
+
+Production rollout is now live.
+
+- production endpoint: `https://fiopwsdzcbmjcbpkdxwr.supabase.co/functions/v1/owned-intake`
+- allowed hostname: `fiopwsdzcbmjcbpkdxwr.supabase.co`
+- FormSubmit remains live in parallel
+- PostHog remains behavior-only
+
+For recurring verification, rollback, and fake-row cleanup guidance, use `docs/owned-intake-operations.md`.
+
 Current production rules:
 
 - GitHub Pages remains the live static host.
 - FormSubmit stays live for starter-pack, contact, and vendor forms.
 - PostHog stays behavior-only and must not receive PII.
-- `site.ownedDataEndpoint` stays blank until the real endpoint has been deployed and direct smoke tests have passed.
+- `site.ownedDataEndpoint` should stay pinned to the tested production endpoint unless an intentional rollback is in progress.
+- `site.ownedDataAllowedHosts` should contain only `fiopwsdzcbmjcbpkdxwr.supabase.co` unless an intentional rollback is in progress.
 
 ## Required secure inputs
 
