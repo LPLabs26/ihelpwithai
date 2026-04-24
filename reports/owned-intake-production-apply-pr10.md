@@ -128,4 +128,4 @@ Post-cleanup fake/test-marked aggregate counts:
 
 ## Remaining Items
 
-- Open PR #10 with the deploy helper/docs/report updates.
+- No remaining production-apply blockers.
