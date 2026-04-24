@@ -139,6 +139,7 @@ async function main() {
     'utf8'
   );
   assert.match(cleanupSql, /test\+owned-intake-%@example\.com/);
+  assert.match(cleanupSql, /test\+dedup-%@example\.com/);
   assert.match(cleanupSql, /anonymous_id like 'smoke-%'/);
 
   const edgeFunctionSource = await fs.readFile(

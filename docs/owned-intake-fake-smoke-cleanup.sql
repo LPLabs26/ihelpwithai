@@ -8,12 +8,14 @@ where lead_id in (
   select id
   from public.leads
   where email like 'test+owned-intake-%@example.com'
+     or email like 'test+dedup-%@example.com'
 );
 
 delete from public.shortlist_sessions
 where anonymous_id like 'smoke-%';
 
 delete from public.leads
-where email like 'test+owned-intake-%@example.com';
+where email like 'test+owned-intake-%@example.com'
+   or email like 'test+dedup-%@example.com';
 
 commit;

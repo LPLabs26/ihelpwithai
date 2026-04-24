@@ -5,6 +5,8 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PROJECT_REF="${SUPABASE_PROJECT_REF:-}"
 ENDPOINT="${OWNED_INTAKE_ENDPOINT:-}"
 ORIGIN="${OWNED_INTAKE_ORIGIN:-https://ihelpwithai.com}"
+APPLY_SCHEMA="${OWNED_INTAKE_APPLY_SCHEMA:-false}"
+APPLY_DEDUPE_MIGRATION="${OWNED_INTAKE_APPLY_DEDUPE_MIGRATION:-true}"
 
 require_var() {
   local name="$1"
@@ -12,6 +14,15 @@ require_var() {
     echo "Missing required environment variable: ${name}" >&2
     exit 1
   fi
+}
+
+is_true() {
+  local value
+  value="$(printf '%s' "$1" | tr '[:upper:]' '[:lower:]')"
+  case "${value}" in
+    1|true|yes|y|on) return 0 ;;
+    *) return 1 ;;
+  esac
 }
 
 if ! command -v supabase >/dev/null 2>&1; then
@@ -32,17 +43,31 @@ fi
 echo "Linking Supabase project ${PROJECT_REF}..."
 supabase link --project-ref "${PROJECT_REF}"
 
-if [[ -n "${SUPABASE_DB_URL:-}" ]]; then
+if is_true "${APPLY_SCHEMA}" || is_true "${APPLY_DEDUPE_MIGRATION}"; then
+  if [[ -z "${SUPABASE_DB_URL:-}" ]]; then
+    echo "Secure SQL access is required for the selected database apply steps." >&2
+    echo "Set SUPABASE_DB_URL, or explicitly set OWNED_INTAKE_APPLY_SCHEMA=false and OWNED_INTAKE_APPLY_DEDUPE_MIGRATION=false after verifying production is already migrated." >&2
+    exit 1
+  fi
+
   if ! command -v psql >/dev/null 2>&1; then
     echo "SUPABASE_DB_URL was provided, but psql is not installed." >&2
     exit 1
   fi
+fi
 
+if is_true "${APPLY_SCHEMA}"; then
   echo "Applying docs/supabase-schema.sql..."
   psql "${SUPABASE_DB_URL}" -v ON_ERROR_STOP=1 -f "${ROOT_DIR}/docs/supabase-schema.sql"
 else
-  echo "Skipping schema apply because SUPABASE_DB_URL is not set." >&2
-  echo "Exact blocker: secure SQL access is still required to run docs/supabase-schema.sql." >&2
+  echo "Skipping broad schema apply. Set OWNED_INTAKE_APPLY_SCHEMA=true for first-time/full schema setup."
+fi
+
+if is_true "${APPLY_DEDUPE_MIGRATION}"; then
+  echo "Applying supabase/migrations/20260422_owned_intake_dedupe_hardening.sql..."
+  psql "${SUPABASE_DB_URL}" -v ON_ERROR_STOP=1 -f "${ROOT_DIR}/supabase/migrations/20260422_owned_intake_dedupe_hardening.sql"
+else
+  echo "Skipping dedupe migration apply. Only do this after verifying production already has the PR #9 migration."
 fi
 
 echo "Setting owned-intake function secrets..."

@@ -34,7 +34,9 @@ Codex can complete the rollout once a secure deployment context has all of these
 - `SUPABASE_SERVICE_ROLE_KEY`
 - `OWNED_INTAKE_ALLOWED_ORIGINS`
 - optional `OWNED_INTAKE_DEV_ORIGIN`
-- secure SQL access for `docs/supabase-schema.sql`
+- secure SQL access through `SUPABASE_DB_URL` for selected database apply steps
+- optional `OWNED_INTAKE_APPLY_SCHEMA=true` for first-time/full schema setup
+- optional `OWNED_INTAKE_APPLY_DEDUPE_MIGRATION=false` only after verifying production already has the PR #9 dedupe migration
 
 Do not paste secrets into chat. Provide them only through a secure environment or deployment runner.
 
@@ -67,7 +69,7 @@ Run these before any deployment attempt:
 
 ## Schema migration
 
-Preferred path:
+First-time setup path:
 
 1. Use secure SQL access to run `docs/supabase-schema.sql`.
 2. Confirm the tables exist:
@@ -77,7 +79,15 @@ Preferred path:
    - `tool_intent_events`
 3. Confirm RLS is enabled on all four tables.
 
-If Codex has a secure database connection string in the deployment environment, `scripts/deploy-owned-intake.sh` can apply the schema automatically through `psql`.
+Existing live project path:
+
+1. Use secure SQL access to run `supabase/migrations/20260422_owned_intake_dedupe_hardening.sql`.
+2. Confirm `public.normalize_owned_intake_email(...)` exists.
+3. Confirm `public.upsert_owned_intake_lead(...)` exists.
+4. Confirm `leads_email_normalized_unique_idx` exists.
+5. Confirm there are no duplicate non-null normalized lead emails.
+
+If Codex has a secure database connection string in the deployment environment, `scripts/deploy-owned-intake.sh` can apply the selected SQL files automatically through `psql`.
 
 If secure SQL access is missing, that is a hard blocker for rollout completion.
 
@@ -95,8 +105,8 @@ What that script verifies or performs:
    ```
 
 2. Links the local repo to `SUPABASE_PROJECT_REF`.
-3. Applies `docs/supabase-schema.sql` when secure SQL access is available.
-4. For an already-live project, applies `supabase/migrations/20260422_owned_intake_dedupe_hardening.sql` before redeploying the function.
+3. Skips broad schema setup by default. Set `OWNED_INTAKE_APPLY_SCHEMA=true` to apply `docs/supabase-schema.sql` for first-time/full schema setup.
+4. Applies `supabase/migrations/20260422_owned_intake_dedupe_hardening.sql` by default before redeploying the function. Set `OWNED_INTAKE_APPLY_DEDUPE_MIGRATION=false` only after verifying production already has that migration.
 5. Sets function secrets:
    - `SUPABASE_URL`
    - `SUPABASE_SERVICE_ROLE_KEY`
@@ -182,4 +192,4 @@ Rollback does not require removing FormSubmit because FormSubmit never stops bei
 
 If rollout cannot proceed, the minimal secure request is:
 
-`I need the production Supabase project ref plus a secure deployment environment with Supabase CLI access through SUPABASE_ACCESS_TOKEN and secure SQL access for docs/supabase-schema.sql. Do not paste service-role keys or database passwords into chat.`
+`I need a secure deployment environment with SUPABASE_PROJECT_REF=fiopwsdzcbmjcbpkdxwr, Supabase CLI access through SUPABASE_ACCESS_TOKEN, secure SQL access through SUPABASE_DB_URL or equivalent, and existing function secrets available in Supabase. Do not paste service-role keys, database passwords, or access tokens into chat.`
