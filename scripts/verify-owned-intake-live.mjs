@@ -126,7 +126,7 @@ async function verifySmoke(endpoint) {
     type: 'tool_intent_event',
     page_path: '/reviews/jobber/'
   });
-  assert(invalidResult.response.status >= 400, `invalid payload smoke returned ${invalidResult.response.status}`);
+  assert(invalidResult.response.status === 400, `invalid payload smoke returned ${invalidResult.response.status}`);
 
   const blockedResult = await postJson(endpoint, 'https://not-ihelpwithai.example', {
     type: 'form_submission',
