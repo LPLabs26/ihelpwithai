@@ -5,6 +5,7 @@
     "build": "node scripts/build-site.mjs",
     "check:owned-intake-config": "node scripts/check-owned-intake-config.mjs",
     "qa:live": "node scripts/live-site-qa.mjs",
+    "verify:owned-intake-live": "node scripts/verify-owned-intake-live.mjs",
     "smoke:owned-intake": "node scripts/smoke-owned-intake.mjs",
     "test:owned-intake": "node scripts/validate-owned-intake.mjs"
   }
