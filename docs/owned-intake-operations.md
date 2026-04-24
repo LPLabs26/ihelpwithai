@@ -79,6 +79,7 @@ Only clean up fake verification rows after the verification report is captured.
 Current fake markers:
 
 - leads: `test+owned-intake-...@example.com`
+- dedupe verification leads: `test+dedup-...@example.com`
 - shortlist sessions: `smoke-...`
 
 Use `docs/owned-intake-fake-smoke-cleanup.sql` for the canonical cleanup command.
@@ -93,13 +94,15 @@ where lead_id in (
   select id
   from leads
   where email like 'test+owned-intake-%@example.com'
+     or email like 'test+dedup-%@example.com'
 );
 
 delete from shortlist_sessions
 where anonymous_id like 'smoke-%';
 
 delete from leads
-where email like 'test+owned-intake-%@example.com';
+where email like 'test+owned-intake-%@example.com'
+   or email like 'test+dedup-%@example.com';
 
 commit;
 ```
