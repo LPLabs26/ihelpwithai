@@ -15,25 +15,37 @@ Current live setup:
 
 Run this after any config change, deploy, or suspicious intake issue:
 
-1. Confirm `https://ihelpwithai.com/assets/site-data.js` still contains the expected production endpoint and only the hostname `fiopwsdzcbmjcbpkdxwr.supabase.co`.
-2. Confirm `https://ihelpwithai.com/privacy/` still says FormSubmit and owned Supabase intake both receive submissions.
-3. Confirm live forms still point to `https://formsubmit.co/info@ihelpwithai.com`.
-4. Run:
+1. Run the no-secret live verifier:
+
+   ```bash
+   npm run verify:owned-intake-live
+   ```
+
+2. Run the no-secret live verifier with direct smoke checks when fresh fake rows are acceptable:
+
+   ```bash
+   npm run verify:owned-intake-live -- --smoke
+   ```
+
+3. Confirm `https://ihelpwithai.com/assets/site-data.js` still contains the expected production endpoint and only the hostname `fiopwsdzcbmjcbpkdxwr.supabase.co`.
+4. Confirm `https://ihelpwithai.com/privacy/` still says FormSubmit and owned Supabase intake both receive submissions.
+5. Confirm live forms still point to `https://formsubmit.co/info@ihelpwithai.com`.
+6. Run the direct smoke script when you need lower-level endpoint output:
 
    ```bash
    node scripts/smoke-owned-intake.mjs --endpoint "https://fiopwsdzcbmjcbpkdxwr.supabase.co/functions/v1/owned-intake" --origin "https://ihelpwithai.com"
    ```
 
-5. Confirm:
+7. Confirm:
    - valid `form_submission` returns `202`
    - valid `shortlist_session` returns `202`
    - invalid payload is rejected
    - disallowed origin is rejected with `403`
-6. Check Supabase tables for fresh fake rows in:
+8. Check Supabase tables for fresh fake rows in:
    - `leads`
    - `form_submissions`
    - `shortlist_sessions`
-7. Confirm PostHog still carries only behavior metadata and not names, emails, phone numbers, addresses, or free-form message bodies.
+9. Confirm PostHog still carries only behavior metadata and not names, emails, phone numbers, addresses, or free-form message bodies.
 
 ## Periodic Operator-Run Checks
 
@@ -50,7 +62,20 @@ What to check:
 - FormSubmit actions remain unchanged
 - owned intake still inserts fake smoke rows
 - disallowed origins still fail
-- Supabase logs do not show sustained 4xx or 5xx spikes
+- Supabase logs do not show sustained `500` spikes
+- Supabase logs do not show unusual `403` growth from unexpected origins
+
+No-secret command:
+
+```bash
+npm run verify:owned-intake-live
+```
+
+No-secret command with smoke rows:
+
+```bash
+npm run verify:owned-intake-live -- --smoke
+```
 
 ## Incident Rollback
 
@@ -122,6 +147,13 @@ What healthy behavior looks like:
 - occasional `400` responses from bad payloads during testing or bot noise
 - occasional `403` responses from disallowed origins
 - near-zero `500` responses during normal traffic
+
+Monitoring interpretation:
+
+- sustained `500` growth usually points to Supabase storage, function runtime, or schema/RPC drift
+- unusual `403` growth means the origin guard is working, but traffic source should be reviewed
+- missing `202` responses for valid smoke payloads means owned intake may be down even though FormSubmit is still live
+- FormSubmit action checks protect the fail-open path while owned intake is investigated
 
 ## Expected Status Patterns
 
