@@ -850,6 +850,17 @@ body.theme-beauty .results-shell {
   color: rgba(238, 244, 239, 0.84);
 }
 
+.footer-contact {
+  margin-top: 18px;
+  color: rgba(238, 244, 239, 0.9);
+  font-weight: 700;
+}
+
+.footer-contact a {
+  color: #ffffff;
+  text-decoration-color: rgba(255, 255, 255, 0.55);
+}
+
 .microcopy {
   color: var(--ink-soft);
   font-size: 0.88rem;

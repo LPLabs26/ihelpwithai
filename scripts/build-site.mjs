@@ -251,6 +251,7 @@ function renderFooter(currentRoute) {
           <div class="footer-brand">${escapeHtml(site.title)}</div>
           <p>${escapeHtml(site.description)}</p>
           <p class="microcopy">Built around workflow reality, setup tolerance, and practical next picks for hands-on service businesses.</p>
+          <p class="footer-contact">Need help or have a question? <a href="mailto:${site.contactEmail}">${site.contactEmail}</a></p>
         </div>
         ${footerGroupsForRoute(currentRoute)
           .map(
