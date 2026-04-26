@@ -3254,7 +3254,7 @@ async function cleanRoot() {
 
 async function copyStaticAssets(destination) {
   await fs.mkdir(path.join(destination, 'assets'), { recursive: true });
-  for (const filename of ['site.css', 'site.js', 'data-capture.js', 'favicon.svg', 'og-default.png']) {
+  for (const filename of ['site.css', 'site.js', 'data-capture.js', 'og-default.png']) {
     await fs.copyFile(path.join(srcAssetsDir, filename), path.join(destination, 'assets', filename));
   }
   for (const directory of ['brand', 'vendors']) {
