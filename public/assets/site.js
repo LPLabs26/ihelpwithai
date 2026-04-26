@@ -162,7 +162,7 @@
         escapeHtml(logo) +
         '" alt="' +
         escapedName +
-        ' logo" class="vendor-logo" width="22" height="22" loading="lazy" decoding="async">'
+        ' logo" class="vendor-logo" width="24" height="24" loading="lazy" decoding="async">'
       : '<span class="vendor-logo vendor-logo--fallback" aria-hidden="true">' +
         escapeHtml(tool.logoFallback || name.slice(0, 2).toUpperCase()) +
         '</span>';

@@ -36,15 +36,20 @@
   
     <header class="site-header">
       <div class="container header-inner">
-        <a class="site-brand" href="/" aria-label="ihelpwithai.com home">
-          <img
-            src="/assets/brand/ihelpwithai-logo-horizontal-transparent.png"
-            alt="ihelpwithai.com"
-            class="site-brand__logo"
-            width="1331"
-            height="386"
-            decoding="async"
-            fetchpriority="high">
+        <a class="site-brand site-brand--clear" href="/" aria-label="ihelpwithai.com home">
+          <span class="site-brand__mark-wrap" aria-hidden="true">
+            <img
+              src="/assets/brand/ihelpwithai-mark-transparent.png"
+              alt=""
+              class="site-brand__mark"
+              width="512"
+              height="512"
+              decoding="async"
+              fetchpriority="high">
+          </span>
+          <span class="site-brand__wordmark" aria-hidden="true">
+            <span class="site-brand__wordmark-main">ihelpwith</span><span class="site-brand__wordmark-ai">ai</span><span class="site-brand__wordmark-dotcom">.com</span>
+          </span>
         </a>
         <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" data-menu-toggle>&#9776;</button>
         <nav class="site-nav" data-menu>
@@ -148,19 +153,19 @@
             <div class="grid cols-3">
     <a class="card" href="/reviews/jobber/" data-analytics="review_cta">
       <div class="card-kicker">All in one field-service software</div>
-      <h3><span class="vendor-name"><span class="vendor-logo vendor-logo--fallback" aria-hidden="true">JO</span><span>Jobber</span></span></h3>
+      <h3><span class="vendor-name"><img src="/assets/vendors/jobber.svg" alt="Jobber logo" class="vendor-logo" width="24" height="24" loading="lazy" decoding="async"><span>Jobber</span></span></h3>
       <p>A practical first all-in-one for service teams that need cleaner daily operations more than deep enterprise complexity.</p>
       <div class="pill-row"><span class="pill">Moderate</span><span class="pill">A real software budget, but usually easier to justify than enterprise FSMs.</span><span class="pill">6 trade fits</span></div>
     </a>
     <a class="card" href="/reviews/chatgpt/" data-analytics="review_cta">
       <div class="card-kicker">General AI assistant for office work</div>
-      <h3><span class="vendor-name"><img src="/assets/vendors/chatgpt.svg" alt="ChatGPT logo" class="vendor-logo" width="22" height="22" loading="lazy" decoding="async"><span>ChatGPT</span></span></h3>
+      <h3><span class="vendor-name"><img src="/assets/vendors/chatgpt.svg" alt="ChatGPT logo" class="vendor-logo" width="24" height="24" loading="lazy" decoding="async"><span>ChatGPT</span></span></h3>
       <p>Strong for office writing and process support, weak as a replacement for contractor software.</p>
       <div class="pill-row"><span class="pill">Low</span><span class="pill">Usually a light spend compared with contractor platforms, but only valuable with clear usage rules.</span><span class="pill">8 trade fits</span></div>
     </a>
     <a class="card" href="/reviews/servicetitan/" data-analytics="review_cta">
       <div class="card-kicker">Enterprise field-service software</div>
-      <h3><span class="vendor-name"><img src="/assets/vendors/servicetitan.svg" alt="ServiceTitan logo" class="vendor-logo" width="22" height="22" loading="lazy" decoding="async"><span>ServiceTitan</span></span></h3>
+      <h3><span class="vendor-name"><img src="/assets/vendors/servicetitan.svg" alt="ServiceTitan logo" class="vendor-logo" width="24" height="24" loading="lazy" decoding="async"><span>ServiceTitan</span></span></h3>
       <p>The better fit when operational complexity is the real issue, not when a smaller shop just needs a cleaner first system.</p>
       <div class="pill-row"><span class="pill">High</span><span class="pill">Premium contractor software posture that needs real scale or process discipline to justify.</span><span class="pill">4 trade fits</span></div>
     </a></div>
@@ -176,7 +181,7 @@
               <div class="grid">
     <a class="card" href="/compare/jobber-vs-housecall-pro/" data-analytics="compare_cta">
       <div class="card-kicker">Comparison</div>
-      <h3><span class="vendor-pair"><span class="vendor-name"><span class="vendor-logo vendor-logo--fallback" aria-hidden="true">JO</span><span>Jobber</span></span><span class="vendor-pair__separator">vs</span><span class="vendor-name"><img src="/assets/vendors/housecall-pro.svg" alt="Housecall Pro logo" class="vendor-logo" width="22" height="22" loading="lazy" decoding="async"><span>Housecall Pro</span></span></span></h3>
+      <h3><span class="vendor-pair"><span class="vendor-name"><img src="/assets/vendors/jobber.svg" alt="Jobber logo" class="vendor-logo" width="24" height="24" loading="lazy" decoding="async"><span>Jobber</span></span><span class="vendor-pair__separator">vs</span><span class="vendor-name"><img src="/assets/vendors/housecall-pro.svg" alt="Housecall Pro logo" class="vendor-logo" width="24" height="24" loading="lazy" decoding="async"><span>Housecall Pro</span></span></span></h3>
       <p>Choose Jobber when simplicity and faster adoption matter most. Choose Housecall Pro when you want broader home-service depth and are willing to carry a little more platform weight.</p>
     </a>
     <a class="card" href="/compare/all-in-one-field-service-software-vs-separate-ai-tools/" data-analytics="compare_cta">

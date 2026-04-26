@@ -142,7 +142,7 @@ function renderVendorName(slugOrName, fallbackName = '', options = {}) {
   const logo = vendorLogoPath(vendor);
   const className = ['vendor-name', options.className].filter(Boolean).join(' ');
   const icon = logo
-    ? `<img src="${escapeHtml(logo)}" alt="${escapeHtml(name)} logo" class="vendor-logo" width="22" height="22" loading="lazy" decoding="async">`
+    ? `<img src="${escapeHtml(logo)}" alt="${escapeHtml(name)} logo" class="vendor-logo" width="24" height="24" loading="lazy" decoding="async">`
     : `<span class="vendor-logo vendor-logo--fallback" aria-hidden="true">${escapeHtml(vendorInitials(name))}</span>`;
 
   return `<span class="${escapeHtml(className)}">${icon}<span>${escapeHtml(name)}</span></span>`;
@@ -356,15 +356,20 @@ function renderHeader(currentRoute) {
   return `
     <header class="site-header">
       <div class="container header-inner">
-        <a class="site-brand" href="/" aria-label="ihelpwithai.com home">
-          <img
-            src="/assets/brand/ihelpwithai-logo-horizontal-transparent.png"
-            alt="ihelpwithai.com"
-            class="site-brand__logo"
-            width="1331"
-            height="386"
-            decoding="async"
-            fetchpriority="high">
+        <a class="site-brand site-brand--clear" href="/" aria-label="ihelpwithai.com home">
+          <span class="site-brand__mark-wrap" aria-hidden="true">
+            <img
+              src="/assets/brand/ihelpwithai-mark-transparent.png"
+              alt=""
+              class="site-brand__mark"
+              width="512"
+              height="512"
+              decoding="async"
+              fetchpriority="high">
+          </span>
+          <span class="site-brand__wordmark" aria-hidden="true">
+            <span class="site-brand__wordmark-main">ihelpwith</span><span class="site-brand__wordmark-ai">ai</span><span class="site-brand__wordmark-dotcom">.com</span>
+          </span>
         </a>
         <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" data-menu-toggle>&#9776;</button>
         <nav class="site-nav" data-menu>

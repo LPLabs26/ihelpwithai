@@ -19,7 +19,7 @@ window.IHWAI_SITE_DATA = {
         {
           "slug": "jobber",
           "name": "Jobber",
-          "logo": "",
+          "logo": "/assets/vendors/jobber.svg",
           "logoFallback": "JO",
           "summary": "A strong all-in-one choice for contractor businesses that want quoting, scheduling, invoicing, payments, and customer follow-up in one operating system without jumping straight to enterprise complexity.",
           "categoryLabel": "All in one field-service software",
@@ -211,7 +211,7 @@ window.IHWAI_SITE_DATA = {
         {
           "slug": "callrail",
           "name": "CallRail",
-          "logo": "",
+          "logo": "/assets/vendors/callrail.svg",
           "logoFallback": "CR",
           "summary": "A strong fit when call-heavy contractor businesses need better visibility into lead sources, cleaner intake tracking, and more discipline around how inbound calls are handled.",
           "categoryLabel": "Call tracking and lead-intake visibility",
@@ -258,7 +258,7 @@ window.IHWAI_SITE_DATA = {
         {
           "slug": "openphone",
           "name": "OpenPhone",
-          "logo": "",
+          "logo": "/assets/vendors/openphone.svg",
           "logoFallback": "OP",
           "summary": "A lighter shared phone option for contractor teams that want better call ownership, shared inboxes, texting, and team visibility without adopting a full operating system.",
           "categoryLabel": "Shared business phone system",
