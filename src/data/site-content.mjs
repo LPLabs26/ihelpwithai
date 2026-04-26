@@ -176,6 +176,89 @@ export const site = {
   ]
 };
 
+export const vendors = {
+  jobber: {
+    name: 'Jobber',
+    logo: '/assets/vendors/jobber.svg',
+    website: 'https://www.getjobber.com/'
+  },
+  'housecall-pro': {
+    name: 'Housecall Pro',
+    logo: '/assets/vendors/housecall-pro.svg',
+    website: 'https://www.housecallpro.com/'
+  },
+  servicetitan: {
+    name: 'ServiceTitan',
+    logo: '/assets/vendors/servicetitan.svg',
+    website: 'https://www.servicetitan.com/'
+  },
+  nicejob: {
+    name: 'NiceJob',
+    logo: '/assets/vendors/nicejob.svg',
+    website: 'https://nicejob.com/'
+  },
+  callrail: {
+    name: 'CallRail',
+    logo: '/assets/vendors/callrail.svg',
+    website: 'https://www.callrail.com/'
+  },
+  openphone: {
+    name: 'OpenPhone',
+    logo: '/assets/vendors/openphone.svg',
+    website: 'https://www.openphone.com/'
+  },
+  zapier: {
+    name: 'Zapier',
+    logo: '/assets/vendors/zapier.svg',
+    website: 'https://zapier.com/'
+  },
+  chatgpt: {
+    name: 'ChatGPT',
+    logo: '/assets/vendors/chatgpt.svg',
+    website: 'https://chatgpt.com/'
+  },
+  vagaro: {
+    name: 'Vagaro',
+    logo: '/assets/vendors/vagaro.svg',
+    website: 'https://www.vagaro.com/'
+  },
+  glossgenius: {
+    name: 'GlossGenius',
+    logo: '/assets/vendors/glossgenius.svg',
+    website: 'https://www.glossgenius.com/'
+  },
+  'square-appointments': {
+    name: 'Square Appointments',
+    logo: '/assets/vendors/square-appointments.svg',
+    website: 'https://squareup.com/appointments'
+  },
+  boulevard: {
+    name: 'Boulevard',
+    logo: '/assets/vendors/boulevard.svg',
+    website: 'https://www.joinblvd.com/'
+  },
+  booksy: {
+    name: 'Booksy',
+    logo: '/assets/vendors/booksy.svg',
+    website: 'https://booksy.com/'
+  },
+  fresha: {
+    name: 'Fresha',
+    logo: '/assets/vendors/fresha.svg',
+    website: 'https://www.fresha.com/'
+  },
+  mangomint: {
+    name: 'Mangomint',
+    logo: '/assets/vendors/mangomint.svg',
+    website: 'https://www.mangomint.com/'
+  },
+  canva: {
+    name: 'Canva',
+    logo: '/assets/vendors/canva.svg',
+    website: 'https://www.canva.com/'
+  }
+};
+
 export const templateSections = [
   {
     id: 'missed-call-texts',

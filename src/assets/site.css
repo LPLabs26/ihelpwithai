@@ -113,6 +113,22 @@ textarea {
   padding: 14px 0;
 }
 
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 1 auto;
+  min-width: 0;
+  text-decoration: none;
+}
+
+.site-brand__logo {
+  display: block;
+  width: auto;
+  height: 42px;
+  max-width: min(280px, 58vw);
+  object-fit: contain;
+}
+
 .brand {
   display: flex;
   align-items: center;
@@ -397,6 +413,65 @@ body.theme-beauty .card-kicker {
   margin: 0 0 10px;
   font-size: 1.45rem;
   color: #13202f;
+}
+
+.vendor-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+  vertical-align: middle;
+}
+
+.vendor-name > span:last-child {
+  min-width: 0;
+}
+
+.vendor-logo {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  flex: 0 0 auto;
+  border-radius: 4px;
+}
+
+.vendor-logo--fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #eef6f7;
+  color: #071e3d;
+  border: 1px solid rgba(7, 30, 61, 0.12);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.card h3 .vendor-logo,
+.page-title .vendor-logo,
+.result-primary h3 .vendor-logo,
+.result-card h3 .vendor-logo {
+  width: 28px;
+  height: 28px;
+}
+
+.vendor-pair {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.vendor-pair__separator {
+  color: var(--ink-soft);
+  font-size: 0.85em;
+  font-weight: 800;
+}
+
+.compare-table .vendor-name {
+  white-space: nowrap;
 }
 
 .card p,
@@ -892,6 +967,15 @@ body.theme-beauty .results-shell {
 @media (max-width: 760px) {
   .container {
     width: min(var(--max), calc(100% - 24px));
+  }
+
+  .header-inner {
+    gap: 14px;
+  }
+
+  .site-brand__logo {
+    height: 34px;
+    max-width: min(220px, 60vw);
   }
 
   .menu-toggle {

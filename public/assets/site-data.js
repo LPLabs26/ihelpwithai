@@ -19,6 +19,8 @@ window.IHWAI_SITE_DATA = {
         {
           "slug": "jobber",
           "name": "Jobber",
+          "logo": "",
+          "logoFallback": "JO",
           "summary": "A strong all-in-one choice for contractor businesses that want quoting, scheduling, invoicing, payments, and customer follow-up in one operating system without jumping straight to enterprise complexity.",
           "categoryLabel": "All in one field-service software",
           "setupLabel": "Moderate setup",
@@ -67,6 +69,8 @@ window.IHWAI_SITE_DATA = {
         {
           "slug": "housecall-pro",
           "name": "Housecall Pro",
+          "logo": "",
+          "logoFallback": "HP",
           "summary": "A strong home-service platform for teams that want quoting, scheduling, dispatch, payments, online booking, and customer communication in one contractor-friendly system.",
           "categoryLabel": "All in one field-service software",
           "setupLabel": "Moderate setup",
@@ -115,6 +119,8 @@ window.IHWAI_SITE_DATA = {
         {
           "slug": "servicetitan",
           "name": "ServiceTitan",
+          "logo": "",
+          "logoFallback": "ST",
           "summary": "A heavier-duty operating system for contractor businesses that need deeper dispatch control, reporting, sales workflow visibility, and operational structure across bigger teams.",
           "categoryLabel": "Enterprise field-service software",
           "setupLabel": "High setup",
@@ -157,6 +163,8 @@ window.IHWAI_SITE_DATA = {
         {
           "slug": "nicejob",
           "name": "NiceJob",
+          "logo": "",
+          "logoFallback": "NJ",
           "summary": "A focused reputation tool for contractor businesses that want more review requests going out consistently without turning the office into a follow-up machine.",
           "categoryLabel": "Review and reputation software",
           "setupLabel": "Low to moderate setup",
@@ -203,6 +211,8 @@ window.IHWAI_SITE_DATA = {
         {
           "slug": "callrail",
           "name": "CallRail",
+          "logo": "",
+          "logoFallback": "CR",
           "summary": "A strong fit when call-heavy contractor businesses need better visibility into lead sources, cleaner intake tracking, and more discipline around how inbound calls are handled.",
           "categoryLabel": "Call tracking and lead-intake visibility",
           "setupLabel": "Moderate setup",
@@ -248,6 +258,8 @@ window.IHWAI_SITE_DATA = {
         {
           "slug": "openphone",
           "name": "OpenPhone",
+          "logo": "",
+          "logoFallback": "OP",
           "summary": "A lighter shared phone option for contractor teams that want better call ownership, shared inboxes, texting, and team visibility without adopting a full operating system.",
           "categoryLabel": "Shared business phone system",
           "setupLabel": "Low setup",
@@ -285,6 +297,8 @@ window.IHWAI_SITE_DATA = {
         {
           "slug": "zapier",
           "name": "Zapier",
+          "logo": "",
+          "logoFallback": "ZA",
           "summary": "Useful when a contractor business already has core tools but keeps losing time on repetitive handoffs, notifications, and admin glue work between systems.",
           "categoryLabel": "Workflow automation layer",
           "setupLabel": "Moderate setup",
@@ -331,6 +345,8 @@ window.IHWAI_SITE_DATA = {
         {
           "slug": "chatgpt",
           "name": "ChatGPT",
+          "logo": "",
+          "logoFallback": "CG",
           "summary": "Useful when the office needs faster drafting, clearer responses, SOP support, and less writing drag, but not when the business needs a true operating system.",
           "categoryLabel": "General AI assistant for office work",
           "setupLabel": "Low setup",
@@ -388,6 +404,8 @@ window.IHWAI_SITE_DATA = {
         {
           "slug": "vagaro",
           "name": "Vagaro",
+          "logo": "",
+          "logoFallback": "VA",
           "summary": "A broad beauty and wellness platform for businesses that want booking, calendar management, payments, memberships, marketing tools, and client management in one system.",
           "categoryLabel": "All-in-one beauty and wellness software",
           "setupLabel": "Moderate setup",
@@ -449,6 +467,8 @@ window.IHWAI_SITE_DATA = {
         {
           "slug": "glossgenius",
           "name": "GlossGenius",
+          "logo": "",
+          "logoFallback": "GG",
           "summary": "A polished booking and payments platform built around beauty pros who want a strong client-facing booking flow, cleaner payments, and a simpler modern setup.",
           "categoryLabel": "Beauty booking and payments software",
           "setupLabel": "Low to moderate setup",
@@ -504,6 +524,8 @@ window.IHWAI_SITE_DATA = {
         {
           "slug": "square-appointments",
           "name": "Square Appointments",
+          "logo": "",
+          "logoFallback": "SA",
           "summary": "A practical appointment and payments option when beauty businesses want online booking, reminders, checkout, and client notes tied to the wider Square ecosystem.",
           "categoryLabel": "Appointments and payments software",
           "setupLabel": "Low setup",
@@ -554,6 +576,8 @@ window.IHWAI_SITE_DATA = {
         {
           "slug": "boulevard",
           "name": "Boulevard",
+          "logo": "",
+          "logoFallback": "BO",
           "summary": "A premium platform aimed at client experience, front-desk precision, and stronger scheduling control for salons, spas, and medspas.",
           "categoryLabel": "Premium salon and medspa software",
           "setupLabel": "Moderate to high setup",
@@ -608,6 +632,8 @@ window.IHWAI_SITE_DATA = {
         {
           "slug": "fresha",
           "name": "Fresha",
+          "logo": "",
+          "logoFallback": "FR",
           "summary": "A beauty and wellness booking platform known for online booking, payments, reminders, and visibility through its client-facing marketplace.",
           "categoryLabel": "Booking and marketplace software",
           "setupLabel": "Low to moderate setup",
@@ -659,6 +685,8 @@ window.IHWAI_SITE_DATA = {
         {
           "slug": "booksy",
           "name": "Booksy",
+          "logo": "",
+          "logoFallback": "BO",
           "summary": "A mobile-first booking platform that is especially common in barbering and appointment-led beauty businesses that want easy booking and in-app client convenience.",
           "categoryLabel": "Mobile-first booking software",
           "setupLabel": "Low setup",
@@ -708,6 +736,8 @@ window.IHWAI_SITE_DATA = {
         {
           "slug": "mangomint",
           "name": "Mangomint",
+          "logo": "",
+          "logoFallback": "MA",
           "summary": "A premium salon and spa software option for businesses that want online booking, payments, team management, and stronger operational polish than basic appointment tools.",
           "categoryLabel": "Salon and spa management software",
           "setupLabel": "Moderate setup",
@@ -759,6 +789,8 @@ window.IHWAI_SITE_DATA = {
         {
           "slug": "chatgpt",
           "name": "ChatGPT",
+          "logo": "",
+          "logoFallback": "CG",
           "summary": "Useful for drafting captions, review replies, aftercare instructions, consultation summaries, retention messages, and SOPs, but not a replacement for booking software.",
           "categoryLabel": "AI assistant for the business side of beauty work",
           "setupLabel": "Low setup",
@@ -820,6 +852,8 @@ window.IHWAI_SITE_DATA = {
         {
           "slug": "canva",
           "name": "Canva",
+          "logo": "",
+          "logoFallback": "CA",
           "summary": "Useful when the business needs faster content creation, simple graphics, social templates, and lighter publishing support without hiring a full design team.",
           "categoryLabel": "Content design and social publishing tool",
           "setupLabel": "Low setup",
@@ -878,6 +912,8 @@ window.IHWAI_SITE_DATA = {
         {
           "slug": "zapier",
           "name": "Zapier",
+          "logo": "",
+          "logoFallback": "ZA",
           "summary": "Useful when the business already has core tools but wants to automate follow-up, notification handoffs, lead routing, or admin glue work between systems.",
           "categoryLabel": "Workflow automation layer",
           "setupLabel": "Moderate setup",

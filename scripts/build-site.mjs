@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -12,7 +13,8 @@ import {
   reviews,
   site,
   templateSections,
-  trades
+  trades,
+  vendors
 } from '../src/data/site-content.mjs';
 import {
   beautyBusinesses,
@@ -50,6 +52,9 @@ const beautyProblemBySlug = new Map(beautyProblems.map((entry) => [entry.slug, e
 const beautyReviewBySlug = new Map(beautyReviews.map((entry) => [entry.slug, entry]));
 const beautyComparisonBySlug = new Map(beautyComparisons.map((entry) => [entry.slug, entry]));
 const beautyTemplateById = new Map(beautyTemplates.map((entry) => [entry.id, entry]));
+const vendorByName = new Map(
+  Object.entries(vendors).map(([slug, vendor]) => [normalizeVendorKey(vendor.name), slug])
+);
 
 const legacyRootPaths = [
   'affiliate-disclosure.html',
@@ -99,6 +104,80 @@ function escapeHtml(value = '') {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#39;');
+}
+
+function normalizeVendorKey(value = '') {
+  return String(value).toLowerCase().replace(/[^a-z0-9]+/g, '');
+}
+
+function getVendor(slugOrName = '') {
+  const key = String(slugOrName);
+  return vendors[key] || vendors[vendorByName.get(normalizeVendorKey(key))] || null;
+}
+
+function vendorInitials(name = '') {
+  const words =
+    String(name)
+      .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
+      .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+      .match(/[A-Za-z0-9]+/g) || [];
+  if (words.length === 0) return '?';
+  if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+  return words
+    .slice(0, 2)
+    .map((word) => word[0])
+    .join('')
+    .toUpperCase();
+}
+
+function vendorLogoPath(vendor) {
+  if (!vendor?.logo) return '';
+  const relativeAssetPath = vendor.logo.replace(/^\/assets\//, '');
+  return existsSync(path.join(srcAssetsDir, relativeAssetPath)) ? vendor.logo : '';
+}
+
+function renderVendorName(slugOrName, fallbackName = '', options = {}) {
+  const vendor = getVendor(slugOrName);
+  const name = vendor?.name || fallbackName || String(slugOrName);
+  const logo = vendorLogoPath(vendor);
+  const className = ['vendor-name', options.className].filter(Boolean).join(' ');
+  const icon = logo
+    ? `<img src="${escapeHtml(logo)}" alt="${escapeHtml(name)} logo" class="vendor-logo" width="22" height="22" loading="lazy" decoding="async">`
+    : `<span class="vendor-logo vendor-logo--fallback" aria-hidden="true">${escapeHtml(vendorInitials(name))}</span>`;
+
+  return `<span class="${escapeHtml(className)}">${icon}<span>${escapeHtml(name)}</span></span>`;
+}
+
+function renderReviewName(review, options = {}) {
+  return renderVendorName(review.slug, review.toolName, options);
+}
+
+function renderVendorPair(leftSlug, leftName, rightSlug, rightName) {
+  return `<span class="vendor-pair">${renderVendorName(leftSlug, leftName)}<span class="vendor-pair__separator">vs</span>${renderVendorName(rightSlug, rightName)}</span>`;
+}
+
+function renderComparisonTitle(comparison, lookup) {
+  const left = lookup.get(comparison.leftTool);
+  const right = lookup.get(comparison.rightTool);
+  if (!comparison.leftLabel && !comparison.rightLabel && left && right) {
+    return renderVendorPair(comparison.leftTool, left.toolName, comparison.rightTool, right.toolName);
+  }
+  return escapeHtml(comparison.shortTitle);
+}
+
+function renderComparisonSideName(comparison, side, review) {
+  const customLabel = comparison[`${side}Label`];
+  if (customLabel) return escapeHtml(customLabel);
+  return renderReviewName(review);
+}
+
+function vendorSiteData(slug, fallbackName) {
+  const vendor = getVendor(slug);
+  const name = vendor?.name || fallbackName;
+  return {
+    logo: vendorLogoPath(vendor),
+    logoFallback: vendorInitials(name)
+  };
 }
 
 function routeForTrade(slug) {
@@ -277,12 +356,15 @@ function renderHeader(currentRoute) {
   return `
     <header class="site-header">
       <div class="container header-inner">
-        <a class="brand" href="/">
-          <span class="brand-mark">IHAI</span>
-          <span class="brand-text">
-            <strong>${escapeHtml(site.title)}</strong>
-            <small>AI and software buyer's guides for service businesses</small>
-          </span>
+        <a class="site-brand" href="/" aria-label="ihelpwithai.com home">
+          <img
+            src="/assets/brand/ihelpwithai-logo-horizontal-transparent.png"
+            alt="ihelpwithai.com"
+            class="site-brand__logo"
+            width="1331"
+            height="386"
+            decoding="async"
+            fetchpriority="high">
         </a>
         <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" data-menu-toggle>&#9776;</button>
         <nav class="site-nav" data-menu>
@@ -428,7 +510,7 @@ function renderReviewCard(review) {
   return `
     <a class="card" href="${routeForReview(review.slug)}" data-analytics="review_cta">
       <div class="card-kicker">${escapeHtml(review.category)}</div>
-      <h3>${escapeHtml(review.toolName)}</h3>
+      <h3>${renderReviewName(review)}</h3>
       <p>${escapeHtml(review.oneLineVerdict)}</p>
       ${renderPills([
         review.setupEffort,
@@ -442,7 +524,7 @@ function renderComparisonCard(comparison) {
   return `
     <a class="card" href="${routeForComparison(comparison.slug)}" data-analytics="compare_cta">
       <div class="card-kicker">Comparison</div>
-      <h3>${escapeHtml(comparison.shortTitle)}</h3>
+      <h3>${renderComparisonTitle(comparison, reviewBySlug)}</h3>
       <p>${escapeHtml(comparison.summary)}</p>
     </a>`;
 }
@@ -479,7 +561,7 @@ function renderBeautyReviewCard(entry) {
   return `
     <a class="card" href="${routeForBeautyReview(entry.slug)}" data-analytics="review_cta beauty_review_cta">
       <div class="card-kicker">${escapeHtml(entry.category)}</div>
-      <h3>${escapeHtml(entry.toolName)}</h3>
+      <h3>${renderReviewName(entry)}</h3>
       <p>${escapeHtml(entry.oneLineVerdict)}</p>
       ${renderPills([
         entry.setupEffort,
@@ -493,7 +575,7 @@ function renderBeautyComparisonCard(entry) {
   return `
     <a class="card" href="${routeForBeautyComparison(entry.slug)}" data-analytics="compare_cta beauty_compare_cta">
       <div class="card-kicker">Beauty comparison</div>
-      <h3>${escapeHtml(entry.shortTitle)}</h3>
+      <h3>${renderComparisonTitle(entry, beautyReviewBySlug)}</h3>
       <p>${escapeHtml(entry.summary)}</p>
     </a>`;
 }
@@ -613,7 +695,12 @@ function renderShell({
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   ${renderMetaTags({ title, description, route, robots })}
-  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/brand/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/brand/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png">
+  <link rel="manifest" href="/assets/brand/site.webmanifest">
+  <meta name="theme-color" content="#071E3D">
   <link rel="stylesheet" href="/assets/site.css?v=${ASSET_VERSION}">
   <script defer src="/assets/site-data.js?v=${ASSET_VERSION}"></script>
   <script defer src="/assets/data-capture.js?v=${ASSET_VERSION}"></script>
@@ -1542,7 +1629,7 @@ function renderBeautyReviewPage(review) {
             <div class="page-grid">
               <div>
                 <div class="trust-chip">${escapeHtml(review.category)}</div>
-                <h1 class="page-title">${escapeHtml(review.toolName)} review for beauty and wellness businesses</h1>
+                <h1 class="page-title">${renderReviewName(review)} review for beauty and wellness businesses</h1>
                 <p>${escapeHtml(review.summary)}</p>
                 ${renderPills(review.businessTypeFit, (slug) => beautyBusinessBySlug.get(slug)?.title || toSlugLabel(slug))}
                 ${renderPills(review.teamSizeFit, toSlugLabel)}
@@ -1663,7 +1750,7 @@ function renderBeautyReviewPage(review) {
                   .map((alternative) => {
                     const target = beautyReviewBySlug.get(alternative.slug);
                     const reason = alternative.reason.replace(/^better fit when\s+/i, '');
-                    return `<li><a href="${routeForBeautyReview(alternative.slug)}" data-analytics="review_cta beauty_review_cta">${escapeHtml(target.toolName)}</a> is a better fit when ${escapeHtml(reason)}.</li>`;
+                    return `<li><a href="${routeForBeautyReview(alternative.slug)}" data-analytics="review_cta beauty_review_cta">${renderReviewName(target)}</a> is a better fit when ${escapeHtml(reason)}.</li>`;
                   })
                   .join('')}
               </ul>
@@ -1674,7 +1761,7 @@ function renderBeautyReviewPage(review) {
                 ${review.compareLinks
                   .map((slug) => {
                     const comparison = beautyComparisonBySlug.get(slug);
-                    return `<li><a href="${routeForBeautyComparison(slug)}" data-analytics="compare_cta beauty_compare_cta">${escapeHtml(comparison.shortTitle)}</a></li>`;
+                    return `<li><a href="${routeForBeautyComparison(slug)}" data-analytics="compare_cta beauty_compare_cta">${renderComparisonTitle(comparison, beautyReviewBySlug)}</a></li>`;
                   })
                   .join('')}
               </ul>
@@ -1713,8 +1800,8 @@ function renderBeautyReviewPage(review) {
 function renderBeautyComparisonPage(comparison) {
   const left = beautyReviewBySlug.get(comparison.leftTool);
   const right = beautyReviewBySlug.get(comparison.rightTool);
-  const leftLabel = comparison.leftLabel || left.toolName;
-  const rightLabel = comparison.rightLabel || right.toolName;
+  const leftDisplay = renderComparisonSideName(comparison, 'left', left);
+  const rightDisplay = renderComparisonSideName(comparison, 'right', right);
 
   return renderShell({
     route: routeForBeautyComparison(comparison.slug),
@@ -1739,7 +1826,7 @@ function renderBeautyComparisonPage(comparison) {
             <div class="page-grid">
               <div>
                 <div class="trust-chip">Beauty comparison</div>
-                <h1 class="page-title">${escapeHtml(comparison.shortTitle)}</h1>
+                <h1 class="page-title">${renderComparisonTitle(comparison, beautyReviewBySlug)}</h1>
                 <p>${escapeHtml(comparison.scenario)}</p>
                 <p>${escapeHtml(comparison.summary)}</p>
                 <div class="cta-row" style="margin-top:16px">
@@ -1794,11 +1881,11 @@ function renderBeautyComparisonPage(comparison) {
         <section class="section">
           <div class="container split-panel">
             <article class="card">
-              <div class="card-kicker">Choose ${escapeHtml(leftLabel)} if...</div>
+              <div class="card-kicker">Choose ${leftDisplay} if...</div>
               ${renderBulletList(comparison.chooseLeft)}
             </article>
             <article class="card">
-              <div class="card-kicker">Choose ${escapeHtml(rightLabel)} if...</div>
+              <div class="card-kicker">Choose ${rightDisplay} if...</div>
               ${renderBulletList(comparison.chooseRight)}
             </article>
           </div>
@@ -1810,8 +1897,8 @@ function renderBeautyComparisonPage(comparison) {
               <thead>
                 <tr>
                   <th>Decision point</th>
-                  <th>${escapeHtml(leftLabel)}</th>
-                  <th>${escapeHtml(rightLabel)}</th>
+                  <th>${leftDisplay}</th>
+                  <th>${rightDisplay}</th>
                 </tr>
               </thead>
               <tbody>
@@ -2291,7 +2378,7 @@ function renderReviewPage(review) {
             <div class="page-grid">
               <div>
                 <div class="trust-chip">${escapeHtml(review.category)}</div>
-                <h1 class="page-title">${escapeHtml(review.toolName)} review for contractors</h1>
+                <h1 class="page-title">${renderReviewName(review)} review for contractors</h1>
                 <p>${escapeHtml(review.summary)}</p>
                 ${renderPills(review.tradeFit, (slug) => tradeBySlug.get(slug)?.title || toSlugLabel(slug))}
                 ${renderPills(review.teamSizeFit)}
@@ -2384,7 +2471,7 @@ function renderReviewPage(review) {
                   .map((alternative) => {
                     const target = reviewBySlug.get(alternative.slug);
                     const reason = alternative.reason.replace(/^better fit when\s+/i, '');
-                    return `<li><a href="${routeForReview(alternative.slug)}" data-analytics="review_cta">${escapeHtml(target.toolName)}</a> is a better fit when ${escapeHtml(reason)}.</li>`;
+                    return `<li><a href="${routeForReview(alternative.slug)}" data-analytics="review_cta">${renderReviewName(target)}</a> is a better fit when ${escapeHtml(reason)}.</li>`;
                   })
                   .join('')}
               </ul>
@@ -2395,7 +2482,7 @@ function renderReviewPage(review) {
                 ${review.compareLinks
                   .map((slug) => {
                     const comparison = comparisonBySlug.get(slug);
-                    return `<li><a href="${routeForComparison(slug)}" data-analytics="compare_cta">${escapeHtml(comparison.shortTitle)}</a></li>`;
+                    return `<li><a href="${routeForComparison(slug)}" data-analytics="compare_cta">${renderComparisonTitle(comparison, reviewBySlug)}</a></li>`;
                   })
                   .join('')}
               </ul>
@@ -2434,8 +2521,8 @@ function renderReviewPage(review) {
 function renderComparisonPage(comparison) {
   const left = reviewBySlug.get(comparison.leftTool);
   const right = reviewBySlug.get(comparison.rightTool);
-  const leftLabel = comparison.leftLabel || left.toolName;
-  const rightLabel = comparison.rightLabel || right.toolName;
+  const leftDisplay = renderComparisonSideName(comparison, 'left', left);
+  const rightDisplay = renderComparisonSideName(comparison, 'right', right);
 
   return renderShell({
     route: routeForComparison(comparison.slug),
@@ -2457,7 +2544,7 @@ function renderComparisonPage(comparison) {
             <div class="page-grid">
               <div>
                 <div class="trust-chip">Comparison</div>
-                <h1 class="page-title">${escapeHtml(comparison.shortTitle)}</h1>
+                <h1 class="page-title">${renderComparisonTitle(comparison, reviewBySlug)}</h1>
                 <p>${escapeHtml(comparison.scenario)}</p>
                 <p>${escapeHtml(comparison.summary)}</p>
                 <div class="cta-row" style="margin-top:16px">
@@ -2512,11 +2599,11 @@ function renderComparisonPage(comparison) {
         <section class="section">
           <div class="container split-panel">
             <article class="card">
-              <div class="card-kicker">Choose ${escapeHtml(leftLabel)} if...</div>
+              <div class="card-kicker">Choose ${leftDisplay} if...</div>
               ${renderBulletList(comparison.chooseLeft)}
             </article>
             <article class="card">
-              <div class="card-kicker">Choose ${escapeHtml(rightLabel)} if...</div>
+              <div class="card-kicker">Choose ${rightDisplay} if...</div>
               ${renderBulletList(comparison.chooseRight)}
             </article>
           </div>
@@ -2528,8 +2615,8 @@ function renderComparisonPage(comparison) {
               <thead>
                 <tr>
                   <th>Decision point</th>
-                  <th>${escapeHtml(leftLabel)}</th>
-                  <th>${escapeHtml(rightLabel)}</th>
+                  <th>${leftDisplay}</th>
+                  <th>${rightDisplay}</th>
                 </tr>
               </thead>
               <tbody>
@@ -3060,6 +3147,7 @@ function renderSiteDataScript() {
   const fieldTools = reviews.map((review) => ({
     slug: review.slug,
     name: review.toolName,
+    ...vendorSiteData(review.slug, review.toolName),
     summary: review.summary,
     categoryLabel: review.category,
     setupLabel: `${review.setupEffort} setup`,
@@ -3081,6 +3169,7 @@ function renderSiteDataScript() {
   const beautyTools = beautyReviews.map((review) => ({
     slug: review.slug,
     name: review.toolName,
+    ...vendorSiteData(review.slug, review.toolName),
     summary: review.summary,
     categoryLabel: review.category,
     setupLabel: `${review.setupEffort} setup`,
@@ -3167,6 +3256,12 @@ async function copyStaticAssets(destination) {
   await fs.mkdir(path.join(destination, 'assets'), { recursive: true });
   for (const filename of ['site.css', 'site.js', 'data-capture.js', 'favicon.svg', 'og-default.png']) {
     await fs.copyFile(path.join(srcAssetsDir, filename), path.join(destination, 'assets', filename));
+  }
+  for (const directory of ['brand', 'vendors']) {
+    const sourceDir = path.join(srcAssetsDir, directory);
+    if (existsSync(sourceDir)) {
+      await fs.cp(sourceDir, path.join(destination, 'assets', directory), { recursive: true });
+    }
   }
   await writeFile(path.join(destination, 'assets', 'site-data.js'), renderSiteDataScript());
 }

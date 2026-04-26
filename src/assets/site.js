@@ -134,9 +134,40 @@
   }
 
   function cleanLabel(target) {
-    return String(target.getAttribute('aria-label') || target.textContent || '')
+    const clone = target.cloneNode(true);
+    qsa('.vendor-logo--fallback', clone).forEach(function (node) {
+      node.textContent = '';
+    });
+
+    return String(target.getAttribute('aria-label') || clone.textContent || '')
       .replace(/\s+/g, ' ')
       .trim();
+  }
+
+  function escapeHtml(value) {
+    return String(value || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function renderVendorName(tool) {
+    const name = String(tool.name || 'Recommended tool');
+    const escapedName = escapeHtml(name);
+    const logo = String(tool.logo || '').trim();
+    const icon = logo
+      ? '<img src="' +
+        escapeHtml(logo) +
+        '" alt="' +
+        escapedName +
+        ' logo" class="vendor-logo" width="22" height="22" loading="lazy" decoding="async">'
+      : '<span class="vendor-logo vendor-logo--fallback" aria-hidden="true">' +
+        escapeHtml(tool.logoFallback || name.slice(0, 2).toUpperCase()) +
+        '</span>';
+
+    return '<span class="vendor-name">' + icon + '<span>' + escapedName + '</span></span>';
   }
 
   function normalizeInternalPath(href) {
@@ -360,7 +391,7 @@
       entry.score +
       '</div>' +
       '<h3>' +
-      tool.name +
+      renderVendorName(tool) +
       '</h3>' +
       '<p>' +
       tool.summary +
