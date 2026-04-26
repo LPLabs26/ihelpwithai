@@ -558,12 +558,28 @@ body.theme-beauty .card-kicker {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  max-width: 100%;
   padding: 7px 11px;
   border-radius: 999px;
   background: #ecf6f2;
   border: 1px solid rgba(61, 159, 103, 0.18);
   color: #285341;
   font-size: 0.88rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.pill--wrap {
+  align-items: flex-start;
+  flex: 0 1 auto;
+  border-radius: 18px;
+}
+
+.card .pill-row,
+.route-card .pill-row,
+.result-card .pill-row {
+  align-items: flex-start;
 }
 
 body.theme-beauty .pill {

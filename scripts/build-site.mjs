@@ -381,7 +381,11 @@ function renderHeader(currentRoute) {
 
 function renderPills(items, formatter = (value) => value) {
   return `<div class="pill-row">${items
-    .map((item) => `<span class="pill">${escapeHtml(formatter(item))}</span>`)
+    .map((item) => {
+      const label = String(formatter(item));
+      const className = label.length > 24 ? 'pill pill--wrap' : 'pill';
+      return `<span class="${className}">${escapeHtml(label)}</span>`;
+    })
     .join('')}</div>`;
 }
 

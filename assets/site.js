@@ -170,6 +170,12 @@
     return '<span class="vendor-name">' + icon + '<span>' + escapedName + '</span></span>';
   }
 
+  function renderPill(label) {
+    const value = String(label || '');
+    const className = value.length > 24 ? 'pill pill--wrap' : 'pill';
+    return '<span class="' + className + '">' + escapeHtml(value) + '</span>';
+  }
+
   function normalizeInternalPath(href) {
     if (!href) return '';
     try {
@@ -397,15 +403,9 @@
       tool.summary +
       '</p>' +
       '<div class="pill-row">' +
-      '<span class="pill">' +
-      tool.categoryLabel +
-      '</span>' +
-      '<span class="pill">' +
-      tool.setupLabel +
-      '</span>' +
-      '<span class="pill">' +
-      tool.pricingLabel +
-      '</span>' +
+      renderPill(tool.categoryLabel) +
+      renderPill(tool.setupLabel) +
+      renderPill(tool.pricingLabel) +
       '</div>' +
       '<p class="result-note"><strong>Why it fits:</strong> ' +
       tool.shortlistReason +
