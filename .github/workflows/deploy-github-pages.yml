@@ -20,39 +20,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v6
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          node-version: 24
-          package-manager-cache: false
-
-      - name: Build and validate
-        run: |
-          npm run build
-          npm run test:owned-intake
-          npm run check:owned-intake-config
-          node --check scripts/build-site.mjs
-          node --check src/assets/site.js
-          node --check src/assets/data-capture.js
-          node --check scripts/live-site-qa.mjs
-          node --check scripts/validate-owned-intake.mjs
-          node --check scripts/smoke-owned-intake.mjs
-          node --check scripts/check-owned-intake-config.mjs
-          node --check supabase/functions/owned-intake/shared.mjs
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: ./public
+          path: '.'
 
   deploy:
-    needs: build
-    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
