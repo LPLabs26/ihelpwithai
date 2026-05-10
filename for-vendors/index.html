@@ -2,44 +2,135 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>For Vendors | ihelpwithai.com</title>
-<meta name="description" content="Information for software vendors interested in being reviewed or listed on ihelpwithai.com.">
+<meta name="description" content="Information for software vendors about how ihelpwithai.com reviews work, how to submit corrections, and what to expect.">
 <link rel="canonical" href="https://ihelpwithai.com/for-vendors/">
 <link rel="icon" href="/assets/brand/favicon.ico" sizes="any">
-<style>:root{--navy:#0a1628;--navy-mid:#112040;--navy-card:#0f1d38;--navy-border:#1e3056;--amber:#f5a623;--cream:#f4efe6;--cream-dim:#d4ccbe;--white:#ffffff;--muted:#7a8fad;--font-display:'Instrument Serif',Georgia,serif;--font-body:'DM Sans',sans-serif;}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{background:var(--navy);color:var(--cream);font-family:var(--font-body);font-size:16px;line-height:1.6;}
-a {color:inherit;text-decoration:none;}
-.container{max-width:1120px;margin:0 auto;padding:0 24px;}
-.site-header{position:sticky;top:0;z-index:100;background:rgba(10,22,40,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--navy-border);}
-.header-inner{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px;}
-.site-brand{display:flex;align-items:center;gap:8px;font-weight:600;font-size:15px;color:var(--white);}
-.site-nav{display:flex;align-items:center;gap:4px;}
-.site-nav a{padding:6px 12px;border-radius:6px;font-size:13.5px;color:var(--muted);}
-.site-nav .nav-cta{background:var(--amber);color:var(--navy);font-weight:600;margin-left:8px;padding:7px 16px;border-radius:6px;}
-.page-hero{padding:64px 0 48px;border-bottom:1px solid var(--navy-border);}
-.page-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:12px;}
-.page-hero h1{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:400;color:var(--white);line-height:1.12;margin-bottom:12px;}
-.page-body{max-width:700px;margin:0 auto;padding:64px 24px 100px;}
-.section-card{background:var(--navy-card);border:1.5px solid var(--navy-border);border-radius:20px;padding:32px;margin-bottom:24px;}
-.section-card h2{font-family:var(--font-display);font-size:1.3rem;font-weight:400;color:var(--white);margin-bottom:12px;}
-.section-card p{font-size:15px;color:var(--cream-dim);line-height:1.7;font-weight:300;margin-bottom:16px;}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:12px;font-size:14.5px;font-weight:600;cursor:pointer;border:none;text-decoration:none;}
-.btn-primary{background:var(--amber);color:var(--navy);}
-.site-footer{border-top:1px solid var(--navy-border);padding:40px 0 24px;}
-.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
-.footer-inner p{font-size:13px;color:var(--muted);}
-.footer-inner a{color:var(--muted);margin:0 8px;}
-@media(max-width:620px){.site-nav{display:none;}}
+<meta name="theme-color" content="#0a1628">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=20260420a">
+<style>
+  :root{--navy:#0a1628;--navy-mid:#112040;--navy-card:#0f1d38;--navy-border:#1e3056;--amber:#f5a623;--cream:#f4efe6;--cream-dim:#d4ccbe;--white:#ffffff;--muted:#7a8fad;--green:#4ade80;--red:#f87171;--font-display:'Instrument Serif',Georgia,serif;--font-body:'DM Sans',sans-serif;--radius-sm:6px;--radius-md:12px;--radius-lg:20px;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--navy);color:var(--cream);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .site-header{position:sticky;top:0;z-index:100;background:rgba(10,22,40,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--navy-border);}
+  .header-inner{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px;}
+  .site-brand{display:flex;align-items:center;gap:8px;font-weight:600;font-size:15px;color:var(--white);}
+  .site-brand__mark{width:28px;height:28px;}
+  .site-brand__wordmark-ai{color:var(--amber);}
+  .site-nav{display:flex;align-items:center;gap:4px;}
+  .site-nav a{padding:6px 12px;border-radius:var(--radius-sm);font-size:13.5px;color:var(--muted);transition:color 0.15s,background 0.15s;}
+  .site-nav a:hover{color:var(--cream);background:var(--navy-mid);}
+  .site-nav .nav-cta{background:var(--amber);color:var(--navy);font-weight:600;margin-left:8px;padding:7px 16px;border-radius:var(--radius-sm);}
+  .site-nav .nav-cta:hover{background:#e09410;}
+  .menu-toggle{display:none;background:none;border:none;color:var(--cream);font-size:20px;cursor:pointer;}
+  .page-wrap{max-width:760px;margin:0 auto;padding:64px 24px 100px;}
+  .page-label{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--amber);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .page-label::before{content:'';width:24px;height:2px;background:var(--amber);}
+  h1{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,2.8rem);font-weight:400;color:var(--white);line-height:1.12;letter-spacing:-0.02em;margin-bottom:14px;}
+  .lede{font-size:17px;color:var(--cream-dim);line-height:1.65;font-weight:300;margin-bottom:48px;}
+  .policy-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:48px;}
+  .policy-card{background:var(--navy-card);border:1.5px solid var(--navy-border);border-radius:var(--radius-md);padding:22px 20px;}
+  .policy-icon{font-size:22px;margin-bottom:10px;}
+  .policy-card h3{font-size:14.5px;font-weight:600;color:var(--white);margin-bottom:6px;}
+  .policy-card p{font-size:13.5px;color:var(--muted);line-height:1.55;font-weight:300;}
+  .policy-card.yes{border-color:rgba(74,222,128,0.2);}
+  .policy-card.yes .policy-icon{color:var(--green);}
+  .policy-card.no{border-color:rgba(248,113,113,0.2);}
+  .policy-card.no .policy-icon{color:var(--red);}
+  .prose{display:flex;flex-direction:column;gap:36px;}
+  .prose h2{font-family:var(--font-display);font-size:1.4rem;font-weight:400;color:var(--white);margin-bottom:10px;line-height:1.2;}
+  .prose p{font-size:15px;color:var(--cream-dim);line-height:1.75;font-weight:300;margin-bottom:10px;}
+  .prose p:last-child{margin-bottom:0;}
+  .prose a{color:var(--amber);border-bottom:1px solid rgba(245,166,35,0.3);}
+  .prose a:hover{border-color:var(--amber);}
+  .divider{border:none;border-top:1px solid var(--navy-border);margin:8px 0;}
+  .contact-box{background:var(--navy-card);border:1.5px solid var(--navy-border);border-left:3px solid var(--amber);border-radius:var(--radius-md);padding:24px 24px;margin-top:48px;}
+  .contact-box h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+  .contact-box p{font-size:14px;color:var(--muted);line-height:1.65;}
+  .contact-box a{color:var(--amber);}
+  .contact-box a:hover{text-decoration:underline;}
+  .site-footer{background:var(--navy-mid);border-top:1px solid var(--navy-border);padding:40px 0 24px;}
+  .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+  .footer-inner p{font-size:13px;color:var(--muted);}
+  .footer-inner a{color:var(--muted);margin:0 8px;}
+  .footer-inner a:hover{color:var(--cream);}
+  @media(max-width:640px){.policy-grid{grid-template-columns:1fr;}}
+  @media(max-width:620px){.site-nav{display:none;}.menu-toggle{display:block;}}
 </style>
 </head>
 <body>
-<header class="site-header"><div class="container header-inner"><a class="site-brand" href="/"><span>ihelpwith<span style="color:var(--amber)">ai</span>.com</span></a><nav class="site-nav"><a href="/">Home</a><a href="/reviews/">Reviews</a><a href="/compare/">Compare</a><a href="/shortlist/" class="nav-cta">Get your picks</a></nav></div></header>
-<section class="page-hero"><div class="container"><div class="page-label">For Vendors</div><h1>Getting reviewed</h1></div></section>
-<div class="page-body">
-  <div class="section-card"><h2>We don't accept payment for reviews</h2><p >Reviews are editorially independent. We don't accept sponsored reviews, pay-to-feature arrangements, or payment for positive coverage.</p><p>We do work with affiliate programs and referral partnerships for tools we recommend. If your tool has an affiliate program and you think it fits our audience, reach out.</p><a class="btn btn-primary" href="mailto:jorge@ihelpwithai.com">Contact us</a></div>
-</div>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="site-brand" href="/"><img src="/assets/brand/ihelpwithai-mark-transparent.png" alt="" class="site-brand__mark" width="28" height="28" decoding="async"><span>ihelpwith<span class="site-brand__wordmark-ai">ai</span>.com</span></a>
+    <button class="menu-toggle" type="button" aria-label="Toggle navigation">&#9776;</button>
+    <nav class="site-nav">
+      <a href="/">Home</a><a href="/trades/">Field Trades</a><a href="/beauty/">Beauty &amp; Wellness</a>
+      <a href="/reviews/">Reviews</a>
+      <a href="/get-help/" style="color:var(--amber);font-weight:600;">Get Help — $97</a>
+      <a href="/shortlist/" class="nav-cta">Get your picks</a>
+    </nav>
+  </div>
+</header>
 
-<footer class="site-footer"><div class="container footer-inner"><p >© 2026 ihelpwithai.com</p><div><a href="/affiliate-disclosure/">Affiliate disclosure</a><a href="/privacy/">Privacy</a></div></div></footer>
+<main class="page-wrap">
+  <div class="page-label">For software vendors</div>
+  <h1>For Vendors</h1>
+  <p class="lede">How reviews work on this site, what vendors can and can't do, and how to get in touch if something needs correcting.</p>
+
+  <div class="policy-grid">
+    <div class="policy-card yes"><div class="policy-icon">✓</div><h3>What's welcome</h3><p>Factual corrections to outdated pricing, features, or plan names. Trial access for more in-depth review. Affiliate program applications.</p></div>
+    <div class="policy-card yes"><div class="policy-icon">✓</div><h3>What's considered</h3><p>Suggesting a tool for review that isn't currently covered. Responding to specific factual errors with documentation.</p></div>
+    <div class="policy-card no"><div class="policy-icon">✗</div><h3>What won't happen</h3><p>Paid placement. Sponsored reviews. Changing a verdict for payment or partnership. Removing a legitimate negative finding.</p></div>
+    <div class="policy-card no"><div class="policy-icon">✗</div><h3>What won't work</h3><p>Pre-publication review of content. Approval rights over what gets written. Pressure to change editorial conclusions.</p></div>
+  </div>
+
+  <div class="prose">
+    <div>
+      <h2>How reviews work</h2>
+      <p>Reviews on this site are written from the perspective of a service business owner evaluating tools — not a vendor's marketing materials. Every review covers what the tool does well, who it fits, who it doesn't fit, realistic pricing, and setup reality.</p>
+      <p>Vendors are not consulted on editorial content before publication. If a review contains a factual error — wrong pricing, a feature that has been added or removed, a changed policy — that's worth correcting. Opinion and verdict aren't factual errors.</p>
+    </div>
+    <hr class="divider">
+    <div>
+      <h2>Submitting a correction</h2>
+      <p>If something in a review is factually incorrect, email <a href="mailto:info@ihelpwithai.com">info@ihelpwithai.com</a> with the subject line "Correction request — [Tool Name]". Include the specific claim, what it should say, and a source (your own pricing page, help documentation, or official announcement).</p>
+      <p>Corrections that are substantiated get made promptly — usually within a few business days. The review will note the correction date.</p>
+    </div>
+    <hr class="divider">
+    <div>
+      <h2>Trial and demo access</h2>
+      <p>If you'd like to provide trial access or a demo account to support a more detailed review of your product, that's welcome. Vendor-provided access doesn't guarantee a positive review — it guarantees a more thorough one. If a trial is provided, it will be noted in the review.</p>
+    </div>
+    <hr class="divider">
+    <div>
+      <h2>Affiliate programs</h2>
+      <p>This site uses affiliate and referral links. If your product doesn't currently have an affiliate or referral program and you'd like to discuss a referral arrangement, reach out. Affiliate relationships don't change editorial verdicts or placement — they're disclosed on every page where they're used. See the <a href="/affiliate-disclosure/">full affiliate disclosure</a>.</p>
+    </div>
+    <hr class="divider">
+    <div>
+      <h2>Getting a product reviewed</h2>
+      <p>New tools are added to the review queue when they meet the criteria outlined in the <a href="/methodology/">methodology page</a>: available long enough to evaluate honestly, solving a real problem for service businesses in the two covered verticals, and meaningfully different from tools already reviewed.</p>
+      <p>If you think your product belongs on this site and isn't currently covered, email a brief description of what it does and what vertical and problem it serves. No pitch decks or lengthy proposals — a short paragraph is enough to evaluate fit.</p>
+    </div>
+  </div>
+
+  <div class="contact-box">
+    <h3>Get in touch</h3>
+    <p>For corrections, affiliate program inquiries, trial access, or review suggestions: <a href="mailto:info@ihelpwithai.com">info@ihelpwithai.com</a><br>Include "Vendor inquiry" in the subject line so it gets to the right place.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© 2026 <a href="/">ihelpwithai.com</a></p>
+    <div><a href="/affiliate-disclosure/">Affiliate disclosure</a><a href="/methodology/">Methodology</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div>
+  </div>
+</footer>
 </body>
 </html>
