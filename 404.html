@@ -11,4 +11,88 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css?v=20260420a">
-</style></head><body><h1>404</h1><a href="/">Back to home</a></body></html>
+<style>
+  :root{--navy:#0a1628;--navy-mid:#112040;--navy-card:#0f1d38;--navy-border:#1e3056;--amber:#f5a623;--cream:#f4efe6;--cream-dim:#d4ccbe;--white:#ffffff;--muted:#7a8fad;--font-display:'Instrument Serif',Georgia,serif;--font-body:'DM Sans',sans-serif;--radius-sm:6px;--radius-md:12px;--radius-lg:20px;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--navy);color:var(--cream);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column;}
+  a{color:inherit;text-decoration:none;}
+  .site-header{background:rgba(10,22,40,0.92);border-bottom:1px solid var(--navy-border);}
+  .header-inner{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:60px;}
+  .site-brand{display:flex;align-items:center;gap:8px;font-weight:600;font-size:15px;color:var(--white);}
+  .site-brand__wordmark-ai{color:var(--amber);}
+  .page-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 24px;}
+  .error-card{max-width:560px;width:100%;text-align:center;}
+  .error-num{font-family:var(--font-display);font-size:6rem;font-weight:400;color:var(--navy-border);line-height:1;margin-bottom:16px;letter-spacing:-0.04em;}
+  .error-card h1{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:400;color:var(--white);line-height:1.15;letter-spacing:-0.02em;margin-bottom:12px;}
+  .error-card h1 em{font-style:italic;color:var(--amber);}
+  .error-card p{font-size:16px;color:var(--muted);line-height:1.65;font-weight:300;margin-bottom:36px;}
+  .nav-links{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px;}
+  .nav-link{background:var(--navy-card);border:1.5px solid var(--navy-border);border-radius:var(--radius-md);padding:18px 20px;text-align:left;transition:border-color 0.2s,transform 0.15s;display:flex;flex-direction:column;gap:4px;}
+  .nav-link:hover{border-color:rgba(245,166,35,0.4);transform:translateY(-2px);}
+  .nav-link-icon{font-size:18px;margin-bottom:4px;}
+  .nav-link-title{font-size:14px;font-weight:600;color:var(--white);}
+  .nav-link-desc{font-size:12px;color:var(--muted);}
+  .home-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:var(--radius-md);background:var(--amber);color:var(--navy);font-size:15px;font-weight:600;font-family:var(--font-body);transition:all 0.18s;border:none;cursor:pointer;text-decoration:none;}
+  .home-btn:hover{background:#e09410;transform:translateY(-1px);}
+  .site-footer{background:var(--navy-mid);border-top:1px solid var(--navy-border);padding:24px 0;}
+  .footer-inner{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  .footer-inner p{font-size:13px;color:var(--muted);}
+  .footer-inner a{color:var(--muted);margin:0 6px;}
+  .footer-inner a:hover{color:var(--cream);}
+  @media(max-width:480px){.nav-links{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="site-brand" href="/">ihelpwith<span class="site-brand__wordmark-ai">ai</span>.com</a>
+  </div>
+</header>
+
+<div class="page-wrap">
+  <div class="error-card">
+    <div class="error-num">404</div>
+    <h1>That page <em>doesn't exist.</em></h1>
+    <p>The link might be broken, the page might have moved, or something got mistyped. Here's where to go instead.</p>
+
+    <div class="nav-links">
+      <a class="nav-link" href="/shortlist/">
+        <div class="nav-link-icon">🎯</div>
+        <div class="nav-link-title">Get your shortlist</div>
+        <div class="nav-link-desc">5 questions → personalized recommendation</div>
+      </a>
+      <a class="nav-link" href="/reviews/">
+        <div class="nav-link-icon">📋</div>
+        <div class="nav-link-title">Browse reviews</div>
+        <div class="nav-link-desc">Honest tool reviews for service businesses</div>
+      </a>
+      <a class="nav-link" href="/trades/">
+        <div class="nav-link-icon">🔧</div>
+        <div class="nav-link-title">Field trades</div>
+        <div class="nav-link-desc">HVAC, plumbing, electrical, and more</div>
+      </a>
+      <a class="nav-link" href="/beauty/">
+        <div class="nav-link-icon">✂️</div>
+        <div class="nav-link-title">Beauty &amp; wellness</div>
+        <div class="nav-link-desc">Salons, medspas, barbers, and more</div>
+      </a>
+    </div>
+
+    <a class="home-btn" href="/">← Back to home</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p>© 2026 <a href="/">ihelpwithai.com</a></p>
+    <div>
+      <a href="/contact/">Contact</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/affiliate-disclosure/">Affiliate disclosure</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
