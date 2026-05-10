@@ -76,22 +76,19 @@ const coreLaunchPaths = [
   '/terms/'
 ];
 
-const analyticsEvents = [
-  'ihai_page_view',
-  'ihai_home_cta_click',
-  'ihai_shortlist_started',
-  'ihai_shortlist_completed',
-  'ihai_beauty_shortlist_started',
-  'ihai_beauty_shortlist_completed',
-  'ihai_starter_pack_form_started',
-  'ihai_starter_pack_form_submitted',
-  'ihai_beauty_starter_pack_form_started',
-  'ihai_beauty_starter_pack_form_submitted',
-  'ihai_review_cta_clicked',
-  'ihai_beauty_review_cta_clicked',
-  'ihai_compare_cta_clicked',
-  'ihai_beauty_compare_cta_clicked',
-  'ihai_outbound_tool_click'
+const analyticsEventChecks = [
+  { label: 'ihai_page_view', anyOf: ['ihai_page_view'] },
+  { label: 'ihai_home_cta_click', anyOf: ['ihai_home_cta_click'] },
+  { label: 'shortlist_start', anyOf: ['shortlist_start', 'ihai_shortlist_started', 'ihai_beauty_shortlist_started'] },
+  { label: 'shortlist_complete', anyOf: ['shortlist_complete', 'ihai_shortlist_completed', 'ihai_beauty_shortlist_completed'] },
+  { label: 'starter_pack_submit', anyOf: ['starter_pack_submit', 'ihai_starter_pack_form_submitted'] },
+  { label: 'beauty_pack_submit', anyOf: ['beauty_pack_submit', 'ihai_beauty_starter_pack_form_submitted'] },
+  { label: 'contact_submit', anyOf: ['contact_submit', 'ihai_contact_form_submitted'] },
+  { label: 'ihai_review_cta_clicked', anyOf: ['ihai_review_cta_clicked'] },
+  { label: 'ihai_beauty_review_cta_clicked', anyOf: ['ihai_beauty_review_cta_clicked'] },
+  { label: 'ihai_compare_cta_clicked', anyOf: ['ihai_compare_cta_clicked'] },
+  { label: 'ihai_beauty_compare_cta_clicked', anyOf: ['ihai_beauty_compare_cta_clicked'] },
+  { label: 'vendor_click', anyOf: ['vendor_click', 'ihai_outbound_tool_click'] }
 ];
 
 const localAnalyticsFiles = [
@@ -469,11 +466,11 @@ async function runAnalyticsChecks(entry) {
     status: siteData.status
   });
 
-  for (const eventName of analyticsEvents) {
+  for (const eventCheck of analyticsEventChecks) {
     record(
       entry,
-      siteScript.text.includes(eventName),
-      `${eventName} is present in the live analytics script`
+      eventCheck.anyOf.some((eventName) => siteScript.text.includes(eventName)),
+      `${eventCheck.label} is present in the live analytics script`
     );
   }
 

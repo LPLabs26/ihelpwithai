@@ -11,6 +11,14 @@
     'multi-location-budget': 4
   };
   const beautySetupRank = { 'simple-mobile': 0, moderate: 1, advanced: 2 };
+  const eventNames = {
+    shortlistStart: 'shortlist_start',
+    shortlistComplete: 'shortlist_complete',
+    starterPackSubmit: 'starter_pack_submit',
+    beautyPackSubmit: 'beauty_pack_submit',
+    contactSubmit: 'contact_submit',
+    vendorClick: 'vendor_click'
+  };
   let lastShortlistContext = null;
 
   function qs(selector, root) {
@@ -489,10 +497,8 @@
         'office-volume',
         'budget-setup'
       ]),
-      startEvent: 'ihai_shortlist_started',
-      stepEvent: 'ihai_shortlist_step_completed',
-      completeEvent: 'ihai_shortlist_completed',
-      resultClickEvent: 'ihai_shortlist_result_clicked',
+      startEvent: eventNames.shortlistStart,
+      completeEvent: eventNames.shortlistComplete,
       readChoices: function (form) {
         return {
           trade: form.elements.trade.value,
@@ -527,10 +533,8 @@
         'bottleneck-stack',
         'budget-setup'
       ]),
-      startEvent: 'ihai_beauty_shortlist_started',
-      stepEvent: 'ihai_shortlist_step_completed',
-      completeEvent: 'ihai_beauty_shortlist_completed',
-      resultClickEvent: 'ihai_shortlist_result_clicked',
+      startEvent: eventNames.shortlistStart,
+      completeEvent: eventNames.shortlistComplete,
       readChoices: function (form) {
         return {
           businessType: form.elements.businessType.value,
@@ -728,11 +732,6 @@
         nextButton.addEventListener('click', function () {
           if (!validateCurrentStep()) return;
           markStarted();
-          if (config.stepEvent) {
-            track(config.stepEvent, config.analyticsProps(config.readChoices(form)), {
-              includePath: false
-            });
-          }
           state.currentStep = Math.min(steps.length - 1, state.currentStep + 1);
           syncStep();
         });
@@ -778,39 +777,18 @@
   }
 
   function initLeadForms() {
-    const startedForms = new WeakSet();
-
     qsa('[data-lead-form]').forEach(function (form) {
       const kind = getLeadFormKind(form);
       if (!kind) return;
 
-      function markStarted() {
-        if (startedForms.has(form)) return;
-        startedForms.add(form);
-        track(
-          kind === 'beauty_starter_pack'
-            ? 'ihai_beauty_starter_pack_form_started'
-            : kind === 'starter_pack'
-              ? 'ihai_starter_pack_form_started'
-              : 'ihai_contact_form_started',
-          buildLeadFormProps(form, kind),
-          { includePath: false }
-        );
+      function getSubmitEventName() {
+        if (kind === 'beauty_starter_pack') return eventNames.beautyPackSubmit;
+        if (kind === 'starter_pack') return eventNames.starterPackSubmit;
+        return eventNames.contactSubmit;
       }
 
-      form.addEventListener('focusin', markStarted);
-      form.addEventListener('change', markStarted);
       form.addEventListener('submit', function () {
-        markStarted();
-        track(
-          kind === 'beauty_starter_pack'
-            ? 'ihai_beauty_starter_pack_form_submitted'
-            : kind === 'starter_pack'
-              ? 'ihai_starter_pack_form_submitted'
-              : 'ihai_contact_form_submitted',
-          buildLeadFormProps(form, kind),
-          { includePath: false }
-        );
+        track(getSubmitEventName(), buildLeadFormProps(form, kind), { includePath: false });
       });
     });
   }
@@ -860,7 +838,7 @@
 
         if (tokens.includes('outbound_tool_click') && linkProps.destination_hostname) {
           track(
-            'ihai_outbound_tool_click',
+            eventNames.vendorClick,
             {
               destination_hostname: linkProps.destination_hostname
             },
@@ -868,7 +846,11 @@
           );
         }
 
-        if (tokens.includes('shortlist_result_click') && lastShortlistContext) {
+        if (
+          tokens.includes('shortlist_result_click') &&
+          lastShortlistContext &&
+          lastShortlistContext.config.resultClickEvent
+        ) {
           track(
             lastShortlistContext.config.resultClickEvent,
             lastShortlistContext.config.analyticsProps(lastShortlistContext.choices),
