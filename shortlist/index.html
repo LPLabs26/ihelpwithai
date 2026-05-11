@@ -1,1 +1,160 @@
-<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>AI Tool Shortlist Quiz | iHelpWithAI</title><meta name='description' content='Answer 5 quick questions to get your AI tool shortlist.'><meta property='og:title' content='AI Tool Shortlist Quiz'><meta property='og:description' content='Get 3 AI tool recommendations based on your needs.'><link rel='canonical' href='https://ihelpwithai.com/shortlist/'><link rel='stylesheet' href='/assets/directory.css'></head><body><header class='site-header'><div class='container header-inner'><a class='brand' href='/'>iHelpWith<span>AI</span></a><button class='menu-toggle' data-menu-toggle>Menu</button><nav class='nav-links' data-menu><a href='/'>Home</a><a href='/tools/'>Tools</a><a href='/categories/'>Categories</a><a href='/blog/'>Blog (coming soon)</a><a href='/get-help/'>Get Help</a><a class='nav-cta' href='/shortlist/'>Find My AI Tool →</a></nav></div></header><main class='section'><div class='container'><h1>Get your personalized AI tool shortlist</h1><div data-quiz><section data-question='biz'><h3>Q1: What type of business?</h3><div class='quiz-options'><button class='quiz-option' data-answer='freelancer'>Freelancer</button><button class='quiz-option' data-answer='small'>Small business</button><button class='quiz-option' data-answer='creator'>Creator</button><button class='quiz-option' data-answer='marketing'>Marketing team</button><button class='quiz-option' data-answer='other'>Other</button></div></section><section data-question='goal' class='hidden'><h3>Q2: What's your main goal?</h3><div class='quiz-options'><button class='quiz-option' data-answer='content'>Create content</button><button class='quiz-option' data-answer='automation'>Automate tasks</button><button class='quiz-option' data-answer='support'>Improve customer support</button><button class='quiz-option' data-answer='coding'>Build/code faster</button><button class='quiz-option' data-answer='research'>Research & analysis</button><button class='quiz-option' data-answer='other'>Other</button></div></section><section data-question='team' class='hidden'><h3>Q3: Team size?</h3><div class='quiz-options'><button class='quiz-option' data-answer='1'>Just me</button><button class='quiz-option' data-answer='2-5'>2-5</button><button class='quiz-option' data-answer='6-20'>6-20</button><button class='quiz-option' data-answer='20+'>20+</button></div></section><section data-question='budget' class='hidden'><h3>Q4: Monthly budget for AI tools?</h3><div class='quiz-options'><button class='quiz-option' data-answer='free'>Free only</button><button class='quiz-option' data-answer='under50'>Under $50</button><button class='quiz-option' data-answer='50-200'>$50-$200</button><button class='quiz-option' data-answer='200+'>$200+</button></div></section><section data-question='tech' class='hidden'><h3>Q5: How comfortable with tech?</h3><div class='quiz-options'><button class='quiz-option' data-answer='beginner'>Beginner</button><button class='quiz-option' data-answer='intermediate'>Intermediate</button><button class='quiz-option' data-answer='power'>Power user</button></div></section></div><div data-results class='hidden'></div><p><a class='btn btn-primary' href='/get-help/'>Want a deeper analysis? Get a written recommendation for $97 →</a></p></div></main><footer class='site-footer'><div class='container'>© 2026 iHelpWithAI.com | <a href='/affiliate-disclosure/'>Affiliate Disclosure</a> | <a href='/privacy/'>Privacy</a> | <a href='/contact/'>Contact</a> | info@ihelpwithai.com</div></footer><script src='/assets/directory.js'></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Find Your AI Tool Shortlist | iHelpWithAI</title><meta name="description" content="Answer 5 questions and get a ranked list of AI tools matched to your exact business situation. Free."><link rel="canonical" href="https://ihelpwithai.com/shortlist/"><link rel="stylesheet" href="/assets/directory.css"><style>.quiz-wrap{max-width:640px;margin:0 auto;padding:3rem 1rem 5rem}.step{display:none}.step.active{display:block}.q-label{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--primary);margin-bottom:.75rem}.q-title{font-size:1.4rem;font-weight:600;margin-bottom:1.5rem}.quiz-options{display:grid;gap:.6rem}.quiz-option{background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;cursor:pointer;font-size:.95rem;text-align:left;color:var(--text);transition:all .15s}.quiz-option:hover{border-color:var(--primary);background:rgba(99,102,241,.08)}.quiz-option.selected{border-color:var(--primary);background:rgba(99,102,241,.15)}.progress-bar{height:4px;background:var(--border);border-radius:4px;margin-bottom:2rem}.progress-fill{height:100%;background:var(--primary);border-radius:4px;transition:width .3s}.result-card{background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1rem}.result-rank{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--primary);margin-bottom:.4rem}.result-name{font-size:1.2rem;font-weight:700;margin-bottom:.4rem}.result-why{font-size:.9rem;color:var(--muted);margin-bottom:.75rem;line-height:1.65}.result-price{font-size:.85rem;color:var(--muted);margin-bottom:1rem}.result-btns{display:flex;gap:.6rem;flex-wrap:wrap}.btn-sm{padding:.45rem .9rem;font-size:.85rem}</style></head><body>
+<header class="site-header"><div class="container header-inner"><a class="brand" href="/">iHelpWith<span style="color:var(--primary)">AI</span></a><nav class="nav-links"><a href="/">Home</a><a href="/tools/">Tools</a><a href="/shortlist/" class="active">Find My Tool</a><a href="/get-help/">Get Help</a></nav><a class="nav-cta" href="/get-help/">Get $97 Recommendation &rarr;</a></div></header>
+<main class="quiz-wrap">
+  <h1 style="font-size:1.7rem;margin-bottom:.4rem">Find your AI tool shortlist</h1>
+  <p class="muted" style="margin-bottom:2rem">5 questions &middot; 60 seconds &middot; Free</p>
+  <div class="progress-bar"><div class="progress-fill" id="progress" style="width:0%"></div></div>
+
+  <div class="step active" id="s1">
+    <div class="q-label">Question 1 of 5</div>
+    <div class="q-title">What type of business are you?</div>
+    <div class="quiz-options">
+      <button class="quiz-option" data-q="1" data-v="freelancer">&#x1f4bc; Freelancer or solopreneur</button>
+      <button class="quiz-option" data-q="1" data-v="smb">&#x1f3e2; Small business (2&ndash;20 people)</button>
+      <button class="quiz-option" data-q="1" data-v="creator">&#x1f3a8; Creator, influencer, or blogger</button>
+      <button class="quiz-option" data-q="1" data-v="marketing">&#x1f4e3; Marketing team or agency</button>
+      <button class="quiz-option" data-q="1" data-v="other">&#x2753; Other</button>
+    </div>
+  </div>
+
+  <div class="step" id="s2">
+    <div class="q-label">Question 2 of 5</div>
+    <div class="q-title">What&rsquo;s your main goal right now?</div>
+    <div class="quiz-options">
+      <button class="quiz-option" data-q="2" data-v="content">&#x270f; Create content faster</button>
+      <button class="quiz-option" data-q="2" data-v="automate">&#x26a1; Automate repetitive tasks</button>
+      <button class="quiz-option" data-q="2" data-v="support">&#x1f4ac; Improve customer support</button>
+      <button class="quiz-option" data-q="2" data-v="code">&#x1f4bb; Build or code something</button>
+      <button class="quiz-option" data-q="2" data-v="research">&#x1f50e; Research and analysis</button>
+    </div>
+  </div>
+
+  <div class="step" id="s3">
+    <div class="q-label">Question 3 of 5</div>
+    <div class="q-title">What&rsquo;s your monthly budget for AI tools?</div>
+    <div class="quiz-options">
+      <button class="quiz-option" data-q="3" data-v="free">&#x1f7e2; Free only</button>
+      <button class="quiz-option" data-q="3" data-v="low">&#x1f4b5; Under $50/mo</button>
+      <button class="quiz-option" data-q="3" data-v="mid">&#x1f4b0; $50&ndash;$200/mo</button>
+      <button class="quiz-option" data-q="3" data-v="high">&#x1f4b3; $200+/mo</button>
+    </div>
+  </div>
+
+  <div class="step" id="s4">
+    <div class="q-label">Question 4 of 5</div>
+    <div class="q-title">How comfortable are you with technology?</div>
+    <div class="quiz-options">
+      <button class="quiz-option" data-q="4" data-v="beginner">&#x1f331; Beginner &mdash; I want simple, plug-and-play</button>
+      <button class="quiz-option" data-q="4" data-v="mid">&#x1f4c8; Intermediate &mdash; I&rsquo;m comfortable with apps</button>
+      <button class="quiz-option" data-q="4" data-v="power">&#x1f9e0; Power user &mdash; I&rsquo;ll figure it out</button>
+    </div>
+  </div>
+
+  <div class="step" id="s5">
+    <div class="q-label">Question 5 of 5</div>
+    <div class="q-title">How fast do you need to see results?</div>
+    <div class="quiz-options">
+      <button class="quiz-option" data-q="5" data-v="now">&#x26a1; Today &mdash; I need something working now</button>
+      <button class="quiz-option" data-q="5" data-v="week">&#x1f4c5; This week &mdash; some setup is okay</button>
+      <button class="quiz-option" data-q="5" data-v="month">&#x1f3d7; This month &mdash; I&rsquo;ll invest in setup</button>
+    </div>
+  </div>
+
+  <div class="step" id="results">
+    <h2 style="margin-bottom:.4rem">Your shortlist</h2>
+    <p class="muted" style="margin-bottom:1.5rem">Based on your answers, here are the 3 tools most likely to work for you.</p>
+    <div id="resultCards"></div>
+    <div class="card" style="margin-top:2rem;text-align:center">
+      <h3 style="margin-bottom:.5rem">Want a deeper analysis?</h3>
+      <p class="muted" style="font-size:.9rem;margin-bottom:1.25rem">Get a written recommendation tailored to your exact situation &mdash; not just a quiz result.</p>
+      <a class="btn btn-primary" href="/get-help/">Get a written recommendation for $97 &rarr;</a>
+    </div>
+  </div>
+</main>
+<footer class="site-footer"><div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.85rem;color:var(--muted)"><span>&copy; 2026 iHelpWithAI.com</span><div><a href="/affiliate-disclosure/">Affiliate Disclosure</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/contact/">Contact</a></div></div></footer>
+<script>
+const answers={};
+const recs={
+  content:{
+    free:["ChatGPT","Claude","Canva AI"],
+    low:["Jasper","Copy.ai","Grammarly"],
+    mid:["Jasper","Surfer SEO","AdCreative.ai"],
+    high:["Jasper","Surfer SEO","AdCreative.ai"]
+  },
+  automate:{
+    free:["Make.com","n8n","Zapier"],
+    low:["Make.com","Zapier","n8n"],
+    mid:["Make.com","Zapier","n8n"],
+    high:["Make.com","Zapier","n8n"]
+  },
+  support:{
+    free:["Tidio","ChatGPT","Claude"],
+    low:["Tidio","ChatGPT","Claude"],
+    mid:["Tidio","Intercom","ChatGPT"],
+    high:["Intercom","Tidio","ChatGPT"]
+  },
+  code:{
+    free:["Replit","GitHub Copilot","Claude"],
+    low:["GitHub Copilot","Cursor","Replit"],
+    mid:["GitHub Copilot","Cursor","Replit"],
+    high:["GitHub Copilot","Cursor","Replit"]
+  },
+  research:{
+    free:["Perplexity AI","ChatGPT","Claude"],
+    low:["Perplexity AI","ChatGPT","Otter.ai"],
+    mid:["Perplexity AI","Otter.ai","Fireflies.ai"],
+    high:["Perplexity AI","Fireflies.ai","Otter.ai"]
+  }
+};
+const toolInfo={
+  "ChatGPT":{price:"Freemium (Plus $20/mo)",why:"The most versatile starting point for almost any AI use case. Works well for beginners and power users alike."},
+  "Claude":{price:"Freemium (Pro $20/mo)",why:"Particularly strong for long documents, nuanced reasoning, and content that needs to sound human and thoughtful."},
+  "Jasper":{price:"From $39/mo",why:"Built specifically for marketing copy with brand voice controls — worth it if you produce content at volume."},
+  "Copy.ai":{price:"Freemium",why:"Fast copywriting for ads, emails, and social posts. Lower learning curve than Jasper, good for solopreneurs."},
+  "Grammarly":{price:"Freemium (Pro $12/mo)",why:"The easiest way to immediately improve the quality of all your written communication with near-zero setup."},
+  "Canva AI":{price:"Freemium",why:"If you already use Canva, the AI tools are a natural upgrade — fast image generation and copy inside your design workflow."},
+  "Surfer SEO":{price:"From $89/mo",why:"If SEO traffic matters to your business, Surfer's content editor gives you a clear, data-driven writing target."},
+  "AdCreative.ai":{price:"From $21/mo",why:"Automates the creation of ad variations optimized for conversion — saves hours for performance marketing teams."},
+  "Make.com":{price:"Freemium",why:"The most powerful visual automation tool for connecting apps without code. Steeper learning curve than Zapier but more flexible."},
+  "Zapier":{price:"Freemium",why:"The safest, most widely supported automation platform. More limited than Make but easier to start with."},
+  "n8n":{price:"Freemium / self-host",why:"Open-source and self-hostable — best if you want full control and have technical resources."},
+  "Tidio":{price:"Freemium",why:"Simple live chat and AI chatbot for your website. Quick to set up and has a free tier good enough for most small businesses."},
+  "Intercom":{price:"From $39/mo",why:"More powerful than Tidio — worth it once you have real customer volume and need reporting, segmentation, and product tours."},
+  "GitHub Copilot":{price:"From $10/mo",why:"The most mature AI code completion tool — works inside VS Code and most major editors. Pays for itself quickly for active developers."},
+  "Cursor":{price:"Freemium",why:"An AI-native editor that lets you chat with your codebase, not just autocomplete. Faster iteration for complex projects."},
+  "Replit":{price:"Freemium",why:"Build and deploy simple apps in your browser with AI help — no environment setup required. Ideal for non-developers."},
+  "Perplexity AI":{price:"Freemium (Pro $20/mo)",why:"Real-time AI search with citations — far better than raw ChatGPT for research that needs to be current and sourced."},
+  "Otter.ai":{price:"Freemium",why:"Automatic transcription and summaries for meetings. Integrates with Zoom and Google Meet with minimal setup."},
+  "Fireflies.ai":{price:"Freemium",why:"Captures action items and decisions from calls — especially useful for sales teams tracking follow-ups."},
+};
+document.querySelectorAll('.quiz-option').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const q=btn.dataset.q;
+    answers[q]=btn.dataset.v;
+    btn.closest('.quiz-options').querySelectorAll('.quiz-option').forEach(b=>b.classList.remove('selected'));
+    btn.classList.add('selected');
+    setTimeout(()=>advance(parseInt(q)),300);
+  });
+});
+function advance(q){
+  document.getElementById('s'+q).classList.remove('active');
+  const pct=q/5*100;
+  document.getElementById('progress').style.width=pct+'%';
+  if(q<5){document.getElementById('s'+(q+1)).classList.add('active');}
+  else{showResults();}
+}
+function showResults(){
+  document.getElementById('results').classList.add('active');
+  document.getElementById('progress').style.width='100%';
+  const goal=answers[2]||'content';
+  const budget=answers[3]||'free';
+  const list=(recs[goal]&&recs[goal][budget])||["ChatGPT","Claude","Make.com"];
+  const labels=["&#x1f947; Best match","&#x1f948; Strong fit","&#x1f949; Also worth trying"];
+  document.getElementById('resultCards').innerHTML=list.map((name,i)=>{
+    const info=toolInfo[name]||{price:"Freemium",why:"A well-regarded tool worth exploring for your situation."};
+    const slug=name.toLowerCase().replace(/[^a-z0-9]/g,'-');
+    return `<div class="result-card"><div class="result-rank">${labels[i]}</div><div class="result-name">${name}</div><div class="result-why">${info.why}</div><div class="result-price">${info.price}</div><div class="result-btns"><a class="btn btn-primary btn-sm" href="#affiliate-${slug}" data-affiliate="true">Try ${name} free &rarr;</a><a class="btn btn-secondary btn-sm" href="/tools/">See full review</a></div></div>`;
+  }).join('');
+}
+</script>
+</body></html>
