@@ -1,159 +1,227 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Find Your AI Tool Shortlist | iHelpWithAI</title><meta name="description" content="Answer 5 questions and get a ranked list of AI tools matched to your exact business situation. Free."><link rel="canonical" href="https://ihelpwithai.com/shortlist/"><link rel="stylesheet" href="/assets/directory.css"><style>.quiz-wrap{max-width:640px;margin:0 auto;padding:3rem 1rem 5rem}.step{display:none}.step.active{display:block}.q-label{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--primary);margin-bottom:.75rem}.q-title{font-size:1.4rem;font-weight:600;margin-bottom:1.5rem}.quiz-options{display:grid;gap:.6rem}.quiz-option{background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;cursor:pointer;font-size:.95rem;text-align:left;color:var(--text);transition:all .15s}.quiz-option:hover{border-color:var(--primary);background:rgba(99,102,241,.08)}.quiz-option.selected{border-color:var(--primary);background:rgba(99,102,241,.15)}.progress-bar{height:4px;background:var(--border);border-radius:4px;margin-bottom:2rem}.progress-fill{height:100%;background:var(--primary);border-radius:4px;transition:width .3s}.result-card{background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1rem}.result-rank{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--primary);margin-bottom:.4rem}.result-name{font-size:1.2rem;font-weight:700;margin-bottom:.4rem}.result-why{font-size:.9rem;color:var(--muted);margin-bottom:.75rem;line-height:1.65}.result-price{font-size:.85rem;color:var(--muted);margin-bottom:1rem}.result-btns{display:flex;gap:.6rem;flex-wrap:wrap}.btn-sm{padding:.45rem .9rem;font-size:.85rem}</style></head><body>
-<header class="site-header"><div class="container header-inner"><a class="brand" href="/">iHelpWith<span style="color:var(--primary)">AI</span></a><nav class="nav-links"><a href="/">Home</a><a href="/tools/">Tools</a><a href="/shortlist/" class="active">Find My Tool</a><a href="/get-help/">Get Help</a></nav><a class="nav-cta" href="/get-help/">Get $97 Recommendation &rarr;</a></div></header>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Get your shortlist | ihelpwithai.com</title>
+<meta name="description" content="Answer 5 questions and get a ranked list of software tools matched to your exact service business situation.">
+<link rel="canonical" href="https://ihelpwithai.com/shortlist/">
+<link rel="icon" href="/assets/brand/favicon.ico" sizes="any">
+<meta name="theme-color" content="#0a1628">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+
+<style>
+:root{--navy:#0a1628;--navy-mid:#112040;--navy-card:#0f1d38;--navy-border:#1e3056;--amber:#f5a623;--rose:#e879a0;--cream:#f4efe6;--cream-dim:#d4ccbe;--white:#ffffff;--muted:#7a8fad;--green:#4ade80;--font-display:'Instrument Serif',Georgia,serif;--font-body:'DM Sans',sans-serif;--radius-sm:6px;--radius-md:12px;--radius-lg:20px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--navy);color:var(--cream);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+img{display:block;max-width:100%;}
+.container{max-width:1120px;margin:0 auto;padding:0 24px;}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(10,22,40,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--navy-border);}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px;}
+.site-brand{display:flex;align-items:center;gap:8px;font-weight:600;font-size:15px;color:var(--white);}
+.site-brand__mark{width:28px;height:28px;}
+.site-brand__wordmark-ai{color:var(--amber);}
+.site-nav{display:flex;align-items:center;gap:4px;}
+.site-nav a{padding:6px 12px;border-radius:var(--radius-sm);font-size:13.5px;color:var(--muted);transition:color .15s,background .15s;}
+.site-nav a:hover,.site-nav a.is-active{color:var(--cream);background:var(--navy-mid);}
+.site-nav .nav-cta{background:var(--amber);color:var(--navy);font-weight:600;margin-left:8px;padding:7px 16px;border-radius:var(--radius-sm);}
+.site-nav .nav-cta:hover{background:#e09410;}
+.menu-toggle{display:none;background:none;border:none;color:var(--cream);font-size:20px;cursor:pointer;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:var(--radius-md);font-size:15px;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:all .18s;border:none;text-decoration:none;white-space:nowrap;}
+.btn-primary{background:var(--amber);color:var(--navy);}
+.btn-primary:hover{background:#e09410;transform:translateY(-1px);box-shadow:0 8px 24px rgba(245,166,35,.3);}
+.btn-secondary{background:transparent;color:var(--cream);border:1.5px solid var(--navy-border);}
+.btn-secondary:hover{border-color:var(--muted);background:var(--navy-mid);}
+.btn-rose{background:var(--rose);color:var(--white);}
+.btn-rose:hover{background:#d4618e;transform:translateY(-1px);}
+.section{padding:72px 0;}
+.section-sm{padding:48px 0;}
+.section-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.section-label::before{content:'';width:24px;height:2px;background:var(--amber);}
+.section-label.rose{color:var(--rose);}
+.section-label.rose::before{background:var(--rose);}
+.section h2{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:400;color:var(--white);line-height:1.15;letter-spacing:-.02em;margin-bottom:14px;}
+.section-intro{font-size:16px;color:var(--cream-dim);max-width:560px;line-height:1.7;font-weight:300;margin-bottom:40px;}
+.section-divider{border:none;border-top:1px solid var(--navy-border);}
+.card{background:var(--navy-card);border:1.5px solid var(--navy-border);border-radius:var(--radius-lg);padding:28px 24px;}
+.page-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.page-label::before{content:'';width:24px;height:2px;background:var(--amber);}
+h1{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,2.8rem);font-weight:400;color:var(--white);line-height:1.12;letter-spacing:-.02em;margin-bottom:14px;}
+.lede{font-size:17px;color:var(--cream-dim);line-height:1.65;font-weight:300;margin-bottom:40px;}
+.site-footer{background:var(--navy-mid);border-top:1px solid var(--navy-border);padding:40px 0 24px;}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.footer-inner p{font-size:13px;color:var(--muted);}
+.footer-inner a{color:var(--muted);margin:0 8px;}
+.footer-inner a:hover{color:var(--cream);}
+.notice{background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.2);border-radius:var(--radius-md);padding:14px 18px;font-size:13.5px;color:var(--cream-dim);}
+.notice a{color:var(--amber);}
+@media(max-width:620px){.site-nav{display:none;}.menu-toggle{display:block;}}
+</style>
+</head>
+<body><header class="site-header">
+  <div class="container header-inner">
+    <a class="site-brand" href="/">
+      <img src="/assets/brand/ihelpwithai-mark-transparent.png" alt="" class="site-brand__mark" width="28" height="28" decoding="async">
+      <span>ihelpwith<span class="site-brand__wordmark-ai">ai</span>.com</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="Toggle navigation">&#9776;</button>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/trades/">Field Trades</a>
+      <a href="/beauty/">Beauty &amp; Wellness</a>
+      <a href="/reviews/">Reviews</a>
+      <a href="/compare/">Compare</a>
+      <a href="/shortlist/" class="nav-cta">Get your picks</a>
+    </nav>
+  </div>
+</header>
+<style>
+.quiz-wrap{max-width:600px;margin:0 auto;padding:64px 24px 100px;}
+.step{display:none;}.step.active{display:block;}
+.q-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:.75rem;}
+.q-title{font-size:1.4rem;font-weight:600;color:var(--white);margin-bottom:1.5rem;font-family:var(--font-display);}
+.quiz-options{display:grid;gap:.6rem;}
+.quiz-option{background:var(--navy-card);border:1.5px solid var(--navy-border);border-radius:10px;padding:.9rem 1.2rem;cursor:pointer;font-size:.95rem;text-align:left;color:var(--cream);transition:all .15s;font-family:var(--font-body);}
+.quiz-option:hover{border-color:var(--amber);background:rgba(245,166,35,.08);}
+.quiz-option.selected{border-color:var(--amber);background:rgba(245,166,35,.15);}
+.progress-bar{height:3px;background:var(--navy-border);border-radius:4px;margin-bottom:2.5rem;}
+.progress-fill{height:100%;background:var(--amber);border-radius:4px;transition:width .3s;}
+.result-card{background:var(--navy-card);border:1.5px solid var(--navy-border);border-radius:14px;padding:1.5rem;margin-bottom:1rem;}
+.result-rank{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:.4rem;}
+.result-name{font-family:var(--font-display);font-size:1.4rem;font-weight:400;color:var(--white);margin-bottom:.4rem;}
+.result-why{font-size:.9rem;color:var(--cream-dim);margin-bottom:.75rem;line-height:1.65;}
+.result-price{font-size:.85rem;color:var(--muted);margin-bottom:1rem;}
+.result-btns{display:flex;gap:.6rem;flex-wrap:wrap;}
+</style>
 <main class="quiz-wrap">
-  <h1 style="font-size:1.7rem;margin-bottom:.4rem">Find your AI tool shortlist</h1>
-  <p class="muted" style="margin-bottom:2rem">5 questions &middot; 60 seconds &middot; Free</p>
+  <div class="page-label">Free shortlist</div>
+  <h1 style="font-size:clamp(1.8rem,3vw,2.4rem);margin-bottom:.4rem;">Find your software shortlist.</h1>
+  <p style="color:var(--cream-dim);margin-bottom:2rem;font-size:16px;">5 questions &middot; 60 seconds &middot; ranked result for your exact situation.</p>
   <div class="progress-bar"><div class="progress-fill" id="progress" style="width:0%"></div></div>
 
   <div class="step active" id="s1">
     <div class="q-label">Question 1 of 5</div>
     <div class="q-title">What type of business are you?</div>
     <div class="quiz-options">
-      <button class="quiz-option" data-q="1" data-v="freelancer">&#x1f4bc; Freelancer or solopreneur</button>
-      <button class="quiz-option" data-q="1" data-v="smb">&#x1f3e2; Small business (2&ndash;20 people)</button>
-      <button class="quiz-option" data-q="1" data-v="creator">&#x1f3a8; Creator, influencer, or blogger</button>
-      <button class="quiz-option" data-q="1" data-v="marketing">&#x1f4e3; Marketing team or agency</button>
-      <button class="quiz-option" data-q="1" data-v="other">&#x2753; Other</button>
+      <button class="quiz-option" data-q="1" data-v="hvac">&#x1F321; HVAC, plumbing, or electrical</button>
+      <button class="quiz-option" data-q="1" data-v="roofing">&#x1F3E0; Roofing, landscaping, or pest control</button>
+      <button class="quiz-option" data-q="1" data-v="cleaning">&#x1F9F9; Cleaning or janitorial</button>
+      <button class="quiz-option" data-q="1" data-v="salon">&#x2702; Salon or barbershop</button>
+      <button class="quiz-option" data-q="1" data-v="medspa">&#x2728; Medspa, nails, or lashes</button>
+      <button class="quiz-option" data-q="1" data-v="other">&#x2753; Other service business</button>
     </div>
   </div>
-
   <div class="step" id="s2">
     <div class="q-label">Question 2 of 5</div>
-    <div class="q-title">What&rsquo;s your main goal right now?</div>
+    <div class="q-title">What&rsquo;s your biggest problem right now?</div>
     <div class="quiz-options">
-      <button class="quiz-option" data-q="2" data-v="content">&#x270f; Create content faster</button>
-      <button class="quiz-option" data-q="2" data-v="automate">&#x26a1; Automate repetitive tasks</button>
-      <button class="quiz-option" data-q="2" data-v="support">&#x1f4ac; Improve customer support</button>
-      <button class="quiz-option" data-q="2" data-v="code">&#x1f4bb; Build or code something</button>
-      <button class="quiz-option" data-q="2" data-v="research">&#x1f50e; Research and analysis</button>
+      <button class="quiz-option" data-q="2" data-v="scheduling">&#x1F4C5; Scheduling and dispatch is a mess</button>
+      <button class="quiz-option" data-q="2" data-v="invoicing">&#x1F4B3; Invoicing and getting paid is slow</button>
+      <button class="quiz-option" data-q="2" data-v="reviews">&#x2B50; I need more Google reviews</button>
+      <button class="quiz-option" data-q="2" data-v="noshows">&#x274C; No-shows and cancellations</button>
+      <button class="quiz-option" data-q="2" data-v="marketing">&#x1F4E3; I don&rsquo;t know which marketing works</button>
+      <button class="quiz-option" data-q="2" data-v="retention">&#x1F504; Clients don&rsquo;t come back</button>
     </div>
   </div>
-
   <div class="step" id="s3">
     <div class="q-label">Question 3 of 5</div>
-    <div class="q-title">What&rsquo;s your monthly budget for AI tools?</div>
+    <div class="q-title">How big is your team?</div>
     <div class="quiz-options">
-      <button class="quiz-option" data-q="3" data-v="free">&#x1f7e2; Free only</button>
-      <button class="quiz-option" data-q="3" data-v="low">&#x1f4b5; Under $50/mo</button>
-      <button class="quiz-option" data-q="3" data-v="mid">&#x1f4b0; $50&ndash;$200/mo</button>
-      <button class="quiz-option" data-q="3" data-v="high">&#x1f4b3; $200+/mo</button>
+      <button class="quiz-option" data-q="3" data-v="solo">&#x1F9D1; Just me</button>
+      <button class="quiz-option" data-q="3" data-v="small">&#x1F465; 2&ndash;5 people</button>
+      <button class="quiz-option" data-q="3" data-v="mid">&#x1F465;&#x1F465; 6&ndash;15 people</button>
+      <button class="quiz-option" data-q="3" data-v="large">&#x1F3E2; 16+ people</button>
     </div>
   </div>
-
   <div class="step" id="s4">
     <div class="q-label">Question 4 of 5</div>
-    <div class="q-title">How comfortable are you with technology?</div>
+    <div class="q-title">What software do you use now?</div>
     <div class="quiz-options">
-      <button class="quiz-option" data-q="4" data-v="beginner">&#x1f331; Beginner &mdash; I want simple, plug-and-play</button>
-      <button class="quiz-option" data-q="4" data-v="mid">&#x1f4c8; Intermediate &mdash; I&rsquo;m comfortable with apps</button>
-      <button class="quiz-option" data-q="4" data-v="power">&#x1f9e0; Power user &mdash; I&rsquo;ll figure it out</button>
+      <button class="quiz-option" data-q="4" data-v="nothing">&#x1F4F1; Nothing — pen, paper, or texts</button>
+      <button class="quiz-option" data-q="4" data-v="spreadsheet">&#x1F4CA; Spreadsheets or Google Calendar</button>
+      <button class="quiz-option" data-q="4" data-v="basic">&#x1F5A5; Basic software (Square, Acuity, etc.)</button>
+      <button class="quiz-option" data-q="4" data-v="existing">&#x1F504; Already on Jobber / Vagaro / similar</button>
     </div>
   </div>
-
   <div class="step" id="s5">
     <div class="q-label">Question 5 of 5</div>
-    <div class="q-title">How fast do you need to see results?</div>
+    <div class="q-title">How much setup can you handle?</div>
     <div class="quiz-options">
-      <button class="quiz-option" data-q="5" data-v="now">&#x26a1; Today &mdash; I need something working now</button>
-      <button class="quiz-option" data-q="5" data-v="week">&#x1f4c5; This week &mdash; some setup is okay</button>
-      <button class="quiz-option" data-q="5" data-v="month">&#x1f3d7; This month &mdash; I&rsquo;ll invest in setup</button>
+      <button class="quiz-option" data-q="5" data-v="zero">&#x26A1; Zero — I need it running today</button>
+      <button class="quiz-option" data-q="5" data-v="weekend">&#x1F4C6; A weekend of setup is fine</button>
+      <button class="quiz-option" data-q="5" data-v="month">&#x1F3D7; I can invest a few weeks</button>
     </div>
   </div>
-
   <div class="step" id="results">
-    <h2 style="margin-bottom:.4rem">Your shortlist</h2>
-    <p class="muted" style="margin-bottom:1.5rem">Based on your answers, here are the 3 tools most likely to work for you.</p>
+    <h2 style="font-family:var(--font-display);font-size:1.8rem;font-weight:400;color:var(--white);margin-bottom:.4rem;">Your shortlist</h2>
+    <p style="color:var(--cream-dim);margin-bottom:1.5rem;">Based on your answers — the tools most likely to work for your exact situation.</p>
     <div id="resultCards"></div>
-    <div class="card" style="margin-top:2rem;text-align:center">
-      <h3 style="margin-bottom:.5rem">Want a deeper analysis?</h3>
-      <p class="muted" style="font-size:.9rem;margin-bottom:1.25rem">Get a written recommendation tailored to your exact situation &mdash; not just a quiz result.</p>
+    <div class="card" style="margin-top:2rem;text-align:center;">
+      <div style="font-family:var(--font-display);font-size:1.2rem;color:var(--white);margin-bottom:.4rem;">Want a deeper answer?</div>
+      <p style="color:var(--muted);font-size:.9rem;margin-bottom:1.25rem;">Get a written recommendation built for your exact business &mdash; not just a quiz result.</p>
       <a class="btn btn-primary" href="/get-help/">Get a written recommendation for $97 &rarr;</a>
     </div>
   </div>
 </main>
-<footer class="site-footer"><div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.85rem;color:var(--muted)"><span>&copy; 2026 iHelpWithAI.com</span><div><a href="/affiliate-disclosure/">Affiliate Disclosure</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/contact/">Contact</a></div></div></footer>
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>&copy; 2026 <a href="/">ihelpwithai.com</a></p>
+    <div>
+      <a href="/affiliate-disclosure/">Affiliate disclosure</a>
+      <a href="/methodology/">Methodology</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/contact/">Contact</a>
+    </div>
+  </div>
+</footer>
 <script>
 const answers={};
-const recs={
-  content:{
-    free:["ChatGPT","Claude","Canva AI"],
-    low:["Jasper","Copy.ai","Grammarly"],
-    mid:["Jasper","Surfer SEO","AdCreative.ai"],
-    high:["Jasper","Surfer SEO","AdCreative.ai"]
-  },
-  automate:{
-    free:["Make.com","n8n","Zapier"],
-    low:["Make.com","Zapier","n8n"],
-    mid:["Make.com","Zapier","n8n"],
-    high:["Make.com","Zapier","n8n"]
-  },
-  support:{
-    free:["Tidio","ChatGPT","Claude"],
-    low:["Tidio","ChatGPT","Claude"],
-    mid:["Tidio","Intercom","ChatGPT"],
-    high:["Intercom","Tidio","ChatGPT"]
-  },
-  code:{
-    free:["Replit","GitHub Copilot","Claude"],
-    low:["GitHub Copilot","Cursor","Replit"],
-    mid:["GitHub Copilot","Cursor","Replit"],
-    high:["GitHub Copilot","Cursor","Replit"]
-  },
-  research:{
-    free:["Perplexity AI","ChatGPT","Claude"],
-    low:["Perplexity AI","ChatGPT","Otter.ai"],
-    mid:["Perplexity AI","Otter.ai","Fireflies.ai"],
-    high:["Perplexity AI","Fireflies.ai","Otter.ai"]
-  }
+const picks={
+  scheduling:{solo:'Jobber',small:'Jobber',mid:'Housecall Pro',large:'Housecall Pro'},
+  invoicing:{solo:'Jobber',small:'Jobber',mid:'Jobber',large:'Housecall Pro'},
+  reviews:{solo:'NiceJob',small:'NiceJob',mid:'NiceJob',large:'NiceJob'},
+  noshows:{solo:'GlossGenius',small:'GlossGenius',mid:'Vagaro',large:'Boulevard'},
+  marketing:{solo:'CallRail',small:'CallRail',mid:'CallRail',large:'CallRail'},
+  retention:{solo:'GlossGenius',small:'Vagaro',mid:'Vagaro',large:'Boulevard'},
 };
-const toolInfo={
-  "ChatGPT":{price:"Freemium (Plus $20/mo)",why:"The most versatile starting point for almost any AI use case. Works well for beginners and power users alike."},
-  "Claude":{price:"Freemium (Pro $20/mo)",why:"Particularly strong for long documents, nuanced reasoning, and content that needs to sound human and thoughtful."},
-  "Jasper":{price:"From $39/mo",why:"Built specifically for marketing copy with brand voice controls — worth it if you produce content at volume."},
-  "Copy.ai":{price:"Freemium",why:"Fast copywriting for ads, emails, and social posts. Lower learning curve than Jasper, good for solopreneurs."},
-  "Grammarly":{price:"Freemium (Pro $12/mo)",why:"The easiest way to immediately improve the quality of all your written communication with near-zero setup."},
-  "Canva AI":{price:"Freemium",why:"If you already use Canva, the AI tools are a natural upgrade — fast image generation and copy inside your design workflow."},
-  "Surfer SEO":{price:"From $89/mo",why:"If SEO traffic matters to your business, Surfer's content editor gives you a clear, data-driven writing target."},
-  "AdCreative.ai":{price:"From $21/mo",why:"Automates the creation of ad variations optimized for conversion — saves hours for performance marketing teams."},
-  "Make.com":{price:"Freemium",why:"The most powerful visual automation tool for connecting apps without code. Steeper learning curve than Zapier but more flexible."},
-  "Zapier":{price:"Freemium",why:"The safest, most widely supported automation platform. More limited than Make but easier to start with."},
-  "n8n":{price:"Freemium / self-host",why:"Open-source and self-hostable — best if you want full control and have technical resources."},
-  "Tidio":{price:"Freemium",why:"Simple live chat and AI chatbot for your website. Quick to set up and has a free tier good enough for most small businesses."},
-  "Intercom":{price:"From $39/mo",why:"More powerful than Tidio — worth it once you have real customer volume and need reporting, segmentation, and product tours."},
-  "GitHub Copilot":{price:"From $10/mo",why:"The most mature AI code completion tool — works inside VS Code and most major editors. Pays for itself quickly for active developers."},
-  "Cursor":{price:"Freemium",why:"An AI-native editor that lets you chat with your codebase, not just autocomplete. Faster iteration for complex projects."},
-  "Replit":{price:"Freemium",why:"Build and deploy simple apps in your browser with AI help — no environment setup required. Ideal for non-developers."},
-  "Perplexity AI":{price:"Freemium (Pro $20/mo)",why:"Real-time AI search with citations — far better than raw ChatGPT for research that needs to be current and sourced."},
-  "Otter.ai":{price:"Freemium",why:"Automatic transcription and summaries for meetings. Integrates with Zoom and Google Meet with minimal setup."},
-  "Fireflies.ai":{price:"Freemium",why:"Captures action items and decisions from calls — especially useful for sales teams tracking follow-ups."},
+const info={
+  Jobber:{price:'$29–$529/mo · 14-day trial',why:'Best overall fit for your situation. Clean scheduling, fast invoicing, and a mobile app your techs will actually use.',link:'/reviews/jobber/'},
+  'Housecall Pro':{price:'$59–$299/mo · 14-day trial',why:'Worth the extra complexity for your team size — GPS tracking, dispatch boards, and consumer financing set it apart.',link:'/reviews/housecall-pro/'},
+  NiceJob:{price:'$75–$125/mo · 14-day trial',why:'The most reliable set-and-forget way to grow Google reviews without annoying your customers.',link:'/reviews/nicejob/'},
+  CallRail:{price:'$45/mo + usage',why:'If you run paid ads, you need to know which campaigns generate real calls. CallRail is the standard for that.',link:'/reviews/callrail/'},
+  GlossGenius:{price:'$24–$48/mo',why:'Fast setup, clean booking experience, and strong deposit handling for solo and small beauty businesses.',link:'/beauty/reviews/glossgenius/'},
+  Vagaro:{price:'$30–$70+/mo · 30-day trial',why:'More features than GlossGenius — memberships, marketing, multi-staff scheduling. Worth it if you have the volume.',link:'/beauty/reviews/vagaro/'},
+  Boulevard:{price:'~$175+/mo · Demo required',why:'Premium front-desk control for multi-provider businesses. The strongest product at the top end of the market.',link:'/beauty/reviews/boulevard/'},
 };
+const labels=['&#x1F947; Best match','&#x1F948; Strong fit','&#x1F949; Also consider'];
+const alts={Jobber:['Housecall Pro','NiceJob'],'Housecall Pro':['Jobber','NiceJob'],NiceJob:['Jobber','GlossGenius'],CallRail:['Jobber','NiceJob'],GlossGenius:['Vagaro','NiceJob'],Vagaro:['GlossGenius','Boulevard'],Boulevard:['Vagaro','GlossGenius']};
 document.querySelectorAll('.quiz-option').forEach(btn=>{
   btn.addEventListener('click',()=>{
-    const q=btn.dataset.q;
-    answers[q]=btn.dataset.v;
+    const q=btn.dataset.q; answers[q]=btn.dataset.v;
     btn.closest('.quiz-options').querySelectorAll('.quiz-option').forEach(b=>b.classList.remove('selected'));
     btn.classList.add('selected');
-    setTimeout(()=>advance(parseInt(q)),300);
+    setTimeout(()=>{
+      document.getElementById('s'+q).classList.remove('active');
+      document.getElementById('progress').style.width=(parseInt(q)/5*100)+'%';
+      if(parseInt(q)<5){document.getElementById('s'+(parseInt(q)+1)).classList.add('active');}
+      else{showResults();}
+    },300);
   });
 });
-function advance(q){
-  document.getElementById('s'+q).classList.remove('active');
-  const pct=q/5*100;
-  document.getElementById('progress').style.width=pct+'%';
-  if(q<5){document.getElementById('s'+(q+1)).classList.add('active');}
-  else{showResults();}
-}
 function showResults(){
   document.getElementById('results').classList.add('active');
   document.getElementById('progress').style.width='100%';
-  const goal=answers[2]||'content';
-  const budget=answers[3]||'free';
-  const list=(recs[goal]&&recs[goal][budget])||["ChatGPT","Claude","Make.com"];
-  const labels=["&#x1f947; Best match","&#x1f948; Strong fit","&#x1f949; Also worth trying"];
+  const prob=answers[2]||'scheduling';
+  const size=answers[3]||'small';
+  const top=(picks[prob]&&picks[prob][size])||'Jobber';
+  const list=[top,...(alts[top]||[]).slice(0,2)];
   document.getElementById('resultCards').innerHTML=list.map((name,i)=>{
-    const info=toolInfo[name]||{price:"Freemium",why:"A well-regarded tool worth exploring for your situation."};
-    const slug=name.toLowerCase().replace(/[^a-z0-9]/g,'-');
-    return `<div class="result-card"><div class="result-rank">${labels[i]}</div><div class="result-name">${name}</div><div class="result-why">${info.why}</div><div class="result-price">${info.price}</div><div class="result-btns"><a class="btn btn-primary btn-sm" href="#affiliate-${slug}" data-affiliate="true">Try ${name} free &rarr;</a><a class="btn btn-secondary btn-sm" href="/tools/">See full review</a></div></div>`;
+    const t=info[name]||{price:'Varies',why:'A well-regarded option for your situation.',link:'/reviews/'};
+    return '<div class="result-card"><div class="result-rank">'+labels[i]+'</div><div class="result-name">'+name+'</div><div class="result-why">'+t.why+'</div><div class="result-price">'+t.price+'</div><div class="result-btns"><a class="btn btn-primary" href="'+t.link+'" style="font-size:.85rem;padding:.5rem 1.1rem;">Read the review &rarr;</a><a class="btn btn-secondary" href="/get-help/" style="font-size:.85rem;padding:.5rem 1.1rem;">Get a $97 deep dive</a></div></div>';
   }).join('');
 }
 </script>
