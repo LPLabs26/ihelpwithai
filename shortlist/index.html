@@ -188,7 +188,7 @@ const picks={
   marketing:{solo:'CallRail',small:'CallRail',mid:'CallRail',large:'CallRail'},
   retention:{solo:'GlossGenius',small:'Vagaro',mid:'Vagaro',large:'Boulevard'},
 };
-const info={
+const logoMap={"Jobber":"getjobber.com","Housecall Pro":"housecallpro.com","NiceJob":"nicejob.com","CallRail":"callrail.com","GlossGenius":"glossgenius.com","Vagaro":"vagaro.com","Boulevard":"joinblvd.com"};const info={
   Jobber:{price:'$29–$529/mo · 14-day trial',why:'Best overall fit for your situation. Clean scheduling, fast invoicing, and a mobile app your techs will actually use.',link:'/reviews/jobber/'},
   'Housecall Pro':{price:'$59–$299/mo · 14-day trial',why:'Worth the extra complexity for your team size — GPS tracking, dispatch boards, and consumer financing set it apart.',link:'/reviews/housecall-pro/'},
   NiceJob:{price:'$75–$125/mo · 14-day trial',why:'The most reliable set-and-forget way to grow Google reviews without annoying your customers.',link:'/reviews/nicejob/'},
@@ -221,7 +221,7 @@ function showResults(){
   const list=[top,...(alts[top]||[]).slice(0,2)];
   document.getElementById('resultCards').innerHTML=list.map((name,i)=>{
     const t=info[name]||{price:'Varies',why:'A well-regarded option for your situation.',link:'/reviews/'};
-    return '<div class="result-card"><div class="result-rank">'+labels[i]+'</div><div class="result-name">'+name+'</div><div class="result-why">'+t.why+'</div><div class="result-price">'+t.price+'</div><div class="result-btns"><a class="btn btn-primary" href="'+t.link+'" style="font-size:.85rem;padding:.5rem 1.1rem;">Read the review &rarr;</a><a class="btn btn-secondary" href="/get-help/" style="font-size:.85rem;padding:.5rem 1.1rem;">Get a $97 deep dive</a></div></div>';
+    return '<div class="result-card"><div class="result-rank">'+labels[i]+'</div><div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">'+(logoMap[name]?'<img src="https://logo.clearbit.com/'+logoMap[name]+'" alt="'+name+' logo" width="36" height="36" style="width:36px;height:36px;border-radius:8px;background:#fff;object-fit:contain;padding:3px;border:1px solid rgba(255,255,255,0.1);" onerror="this.style.display='none'">':'')+'<div class="result-name">'+name+'</div></div><div class="result-why">'+t.why+'</div><div class="result-price">'+t.price+'</div><div class="result-btns"><a class="btn btn-primary" href="'+t.link+'" style="font-size:.85rem;padding:.5rem 1.1rem;">Read the review &rarr;</a><a class="btn btn-secondary" href="/get-help/" style="font-size:.85rem;padding:.5rem 1.1rem;">Get a $97 deep dive</a></div></div>';
   }).join('');
 }
 </script>
