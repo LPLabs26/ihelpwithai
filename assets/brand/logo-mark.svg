@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Navy background, rounded square -->
+  <rect width="32" height="32" rx="8" fill="#0a1628"/>
+  <!-- Amber border accent -->
+  <rect width="32" height="32" rx="8" fill="none" stroke="#f5a623" stroke-width="1.5" stroke-opacity="0.6"/>
+  <!-- Stem of the "i" — white, centered -->
+  <rect x="13.5" y="14" width="5" height="12" rx="2.5" fill="#ffffff"/>
+  <!-- Dot of the "i" — amber diamond/spark -->
+  <path d="M16 4 L19 8 L16 12 L13 8 Z" fill="#f5a623"/>
+</svg>
