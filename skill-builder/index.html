@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skill Builder — Turn any tutorial into an agent skill | ihelpwithai.com</title>
+<meta name="description" content="Paste a YouTube tutorial link and get back a ready-to-use agent skill for Claude Code or Cursor — the steps, tools, gotchas, and code, verified and packaged.">
+<link rel="canonical" href="https://ihelpwithai.com/skill-builder/">
+<meta property="og:title" content="Skill Builder — turn any tutorial into an agent skill">
+<meta property="og:description" content="Paste a YouTube how-to, get back a verified, ready-to-run agent skill.">
+<meta property="og:url" content="https://ihelpwithai.com/skill-builder/">
+<meta property="og:image" content="https://ihelpwithai.com/assets/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/brand/favicon.ico" sizes="any">
+<meta name="theme-color" content="#0a1628">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0a1628;--navy-mid:#112040;--navy-card:#0f1d38;--navy-border:#1e3056;
+  --amber:#f5a623;--rose:#e879a0;
+  --cream:#f4efe6;--cream-dim:#d4ccbe;--white:#fff;--muted:#7a8fad;--green:#4ade80;
+  --font-display:'Instrument Serif',Georgia,serif;--font-body:'DM Sans',sans-serif;
+  --radius-sm:6px;--radius-md:12px;--radius-lg:20px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--navy);color:var(--cream);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+.container{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+/* NAV (mirrors site) */
+.site-header{position:sticky;top:0;z-index:100;background:rgba(10,22,40,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--navy-border);}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px;}
+.site-brand{display:flex;align-items:center;gap:8px;font-weight:600;font-size:15px;color:var(--white);}
+.site-brand__wordmark-ai{color:var(--amber);}
+.site-nav{display:flex;align-items:center;gap:4px;}
+.site-nav a{padding:6px 12px;border-radius:var(--radius-sm);font-size:13.5px;color:var(--muted);transition:color .15s,background .15s;}
+.site-nav a:hover,.site-nav a.is-active{color:var(--cream);background:var(--navy-mid);}
+.site-nav .nav-cta{background:var(--amber);color:var(--navy);font-weight:600;margin-left:8px;padding:7px 16px;border-radius:var(--radius-sm);}
+.site-nav .nav-cta:hover{background:#e09410;}
+.menu-toggle{display:none;background:none;border:none;color:var(--cream);font-size:20px;cursor:pointer;}
+@media(max-width:760px){
+  .site-nav{position:absolute;top:60px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--navy);border-bottom:1px solid var(--navy-border);padding:8px 24px 16px;display:none;}
+  .site-nav.open{display:flex;}
+  .menu-toggle{display:block;}
+}
+
+/* HERO */
+.page-hero{position:relative;overflow:hidden;padding:80px 0 56px;border-bottom:1px solid var(--navy-border);}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(30,48,86,.3) 1px,transparent 1px),linear-gradient(90deg,rgba(30,48,86,.3) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 60% at 70% 0%,black,transparent);pointer-events:none;}
+.page-hero::after{content:'';position:absolute;top:-80px;right:-80px;width:420px;height:420px;background:radial-gradient(circle,rgba(245,166,35,.07) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{position:relative;z-index:1;max-width:720px;text-align:center;margin:0 auto;}
+.hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);}
+h1{font-family:var(--font-display);font-weight:400;font-size:clamp(2.4rem,6vw,4rem);line-height:1.04;margin:14px 0 18px;color:var(--white);}
+.lede{font-size:1.15rem;color:var(--cream-dim);max-width:600px;margin:0 auto 32px;}
+
+/* FORM CARD */
+.panel{background:var(--navy-card);border:1px solid var(--navy-border);border-radius:var(--radius-lg);max-width:620px;margin:0 auto;padding:28px;text-align:left;box-shadow:0 24px 60px rgba(0,0,0,.35);}
+label{display:block;font-weight:600;font-size:.85rem;color:var(--cream);margin:0 0 6px;}
+.field{width:100%;padding:13px 15px;border:1px solid var(--navy-border);border-radius:var(--radius-sm);font-size:1rem;font-family:inherit;background:var(--navy-mid);color:var(--cream);}
+.field::placeholder{color:var(--muted);}
+.field:focus{outline:2px solid var(--amber);border-color:transparent;}
+.row{margin-bottom:18px;}
+.btn{width:100%;background:var(--amber);color:var(--navy);border:0;border-radius:var(--radius-sm);padding:15px;font-size:1.05rem;font-weight:700;font-family:inherit;cursor:pointer;transition:background .2s,transform .05s;}
+.btn:hover{background:#e09410;}
+.btn:active{transform:translateY(1px);}
+.btn:disabled{opacity:.55;cursor:not-allowed;}
+.fineprint{font-size:.8rem;color:var(--muted);margin-top:14px;}
+.demo-flag{display:inline-block;background:rgba(245,166,35,.16);color:var(--amber);font-weight:700;font-size:.7rem;padding:3px 8px;border-radius:999px;letter-spacing:.04em;}
+.status{display:none;margin-top:18px;padding:14px 16px;border-radius:var(--radius-md);font-size:.92rem;}
+.status.show{display:block;}
+.status.ok{background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.4);color:var(--cream);}
+.status.err{background:rgba(232,121,160,.12);border:1px solid rgba(232,121,160,.45);color:var(--cream);}
+.spinner{width:15px;height:15px;border:2px solid rgba(10,22,40,.35);border-top-color:var(--navy);border-radius:50%;display:inline-block;vertical-align:-2px;margin-right:7px;animation:spin .7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* SECTIONS */
+section.block{padding:64px 0;}
+h2{font-family:var(--font-display);font-weight:400;font-size:clamp(1.8rem,3.5vw,2.6rem);text-align:center;color:var(--white);margin:0 0 36px;}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+@media(max-width:760px){.steps{grid-template-columns:1fr;}}
+.step{background:var(--navy-card);border:1px solid var(--navy-border);border-radius:var(--radius-md);padding:24px;}
+.step .n{font-family:var(--font-display);font-size:2rem;color:var(--amber);}
+.step h3{margin:6px 0 8px;font-size:1.1rem;color:var(--white);font-weight:600;}
+.step p{margin:0;color:var(--cream-dim);font-size:.95rem;}
+.sample{background:#06101f;border:1px solid var(--navy-border);border-radius:var(--radius-md);padding:22px 26px;max-width:720px;margin:0 auto;overflow:auto;}
+.sample pre{margin:0;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.82rem;line-height:1.6;color:var(--cream);white-space:pre-wrap;}
+.sample .k{color:var(--rose);} .sample .a{color:var(--amber);} .sample .g{color:var(--green);}
+.note-strip{max-width:720px;margin:16px auto 0;font-size:.85rem;color:var(--muted);text-align:center;}
+.note-strip code{background:var(--navy-mid);padding:2px 6px;border-radius:4px;color:var(--cream);}
+
+/* FOOTER */
+.site-footer{border-top:1px solid var(--navy-border);padding:28px 0;}
+.footer-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.85rem;color:var(--muted);}
+.footer-inner a{color:var(--muted);} .footer-inner a:hover{color:var(--cream);}
+.footer-inner>div{display:flex;gap:16px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="site-brand" href="/">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true" style="flex-shrink:0"><rect width="32" height="32" rx="9" fill="#f5a623"/><circle cx="16" cy="8.5" r="3.5" fill="#0a1628"/><rect x="12.5" y="14" width="7" height="13" rx="3.5" fill="#0a1628"/></svg>
+      <span>ihelpwith<span class="site-brand__wordmark-ai">ai</span>.com</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="Toggle navigation" id="menuToggle">&#9776;</button>
+    <nav class="site-nav" id="siteNav">
+      <a href="/">Home</a>
+      <a href="/trades/">Field Trades</a>
+      <a href="/beauty/">Beauty &amp; Wellness</a>
+      <a href="/reviews/">Reviews</a>
+      <a href="/compare/">Compare</a>
+      <a href="/skill-builder/" class="is-active">Skill Builder</a>
+      <a href="/shortlist/" class="nav-cta">Get your picks</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container hero-inner">
+      <div class="hero-eyebrow">Free Tool</div>
+      <h1>Turn any tutorial into an agent skill</h1>
+      <p class="lede">Paste a YouTube how-to. Get back a ready-to-use skill for Claude Code or Cursor — the exact steps, tools, gotchas, and code, verified and packaged. No rewatching.</p>
+
+      <div class="panel">
+        <form id="sb-form" novalidate>
+          <div class="row">
+            <label for="url">YouTube tutorial link</label>
+            <input class="field" id="url" name="url" type="url" inputmode="url" placeholder="https://www.youtube.com/watch?v=..." required>
+          </div>
+          <div class="row">
+            <label for="email">Your email</label>
+            <input class="field" id="email" name="email" type="email" placeholder="you@example.com" required>
+          </div>
+          <button class="btn" id="submit" type="submit">Build my skill &rarr;</button>
+          <p class="fineprint">Conversions run in the background and take a few minutes. Keep this page open; the download link appears here when ready.<span id="demo-note"></span></p>
+        </form>
+        <div class="status" id="status" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="container">
+      <h2>How it works</h2>
+      <div class="steps">
+        <div class="step"><div class="n">1</div><h3>Transcribe &amp; watch</h3><p>We pull the transcript and sample key frames, so on-screen commands, code, and UI steps aren't lost.</p></div>
+        <div class="step"><div class="n">2</div><h3>Extract the real procedure</h3><p>A model separates the actual steps from the intro and filler — tools, prerequisites, gotchas, and snippets included.</p></div>
+        <div class="step"><div class="n">3</div><h3>Verify, then package</h3><p>Every skill is checked before we mark it ready. If it can't be verified, we tell you instead of handing back a broken package as if it worked.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" style="padding-top:0">
+    <div class="container">
+      <h2>What you get back</h2>
+      <div class="sample">
+<pre><span class="a">---</span>
+<span class="k">name</span>: setup-nextjs-project
+<span class="k">description</span>: Scaffold a new Next.js app with the App Router. Use
+  when the user wants to start, bootstrap, or initialize a Next.js project.
+<span class="a">---</span>
+
+<span class="a"># Set up a Next.js project</span>
+
+<span class="g">## Prerequisites</span>
+- Node.js 18+ installed
+- npm available on PATH
+
+<span class="g">## Procedure</span>
+1. Scaffold the app     npx create-next-app@latest my-app
+2. Move into it         cd my-app
+3. Start the dev server npm run dev   &rarr; http://localhost:3000
+
+<span class="g">## Common gotchas</span>
+- If port 3000 is busy, Next.js prompts for another port.</pre>
+      </div>
+      <p class="note-strip">A single <code>.skill</code> file. Drop it into Claude Code or Cursor and the agent can run the task — no rewatching the video.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>&copy; 2026 <a href="/">ihelpwithai.com</a></p>
+    <div>
+      <a href="/affiliate-disclosure/">Affiliate disclosure</a>
+      <a href="/methodology/">Methodology</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/contact/">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---- CONFIG ----------------------------------------------------------
+  // Defaults to the local SkillForge bridge. Override before this script with:
+  //   window.SKILLFORGE_ENDPOINT = "https://example.com/api/jobs"
+  // Set to "" to return to demo mode.
+  const PUBLIC_ENDPOINT = "https://receiver-states-biography-nick.trycloudflare.com/api/jobs";
+  const DEFAULT_ENDPOINT = /(^|\.)ihelpwithai\.com$/i.test(window.location.hostname) ? PUBLIC_ENDPOINT : "/api/jobs";
+  const ENDPOINT = (window.SKILLFORGE_ENDPOINT === undefined) ? DEFAULT_ENDPOINT : window.SKILLFORGE_ENDPOINT;
+
+  // mobile nav
+  document.getElementById('menuToggle').addEventListener('click', () =>
+    document.getElementById('siteNav').classList.toggle('open'));
+
+  const form = document.getElementById('sb-form');
+  const statusEl = document.getElementById('status');
+  const submitBtn = document.getElementById('submit');
+  const DEMO = !ENDPOINT;
+  if (DEMO) document.getElementById('demo-note').innerHTML =
+    '<br><span class="demo-flag">DEMO MODE</span> Backend not connected yet — this previews the flow.';
+
+  const show = (k,h)=>{statusEl.className='status show '+k;statusEl.innerHTML=h;};
+  const validEmail = v=>/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);
+  const validYouTube = v=>/(youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/)/.test(v);
+
+  form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const url=document.getElementById('url').value.trim();
+    const email=document.getElementById('email').value.trim();
+    if(!validYouTube(url)) return show('err','⚠️ Please paste a valid YouTube video link.');
+    if(!validEmail(email)) return show('err','⚠️ Please enter a valid email address.');
+    submitBtn.disabled=true;
+    show('ok','<span class="spinner"></span> Submitting your tutorial…');
+    try{
+      if(DEMO){
+        await new Promise(r=>setTimeout(r,900));
+        show('ok','✅ <strong>Received (demo).</strong> In production this would queue a SkillForge job for <strong>'+
+          escapeHtml(email)+'</strong> and show the download link here once verified.');
+      }else{
+        const res=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url,email})});
+        if(!res.ok){throw new Error(await readError(res));}
+        const job=await res.json();
+        show('ok','✅ <strong>Queued.</strong> Job <code>'+escapeHtml(job.id)+
+          '</code> is now running on SkillForge. Keep this page open for live status and the download link.');
+        form.reset();
+        pollJob(job.id, email);
+      }
+    }catch(err){ show('err','⚠️ '+(err.message||'Request failed. Please try again.')); }
+    finally{ submitBtn.disabled=false; }
+  });
+
+  async function readError(res){
+    if(res.status===429) return 'We\'re at capacity right now — please try again later.';
+    try{
+      const body=await res.json();
+      return body.detail || body.error || 'Something went wrong submitting your request. Please try again.';
+    }catch(_){
+      return 'Something went wrong submitting your request. Please try again.';
+    }
+  }
+  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function resolveApiUrl(path){
+    try{
+      const endpointUrl=new URL(ENDPOINT, window.location.href);
+      return new URL(path, endpointUrl.origin).toString();
+    }catch(_){
+      return path;
+    }
+  }
+  async function pollJob(id,email){
+    for(let i=0;i<180;i++){
+      await sleep(i<8?2500:5000);
+      try{
+        const res=await fetch(ENDPOINT+'/'+encodeURIComponent(id));
+        if(!res.ok) continue;
+        const job=await res.json();
+        const status=job.status || 'queued';
+        if(status==='done'){
+          const link=job.download_url?'<br><a href="'+escapeHtml(resolveApiUrl(job.download_url))+'">Download the skill package</a>':'';
+          show('ok','✅ <strong>Verified package ready.</strong>'+link);
+          return;
+        }
+        if(status==='needs_review'){
+          show('err','⚠️ <strong>Needs review.</strong> SkillForge ran the job but did not mark it verified. '+
+            'Reason: '+escapeHtml(job.error_log || 'acceptance gate did not pass')+'.');
+          return;
+        }
+        if(status==='failed'){
+          show('err','⚠️ <strong>Failed.</strong> '+escapeHtml(job.error_log || 'SkillForge could not process this tutorial.'));
+          return;
+        }
+        show('ok','<span class="spinner"></span> SkillForge status: <strong>'+escapeHtml(status)+
+          '</strong> · job <code>'+escapeHtml(id)+'</code>');
+      }catch(_){/* keep polling */}
+    }
+    show('ok','⏳ SkillForge is still working on job <code>'+escapeHtml(id)+
+      '</code>. Keep this page open to receive the download link.');
+  }
+</script>
+</body>
+</html>
