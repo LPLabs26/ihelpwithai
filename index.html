@@ -78,6 +78,22 @@ img{display:block;max-width:100%;}
 .section-intro{font-size:16px;color:var(--cream-dim);max-width:560px;line-height:1.7;font-weight:300;margin-bottom:40px;}
 .section-divider{border:none;border-top:1px solid var(--navy-border);}
 
+/* FEATURED APP */
+.app-feature{background:var(--navy-mid);border-top:1px solid var(--navy-border);border-bottom:1px solid var(--navy-border);}
+.app-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,380px);gap:32px;align-items:center;padding:36px 0;}
+.app-copy{min-width:0;}
+.app-copy h2{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:400;color:var(--white);line-height:1.15;letter-spacing:-0.02em;margin-bottom:12px;}
+.app-copy p{font-size:16px;color:var(--cream-dim);line-height:1.7;font-weight:300;max-width:620px;margin-bottom:22px;}
+.app-panel{min-width:0;background:var(--navy-card);border:1.5px solid var(--navy-border);border-radius:var(--radius-lg);padding:24px;box-shadow:0 20px 48px rgba(0,0,0,0.22);}
+.app-panel-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px;}
+.app-mark{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--white);}
+.app-icon{width:34px;height:34px;border-radius:10px;background:var(--amber);color:var(--navy);display:grid;place-items:center;font-weight:800;}
+.app-status{font-size:12px;color:var(--green);background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.24);border-radius:100px;padding:3px 9px;}
+.app-steps{display:grid;gap:10px;}
+.app-step{display:flex;align-items:flex-start;gap:10px;color:var(--muted);font-size:13.5px;line-height:1.45;}
+.app-step span{width:20px;height:20px;border-radius:50%;background:rgba(245,166,35,0.14);color:var(--amber);display:grid;place-items:center;font-size:12px;font-weight:700;flex-shrink:0;}
+.app-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
+
 /* VERTICAL CARDS */
 .verticals-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
 .vertical-card{background:var(--navy-card);border:1.5px solid var(--navy-border);border-radius:var(--radius-lg);padding:36px 32px;display:flex;flex-direction:column;gap:16px;text-decoration:none;color:inherit;transition:border-color 0.2s,transform 0.2s;position:relative;overflow:hidden;}
@@ -139,8 +155,8 @@ img{display:block;max-width:100%;}
 .footer-inner a{color:var(--muted);margin:0 8px;}
 .footer-inner a:hover{color:var(--cream);}
 
-@media(max-width:900px){.verticals-grid{grid-template-columns:1fr;}.steps-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:620px){.site-nav{display:none;}.menu-toggle{display:block;}.steps-grid{grid-template-columns:1fr;}.cta-banner{padding:32px 24px;}}
+@media(max-width:900px){.verticals-grid{grid-template-columns:1fr;}.steps-grid{grid-template-columns:1fr 1fr;}.app-card{grid-template-columns:1fr;}}
+@media(max-width:620px){.site-nav{display:none;}.menu-toggle{display:block;}.hero-cta-row,.app-actions,.cta-banner-actions{display:grid;grid-template-columns:minmax(0,1fr);width:100%;}.hero-cta-row .btn,.app-actions .btn,.cta-banner-actions .btn{width:100%;justify-content:center;white-space:normal;text-align:center;}.steps-grid{grid-template-columns:1fr;}.cta-banner{padding:32px 24px;}.app-panel{padding:22px 18px;}}
 </style>
 </head>
 <body>
@@ -173,8 +189,36 @@ img{display:block;max-width:100%;}
       <p class="hero-sub">Honest picks for field trades and beauty &amp; wellness — no demos, no vendor spin. Find the software that actually fits how you work.</p>
       <div class="hero-cta-row">
         <a class="btn btn-primary" href="/shortlist/">Get your shortlist &rarr;</a>
-        <a class="btn btn-secondary" href="/reviews/">Browse reviews</a>
+        <a class="btn btn-secondary" href="/skill-builder/">Try SkillForge</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED APP -->
+<section class="app-feature">
+  <div class="container">
+    <div class="app-card">
+      <div class="app-copy">
+        <div class="section-label">Featured app</div>
+        <h2>SkillForge turns tutorials into ready-to-use agent skills.</h2>
+        <p>Paste a YouTube how-to and SkillForge extracts the real procedure, verifies the steps, and packages it into a skill for Claude Code or Cursor.</p>
+        <div class="app-actions">
+          <a class="btn btn-primary" href="/skill-builder/">Build a skill &rarr;</a>
+          <a class="btn btn-secondary" href="/skill-builder/">See how it works</a>
+        </div>
+      </div>
+      <a class="app-panel" href="/skill-builder/" aria-label="Open SkillForge">
+        <div class="app-panel-top">
+          <div class="app-mark"><span class="app-icon">SF</span> SkillForge</div>
+          <span class="app-status">Live</span>
+        </div>
+        <div class="app-steps">
+          <div class="app-step"><span>1</span><div>Paste a YouTube tutorial link.</div></div>
+          <div class="app-step"><span>2</span><div>SkillForge extracts commands, context, and gotchas.</div></div>
+          <div class="app-step"><span>3</span><div>Download a verified skill package when it is ready.</div></div>
+        </div>
+      </a>
     </div>
   </div>
 </section>
