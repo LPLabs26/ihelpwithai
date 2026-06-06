@@ -1,7 +1,0 @@
-# Local Netlify folder
-.netlify
-.tmp-export
-archive/
-*.zip
-\$\{escapeHtml(tool.company)\}
-node_modules/

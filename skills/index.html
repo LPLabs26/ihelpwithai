@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skill Library — SkillForge</title>
+<meta name="description" content="Every skill SkillForge has built from a tutorial — browse, search, and download ready-to-use agent skills for Claude Code or Cursor.">
+<link rel="canonical" href="https://ihelpwithai.com/skills/">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0a1628">
+<link rel="stylesheet" href="/assets/skillforge.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="site-brand" href="/">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true" style="flex-shrink:0"><rect width="32" height="32" rx="9" fill="#f5a623"/><path d="M11 7l9 5-9 5z" fill="#0a1628"/><rect x="9" y="20" width="14" height="3" rx="1.5" fill="#0a1628"/></svg>
+      <span>Skill<span class="site-brand__wordmark-ai">Forge</span></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="Toggle navigation" id="menuToggle">&#9776;</button>
+    <nav class="site-nav" id="siteNav">
+      <a href="/">Home</a>
+      <a href="/skills/" class="is-active">Skill Library</a>
+      <a href="/#how">How it works</a>
+      <a href="/#build" class="nav-cta">Build a skill</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-head">
+    <div class="container">
+      <h1>Skill Library</h1>
+      <p>Every skill SkillForge has built and verified. Browse, search, and download.</p>
+    </div>
+  </section>
+
+  <section class="block" style="padding-top:24px">
+    <div class="container">
+      <div class="lib-controls">
+        <input class="field lib-search" id="search" type="text" placeholder="Search skills…">
+      </div>
+      <p id="count" style="text-align:center;color:var(--muted);font-size:.85rem;margin-bottom:20px"></p>
+      <div class="grid" id="grid">
+        <div class="empty">Loading skills…</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>&copy; 2026 SkillForge &middot; <a href="/">ihelpwithai.com</a></p>
+    <div>
+      <a href="/skills/">Skill Library</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---- CONFIG -------------------------------------------------------
+  // Where the library reads built skills from. Defaults to the bundled
+  // skills.json (sample data). Point this at your backend (Supabase REST
+  // endpoint returning the same shape) to auto-populate as skills are built.
+  const SKILLS_SOURCE = "/skills/skills.json";
+
+  document.getElementById('menuToggle').addEventListener('click', () =>
+    document.getElementById('siteNav').classList.toggle('open'));
+
+  const grid = document.getElementById('grid');
+  const count = document.getElementById('count');
+  const search = document.getElementById('search');
+  let skills = [];
+
+  const esc = s => String(s||'').replace(/[&<>"]/g, c =>
+    ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+  function card(s){
+    const src = s.source_url ? `<a href="${esc(s.source_url)}" target="_blank" rel="noopener">source video</a>` : '';
+    const dl = s.download_url
+      ? `<a class="btn" href="${esc(s.download_url)}" download style="margin-top:8px">Download .skill</a>`
+      : `<span class="meta">download coming soon</span>`;
+    return `<div class="skill-card">
+      <span class="tag">${esc(s.category||'Skill')}</span>
+      <h3>${esc(s.name)}</h3>
+      <p>${esc(s.description)}</p>
+      <div class="meta">${s.created_at?('Built '+esc(s.created_at)+' · '):''}${src}</div>
+      ${dl}
+    </div>`;
+  }
+
+  function render(list){
+    if(!list.length){ grid.innerHTML = '<div class="empty">No skills yet. Build the first one from the home page!</div>'; count.textContent=''; return; }
+    grid.innerHTML = list.map(card).join('');
+    count.textContent = list.length + (list.length===1?' skill':' skills');
+  }
+
+  function applySearch(){
+    const q = search.value.trim().toLowerCase();
+    render(!q ? skills : skills.filter(s =>
+      (s.name+' '+s.description+' '+(s.category||'')).toLowerCase().includes(q)));
+  }
+
+  search.addEventListener('input', applySearch);
+
+  fetch(SKILLS_SOURCE).then(r => r.ok ? r.json() : []).then(data => {
+    skills = Array.isArray(data) ? data : (data.skills || []);
+    skills.sort((a,b)=>String(b.created_at||'').localeCompare(String(a.created_at||'')));
+    render(skills);
+  }).catch(() => {
+    grid.innerHTML = '<div class="empty">Couldn\'t load skills right now. Please try again later.</div>';
+  });
+</script>
+</body>
+</html>

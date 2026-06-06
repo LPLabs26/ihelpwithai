@@ -1,0 +1,11 @@
+# SkillForge worker dependencies (plus the engine itself).
+# Install the engine alongside this: copy the skill_builder/ package in, or
+# `pip install -e /path/to/engine`.
+supabase>=2.4.0
+requests>=2.31.0
+PyYAML>=6.0
+anthropic>=0.39.0
+openai>=1.40.0
+youtube-transcript-api>=0.6.2
+yt-dlp>=2024.8.6
+# System dependency (not pip): ffmpeg
