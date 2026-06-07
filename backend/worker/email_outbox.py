@@ -1,4 +1,4 @@
-"""Idempotent success-email delivery for verified SkillForge submissions."""
+"""Idempotent success-email delivery for verified Skill Builder submissions."""
 from __future__ import annotations
 
 import datetime as dt

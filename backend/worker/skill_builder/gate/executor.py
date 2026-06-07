@@ -129,7 +129,7 @@ class SandboxExecutor:
         if err:
             return err
 
-        with tempfile.TemporaryDirectory(prefix="skillforge_sandbox_") as tmp:
+        with tempfile.TemporaryDirectory(prefix="skill_builder_sandbox_") as tmp:
             root = Path(tmp)
             home = root / "home"
             scratch = root / "tmp"

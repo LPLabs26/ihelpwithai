@@ -63,7 +63,7 @@ Note the function URL it prints.
    SUPABASE_URL=...           SUPABASE_SERVICE_ROLE_KEY=...
    SKILLBUILDER_PROVIDER=anthropic
    ANTHROPIC_API_KEY=...      (or OPENAI_API_KEY with PROVIDER=openai)
-   RESEND_API_KEY=...         EMAIL_FROM=ihelpwithai.com <info@ihelpwithai.com>
+   RESEND_API_KEY=...         EMAIL_FROM="Skill Builder <info@ihelpwithai.com>"
    PUBLIC_STORAGE_BASE=https://YOUR.supabase.co/storage/v1/object/public/skills
    ```
    If Resend is not available, the worker can send with `SMTP_HOST`,

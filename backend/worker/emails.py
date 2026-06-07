@@ -14,7 +14,7 @@ import requests
 SENDER = (
     os.environ.get("EMAIL_FROM")
     or os.environ.get("SMTP_FROM")
-    or "ihelpwithai.com <info@ihelpwithai.com>"
+    or "Skill Builder <info@ihelpwithai.com>"
 )
 RESEND_KEY = os.environ.get("RESEND_API_KEY", "")
 REPLY_TO = "info@ihelpwithai.com"
