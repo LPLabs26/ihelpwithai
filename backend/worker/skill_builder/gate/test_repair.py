@@ -106,12 +106,15 @@ def check_end_to_end(skill_dir: Path, task: str, llm: LLM,
     error fails the check. Without an executor, full execution can't be proven
     here — that is reported as a known limitation, never as a pass."""
     skill_text = (skill_dir / "SKILL.md").read_text()
+    command_limit = getattr(executor, "max_commands", 8) if executor else 8
     sys = (
         "You are a fresh agent with NO prior context. You have been given "
         "exactly one skill. Using ONLY it, perform the user's task.\n"
         "Output JSON exactly like this: "
         "{\"commands\":[\"literal /bin/bash command\", \"...\"], "
         "\"blocked\":false, \"blocker\":\"\"}.\n"
+        f"Output no more than {command_limit} commands. If more checks are "
+        "needed, combine related checks into one bash or python command.\n"
         "The commands array must contain ONLY commands a non-interactive "
         "/bin/bash shell can execute from the skill directory. Do not output "
         "tutorial instructions, checklist items, TODOs, explanations, or prose "

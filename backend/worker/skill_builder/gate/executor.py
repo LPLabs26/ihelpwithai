@@ -103,7 +103,7 @@ _SHELL_WORDS = {
 @dataclass(frozen=True)
 class SandboxExecutor:
     timeout_seconds: int = 45
-    max_commands: int = 8
+    max_commands: int = 16
     max_command_chars: int = 2000
     output_tail_chars: int = 4000
     memory_bytes: int = 1024 * 1024 * 1024
@@ -114,7 +114,7 @@ class SandboxExecutor:
     def from_env(cls) -> "SandboxExecutor":
         return cls(
             timeout_seconds=_env_int("SKILLBUILDER_SANDBOX_TIMEOUT_SECONDS", 45),
-            max_commands=_env_int("SKILLBUILDER_SANDBOX_MAX_COMMANDS", 8),
+            max_commands=_env_int("SKILLBUILDER_SANDBOX_MAX_COMMANDS", 16),
             max_command_chars=_env_int("SKILLBUILDER_SANDBOX_MAX_COMMAND_CHARS", 2000),
         )
 
