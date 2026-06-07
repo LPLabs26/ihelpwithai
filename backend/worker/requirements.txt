@@ -1,4 +1,4 @@
-# SkillForge worker dependencies (plus the engine itself).
+# ihelpwithai.com worker dependencies (plus the engine itself).
 # Install the engine alongside this: copy the skill_builder/ package in, or
 # `pip install -e /path/to/engine`.
 supabase>=2.4.0

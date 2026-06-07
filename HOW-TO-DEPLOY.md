@@ -1,6 +1,6 @@
-# Deploy the new SkillForge site
+# Deploy the new ihelpwithai.com site
 
-This `site/` folder is the **complete new site** — SkillForge only. It replaces
+This `site/` folder is the **complete new site** — ihelpwithai.com only. It replaces
 your current ihelpwithai.com content. It's static, so GitHub Pages serves it
 as-is (no build step). I can't push to your repo from here, so you run these
 steps.
@@ -9,12 +9,12 @@ steps.
 
 ```
 site/
-  index.html            SkillForge home + email-capture tool (demo mode)
+  index.html            ihelpwithai.com home + email-capture tool (demo mode)
   skills/
     index.html          Skill Library (searchable gallery + downloads)
     skills.json         sample data (replace with live backend later)
   privacy.html  terms.html  contact.html  404.html
-  assets/skillforge.css   shared navy/amber theme
+  assets/ihelpwithai.css   shared navy/amber theme
   assets/favicon.svg
   backend/
     schema.sql          Supabase tables: emails (private) + skills (library)
@@ -36,7 +36,7 @@ git rm -rqf . ':!.github'           # remove old files, preserve .github/
 cp -R /path/to/skill-builder/site/. .   # copy new site in (note the trailing /.)
 
 git add -A
-git commit -m "Rebuild site as SkillForge (tool + skill library)"
+git commit -m "Rebuild site as ihelpwithai.com (tool + skill library)"
 git push origin main
 ```
 

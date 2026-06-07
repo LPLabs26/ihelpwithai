@@ -1,9 +1,9 @@
 services:
-  skillforge-worker:
+  ihelpwithai-worker:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: skillforge-worker
+    container_name: ihelpwithai-worker
     restart: unless-stopped
     # Required on the mtj Linux host so the container can call the local
     # llama-server instances bound to 127.0.0.1:8000-8003.

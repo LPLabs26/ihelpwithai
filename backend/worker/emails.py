@@ -1,4 +1,4 @@
-"""Transactional emails for SkillForge, sent from info@ihelpwithai.com via
+"""Transactional emails for ihelpwithai.com, sent from info@ihelpwithai.com via
 Resend. Two outcomes only: verified (link) or needs-review (reasons).
 Never send the success email for a job that didn't pass the gate."""
 from __future__ import annotations
@@ -14,7 +14,7 @@ import requests
 SENDER = (
     os.environ.get("EMAIL_FROM")
     or os.environ.get("SMTP_FROM")
-    or "SkillForge <info@ihelpwithai.com>"
+    or "ihelpwithai.com <info@ihelpwithai.com>"
 )
 RESEND_KEY = os.environ.get("RESEND_API_KEY", "")
 REPLY_TO = "info@ihelpwithai.com"
@@ -48,7 +48,7 @@ def _send_smtp(to: str, subject: str, html: str) -> None:
     msg["To"] = to
     msg["Reply-To"] = REPLY_TO
     msg["Subject"] = subject
-    msg.set_content("Your SkillForge update is ready. View this email in an HTML-capable client.")
+    msg.set_content("Your ihelpwithai.com update is ready. View this email in an HTML-capable client.")
     msg.add_alternative(html, subtype="html")
 
     context = ssl.create_default_context()
@@ -75,9 +75,9 @@ def send_success(to: str, skill_name: str, link: str) -> None:
         Download the .skill</a></p>
       <p style="font-size:13px;color:#526172">Drop it into Claude Code or Cursor and the
         agent can run the task — no rewatching the video. Link expires in 7 days.</p>
-      <p style="font-size:12px;color:#7a8fad">— SkillForge · ihelpwithai.com</p>
+      <p style="font-size:12px;color:#7a8fad">— ihelpwithai.com</p>
     </div>"""
-    _send(to, "Your SkillForge skill is ready", html)
+    _send(to, "Your ihelpwithai.com skill is ready", html)
 
 
 def send_needs_review(to: str, reasons: list[str]) -> None:
@@ -89,6 +89,6 @@ def send_needs_review(to: str, reasons: list[str]) -> None:
          sending something that might not work. Here's what tripped it up:</p>
       <ul style="color:#526172">{items}</ul>
       <p>Try another tutorial — clear, step-by-step how-tos work best.</p>
-      <p style="font-size:12px;color:#7a8fad">— SkillForge · ihelpwithai.com</p>
+      <p style="font-size:12px;color:#7a8fad">— ihelpwithai.com</p>
     </div>"""
-    _send(to, "About your SkillForge request", html)
+    _send(to, "About your ihelpwithai.com request", html)

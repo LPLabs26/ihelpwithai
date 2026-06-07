@@ -1,4 +1,4 @@
--- SkillForge data repository (Supabase / Postgres)
+-- ihelpwithai.com data repository (Supabase / Postgres)
 -- Two stores: (1) submissions = the EMAIL repository, (2) skills = the BUILT
 -- SKILL repository. Emails are private (owner-only). The public Skill Library
 -- reads ONLY the non-personal skill fields via a safe view.

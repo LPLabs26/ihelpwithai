@@ -1,4 +1,4 @@
-// Public SkillForge library endpoint.
+// Public ihelpwithai.com library endpoint.
 // Returns only safe, non-PII fields from `public_skills` and converts storage
 // paths into public download URLs. Deploy with JWT verification disabled.
 import { createClient } from "jsr:@supabase/supabase-js@2";

@@ -1,4 +1,4 @@
-# SkillForge — Go-Live Runbook
+# ihelpwithai.com — Go-Live Runbook
 
 Everything is built. These are the steps to make it live. I can't run them for
 you — they need your GitHub login, your Supabase project, and paid accounts
@@ -27,7 +27,7 @@ git checkout main && git pull
 git branch backup-old-site            # safety copy of the old site
 git rm -rqf . ':!.github'             # keep the Pages workflow
 cp -R /path/to/skill-builder/site/. .
-git add -A && git commit -m "Launch SkillForge"
+git add -A && git commit -m "Launch ihelpwithai.com"
 git push origin main
 ```
 Live at https://ihelpwithai.com in ~1 min, in DEMO mode (no charges yet).
@@ -63,7 +63,7 @@ Note the function URL it prints.
    SUPABASE_URL=...           SUPABASE_SERVICE_ROLE_KEY=...
    SKILLBUILDER_PROVIDER=anthropic
    ANTHROPIC_API_KEY=...      (or OPENAI_API_KEY with PROVIDER=openai)
-   RESEND_API_KEY=...         EMAIL_FROM=SkillForge <info@ihelpwithai.com>
+   RESEND_API_KEY=...         EMAIL_FROM=ihelpwithai.com <info@ihelpwithai.com>
    PUBLIC_STORAGE_BASE=https://YOUR.supabase.co/storage/v1/object/public/skills
    ```
    If Resend is not available, the worker can send with `SMTP_HOST`,

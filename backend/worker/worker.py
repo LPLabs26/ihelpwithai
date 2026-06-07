@@ -1,4 +1,4 @@
-"""SkillForge worker — the off-site process that actually runs the engine.
+"""ihelpwithai.com worker — the off-site process that actually runs the engine.
 
 Loop: claim a queued submission -> run the engine (build + verify) -> on a
 verified pass, upload the .skill, record it in `skills` (the public library),
@@ -93,7 +93,7 @@ def _now() -> str:
 
 
 def main() -> None:
-    print("SkillForge worker started.")
+    print("ihelpwithai.com worker started.")
     while True:
         job = claim_one()
         if not job:

@@ -1,4 +1,4 @@
-# SkillForge backend — emails + skills repository
+# ihelpwithai.com backend — emails + skills repository
 
 This is what makes the site *actually work* (email delivery + saved skills).
 The static site can't do it alone; it runs on Supabase + a small worker.

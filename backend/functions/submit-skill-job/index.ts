@@ -1,4 +1,4 @@
-// SkillForge intake — Supabase Edge Function (Deno).
+// ihelpwithai.com intake — Supabase Edge Function (Deno).
 // Receives the homepage form POST, guards against abuse, stores the email +
 // URL in `submissions` (the email repository), returns immediately. The worker
 // does the slow work. Deploy:  supabase functions deploy submit-skill-job
