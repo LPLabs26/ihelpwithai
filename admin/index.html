@@ -69,6 +69,11 @@
     <p class="muted">Visits &amp; downloads come from on-page tracking; requests &amp; skills built come from the database. Page-view tracking activates once the track endpoint is connected.</p>
 
     <div class="panel-sm">
+      <h3 class="sec">Now processing <span class="muted" style="font-size:.8rem">— live, updates every 3s</span></h3>
+      <div style="overflow:auto"><table id="live"><thead><tr><th>Status</th><th>Step</th><th>GPU / worker</th><th>Started</th><th>Video</th></tr></thead><tbody></tbody></table></div>
+    </div>
+
+    <div class="panel-sm">
       <h3 class="sec">Recent submissions <span class="muted" style="font-size:.8rem">— click a row to see its logs</span></h3>
       <div style="overflow:auto"><table id="subs"><thead><tr><th>When</th><th>Email</th><th>Status</th><th>Video</th></tr></thead><tbody></tbody></table></div>
     </div>
@@ -188,11 +193,30 @@
     else{msg.className='status show ok';msg.textContent='Skill added.';['#s-name','#s-cat','#s-desc','#s-src','#s-path'].forEach(i=>$(i).value='');refresh();}
   });
 
+  let liveTimer=null;
+  async function refreshLive(){
+    const {data}=await db.from('submissions').select('*').in('status',['queued','running']).order('created_at',{ascending:true}).limit(50);
+    const rows=data||[];
+    $('#live tbody').innerHTML=rows.map(r=>{
+      const st=r.started_at?new Date(r.started_at):null;
+      const el=st?Math.max(0,Math.round((Date.now()-st.getTime())/1000))+'s':'';
+      return `<tr>`+
+        `<td><span class="pill s-${esc(r.status)}">${esc(r.status)}</span></td>`+
+        `<td>${esc(r.current_step||(r.status==='queued'?'waiting':'—'))}</td>`+
+        `<td>${esc(r.worker||'—')}</td>`+
+        `<td>${st?esc(st.toISOString().slice(11,19))+' ('+el+')':'—'}</td>`+
+        `<td style="max-width:240px;word-break:break-all">${esc(r.url)}</td></tr>`;
+    }).join('') || '<tr><td colspan="5" class="muted">Nothing in progress right now.</td></tr>';
+  }
+
   async function showApp(session){
     const ok=!!session;
     $('#login').classList.toggle('hide',ok); $('#dash').classList.toggle('hide',!ok);
     $('#logout').classList.toggle('hide',!ok); $('#who').textContent=ok?session.user.email:'';
-    if(ok) refresh();
+    if(ok){ refresh(); refreshLive();
+      if(liveTimer) clearInterval(liveTimer);
+      liveTimer=setInterval(refreshLive,3000);
+    } else if(liveTimer){ clearInterval(liveTimer); liveTimer=null; }
   }
   $('#signin').addEventListener('click', async ()=>{
     const {data,error}=await db.auth.signInWithPassword({email:$('#em').value.trim(),password:$('#pw').value});
