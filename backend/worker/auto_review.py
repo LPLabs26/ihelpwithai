@@ -13,6 +13,7 @@ from pathlib import Path
 from supabase import create_client
 
 import emails
+from skill_archive import archive_skill_bytes, archive_skill_file
 from skill_builder.gate.executor import SandboxExecutor
 from skill_builder.pipeline import run
 
@@ -69,6 +70,7 @@ def _process(job: dict) -> None:
     existing = _existing_public_skill(job["url"])
     if existing:
         print("auto-review: existing skill satisfies", job["id"], existing["name"])
+        _archive_existing_storage(job, existing)
         _mark_verified(job, existing["name"], existing["storage_path"], send_email=True)
         return
 
@@ -85,6 +87,8 @@ def _process(job: dict) -> None:
             )
         meta = _read_meta(result.skill_dir)
         _upsert_skill(job, meta, key)
+        _archive_safely(job["id"], archive_skill_file,
+                        result.skill_path, job=job, meta=meta, storage_path=key)
         _mark_verified(job, meta["name"], key, send_email=True)
         print("auto-review: verified", job["id"], meta["name"])
         return
@@ -110,9 +114,32 @@ def _claim(job: dict, attempt: int) -> bool:
 
 
 def _existing_public_skill(url: str) -> dict | None:
-    rows = (sb.table("skills").select("name,storage_path,is_public")
+    rows = (sb.table("skills").select("name,description,category,storage_path,is_public")
             .eq("source_url", url).eq("is_public", True).limit(1).execute().data)
     return rows[0] if rows else None
+
+
+def _archive_existing_storage(job: dict, skill: dict) -> None:
+    storage_path = skill["storage_path"]
+    try:
+        data = sb.storage.from_("skills").download(storage_path)
+    except Exception as e:
+        print("auto-review archive download error on", job["id"], e)
+        return
+    meta = {
+        "name": skill.get("name"),
+        "description": skill.get("description"),
+        "category": skill.get("category", "Skill"),
+    }
+    _archive_safely(
+        job["id"],
+        archive_skill_bytes,
+        data,
+        filename=Path(storage_path).name,
+        job=job,
+        meta=meta,
+        storage_path=storage_path,
+    )
 
 
 def _upsert_skill(job: dict, meta: dict, storage_path: str) -> None:
@@ -158,6 +185,15 @@ def _send_email_safely(job_id: str, fn, *args) -> None:
         fn(*args)
     except Exception as e:
         print("auto-review email error on", job_id, e)
+
+
+def _archive_safely(job_id: str, fn, *args, **kwargs) -> None:
+    try:
+        archived = fn(*args, **kwargs)
+        if archived:
+            print("auto-review archived skill", job_id, archived)
+    except Exception as e:
+        print("auto-review archive error on", job_id, e)
 
 
 def _read_meta(skill_dir: Path) -> dict:

@@ -27,6 +27,7 @@ from supabase import create_client
 from skill_builder.pipeline import run
 from skill_builder.gate.executor import SandboxExecutor
 import emails
+from skill_archive import archive_skill_file
 
 sb = create_client(os.environ["SUPABASE_URL"],
                    os.environ["SUPABASE_SERVICE_ROLE_KEY"])
@@ -68,6 +69,8 @@ def process(job: dict) -> None:
             "source_url": job["url"],
             "storage_path": key, "is_public": True,
         }).execute()
+        _archive_safely(job["id"], archive_skill_file,
+                        result.skill_path, job=job, meta=meta, storage_path=key)
         sb.table("submissions").update(
             {"status": "verified", "finished_at": _now()}).eq("id", job["id"]).execute()
         link = f"{PUBLIC_BASE}/{key}" if PUBLIC_BASE else key
@@ -84,6 +87,15 @@ def _send_email_safely(job_id: str, fn, *args) -> None:
         fn(*args)
     except Exception as e:
         print("email error on", job_id, e)
+
+
+def _archive_safely(job_id: str, fn, *args, **kwargs) -> None:
+    try:
+        archived = fn(*args, **kwargs)
+        if archived:
+            print("archived skill", job_id, archived)
+    except Exception as e:
+        print("archive error on", job_id, e)
 
 
 def _read_meta(skill_dir: Path) -> dict:

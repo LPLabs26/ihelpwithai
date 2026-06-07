@@ -23,9 +23,12 @@ services:
       SKILLBUILDER_LOCAL_TRANSCRIBE_COMPUTE_TYPE: ${SKILLBUILDER_LOCAL_TRANSCRIBE_COMPUTE_TYPE:-int8}
       SKILLBUILDER_SANDBOX_TIMEOUT_SECONDS: ${SKILLBUILDER_SANDBOX_TIMEOUT_SECONDS:-45}
       SKILLBUILDER_SANDBOX_MAX_COMMANDS: ${SKILLBUILDER_SANDBOX_MAX_COMMANDS:-8}
+      SKILL_ARCHIVE_DIR: ${SKILL_ARCHIVE_DIR:-/skill-archive}
+      SKILL_ARCHIVE_MARKER: ${SKILL_ARCHIVE_MARKER:-/skill-archive/.external-hdd-marker}
       WORKER_POLL_SECONDS: ${WORKER_POLL_SECONDS:-5}
     volumes:
       - whisper-cache:/models/huggingface
+      - /srv/launchpadlabs/shared/models/ihelpwithai-skill-archive:/skill-archive
 
 volumes:
   whisper-cache:
