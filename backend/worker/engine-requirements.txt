@@ -1,0 +1,14 @@
+# Skill Builder engine — runtime dependencies
+# AI stages need a developer API key (see .env.example). The non-AI stages
+# (ingest captions, frame sampling, validation, packaging) run without one.
+
+anthropic>=0.39.0          # vision + synthesis (needs ANTHROPIC_API_KEY)
+openai>=1.40.0             # transcription fallback (needs OPENAI_API_KEY)
+youtube-transcript-api>=0.6.2  # free caption pull, no key
+yt-dlp>=2024.8.6           # audio download + metadata, no key
+PyYAML>=6.0                # frontmatter parse/emit
+python-dotenv>=1.0.0       # load server-side .env
+
+# System dependency (not pip): ffmpeg  — required for frame sampling.
+#   macOS:  brew install ffmpeg
+#   ubuntu: apt-get install ffmpeg
