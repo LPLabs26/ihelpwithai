@@ -10,6 +10,7 @@ from __future__ import annotations
 import os
 import pwd
 import re
+import shlex
 import shutil
 import signal
 import subprocess
@@ -47,6 +48,56 @@ _BLOCKED_PATTERNS: tuple[tuple[re.Pattern[str], str], ...] = tuple(
         ),
     ]
 )
+
+_SHELL_WORDS = {
+    ".",
+    ":",
+    "[",
+    "alias",
+    "bash",
+    "break",
+    "case",
+    "cd",
+    "command",
+    "continue",
+    "declare",
+    "do",
+    "done",
+    "echo",
+    "elif",
+    "else",
+    "env",
+    "eval",
+    "exec",
+    "exit",
+    "export",
+    "false",
+    "fi",
+    "for",
+    "function",
+    "if",
+    "local",
+    "printf",
+    "pwd",
+    "read",
+    "return",
+    "set",
+    "shift",
+    "shopt",
+    "source",
+    "test",
+    "then",
+    "time",
+    "trap",
+    "true",
+    "type",
+    "ulimit",
+    "umask",
+    "unalias",
+    "unset",
+    "until",
+    "while",
+}
 
 
 @dataclass(frozen=True)
@@ -111,6 +162,10 @@ class SandboxExecutor:
                 blocked = _blocked_reason(command)
                 if blocked:
                     return f"command {idx} rejected: {blocked}: {command[:200]}"
+
+                shape_err = _command_shape_error(command, env["PATH"])
+                if shape_err:
+                    return f"command {idx} rejected: {shape_err}: {command[:200]}"
 
                 run_err = self._run_one(idx, command, workdir, env, uid_gid)
                 if run_err:
@@ -226,6 +281,40 @@ def _blocked_reason(command: str) -> str | None:
     for pattern, reason in _BLOCKED_PATTERNS:
         if pattern.search(command):
             return reason
+    return None
+
+
+def _command_shape_error(command: str, search_path: str) -> str | None:
+    """Reject obvious prose before bash turns it into a confusing 127."""
+    head = _command_head(command)
+    if not head:
+        return "not a valid executable shell command"
+    if head in _SHELL_WORDS:
+        return None
+    if "/" in head:
+        return None
+    if shutil.which(head, path=search_path):
+        return None
+    return (
+        f"first word {head!r} is not an executable or shell keyword; "
+        "the verifier must output literal shell commands, not prose"
+    )
+
+
+def _command_head(command: str) -> str | None:
+    text = command.strip()
+    while text.startswith("("):
+        text = text[1:].lstrip()
+    try:
+        parts = shlex.split(text, posix=True)
+    except ValueError:
+        return None
+    for part in parts:
+        if not part or part in {"(", ")", "{", "}"}:
+            continue
+        if re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*=.*", part):
+            continue
+        return part
     return None
 
 

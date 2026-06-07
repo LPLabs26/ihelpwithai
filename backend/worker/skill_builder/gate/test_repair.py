@@ -106,11 +106,23 @@ def check_end_to_end(skill_dir: Path, task: str, llm: LLM,
     error fails the check. Without an executor, full execution can't be proven
     here — that is reported as a known limitation, never as a pass."""
     skill_text = (skill_dir / "SKILL.md").read_text()
-    sys = ("You are a fresh agent with NO prior context. You have been given "
-           "exactly one skill. Using ONLY it, perform the user's task. Output "
-           "JSON: {\"commands\":[shell commands in order], \"blocked\":bool, "
-           "\"blocker\":\"why, or empty\"}. Set blocked=true if the skill is "
-           "missing a step, dependency, or detail you need.")
+    sys = (
+        "You are a fresh agent with NO prior context. You have been given "
+        "exactly one skill. Using ONLY it, perform the user's task.\n"
+        "Output JSON exactly like this: "
+        "{\"commands\":[\"literal /bin/bash command\", \"...\"], "
+        "\"blocked\":false, \"blocker\":\"\"}.\n"
+        "The commands array must contain ONLY commands a non-interactive "
+        "/bin/bash shell can execute from the skill directory. Do not output "
+        "tutorial instructions, checklist items, TODOs, explanations, or prose "
+        "as commands. Invalid examples: \"Identify the failure mode\", "
+        "\"Check whether the file exists\", \"Verify the result\".\n"
+        "Each command is run in a constrained offline sandbox with no network "
+        "tools and no production secrets. Prefer local checks like python, "
+        "bash, grep, test, file reads, and scripts bundled in the skill. "
+        "If the skill is missing a step, dependency, file, or verifiable local "
+        "procedure, set blocked=true and explain why in blocker."
+    )
     user = f"SKILL:\n{skill_text}\n\nTASK: {task}"
     try:
         plan = llm.complete_json(sys, user, max_tokens=2048)
