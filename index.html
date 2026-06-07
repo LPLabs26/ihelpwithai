@@ -145,6 +145,6 @@
     finally{ submitBtn.disabled=false; }
   });
 </script>
-<script>(function(){try{var T="PASTE_TRACK_FUNCTION_URL";if(String(T).indexOf("http")!==0)return;var k="ihwa_v",v=localStorage.getItem(k);if(!v){v=Math.random().toString(36).slice(2);localStorage.setItem(k,v);}var b=JSON.stringify({type:"visit",path:location.pathname,visitor:v});if(navigator.sendBeacon){navigator.sendBeacon(T,new Blob([b],{type:"application/json"}));}else{fetch(T,{method:"POST",keepalive:true,headers:{"Content-Type":"application/json"},body:b});}}catch(e){}})();</script>
+<script>(function(){try{var T="https://fiopwsdzcbmjcbpkdxwr.supabase.co/functions/v1/track";if(String(T).indexOf("http")!==0)return;var k="ihwa_v",v=localStorage.getItem(k);if(!v){v=Math.random().toString(36).slice(2);localStorage.setItem(k,v);}var b=JSON.stringify({type:"visit",path:location.pathname,visitor:v});if(navigator.sendBeacon){navigator.sendBeacon(T,new Blob([b],{type:"application/json"}));}else{fetch(T,{method:"POST",keepalive:true,headers:{"Content-Type":"application/json"},body:b});}}catch(e){}})();</script>
 </body>
 </html>
