@@ -27,6 +27,7 @@ SMTP_PASSWORD = os.environ.get("SMTP_PASSWORD", "")
 def _send(to: str, subject: str, html: str) -> None:
     if not RESEND_KEY:
         _send_smtp(to, subject, html)
+        print(f"email accepted provider=smtp to={_mask_email(to)} subject={subject!r}")
         return
     r = requests.post(
         "https://api.resend.com/emails",
@@ -37,6 +38,14 @@ def _send(to: str, subject: str, html: str) -> None:
         timeout=30,
     )
     r.raise_for_status()
+    try:
+        msg_id = r.json().get("id", "")
+    except ValueError:
+        msg_id = ""
+    print(
+        f"email accepted provider=resend id={msg_id} "
+        f"to={_mask_email(to)} subject={subject!r}"
+    )
 
 
 def _send_smtp(to: str, subject: str, html: str) -> None:
@@ -61,6 +70,17 @@ def _send_smtp(to: str, subject: str, html: str) -> None:
             smtp.starttls(context=context)
             smtp.login(SMTP_USERNAME, SMTP_PASSWORD)
             smtp.send_message(msg)
+
+
+def _mask_email(email: str) -> str:
+    local, sep, domain = email.partition("@")
+    if not sep:
+        return "***"
+    if len(local) <= 2:
+        masked = local[:1] + "***"
+    else:
+        masked = local[:2] + "***" + local[-1:]
+    return f"{masked}@{domain}"
 
 
 def send_success(to: str, skill_name: str, link: str) -> None:
