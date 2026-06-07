@@ -1,0 +1,17 @@
+services:
+  skillforge-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: skillforge-worker
+    restart: unless-stopped
+    # Required on the mtj Linux host so the container can call the local
+    # llama-server instances bound to 127.0.0.1:8000-8003.
+    network_mode: host
+    env_file:
+      - .env
+    environment:
+      SKILLBUILDER_PROVIDER: local
+      SKILLBUILDER_LOCAL_BASE_URL: http://127.0.0.1:8000/v1
+      SKILLBUILDER_LOCAL_MODEL: gemma-4-12B-it-Q4_K_M.gguf
+      WORKER_POLL_SECONDS: ${WORKER_POLL_SECONDS:-5}

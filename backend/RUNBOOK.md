@@ -12,7 +12,7 @@ Order matters. Don't share the URL publicly until Step 6 (the guard).
 
 | Service | Why | Cost |
 |---|---|---|
-| **Anthropic** (or OpenAI) API key | runs the engine (vision + writing the skill) | pay-per-use, ~$0.50–$2 per video |
+| **Anthropic/OpenAI API key or local model server** | runs the engine (vision + writing the skill) | pay-per-use for cloud keys; local model is free after hardware |
 | **Supabase** project | stores emails + skills, intake function, file storage | free tier is fine to start |
 | **Resend** account | sends the result emails from info@ihelpwithai.com | free tier ~3k emails/mo |
 | **Worker host** (Render / Railway / Fly) | runs the Python engine (needs ffmpeg) | ~$5–7/mo small instance |
@@ -56,7 +56,8 @@ Note the function URL it prints.
 
 1. Make a folder with: `backend/worker/*` **plus** the engine's `skill_builder/`
    package copied in next to `worker.py`.
-2. Deploy to Render/Railway as a **Docker** service (uses the included Dockerfile).
+2. Deploy to Render/Railway as a **Docker** service (uses the included Dockerfile),
+   or run it on the local model host if using a local model.
 3. Set its environment variables:
    ```
    SUPABASE_URL=...           SUPABASE_SERVICE_ROLE_KEY=...
@@ -65,6 +66,24 @@ Note the function URL it prints.
    RESEND_API_KEY=...         EMAIL_FROM=SkillForge <info@ihelpwithai.com>
    PUBLIC_STORAGE_BASE=https://YOUR.supabase.co/storage/v1/object/public/skills
    ```
+
+### Local Gemma on `mtj`
+
+The `mtj` server is running OpenAI-compatible `llama-server` instances for
+`gemma-4-12B-it-Q4_K_M.gguf` on `127.0.0.1:8000-8003`, with multimodal support.
+Run the worker on that same host so it can call the local model without exposing
+the model server publicly:
+
+```bash
+cd backend/worker
+cp .env.gemma.example .env
+# Fill in SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, RESEND_API_KEY,
+# EMAIL_FROM, and PUBLIC_STORAGE_BASE.
+docker compose -f docker-compose.gemma.yml up -d --build
+```
+
+The compose file uses host networking so the container can reach
+`http://127.0.0.1:8000/v1`. No Anthropic or OpenAI key is needed for this path.
 
 ## Step 5 — Email: verify your domain
 
