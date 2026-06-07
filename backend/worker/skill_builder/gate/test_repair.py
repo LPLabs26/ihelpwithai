@@ -19,6 +19,7 @@ pipeline.py because repair must regenerate from the structured intermediate.
 from __future__ import annotations
 
 import json
+import inspect
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -136,7 +137,7 @@ def check_end_to_end(skill_dir: Path, task: str, llm: LLM,
             fixable=False,
         )
 
-    err = executor(commands)
+    err = _run_executor(executor, commands, skill_dir, task)
     if err:
         return Check("end_to_end", False, f"command failed in sandbox: {err}")
     return Check("end_to_end", True, "clean agent completed the task end-to-end")
@@ -176,3 +177,33 @@ def _yes(llm: LLM, sys: str, desc: str, prompt: str) -> bool:
     out = llm.complete(sys, f"SKILL DESCRIPTION:\n{desc}\n\nUSER REQUEST:\n{prompt}",
                        max_tokens=8)
     return out.strip().upper().startswith("Y")
+
+
+def _run_executor(executor, commands: list[str], skill_dir: Path, task: str) -> str | None:
+    """Call old one-argument executors or richer sandbox executors."""
+    try:
+        sig = inspect.signature(executor)
+    except (TypeError, ValueError):
+        return executor(commands)
+
+    params = sig.parameters
+    if any(p.kind == inspect.Parameter.VAR_KEYWORD for p in params.values()):
+        return executor(commands, skill_dir=skill_dir, task=task)
+    if "skill_dir" in params or "task" in params:
+        kwargs = {}
+        if "skill_dir" in params:
+            kwargs["skill_dir"] = skill_dir
+        if "task" in params:
+            kwargs["task"] = task
+        return executor(commands, **kwargs)
+
+    positional = [
+        p for p in params.values()
+        if p.kind in (inspect.Parameter.POSITIONAL_ONLY,
+                      inspect.Parameter.POSITIONAL_OR_KEYWORD)
+    ]
+    if len(positional) >= 3:
+        return executor(commands, skill_dir, task)
+    if len(positional) >= 2:
+        return executor(commands, skill_dir)
+    return executor(commands)

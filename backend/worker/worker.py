@@ -25,12 +25,14 @@ from supabase import create_client
 
 # the engine (installed alongside this worker; see requirements.txt)
 from skill_builder.pipeline import run
+from skill_builder.gate.executor import SandboxExecutor
 import emails
 
 sb = create_client(os.environ["SUPABASE_URL"],
                    os.environ["SUPABASE_SERVICE_ROLE_KEY"])
 PUBLIC_BASE = os.environ.get("PUBLIC_STORAGE_BASE", "").rstrip("/")
 POLL_SECONDS = int(os.environ.get("WORKER_POLL_SECONDS", "5"))
+SANDBOX_EXECUTOR = SandboxExecutor.from_env()
 
 
 def claim_one() -> dict | None:
@@ -45,7 +47,11 @@ def claim_one() -> dict | None:
 
 def process(job: dict) -> None:
     out = Path(tempfile.mkdtemp(prefix="sf_"))
-    result = run(job["url"], dest=out)            # ingest -> ... -> gate (bounded retries)
+    result = run(
+        job["url"],
+        dest=out,
+        executor=SANDBOX_EXECUTOR,
+    )  # ingest -> ... -> gate (bounded retries)
 
     if result.verified and result.skill_path:
         key = f'{job["id"]}/{result.skill_path.name}'
