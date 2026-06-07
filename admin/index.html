@@ -93,7 +93,7 @@
 <script>
   // ---- CONFIG (anon key is PUBLIC and safe to embed; never paste the service key) ----
   const SUPABASE_URL = "https://fiopwsdzcbmjcbpkdxwr.supabase.co";
-  const SUPABASE_ANON_KEY = "PASTE_YOUR_SUPABASE_ANON_KEY";  // Settings → API → anon public
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZpb3B3c2R6Y2JtamNicGtkeHdyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4MDkzMTMsImV4cCI6MjA5MjM4NTMxM30.QFNxs4F_jsATLWVf1kkeHNBTry-2q6q_zGpO4OFAVMg";  // Settings → API Keys → Legacy anon public
 
   const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   const $ = s => document.querySelector(s);
