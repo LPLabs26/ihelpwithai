@@ -27,6 +27,7 @@ from supabase import create_client
 from skill_builder.pipeline import run
 from skill_builder.gate.executor import SandboxExecutor
 import emails
+from email_outbox import send_success_email_for_submission
 from skill_archive import archive_skill_file
 
 sb = create_client(os.environ["SUPABASE_URL"],
@@ -73,8 +74,7 @@ def process(job: dict) -> None:
                         result.skill_path, job=job, meta=meta, storage_path=key)
         sb.table("submissions").update(
             {"status": "verified", "finished_at": _now()}).eq("id", job["id"]).execute()
-        link = f"{PUBLIC_BASE}/{key}" if PUBLIC_BASE else key
-        _send_email_safely(job["id"], emails.send_success, job["email"], meta["name"], link)
+        _send_email_safely(job["id"], send_success_email_for_submission, sb, job["id"])
     else:
         sb.table("submissions").update(
             {"status": "needs_review", "failures": result.gate_failures,

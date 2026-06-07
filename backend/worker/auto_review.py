@@ -13,6 +13,7 @@ from pathlib import Path
 from supabase import create_client
 
 import emails
+from email_outbox import send_success_email_for_submission
 from skill_archive import archive_skill_bytes, archive_skill_file
 from skill_builder.gate.executor import SandboxExecutor
 from skill_builder.pipeline import run
@@ -168,8 +169,7 @@ def _mark_verified(job: dict, skill_name: str, storage_path: str, *,
         "finished_at": _now(),
     }).eq("id", job["id"]).execute()
     if send_email:
-        link = f"{PUBLIC_BASE}/{storage_path}" if PUBLIC_BASE else storage_path
-        _send_email_safely(job["id"], emails.send_success, job["email"], skill_name, link)
+        _send_email_safely(job["id"], send_success_email_for_submission, sb, job["id"])
 
 
 def _mark_failed(job: dict, failures: list[str]) -> None:

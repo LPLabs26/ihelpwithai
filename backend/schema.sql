@@ -13,7 +13,11 @@ create table if not exists public.submissions (
   failures    jsonb,                          -- gate failures if needs_review
   attempts    int default 0,
   created_at  timestamptz default now(),
-  finished_at timestamptz
+  finished_at timestamptz,
+  success_email_sent_at timestamptz,
+  success_email_send_started_at timestamptz,
+  success_email_provider_id text,
+  success_email_last_error text
 );
 
 -- 2) BUILT SKILL repository --------------------------------------------------

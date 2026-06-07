@@ -24,11 +24,11 @@ SMTP_USERNAME = os.environ.get("SMTP_USERNAME", "")
 SMTP_PASSWORD = os.environ.get("SMTP_PASSWORD", "")
 
 
-def _send(to: str, subject: str, html: str) -> None:
+def _send(to: str, subject: str, html: str) -> str:
     if not RESEND_KEY:
         _send_smtp(to, subject, html)
         print(f"email accepted provider=smtp to={_mask_email(to)} subject={subject!r}")
-        return
+        return ""
     r = requests.post(
         "https://api.resend.com/emails",
         headers={"Authorization": f"Bearer {RESEND_KEY}",
@@ -46,6 +46,7 @@ def _send(to: str, subject: str, html: str) -> None:
         f"email accepted provider=resend id={msg_id} "
         f"to={_mask_email(to)} subject={subject!r}"
     )
+    return msg_id
 
 
 def _send_smtp(to: str, subject: str, html: str) -> None:
@@ -83,7 +84,7 @@ def _mask_email(email: str) -> str:
     return f"{masked}@{domain}"
 
 
-def send_success(to: str, skill_name: str, link: str) -> None:
+def send_success(to: str, skill_name: str, link: str) -> str:
     safe_skill_name = escape(skill_name)
     safe_link = escape(link, quote=True)
     html = f"""
@@ -97,7 +98,7 @@ def send_success(to: str, skill_name: str, link: str) -> None:
         agent can run the task — no rewatching the video. Link expires in 7 days.</p>
       <p style="font-size:12px;color:#7a8fad">— ihelpwithai.com</p>
     </div>"""
-    _send(to, "Your ihelpwithai.com skill is ready", html)
+    return _send(to, "Your ihelpwithai.com skill is ready", html)
 
 
 def send_needs_review(to: str, reasons: list[str]) -> None:
