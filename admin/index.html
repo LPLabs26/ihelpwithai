@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin — ihelpwithai.com</title>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0a1628">
+<link rel="stylesheet" href="/assets/ihelpwithai.css">
+<style>
+  .admin-wrap{max-width:1120px;margin:0 auto;padding:24px}
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:8px 0 28px}
+  @media(max-width:760px){.cards{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:var(--navy-card);border:1px solid var(--navy-border);border-radius:12px;padding:16px}
+  .stat .v{font-family:var(--font-display);font-size:2rem;color:var(--amber);line-height:1}
+  .stat .l{font-size:.8rem;color:var(--muted);margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:.85rem}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--navy-border);vertical-align:top}
+  th{color:var(--muted);font-weight:600;font-size:.75rem;text-transform:uppercase;letter-spacing:.05em}
+  td{color:var(--cream)}
+  .pill{font-size:.7rem;padding:2px 8px;border-radius:999px;font-weight:700}
+  .s-verified{background:rgba(74,222,128,.15);color:#4ade80}
+  .s-queued,.s-running{background:rgba(159,210,244,.15);color:#9fd2f4}
+  .s-needs_review,.s-error{background:rgba(232,121,160,.15);color:#e879a0}
+  .danger{background:transparent;border:1px solid rgba(232,121,160,.5);color:#e879a0;border-radius:6px;padding:5px 10px;cursor:pointer;font-size:.78rem}
+  .danger:hover{background:rgba(232,121,160,.12)}
+  .ghost{background:transparent;border:1px solid var(--navy-border);color:var(--cream);border-radius:6px;padding:5px 10px;cursor:pointer;font-size:.78rem}
+  .panel-sm{background:var(--navy-card);border:1px solid var(--navy-border);border-radius:14px;padding:20px;margin-bottom:24px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:600px){.grid2{grid-template-columns:1fr}}
+  .muted{color:var(--muted);font-size:.85rem}
+  h3.sec{font-family:var(--font-display);font-weight:400;color:#fff;font-size:1.5rem;margin:0 0 12px}
+  #login{max-width:380px;margin:80px auto}
+  .hide{display:none}
+  .note{font-size:.78rem;color:var(--muted);margin-top:6px}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="site-brand" href="/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#f5a623"/><path d="M11 7l9 5-9 5z" fill="#0a1628"/><rect x="9" y="20" width="14" height="3" rx="1.5" fill="#0a1628"/></svg><span>ihelpwith<span class="site-brand__wordmark-ai">ai</span>.com</span></a>
+    <nav class="site-nav"><a href="/">Home</a><a href="/skills/">Skill Library</a><span id="who" class="muted"></span><button id="logout" class="ghost hide">Log out</button></nav>
+  </div>
+</header>
+
+<main class="admin-wrap">
+  <!-- LOGIN -->
+  <div id="login" class="panel-sm">
+    <h3 class="sec">Admin sign in</h3>
+    <div class="row"><label for="em">Email</label><input id="em" class="field" type="email" autocomplete="username"></div>
+    <div class="row"><label for="pw">Password</label><input id="pw" class="field" type="password" autocomplete="current-password"></div>
+    <button id="signin" class="btn btn--block">Sign in</button>
+    <div id="login-err" class="status err" style="margin-top:12px"></div>
+    <p class="note">Owner access only. Create your user in Supabase → Authentication, then add it to the <code>admins</code> table (see admin-policies.sql).</p>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dash" class="hide">
+    <h3 class="sec">Usage</h3>
+    <div class="cards" id="cards"></div>
+    <p class="muted" id="traffic-note">Tip: this shows tool usage from your database. For page-view traffic, add free privacy-friendly analytics (Cloudflare Web Analytics or Plausible) to the site.</p>
+
+    <div class="panel-sm">
+      <h3 class="sec">Recent submissions</h3>
+      <div style="overflow:auto"><table id="subs"><thead><tr><th>When</th><th>Email</th><th>Status</th><th>Video</th></tr></thead><tbody></tbody></table></div>
+    </div>
+
+    <div class="panel-sm">
+      <h3 class="sec">Add a skill to the library</h3>
+      <div class="grid2">
+        <div class="row"><label>Name (kebab-case)</label><input id="s-name" class="field" placeholder="setup-nextjs-project"></div>
+        <div class="row"><label>Category</label><input id="s-cat" class="field" placeholder="Web Dev"></div>
+      </div>
+      <div class="row"><label>Description</label><input id="s-desc" class="field" placeholder="What it does and when to use it"></div>
+      <div class="grid2">
+        <div class="row"><label>Source video URL</label><input id="s-src" class="field" placeholder="https://youtube.com/watch?v=..."></div>
+        <div class="row"><label>Storage path of the .skill</label><input id="s-path" class="field" placeholder="manual/setup-nextjs-project.skill"></div>
+      </div>
+      <button id="s-add" class="btn">Add skill</button>
+      <div id="add-msg" class="status" style="margin-top:10px"></div>
+      <p class="note">Upload the .skill file to the <code>skills</code> storage bucket first, then paste its path here.</p>
+    </div>
+
+    <div class="panel-sm">
+      <h3 class="sec">Skills in the library</h3>
+      <div style="overflow:auto"><table id="skills"><thead><tr><th>Name</th><th>Category</th><th>Public</th><th>Created</th><th></th></tr></thead><tbody></tbody></table></div>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // ---- CONFIG (anon key is PUBLIC and safe to embed; never paste the service key) ----
+  const SUPABASE_URL = "https://fiopwsdzcbmjcbpkdxwr.supabase.co";
+  const SUPABASE_ANON_KEY = "PASTE_YOUR_SUPABASE_ANON_KEY";  // Settings → API → anon public
+
+  const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s ?? '').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+  async function refresh(){
+    // stats from submissions
+    const counts = {};
+    for (const st of ['queued','running','verified','needs_review','error']){
+      const {count}=await db.from('submissions').select('id',{count:'exact',head:true}).eq('status',st);
+      counts[st]=count??0;
+    }
+    const {count:total}=await db.from('submissions').select('id',{count:'exact',head:true});
+    const since=new Date(Date.now()-86400000).toISOString();
+    const {count:today}=await db.from('submissions').select('id',{count:'exact',head:true}).gte('created_at',since);
+    const {count:skillCount}=await db.from('skills').select('id',{count:'exact',head:true});
+    $('#cards').innerHTML=[
+      ['Total requests',total],['Last 24h',today],['Verified',counts.verified],
+      ['Needs review',counts.needs_review],['In progress',(counts.queued+counts.running)],
+      ['Errors',counts.error],['Skills published',skillCount]
+    ].map(([l,v])=>`<div class="stat"><div class="v">${v??0}</div><div class="l">${l}</div></div>`).join('');
+
+    // recent submissions
+    const {data:subs}=await db.from('submissions').select('*').order('created_at',{ascending:false}).limit(25);
+    $('#subs tbody').innerHTML=(subs||[]).map(r=>`<tr>
+      <td>${esc((r.created_at||'').slice(0,16).replace('T',' '))}</td>
+      <td>${esc(r.email)}</td>
+      <td><span class="pill s-${esc(r.status)}">${esc(r.status)}</span></td>
+      <td style="max-width:280px;word-break:break-all">${esc(r.url)}</td></tr>`).join('')
+      || '<tr><td colspan="4" class="muted">No submissions yet.</td></tr>';
+
+    // skills
+    const {data:sk}=await db.from('skills').select('*').order('created_at',{ascending:false});
+    $('#skills tbody').innerHTML=(sk||[]).map(s=>`<tr>
+      <td>${esc(s.name)}</td><td>${esc(s.category||'')}</td>
+      <td><button class="ghost" data-toggle="${s.id}" data-pub="${s.is_public}">${s.is_public?'Public':'Hidden'}</button></td>
+      <td>${esc((s.created_at||'').slice(0,10))}</td>
+      <td><button class="danger" data-del="${s.id}" data-name="${esc(s.name)}">Delete</button></td></tr>`).join('')
+      || '<tr><td colspan="5" class="muted">No skills yet.</td></tr>';
+  }
+
+  // delete + toggle (event delegation)
+  $('#skills').addEventListener('click', async e=>{
+    const del=e.target.closest('[data-del]'); const tog=e.target.closest('[data-toggle]');
+    if(del){ if(!confirm('Delete skill "'+del.dataset.name+'"? This removes it from the library.'))return;
+      const {error}=await db.from('skills').delete().eq('id',del.dataset.del);
+      if(error)alert('Delete failed: '+error.message); else refresh(); }
+    if(tog){ const {error}=await db.from('skills').update({is_public: tog.dataset.pub!=='true'}).eq('id',tog.dataset.toggle);
+      if(error)alert('Update failed: '+error.message); else refresh(); }
+  });
+
+  // add skill
+  $('#s-add').addEventListener('click', async ()=>{
+    const row={name:$('#s-name').value.trim(),category:$('#s-cat').value.trim()||'Skill',
+      description:$('#s-desc').value.trim(),source_url:$('#s-src').value.trim(),
+      storage_path:$('#s-path').value.trim(),is_public:true};
+    const msg=$('#add-msg');
+    if(!row.name||!row.description||!row.storage_path){msg.className='status show err';msg.textContent='Name, description, and storage path are required.';return;}
+    const {error}=await db.from('skills').insert(row);
+    if(error){msg.className='status show err';msg.textContent='Add failed: '+error.message;}
+    else{msg.className='status show ok';msg.textContent='Skill added.';['#s-name','#s-cat','#s-desc','#s-src','#s-path'].forEach(i=>$(i).value='');refresh();}
+  });
+
+  // auth
+  async function showApp(session){
+    const ok=!!session;
+    $('#login').classList.toggle('hide',ok); $('#dash').classList.toggle('hide',!ok);
+    $('#logout').classList.toggle('hide',!ok);
+    $('#who').textContent=ok?session.user.email:'';
+    if(ok) refresh();
+  }
+  $('#signin').addEventListener('click', async ()=>{
+    const {data,error}=await db.auth.signInWithPassword({email:$('#em').value.trim(),password:$('#pw').value});
+    const err=$('#login-err');
+    if(error){err.className='status show err';err.textContent=error.message;return;}
+    showApp(data.session);
+  });
+  $('#logout').addEventListener('click', async ()=>{ await db.auth.signOut(); showApp(null); });
+  db.auth.getSession().then(({data})=>showApp(data.session));
+</script>
+</body>
+</html>
