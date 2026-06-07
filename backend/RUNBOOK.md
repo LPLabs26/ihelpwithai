@@ -86,6 +86,9 @@ docker compose -f docker-compose.gemma.yml up -d --build
 
 The compose file uses host networking so the container can reach
 `http://127.0.0.1:8000/v1`. No Anthropic or OpenAI key is needed for this path.
+Captioned videos use YouTube captions. Uncaptioned videos use local
+`faster-whisper` transcription in the worker (`small.en` by default), then Gemma
+handles the multimodal frame understanding, synthesis, and verification.
 
 ## Step 5 — Email: verify your domain
 

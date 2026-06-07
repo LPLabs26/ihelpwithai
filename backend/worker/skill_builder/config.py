@@ -38,6 +38,18 @@ class Config:
     transcribe_model: str = os.environ.get(
         "SKILLBUILDER_TRANSCRIBE_MODEL", "gpt-4o-mini-transcribe"
     )
+    transcribe_provider: str = os.environ.get(
+        "SKILLBUILDER_TRANSCRIBE_PROVIDER", "local"
+    ).lower()
+    local_transcribe_model: str = os.environ.get(
+        "SKILLBUILDER_LOCAL_TRANSCRIBE_MODEL", "small.en"
+    )
+    local_transcribe_device: str = os.environ.get(
+        "SKILLBUILDER_LOCAL_TRANSCRIBE_DEVICE", "cpu"
+    )
+    local_transcribe_compute_type: str = os.environ.get(
+        "SKILLBUILDER_LOCAL_TRANSCRIBE_COMPUTE_TYPE", "int8"
+    )
 
     max_video_minutes: int = _int("SKILLBUILDER_MAX_VIDEO_MINUTES", 30)
     max_frames: int = _int("SKILLBUILDER_MAX_FRAMES", 40)
@@ -54,7 +66,9 @@ class Config:
 
     @property
     def has_transcription(self) -> bool:
-        return bool(self.openai_api_key)
+        if self.transcribe_provider in {"auto", "local"}:
+            return True
+        return self.transcribe_provider == "openai" and bool(self.openai_api_key)
 
 
 CONFIG = Config()

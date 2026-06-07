@@ -2,7 +2,8 @@
 
 Strategy (your call: captions-first, transcribe fallback):
   1. Pull YouTube's own captions if present  -> free, fast, no key.
-  2. Otherwise download audio and transcribe  -> needs OPENAI_API_KEY.
+  2. Otherwise download audio and transcribe locally with faster-whisper by
+     default; OpenAI transcription is used only when explicitly configured.
 
 Returns a Transcript with timestamped segments so later stages can align
 frames to words.
@@ -10,7 +11,6 @@ frames to words.
 from __future__ import annotations
 
 import re
-import subprocess
 import tempfile
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -64,38 +64,76 @@ def _captions(video_id: str) -> list[Segment]:
     return [Segment(s["start"], s.get("duration", 0.0), s["text"]) for s in raw]
 
 
+def _download_audio(url: str, tmp: str) -> Path:
+    import yt_dlp
+
+    out = str(Path(tmp) / "audio.%(ext)s")
+    opts = {
+        "quiet": True,
+        "format": "bestaudio/best",
+        "outtmpl": out,
+        "postprocessors": [
+            {"key": "FFmpegExtractAudio", "preferredcodec": "mp3"}
+        ],
+    }
+    with yt_dlp.YoutubeDL(opts) as ydl:
+        ydl.download([url])
+    return next(Path(tmp).glob("audio.*"))
+
+
+def _transcribe_audio_openai(audio: Path) -> list[Segment]:
+    from openai import OpenAI
+
+    client = OpenAI(api_key=CONFIG.openai_api_key)
+    with open(audio, "rb") as fh:
+        resp = client.audio.transcriptions.create(
+            model=CONFIG.transcribe_model,
+            file=fh,
+            response_format="verbose_json",
+            timestamp_granularities=["segment"],
+        )
+    segs = getattr(resp, "segments", None) or []
+    return [Segment(float(s.start), float(s.end) - float(s.start), s.text) for s in segs]
+
+
+def _transcribe_audio_local(audio: Path) -> list[Segment]:
+    try:
+        from faster_whisper import WhisperModel
+    except ImportError as e:
+        raise RuntimeError(
+            "Local transcription requires faster-whisper. Rebuild the worker image."
+        ) from e
+
+    model = WhisperModel(
+        CONFIG.local_transcribe_model,
+        device=CONFIG.local_transcribe_device,
+        compute_type=CONFIG.local_transcribe_compute_type,
+    )
+    segments, _ = model.transcribe(str(audio), vad_filter=True)
+    return [
+        Segment(float(s.start), float(s.end) - float(s.start), s.text.strip())
+        for s in segments
+        if s.text and s.text.strip()
+    ]
+
+
 def _transcribe_audio(url: str) -> list[Segment]:
     if not CONFIG.has_transcription:
         raise RuntimeError(
-            "Video has no captions and OPENAI_API_KEY is not set, so audio "
-            "cannot be transcribed. Add a key or pick a captioned video."
+            "Video has no captions and no transcription backend is configured."
         )
-    import yt_dlp
-    from openai import OpenAI
 
     with tempfile.TemporaryDirectory() as tmp:
-        out = str(Path(tmp) / "audio.%(ext)s")
-        opts = {
-            "quiet": True,
-            "format": "bestaudio/best",
-            "outtmpl": out,
-            "postprocessors": [
-                {"key": "FFmpegExtractAudio", "preferredcodec": "mp3"}
-            ],
-        }
-        with yt_dlp.YoutubeDL(opts) as ydl:
-            ydl.download([url])
-        audio = next(Path(tmp).glob("audio.*"))
-        client = OpenAI(api_key=CONFIG.openai_api_key)
-        with open(audio, "rb") as fh:
-            resp = client.audio.transcriptions.create(
-                model=CONFIG.transcribe_model,
-                file=fh,
-                response_format="verbose_json",
-                timestamp_granularities=["segment"],
-            )
-    segs = getattr(resp, "segments", None) or []
-    return [Segment(float(s.start), float(s.end) - float(s.start), s.text) for s in segs]
+        audio = _download_audio(url, tmp)
+        if CONFIG.transcribe_provider == "openai":
+            if not CONFIG.openai_api_key:
+                raise RuntimeError(
+                    "SKILLBUILDER_TRANSCRIBE_PROVIDER=openai requires OPENAI_API_KEY."
+                )
+            return _transcribe_audio_openai(audio)
+        if CONFIG.transcribe_provider in {"auto", "local"}:
+            return _transcribe_audio_local(audio)
+        raise RuntimeError(f"Unknown transcription provider: {CONFIG.transcribe_provider}")
 
 
 def ingest(url: str) -> Transcript:

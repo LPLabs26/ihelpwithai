@@ -65,12 +65,19 @@ def process(job: dict) -> None:
         sb.table("submissions").update(
             {"status": "verified", "finished_at": _now()}).eq("id", job["id"]).execute()
         link = f"{PUBLIC_BASE}/{key}" if PUBLIC_BASE else key
-        emails.send_success(job["email"], meta["name"], link)
+        _send_email_safely(job["id"], emails.send_success, job["email"], meta["name"], link)
     else:
         sb.table("submissions").update(
             {"status": "needs_review", "failures": result.gate_failures,
              "finished_at": _now()}).eq("id", job["id"]).execute()
-        emails.send_needs_review(job["email"], result.gate_failures)
+        _send_email_safely(job["id"], emails.send_needs_review, job["email"], result.gate_failures)
+
+
+def _send_email_safely(job_id: str, fn, *args) -> None:
+    try:
+        fn(*args)
+    except Exception as e:
+        print("email error on", job_id, e)
 
 
 def _read_meta(skill_dir: Path) -> dict:
@@ -97,7 +104,7 @@ def main() -> None:
             process(job)
         except Exception as e:  # never crash the loop
             sb.table("submissions").update(
-                {"status": "error", "failures": [str(e)[:500]]}
+                {"status": "error", "failures": [str(e)[:500]], "finished_at": _now()}
             ).eq("id", job["id"]).execute()
             print("error on", job["id"], e)
 
