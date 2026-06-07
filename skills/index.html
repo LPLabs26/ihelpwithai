@@ -62,10 +62,8 @@
 
 <script>
   // ---- CONFIG -------------------------------------------------------
-  // Where the library reads built skills from. Defaults to the bundled
-  // skills.json (sample data). Point this at your backend (Supabase REST
-  // endpoint returning the same shape) to auto-populate as skills are built.
-  const SKILLS_SOURCE = "/skills/skills.json";
+  // Public Edge Function that returns built skills without exposing API keys.
+  const SKILLS_SOURCE = "https://fiopwsdzcbmjcbpkdxwr.supabase.co/functions/v1/list-skills";
 
   document.getElementById('menuToggle').addEventListener('click', () =>
     document.getElementById('siteNav').classList.toggle('open'));

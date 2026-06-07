@@ -66,6 +66,8 @@ Note the function URL it prints.
    RESEND_API_KEY=...         EMAIL_FROM=SkillForge <info@ihelpwithai.com>
    PUBLIC_STORAGE_BASE=https://YOUR.supabase.co/storage/v1/object/public/skills
    ```
+   If Resend is not available, the worker can send with `SMTP_HOST`,
+   `SMTP_PORT`, `SMTP_USERNAME`, `SMTP_PASSWORD`, and optional `SMTP_FROM`.
 
 ### Local Gemma on `mtj`
 
@@ -77,7 +79,7 @@ the model server publicly:
 ```bash
 cd backend/worker
 cp .env.gemma.example .env
-# Fill in SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, RESEND_API_KEY,
+# Fill in SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, email env vars,
 # EMAIL_FROM, and PUBLIC_STORAGE_BASE.
 docker compose -f docker-compose.gemma.yml up -d --build
 ```

@@ -11,6 +11,7 @@ services:
     env_file:
       - .env
     environment:
+      PYTHONUNBUFFERED: "1"
       SKILLBUILDER_PROVIDER: local
       SKILLBUILDER_LOCAL_BASE_URL: http://127.0.0.1:8000/v1
       SKILLBUILDER_LOCAL_MODEL: gemma-4-12B-it-Q4_K_M.gguf
