@@ -79,7 +79,7 @@
   function card(s){
     const src = s.source_url ? `<a href="${esc(s.source_url)}" target="_blank" rel="noopener">source video</a>` : '';
     const dl = s.download_url
-      ? `<a class="btn" href="${esc(s.download_url)}" download style="margin-top:8px">Download .skill</a>`
+      ? `<a class="btn" href="${esc(s.download_url)}" download data-dl="${esc(s.name)}" style="margin-top:8px">Download .skill</a>`
       : `<span class="meta">download coming soon</span>`;
     return `<div class="skill-card">
       <span class="tag">${esc(s.category||'Skill')}</span>
@@ -111,6 +111,9 @@
   }).catch(() => {
     grid.innerHTML = '<div class="empty">Couldn\'t load skills right now. Please try again later.</div>';
   });
+</script>
+<script>(function(){try{var T="PASTE_TRACK_FUNCTION_URL";if(String(T).indexOf("http")!==0)return;var k="ihwa_v",v=localStorage.getItem(k);if(!v){v=Math.random().toString(36).slice(2);localStorage.setItem(k,v);}var b=JSON.stringify({type:"visit",path:location.pathname,visitor:v});if(navigator.sendBeacon){navigator.sendBeacon(T,new Blob([b],{type:"application/json"}));}else{fetch(T,{method:"POST",keepalive:true,headers:{"Content-Type":"application/json"},body:b});}}catch(e){}})();
+  document.getElementById('grid').addEventListener('click',function(e){var a=e.target.closest('a[data-dl]');if(!a)return;try{var T="PASTE_TRACK_FUNCTION_URL";if(String(T).indexOf('http')!==0)return;var b=JSON.stringify({type:'download',skill:a.getAttribute('data-dl')});navigator.sendBeacon?navigator.sendBeacon(T,new Blob([b],{type:'application/json'})):fetch(T,{method:'POST',keepalive:true,headers:{'Content-Type':'application/json'},body:b});}catch(_){}{}});
 </script>
 </body>
 </html>

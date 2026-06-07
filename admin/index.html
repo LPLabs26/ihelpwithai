@@ -19,6 +19,7 @@
   th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--navy-border);vertical-align:top}
   th{color:var(--muted);font-weight:600;font-size:.75rem;text-transform:uppercase;letter-spacing:.05em}
   td{color:var(--cream)}
+  tr.clickable{cursor:pointer} tr.clickable:hover td{background:var(--navy-mid)}
   .pill{font-size:.7rem;padding:2px 8px;border-radius:999px;font-weight:700}
   .s-verified{background:rgba(74,222,128,.15);color:#4ade80}
   .s-queued,.s-running{background:rgba(159,210,244,.15);color:#9fd2f4}
@@ -34,6 +35,14 @@
   #login{max-width:380px;margin:80px auto}
   .hide{display:none}
   .note{font-size:.78rem;color:var(--muted);margin-top:6px}
+  /* modal */
+  #modal{position:fixed;inset:0;background:rgba(4,10,20,.7);display:none;align-items:center;justify-content:center;padding:20px;z-index:200}
+  #modal.show{display:flex}
+  .modal-box{background:var(--navy-card);border:1px solid var(--navy-border);border-radius:16px;max-width:680px;width:100%;max-height:85vh;overflow:auto;padding:24px}
+  .kv{display:grid;grid-template-columns:120px 1fr;gap:6px 14px;font-size:.88rem;margin-bottom:16px}
+  .kv div:nth-child(odd){color:var(--muted)}
+  .logbox{background:#06101f;border:1px solid var(--navy-border);border-radius:10px;padding:14px;font-family:ui-monospace,Menlo,monospace;font-size:.8rem;color:var(--cream);white-space:pre-wrap;word-break:break-word}
+  .logbox li{margin:0 0 6px 18px}
 </style>
 </head>
 <body>
@@ -45,24 +54,22 @@
 </header>
 
 <main class="admin-wrap">
-  <!-- LOGIN -->
   <div id="login" class="panel-sm">
     <h3 class="sec">Admin sign in</h3>
     <div class="row"><label for="em">Email</label><input id="em" class="field" type="email" autocomplete="username"></div>
     <div class="row"><label for="pw">Password</label><input id="pw" class="field" type="password" autocomplete="current-password"></div>
     <button id="signin" class="btn btn--block">Sign in</button>
     <div id="login-err" class="status err" style="margin-top:12px"></div>
-    <p class="note">Owner access only. Create your user in Supabase → Authentication, then add it to the <code>admins</code> table (see admin-policies.sql).</p>
+    <p class="note">Owner access only. Create your user in Supabase → Authentication, then add it to the <code>admins</code> table (admin-policies.sql).</p>
   </div>
 
-  <!-- DASHBOARD -->
   <div id="dash" class="hide">
-    <h3 class="sec">Usage</h3>
+    <h3 class="sec">Counters</h3>
     <div class="cards" id="cards"></div>
-    <p class="muted" id="traffic-note">Tip: this shows tool usage from your database. For page-view traffic, add free privacy-friendly analytics (Cloudflare Web Analytics or Plausible) to the site.</p>
+    <p class="muted">Visits &amp; downloads come from on-page tracking; requests &amp; skills built come from the database. Page-view tracking activates once the track endpoint is connected.</p>
 
     <div class="panel-sm">
-      <h3 class="sec">Recent submissions</h3>
+      <h3 class="sec">Recent submissions <span class="muted" style="font-size:.8rem">— click a row to see its logs</span></h3>
       <div style="overflow:auto"><table id="subs"><thead><tr><th>When</th><th>Email</th><th>Status</th><th>Video</th></tr></thead><tbody></tbody></table></div>
     </div>
 
@@ -89,43 +96,50 @@
   </div>
 </main>
 
+<div id="modal"><div class="modal-box">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+    <h3 class="sec" style="margin:0">Submission detail</h3>
+    <button id="modal-close" class="ghost">Close</button>
+  </div>
+  <div class="kv" id="modal-kv"></div>
+  <div class="muted" style="margin-bottom:6px">Logs / reasons</div>
+  <div class="logbox" id="modal-log"></div>
+</div></div>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  // ---- CONFIG (anon key is PUBLIC and safe to embed; never paste the service key) ----
+  // anon key is PUBLIC and safe to embed; never paste the service_role key here.
   const SUPABASE_URL = "https://fiopwsdzcbmjcbpkdxwr.supabase.co";
-  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZpb3B3c2R6Y2JtamNicGtkeHdyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4MDkzMTMsImV4cCI6MjA5MjM4NTMxM30.QFNxs4F_jsATLWVf1kkeHNBTry-2q6q_zGpO4OFAVMg";  // Settings → API Keys → Legacy anon public
+  const SUPABASE_ANON_KEY = "PASTE_YOUR_SUPABASE_ANON_KEY";
 
   const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   const $ = s => document.querySelector(s);
   const esc = s => String(s ?? '').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const cnt = async (tbl,col,val)=>{let q=db.from(tbl).select('id',{count:'exact',head:true});if(col)q=q.eq(col,val);const{count}=await q;return count||0;};
+  let SUBS=[];
 
   async function refresh(){
-    // stats from submissions
-    const counts = {};
-    for (const st of ['queued','running','verified','needs_review','error']){
-      const {count}=await db.from('submissions').select('id',{count:'exact',head:true}).eq('status',st);
-      counts[st]=count??0;
-    }
-    const {count:total}=await db.from('submissions').select('id',{count:'exact',head:true});
-    const since=new Date(Date.now()-86400000).toISOString();
-    const {count:today}=await db.from('submissions').select('id',{count:'exact',head:true}).gte('created_at',since);
-    const {count:skillCount}=await db.from('skills').select('id',{count:'exact',head:true});
+    const [visits,downloads,requests,built,review,queued,running,errors,skillCount]=await Promise.all([
+      cnt('events','type','visit'), cnt('events','type','download'),
+      cnt('submissions'), cnt('submissions','status','verified'),
+      cnt('submissions','status','needs_review'), cnt('submissions','status','queued'),
+      cnt('submissions','status','running'), cnt('submissions','status','error'),
+      cnt('skills')
+    ]);
     $('#cards').innerHTML=[
-      ['Total requests',total],['Last 24h',today],['Verified',counts.verified],
-      ['Needs review',counts.needs_review],['In progress',(counts.queued+counts.running)],
-      ['Errors',counts.error],['Skills published',skillCount]
-    ].map(([l,v])=>`<div class="stat"><div class="v">${v??0}</div><div class="l">${l}</div></div>`).join('');
+      ['Site visits',visits],['Skill requests',requests],['Skills built',built],['Downloads',downloads],
+      ['Skills published',skillCount],['Needs review',review],['In progress',queued+running],['Errors',errors]
+    ].map(([l,v])=>`<div class="stat"><div class="v">${v}</div><div class="l">${l}</div></div>`).join('');
 
-    // recent submissions
-    const {data:subs}=await db.from('submissions').select('*').order('created_at',{ascending:false}).limit(25);
-    $('#subs tbody').innerHTML=(subs||[]).map(r=>`<tr>
+    const {data:subs}=await db.from('submissions').select('*').order('created_at',{ascending:false}).limit(50);
+    SUBS=subs||[];
+    $('#subs tbody').innerHTML=SUBS.map((r,i)=>`<tr class="clickable" data-i="${i}">
       <td>${esc((r.created_at||'').slice(0,16).replace('T',' '))}</td>
       <td>${esc(r.email)}</td>
       <td><span class="pill s-${esc(r.status)}">${esc(r.status)}</span></td>
-      <td style="max-width:280px;word-break:break-all">${esc(r.url)}</td></tr>`).join('')
+      <td style="max-width:260px;word-break:break-all">${esc(r.url)}</td></tr>`).join('')
       || '<tr><td colspan="4" class="muted">No submissions yet.</td></tr>';
 
-    // skills
     const {data:sk}=await db.from('skills').select('*').order('created_at',{ascending:false});
     $('#skills tbody').innerHTML=(sk||[]).map(s=>`<tr>
       <td>${esc(s.name)}</td><td>${esc(s.category||'')}</td>
@@ -135,17 +149,34 @@
       || '<tr><td colspan="5" class="muted">No skills yet.</td></tr>';
   }
 
-  // delete + toggle (event delegation)
+  // open submission detail + logs
+  $('#subs').addEventListener('click', e=>{
+    const tr=e.target.closest('tr[data-i]'); if(!tr)return;
+    const r=SUBS[+tr.dataset.i]; if(!r)return;
+    $('#modal-kv').innerHTML=[
+      ['Status',r.status],['Email',r.email],['Video',r.url],['Attempts',r.attempts??'—'],
+      ['Created',(r.created_at||'').replace('T',' ').slice(0,19)],
+      ['Finished',(r.finished_at||'—').replace('T',' ').slice(0,19)],['IP',r.ip||'—']
+    ].map(([k,v])=>`<div>${esc(k)}</div><div style="word-break:break-all">${esc(v)}</div>`).join('');
+    let log=r.failures;
+    if(Array.isArray(log)) log='<ul>'+log.map(x=>`<li>${esc(typeof x==='string'?x:JSON.stringify(x))}</li>`).join('')+'</ul>';
+    else if(log && typeof log==='object') log=esc(JSON.stringify(log,null,2));
+    else log=esc(log|| (r.status==='verified'?'No issues — skill verified and delivered.':'No logs recorded.'));
+    $('#modal-log').innerHTML=log;
+    $('#modal').classList.add('show');
+  });
+  $('#modal-close').addEventListener('click',()=>$('#modal').classList.remove('show'));
+  $('#modal').addEventListener('click',e=>{if(e.target.id==='modal')$('#modal').classList.remove('show');});
+
   $('#skills').addEventListener('click', async e=>{
     const del=e.target.closest('[data-del]'); const tog=e.target.closest('[data-toggle]');
-    if(del){ if(!confirm('Delete skill "'+del.dataset.name+'"? This removes it from the library.'))return;
+    if(del){ if(!confirm('Delete skill "'+del.dataset.name+'"?'))return;
       const {error}=await db.from('skills').delete().eq('id',del.dataset.del);
       if(error)alert('Delete failed: '+error.message); else refresh(); }
     if(tog){ const {error}=await db.from('skills').update({is_public: tog.dataset.pub!=='true'}).eq('id',tog.dataset.toggle);
       if(error)alert('Update failed: '+error.message); else refresh(); }
   });
 
-  // add skill
   $('#s-add').addEventListener('click', async ()=>{
     const row={name:$('#s-name').value.trim(),category:$('#s-cat').value.trim()||'Skill',
       description:$('#s-desc').value.trim(),source_url:$('#s-src').value.trim(),
@@ -157,12 +188,10 @@
     else{msg.className='status show ok';msg.textContent='Skill added.';['#s-name','#s-cat','#s-desc','#s-src','#s-path'].forEach(i=>$(i).value='');refresh();}
   });
 
-  // auth
   async function showApp(session){
     const ok=!!session;
     $('#login').classList.toggle('hide',ok); $('#dash').classList.toggle('hide',!ok);
-    $('#logout').classList.toggle('hide',!ok);
-    $('#who').textContent=ok?session.user.email:'';
+    $('#logout').classList.toggle('hide',!ok); $('#who').textContent=ok?session.user.email:'';
     if(ok) refresh();
   }
   $('#signin').addEventListener('click', async ()=>{
