@@ -64,10 +64,11 @@ alter table public.skills      enable row level security;
 
 -- 4) PUBLIC, SAFE view for the Skill Library (NO emails) ---------------------
 create or replace view public.public_skills as
-  select name, description, category, result_type, source_url,
+  select name, description, category, source_url,
+         storage_path as download_path, created_at,
+         result_type,
          detected_offer_name, offer_type, target_customer, problem_solved,
-         promised_outcome, generated_skill_name, confidence_level,
-         storage_path as download_path, created_at
+         promised_outcome, generated_skill_name, confidence_level
   from public.skills
   where is_public = true
   order by created_at desc;
