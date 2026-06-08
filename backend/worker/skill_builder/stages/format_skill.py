@@ -18,7 +18,11 @@ from ..models import SkillIntermediate
 
 
 def _frontmatter(skill: SkillIntermediate) -> str:
-    fm = {"name": skill.name, "description": skill.description}
+    fm = {
+        "name": skill.name,
+        "description": skill.description,
+        "category": skill.category,
+    }
     dumped = yaml.safe_dump(fm, sort_keys=False, width=10**9,
                             allow_unicode=True, default_flow_style=False)
     return "---\n" + dumped.strip() + "\n---\n"
@@ -62,6 +66,13 @@ def _body(skill: SkillIntermediate) -> str:
         L.append("## Known limitations\n")
         L += [f"- {k}" for k in skill.known_limitations]
         L.append("")
+    for section in skill.extra_sections:
+        title = section.get("title")
+        body = section.get("body")
+        if title and body:
+            L.append(f"## {title}\n")
+            L.append(body.strip())
+            L.append("")
     return "\n".join(L)
 
 

@@ -37,7 +37,7 @@
     <div class="container hero-inner">
       <div class="hero-eyebrow">Skill Builder · Free tool</div>
       <h1>Turn any tutorial into an agent skill</h1>
-      <p class="lede">Paste a YouTube how-to. We extract the real steps, tools, gotchas, and code, verify it, and email you a ready-to-use skill for Claude Code or Cursor. No rewatching.</p>
+      <p class="lede">Paste a YouTube how-to or public offer video. We extract the useful workflow, verify what we can, and email you a ready-to-use starter skill for Claude Code or Cursor.</p>
 
       <div class="panel">
         <form id="sb-form" novalidate>
@@ -45,6 +45,23 @@
             <label for="url">YouTube tutorial link</label>
             <input class="field" id="url" name="url" type="url" inputmode="url" placeholder="https://www.youtube.com/watch?v=..." required>
           </div>
+          <fieldset class="mode-group" aria-label="Skill mode">
+            <legend>Choose a mode</legend>
+            <label class="mode-option">
+              <input type="radio" name="result_type" value="tutorial" checked>
+              <span>
+                <strong>Build from tutorial</strong>
+                <small>Turn a how-to video into an agent skill.</small>
+              </span>
+            </label>
+            <label class="mode-option">
+              <input type="radio" name="result_type" value="pitch_to_skill">
+              <span>
+                <strong>Decode offer and build prototype</strong>
+                <small>Decode what a video is selling and build a starter AI skill to test the workflow before you buy.</small>
+              </span>
+            </label>
+          </fieldset>
           <div class="row">
             <label for="email">Your email — we'll send the skill here when it's ready</label>
             <input class="field" id="email" name="email" type="email" placeholder="you@example.com" required>
@@ -122,25 +139,45 @@
   const form = document.getElementById('sb-form');
   const statusEl = document.getElementById('status');
   const submitBtn = document.getElementById('submit');
+  const modeInputs = Array.from(document.querySelectorAll('input[name="result_type"]'));
 
   const show = (k,h)=>{statusEl.className='status show '+k;statusEl.innerHTML=h;};
   const validEmail = v=>/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);
   const validYouTube = v=>/(youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/)/.test(v);
+  const selectedMode = ()=>document.querySelector('input[name="result_type"]:checked')?.value || 'tutorial';
+  function withModeParam(url, resultType){
+    if(resultType!=='pitch_to_skill') return url;
+    try{
+      const u=new URL(url);
+      u.searchParams.set('ihwa_result_type','pitch_to_skill');
+      return u.toString();
+    }catch(_){ return url; }
+  }
+
+  function syncMode(){
+    const pitch = selectedMode()==='pitch_to_skill';
+    submitBtn.textContent = pitch ? 'Decode offer and build prototype' : 'Build my skill & email it →';
+  }
+  modeInputs.forEach(i=>i.addEventListener('change', syncMode));
+  syncMode();
 
   form.addEventListener('submit', async (e)=>{
     e.preventDefault();
     const url=document.getElementById('url').value.trim();
     const email=document.getElementById('email').value.trim();
+    const result_type=selectedMode();
     if(!validYouTube(url)) return show('err','⚠️ Please paste a valid YouTube video link.');
     if(!validEmail(email)) return show('err','⚠️ Please enter a valid email address.');
     submitBtn.disabled=true;
-    show('ok','<span class="spinner"></span> Submitting your tutorial…');
+    show('ok','<span class="spinner"></span> Submitting your '+(result_type==='pitch_to_skill'?'Pitch-to-Skill prototype':'tutorial')+'…');
     try{
-      const res=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url,email})});
+      const submitUrl=withModeParam(url,result_type);
+      const res=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:submitUrl,email,result_type})});
       if(!res.ok){throw new Error(res.status===429?'We\'re at capacity right now — please try again later.':'Something went wrong submitting your request. Please try again.');}
-      show('ok','✅ <strong>Got it!</strong> We\'re building your skill now and will email <strong>'+email+
+      show('ok','✅ <strong>Got it!</strong> We\'re building your '+(result_type==='pitch_to_skill'?'starter prototype':'skill')+' now and will email <strong>'+email+
         '</strong> a download link when it\'s ready. If it can\'t be verified, we\'ll email you why instead.');
       form.reset();
+      syncMode();
     }catch(err){ show('err','⚠️ '+(err.message||'Request failed. Please try again.')); }
     finally{ submitBtn.disabled=false; }
   });

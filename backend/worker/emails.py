@@ -90,7 +90,7 @@ def send_success(to: str, skill_name: str, link: str) -> str:
     html = f"""
     <div style="font-family:system-ui,sans-serif;max-width:540px;margin:auto;color:#13202f">
       <h2 style="color:#0a1628">Your skill is ready ✅</h2>
-      <p>We built and verified <strong>{safe_skill_name}</strong> from your tutorial.</p>
+      <p>We built and verified <strong>{safe_skill_name}</strong> from your Skill Builder request.</p>
       <p><a href="{safe_link}" style="display:inline-block;background:#f5a623;color:#0a1628;
         padding:12px 22px;border-radius:6px;text-decoration:none;font-weight:700">
         Download the .skill</a></p>

@@ -23,6 +23,7 @@ class SkillIntermediate:
     title: str
     name: str                       # kebab-case skill name
     description: str                # the trigger description (gate-critical)
+    category: str = "Skill"
     summary: str = ""
     prerequisites: list[str] = field(default_factory=list)
     tools: list[str] = field(default_factory=list)       # libraries / CLIs needed
@@ -30,6 +31,7 @@ class SkillIntermediate:
     gotchas: list[str] = field(default_factory=list)
     snippets: dict[str, str] = field(default_factory=dict)  # filename -> contents
     known_limitations: list[str] = field(default_factory=list)
+    extra_sections: list[dict[str, str]] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)

@@ -11,6 +11,7 @@ const supabase = createClient(
 
 const YT = /(youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/)/;
 const EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+const RESULT_TYPES = new Set(["tutorial", "pitch_to_skill"]);
 const DAILY_PER_IP = Number(Deno.env.get("RATE_LIMIT_PER_IP") ?? "3");
 const DAILY_GLOBAL = Number(Deno.env.get("RATE_LIMIT_GLOBAL") ?? "100"); // cost ceiling
 
@@ -24,7 +25,8 @@ Deno.serve(async (req) => {
   if (req.method !== "POST")
     return json({ error: "method not allowed" }, 405, cors);
 
-  const { url, email } = await req.json().catch(() => ({}));
+  const { url, email, result_type } = await req.json().catch(() => ({}));
+  const safeResultType = RESULT_TYPES.has(result_type) ? result_type : "tutorial";
   if (!YT.test(url ?? "") || !EMAIL.test(email ?? ""))
     return json({ error: "invalid input" }, 400, cors);
 
@@ -41,7 +43,12 @@ Deno.serve(async (req) => {
   if ((ipCount ?? 0) >= DAILY_PER_IP || (dayCount ?? 0) >= DAILY_GLOBAL)
     return json({ error: "rate_limited" }, 429, cors);
 
-  const { error } = await supabase.from("submissions").insert({ url, email, ip });
+  const { error } = await supabase.from("submissions").insert({
+    url,
+    email,
+    ip,
+    result_type: safeResultType,
+  });
   if (error) return json({ error: "could not queue" }, 500, cors);
 
   return json({ status: "queued" }, 202, cors);

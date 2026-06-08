@@ -48,6 +48,13 @@ label{display:block;font-weight:600;font-size:.85rem;color:var(--cream);margin:0
 .field::placeholder{color:var(--muted);}
 .field:focus{outline:2px solid var(--amber);border-color:transparent;}
 .row{margin-bottom:18px;}
+.mode-group{border:0;margin:0 0 18px;padding:0;display:grid;gap:10px;}
+.mode-group legend{font-weight:600;font-size:.85rem;color:var(--cream);margin:0 0 6px;}
+.mode-option{display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:start;margin:0;padding:12px;border:1px solid var(--navy-border);border-radius:var(--radius-sm);background:var(--navy-mid);cursor:pointer;}
+.mode-option:has(input:checked){border-color:var(--amber);box-shadow:0 0 0 1px rgba(245,166,35,.35);}
+.mode-option input{margin-top:3px;accent-color:var(--amber);}
+.mode-option strong{display:block;color:var(--cream);font-size:.92rem;}
+.mode-option small{display:block;color:var(--muted);font-size:.78rem;line-height:1.35;margin-top:2px;}
 .btn{display:inline-block;background:var(--amber);color:var(--navy);border:0;border-radius:var(--radius-sm);padding:13px 24px;font-size:1.02rem;font-weight:700;font-family:inherit;cursor:pointer;transition:background .2s,transform .05s;}
 .btn:hover{background:#e09410;}
 .btn:active{transform:translateY(1px);}
@@ -83,11 +90,13 @@ h2{font-family:var(--font-display);font-weight:400;font-size:clamp(1.8rem,3.5vw,
 /* SKILL LIBRARY GRID */
 .lib-controls{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:24px 0 32px;}
 .lib-search{max-width:360px;width:100%;}
+.lib-filter{max-width:220px;width:100%;}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
 @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:600px){.grid{grid-template-columns:1fr;}}
 .skill-card{background:var(--navy-card);border:1px solid var(--navy-border);border-radius:var(--radius-md);padding:20px;display:flex;flex-direction:column;gap:10px;}
 .skill-card .tag{align-self:flex-start;background:rgba(245,166,35,.14);color:var(--amber);font-size:.7rem;font-weight:700;letter-spacing:.04em;padding:3px 9px;border-radius:999px;text-transform:uppercase;}
+.skill-card .tag--pitch{background:rgba(232,121,160,.16);color:#ffabc7;}
 .skill-card h3{font-size:1.1rem;color:var(--white);font-weight:600;word-break:break-word;}
 .skill-card p{font-size:.9rem;color:var(--cream-dim);flex:1;}
 .skill-card .meta{font-size:.78rem;color:var(--muted);}

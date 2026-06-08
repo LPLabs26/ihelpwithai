@@ -8,6 +8,7 @@ create table if not exists public.submissions (
   id          uuid primary key default gen_random_uuid(),
   email       text not null,                 -- the captured email
   url         text not null,                 -- the YouTube link they submitted
+  result_type text not null default 'tutorial',
   status      text not null default 'queued',-- queued|running|verified|needs_review|error
   ip          text,
   failures    jsonb,                          -- gate failures if needs_review
@@ -27,7 +28,24 @@ create table if not exists public.skills (
   name          text not null,
   description   text not null,
   category      text default 'Skill',
+  result_type   text not null default 'tutorial',
   source_url    text,
+  detected_offer_name text,
+  offer_type text,
+  target_customer text,
+  problem_solved text,
+  promised_outcome text,
+  public_components jsonb,
+  missing_or_proprietary_components jsonb,
+  generated_skill_name text,
+  confidence_level text,
+  high_confidence_findings jsonb,
+  medium_confidence_inferences jsonb,
+  low_confidence_assumptions jsonb,
+  source_video_url text,
+  source_video_title text,
+  source_timestamps jsonb,
+  guardrail_notes jsonb,
   storage_path  text not null,                -- path in the 'skills' bucket
   is_public     boolean default true,         -- show in the public library?
   created_at    timestamptz default now()
@@ -46,7 +64,9 @@ alter table public.skills      enable row level security;
 
 -- 4) PUBLIC, SAFE view for the Skill Library (NO emails) ---------------------
 create or replace view public.public_skills as
-  select name, description, category, source_url,
+  select name, description, category, result_type, source_url,
+         detected_offer_name, offer_type, target_customer, problem_solved,
+         promised_outcome, generated_skill_name, confidence_level,
          storage_path as download_path, created_at
   from public.skills
   where is_public = true

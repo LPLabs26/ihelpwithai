@@ -9,6 +9,7 @@ import datetime as dt
 import os
 import tempfile
 from pathlib import Path
+from urllib.parse import parse_qs, urlencode, urlsplit, urlunsplit
 
 from supabase import create_client
 
@@ -16,7 +17,7 @@ import emails
 from email_outbox import send_success_email_for_submission
 from skill_archive import archive_skill_bytes, archive_skill_file
 from skill_builder.gate.executor import SandboxExecutor
-from skill_builder.pipeline import run
+from skill_builder.pipeline import run, run_pitch_to_skill
 
 
 sb = create_client(os.environ["SUPABASE_URL"],
@@ -68,16 +69,22 @@ def _process(job: dict) -> None:
         print("auto-review: claim skipped", job["id"])
         return
 
-    existing = _existing_public_skill(job["url"])
+    result_type = _job_result_type(job)
+    source_url = _clean_source_url(job["url"])
+    archive_job = {**job, "url": source_url, "result_type": result_type}
+    existing = _existing_public_skill(source_url, result_type)
     if existing:
         print("auto-review: existing skill satisfies", job["id"], existing["name"])
-        _archive_existing_storage(job, existing)
+        _archive_existing_storage(archive_job, existing)
         _mark_verified(job, existing["name"], existing["storage_path"], send_email=True)
         return
 
     print("auto-review: retrying", job["id"], "attempt", attempt)
     out = Path(tempfile.mkdtemp(prefix="sf_review_"))
-    result = run(job["url"], dest=out, executor=SANDBOX_EXECUTOR)
+    if result_type == "pitch_to_skill":
+        result = run_pitch_to_skill(job["url"], dest=out)
+    else:
+        result = run(job["url"], dest=out, executor=SANDBOX_EXECUTOR)
 
     if result.verified and result.skill_path:
         key = f'{job["id"]}/{result.skill_path.name}'
@@ -87,9 +94,9 @@ def _process(job: dict) -> None:
                 {"content-type": "application/zip", "upsert": "true"},
             )
         meta = _read_meta(result.skill_dir)
-        _upsert_skill(job, meta, key)
+        _upsert_skill(archive_job, meta, key, result.metadata)
         _archive_safely(job["id"], archive_skill_file,
-                        result.skill_path, job=job, meta=meta, storage_path=key)
+                        result.skill_path, job=archive_job, meta=meta, storage_path=key)
         _mark_verified(job, meta["name"], key, send_email=True)
         print("auto-review: verified", job["id"], meta["name"])
         return
@@ -114,9 +121,16 @@ def _claim(job: dict, attempt: int) -> bool:
     return bool(resp.data)
 
 
-def _existing_public_skill(url: str) -> dict | None:
-    rows = (sb.table("skills").select("name,description,category,storage_path,is_public")
-            .eq("source_url", url).eq("is_public", True).limit(1).execute().data)
+def _existing_public_skill(url: str, result_type: str) -> dict | None:
+    try:
+        rows = (sb.table("skills").select("name,description,category,storage_path,is_public")
+                .eq("source_url", url).eq("result_type", result_type)
+                .eq("is_public", True).limit(1).execute().data)
+    except Exception as e:
+        if not _missing_pitch_columns(e):
+            raise
+        rows = (sb.table("skills").select("name,description,category,storage_path,is_public")
+                .eq("source_url", url).eq("is_public", True).limit(1).execute().data)
     return rows[0] if rows else None
 
 
@@ -143,22 +157,24 @@ def _archive_existing_storage(job: dict, skill: dict) -> None:
     )
 
 
-def _upsert_skill(job: dict, meta: dict, storage_path: str) -> None:
+def _upsert_skill(job: dict, meta: dict, storage_path: str, metadata: dict | None = None) -> None:
     row = {
         "submission_id": job["id"],
         "name": meta["name"],
         "description": meta["description"],
         "category": meta.get("category", "Skill"),
-        "source_url": job["url"],
+        "source_url": _clean_source_url(job["url"]),
         "storage_path": storage_path,
         "is_public": True,
+        "result_type": _job_result_type(job),
     }
+    row.update(_pitch_columns(metadata or {}))
     existing = (sb.table("skills").select("id")
                 .eq("submission_id", job["id"]).limit(1).execute().data)
     if existing:
-        sb.table("skills").update(row).eq("id", existing[0]["id"]).execute()
+        _write_skill(row, update_id=existing[0]["id"])
     else:
-        sb.table("skills").insert(row).execute()
+        _write_skill(row)
 
 
 def _mark_verified(job: dict, skill_name: str, storage_path: str, *,
@@ -206,6 +222,79 @@ def _read_meta(skill_dir: Path) -> dict:
         "description": fm.get("description", ""),
         "category": fm.get("category", "Skill"),
     }
+
+
+def _job_result_type(job: dict) -> str:
+    if job.get("result_type") == "pitch_to_skill":
+        return "pitch_to_skill"
+    qs = parse_qs(urlsplit(job.get("url") or "").query)
+    return "pitch_to_skill" if qs.get("ihwa_result_type", [""])[0] == "pitch_to_skill" else "tutorial"
+
+
+def _clean_source_url(url: str) -> str:
+    parts = urlsplit(url)
+    pairs = [
+        (k, v)
+        for k, values in parse_qs(parts.query, keep_blank_values=True).items()
+        for v in values
+        if k != "ihwa_result_type"
+    ]
+    return urlunsplit((parts.scheme, parts.netloc, parts.path, urlencode(pairs), parts.fragment))
+
+
+def _pitch_columns(metadata: dict) -> dict:
+    allowed = {
+        "detected_offer_name",
+        "offer_type",
+        "target_customer",
+        "problem_solved",
+        "promised_outcome",
+        "public_components",
+        "missing_or_proprietary_components",
+        "generated_skill_name",
+        "confidence_level",
+        "high_confidence_findings",
+        "medium_confidence_inferences",
+        "low_confidence_assumptions",
+        "source_video_url",
+        "source_video_title",
+        "source_timestamps",
+        "guardrail_notes",
+    }
+    return {k: v for k, v in metadata.items() if k in allowed}
+
+
+def _write_skill(row: dict, update_id: str | None = None) -> None:
+    try:
+        if update_id:
+            sb.table("skills").update(row).eq("id", update_id).execute()
+        else:
+            sb.table("skills").insert(row).execute()
+    except Exception as e:
+        if not _missing_pitch_columns(e):
+            raise
+        fallback = {
+            k: v for k, v in row.items()
+            if k in {
+                "submission_id",
+                "name",
+                "description",
+                "category",
+                "source_url",
+                "storage_path",
+                "is_public",
+            }
+        }
+        print("auto-review: skills table missing Pitch-to-Skill columns; wrote legacy row")
+        if update_id:
+            sb.table("skills").update(fallback).eq("id", update_id).execute()
+        else:
+            sb.table("skills").insert(fallback).execute()
+
+
+def _missing_pitch_columns(exc: Exception) -> bool:
+    text = str(exc)
+    return "column skills." in text and "does not exist" in text
 
 
 def _now() -> str:

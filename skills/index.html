@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Skill Library — ihelpwithai.com</title>
-<meta name="description" content="Every skill ihelpwithai.com has built from a tutorial — browse, search, and download ready-to-use agent skills for Claude Code or Cursor.">
+<meta name="description" content="Every skill ihelpwithai.com has built from tutorials and public offer videos — browse, search, and download ready-to-use starter agent skills.">
 <link rel="canonical" href="https://ihelpwithai.com/skills/">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#0a1628">
@@ -31,7 +31,7 @@
   <section class="page-head">
     <div class="container">
       <h1>Skill Library</h1>
-      <p>Every skill ihelpwithai.com has built and verified. Browse, search, and download.</p>
+      <p>Every skill ihelpwithai.com has built and verified. Browse, search, filter, and download.</p>
     </div>
   </section>
 
@@ -39,6 +39,11 @@
     <div class="container">
       <div class="lib-controls">
         <input class="field lib-search" id="search" type="text" placeholder="Search skills…">
+        <select class="field lib-filter" id="typeFilter" aria-label="Filter by result type">
+          <option value="all">All skills</option>
+          <option value="tutorial">Tutorial skills</option>
+          <option value="pitch_to_skill">Pitch-to-Skill</option>
+        </select>
       </div>
       <p id="count" style="text-align:center;color:var(--muted);font-size:.85rem;margin-bottom:20px"></p>
       <div class="grid" id="grid">
@@ -71,19 +76,29 @@
   const grid = document.getElementById('grid');
   const count = document.getElementById('count');
   const search = document.getElementById('search');
+  const typeFilter = document.getElementById('typeFilter');
   let skills = [];
 
   const esc = s => String(s||'').replace(/[&<>"]/g, c =>
     ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const skillType = s => s.result_type || (String(s.category||'').toLowerCase()==='pitch-to-skill' ? 'pitch_to_skill' : 'tutorial');
 
   function card(s){
     const src = s.source_url ? `<a href="${esc(s.source_url)}" target="_blank" rel="noopener">source video</a>` : '';
+    const isPitch = skillType(s) === 'pitch_to_skill';
+    const tag = isPitch ? 'Pitch-to-Skill' : (s.category || 'Skill');
+    const badge = isPitch ? `<span class="tag tag--pitch">Prototype based on public pitch</span>` : '';
+    const detail = isPitch && s.detected_offer_name
+      ? `<p><strong>${esc(s.detected_offer_name)}</strong>${s.offer_type ? ' · '+esc(s.offer_type).replace(/_/g,' ') : ''}</p>`
+      : '';
     const dl = s.download_url
       ? `<a class="btn" href="${esc(s.download_url)}" download data-dl="${esc(s.name)}" style="margin-top:8px">Download .skill</a>`
       : `<span class="meta">download coming soon</span>`;
     return `<div class="skill-card">
-      <span class="tag">${esc(s.category||'Skill')}</span>
+      <span class="tag${isPitch?' tag--pitch':''}">${esc(tag)}</span>
+      ${badge}
       <h3>${esc(s.name)}</h3>
+      ${detail}
       <p>${esc(s.description)}</p>
       <div class="meta">${s.created_at?('Built '+esc(s.created_at)+' · '):''}${src}</div>
       ${dl}
@@ -98,11 +113,20 @@
 
   function applySearch(){
     const q = search.value.trim().toLowerCase();
-    render(!q ? skills : skills.filter(s =>
-      (s.name+' '+s.description+' '+(s.category||'')).toLowerCase().includes(q)));
+    const t = typeFilter.value;
+    const filtered = skills.filter(s => {
+      const typeOk = t === 'all' || skillType(s) === t;
+      const haystack = [
+        s.name, s.description, s.category, skillType(s), s.detected_offer_name,
+        s.offer_type, s.target_customer, s.problem_solved, s.promised_outcome
+      ].join(' ').toLowerCase();
+      return typeOk && (!q || haystack.includes(q));
+    });
+    render(filtered);
   }
 
   search.addEventListener('input', applySearch);
+  typeFilter.addEventListener('change', applySearch);
 
   fetch(SKILLS_SOURCE).then(r => r.ok ? r.json() : []).then(data => {
     skills = Array.isArray(data) ? data : (data.skills || []);

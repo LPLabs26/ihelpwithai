@@ -22,6 +22,7 @@ from .providers.llm import LLM, LLMUnavailable
 from .stages.format_skill import build_and_package
 from .stages.frames import sample_frames
 from .stages.ingest import ingest
+from .stages.pitch_to_skill import generate_pitch_to_skill
 from .stages.synthesize import synthesize
 from .stages.vision import describe_frames
 
@@ -34,6 +35,7 @@ class PipelineResult:
     attempts: int = 0
     log: list[str] = field(default_factory=list)
     gate_failures: list[str] = field(default_factory=list)
+    metadata: dict = field(default_factory=dict)
 
     @property
     def verified(self) -> bool:
@@ -114,4 +116,54 @@ def run(url: str, dest: Path | None = None, executor=None) -> PipelineResult:
     res.skill_dir = skill_dir
     res.gate_failures = [c.detail for c in report.failures]
     res.log.append("retries exhausted: flagged for human review (NOT shipped)")
+    return res
+
+
+def run_pitch_to_skill(url: str, dest: Path | None = None) -> PipelineResult:
+    dest = dest or Path(tempfile.mkdtemp(prefix="sb_pitch_out_"))
+    dest.mkdir(parents=True, exist_ok=True)
+    res = PipelineResult(status="needs_review", metadata={"result_type": "pitch_to_skill"})
+
+    res.log.append("ingest: fetching transcript")
+    try:
+        transcript = ingest(url)
+    except Exception as e:
+        res.gate_failures.append(
+            "Pitch-to-Skill could not run because no transcript could be obtained for this video."
+        )
+        res.log.append(f"ingest failed: {str(e)[:300]}")
+        return res
+    res.log.append(f"ingest: {len(transcript.segments)} segments via {transcript.source}")
+
+    try:
+        llm: LLM | None = LLM()
+    except LLMUnavailable as e:
+        res.log.append(f"AI stages skipped: {e}")
+        res.gate_failures.append(
+            "No model configured: Pitch-to-Skill needs an LLM to decode the public pitch."
+        )
+        return res
+
+    res.log.append("frames: sampling")
+    frames = sample_frames(url)
+    res.log.append(f"frames: {len(frames)} sampled (cap {CONFIG.max_frames})")
+
+    res.log.append("vision: describing frames")
+    notes = describe_frames(frames, llm)
+    res.log.append(f"vision: {len(notes)} frames had usable public context")
+
+    res.log.append("pitch-to-skill: decoding public pitch")
+    output = generate_pitch_to_skill(transcript, notes, llm)
+    res.metadata = output.metadata
+
+    if output.gate_failures:
+        res.gate_failures = output.gate_failures
+        res.log.append("pitch-to-skill: guardrail validation failed")
+        return res
+
+    skill_dir, archive = build_and_package(output.skill, dest)
+    res.status = "verified"
+    res.skill_dir, res.skill_path = skill_dir, archive
+    res.attempts = 1
+    res.log.append("pitch-to-skill: packaged starter prototype")
     return res
