@@ -81,6 +81,15 @@ h2{font-family:var(--font-display);font-weight:400;font-size:clamp(1.8rem,3.5vw,
 .sample{background:#06101f;border:1px solid var(--navy-border);border-radius:var(--radius-md);padding:22px 26px;max-width:720px;margin:0 auto;overflow:auto;}
 .sample pre{margin:0;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.82rem;line-height:1.6;color:var(--cream);white-space:pre-wrap;}
 .sample .k{color:var(--rose);} .sample .a{color:var(--amber);} .sample .g{color:var(--green);}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;color:var(--white);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-sm);padding:1px 5px;}
+.use-block{border-top:1px solid var(--navy-border);}
+.use-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+@media(max-width:760px){.use-flow{grid-template-columns:1fr;}}
+.use-item{background:var(--navy-card);border:1px solid var(--navy-border);border-radius:var(--radius-md);padding:22px;}
+.use-item .n{font-family:var(--font-display);font-size:2rem;color:var(--rose);}
+.use-item h3{margin:6px 0 8px;font-size:1.1rem;color:var(--white);font-weight:600;}
+.use-item p{margin:0;color:var(--cream-dim);font-size:.95rem;}
+.use-note{color:var(--cream-dim);font-size:.95rem;margin:22px auto 0;max-width:700px;text-align:center;}
 
 /* PAGE HEAD (non-hero pages) */
 .page-head{padding:56px 0 8px;text-align:center;}
@@ -101,6 +110,12 @@ h2{font-family:var(--font-display);font-weight:400;font-size:clamp(1.8rem,3.5vw,
 .skill-card p{font-size:.9rem;color:var(--cream-dim);flex:1;}
 .skill-card .meta{font-size:.78rem;color:var(--muted);}
 .skill-card .meta a{color:var(--amber);}
+.download-help{display:block;color:var(--muted);font-size:.78rem;line-height:1.4;margin-top:-2px;}
+.library-help{max-width:760px;margin:0 auto 28px;background:var(--navy-card);border:1px solid var(--navy-border);border-radius:var(--radius-md);padding:22px;}
+.library-help h2{text-align:left;font-size:1.45rem;margin:0 0 12px;}
+.library-help ol{display:grid;gap:8px;margin-left:20px;color:var(--cream-dim);font-size:.95rem;}
+.library-help li::marker{color:var(--amber);font-weight:700;}
+.library-help p{color:var(--muted);font-size:.88rem;margin-top:14px;}
 .empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:48px 0;}
 
 /* FOOTER */

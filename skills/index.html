@@ -37,6 +37,15 @@
 
   <section class="block" style="padding-top:24px">
     <div class="container">
+      <div class="library-help">
+        <h2>How to use a downloaded skill</h2>
+        <ol>
+          <li>Download the <code>.skill</code> file.</li>
+          <li>Paste the whole file into Claude, Cursor, Codex, LM Studio, or another AI chat.</li>
+          <li>Describe your task and add: <code>Use this skill for the next request.</code></li>
+        </ol>
+        <p>If your AI has a skills, rules, or custom-instructions folder, save the file there and reuse it whenever you need that workflow.</p>
+      </div>
       <div class="lib-controls">
         <input class="field lib-search" id="search" type="text" placeholder="Search skills…">
         <select class="field lib-filter" id="typeFilter" aria-label="Filter by result type">
@@ -92,7 +101,7 @@
       ? `<p><strong>${esc(s.detected_offer_name)}</strong>${s.offer_type ? ' · '+esc(s.offer_type).replace(/_/g,' ') : ''}</p>`
       : '';
     const dl = s.download_url
-      ? `<a class="btn" href="${esc(s.download_url)}" download data-dl="${esc(s.name)}" style="margin-top:8px">Download .skill</a>`
+      ? `<a class="btn" href="${esc(s.download_url)}" download data-dl="${esc(s.name)}" style="margin-top:8px">Download .skill</a><span class="download-help">Then paste it into your AI and ask it to use the skill.</span>`
       : `<span class="meta">download coming soon</span>`;
     return `<div class="skill-card">
       <span class="tag${isPitch?' tag--pitch':''}">${esc(tag)}</span>
