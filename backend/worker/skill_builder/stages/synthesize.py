@@ -18,7 +18,10 @@ skill. You extract the ACTUAL procedure a practitioner must follow — not a \
 summary. Drop intros, sponsor reads, subscribe asks, and tangents. Every step \
 must be concrete and runnable. State every prerequisite and dependency \
 explicitly, even if the tutorial only implied it. Prefer exact commands and \
-verbatim code/config over prose. If something cannot be verified or was \
+verbatim code/config over prose. The `commands` array is for executable shell \
+commands only: never put prose, analysis tasks, conceptual instructions, UI \
+click directions, or natural-language diagnostics inside `commands`. Put those \
+in `instruction` or `note` instead. If something cannot be verified or was \
 assumed off-screen, record it under known_limitations rather than guessing."""
 
 _SCHEMA_HINT = """Return JSON with exactly these keys:
@@ -31,7 +34,7 @@ on unrelated ones. Include concrete trigger nouns/verbs.",
   "summary": "2-3 sentence overview",
   "prerequisites": ["..."],
   "tools": ["libraries / CLIs / accounts needed"],
-  "steps": [{"n":1,"instruction":"...","commands":["..."],"code":"... or null",
+  "steps": [{"n":1,"instruction":"...","commands":["only executable shell commands, or []"],"code":"... or null",
              "note":"gotcha or null","frame_evidence":[frame indices]}],
   "gotchas": ["common failure modes / pitfalls the tutorial flags"],
   "snippets": {"filename.ext":"full file contents the tutorial provides"},

@@ -68,6 +68,10 @@ Hard rules:
 - Preserve attribution to the original video.
 - Clearly label assumptions and confidence.
 - Position the skill as a lightweight prototype, not a replacement.
+- The Starter Skill Prototype must be generic. If the public pitch uses branded,
+  named, or quoted framework labels, translate them into plain descriptive labels
+  in the workflow steps. Mention branded labels only in Source Notes or Offer
+  Decoder when directly supported by public transcript context.
 - Never use these phrases: {", ".join(PROHIBITED_PHRASES)}.
 - Include this exact disclaimer in guardrail_notes: {DISCLAIMER!r}
 """

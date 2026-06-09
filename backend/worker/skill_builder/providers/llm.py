@@ -70,7 +70,12 @@ class LLM:
 
     def complete_json(self, system: str, user: str, model: str | None = None,
                       max_tokens: int = 4096) -> dict:
-        raw = self.complete(system + "\nReturn only valid JSON, no prose.",
+        raw = self.complete(system + "\n".join([
+                                "",
+                                "Return exactly one valid JSON object.",
+                                "Do not include prose, markdown fences, comments, or trailing notes.",
+                                "The first non-whitespace character must be { and the last must be }.",
+                            ]),
                             user, model, max_tokens)
         return _loads_loose(raw)
 
@@ -108,4 +113,24 @@ def _loads_loose(text: str) -> dict:
         text = text.split("```", 2)[1]
         if text.startswith("json"):
             text = text[4:]
-    return json.loads(text.strip())
+    text = text.strip()
+    try:
+        data = json.loads(text)
+    except json.JSONDecodeError:
+        decoder = json.JSONDecoder()
+        last_error: json.JSONDecodeError | None = None
+        for i, ch in enumerate(text):
+            if ch != "{":
+                continue
+            try:
+                data, _ = decoder.raw_decode(text[i:])
+                break
+            except json.JSONDecodeError as e:
+                last_error = e
+        else:
+            if last_error:
+                raise last_error
+            raise json.JSONDecodeError("No JSON object found", text, 0)
+    if not isinstance(data, dict):
+        raise ValueError("Expected a JSON object from model response.")
+    return data

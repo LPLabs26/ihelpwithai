@@ -10,6 +10,7 @@ WORKER = ROOT / "backend" / "worker"
 sys.path.insert(0, str(WORKER))
 
 from skill_builder.stages.ingest import Segment, Transcript
+from skill_builder.providers.llm import _loads_loose  # noqa: E402
 from skill_builder.stages.pitch_to_skill import (  # noqa: E402
     DISCLAIMER,
     PROHIBITED_PHRASES,
@@ -49,6 +50,9 @@ class PitchToSkillStaticTests(unittest.TestCase):
 
 
 class PitchToSkillGenerationTests(unittest.TestCase):
+    def test_json_loader_extracts_object_from_model_prose(self) -> None:
+        self.assertEqual({"ok": True}, _loads_loose("Sure.\n```json\n{\"ok\": true}\n```\nDone."))
+
     def test_pitch_skill_contains_required_sections_and_disclaimer(self) -> None:
         transcript = Transcript(
             video_id="VVU3POOtyDU",

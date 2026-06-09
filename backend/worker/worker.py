@@ -53,6 +53,24 @@ def process(job: dict) -> None:
     result_type = _job_result_type(job)
     source_url = _clean_source_url(job["url"])
     archive_job = {**job, "url": source_url, "result_type": result_type}
+    existing = _existing_public_skill(source_url, result_type)
+    if existing:
+        print("reusing existing skill", job["id"], existing["name"])
+        _insert_skill({
+            "submission_id": job["id"],
+            "name": existing["name"],
+            "description": existing.get("description", ""),
+            "category": existing.get("category", "Skill"),
+            "source_url": source_url,
+            "storage_path": existing["storage_path"],
+            "is_public": False,
+            "result_type": result_type,
+        })
+        sb.table("submissions").update(
+            {"status": "verified", "finished_at": _now()}).eq("id", job["id"]).execute()
+        _send_email_safely(job["id"], send_success_email_for_submission, sb, job["id"])
+        return
+
     if result_type == "pitch_to_skill":
         result = run_pitch_to_skill(job["url"], dest=out)
     else:
@@ -157,6 +175,22 @@ def _pitch_columns(metadata: dict) -> dict:
         "guardrail_notes",
     }
     return {k: v for k, v in (metadata or {}).items() if k in allowed}
+
+
+def _existing_public_skill(url: str, result_type: str) -> dict | None:
+    try:
+        rows = (sb.table("skills")
+                .select("name,description,category,storage_path,is_public")
+                .eq("source_url", url).eq("result_type", result_type)
+                .eq("is_public", True).limit(1).execute().data)
+    except Exception as e:
+        if not _missing_pitch_columns(e):
+            raise
+        rows = (sb.table("skills")
+                .select("name,description,category,storage_path,is_public")
+                .eq("source_url", url).eq("is_public", True)
+                .limit(1).execute().data)
+    return rows[0] if rows else None
 
 
 def _insert_skill(row: dict) -> None:
