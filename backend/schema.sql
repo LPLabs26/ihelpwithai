@@ -57,6 +57,12 @@ insert into storage.buckets (id, name, public)
 values ('skills','skills', true)              -- public-read so library links work
 on conflict (id) do nothing;
 
+-- Temporary private storage for uploaded source files. The worker removes
+-- these objects after it reads/transcribes them.
+insert into storage.buckets (id, name, public)
+values ('source-uploads','source-uploads', false)
+on conflict (id) do nothing;
+
 -- 3) PRIVACY: lock the tables down -------------------------------------------
 alter table public.submissions enable row level security;
 alter table public.skills      enable row level security;

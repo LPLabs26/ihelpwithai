@@ -25,14 +25,15 @@ from skill_builder.stages.pitch_to_skill import (  # noqa: E402
 class PitchToSkillStaticTests(unittest.TestCase):
     def test_homepage_renders_file_source_intake(self) -> None:
         html = (ROOT / "index.html").read_text()
-        self.assertIn("Turn your files into agent skills", html)
+        self.assertIn("Turn your files and videos into agent skills", html)
         self.assertIn('id="files"', html)
+        self.assertIn('id="sourceUrl"', html)
         self.assertIn('id="sourceText"', html)
         self.assertIn('id="rights"', html)
-        self.assertIn("rights_confirmed:rights", html)
-        self.assertIn("looksLikeVideoUrl", html)
-        self.assertIn("Video links are disabled", html)
-        self.assertIn("JSON.stringify({email,transcript:sourceText,rights_confirmed:rights})", html)
+        self.assertIn("new FormData", html)
+        self.assertIn("body.append('rights_confirmed'", html)
+        self.assertIn("body.append('url', sourceUrl)", html)
+        self.assertIn("files.forEach(file=>body.append('files', file, file.name))", html)
 
     def test_library_can_filter_pitch_results(self) -> None:
         html = (ROOT / "skills" / "index.html").read_text()
@@ -47,11 +48,14 @@ class PitchToSkillStaticTests(unittest.TestCase):
         schema = (ROOT / "backend" / "schema.sql").read_text()
         migration = (ROOT / "backend" / "pitch-to-skill.sql").read_text()
         self.assertIn("rights_confirmed", fn)
-        self.assertIn("video_url_disabled", fn)
+        self.assertIn("UPLOAD_BUCKET", fn)
+        self.assertIn("uploadFiles", fn)
         self.assertIn("inlineSourceUrl", fn)
-        self.assertIn('result_type: "source_file"', fn)
+        self.assertIn('resultType: "tutorial"', fn)
+        self.assertIn('resultType: "uploaded_file"', fn)
         self.assertIn("source_text text", schema)
         self.assertIn("result_type text not null default 'source_file'", schema)
+        self.assertIn("'source-uploads'", schema)
         self.assertIn("detected_offer_name", schema)
         self.assertIn("create or replace view public.public_skills", migration)
 

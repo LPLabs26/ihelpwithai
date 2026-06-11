@@ -10,8 +10,10 @@ const supabase = createClient(
 );
 
 const EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-const VIDEO_URL = /^\s*https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/|vimeo\.com\/|loom\.com\/share\/)\S+\s*$/i;
+const SOURCE_URL = /^https?:\/\/\S+$/i;
 const MAX_SOURCE_CHARS = 180_000;
+const MAX_UPLOAD_BYTES = Number(Deno.env.get("MAX_UPLOAD_BYTES") ?? "52428800");
+const UPLOAD_BUCKET = "source-uploads";
 const DAILY_PER_IP = Number(Deno.env.get("RATE_LIMIT_PER_IP") ?? "3");
 const DAILY_GLOBAL = Number(Deno.env.get("RATE_LIMIT_GLOBAL") ?? "100"); // cost ceiling
 
@@ -25,15 +27,13 @@ Deno.serve(async (req) => {
   if (req.method !== "POST")
     return json({ error: "method not allowed" }, 405, cors);
 
-  const { email, transcript, source_text, rights_confirmed } = await req.json().catch(() => ({}));
-  const sourceText = String(source_text ?? transcript ?? "").trim().slice(0, MAX_SOURCE_CHARS);
-  if (!EMAIL.test(email ?? "") || !sourceText || rights_confirmed !== true)
+  const input = await parseInput(req);
+  if (!EMAIL.test(input.email ?? "") || !input.rightsConfirmed)
     return json({ error: "invalid input" }, 400, cors);
-  if (VIDEO_URL.test(sourceText))
-    return json({
-      error: "video_url_disabled",
-      message: "Video links are disabled. Please paste or upload source text you own or have permission to use.",
-    }, 400, cors);
+  if (!input.sourceText && !input.sourceUrl && input.files.length === 0)
+    return json({ error: "missing_source", message: "Upload a file, add a URL, or paste source text." }, 400, cors);
+  if (input.sourceUrl && !SOURCE_URL.test(input.sourceUrl))
+    return json({ error: "invalid_url", message: "Please enter a valid source URL." }, 400, cors);
 
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
   const sinceDay = new Date(Date.now() - 86_400_000).toISOString();
@@ -48,13 +48,18 @@ Deno.serve(async (req) => {
   if ((ipCount ?? 0) >= DAILY_PER_IP || (dayCount ?? 0) >= DAILY_GLOBAL)
     return json({ error: "rate_limited" }, 429, cors);
 
+  const queued = await buildSubmissionSource(input).catch((error) => ({
+    error: "upload_failed",
+    message: String(error?.message ?? error ?? "Could not upload source file."),
+    status: 500,
+  }));
+  if ("error" in queued) return json(queued, queued.status, cors);
+
   const { error } = await supabase.from("submissions").insert({
-    // Backwards-compatible with the existing private `url text not null` column.
-    // The worker decodes this, then overwrites it with `user-provided-source`.
-    url: inlineSourceUrl(sourceText),
-    email,
+    url: queued.url,
+    email: input.email,
     ip,
-    result_type: "source_file",
+    result_type: queued.resultType,
   });
   if (error) return json({ error: "could not queue" }, 500, cors);
 
@@ -66,6 +71,147 @@ function json(body: unknown, status: number, headers: Record<string, string>) {
     status,
     headers: { ...headers, "content-type": "application/json" },
   });
+}
+
+type InputFile = {
+  name: string;
+  type: string;
+  size: number;
+  bytes: Uint8Array;
+};
+
+type SubmissionInput = {
+  email: string;
+  sourceText: string;
+  sourceUrl: string;
+  rightsConfirmed: boolean;
+  files: InputFile[];
+};
+
+async function parseInput(req: Request): Promise<SubmissionInput> {
+  const contentType = req.headers.get("content-type") ?? "";
+  if (contentType.includes("multipart/form-data")) {
+    const form = await req.formData();
+    const files: InputFile[] = [];
+    for (const item of form.getAll("files")) {
+      if (!(item instanceof File) || item.size === 0) continue;
+      if (item.size > MAX_UPLOAD_BYTES) {
+        files.push({
+          name: item.name,
+          type: item.type || "application/octet-stream",
+          size: item.size,
+          bytes: new Uint8Array(),
+        });
+        continue;
+      }
+      files.push({
+        name: item.name,
+        type: item.type || "application/octet-stream",
+        size: item.size,
+        bytes: new Uint8Array(await item.arrayBuffer()),
+      });
+    }
+    return {
+      email: String(form.get("email") ?? "").trim(),
+      sourceText: String(form.get("source_text") ?? form.get("transcript") ?? "").trim().slice(0, MAX_SOURCE_CHARS),
+      sourceUrl: String(form.get("url") ?? form.get("source_url") ?? "").trim(),
+      rightsConfirmed: ["true", "1", "on", "yes"].includes(String(form.get("rights_confirmed") ?? "").toLowerCase()),
+      files,
+    };
+  }
+
+  const body = await req.json().catch(() => ({}));
+  return {
+    email: String(body.email ?? "").trim(),
+    sourceText: String(body.source_text ?? body.transcript ?? "").trim().slice(0, MAX_SOURCE_CHARS),
+    sourceUrl: String(body.url ?? body.source_url ?? "").trim(),
+    rightsConfirmed: body.rights_confirmed === true,
+    files: [],
+  };
+}
+
+async function buildSubmissionSource(input: SubmissionInput): Promise<
+  | { url: string; resultType: string }
+  | { error: string; message: string; status: number }
+> {
+  const oversized = input.files.find((file) => file.size > MAX_UPLOAD_BYTES || file.bytes.length === 0);
+  if (oversized) {
+    return {
+      error: "file_too_large",
+      message: `File is larger than the ${Math.round(MAX_UPLOAD_BYTES / 1024 / 1024)} MB upload limit: ${oversized.name}`,
+      status: 413,
+    };
+  }
+
+  if (input.files.length > 0) {
+    const refs = await uploadFiles(input.files);
+    if (input.sourceText) {
+      refs.unshift({
+        bucket: UPLOAD_BUCKET,
+        path: await uploadText(input.sourceText, "pasted-source.txt", "text/plain"),
+      });
+    }
+    return {
+      url: refs.length === 1 ? storageRef(refs[0]) : storageListRef(refs),
+      resultType: "uploaded_file",
+    };
+  }
+
+  if (input.sourceUrl) {
+    return { url: input.sourceUrl, resultType: "tutorial" };
+  }
+
+  return { url: inlineSourceUrl(input.sourceText), resultType: "source_file" };
+}
+
+async function uploadFiles(files: InputFile[]): Promise<Array<{ bucket: string; path: string }>> {
+  await ensureUploadBucket();
+  const refs: Array<{ bucket: string; path: string }> = [];
+  const batchId = crypto.randomUUID();
+  for (const file of files) {
+    const path = `${batchId}/${safeName(file.name)}`;
+    const { error } = await supabase.storage
+      .from(UPLOAD_BUCKET)
+      .upload(path, file.bytes, {
+        contentType: file.type || "application/octet-stream",
+        upsert: false,
+      });
+    if (error) throw error;
+    refs.push({ bucket: UPLOAD_BUCKET, path });
+  }
+  return refs;
+}
+
+async function uploadText(text: string, name: string, contentType: string): Promise<string> {
+  await ensureUploadBucket();
+  const path = `${crypto.randomUUID()}/${safeName(name)}`;
+  const { error } = await supabase.storage
+    .from(UPLOAD_BUCKET)
+    .upload(path, new TextEncoder().encode(text), { contentType, upsert: false });
+  if (error) throw error;
+  return path;
+}
+
+async function ensureUploadBucket(): Promise<void> {
+  const { error } = await supabase.storage.createBucket(UPLOAD_BUCKET, { public: false });
+  if (error && !String(error.message ?? error).toLowerCase().includes("already exists")) {
+    throw error;
+  }
+}
+
+function storageRef(ref: { bucket: string; path: string }): string {
+  return `storage://${ref.bucket}/${ref.path}`;
+}
+
+function storageListRef(refs: Array<{ bucket: string; path: string }>): string {
+  return "storage-list:application/json;base64," + base64Utf8(JSON.stringify(refs));
+}
+
+function safeName(name: string): string {
+  return (name || "source-file")
+    .replace(/[^A-Za-z0-9_.-]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 140) || "source-file";
 }
 
 function inlineSourceUrl(text: string): string {

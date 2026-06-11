@@ -36,15 +36,19 @@
   <section class="page-hero" id="build">
     <div class="container hero-inner">
       <div class="hero-eyebrow">Skill Builder · Free tool</div>
-      <h1>Turn your files into agent skills</h1>
-      <p class="lede">Upload notes, SOPs, transcripts, code, or internal guides you own or have permission to use. We extract the useful workflow, verify what we can, and email you a ready-to-use starter skill for Claude Code or Cursor.</p>
+      <h1>Turn your files and videos into agent skills</h1>
+      <p class="lede">Upload files, paste source text, or add a video URL you own or have permission to use. We extract the useful workflow, verify what we can, and email you a ready-to-use starter skill for Claude Code or Cursor.</p>
 
       <div class="panel">
         <form id="sb-form" novalidate>
           <div class="row">
             <label for="files">Source files</label>
-            <input class="field" id="files" name="files" type="file" accept=".txt,.md,.markdown,.csv,.json,.yaml,.yml,.html,.css,.js,.ts,.tsx,.jsx,.py,.rb,.php,.sh,.sql,.xml" multiple>
-            <p class="fineprint">Text-based files work best right now: notes, SOPs, Markdown, CSV, JSON, code, and transcripts.</p>
+            <input class="field" id="files" name="files" type="file" multiple>
+            <p class="fineprint">Upload docs, code, transcripts, audio, or video files. Large videos may take longer to process.</p>
+          </div>
+          <div class="row">
+            <label for="sourceUrl">Or add a video URL</label>
+            <input class="field" id="sourceUrl" name="sourceUrl" type="url" inputmode="url" placeholder="https://www.youtube.com/watch?v=...">
           </div>
           <div class="row">
             <label for="sourceText">Or paste the source text</label>
@@ -70,7 +74,7 @@
     <div class="container">
       <h2>How it works</h2>
       <div class="steps">
-        <div class="step"><div class="n">1</div><h3>Read your materials</h3><p>We work from the files or source text you provide, with a rights check before anything is submitted.</p></div>
+        <div class="step"><div class="n">1</div><h3>Read your materials</h3><p>We work from the files, video, URL, or source text you provide, with a rights check before anything is submitted.</p></div>
         <div class="step"><div class="n">2</div><h3>Extract the real procedure</h3><p>A model separates the actual steps from the intro and filler — tools, prerequisites, gotchas, and snippets included.</p></div>
         <div class="step"><div class="n">3</div><h3>Verify, then email</h3><p>Every skill is tested before we send it. The package contains generated instructions and helper files, not a copy of your raw sources.</p></div>
       </div>
@@ -146,40 +150,29 @@
 
   const show = (k,h)=>{statusEl.className='status show '+k;statusEl.innerHTML=h;};
   const validEmail = v=>/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);
-  const looksLikeVideoUrl = v=>/^\s*https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/|vimeo\.com\/|loom\.com\/share\/)\S+\s*$/i.test(v);
-  const MAX_SOURCE_CHARS = 180000;
-  const readTextFile = file => new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(String(reader.result || ''));
-    reader.onerror = () => reject(new Error('Could not read '+file.name+'.'));
-    reader.readAsText(file);
-  });
-  async function collectSourceText(){
-    const files = Array.from(document.getElementById('files').files || []);
-    const pasted = document.getElementById('sourceText').value.trim();
-    const chunks = [];
-    for(const file of files){
-      const text = (await readTextFile(file)).trim();
-      if(text) chunks.push('--- FILE: '+file.name+' ---\n'+text);
-    }
-    if(pasted) chunks.push('--- PASTED SOURCE ---\n'+pasted);
-    return chunks.join('\n\n').slice(0, MAX_SOURCE_CHARS);
-  }
+  const validSourceUrl = v=>!v || /^https?:\/\/\S+$/i.test(v);
 
   form.addEventListener('submit', async (e)=>{
     e.preventDefault();
     const email=document.getElementById('email').value.trim();
     const rights=document.getElementById('rights').checked;
-    const pasted=document.getElementById('sourceText').value.trim();
-    const sourceText=await collectSourceText();
-    if(!sourceText) return show('err','Please upload a text-based file or paste source text.');
-    if(looksLikeVideoUrl(pasted)) return show('err','Video links are disabled for this tool. Please paste the transcript, notes, SOP, code, or another text file you own or have permission to use.');
+    const sourceText=document.getElementById('sourceText').value.trim();
+    const sourceUrl=document.getElementById('sourceUrl').value.trim();
+    const files=Array.from(document.getElementById('files').files || []);
+    if(!files.length && !sourceText && !sourceUrl) return show('err','Please upload a file, add a video URL, or paste source text.');
+    if(!validSourceUrl(sourceUrl)) return show('err','Please enter a valid source URL, or leave the URL field blank.');
     if(!validEmail(email)) return show('err','⚠️ Please enter a valid email address.');
     if(!rights) return show('err','Please confirm you own these files or have permission to use them.');
     submitBtn.disabled=true;
     show('ok','<span class="spinner"></span> Submitting your source material...');
     try{
-      const res=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,transcript:sourceText,rights_confirmed:rights})});
+      const body=new FormData();
+      body.append('email', email);
+      body.append('rights_confirmed', rights ? 'true' : 'false');
+      if(sourceText) body.append('source_text', sourceText);
+      if(sourceUrl) body.append('url', sourceUrl);
+      files.forEach(file=>body.append('files', file, file.name));
+      const res=await fetch(ENDPOINT,{method:'POST',body});
       if(!res.ok){throw new Error(await readError(res));}
       show('ok','✅ <strong>Got it!</strong> We\'re building your skill now and will email <strong>'+email+
         '</strong> a download link when it\'s ready. If it can\'t be verified, we\'ll email you why instead.');
@@ -192,7 +185,7 @@
     if(res.status===429) return 'We\'re at capacity right now — please try again later.';
     try{
       const body=await res.json();
-      if(body.error==='video_url_disabled') return 'Video links are disabled for this tool. Please paste the transcript, notes, SOP, code, or another text file you own or have permission to use.';
+      if(body.error==='file_too_large') return 'That file is too large for the current upload limit. Try a shorter clip or a transcript.';
       return body.message || body.detail || body.error || 'Something went wrong submitting your request. Please try again.';
     }catch(_){
       return 'Something went wrong submitting your request. Please try again.';

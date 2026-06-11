@@ -11,6 +11,7 @@ Outcomes (mirroring the delivery model's two emails):
 from __future__ import annotations
 
 import json
+import subprocess
 import tempfile
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -21,7 +22,13 @@ from .models import SkillIntermediate
 from .providers.llm import LLM, LLMUnavailable
 from .stages.format_skill import build_and_package
 from .stages.frames import sample_frames
-from .stages.ingest import Segment, Transcript, ingest
+from .stages.ingest import (
+    Segment,
+    Transcript,
+    _transcribe_audio_local,
+    _transcribe_audio_openai,
+    ingest,
+)
 from .stages.pitch_to_skill import generate_pitch_to_skill
 from .stages.synthesize import synthesize
 from .stages.vision import describe_frames
@@ -179,6 +186,42 @@ def run_from_source_text(source_text: str, dest: Path | None = None, executor=No
     res.gate_failures = [c.detail for c in report.failures]
     res.log.append("retries exhausted: flagged for human review (NOT shipped)")
     return res
+
+
+def transcribe_media_file(media_path: Path, title: str | None = None) -> Transcript:
+    media_path = Path(media_path)
+    with tempfile.TemporaryDirectory(prefix="sb_media_") as tmp:
+        audio = Path(tmp) / "audio.wav"
+        subprocess.run(
+            ["ffmpeg", "-y", "-i", str(media_path), "-vn", "-ac", "1", "-ar", "16000", str(audio)],
+            text=True,
+            capture_output=True,
+            check=True,
+        )
+        if CONFIG.transcribe_provider == "openai":
+            if not CONFIG.openai_api_key:
+                raise RuntimeError("SKILLBUILDER_TRANSCRIBE_PROVIDER=openai requires OPENAI_API_KEY.")
+            segments = _transcribe_audio_openai(audio)
+        elif CONFIG.transcribe_provider in {"auto", "local"}:
+            segments = _transcribe_audio_local(audio)
+        else:
+            raise RuntimeError(f"Unknown transcription provider: {CONFIG.transcribe_provider}")
+
+    if not segments:
+        raise RuntimeError("No transcript could be obtained from the uploaded media file.")
+
+    return Transcript(
+        video_id="user-uploaded-media",
+        title=title or media_path.name or "Uploaded media",
+        duration_s=max((s.start + s.duration for s in segments), default=0),
+        segments=segments,
+        source="uploaded-media",
+    )
+
+
+def run_from_media_file(media_path: Path, dest: Path | None = None, executor=None) -> PipelineResult:
+    transcript = transcribe_media_file(media_path, title=Path(media_path).name)
+    return run_from_source_text(transcript.full_text, dest=dest, executor=executor)
 
 
 def run_pitch_to_skill(url: str, dest: Path | None = None) -> PipelineResult:

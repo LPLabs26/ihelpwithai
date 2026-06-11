@@ -7,3 +7,7 @@ alter table public.submissions
 
 alter table public.submissions
   alter column result_type set default 'source_file';
+
+insert into storage.buckets (id, name, public)
+values ('source-uploads','source-uploads', false)
+on conflict (id) do nothing;

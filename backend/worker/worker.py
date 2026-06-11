@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import base64
 import binascii
+import json
 import os
 import time
 import tempfile
@@ -27,7 +28,7 @@ from urllib.parse import parse_qs, urlencode, urlsplit, urlunsplit
 from supabase import create_client
 
 # the engine (installed alongside this worker; see requirements.txt)
-from skill_builder.pipeline import run, run_from_source_text, run_pitch_to_skill
+from skill_builder.pipeline import run, run_from_media_file, run_from_source_text, transcribe_media_file, run_pitch_to_skill
 from skill_builder.gate.executor import SandboxExecutor
 import emails
 from email_outbox import send_success_email_for_submission
@@ -38,6 +39,12 @@ sb = create_client(os.environ["SUPABASE_URL"],
 PUBLIC_BASE = os.environ.get("PUBLIC_STORAGE_BASE", "").rstrip("/")
 POLL_SECONDS = int(os.environ.get("WORKER_POLL_SECONDS", "5"))
 SANDBOX_EXECUTOR = SandboxExecutor.from_env()
+MEDIA_EXTS = {".mp4", ".mov", ".m4v", ".webm", ".mkv", ".avi", ".mp3", ".m4a", ".wav", ".aac", ".ogg", ".flac"}
+TEXT_EXTS = {
+    ".txt", ".md", ".markdown", ".csv", ".json", ".yaml", ".yml", ".html", ".css",
+    ".js", ".ts", ".tsx", ".jsx", ".py", ".rb", ".php", ".sh", ".sql", ".xml",
+    ".toml", ".ini", ".env", ".log",
+}
 
 
 def claim_one() -> dict | None:
@@ -53,15 +60,16 @@ def claim_one() -> dict | None:
 def process(job: dict) -> None:
     out = Path(tempfile.mkdtemp(prefix="sf_"))
     source_text = _job_source_text(job)
-    result_type = "source_file" if source_text else _job_result_type(job)
-    source_url = None if source_text else _clean_source_url(job["url"])
+    upload_refs = _job_upload_refs(job)
+    result_type = "uploaded_file" if upload_refs else "source_file" if source_text else _job_result_type(job)
+    source_url = None if source_text or upload_refs else _clean_source_url(job["url"])
     archive_job = {
         **job,
         "url": source_url or "user-provided-source",
         "source_text": None,
         "result_type": result_type,
     }
-    existing = None if source_text else _existing_public_skill(source_url, result_type)
+    existing = None if source_text or upload_refs else _existing_public_skill(source_url, result_type)
     if existing:
         print("reusing existing skill", job["id"], existing["name"])
         _insert_skill({
@@ -78,7 +86,9 @@ def process(job: dict) -> None:
         _send_email_safely(job["id"], send_success_email_for_submission, sb, job["id"])
         return
 
-    if source_text:
+    if upload_refs:
+        result = _run_from_upload_refs(upload_refs, out)
+    elif source_text:
         result = run_from_source_text(source_text, dest=out, executor=SANDBOX_EXECUTOR)
     elif result_type == "pitch_to_skill":
         result = run_pitch_to_skill(job["url"], dest=out)
@@ -112,16 +122,18 @@ def process(job: dict) -> None:
         _update_submission(job["id"], {
             "status": "verified",
             "finished_at": _now(),
-            **_source_cleanup(job, source_text),
+            **_source_cleanup(job, source_text, upload_refs),
         })
+        _delete_upload_refs(upload_refs)
         _send_email_safely(job["id"], send_success_email_for_submission, sb, job["id"])
     else:
         _update_submission(job["id"], {
             "status": "needs_review",
             "failures": result.gate_failures,
             "finished_at": _now(),
-            **_source_cleanup(job, source_text),
+            **_source_cleanup(job, source_text, upload_refs),
         })
+        _delete_upload_refs(upload_refs)
         _send_email_safely(job["id"], emails.send_needs_review, job["email"], result.gate_failures)
 
 
@@ -153,6 +165,8 @@ def _read_meta(skill_dir: Path) -> dict:
 
 
 def _job_result_type(job: dict) -> str:
+    if _job_upload_refs(job):
+        return "uploaded_file"
     if _job_source_text(job):
         return "source_file"
     if job.get("result_type") == "pitch_to_skill":
@@ -162,7 +176,7 @@ def _job_result_type(job: dict) -> str:
 
 
 def _clean_source_url(url: str) -> str:
-    if _decode_inline_source(url):
+    if _decode_inline_source(url) or _decode_storage_refs(url):
         return ""
     parts = urlsplit(url)
     pairs = [
@@ -193,8 +207,109 @@ def _decode_inline_source(value: str) -> str:
     return ""
 
 
-def _source_cleanup(job: dict, source_text: str) -> dict:
-    if not source_text:
+def _job_upload_refs(job: dict) -> list[dict]:
+    return _decode_storage_refs(str(job.get("url") or ""))
+
+
+def _decode_storage_refs(value: str) -> list[dict]:
+    if value.startswith("storage://"):
+        rest = value[len("storage://"):]
+        bucket, _, path = rest.partition("/")
+        if bucket and path:
+            return [{"bucket": bucket, "path": path}]
+        return []
+    prefix = "storage-list:application/json;base64,"
+    if not value.startswith(prefix):
+        return []
+    try:
+        raw = base64.b64decode(value[len(prefix):], validate=True).decode("utf-8")
+        refs = json.loads(raw)
+    except (binascii.Error, ValueError, json.JSONDecodeError):
+        return []
+    if not isinstance(refs, list):
+        return []
+    out = []
+    for ref in refs:
+        if isinstance(ref, dict) and ref.get("bucket") and ref.get("path"):
+            out.append({"bucket": str(ref["bucket"]), "path": str(ref["path"])})
+    return out
+
+
+def _run_from_upload_refs(refs: list[dict], out: Path):
+    with tempfile.TemporaryDirectory(prefix="sf_upload_") as tmp:
+        root = Path(tmp)
+        files = [_download_upload_ref(ref, root) for ref in refs]
+        media_files = [path for path in files if _is_media_file(path)]
+        text_files = [path for path in files if path not in media_files]
+
+        if len(files) == 1 and media_files:
+            return run_from_media_file(media_files[0], dest=out, executor=SANDBOX_EXECUTOR)
+
+        chunks: list[str] = []
+        for path in text_files:
+            text = _extract_file_text(path)
+            if text:
+                chunks.append(f"--- FILE: {path.name} ---\n{text}")
+        for path in media_files:
+            transcript = transcribe_media_file(path, title=path.name)
+            chunks.append(f"--- MEDIA TRANSCRIPT: {path.name} ---\n{transcript.full_text}")
+
+        if not chunks:
+            raise RuntimeError("Uploaded files did not contain readable text or transcribable media.")
+        return run_from_source_text("\n\n".join(chunks), dest=out, executor=SANDBOX_EXECUTOR)
+
+
+def _download_upload_ref(ref: dict, root: Path) -> Path:
+    bucket = str(ref["bucket"])
+    storage_path = str(ref["path"])
+    data = sb.storage.from_(bucket).download(storage_path)
+    dest = root / Path(storage_path).name
+    dest.write_bytes(data)
+    return dest
+
+
+def _is_media_file(path: Path) -> bool:
+    return path.suffix.lower() in MEDIA_EXTS
+
+
+def _extract_file_text(path: Path) -> str:
+    suffix = path.suffix.lower()
+    if suffix in TEXT_EXTS or _looks_like_text(path):
+        return path.read_text(errors="replace")[:180000]
+    if suffix == ".pdf":
+        try:
+            from pypdf import PdfReader
+            reader = PdfReader(str(path))
+            return "\n".join(page.extract_text() or "" for page in reader.pages)[:180000]
+        except Exception as exc:
+            raise RuntimeError(f"Could not extract text from PDF {path.name}: {exc}") from exc
+    if suffix == ".docx":
+        try:
+            import docx
+            document = docx.Document(str(path))
+            return "\n".join(p.text for p in document.paragraphs if p.text)[:180000]
+        except Exception as exc:
+            raise RuntimeError(f"Could not extract text from DOCX {path.name}: {exc}") from exc
+    return path.read_text(errors="replace")[:180000]
+
+
+def _looks_like_text(path: Path) -> bool:
+    sample = path.read_bytes()[:2048]
+    if not sample:
+        return False
+    return b"\x00" not in sample
+
+
+def _delete_upload_refs(refs: list[dict]) -> None:
+    for ref in refs:
+        try:
+            sb.storage.from_(str(ref["bucket"])).remove([str(ref["path"])])
+        except Exception as exc:
+            print("source upload cleanup error", ref.get("bucket"), ref.get("path"), exc)
+
+
+def _source_cleanup(job: dict, source_text: str, upload_refs: list[dict] | None = None) -> dict:
+    if not source_text and not upload_refs:
         return {}
     cleanup = {"url": "user-provided-source"}
     if "source_text" in job:
@@ -290,17 +405,19 @@ def main() -> None:
         if not job:
             time.sleep(POLL_SECONDS)
             continue
-        print("processing", job["id"], "source_file" if _job_source_text(job) else job["url"])
+        print("processing", job["id"], _job_result_type(job) if (_job_source_text(job) or _job_upload_refs(job)) else job["url"])
         try:
             process(job)
         except Exception as e:  # never crash the loop
             source_text = _job_source_text(job)
+            upload_refs = _job_upload_refs(job)
             _update_submission(job["id"], {
                 "status": "error",
                 "failures": [str(e)[:500]],
                 "finished_at": _now(),
-                **_source_cleanup(job, source_text),
+                **_source_cleanup(job, source_text, upload_refs),
             })
+            _delete_upload_refs(upload_refs)
             print("error on", job["id"], e)
 
 
