@@ -55,6 +55,8 @@ def _eligible_jobs() -> list[dict]:
             .order("finished_at").limit(max(10, LIMIT * 5)).execute().data)
     out = []
     for row in rows:
+        if row.get("result_type") == "source_file":
+            continue
         if row.get("ip") in SKIP_IPS:
             continue
         if int(row.get("attempts") or 0) >= MAX_ATTEMPTS:

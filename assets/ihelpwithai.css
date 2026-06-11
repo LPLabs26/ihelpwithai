@@ -45,9 +45,12 @@ h1{font-family:var(--font-display);font-weight:400;font-size:clamp(2.4rem,6vw,4.
 .panel{background:var(--navy-card);border:1px solid var(--navy-border);border-radius:var(--radius-lg);max-width:620px;margin:0 auto;padding:28px;text-align:left;box-shadow:0 24px 60px rgba(0,0,0,.35);}
 label{display:block;font-weight:600;font-size:.85rem;color:var(--cream);margin:0 0 6px;}
 .field{width:100%;padding:13px 15px;border:1px solid var(--navy-border);border-radius:var(--radius-sm);font-size:1rem;font-family:inherit;background:var(--navy-mid);color:var(--cream);}
+.field.textarea{min-height:150px;resize:vertical;line-height:1.5;}
 .field::placeholder{color:var(--muted);}
 .field:focus{outline:2px solid var(--amber);border-color:transparent;}
 .row{margin-bottom:18px;}
+.check-row{display:flex;gap:10px;align-items:flex-start;margin:2px 0 18px;color:var(--cream-dim);font-size:.86rem;line-height:1.45;}
+.check-row input{margin-top:3px;accent-color:var(--amber);}
 .mode-group{border:0;margin:0 0 18px;padding:0;display:grid;gap:10px;}
 .mode-group legend{font-weight:600;font-size:.85rem;color:var(--cream);margin:0 0 6px;}
 .mode-option{display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:start;margin:0;padding:12px;border:1px solid var(--navy-border);border-radius:var(--radius-sm);background:var(--navy-mid);cursor:pointer;}

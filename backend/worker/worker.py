@@ -16,6 +16,8 @@ Env required:
 """
 from __future__ import annotations
 
+import base64
+import binascii
 import os
 import time
 import tempfile
@@ -25,7 +27,7 @@ from urllib.parse import parse_qs, urlencode, urlsplit, urlunsplit
 from supabase import create_client
 
 # the engine (installed alongside this worker; see requirements.txt)
-from skill_builder.pipeline import run, run_pitch_to_skill
+from skill_builder.pipeline import run, run_from_source_text, run_pitch_to_skill
 from skill_builder.gate.executor import SandboxExecutor
 import emails
 from email_outbox import send_success_email_for_submission
@@ -50,10 +52,16 @@ def claim_one() -> dict | None:
 
 def process(job: dict) -> None:
     out = Path(tempfile.mkdtemp(prefix="sf_"))
-    result_type = _job_result_type(job)
-    source_url = _clean_source_url(job["url"])
-    archive_job = {**job, "url": source_url, "result_type": result_type}
-    existing = _existing_public_skill(source_url, result_type)
+    source_text = _job_source_text(job)
+    result_type = "source_file" if source_text else _job_result_type(job)
+    source_url = None if source_text else _clean_source_url(job["url"])
+    archive_job = {
+        **job,
+        "url": source_url or "user-provided-source",
+        "source_text": None,
+        "result_type": result_type,
+    }
+    existing = None if source_text else _existing_public_skill(source_url, result_type)
     if existing:
         print("reusing existing skill", job["id"], existing["name"])
         _insert_skill({
@@ -66,12 +74,13 @@ def process(job: dict) -> None:
             "is_public": False,
             "result_type": result_type,
         })
-        sb.table("submissions").update(
-            {"status": "verified", "finished_at": _now()}).eq("id", job["id"]).execute()
+        _update_submission(job["id"], {"status": "verified", "finished_at": _now()})
         _send_email_safely(job["id"], send_success_email_for_submission, sb, job["id"])
         return
 
-    if result_type == "pitch_to_skill":
+    if source_text:
+        result = run_from_source_text(source_text, dest=out, executor=SANDBOX_EXECUTOR)
+    elif result_type == "pitch_to_skill":
         result = run_pitch_to_skill(job["url"], dest=out)
     else:
         result = run(
@@ -100,13 +109,19 @@ def process(job: dict) -> None:
         _insert_skill(row)
         _archive_safely(job["id"], archive_skill_file,
                         result.skill_path, job=archive_job, meta=meta, storage_path=key)
-        sb.table("submissions").update(
-            {"status": "verified", "finished_at": _now()}).eq("id", job["id"]).execute()
+        _update_submission(job["id"], {
+            "status": "verified",
+            "finished_at": _now(),
+            **_source_cleanup(job, source_text),
+        })
         _send_email_safely(job["id"], send_success_email_for_submission, sb, job["id"])
     else:
-        sb.table("submissions").update(
-            {"status": "needs_review", "failures": result.gate_failures,
-             "finished_at": _now()}).eq("id", job["id"]).execute()
+        _update_submission(job["id"], {
+            "status": "needs_review",
+            "failures": result.gate_failures,
+            "finished_at": _now(),
+            **_source_cleanup(job, source_text),
+        })
         _send_email_safely(job["id"], emails.send_needs_review, job["email"], result.gate_failures)
 
 
@@ -138,6 +153,8 @@ def _read_meta(skill_dir: Path) -> dict:
 
 
 def _job_result_type(job: dict) -> str:
+    if _job_source_text(job):
+        return "source_file"
     if job.get("result_type") == "pitch_to_skill":
         return "pitch_to_skill"
     qs = parse_qs(urlsplit(job.get("url") or "").query)
@@ -145,6 +162,8 @@ def _job_result_type(job: dict) -> str:
 
 
 def _clean_source_url(url: str) -> str:
+    if _decode_inline_source(url):
+        return ""
     parts = urlsplit(url)
     pairs = [
         (k, v)
@@ -153,6 +172,45 @@ def _clean_source_url(url: str) -> str:
         if k != "ihwa_result_type"
     ]
     return urlunsplit((parts.scheme, parts.netloc, parts.path, urlencode(pairs), parts.fragment))
+
+
+def _job_source_text(job: dict) -> str:
+    explicit = str(job.get("source_text") or "").strip()
+    if explicit:
+        return explicit
+    return _decode_inline_source(str(job.get("url") or ""))
+
+
+def _decode_inline_source(value: str) -> str:
+    prefixes = ("inline-source:text/plain;base64,", "data:text/plain;base64,")
+    for prefix in prefixes:
+        if not value.startswith(prefix):
+            continue
+        try:
+            return base64.b64decode(value[len(prefix):], validate=True).decode("utf-8", "replace").strip()
+        except (binascii.Error, ValueError):
+            return ""
+    return ""
+
+
+def _source_cleanup(job: dict, source_text: str) -> dict:
+    if not source_text:
+        return {}
+    cleanup = {"url": "user-provided-source"}
+    if "source_text" in job:
+        cleanup["source_text"] = None
+    return cleanup
+
+
+def _update_submission(job_id: str, data: dict) -> None:
+    try:
+        sb.table("submissions").update(data).eq("id", job_id).execute()
+    except Exception as e:
+        if "source_text" not in data or "source_text" not in str(e):
+            raise
+        fallback = dict(data)
+        fallback.pop("source_text", None)
+        sb.table("submissions").update(fallback).eq("id", job_id).execute()
 
 
 def _pitch_columns(metadata: dict) -> dict:
@@ -232,13 +290,17 @@ def main() -> None:
         if not job:
             time.sleep(POLL_SECONDS)
             continue
-        print("processing", job["id"], job["url"])
+        print("processing", job["id"], "source_file" if _job_source_text(job) else job["url"])
         try:
             process(job)
         except Exception as e:  # never crash the loop
-            sb.table("submissions").update(
-                {"status": "error", "failures": [str(e)[:500]], "finished_at": _now()}
-            ).eq("id", job["id"]).execute()
+            source_text = _job_source_text(job)
+            _update_submission(job["id"], {
+                "status": "error",
+                "failures": [str(e)[:500]],
+                "finished_at": _now(),
+                **_source_cleanup(job, source_text),
+            })
             print("error on", job["id"], e)
 
 

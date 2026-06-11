@@ -30,7 +30,7 @@ Deno.serve(async (req) => {
     name: skill.name,
     description: skill.description,
     category: skill.category,
-    result_type: skill.result_type ?? "tutorial",
+    result_type: skill.result_type ?? "source_file",
     detected_offer_name: skill.detected_offer_name,
     offer_type: skill.offer_type,
     target_customer: skill.target_customer,

@@ -7,8 +7,9 @@
 create table if not exists public.submissions (
   id          uuid primary key default gen_random_uuid(),
   email       text not null,                 -- the captured email
-  url         text not null,                 -- the YouTube link they submitted
-  result_type text not null default 'tutorial',
+  url         text not null,                 -- legacy URL or temporary inline source payload
+  source_text text,                          -- optional future source-text column; worker clears after use
+  result_type text not null default 'source_file',
   status      text not null default 'queued',-- queued|running|verified|needs_review|error
   ip          text,
   failures    jsonb,                          -- gate failures if needs_review

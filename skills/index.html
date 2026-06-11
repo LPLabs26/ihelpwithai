@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Skill Library — ihelpwithai.com</title>
-<meta name="description" content="Every skill ihelpwithai.com has built from tutorials and public offer videos — browse, search, and download ready-to-use starter agent skills.">
+<meta name="description" content="Every skill ihelpwithai.com has built from user-provided source materials — browse, search, and download ready-to-use starter agent skills.">
 <link rel="canonical" href="https://ihelpwithai.com/skills/">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#0a1628">
@@ -50,7 +50,8 @@
         <input class="field lib-search" id="search" type="text" placeholder="Search skills…">
         <select class="field lib-filter" id="typeFilter" aria-label="Filter by result type">
           <option value="all">All skills</option>
-          <option value="tutorial">Tutorial skills</option>
+          <option value="source_file">Source-file skills</option>
+          <option value="tutorial">Legacy URL skills</option>
           <option value="pitch_to_skill">Pitch-to-Skill</option>
         </select>
       </div>
@@ -90,10 +91,10 @@
 
   const esc = s => String(s||'').replace(/[&<>"]/g, c =>
     ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-  const skillType = s => s.result_type || (String(s.category||'').toLowerCase()==='pitch-to-skill' ? 'pitch_to_skill' : 'tutorial');
+  const skillType = s => s.result_type || (String(s.category||'').toLowerCase()==='pitch-to-skill' ? 'pitch_to_skill' : 'source_file');
 
   function card(s){
-    const src = s.source_url ? `<a href="${esc(s.source_url)}" target="_blank" rel="noopener">source video</a>` : '';
+    const src = s.source_url ? `<a href="${esc(s.source_url)}" target="_blank" rel="noopener">source</a>` : '';
     const isPitch = skillType(s) === 'pitch_to_skill';
     const tag = isPitch ? 'Pitch-to-Skill' : (s.category || 'Skill');
     const badge = isPitch ? `<span class="tag tag--pitch">Prototype based on public pitch</span>` : '';

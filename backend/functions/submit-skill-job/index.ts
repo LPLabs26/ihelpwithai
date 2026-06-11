@@ -1,7 +1,7 @@
 // ihelpwithai.com intake — Supabase Edge Function (Deno).
 // Receives the homepage form POST, guards against abuse, stores the email +
-// URL in `submissions` (the email repository), returns immediately. The worker
-// does the slow work. Deploy:  supabase functions deploy submit-skill-job
+// source material in `submissions` (the email repository), returns immediately.
+// The worker does the slow work. Deploy: supabase functions deploy submit-skill-job
 import { createClient } from "jsr:@supabase/supabase-js@2";
 
 const supabase = createClient(
@@ -9,9 +9,8 @@ const supabase = createClient(
   Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!, // server-side only, never shipped
 );
 
-const YT = /(youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/)/;
 const EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-const RESULT_TYPES = new Set(["tutorial", "pitch_to_skill"]);
+const MAX_SOURCE_CHARS = 180_000;
 const DAILY_PER_IP = Number(Deno.env.get("RATE_LIMIT_PER_IP") ?? "3");
 const DAILY_GLOBAL = Number(Deno.env.get("RATE_LIMIT_GLOBAL") ?? "100"); // cost ceiling
 
@@ -25,9 +24,9 @@ Deno.serve(async (req) => {
   if (req.method !== "POST")
     return json({ error: "method not allowed" }, 405, cors);
 
-  const { url, email, result_type } = await req.json().catch(() => ({}));
-  const safeResultType = RESULT_TYPES.has(result_type) ? result_type : "tutorial";
-  if (!YT.test(url ?? "") || !EMAIL.test(email ?? ""))
+  const { email, transcript, source_text, rights_confirmed } = await req.json().catch(() => ({}));
+  const sourceText = String(source_text ?? transcript ?? "").trim().slice(0, MAX_SOURCE_CHARS);
+  if (!EMAIL.test(email ?? "") || !sourceText || rights_confirmed !== true)
     return json({ error: "invalid input" }, 400, cors);
 
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
@@ -44,10 +43,12 @@ Deno.serve(async (req) => {
     return json({ error: "rate_limited" }, 429, cors);
 
   const { error } = await supabase.from("submissions").insert({
-    url,
+    // Backwards-compatible with the existing private `url text not null` column.
+    // The worker decodes this, then overwrites it with `user-provided-source`.
+    url: inlineSourceUrl(sourceText),
     email,
     ip,
-    result_type: safeResultType,
+    result_type: "source_file",
   });
   if (error) return json({ error: "could not queue" }, 500, cors);
 
@@ -59,4 +60,18 @@ function json(body: unknown, status: number, headers: Record<string, string>) {
     status,
     headers: { ...headers, "content-type": "application/json" },
   });
+}
+
+function inlineSourceUrl(text: string): string {
+  return "inline-source:text/plain;base64," + base64Utf8(text);
+}
+
+function base64Utf8(text: string): string {
+  const bytes = new TextEncoder().encode(text);
+  let binary = "";
+  const chunkSize = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunkSize) {
+    binary += String.fromCharCode(...bytes.slice(i, i + chunkSize));
+  }
+  return btoa(binary);
 }

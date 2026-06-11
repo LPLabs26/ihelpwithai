@@ -17,6 +17,30 @@ import yaml
 from ..models import SkillIntermediate
 
 
+RAW_SOURCE_FILENAMES = {
+    "audio.wav",
+    "extraction.json",
+    "source.json",
+    "transcript.json",
+    "transcript.txt",
+    "video.mp4",
+}
+RAW_SOURCE_PREFIXES = (
+    "original-source",
+    "raw-source",
+    "source.",
+    "source-",
+    "transcript.",
+    "transcript-",
+    "uploaded-source",
+)
+
+
+def _is_raw_source_artifact(path: Path | str) -> bool:
+    name = Path(path).name.lower()
+    return name in RAW_SOURCE_FILENAMES or name.startswith(RAW_SOURCE_PREFIXES)
+
+
 def _frontmatter(skill: SkillIntermediate) -> str:
     fm = {
         "name": skill.name,
@@ -32,7 +56,8 @@ def _body(skill: SkillIntermediate) -> str:
     L: list[str] = [f"# {skill.title}\n"]
     if skill.summary:
         L.append(skill.summary + "\n")
-    L.append(f"_Source: {skill.source_url}_\n")
+    if skill.source_url:
+        L.append(f"_Source: {skill.source_url}_\n")
 
     if skill.prerequisites:
         L.append("## Prerequisites\n")
@@ -58,9 +83,10 @@ def _body(skill: SkillIntermediate) -> str:
         L.append("## Common gotchas\n")
         L += [f"- {g}" for g in skill.gotchas]
         L.append("")
-    if skill.snippets:
+    bundled = [fn for fn in skill.snippets if not _is_raw_source_artifact(fn)]
+    if bundled:
         L.append("## Bundled files\n")
-        L += [f"- `scripts/{fn}`" for fn in skill.snippets]
+        L += [f"- `scripts/{fn}`" for fn in bundled]
         L.append("")
     if skill.known_limitations:
         L.append("## Known limitations\n")
@@ -87,6 +113,8 @@ def write_skill_dir(skill: SkillIntermediate, dest: Path) -> Path:
     (skill_dir / "SKILL.md").write_text(_frontmatter(skill) + "\n" + _body(skill))
     for fn, contents in skill.snippets.items():
         safe = fn.replace("/", "_").replace("..", "_")
+        if _is_raw_source_artifact(safe):
+            continue
         (skill_dir / "scripts" / safe).write_text(contents)
     return skill_dir
 
@@ -96,7 +124,7 @@ def package_skill(skill_dir: Path, dest: Path) -> Path:
     archive = dest / f"{skill_dir.name}.skill"
     with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED) as z:
         for f in skill_dir.rglob("*"):
-            if f.is_file():
+            if f.is_file() and not _is_raw_source_artifact(f):
                 z.write(f, f.relative_to(skill_dir.parent))
     return archive
 

@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Skill Builder — Turn any tutorial into an agent skill | ihelpwithai.com</title>
-<meta name="description" content="Paste a YouTube tutorial link, get back a ready-to-use agent skill for Claude Code or Cursor — steps, tools, gotchas, and code, verified and emailed to you.">
+<title>Skill Builder — Turn your files into agent skills | ihelpwithai.com</title>
+<meta name="description" content="Upload files you own or have permission to use and get back a ready-to-use agent skill for Claude Code or Cursor — steps, tools, gotchas, and code, verified and emailed to you.">
 <link rel="canonical" href="https://ihelpwithai.com/">
-<meta property="og:title" content="ihelpwithai.com — turn any tutorial into an agent skill">
-<meta property="og:description" content="Paste a YouTube how-to, get back a verified, ready-to-run agent skill by email.">
+<meta property="og:title" content="ihelpwithai.com — turn your files into agent skills">
+<meta property="og:description" content="Upload files you own or have permission to use and get back a verified, ready-to-run agent skill by email.">
 <meta property="og:url" content="https://ihelpwithai.com/">
 <meta property="og:image" content="https://ihelpwithai.com/assets/og-default.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -36,38 +36,30 @@
   <section class="page-hero" id="build">
     <div class="container hero-inner">
       <div class="hero-eyebrow">Skill Builder · Free tool</div>
-      <h1>Turn any tutorial into an agent skill</h1>
-      <p class="lede">Paste a YouTube how-to or public offer video. We extract the useful workflow, verify what we can, and email you a ready-to-use starter skill for Claude Code or Cursor.</p>
+      <h1>Turn your files into agent skills</h1>
+      <p class="lede">Upload notes, SOPs, transcripts, code, or internal guides you own or have permission to use. We extract the useful workflow, verify what we can, and email you a ready-to-use starter skill for Claude Code or Cursor.</p>
 
       <div class="panel">
         <form id="sb-form" novalidate>
           <div class="row">
-            <label for="url">YouTube tutorial link</label>
-            <input class="field" id="url" name="url" type="url" inputmode="url" placeholder="https://www.youtube.com/watch?v=..." required>
+            <label for="files">Source files</label>
+            <input class="field" id="files" name="files" type="file" accept=".txt,.md,.markdown,.csv,.json,.yaml,.yml,.html,.css,.js,.ts,.tsx,.jsx,.py,.rb,.php,.sh,.sql,.xml" multiple>
+            <p class="fineprint">Text-based files work best right now: notes, SOPs, Markdown, CSV, JSON, code, and transcripts.</p>
           </div>
-          <fieldset class="mode-group" aria-label="Skill mode">
-            <legend>Choose a mode</legend>
-            <label class="mode-option">
-              <input type="radio" name="result_type" value="tutorial" checked>
-              <span>
-                <strong>Build from tutorial</strong>
-                <small>Turn a how-to video into an agent skill.</small>
-              </span>
-            </label>
-            <label class="mode-option">
-              <input type="radio" name="result_type" value="pitch_to_skill">
-              <span>
-                <strong>Decode offer and build prototype</strong>
-                <small>Decode what a video is selling and build a starter AI skill to test the workflow before you buy.</small>
-              </span>
-            </label>
-          </fieldset>
+          <div class="row">
+            <label for="sourceText">Or paste the source text</label>
+            <textarea class="field textarea" id="sourceText" name="sourceText" placeholder="Paste notes, procedures, transcripts, code snippets, or internal docs here..."></textarea>
+          </div>
           <div class="row">
             <label for="email">Your email — we'll send the skill here when it's ready</label>
             <input class="field" id="email" name="email" type="email" placeholder="you@example.com" required>
           </div>
+          <label class="check-row">
+            <input id="rights" name="rights" type="checkbox" required>
+            <span>I confirm I own these files or have permission to use them for skill generation.</span>
+          </label>
           <button class="btn btn--block" id="submit" type="submit">Build my skill &amp; email it &rarr;</button>
-          <p class="fineprint">It takes a few minutes. We'll email you a download link when your skill is built and verified.</p>
+          <p class="fineprint">It takes a few minutes. We'll email you a download link when your skill is built and verified. We package the generated skill, not your raw source files.</p>
         </form>
         <div class="status" id="status" role="status" aria-live="polite"></div>
       </div>
@@ -78,9 +70,9 @@
     <div class="container">
       <h2>How it works</h2>
       <div class="steps">
-        <div class="step"><div class="n">1</div><h3>Transcribe &amp; watch</h3><p>We pull the transcript and sample key frames, so on-screen commands, code, and UI steps aren't lost.</p></div>
+        <div class="step"><div class="n">1</div><h3>Read your materials</h3><p>We work from the files or source text you provide, with a rights check before anything is submitted.</p></div>
         <div class="step"><div class="n">2</div><h3>Extract the real procedure</h3><p>A model separates the actual steps from the intro and filler — tools, prerequisites, gotchas, and snippets included.</p></div>
-        <div class="step"><div class="n">3</div><h3>Verify, then email</h3><p>Every skill is tested with a clean agent before we send it. If it can't be verified, we email you why instead of shipping something broken.</p></div>
+        <div class="step"><div class="n">3</div><h3>Verify, then email</h3><p>Every skill is tested before we send it. The package contains generated instructions and helper files, not a copy of your raw sources.</p></div>
       </div>
     </div>
   </section>
@@ -151,45 +143,44 @@
   const form = document.getElementById('sb-form');
   const statusEl = document.getElementById('status');
   const submitBtn = document.getElementById('submit');
-  const modeInputs = Array.from(document.querySelectorAll('input[name="result_type"]'));
 
   const show = (k,h)=>{statusEl.className='status show '+k;statusEl.innerHTML=h;};
   const validEmail = v=>/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);
-  const validYouTube = v=>/(youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/)/.test(v);
-  const selectedMode = ()=>document.querySelector('input[name="result_type"]:checked')?.value || 'tutorial';
-  function withModeParam(url, resultType){
-    if(resultType!=='pitch_to_skill') return url;
-    try{
-      const u=new URL(url);
-      u.searchParams.set('ihwa_result_type','pitch_to_skill');
-      return u.toString();
-    }catch(_){ return url; }
+  const MAX_SOURCE_CHARS = 180000;
+  const readTextFile = file => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result || ''));
+    reader.onerror = () => reject(new Error('Could not read '+file.name+'.'));
+    reader.readAsText(file);
+  });
+  async function collectSourceText(){
+    const files = Array.from(document.getElementById('files').files || []);
+    const pasted = document.getElementById('sourceText').value.trim();
+    const chunks = [];
+    for(const file of files){
+      const text = (await readTextFile(file)).trim();
+      if(text) chunks.push('--- FILE: '+file.name+' ---\n'+text);
+    }
+    if(pasted) chunks.push('--- PASTED SOURCE ---\n'+pasted);
+    return chunks.join('\n\n').slice(0, MAX_SOURCE_CHARS);
   }
-
-  function syncMode(){
-    const pitch = selectedMode()==='pitch_to_skill';
-    submitBtn.textContent = pitch ? 'Decode offer and build prototype' : 'Build my skill & email it →';
-  }
-  modeInputs.forEach(i=>i.addEventListener('change', syncMode));
-  syncMode();
 
   form.addEventListener('submit', async (e)=>{
     e.preventDefault();
-    const url=document.getElementById('url').value.trim();
     const email=document.getElementById('email').value.trim();
-    const result_type=selectedMode();
-    if(!validYouTube(url)) return show('err','⚠️ Please paste a valid YouTube video link.');
+    const rights=document.getElementById('rights').checked;
+    const sourceText=await collectSourceText();
+    if(!sourceText) return show('err','Please upload a text-based file or paste source text.');
     if(!validEmail(email)) return show('err','⚠️ Please enter a valid email address.');
+    if(!rights) return show('err','Please confirm you own these files or have permission to use them.');
     submitBtn.disabled=true;
-    show('ok','<span class="spinner"></span> Submitting your '+(result_type==='pitch_to_skill'?'Pitch-to-Skill prototype':'tutorial')+'…');
+    show('ok','<span class="spinner"></span> Submitting your source material...');
     try{
-      const submitUrl=withModeParam(url,result_type);
-      const res=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:submitUrl,email,result_type})});
+      const res=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,transcript:sourceText,rights_confirmed:rights})});
       if(!res.ok){throw new Error(res.status===429?'We\'re at capacity right now — please try again later.':'Something went wrong submitting your request. Please try again.');}
-      show('ok','✅ <strong>Got it!</strong> We\'re building your '+(result_type==='pitch_to_skill'?'starter prototype':'skill')+' now and will email <strong>'+email+
+      show('ok','✅ <strong>Got it!</strong> We\'re building your skill now and will email <strong>'+email+
         '</strong> a download link when it\'s ready. If it can\'t be verified, we\'ll email you why instead.');
       form.reset();
-      syncMode();
     }catch(err){ show('err','⚠️ '+(err.message||'Request failed. Please try again.')); }
     finally{ submitBtn.disabled=false; }
   });

@@ -21,7 +21,7 @@ from .models import SkillIntermediate
 from .providers.llm import LLM, LLMUnavailable
 from .stages.format_skill import build_and_package
 from .stages.frames import sample_frames
-from .stages.ingest import ingest
+from .stages.ingest import Segment, Transcript, ingest
 from .stages.pitch_to_skill import generate_pitch_to_skill
 from .stages.synthesize import synthesize
 from .stages.vision import describe_frames
@@ -112,6 +112,68 @@ def run(url: str, dest: Path | None = None, executor=None) -> PipelineResult:
         res.log.append(f"attempt {attempt}: gate failed -> {feedback}")
 
     # exhausted retries -> NOT a pass
+    res.status = "needs_review"
+    res.skill_dir = skill_dir
+    res.gate_failures = [c.detail for c in report.failures]
+    res.log.append("retries exhausted: flagged for human review (NOT shipped)")
+    return res
+
+
+def run_from_source_text(source_text: str, dest: Path | None = None, executor=None) -> PipelineResult:
+    dest = dest or Path(tempfile.mkdtemp(prefix="sb_source_out_"))
+    dest.mkdir(parents=True, exist_ok=True)
+    res = PipelineResult(status="needs_review", metadata={"result_type": "source_file"})
+    source_text = (source_text or "").strip()
+    if not source_text:
+        res.gate_failures.append("No source text was provided.")
+        return res
+
+    transcript = Transcript(
+        video_id="user-provided-source",
+        title="User-provided source material",
+        duration_s=0,
+        segments=[Segment(0, 0, source_text)],
+        source="user-provided",
+    )
+    res.log.append("ingest: using user-provided source text")
+
+    try:
+        llm: LLM | None = LLM()
+    except LLMUnavailable as e:
+        res.log.append(f"AI stages skipped: {e}")
+        res.gate_failures.append(
+            "No API key: synthesis, trigger and end-to-end tests could not run. "
+            "Cannot produce a verified skill. (Connect a key.)"
+        )
+        return res
+
+    feedback: str | None = None
+    relevant: list[str] = []
+    irrelevant: list[str] = []
+
+    for attempt in range(1, CONFIG.gate_max_retries + 1):
+        res.attempts = attempt
+        res.log.append(f"attempt {attempt}: synthesize from source"
+                       + (" (repair)" if feedback else ""))
+        skill = synthesize(transcript, [], llm, repair_feedback=feedback)
+
+        if not relevant:
+            relevant, irrelevant = _gen_trigger_prompts(skill, llm)
+        task = f"{skill.title}. {skill.summary}".strip()
+
+        skill_dir, archive = build_and_package(skill, dest)
+        report = gate.evaluate(skill_dir, task=task, relevant=relevant,
+                               irrelevant=irrelevant, llm=llm, executor=executor)
+
+        if report.passed:
+            res.status = "verified"
+            res.skill_dir, res.skill_path = skill_dir, archive
+            res.log.append(f"attempt {attempt}: GATE PASSED")
+            return res
+
+        feedback = report.feedback()
+        res.log.append(f"attempt {attempt}: gate failed -> {feedback}")
+
     res.status = "needs_review"
     res.skill_dir = skill_dir
     res.gate_failures = [c.detail for c in report.failures]
