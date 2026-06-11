@@ -14,7 +14,7 @@ const SOURCE_URL = /^https?:\/\/\S+$/i;
 const MAX_SOURCE_CHARS = 180_000;
 const MAX_UPLOAD_BYTES = Number(Deno.env.get("MAX_UPLOAD_BYTES") ?? "52428800");
 const UPLOAD_BUCKET = "source-uploads";
-const DAILY_PER_IP = Number(Deno.env.get("RATE_LIMIT_PER_IP") ?? "3");
+const DAILY_PER_IP = Number(Deno.env.get("RATE_LIMIT_PER_IP") ?? "12");
 const DAILY_GLOBAL = Number(Deno.env.get("RATE_LIMIT_GLOBAL") ?? "100"); // cost ceiling
 
 Deno.serve(async (req) => {
