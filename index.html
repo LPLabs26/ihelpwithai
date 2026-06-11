@@ -146,6 +146,7 @@
 
   const show = (k,h)=>{statusEl.className='status show '+k;statusEl.innerHTML=h;};
   const validEmail = v=>/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);
+  const looksLikeVideoUrl = v=>/^\s*https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/|vimeo\.com\/|loom\.com\/share\/)\S+\s*$/i.test(v);
   const MAX_SOURCE_CHARS = 180000;
   const readTextFile = file => new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -169,21 +170,34 @@
     e.preventDefault();
     const email=document.getElementById('email').value.trim();
     const rights=document.getElementById('rights').checked;
+    const pasted=document.getElementById('sourceText').value.trim();
     const sourceText=await collectSourceText();
     if(!sourceText) return show('err','Please upload a text-based file or paste source text.');
+    if(looksLikeVideoUrl(pasted)) return show('err','Video links are disabled for this tool. Please paste the transcript, notes, SOP, code, or another text file you own or have permission to use.');
     if(!validEmail(email)) return show('err','⚠️ Please enter a valid email address.');
     if(!rights) return show('err','Please confirm you own these files or have permission to use them.');
     submitBtn.disabled=true;
     show('ok','<span class="spinner"></span> Submitting your source material...');
     try{
       const res=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,transcript:sourceText,rights_confirmed:rights})});
-      if(!res.ok){throw new Error(res.status===429?'We\'re at capacity right now — please try again later.':'Something went wrong submitting your request. Please try again.');}
+      if(!res.ok){throw new Error(await readError(res));}
       show('ok','✅ <strong>Got it!</strong> We\'re building your skill now and will email <strong>'+email+
         '</strong> a download link when it\'s ready. If it can\'t be verified, we\'ll email you why instead.');
       form.reset();
     }catch(err){ show('err','⚠️ '+(err.message||'Request failed. Please try again.')); }
     finally{ submitBtn.disabled=false; }
   });
+
+  async function readError(res){
+    if(res.status===429) return 'We\'re at capacity right now — please try again later.';
+    try{
+      const body=await res.json();
+      if(body.error==='video_url_disabled') return 'Video links are disabled for this tool. Please paste the transcript, notes, SOP, code, or another text file you own or have permission to use.';
+      return body.message || body.detail || body.error || 'Something went wrong submitting your request. Please try again.';
+    }catch(_){
+      return 'Something went wrong submitting your request. Please try again.';
+    }
+  }
 </script>
 <script>(function(){try{var T="https://fiopwsdzcbmjcbpkdxwr.supabase.co/functions/v1/track";if(String(T).indexOf("http")!==0)return;var k="ihwa_v",v=localStorage.getItem(k);if(!v){v=Math.random().toString(36).slice(2);localStorage.setItem(k,v);}var b=JSON.stringify({type:"visit",path:location.pathname,visitor:v});if(!navigator.sendBeacon||!navigator.sendBeacon(T,new Blob([b],{type:"text/plain;charset=UTF-8"}))){fetch(T,{method:"POST",keepalive:true,headers:{"Content-Type":"application/json"},body:b});}}catch(e){}})();</script>
 </body>

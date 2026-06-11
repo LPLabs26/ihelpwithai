@@ -10,6 +10,7 @@ const supabase = createClient(
 );
 
 const EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+const VIDEO_URL = /^\s*https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/|vimeo\.com\/|loom\.com\/share\/)\S+\s*$/i;
 const MAX_SOURCE_CHARS = 180_000;
 const DAILY_PER_IP = Number(Deno.env.get("RATE_LIMIT_PER_IP") ?? "3");
 const DAILY_GLOBAL = Number(Deno.env.get("RATE_LIMIT_GLOBAL") ?? "100"); // cost ceiling
@@ -28,6 +29,11 @@ Deno.serve(async (req) => {
   const sourceText = String(source_text ?? transcript ?? "").trim().slice(0, MAX_SOURCE_CHARS);
   if (!EMAIL.test(email ?? "") || !sourceText || rights_confirmed !== true)
     return json({ error: "invalid input" }, 400, cors);
+  if (VIDEO_URL.test(sourceText))
+    return json({
+      error: "video_url_disabled",
+      message: "Video links are disabled. Please paste or upload source text you own or have permission to use.",
+    }, 400, cors);
 
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
   const sinceDay = new Date(Date.now() - 86_400_000).toISOString();

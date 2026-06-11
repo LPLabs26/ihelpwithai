@@ -30,6 +30,8 @@ class PitchToSkillStaticTests(unittest.TestCase):
         self.assertIn('id="sourceText"', html)
         self.assertIn('id="rights"', html)
         self.assertIn("rights_confirmed:rights", html)
+        self.assertIn("looksLikeVideoUrl", html)
+        self.assertIn("Video links are disabled", html)
         self.assertIn("JSON.stringify({email,transcript:sourceText,rights_confirmed:rights})", html)
 
     def test_library_can_filter_pitch_results(self) -> None:
@@ -45,6 +47,7 @@ class PitchToSkillStaticTests(unittest.TestCase):
         schema = (ROOT / "backend" / "schema.sql").read_text()
         migration = (ROOT / "backend" / "pitch-to-skill.sql").read_text()
         self.assertIn("rights_confirmed", fn)
+        self.assertIn("video_url_disabled", fn)
         self.assertIn("inlineSourceUrl", fn)
         self.assertIn('result_type: "source_file"', fn)
         self.assertIn("source_text text", schema)
